@@ -1,0 +1,13 @@
+<script src="globalpayments-3ds.js"></script>
+<script>
+  console.log(window.location.search);
+  const queryString = window.location.search.split('&');
+  const data = [];
+  for (let i = 0; i < queryString.length; i++) {
+   const item = queryString[i].split('=');
+   data[item[0]] = item[1];
+  }
+
+  const threeDSMethodData = JSON.parse(atob(data['cres']));
+  GlobalPayments.ThreeDSecure.handleChallengeNotification(threeDSMethodData['threeDSServerTransID'], 'https://' + data['host']);
+</script>
