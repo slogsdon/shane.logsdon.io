@@ -1,5 +1,6 @@
 <script src="globalpayments-3ds.js"></script>
 <script>
+  console.log(window.location.search);
   const queryString = window.location.search.split('&');
   const data = [];
   for (let i = 0; i < queryString.length; i++) {
