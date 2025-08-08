@@ -779,10 +779,10 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
     // Source: https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/prepend
     (function (arr) {
         arr.forEach(function (item) {
-            if (item.hasOwnProperty('prepend')) {
+            if (item.hasOwnProperty("prepend")) {
                 return;
             }
-            Object.defineProperty(item, 'prepend', {
+            Object.defineProperty(item, "prepend", {
                 configurable: true,
                 enumerable: true,
                 writable: true,
@@ -794,7 +794,7 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
                         docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
                     });
                     this.insertBefore(docFrag, this.firstChild);
-                }
+                },
             });
         });
     })([Element.prototype, Document.prototype, DocumentFragment.prototype]);
@@ -1314,23 +1314,24 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
         }
     }
 
-    function makeRequest(endpoint, data) {
+    function makeRequest(endpoint, data, headers) {
         return __awaiter(this, void 0, void 0, function () {
-            var headers, rawResponse, _a, e_1, reasons;
+            var defaultHeaders, requestHeaders, rawResponse, _a, e_1, reasons;
             var _b;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
-                        headers = {
+                        defaultHeaders = {
                             "Content-Type": "application/json",
                         };
+                        requestHeaders = Object.assign({}, defaultHeaders, headers);
                         _c.label = 1;
                     case 1:
                         _c.trys.push([1, 6, , 7]);
                         return [4 /*yield*/, fetch(endpoint, {
                                 body: JSON.stringify(data),
                                 credentials: "omit",
-                                headers: typeof Headers !== "undefined" ? new Headers(headers) : headers,
+                                headers: typeof Headers !== "undefined" ? new Headers(requestHeaders) : requestHeaders,
                                 method: "POST",
                             })];
                     case 2:
@@ -1374,9 +1375,7 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
     var isMobileNewTab = !isWindowsMobileOs && (isAndroidOrIOs || isMobileXS);
     // Display IFrame on WIndows Phone OS mobile devices
     var isMobileIFrame = isWindowsMobileOs || isMobileNewTab;
-    var randomId = Math.random()
-        .toString(16)
-        .substr(2, 8);
+    var randomId = Math.random().toString(16).substr(2, 8);
     function createLightbox(iFrame, options) {
         // Create the overlay
         var overlayElement = createOverlay();
@@ -1423,8 +1422,8 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
         iFrame.onload = getIFrameOnloadEventHandler(iFrame, spinner, overlayElement, options);
     }
     function closeModal() {
-        Array.prototype.slice.call(document
-            .querySelectorAll("[target$=\"-" + randomId + "\"],[id$=\"-" + randomId + "\"]"))
+        Array.prototype.slice
+            .call(document.querySelectorAll("[target$=\"-" + randomId + "\"],[id$=\"-" + randomId + "\"]"))
             .forEach(function (element) {
             if (element.parentNode) {
                 element.parentNode.removeChild(element);
@@ -1440,7 +1439,7 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
         overlay.style.top = "0";
         overlay.style.left = "0";
         overlay.style.transition = "all 0.3s ease-in-out";
-        overlay.style.zIndex = "100";
+        overlay.style.zIndex = "10001";
         if (isMobileIFrame) {
             overlay.style.position = "absolute !important";
             overlay.style.WebkitOverflowScrolling = "touch";
@@ -1581,8 +1580,8 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
             clearTimeout(timeout);
         }
         try {
-            Array.prototype.slice.call(document
-                .querySelectorAll("[target$=\"-" + randomId + "\"],[id$=\"-" + randomId + "\"]"))
+            Array.prototype.slice
+                .call(document.querySelectorAll("[target$=\"-" + randomId + "\"],[id$=\"-" + randomId + "\"]"))
                 .forEach(function (element) {
                 if (element.parentNode) {
                     element.parentNode.removeChild(element);
@@ -1595,9 +1594,20 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
     }
     function getWindowMessageEventHandler(resolve, data) {
         return function (e) {
-            var origin = data.origin || window.location.origin;
-            if (origin !== e.origin) {
+            var notificationEvent = false;
+            if (e.data && e.data.event) {
+                notificationEvent = (e.data.event === "methodNotification" || e.data.event === "challengeNotification");
+            }
+            if (!notificationEvent) {
                 return;
+            }
+            if (data.origin) {
+                var allowedOrigins = Array.isArray(data.origin) ? data.origin : [data.origin];
+                // include some defaults from Global Payments' sandbox
+                allowedOrigins.push.apply(allowedOrigins, ['https://api.sandbox.globalpay-ecommerce.com']);
+                if (!allowedOrigins.includes(e.origin)) {
+                    return;
+                }
             }
             ensureIframeClosed(data.timeout || 0);
             resolve(e.data);
@@ -1650,19 +1660,21 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
      *
      * @param endpoint Merchant integration endpoint responsible for performing the version check
      * @param data Request data to aid in version check request
+     * @param headers The request headers
      * @throws When an error occurred during the request
      */
-    function checkVersion(endpoint, data) {
+    function checkVersion(endpoint, data, headers) {
         return __awaiter(this, void 0, void 0, function () {
             var response, e_1, reasons;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         data = data || {};
+                        headers = headers || {};
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, makeRequest(endpoint, data)];
+                        return [4 /*yield*/, makeRequest(endpoint, data, headers)];
                     case 2:
                         response = (_a.sent());
                         return [4 /*yield*/, handle3dsVersionCheck(response, data.methodWindow)];
@@ -1684,9 +1696,10 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
      *
      * @param endpoint Merchant integration endpoint responsible for initiating the authentication request
      * @param data Request data to aid in initiating authentication
+     * @param headers The request headers
      * @throws When an error occurred during the request
      */
-    function initiateAuthentication(endpoint, data) {
+    function initiateAuthentication(endpoint, data, headers) {
         return __awaiter(this, void 0, void 0, function () {
             var response, e_2, reasons;
             return __generator(this, function (_a) {
@@ -1705,7 +1718,8 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
                             data.challengeRequestIndicator || exports.ChallengeRequestIndicator.NoPreference;
                         // still needs ip address and accept header from server-side
                         data.browserData = data.browserData || getBrowserData();
-                        return [4 /*yield*/, makeRequest(endpoint, data)];
+                        headers = headers || {};
+                        return [4 /*yield*/, makeRequest(endpoint, data, headers)];
                     case 1:
                         response = (_a.sent());
                         return [4 /*yield*/, handleInitiateAuthentication(response, data.challengeWindow)];
@@ -1768,14 +1782,14 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!(data.challengeMandated || data.status === exports.TransactionStatus.ChallengeRequired)) return [3 /*break*/, 2];
+                        if (!(data.challengeMandated ||
+                            data.status === exports.TransactionStatus.ChallengeRequired)) return [3 /*break*/, 2];
                         data.challenge = data.challenge || {};
                         if (!data.challenge.requestUrl) {
                             throw new Error("Invalid challenge state. Missing challenge URL");
                         }
                         return [4 /*yield*/, postToIframe(data.challenge.requestUrl, [
                                 { name: "creq", value: data.challenge.encodedChallengeRequest },
-                                //{ name: "PaReq", value: data.challenge.encodedChallengeRequest },
                             ], options)];
                     case 1:
                         response = _a.sent();
@@ -1821,3 +1835,4 @@ this.GlobalPayments.ThreeDSecure = (function (exports) {
     return exports;
 
 }({}));
+//# sourceMappingURL=globalpayments-3ds.js.map
