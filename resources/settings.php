@@ -9,7 +9,7 @@ $author = (object) [
 
 return (object) [
     'title' => $author->shane->name,
-    'subtitle' => 'Building the Future of Financial Technology',
+    'subtitle' => 'Technical product leader, payments & developer platforms',
     'description' => $author->shane->description,
     'avgWordsPerMinute' => 200,
     'author' => $author,

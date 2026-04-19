@@ -1,31 +1,20 @@
-
-<ul class="menu <?= isset($isFooter) ? 'footer-links' : 'nav-menu' ?>">
-    <?php if (isset($isFooter)) : ?>
-        <li class="menu-item">
-            <a href="/" class="menu-link">Intro</a>
-        </li>
-    <?php endif; ?>
-    <li class="menu-item">
-        <a href="/about/" class="menu-link">About</a>
+<?php
+$navItems = [
+    ['href' => '/about/', 'label' => 'About'],
+    ['href' => '/articles/', 'label' => 'Articles'],
+    ['href' => '/speaking/', 'label' => 'Speaking'],
+];
+?>
+<ul class="flex items-center gap-1 sm:gap-2" id="site-nav">
+    <?php foreach ($navItems as $item): ?>
+    <li>
+        <a href="<?= $item['href'] ?>"
+           class="inline-flex h-9 items-center px-2 text-sm transition-colors text-muted-foreground hover:text-foreground hover:no-underline sm:px-3">
+            <span class="relative">
+                <?= $item['label'] ?>
+                <span aria-hidden="true" class="absolute -bottom-1 left-0 h-px w-full origin-left bg-foreground transition-transform scale-x-0"></span>
+            </span>
+        </a>
     </li>
-    <li class="menu-item">
-        <a href="/articles/" class="menu-link">Articles</a>
-    </li>
-    <li class="menu-item">
-        <a href="/speaking/" class="menu-link">Speaking</a>
-    </li>
-    <!--
-    <li class="menu-item">
-        <a href="/work/" class="menu-link">Work</a>
-    </li>
-    <li><a href="/consulting">Consulting</a></li>
-    -->
-    <?php if (isset($isFooter)) : ?>
-        <li class="menu-item">
-            <a href="/contact/" class="menu-link">Contact</a>
-        </li>
-        <li class="menu-item">
-            <a href="/archive/" class="menu-link">Archive</a>
-        </li>
-    <?php endif; ?>
+    <?php endforeach; ?>
 </ul>

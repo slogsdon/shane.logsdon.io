@@ -1,5 +1,5 @@
 [build]
-command = "composer build"
+command = "npm install && npm run build:css && composer build"
 publish = "dist"
 
 [[plugins]]
