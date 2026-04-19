@@ -22,7 +22,7 @@ $articleCount = count($activeArticles);
                     <span style="color:hsl(var(--foreground)/0.4)">§</span> 01 / Profile
                 </p>
                 <p class="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted-foreground">
-                    Louisville, KY
+                    Louisville, KY · GMT-5
                 </p>
             </div>
 
