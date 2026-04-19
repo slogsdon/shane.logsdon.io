@@ -1,10 +1,18 @@
 <footer class="mt-32 border-t border-rule">
-    <div class="mx-auto grid max-w-editorial grid-cols-1 gap-8 px-6 py-12 sm:grid-cols-3">
+    <div class="mx-auto grid max-w-editorial grid-cols-1 gap-8 px-6 py-12 sm:grid-cols-4">
         <div class="space-y-2">
             <p class="eyebrow">Colophon</p>
             <p class="text-sm text-muted-foreground">
                 Set in Fraunces &amp; Inter. Built with care, hairlines, and restraint.
             </p>
+        </div>
+        <div class="space-y-2">
+            <p class="eyebrow">Pages</p>
+            <ul class="space-y-1 text-sm">
+                <li><a class="link-quiet" href="/articles/">Articles</a></li>
+                <li><a class="link-quiet" href="/speaking/">Speaking</a></li>
+                <li><a class="link-quiet" href="/archive/">Archive</a></li>
+            </ul>
         </div>
         <div class="space-y-2">
             <p class="eyebrow">Elsewhere</p>
