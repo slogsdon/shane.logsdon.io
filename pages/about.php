@@ -1,127 +1,129 @@
-<?php $this->layout('partials::layouts/main', [
+<?php
+$this->layout('partials::layouts/main', [
     'title' => 'About',
+    'description' => 'Technical product leader with 15+ years building developer-first experiences for payment systems and fintech infrastructure.',
     'url' => '/about/',
 ]);
 $settings = require('resources/settings.php');
+
+$expertise = [
+    ['num' => '01', 'title' => 'Payment systems',    'body' => 'Designing scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns.'],
+    ['num' => '02', 'title' => 'Developer platforms', 'body' => 'Building APIs and SDKs that prioritize developer experience — clear contracts, honest errors, and short paths to first success.'],
+    ['num' => '03', 'title' => 'Product leadership',  'body' => 'Translating complex financial capabilities into developer platforms that drive adoption and durable revenue.'],
+    ['num' => '04', 'title' => 'Technical leadership', 'body' => 'Leading engineering teams, setting architecture direction, and bridging business strategy with implementation.'],
+];
 ?>
 
-<header class="about-header">
-    <div class="container">
-        <h1>About Me</h1>
-        <p><?= $settings->author->shane->description ?></p>
+<!-- Page header -->
+<section class="mx-auto max-w-editorial px-6 pb-12 pt-20">
+    <p class="eyebrow">§ About</p>
+    <h1 class="mt-4 max-w-4xl font-display text-4xl font-normal leading-[1.08] tracking-tight text-foreground sm:text-6xl">
+        A technical product leader,<br>
+        <span class="italic" style="color:hsl(var(--ink-soft))">writing developer-first software</span><br>
+        for the payments stack.
+    </h1>
+</section>
+
+<!-- Background -->
+<section class="mx-auto max-w-editorial px-6">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="eyebrow">Background</p>
+        </div>
+        <div class="col-span-12 space-y-6 sm:col-span-9">
+            <p class="max-w-prose text-lg leading-relaxed text-foreground">
+                For more than a decade I&rsquo;ve worked at the intersection of financial technology and
+                developer tooling &mdash; helping companies build and scale the payment infrastructure and
+                platforms that quietly move billions of dollars.
+            </p>
+            <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
+                My focus is on systems that have to be both correct and humane: payment APIs that
+                behave under load, developer experiences that respect the engineer&rsquo;s time, and
+                product strategy that holds up to scrutiny from finance, security, and the people
+                actually integrating the thing.
+            </p>
+            <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
+                I combine deep technical context with product judgment. Whether the work is shaping
+                an API surface, untangling a payment flow, or aligning a roadmap with regulatory
+                reality, I optimize for clarity, reliability, and adoption &mdash; in that order.
+            </p>
+        </div>
     </div>
-</header>
+</section>
 
-<main class="container">
-    <section class="profile-section">
-        <div class="profile-content">
-            <h2>Background</h2>
-            <p>
-                For the past decade, I've been at the intersection of financial technology and developer tools, 
-                helping companies build and scale their payment infrastructure and developer platforms. My work 
-                has focused on creating systems that process billions in transactions while maintaining high 
-                reliability and security standards.
+<!-- Areas of expertise -->
+<section class="mx-auto max-w-editorial px-6 pt-20">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="eyebrow">Areas of expertise</p>
+        </div>
+        <div class="col-span-12 sm:col-span-9">
+            <ul class="grid grid-cols-1 gap-px overflow-hidden border border-rule sm:grid-cols-2" style="background:hsl(var(--rule));">
+                <?php foreach ($expertise as $item): ?>
+                <li class="bg-background p-6 sm:p-8">
+                    <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground"><?= $item['num'] ?></p>
+                    <h3 class="mt-3 font-display text-xl font-medium text-foreground"><?= htmlspecialchars($item['title']) ?></h3>
+                    <p class="mt-2 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($item['body']) ?></p>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Currently -->
+<section class="mx-auto max-w-editorial px-6 pt-20">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="eyebrow">Currently</p>
+        </div>
+        <div class="col-span-12 space-y-4 sm:col-span-9">
+            <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
+                Building, advising, and writing about developer-first payment products. Most days
+                that means thinking about API ergonomics, integration journeys, and what it takes to
+                make complex financial primitives feel inevitable to the engineers using them.
             </p>
-            <p>
-                I combine deep technical expertise with product strategy to help companies navigate the 
-                complexities of modern financial systems. Whether it's designing scalable architectures, 
-                optimizing payment flows, or building developer-first products, I focus on creating 
-                solutions that drive business growth while maintaining technical excellence.
+            <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
+                I keep a small but steady stream of writing in
+                <a class="link-quiet" href="/articles/">Articles</a>
+                and notes from talks in
+                <a class="link-quiet" href="/speaking/">Speaking</a>.
             </p>
         </div>
-        <div class="profile-image">
-            <img src="/images/headshot.jpeg">
-        </div>
-    </section>
+    </div>
+</section>
 
-    <!-- <section class="experience-section">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2020 - Present</div>
-                <div class="timeline-content">
-                    <h3>Head of Developer Platform</h3>
-                    <div class="company">FinTech Enterprise</div>
-                    <p>Leading the development of developer-focused payment infrastructure, serving thousands of businesses 
-                    processing billions in transactions annually. Architected the next-generation API platform and 
-                    led the transformation to a developer-first product strategy.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2016 - 2020</div>
-                <div class="timeline-content">
-                    <h3>Senior Technical Product Manager</h3>
-                    <div class="company">Payment Platform Inc.</div>
-                    <p>Drove the technical vision and implementation of the company's payment processing platform. 
-                    Led the development of key features including real-time fraud detection and automated compliance systems.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2012 - 2016</div>
-                <div class="timeline-content">
-                    <h3>Lead Software Engineer</h3>
-                    <div class="company">Tech Solutions Ltd.</div>
-                    <p>Architected and built scalable payment processing systems handling millions of transactions. 
-                    Implemented microservices architecture and led the transition from monolithic to distributed systems.</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
+<?php $this->insert('partials::components/contact-cta', [
+    'ctaEyebrow' => 'Let\'s talk',
+    'ctaTitle'   => 'Open to conversations on payments, platforms, and product.',
+    'ctaBody'    => 'I enjoy comparing notes with operators building serious developer products. The best place to start a conversation is LinkedIn.',
+]); ?>
 
-    <section class="expertise-section">
-        <h2>Areas of Expertise</h2>
-        <div class="expertise-grid">
-            <div class="expertise-card">
-                <h3>Payment Systems</h3>
-                <p>Designing and implementing scalable payment processing infrastructure, focusing on reliability, 
-                security, and compliance.</p>
-            </div>
-            <div class="expertise-card">
-                <h3>Developer Platforms</h3>
-                <p>Building developer-first products and APIs that emphasize great developer experience and 
-                robust functionality.</p>
-            </div>
-            <div class="expertise-card">
-                <h3>Product Leadership</h3>
-                <p>Transforming complex financial capabilities into scalable developer platforms that drive
-                rapid market adoption and revenue growth.</p>
-            </div>
-            <div class="expertise-card">
-                <h3>Technical Leadership</h3>
-                <p>Leading technical teams, setting architecture direction, and bridging business needs with 
-                technical implementation.</p>
-            </div>
-        </div>
-    </section>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "dateCreated": "2024-12-19",
-      "dateModified": "2024-12-19",
-      "mainEntity": {
-        "@type": "Person",
-        "@id": "https://shane.logsdon.io/about/#Person",
-        "name": "Shane Logsdon",
-        "url": "https://shane.logsdon.io/about/",
-        "image": {
-            "@type": "ImageObject",
-            "@id": "https://shane.logsdon.io/images/headshot.jpeg",
-            "url": "https://shane.logsdon.io/images/headshot.jpeg",
-            "height": "2827",
-            "width": "1887"
-        },
-        "alternateName": "slogsdon",
-        "description": "<?= $settings->author->shane->description ?>",
-        "sameAs": [
-            "https://www.linkedin.com/in/shanelogsdon",
-            "https://github.com/slogsdon",
-            "https://twitter.com/shanelogsdon"
-        ]
-      }
-    }
-    </script>
-</main>
-
-<?php $this->insert('partials::components/contact-cta'); ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "dateCreated": "2024-12-19",
+  "dateModified": "<?= date('Y-m-d') ?>",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://shane.logsdon.io/about/#Person",
+    "name": "Shane Logsdon",
+    "url": "https://shane.logsdon.io/about/",
+    "image": {
+        "@type": "ImageObject",
+        "@id": "https://shane.logsdon.io/images/headshot.jpeg",
+        "url": "https://shane.logsdon.io/images/headshot.jpeg",
+        "height": "2827",
+        "width": "1887"
+    },
+    "alternateName": "slogsdon",
+    "description": "<?= htmlspecialchars($settings->author->shane->description) ?>",
+    "sameAs": [
+        "https://www.linkedin.com/in/shanelogsdon",
+        "https://github.com/slogsdon",
+        "https://twitter.com/shanelogsdon"
+    ]
+  }
+}
+</script>
