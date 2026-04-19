@@ -34,7 +34,9 @@
     "presentationMetadata": {
       "venue": "DrupalCon Seattle 2019",
       "audienceType": "Technical Leaders & Business Stakeholders",
-      "isPrimary": true
+      "isPrimary": true,
+      "speakerDeckId": "cb6824f7f3154066b2ce55378a5bce08",
+      "speakerDeckRatio": "1.33333333333333"
     },
     "related": [
       "dont-leave-cash-in-the-cart",
@@ -58,7 +60,9 @@
     "presentationMetadata": {
       "venue": "ASD Market Week 2016",
       "audienceType": "Business & Technical",
-      "isPrimary": true
+      "isPrimary": true,
+      "speakerDeckId": "32c50df9bfa0442f88e44841a42689e2",
+      "speakerDeckRatio": "1.33333333333333"
     },
     "related": [
       "drive-growth-with-effective-partnerships",
@@ -82,7 +86,9 @@
     "presentationMetadata": {
       "venue": "Internal Lunch & Learn",
       "audienceType": "Developers & Designers",
-      "isPrimary": false
+      "isPrimary": false,
+      "speakerDeckId": "1bd99480f51a0131d9446ebc6f4da04b",
+      "speakerDeckRatio": "1.33333333333333"
     }
   },
   "beginners-hands-on-with-haskell": {
@@ -100,7 +106,9 @@
     "presentationMetadata": {
       "venue": "Meetup",
       "audienceType": "Developers",
-      "isPrimary": false
+      "isPrimary": false,
+      "speakerDeckId": "9163c04dbb9d44c7ac2338eea7626557",
+      "speakerDeckRatio": "1.77777777777778"
     }
   },
   "plug-friend-of-web-developers": {
@@ -118,7 +126,9 @@
     "presentationMetadata": {
       "venue": "Meetup",
       "audienceType": "Developers",
-      "isPrimary": false
+      "isPrimary": false,
+      "speakerDeckId": "1a5cbc36e345476687f1bbd7d7a6c8a8",
+      "speakerDeckRatio": "1.77777777777778"
     }
   },
   "introduction-to-testing-with-exunit": {
@@ -171,7 +181,9 @@
     "presentationMetadata": {
       "venue": "Internal Lunch & Learn",
       "audienceType": "Developers",
-      "isPrimary": false
+      "isPrimary": false,
+      "speakerDeckId": "23665ae0cf24013149f97ab67bbd5fb5",
+      "speakerDeckRatio": "1.33333333333333"
     }
   }
 }

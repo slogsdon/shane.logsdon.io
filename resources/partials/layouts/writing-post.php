@@ -91,6 +91,20 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     </div>
     <?php endif; ?>
 
+    <?php
+    $speakerDeckId = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['speakerDeckId'])
+        ? $meta->presentationMetadata['speakerDeckId']
+        : null;
+    $speakerDeckRatio = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['speakerDeckRatio'])
+        ? $meta->presentationMetadata['speakerDeckRatio']
+        : '1.7777777777777777';
+    ?>
+    <?php if ($speakerDeckId): ?>
+    <div class="mt-12">
+        <script async class="speakerdeck-embed" data-id="<?= htmlspecialchars($speakerDeckId) ?>" data-ratio="<?= htmlspecialchars($speakerDeckRatio) ?>" src="//speakerdeck.com/assets/embed.js"></script>
+    </div>
+    <?php endif; ?>
+
     <div class="prose mt-12 max-w-prose text-base leading-[1.75] text-foreground">
         <?= $content ?: $this->section('content'); ?>
     </div>

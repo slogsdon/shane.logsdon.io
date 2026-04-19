@@ -9,8 +9,6 @@ An introduction to the Go programming language. Deck was created for and targete
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SI-okTfauyw" frameborder="0" allowfullscreen></iframe>
 
-<script async class="speakerdeck-embed" data-id="23665ae0cf24013149f97ab67bbd5fb5" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
-
 Referenced Links:
 
 * <https://github.com/slogsdon/b> (for code walkthrough)
