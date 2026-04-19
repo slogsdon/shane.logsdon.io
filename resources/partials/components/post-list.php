@@ -29,13 +29,13 @@ $index = 0;
 <?php foreach ($posts as $postSlug => $post):
     $num = str_pad($index + 1, 2, '0', STR_PAD_LEFT);
     $dateFormatted = isset($post->date)
-        ? DateTime::createFromFormat('Y-m-d', $post->date)->format('M Y')
+        ? DateTime::createFromFormat('Y-m-d', $post->date)->format('F j, Y')
         : '';
     $readTime = '';
     if ('articles' === $slug) {
         $mdPath = sprintf('pages/articles/%s/%s.md', $post->category, $postSlug);
         if (file_exists($mdPath)) {
-            $readTime = ceil(str_word_count(strip_tags(file_get_contents($mdPath))) / $settings->avgWordsPerMinute) . ' min';
+            $readTime = ceil(str_word_count(strip_tags(file_get_contents($mdPath))) / $settings->avgWordsPerMinute) . ' min read';
         }
     }
     $categoryLabel = isset($post->category) && isset($allCategories[$post->category])
@@ -43,7 +43,7 @@ $index = 0;
         : ($post->category ?? '');
     $postUrl = sprintf('/%s/%s/%s/', $slug, $post->category, $postSlug);
 ?>
-<article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 transition-colors sm:py-10" style="--tw-bg-opacity:1;" onmouseenter="this.style.backgroundColor='hsl(var(--accent)/0.4)'" onmouseleave="this.style.backgroundColor=''">
+<article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 transition-colors sm:py-10" data-category="<?= htmlspecialchars($post->category ?? '') ?>" style="--tw-bg-opacity:1;" onmouseenter="this.style.backgroundColor='hsl(var(--accent)/0.4)'" onmouseleave="this.style.backgroundColor=''">
     <div class="col-span-12 sm:col-span-2">
         <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
             <span class="mr-3" style="color:hsl(var(--foreground)/0.4)"><?= $num ?></span>

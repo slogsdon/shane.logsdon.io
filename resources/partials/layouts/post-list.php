@@ -46,8 +46,53 @@ $isSpeaking = $slug === 'speaking';
         <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
             <?= $countLabel ?> <?= $isArticles ? ($postCount === 1 ? 'entry' : 'entries') : ($postCount === 1 ? 'talk' : 'talks') ?>
         </p>
-        <?php if ($isArticles): ?>
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">Archive</p>
+        <?php if ($isArticles):
+            $allCategories = json_decode(file_get_contents('resources/data/categories.json'), true);
+            $articles = (array)json_decode(file_get_contents('resources/data/articles-list.json'));
+            $usedCategories = array_unique(array_map(
+                fn($a) => $a->category,
+                array_filter($articles, fn($a) => !$a->archived && !empty($a->category))
+            ));
+            sort($usedCategories);
+        ?>
+        <div class="flex items-center gap-1" id="article-filters" role="tablist" aria-label="Filter articles by category">
+            <button role="tab" aria-selected="true" data-filter="all"
+                    class="article-filter-btn font-mono text-[0.68rem] uppercase tracking-[0.18em] px-2 py-1 text-foreground border border-foreground/20 bg-foreground/5">
+                All
+            </button>
+            <?php foreach ($usedCategories as $catSlug):
+                $catLabel = $allCategories[$catSlug] ?? $catSlug;
+            ?>
+            <button role="tab" aria-selected="false" data-filter="<?= htmlspecialchars($catSlug) ?>"
+                    class="article-filter-btn font-mono text-[0.68rem] uppercase tracking-[0.18em] px-2 py-1 text-muted-foreground hover:text-foreground border border-transparent hover:border-foreground/20">
+                <?= htmlspecialchars($catLabel) ?>
+            </button>
+            <?php endforeach; ?>
+        </div>
+        <script>
+        (function () {
+            var btns = document.querySelectorAll('#article-filters .article-filter-btn');
+            var articles = document.querySelectorAll('[data-category]');
+            btns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var filter = btn.dataset.filter;
+                    btns.forEach(function (b) {
+                        var active = b === btn;
+                        b.setAttribute('aria-selected', active ? 'true' : 'false');
+                        b.classList.toggle('text-foreground', active);
+                        b.classList.toggle('border-foreground\\/20', active);
+                        b.classList.toggle('bg-foreground\\/5', active);
+                        b.classList.toggle('text-muted-foreground', !active);
+                        b.classList.toggle('border-transparent', !active);
+                    });
+                    articles.forEach(function (article) {
+                        var show = filter === 'all' || article.dataset.category === filter;
+                        article.style.display = show ? '' : 'none';
+                    });
+                });
+            });
+        })();
+        </script>
         <?php elseif ($isSpeaking): ?>
         <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">Archive</p>
         <?php endif; ?>

@@ -42,5 +42,20 @@
     }
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    var path = window.location.pathname;
+    document.querySelectorAll('#site-nav a').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (href !== '/' && path.startsWith(href)) {
+            a.setAttribute('aria-current', 'page');
+            a.classList.remove('text-muted-foreground');
+            a.classList.add('text-foreground');
+            var underline = a.querySelector('span[aria-hidden="true"]');
+            if (underline) {
+                underline.classList.remove('scale-x-0');
+                underline.classList.add('scale-x-100');
+            }
+        }
+    });
 })();
 </script>
