@@ -69,10 +69,8 @@ $index = 0;
         <ul class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1">
             <?php foreach ($post->tags as $tag): ?>
             <li class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
-                <a href="/<?= $slug ?>/tags/<?= $tag ?>/"
-                   style="color:inherit;">
-                    <span style="color:hsl(var(--foreground)/0.3)">/</span> <?= isset($allTags[$tag]) ? $allTags[$tag] : $tag ?>
-                </a>
+                <span style="color:hsl(var(--foreground)/0.3)">/</span> <a href="/<?= $slug ?>/tags/<?= $tag ?>/"
+                   style="color:inherit;"><?= isset($allTags[$tag]) ? $allTags[$tag] : $tag ?></a>
             </li>
             <?php endforeach; ?>
         </ul>
