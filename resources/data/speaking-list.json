@@ -1,4 +1,23 @@
 {
+  "from-shopping-carts-to-custom-builds": {
+    "title": "From Shopping Carts to Custom Builds: How to Set Up Online Payments with AI",
+    "description": "A live walkthrough of how AI tools can help anyone—without technical experience—integrate Global Payments into a WooCommerce store or build a custom checkout from scratch.",
+    "type": "webinar",
+    "category": "strategic-insights",
+    "date": "2025-10-15",
+    "archived": false,
+    "tags": [
+      "payment-systems",
+      "fintech",
+      "tech-strategy",
+      "developer-tooling"
+    ],
+    "presentationMetadata": {
+      "venue": "Global Payments Webinar",
+      "audienceType": "Business & Technical",
+      "isPrimary": true
+    }
+  },
   "drive-growth-with-effective-partnerships": {
     "title": "Drive Growth with Effective Partnerships",
     "description": "Strategic approaches to building and maintaining effective technical partnerships for platform growth",
