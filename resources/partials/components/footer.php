@@ -1,30 +1,38 @@
-<footer class="mt-32 border-t border-rule">
-    <div class="mx-auto grid max-w-editorial grid-cols-1 gap-8 px-6 py-12 sm:grid-cols-4">
-        <div class="space-y-2">
-            <p class="eyebrow">Colophon</p>
-            <p class="text-sm text-muted-foreground">
-                Set in Fraunces &amp; Inter. Built with care, hairlines, and restraint.
-            </p>
+<footer class="mt-32 bg-foreground">
+    <div class="mx-auto max-w-editorial px-6 py-14">
+        <div class="grid grid-cols-1 gap-10 sm:grid-cols-3">
+            <div class="space-y-4">
+                <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/50">Navigation</p>
+                <ul class="space-y-2 text-sm">
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/">Intro</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/about/">About</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/">Articles</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/speaking/">Speaking</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/contact/">Contact</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/archive/">Archive</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/50">Topics</p>
+                <ul class="space-y-2 text-sm">
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/industry-analysis/">Industry Analysis</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/leadership-and-management/">Leadership &amp; Management</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/strategic-insights/">Strategic Insights</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/technical-deep-dives/">Technical Deep Dives</a></li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/50">Connect</p>
+                <ul class="space-y-2 text-sm">
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="https://twitter.com/shanelogsdon" target="_blank" rel="noreferrer noopener">Twitter</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="space-y-2">
-            <p class="eyebrow">Pages</p>
-            <ul class="space-y-1 text-sm">
-                <li><a class="link-quiet" href="/articles/">Articles</a></li>
-                <li><a class="link-quiet" href="/speaking/">Speaking</a></li>
-                <li><a class="link-quiet" href="/archive/">Archive</a></li>
-            </ul>
-        </div>
-        <div class="space-y-2">
-            <p class="eyebrow">Elsewhere</p>
-            <ul class="space-y-1 text-sm">
-                <li><a class="link-quiet" href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
-                <li><a class="link-quiet" href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener">GitHub</a></li>
-                <li><a class="link-quiet" href="https://twitter.com/shanelogsdon" target="_blank" rel="noreferrer noopener">Twitter</a></li>
-            </ul>
-        </div>
-        <div class="space-y-2 sm:text-right">
-            <p class="eyebrow">&copy; <?= date('Y') ?></p>
-            <p class="font-display text-sm text-foreground">Shane Logsdon</p>
+        <div class="mt-12 flex items-center justify-between border-t border-background/10 pt-6">
+            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/30">&copy; <?= date('Y') ?> Shane Logsdon</p>
+            <p class="text-xs text-background/20">Set in Fraunces &amp; Inter.</p>
         </div>
     </div>
 </footer>
