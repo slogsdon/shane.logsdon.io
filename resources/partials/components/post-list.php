@@ -53,7 +53,7 @@ $index = 0;
 
     <div class="col-span-12 sm:col-span-7">
         <h3 class="font-display text-xl font-medium leading-snug text-foreground sm:text-2xl">
-            <a href="<?= $postUrl ?>" class="transition-[background-size] duration-300"
+            <a href="<?= $postUrl ?>" class="transition-[background-size] duration-300 hover:no-underline"
                style="background-image:linear-gradient(hsl(var(--foreground)),hsl(var(--foreground)));background-size:0% 1px;background-position:left bottom;background-repeat:no-repeat;"
                onmouseenter="this.style.backgroundSize='100% 1px'"
                onmouseleave="this.style.backgroundSize='0% 1px'">

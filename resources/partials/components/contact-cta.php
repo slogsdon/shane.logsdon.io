@@ -19,7 +19,7 @@ $ctaBody    = isset($ctaBody)    ? $ctaBody     : 'I write and connect with oper
                 <a href="https://www.linkedin.com/in/shanelogsdon"
                    target="_blank"
                    rel="noreferrer noopener"
-                   class="group inline-flex items-center gap-3 border border-foreground bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground">
+                   class="group inline-flex items-center gap-3 border border-foreground bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-background hover:text-foreground hover:no-underline">
                     <span>Follow on LinkedIn</span>
                     <span class="font-mono text-xs transition-transform group-hover:translate-x-1">→</span>
                 </a>

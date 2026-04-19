@@ -9,7 +9,7 @@ $navItems = [
     <?php foreach ($navItems as $item): ?>
     <li>
         <a href="<?= $item['href'] ?>"
-           class="inline-flex h-9 items-center px-2 text-sm transition-colors text-muted-foreground hover:text-foreground sm:px-3">
+           class="inline-flex h-9 items-center px-2 text-sm transition-colors text-muted-foreground hover:text-foreground hover:no-underline sm:px-3">
             <span class="relative">
                 <?= $item['label'] ?>
                 <span aria-hidden="true" class="absolute -bottom-1 left-0 h-px w-full origin-left bg-foreground transition-transform scale-x-0"></span>
