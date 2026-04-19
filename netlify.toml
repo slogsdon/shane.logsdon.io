@@ -2,6 +2,9 @@
 command = "npm install && npm run build:css && composer build"
 publish = "dist"
 
+[build.environment]
+  PHP_VERSION = "8.4"
+
 [[plugins]]
 package = "@netlify/plugin-sitemap"
   [plugins.inputs]
