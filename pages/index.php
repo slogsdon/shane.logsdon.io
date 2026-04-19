@@ -22,12 +22,12 @@ $articleCount = count($activeArticles);
                     <span style="color:hsl(var(--foreground)/0.4)">§</span> 01 / Profile
                 </p>
                 <p class="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted-foreground">
-                    Austin · GMT-6
+                    Louisville, KY
                 </p>
             </div>
 
             <div class="col-span-12 sm:col-span-9">
-                <p class="eyebrow mb-6">Shane Logsdon — est. 2008</p>
+                <p class="eyebrow mb-6">Shane Logsdon · est. 2008</p>
                 <h1 class="font-display text-4xl font-normal leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
                     Technical product leader,<br>
                     <span class="italic" style="color:hsl(var(--ink-soft))">building developer-first experiences</span><br>
@@ -36,7 +36,7 @@ $articleCount = count($activeArticles);
 
                 <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-12 sm:gap-6">
                     <p class="col-span-1 max-w-prose text-base leading-relaxed text-muted-foreground sm:col-span-7 sm:text-[1.05rem]">
-                        Fifteen-plus years at the intersection of fintech and developer tooling — designing payment APIs, scaling platform infrastructure, and turning complex financial primitives into products engineers actually want to build on.
+                        Fifteen-plus years at the intersection of fintech and developer tooling: designing payment APIs, scaling platform infrastructure, and turning complex financial primitives into products engineers actually want to build on.
                     </p>
                     <div class="col-span-1 sm:col-span-5">
                         <ul class="space-y-3 border-l border-rule pl-5">
@@ -46,7 +46,7 @@ $articleCount = count($activeArticles);
                             </li>
                             <li class="flex items-baseline justify-between gap-4">
                                 <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">Writing</span>
-                                <a href="/articles/" class="link-quiet text-sm"><?= $articleCount ?> essays</a>
+                                <a href="/articles/" class="link-quiet text-sm"><?= $articleCount ?> articles</a>
                             </li>
                             <li class="flex items-baseline justify-between gap-4">
                                 <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">Status</span>

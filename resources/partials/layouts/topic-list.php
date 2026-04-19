@@ -9,31 +9,32 @@ $this->layout('partials::layouts/main', [
     'slug' => $slug,
     'url' => !empty($url) ? $url : null,
 ]);
+$backLabel = $slug === 'articles' ? 'All Articles' : 'All Speaking';
+$backHref  = sprintf('/%s/', $slug);
 ?>
 
-<header class="page-header">
-    <div class="container">
-        <h1 id="title"><?= $title; ?></h1>
+<!-- Page header -->
+<section class="mx-auto max-w-editorial px-6 pb-10 pt-20">
+    <p class="eyebrow">§ <?= $slug === 'articles' ? 'Writing' : 'Speaking' ?></p>
+    <h1 class="mt-4 max-w-4xl font-display text-4xl font-normal leading-[1.08] tracking-tight text-foreground sm:text-6xl">
+        <?= htmlspecialchars($title) ?>
+    </h1>
+</section>
+
+<section class="mx-auto max-w-editorial px-6">
+    <div class="flex items-center justify-between border-y border-rule py-4">
+        <a href="<?= htmlspecialchars($backHref) ?>"
+           class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground">
+            &larr; <?= htmlspecialchars($backLabel) ?>
+        </a>
     </div>
-</header>
-
-
-<main class="container">
-    <!-- <section class="topic-filter">
-        <div class="topic-list">
-            <a href="#" class="topic-link active">All Topics</a>
-            <a href="#" class="topic-link">Payment Systems</a>
-            <a href="#" class="topic-link">System Architecture</a>
-            <a href="#" class="topic-link">Developer Tools</a>
-            <a href="#" class="topic-link">Security</a>
-        </div>
-    </section> -->
 
     <?php $this->insert('partials::components/post-list', [
         'slug' => $slug,
         'filterByTopic' => $topic,
         'filterType' => $topicType,
     ]); ?>
+    <div class="border-t border-rule"></div>
+</section>
 
-    <p><a href="/<?= $slug ?>/">< Back to All <?= $slug === 'articles' ? 'Articles & Insights' : 'Speaking Engagements' ?></a>
-</main>
+<?php $this->insert('partials::components/contact-cta'); ?>

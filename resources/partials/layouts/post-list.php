@@ -72,7 +72,6 @@ $isSpeaking = $slug === 'speaking';
         <script>
         (function () {
             var btns = document.querySelectorAll('#article-filters .article-filter-btn');
-            var articles = document.querySelectorAll('[data-category]');
             btns.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     var filter = btn.dataset.filter;
@@ -85,7 +84,7 @@ $isSpeaking = $slug === 'speaking';
                         b.classList.toggle('text-muted-foreground', !active);
                         b.classList.toggle('border-transparent', !active);
                     });
-                    articles.forEach(function (article) {
+                    document.querySelectorAll('[data-category]').forEach(function (article) {
                         var show = filter === 'all' || article.dataset.category === filter;
                         article.style.display = show ? '' : 'none';
                     });

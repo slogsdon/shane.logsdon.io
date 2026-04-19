@@ -1,7 +1,7 @@
 <?php
 $ctaEyebrow = isset($ctaEyebrow) ? $ctaEyebrow : 'Stay in touch';
 $ctaTitle   = isset($ctaTitle)   ? $ctaTitle   : 'Networking, openly.';
-$ctaBody    = isset($ctaBody)    ? $ctaBody     : 'I write and connect with operators building developer-first products and payment systems. Follow along on LinkedIn — that\'s where conversations happen.';
+$ctaBody    = isset($ctaBody)    ? $ctaBody     : 'I write and connect with operators building developer-first products and payment systems. Follow along on LinkedIn - that\'s where conversations happen.';
 ?>
 <section class="relative mt-24 border-y border-rule" style="background-color: hsl(var(--accent) / 0.4);">
     <div class="mx-auto grid max-w-editorial grid-cols-12 gap-6 px-6 py-16 sm:py-20">

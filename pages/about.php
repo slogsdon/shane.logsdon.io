@@ -8,7 +8,7 @@ $settings = require('resources/settings.php');
 
 $expertise = [
     ['num' => '01', 'title' => 'Payment systems',    'body' => 'Designing scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns.'],
-    ['num' => '02', 'title' => 'Developer platforms', 'body' => 'Building APIs and SDKs that prioritize developer experience — clear contracts, honest errors, and short paths to first success.'],
+    ['num' => '02', 'title' => 'Developer platforms', 'body' => 'Building APIs and SDKs that prioritize developer experience: clear contracts, honest errors, and short paths to first success.'],
     ['num' => '03', 'title' => 'Product leadership',  'body' => 'Translating complex financial capabilities into developer platforms that drive adoption and durable revenue.'],
     ['num' => '04', 'title' => 'Technical leadership', 'body' => 'Leading engineering teams, setting architecture direction, and bridging business strategy with implementation.'],
 ];
@@ -33,7 +33,7 @@ $expertise = [
         <div class="col-span-12 space-y-6 sm:col-span-9">
             <p class="max-w-prose text-lg leading-relaxed text-foreground">
                 For more than a decade I&rsquo;ve worked at the intersection of financial technology and
-                developer tooling &mdash; helping companies build and scale the payment infrastructure and
+                developer tooling, helping companies build and scale the payment infrastructure and
                 platforms that quietly move billions of dollars.
             </p>
             <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
@@ -45,7 +45,7 @@ $expertise = [
             <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
                 I combine deep technical context with product judgment. Whether the work is shaping
                 an API surface, untangling a payment flow, or aligning a roadmap with regulatory
-                reality, I optimize for clarity, reliability, and adoption &mdash; in that order.
+                reality, I optimize for clarity, reliability, and adoption, in that order.
             </p>
         </div>
     </div>
