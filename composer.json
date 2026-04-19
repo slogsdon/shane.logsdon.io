@@ -10,6 +10,9 @@
         "slogsdon/flat-file": "dev-code-highlight"
     },
     "config": {
-        "process-timeout": 0
+        "process-timeout": 0,
+        "platform": {
+            "php": "8.3"
+        }
     }
 }
