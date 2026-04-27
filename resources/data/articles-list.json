@@ -1,4 +1,16 @@
 {
+  "the-ax-shift": {
+    "title": "The AX Shift: You're Still Designing for Yourself",
+    "description": "AI coding tools don't fail on prompts. They fail on ambiguous artifacts. Here's what Agent Experience means in practice and why it starts with your spec, not your model.",
+    "date": "2026-04-27",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
   "fiddling-with-asp-dotnet-core-and-fsharp-with-suave": {
     "title": "Fiddling with ASP.NET Core and F# with Suave",
     "description": "Suave is a possible replacement for the ASP.NET stack, but with some help, the two can be used together to build composable F# web applications.",
