@@ -98,16 +98,36 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     $speakerDeckRatio = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['speakerDeckRatio'])
         ? $meta->presentationMetadata['speakerDeckRatio']
         : '1.7777777777777777';
+    $vimeoId = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['vimeoId'])
+        ? $meta->presentationMetadata['vimeoId']
+        : null;
     ?>
     <?php if ($speakerDeckId): ?>
     <div class="mt-12">
         <script async class="speakerdeck-embed" data-id="<?= htmlspecialchars($speakerDeckId) ?>" data-ratio="<?= htmlspecialchars($speakerDeckRatio) ?>" src="//speakerdeck.com/assets/embed.js"></script>
     </div>
     <?php endif; ?>
+    <?php if ($vimeoId): ?>
+    <div class="mt-12 border-t border-rule pt-10">
+        <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe
+                src="https://player.vimeo.com/video/<?= htmlspecialchars($vimeoId) ?>"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                allowfullscreen
+                title="<?= htmlspecialchars($title) ?>">
+            </iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+    <?php endif; ?>
 
     <div class="prose mt-12 max-w-prose text-base leading-[1.75] text-foreground">
         <?= $content ?: $this->section('content'); ?>
     </div>
+
+    <?php $this->insert('partials::components/author-bio'); ?>
 
     <section class="mt-16 border-t border-rule pt-10">
         <script src="https://utteranc.es/client.js"
