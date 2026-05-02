@@ -14,7 +14,7 @@ $this->layout('partials::layouts/main', [
         <span class="italic" style="color:hsl(var(--ink-soft))">to the people already looking for you.</span>
     </h1>
     <p class="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-        Last month, 40 newly registered Louisville-area businesses had no Google listing at all. Another 30 had a listing but no working website. That's nearly two out of three new businesses with a gap between where customers look and what they find, and the cost shows up before most owners realize it's happening.
+        In April 2026, 40 newly registered Louisville-area businesses had no Google listing at all. Another 30 had a listing but no working website. That's nearly two out of three new businesses with a gap between where customers look and what they find, and the cost shows up before most owners realize it's happening.
     </p>
     <div class="mt-8">
         <a href="/contact/"
@@ -30,12 +30,13 @@ $this->layout('partials::layouts/main', [
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
         <div class="col-span-12 sm:col-span-3">
             <p class="eyebrow">§ The numbers</p>
+            <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground/60">Case study<br>Oldham County, KY<br>April 2026</p>
         </div>
         <div class="col-span-12 space-y-6 sm:col-span-9">
             <div class="grid grid-cols-1 gap-px overflow-hidden border border-rule sm:grid-cols-3" style="background:hsl(var(--rule));">
                 <div class="bg-background p-6 sm:p-8">
                     <p class="font-display text-5xl font-normal leading-none text-foreground">112</p>
-                    <p class="mt-3 text-[0.9rem] leading-relaxed text-muted-foreground">new businesses registered in Oldham County last month alone</p>
+                    <p class="mt-3 text-[0.9rem] leading-relaxed text-muted-foreground">new businesses registered in Oldham County in April 2026</p>
                 </div>
                 <div class="bg-background p-6 sm:p-8">
                     <p class="font-display text-5xl font-normal leading-none text-foreground">40</p>
@@ -47,7 +48,7 @@ $this->layout('partials::layouts/main', [
                 </div>
             </div>
             <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
-                This isn't an anomaly. It happens every week across Jefferson, Oldham, Bullitt, Spencer, and Shelby counties. The pattern is the same: someone forms an LLC, signs a lease, puts up signage, opens the doors, and then disappears from Google Maps. Or worse, their listing shows yesterday's hours, a phone number that doesn't connect, or a placeholder page that still says "coming soon."
+                April 2026 is not an anomaly. The same pattern repeats every month across Jefferson, Oldham, Bullitt, Spencer, and Shelby counties. Someone forms an LLC, signs a lease, puts up signage, opens the doors, and then disappears from Google Maps. Or worse, their listing shows yesterday's hours, a phone number that doesn't connect, or a placeholder page that still says "coming soon."
             </p>
             <p class="max-w-prose text-base leading-relaxed text-muted-foreground">
                 People search for local businesses before they call or walk in. That first impression is either <em>"this place exists and it's real"</em> or <em>"I'll find somewhere else."</em> There isn't much middle ground.
