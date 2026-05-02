@@ -39,7 +39,7 @@ $this->layout('partials::layouts/main', [
                 </div>
                 <div class="bg-background p-6 sm:p-8">
                     <p class="font-display text-5xl font-normal leading-none text-foreground">40</p>
-                    <p class="mt-3 text-[0.9rem] leading-relaxed text-muted-foreground">had no Google listing whatsoever — invisible from day one</p>
+                    <p class="mt-3 text-[0.9rem] leading-relaxed text-muted-foreground">had no Google listing whatsoever, meaning they were invisible from day one</p>
                 </div>
                 <div class="bg-background p-6 sm:p-8">
                     <p class="font-display text-5xl font-normal leading-none text-foreground">30</p>
@@ -98,7 +98,7 @@ $this->layout('partials::layouts/main', [
                 <li class="bg-background p-6 sm:p-8">
                     <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">02</p>
                     <h3 class="mt-3 font-display text-xl font-medium text-foreground">Google Business Profile setup</h3>
-                    <p class="mt-2 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">Claiming your listing, verifying it, populating hours, services, and photos — the work that makes a profile actually useful instead of just existing as a placeholder. This is where most new businesses fail, and it's also the lowest-hanging fruit for showing up in local search.</p>
+                    <p class="mt-2 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">Claiming your listing, verifying it, and populating hours, services, and photos is what makes a profile actually useful instead of just existing as a placeholder. This is where most new businesses fail, and it's also the lowest-hanging fruit for showing up in local search.</p>
                 </li>
                 <li class="bg-background p-6 sm:p-8">
                     <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">03</p>
