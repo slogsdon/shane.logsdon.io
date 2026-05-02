@@ -25,18 +25,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-foreground text-foreground font-sans;
     font-feature-settings: "ss01", "cv11", "kern";
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    inset: auto 0 0 0;
-    height: env(safe-area-inset-bottom);
-    background-color: hsl(var(--foreground));
-    pointer-events: none;
-    z-index: 60;
   }
 
   ::selection {

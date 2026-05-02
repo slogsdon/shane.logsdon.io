@@ -22,7 +22,7 @@
     </div>
 </header>
 
-<main id="main-content">
+<main id="main-content" class="bg-background">
     <?= $this->section('content'); ?>
 </main>
 
