@@ -165,4 +165,18 @@
   .nav-link-active-bar {
     @apply absolute -bottom-1 left-0 h-px w-full origin-left bg-foreground transition-transform;
   }
+
+  /* iOS safe-area fill: solid background behind the status-bar notch so the
+     dark <body> doesn't bleed through the header's translucent backdrop-blur. */
+  #site-header {
+    position: relative; /* ensure ::before stacks correctly under sticky */
+  }
+  #site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: env(safe-area-inset-top, 0px);
+    background-color: hsl(var(--background));
+    z-index: -1;
+  }
 }
