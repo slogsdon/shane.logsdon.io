@@ -4,7 +4,7 @@
 <html lang="en">
 <meta charset="utf-8">
 <title><?= $this->e(!empty($title) ? $title . ' — ' . $settings->title : $settings->title . ' — ' . $settings->subtitle); ?></title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#1a1c1f">

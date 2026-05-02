@@ -1,4 +1,4 @@
-<footer class="bg-foreground">
+<footer class="bg-foreground" style="padding-bottom: env(safe-area-inset-bottom);">
     <div class="mx-auto max-w-editorial px-6 py-14">
         <div class="grid grid-cols-1 gap-10 sm:grid-cols-3">
             <div class="space-y-4">

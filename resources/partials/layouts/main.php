@@ -8,7 +8,7 @@
     Skip to content
 </a>
 
-<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-background/80 backdrop-blur transition-all">
+<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-background/80 backdrop-blur transition-all" style="padding-top: env(safe-area-inset-top);">
     <div class="mx-auto flex h-14 max-w-editorial items-center justify-between px-6">
         <a href="/" aria-label="Shane Logsdon — home" class="flex items-center gap-2 hover:no-underline">
             <span class="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-muted-foreground">SL</span>
