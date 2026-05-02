@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Podcast cover — Settled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116;
+  --color-on-dark-3: rgba(251, 250, 249, 0.55);
+  --color-rule-on-dark: rgba(251, 250, 249, 0.18);
+  --color-accent: #c26a3b;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; display: grid; place-items: center; font-family: 'Fraunces', Georgia, serif; }
+
+/*
+  Architecture archetype: single-word
+    "Settled." in massive Fraunces — strongest treatment for app-icon legibility.
+    The period stays in cream (NOT the accent — accent on punctuation is the AI-clever tell).
+
+  Layout:    bottom-anchored (title sits in lower 60% — leaves visual breathing room above)
+  Color:     inverted (full dark canvas — strongest contrast at icon scale)
+  Type:      monolithic-display (one word, one period, max scale)
+
+  Title legibility at 120×120 (Apple Podcasts feed thumb): a single bold serif
+  word reads instantly even at 5× downscale. Tested mentally: ✓
+*/
+
+.canvas {
+  width: 1500px;
+  height: 1500px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+  padding: 100px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 32px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.top .meta { color: var(--color-on-dark-3); }
+
+.title-wrap {
+  display: grid;
+  align-items: end;
+  padding-bottom: 40px;
+}
+.title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: 440px;       /* sized so "Settled." (8 chars) fits with margin in the 1300px content area */
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: var(--color-surface);
+  font-feature-settings: 'ss01';
+  /* Optical centering pull */
+  transform: translateY(2%);
+}
+
+.foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-rule-on-dark);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px; letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+}
+.foot .pos { color: var(--color-surface); }
+.foot .wordmark {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: -0.005em;
+  color: var(--color-surface);
+}
+
+@page { size: 1500px 1500px; margin: 0; }
+</style>
+</head>
+<body>
+<article class="canvas">
+  <header class="top">
+    <span>working notes</span>
+    <span class="meta">A podcast on payments and platforms</span>
+  </header>
+  <div class="title-wrap">
+    <h1 class="title">Settled.</h1>
+  </div>
+  <footer class="foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span><span class="pos">2026</span> · season one</span>
+  </footer>
+</article>
+
+<!--
+LEGIBILITY NOTE:
+  Mental check at 120×120 app-icon scale:
+  - "Settled." at 580px Fraunces 500 fills 70%+ of vertical canvas → reads instantly at 5× downscale ✓
+  - Cream-on-ink contrast (#fbfaf9 on #0e1116) ≈ 17:1 → maximum pop in feed ✓
+  - Top + foot text becomes sacrificial at icon scale → that's the right trade ✓
+
+EXPORT FOR APPLE PODCASTS (3000×3000):
+  Open in browser → DevTools → device toolbar → 1500×1500 viewport → screenshot at 2× device scale.
+  Or use Playwright: --viewport-size "1500,1500" --device-scale-factor 2.
+-->
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Instagram portrait — Working notes index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9; --color-surface-feature: #ede4d2;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; display: grid; place-items: center; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+
+/*
+  v2 changes from v1 Instagram (vertical-stack with kicker row + 3-column footer):
+  - § markers DROPPED from titles (this artifact IS a numbered article index, so
+    on shane.logsdon.io the § would appear — but on a posted image it reads as
+    pastiche; replaced with mono dateline + folio numbering only)
+  - Kicker row at top REPLACED with running head (small caps)
+  - Mono caps eyebrow ("003 OF 017") REPLACED with folio convention
+  - Amber-on-active-ordinal REPLACED with one-word amber type accent on the
+    SUBJECT of the highlighted entry ("expose" in the current piece)
+  - 3-column footer-row REPLACED with single folio in lower-right + wordmark
+    embedded in running head
+  - Column rule (vertical hairline) added between dateline column and title
+    column — real publication primitive
+  - Surface-feature register applied to the CURRENT entry only (one-per-artifact rule)
+*/
+
+.canvas {
+  width: 1080px;
+  height: 1350px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  padding: 56px 64px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 32px;
+}
+
+/* Running head with wordmark — top edge */
+.running-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+.running-head .wordmark {
+  font-variant-caps: normal; font-feature-settings: normal;
+  text-transform: none; letter-spacing: -0.005em; font-size: 20px;
+}
+
+/* Stack of working-note entries */
+.stack {
+  display: flex; flex-direction: column;
+  align-self: stretch;
+  justify-content: center;
+  gap: 0;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 90px 1px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-rule);
+  align-items: baseline;
+}
+.entry:last-child { border-bottom: 1px solid var(--color-rule); }
+
+.entry .num {
+  font-family: var(--type-mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.entry .num .pos { display: block; font-size: 18px; color: var(--color-ink); margin-bottom: 4px; }
+
+.entry .col-rule {
+  background: var(--color-rule);
+  width: 1px;
+  align-self: stretch;
+}
+
+.entry .ttl {
+  font-family: var(--type-display); font-weight: 500;
+  font-size: 36px; line-height: 1.15; letter-spacing: -0.012em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.entry.is-current {
+  background: var(--color-ink);                 /* dark inversion — canonical v2 feature treatment */
+  color: var(--color-surface);
+  margin: 0 -32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  /* No border-weight bump: the inversion register shift IS the emphasis. */
+}
+.entry.is-current .col-rule { background: rgba(251, 250, 249, 0.18); }
+.entry.is-current + .entry { border-top: 1px solid var(--color-rule); }
+.entry.is-current .num { color: rgba(251, 250, 249, 0.55); }
+.entry.is-current .num .pos { font-size: 22px; color: var(--color-surface); }
+.entry.is-current .ttl { font-size: 44px; line-height: 1.1; color: var(--color-surface); }
+.entry.is-current .ttl .accent { color: var(--color-accent); }
+.entry.is-current .num .label {
+  display: block; margin-top: 8px; font-size: 11px;
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+
+/* Page foot — folio only */
+.foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-rule);
+}
+.folio {
+  font-family: var(--type-mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+  display: inline-flex; gap: 12px; align-items: baseline;
+}
+.folio .pos { color: var(--color-ink); }
+
+@page { size: 1080px 1350px; margin: 0; }
+</style>
+</head>
+<body>
+<article class="canvas">
+  <header class="running-head">
+    <span>working notes — may 2026</span>
+    <span class="wordmark">Shane Logsdon</span>
+  </header>
+  <section class="stack">
+    <div class="entry">
+      <div class="num"><span class="pos">001</span><span>2026.04.02</span></div>
+      <div class="col-rule"></div>
+      <h2 class="ttl">What I look for in operator tooling.</h2>
+    </div>
+    <div class="entry">
+      <div class="num"><span class="pos">002</span><span>2026.04.18</span></div>
+      <div class="col-rule"></div>
+      <h2 class="ttl">An audit of the latency budget on settlements.</h2>
+    </div>
+    <div class="entry is-current">
+      <div class="num"><span class="pos">003</span><span>2026.05.02</span><span class="label">— current</span></div>
+      <div class="col-rule"></div>
+      <h2 class="ttl">The shape of a payments primitive is determined by what you choose to <span class="accent">expose</span>.</h2>
+    </div>
+  </section>
+  <footer class="foot">
+    <span class="folio"><span>louisville · gmt−5</span><span class="pos">003 / 017</span></span>
+    <span class="folio"><span>shane.logsdon.io</span><span class="pos">v2</span></span>
+  </footer>
+</article>
+
+<!--
+v2 vs v1 — what changed:
+  - § sigil dropped from ordinals (was: § 01, § 02, § 03 — now plain numbers)
+  - Mono kicker row at top REPLACED with running-head (small caps + wordmark)
+  - "is-active amber ordinal" REPLACED with type-accent on subject word ("expose")
+  - "is-current" entry now sits in surface-feature register (deeper aged-clay)
+  - Column rule (vertical hairline) added between dateline column and title column
+  - 3-column footer REPLACED with two folios (publication convention)
+-->
+</body>
+</html>

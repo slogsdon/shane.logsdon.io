@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Carousel — The AX Shift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-on-dark-3: rgba(251, 250, 249, 0.55);
+  --color-rule-on-dark: rgba(251, 250, 249, 0.18);
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.slide-label { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); align-self: center; }
+
+/*
+  Variation choices:
+    cover-archetype:   inverse-text (full canvas dark inversion — confident opener)
+    content-archetype: chrome-led (running head + numbered headline + body)
+    closing-archetype: inverse-text (mirrors cover — dark bookend)
+    color:             inverted-feature-on-cover (cover + closing dark; content slides cream)
+*/
+
+.canvas {
+  width: 1080px; height: 1080px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative; overflow: hidden;
+  padding: 80px;
+  box-sizing: border-box;
+  display: grid;
+}
+
+.slide-folio {
+  position: absolute; bottom: 56px; right: 56px;
+  font-family: var(--type-mono); font-size: 14px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.slide-folio .pos { color: var(--color-ink); }
+
+/* ─── COVER (slide 1) — inverse-text ─── */
+.canvas--cover {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  grid-template-rows: auto 1fr auto;
+  gap: 32px;
+}
+.canvas--cover .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.canvas--cover .cover-headline {
+  align-self: center;
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 132px; line-height: 0.96; letter-spacing: -0.022em;
+  margin: 0;
+  color: var(--color-surface);
+  max-width: 920px;
+}
+.canvas--cover .cover-headline .accent { color: var(--color-accent); }
+.canvas--cover .slide-folio { color: var(--color-on-dark-3); }
+.canvas--cover .slide-folio .pos { color: var(--color-surface); }
+
+/* ─── CONTENT slides — chrome-led on cream ─── */
+.canvas--content {
+  grid-template-rows: auto auto 1fr auto;
+  gap: 32px;
+}
+.canvas--content .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+.canvas--content .ord {
+  font-family: var(--type-mono);
+  font-size: 18px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.canvas--content .ord .pos { color: var(--color-ink); }
+.canvas--content .headline {
+  font-family: var(--type-display); font-weight: 500;
+  font-size: 60px; line-height: 1.08; letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--color-ink);
+}
+.canvas--content .body {
+  align-self: end;
+  font-family: var(--type-sans); font-size: 22px; line-height: 1.5;
+  color: var(--color-ink-soft);
+  max-width: 720px;
+  margin: 0;
+}
+
+/* ─── CLOSING (slide 5) — inverse-text bookend ─── */
+.canvas--closing {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  grid-template-rows: auto 1fr auto;
+  gap: 48px;
+}
+.canvas--closing .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.canvas--closing .cta {
+  align-self: center;
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 84px; line-height: 1.04; letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-surface);
+}
+.canvas--closing .cta .url {
+  display: block;
+  margin-top: 24px;
+  font-family: var(--type-mono); font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+}
+.canvas--closing .slide-folio { color: var(--color-on-dark-3); }
+.canvas--closing .slide-folio .pos { color: var(--color-surface); }
+
+@page { size: 1080px 1080px; margin: 0; }
+</style>
+</head>
+<body>
+
+<span class="slide-label">→ Slide 1 / 5 · COVER · 1080×1080</span>
+<article class="canvas canvas--cover">
+  <header class="running-head"><span>field notes — the AX shift</span><span>shane logsdon</span></header>
+  <h1 class="cover-headline">From DX to <span class="accent">AX</span>.</h1>
+  <span class="slide-folio"><span class="pos">01</span> / 05</span>
+</article>
+
+<span class="slide-label">→ Slide 2 / 5 · CONTENT · 1080×1080</span>
+<article class="canvas canvas--content">
+  <header class="running-head"><span>the AX shift — three observations</span><span>02 / 05</span></header>
+  <p class="ord"><span class="pos">01</span> · the pattern</p>
+  <h2 class="headline">Software interfaces went UX → DX → AX.</h2>
+  <p class="body">Each shift redesigned the same surfaces — interfaces, APIs, documentation — around a different reader. The latest reader is an agent operating autonomously between sessions.</p>
+  <span class="slide-folio"><span class="pos">02</span> / 05</span>
+</article>
+
+<span class="slide-label">→ Slide 3 / 5 · CONTENT · 1080×1080</span>
+<article class="canvas canvas--content">
+  <header class="running-head"><span>the AX shift — three observations</span><span>03 / 05</span></header>
+  <p class="ord"><span class="pos">02</span> · the symptom</p>
+  <h2 class="headline">When sessions drift, the prompt is rarely the problem.</h2>
+  <p class="body">The thing I kept adjusting wasn't the problem. The drift came from the spec, the project notes, the API responses — everything an agent reads to infer intent.</p>
+  <span class="slide-folio"><span class="pos">03</span> / 05</span>
+</article>
+
+<span class="slide-label">→ Slide 4 / 5 · CONTENT · 1080×1080</span>
+<article class="canvas canvas--content">
+  <header class="running-head"><span>the AX shift — three observations</span><span>04 / 05</span></header>
+  <p class="ord"><span class="pos">03</span> · the fix</p>
+  <h2 class="headline">Write for the agent reading it cold.</h2>
+  <p class="body">Stop assuming continuity that doesn't exist. The agent doesn't remember last week. Inference at the edges of the session is exactly what causes the drift you've been blaming on prompts.</p>
+  <span class="slide-folio"><span class="pos">04</span> / 05</span>
+</article>
+
+<span class="slide-label">→ Slide 5 / 5 · CLOSING · 1080×1080</span>
+<article class="canvas canvas--closing">
+  <header class="running-head"><span>field notes — 2026.04.27</span><span>shane logsdon</span></header>
+  <p class="cta">Read the full piece.<span class="url">shane.logsdon.io / the-ax-shift</span></p>
+  <span class="slide-folio"><span class="pos">05</span> / 05</span>
+</article>
+
+<!--
+COMPANION CAPTION (LinkedIn / IG, ~880 chars):
+
+I kept improving my prompts.
+
+Every drifting session, every place the agent regenerated code in a style we'd moved away from, every class of mistake I'd corrected twice — I diagnosed all of it as a prompt-quality problem.
+
+After six months I had a refined prompt library AND a post-generation corrections list that looked nearly identical to the one from month two.
+
+The thing I kept adjusting wasn't the problem.
+
+I was still designing everything for myself. The human in the loop. The prompts, the context files, the project notes — written for a human reading it later, not for the agent inferring intent right now.
+
+That's the AX shift: software interfaces went UX → DX → AX. The reader changed.
+
+Full piece at shane.logsdon.io / the-ax-shift.
+-->
+</body>
+</html>

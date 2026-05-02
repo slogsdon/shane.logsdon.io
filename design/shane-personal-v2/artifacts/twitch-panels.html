@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Twitch panels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-on-dark-3: rgba(251, 250, 249, 0.55);
+  --color-rule-on-dark: rgba(251, 250, 249, 0.18);
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.canvas-label { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); align-self: center; }
+
+/*
+  Variation choices:
+    banner-archetype: inverse-text (full canvas dark inversion — confident offline screen)
+    panel-register:   cream-card-hairline (cream surface, 1px border, label + body)
+*/
+
+/* Offline banner — 1920×1080, dark inversion */
+.canvas-offline {
+  width: 1920px; height: 1080px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  position: relative; overflow: hidden;
+  padding: 96px 112px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 48px;
+}
+.canvas-offline .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 16px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.canvas-offline .headline {
+  align-self: center;
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 132px; line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-surface);
+  max-width: 1500px;
+}
+.canvas-offline .headline .accent { color: var(--color-accent); }
+.canvas-offline .foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-mono); font-size: 16px; letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+}
+.canvas-offline .foot .pos { color: var(--color-surface); }
+
+/* Panel — 320×160, cream-card-hairline */
+.canvas-panel {
+  width: 320px; height: 160px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
+  padding: 16px 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 8px;
+}
+.canvas-panel .label {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+  margin: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-rule);
+}
+.canvas-panel .body {
+  font-family: var(--type-sans);
+  font-size: 12px; line-height: 1.4;
+  color: var(--color-ink);
+  margin: 0;
+  overflow: hidden;
+}
+.canvas-panel .body .mono { font-family: var(--type-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--color-ink-3); }
+.canvas-panel .body .strong { color: var(--color-ink); font-weight: 500; }
+
+.panels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 320px);
+  gap: 16px;
+}
+</style>
+</head>
+<body>
+
+<span class="canvas-label">→ OFFLINE BANNER · 1920×1080</span>
+<article class="canvas-offline">
+  <header class="running-head">
+    <span>shane logsdon · live coding</span>
+    <span>offline</span>
+  </header>
+  <h1 class="headline">Live coding on the <span class="accent">payments</span> stack.</h1>
+  <footer class="foot">
+    <span>Tuesdays 14:00 GMT−5 · sometimes Saturdays</span>
+    <span><span class="pos">twitch.tv/shanelogsdon</span></span>
+  </footer>
+</article>
+
+<span class="canvas-label">→ PANELS · 320×160 each (sidebar set)</span>
+<div class="panels-grid">
+  <article class="canvas-panel">
+    <h2 class="label">about</h2>
+    <p class="body">Technical product leader · Louisville · GMT−5. Designing payment APIs and platform infrastructure.</p>
+  </article>
+  <article class="canvas-panel">
+    <h2 class="label">schedule</h2>
+    <p class="body"><span class="strong">Tuesdays</span> · 14:00 GMT−5<br><span class="strong">Saturdays</span> · sometimes 10:00 GMT−5</p>
+  </article>
+  <article class="canvas-panel">
+    <h2 class="label">commands</h2>
+    <p class="body"><span class="mono">!schedule</span> · <span class="mono">!commands</span><br><span class="mono">!gear</span> · <span class="mono">!socials</span> · <span class="mono">!notes</span></p>
+  </article>
+  <article class="canvas-panel">
+    <h2 class="label">socials</h2>
+    <p class="body"><span class="mono">x · @shanelogsdon</span><br><span class="mono">github · shanelogsdon</span><br><span class="mono">site · shane.logsdon.io</span></p>
+  </article>
+  <article class="canvas-panel">
+    <h2 class="label">specs · setup</h2>
+    <p class="body">M3 Max · Sony A7C · Shure SM7B<br>Editor · Helix · ghostty · tmux</p>
+  </article>
+  <article class="canvas-panel">
+    <h2 class="label">support</h2>
+    <p class="body">No tips. Subscribe if you want — I read every name. Or just send me a working note.</p>
+  </article>
+</div>
+
+<!--
+EXPORT NOTES:
+  - Offline banner: open in browser → 1920×1080 viewport → screenshot .canvas-offline → upload to Twitch dashboard → Settings → Channel → Video player banner
+  - Each panel: 320×160 viewport → screenshot each .canvas-panel separately → upload via Twitch dashboard → About → Edit Panels
+-->
+</body>
+</html>

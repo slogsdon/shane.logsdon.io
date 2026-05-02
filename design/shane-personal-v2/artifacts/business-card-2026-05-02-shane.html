@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Business card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.canvas-label { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); align-self: center; }
+
+/*
+  Variation choices:
+    front-archetype: chrome-led (name + title + contact rows — readable, structured)
+    back-archetype:  wordmark-dominant (full Fraunces wordmark centered)
+    color-relation:  inverted-back (front cream, back dark — register flip when you turn the card)
+*/
+
+.canvas-front, .canvas-back {
+  width: 1050px; height: 600px;
+  position: relative; overflow: hidden;
+  padding: 48px 56px;
+  box-sizing: border-box;
+  display: grid;
+}
+
+.canvas-front {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}
+
+.canvas-back {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  display: grid; place-items: center;
+}
+
+.front-name {
+  font-family: var(--type-display);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 1.0;
+  letter-spacing: -0.018em;
+  margin: 0;
+  color: var(--color-ink);
+}
+.front-title {
+  font-family: var(--type-display);
+  font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 16px; letter-spacing: 0.08em;
+  color: var(--color-ink-3);
+  margin: 12px 0 0;
+}
+.front-contact {
+  align-self: end;
+  display: flex; flex-direction: column; gap: 6px;
+  font-family: var(--type-mono);
+  font-size: 16px; letter-spacing: 0.04em;
+  color: var(--color-ink);
+}
+.front-contact .secondary { color: var(--color-ink-3); }
+.front-contact .label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink-3); margin-right: 12px; }
+
+.back-wordmark {
+  font-family: var(--type-display);
+  font-weight: 500;
+  font-size: 84px;
+  letter-spacing: -0.018em;
+  color: var(--color-surface);
+  margin: 0;
+  text-align: center;
+}
+
+@page { size: 1050px 600px; margin: 0; }
+</style>
+</head>
+<body>
+
+<span class="canvas-label">→ FRONT · 1050×600 · 3.5×2 inch at 300dpi</span>
+<article class="canvas-front">
+  <header>
+    <h1 class="front-name">Shane Logsdon</h1>
+    <p class="front-title">technical product leader · payments &amp; platforms</p>
+  </header>
+  <span></span>
+  <div class="front-contact">
+    <span><span class="label">Web</span>shane.logsdon.io</span>
+    <span class="secondary"><span class="label">Mail</span>shane@logsdon.io</span>
+    <span class="secondary"><span class="label">Loc</span>louisville · gmt−5</span>
+  </div>
+</article>
+
+<span class="canvas-label">→ BACK · 1050×600 · wordmark-dominant, dark inversion (register flip on turn)</span>
+<article class="canvas-back">
+  <h1 class="back-wordmark">Shane Logsdon</h1>
+</article>
+
+<!--
+PRINT NOTES:
+  - 1050×600 px = 3.5×2 inches at 300dpi (standard US business card)
+  - Add 0.125" bleed (37.5px each side) → final: 1125×675 px when sending to printer
+  - Crop marks NOT included — most print services add their own
+  - Recommended: cotton or fluorescent paper stock for cream brands; 100lb minimum weight
+  - For dark-back side: ensure printer profile handles solid ink coverage; specify cream foreground hex (#fbfaf9) so it doesn't render gray
+-->
+</body>
+</html>

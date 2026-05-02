@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Blog hero — Payments primitive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b;
+  --color-on-dark: rgba(251, 250, 249, 0.72);
+  --color-on-dark-3: rgba(251, 250, 249, 0.55);
+  --color-rule-on-dark: rgba(251, 250, 249, 0.18);
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.canvas-label {
+  font-family: var(--type-mono); font-size: 12px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); align-self: center;
+}
+
+/*
+  Architecture archetype: inverse-text (full canvas dark inversion)
+  Layout:    asymmetric (headline anchored upper-left in OG; full-bleed in hero)
+  Color:     inverted (canonical v2 feature treatment)
+  Type:      display-dominant
+  Note: Both canvases share the same content but use different proportions —
+        OG card centers a tighter scale; in-page hero pushes display larger.
+*/
+
+/* OG card — 1200×630 */
+.canvas-og {
+  width: 1200px;
+  height: 630px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+  padding: 48px 56px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+}
+
+.canvas-og .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.canvas-og .running-head .wordmark {
+  font-variant-caps: normal; font-feature-settings: normal;
+  text-transform: none; letter-spacing: -0.005em; font-size: 22px;
+}
+
+.canvas-og .headline {
+  align-self: center;
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 76px; line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-surface);
+}
+.canvas-og .headline .accent { color: var(--color-accent); }
+
+.canvas-og .foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+}
+.canvas-og .foot .pos { color: var(--color-surface); }
+
+/* In-page hero — 1440×600 */
+.canvas-hero {
+  width: 1440px;
+  height: 600px;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+  padding: 48px 64px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+}
+
+.canvas-hero .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.canvas-hero .running-head .wordmark {
+  font-variant-caps: normal; font-feature-settings: normal;
+  text-transform: none; letter-spacing: -0.005em; font-size: 24px;
+}
+
+.canvas-hero .headline {
+  align-self: center;
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 96px; line-height: 0.98; letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-surface);
+  max-width: 1200px;
+}
+.canvas-hero .headline .accent { color: var(--color-accent); }
+
+.canvas-hero .foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+}
+.canvas-hero .foot .pos { color: var(--color-surface); }
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot for og:image meta tag</span>
+<article class="canvas canvas-og">
+  <header class="running-head">
+    <span>field notes — payments stack</span>
+    <span class="wordmark">Shane Logsdon</span>
+  </header>
+  <h1 class="headline">The shape of a payments primitive is determined by what you choose to <span class="accent">expose</span>.</h1>
+  <footer class="foot">
+    <span>2026.05.02 · 5 min read</span>
+    <span><span class="pos">003</span> · shane.logsdon.io</span>
+  </footer>
+</article>
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot for the article page header</span>
+<article class="canvas canvas-hero">
+  <header class="running-head">
+    <span>field notes — payments stack</span>
+    <span class="wordmark">Shane Logsdon</span>
+  </header>
+  <h1 class="headline">The shape of a payments primitive is determined by what you choose to <span class="accent">expose</span>.</h1>
+  <footer class="foot">
+    <span>2026.05.02 · 5 min read · Strategic insights</span>
+    <span><span class="pos">003</span> · shane.logsdon.io</span>
+  </footer>
+</article>
+
+<!--
+OG metadata for use in <head> when this hero is the post:
+  <meta property="og:title" content="The shape of a payments primitive is determined by what you choose to expose.">
+  <meta property="og:image" content="/og/payments-primitive.png">
+  <meta property="og:description" content="A short field note from this week's work — what to surface in a payments API and why the failure modes you expose become the contract.">
+  <meta name="twitter:card" content="summary_large_image">
+-->
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — LinkedIn — Field note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9; --color-surface-feature: #ede4d2;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b;
+  /* Inversion-scoped values — this artifact is full-canvas dark inversion */
+  --color-on-dark: rgba(251, 250, 249, 0.72);
+  --color-on-dark-3: rgba(251, 250, 249, 0.55);
+  --color-rule-on-dark: rgba(251, 250, 249, 0.18);
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; display: grid; place-items: center; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+
+/*
+  v2 changes from v1 LinkedIn (chrome-led with marginalia):
+  - Display scale pushed from 56px to 96px (publication cover scale)
+  - § marker eyebrow REPLACED with Fraunces small-caps running head at top edge
+  - Italics-emphasis on "you want to expose" REPLACED with one-word amber type
+    accent on "expose" (the subject of the page) — different word, deliberate
+  - Marginalia rail removed — body now uses full-width measure
+  - 3-column footer (status pill + brand mark) REPLACED with single folio in
+    lower-right + wordmark in the running head
+  - Surface-feature register applied — deeper aged-clay paper signals "this
+    moment matters"
+*/
+
+.canvas {
+  width: 1200px;
+  height: 627px;
+  background: var(--color-ink);                /* full canvas dark inversion */
+  color: var(--color-surface);                  /* primary text becomes cream */
+  position: relative;
+  overflow: hidden;
+  padding: 40px 56px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+}
+
+/* Running head — small caps, top edge, with wordmark integrated */
+.running-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+}
+.running-head .wordmark {
+  font-variant-caps: normal; font-feature-settings: normal;
+  text-transform: none; letter-spacing: -0.005em; font-size: 22px;
+}
+
+/* The headline — display-xl scale (96px) */
+.headline {
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 96px; line-height: 0.98; letter-spacing: -0.02em;
+  margin: 0; align-self: center;
+  max-width: 1080px;
+  color: var(--color-surface);
+}
+.headline .accent { color: var(--color-accent); }
+
+/* Folio — replaces footer-row */
+.foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-rule-on-dark);
+}
+.folio {
+  font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+  display: inline-flex; gap: 12px; align-items: baseline;
+}
+.folio .pos { color: var(--color-surface); }
+
+@page { size: 1200px 627px; margin: 0; }
+</style>
+</head>
+<body>
+<article class="canvas">
+  <header class="running-head">
+    <span>field notes — payments stack</span>
+    <span class="wordmark">Shane Logsdon</span>
+  </header>
+  <h1 class="headline">The shape of a payments primitive is determined by what you choose to <span class="accent">expose</span>.</h1>
+  <footer class="foot">
+    <span class="folio"><span>louisville · gmt−5</span><span class="pos">003</span></span>
+    <span class="folio"><span>shane.logsdon.io</span><span class="pos">2026.05.02</span></span>
+  </footer>
+</article>
+
+<!--
+COMPANION TEXT (insight style, ~870/1300 chars):
+
+A short field note from this week's work.
+
+When you design a payment API, you spend a lot of time deciding what to surface. The temptation is to hide everything that looks like an internal concern — retries, partial settlements, gateway timeouts, idempotency conflicts — and ship a clean "succeeded / failed" interface.
+
+That works until production traffic hits the cases your boolean doesn't capture. Then your customers' engineers are reverse-engineering your retry policy from log timestamps, and your support queue fills up with "can you tell me what actually happened to charge ch_47abc..."
+
+The shape of a primitive is determined by the failure modes you want to expose. Most platforms hide the wrong ones.
+
+What I've come to think: the failure modes you DO expose become the contract — engineers will write code against them. So expose carefully, but expose them. The alternative is people guessing.
+
+(Working notes at shane.logsdon.io.)
+-->
+</body>
+</html>

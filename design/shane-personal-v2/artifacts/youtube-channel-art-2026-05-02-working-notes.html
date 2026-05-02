@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — YouTube channel banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.canvas-label { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); align-self: center; }
+
+/*
+  Variation choices:
+    archetype: chrome-led (wordmark + tagline + meta strip — brand-earned for editorial channels)
+    Same composition rendered at both framings: bleed canvas extends safe-zone composition with intentional negative space.
+*/
+
+/* Full banner — 2560×1440 (the actual upload) */
+.canvas-full {
+  width: 2560px; height: 1440px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative; overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.canvas-full::after {
+  /* Safe zone outline — design guide; comment out before final export */
+  content: "";
+  position: absolute;
+  width: 1546px; height: 423px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed var(--color-rule);
+  pointer-events: none;
+}
+
+.banner-content {
+  width: 1546px; height: 423px;
+  padding: 32px 64px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}
+
+.banner-content .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 13px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+.banner-content .wordmark {
+  align-self: center;
+  font-family: var(--type-display); font-weight: 600;
+  font-size: 96px; letter-spacing: -0.014em; line-height: 1.0;
+  margin: 0;
+  color: var(--color-ink);
+}
+.banner-content .tagline {
+  font-family: var(--type-display); font-style: italic; font-weight: 400;
+  font-size: 24px; line-height: 1.3; letter-spacing: -0.005em;
+  color: var(--color-ink-soft);
+  margin: 12px 0 0;
+}
+
+.banner-content .foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-rule);
+  font-family: var(--type-mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.banner-content .foot .pos { color: var(--color-ink); }
+
+/* Safe zone preview — 1546×423 */
+.canvas-safe {
+  width: 1546px; height: 423px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative; overflow: hidden;
+  padding: 32px 64px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}
+
+@page { size: 2560px 1440px; margin: 0; }
+</style>
+</head>
+<body>
+
+<span class="canvas-label">→ FULL BANNER · 2560×1440 · the actual upload (TV display sees full; safe zone outlined)</span>
+<article class="canvas-full">
+  <div class="banner-content">
+    <header class="running-head">
+      <span>shane logsdon · channel</span>
+      <span>2026 — payments &amp; platforms</span>
+    </header>
+    <div>
+      <h1 class="wordmark">Working notes.</h1>
+      <p class="tagline">Field notes from the payments and platforms stack — new pieces as they ship.</p>
+    </div>
+    <footer class="foot">
+      <span><span class="pos">shane.logsdon.io</span> · @shanelogsdon</span>
+      <span>new pieces · as they ship</span>
+    </footer>
+  </div>
+</article>
+
+<span class="canvas-label">→ SAFE ZONE PREVIEW · 1546×423 · what mobile + desktop visitors see</span>
+<article class="canvas-safe">
+  <header class="running-head">
+    <span>shane logsdon · channel</span>
+    <span>2026 — payments &amp; platforms</span>
+  </header>
+  <div>
+    <h1 class="wordmark">Working notes.</h1>
+    <p class="tagline">Field notes from the payments and platforms stack — new pieces as they ship.</p>
+  </div>
+  <footer class="foot">
+    <span><span class="pos">shane.logsdon.io</span> · @shanelogsdon</span>
+    <span>new pieces · as they ship</span>
+  </footer>
+</article>
+
+<!--
+EXPORT:
+  - Comment out the .canvas-full::after dashed safe-zone outline before exporting the full banner
+  - Open in browser → 2560×1440 viewport → screenshot .canvas-full → upload via YouTube Studio → Customization → Branding → Banner image
+-->
+</body>
+</html>

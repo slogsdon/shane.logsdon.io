@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AX Shift — Shane Logsdon</title>
+<meta name="description" content="Software interfaces went UX → DX → AX. The primary consumer of your specs, configs, and documentation is now an AI agent operating autonomously between sessions. You're still designing for yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b; --color-accent-hover: #a0542a;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--type-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  font-feature-settings: 'ss01', 'cv11', 'kern';
+}
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+/* === Site header === */
+.site-header { padding: 32px 0; }
+.site-header__bar { display: flex; justify-content: space-between; align-items: baseline; }
+.wordmark { font-family: var(--type-display); font-weight: 600; font-size: 22px; letter-spacing: -0.005em; color: var(--color-ink); text-decoration: none; }
+.site-nav { display: flex; gap: 32px; list-style: none; padding: 0; margin: 0; }
+.site-nav a { font-family: var(--type-display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp'; text-transform: lowercase; font-size: 13px; letter-spacing: 0.1em; color: var(--color-ink-3); text-decoration: none; }
+.site-nav a:hover { color: var(--color-ink); }
+
+/* === Hero — headline-led archetype === */
+.hero {
+  padding: 96px 0 144px;
+  border-top: 1px solid var(--color-rule);
+}
+.hero .eyebrow {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 14px; letter-spacing: 0.08em;
+  color: var(--color-ink-3);
+  margin: 0 0 24px;
+}
+.hero h1 {
+  font-family: var(--type-display);
+  font-weight: 400;
+  font-size: clamp(48px, 9vw, 132px);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  margin: 0;
+  max-width: 16ch;
+}
+.hero h1 .accent { color: var(--color-accent); }
+.hero .dek {
+  font-family: var(--type-sans);
+  font-size: 21px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  max-width: 56ch;
+  margin: 48px 0 48px;
+}
+
+/* === Features === */
+.features {
+  padding: 96px 0;
+  border-top: 1px solid var(--color-rule);
+}
+.features__head { margin-bottom: 80px; }
+.features__head .label {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 14px; letter-spacing: 0.08em;
+  color: var(--color-ink-3);
+  margin: 0 0 24px;
+}
+.features__head h2 {
+  font-family: var(--type-display);
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 28ch;
+}
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 64px;
+}
+.feature__num {
+  font-family: var(--type-mono);
+  font-size: 13px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+  margin: 0 0 20px;
+}
+.feature__num .pos { color: var(--color-ink); }
+.feature h3 {
+  font-family: var(--type-display);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  margin: 0 0 16px;
+}
+.feature p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+/* === CTA === */
+.cta {
+  padding: 96px 0 144px;
+  border-top: 1px solid var(--color-rule);
+}
+.cta h2 {
+  font-family: var(--type-display);
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  margin: 0 0 40px;
+  max-width: 24ch;
+}
+.btn-arrow {
+  display: inline; font-size: 21px; font-weight: 500; color: var(--color-ink);
+  text-decoration: underline; text-decoration-color: var(--color-rule); text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+.btn-arrow::after { content: ' →'; font-family: var(--type-mono); font-size: 0.85em; }
+.btn-arrow:hover { text-decoration-color: var(--color-ink); }
+.btn-arrow--accent { color: var(--color-accent); text-decoration-color: var(--color-accent-hover); }
+
+/* === Footer === */
+.site-foot {
+  padding: 48px 0;
+  border-top: 1px solid var(--color-rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--type-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.site-foot .pos { color: var(--color-ink); }
+
+@media (max-width: 720px) {
+  .container { padding: 0 24px; }
+  .hero { padding: 64px 0 96px; }
+  .features { padding: 64px 0; }
+  .features__grid { grid-template-columns: 1fr; gap: 48px; }
+  .cta { padding: 64px 0 96px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="wordmark" href="/">Shane Logsdon</a>
+    <ul class="site-nav">
+      <li><a href="#">Working notes</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">field note · 2026.04.27</p>
+      <h1>You're still designing for <span class="accent">yourself</span>.</h1>
+      <p class="dek">Software interfaces went UX → DX → AX. The primary consumer of your specs, configs, project notes, and documentation is now an AI agent operating autonomously between sessions. The drift you've been blaming on prompts is somewhere you haven't looked yet.</p>
+      <a class="btn-arrow btn-arrow--accent" href="#read">Read the piece</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="features__head">
+        <p class="label">three observations</p>
+        <h2>The thing I kept adjusting wasn't the problem.</h2>
+      </div>
+      <div class="features__grid">
+        <div class="feature">
+          <p class="feature__num"><span class="pos">01</span> · the pattern</p>
+          <h3>UX → DX → AX.</h3>
+          <p>Each shift redesigned the same surfaces around a different reader. The latest reader is an agent operating autonomously between sessions, filling ambiguity with the most statistically probable answer.</p>
+        </div>
+        <div class="feature">
+          <p class="feature__num"><span class="pos">02</span> · the symptom</p>
+          <h3>When sessions drift, the prompt is rarely the problem.</h3>
+          <p>I refined prompts for six months. The corrections list looked nearly identical to month two. The drift was coming from the specs, project notes, and API responses — everything the agent reads to infer intent.</p>
+        </div>
+        <div class="feature">
+          <p class="feature__num"><span class="pos">03</span> · the fix</p>
+          <h3>Write for the agent reading it cold.</h3>
+          <p>Stop assuming continuity that doesn't exist. The agent doesn't remember last week. Inference at the edges of the session is exactly what causes the drift.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="read">
+    <div class="container">
+      <h2>The drift was somewhere I hadn't looked yet.</h2>
+      <a class="btn-arrow btn-arrow--accent" href="https://shane.logsdon.io/articles/technical-deep-dives/the-ax-shift">Read the original piece</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: baseline;">
+    <span>© 2026 Shane Logsdon · Louisville · GMT−5</span>
+    <span><span class="pos">shane.logsdon.io</span> · field notes from the payments stack</span>
+  </div>
+</footer>
+
+</body>
+</html>

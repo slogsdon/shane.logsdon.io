@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — Talk slides — Operator tooling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-rule-on-dark: rgba(251, 250, 249, 0.18);
+  --color-on-dark-3: rgba(251, 250, 249, 0.55);
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans); font-feature-settings: 'ss01', 'cv11', 'kern'; }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.slide-label {
+  font-family: var(--type-mono); font-size: 12px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); align-self: center;
+}
+
+/*
+  Variation choices (consistent across all 3 slides):
+    color:       inversion-feature (cream-page slides + ONE inversion-block slide as the section divider)
+    type-press:  display-led (Fraunces carries headlines)
+    composition: asymmetric (left-anchored across all slides)
+*/
+
+.canvas {
+  width: 1920px;
+  height: 1080px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  padding: 96px 112px;
+  box-sizing: border-box;
+  display: grid;
+}
+
+/* TITLE SLIDE */
+.canvas--title {
+  grid-template-rows: auto 1fr auto;
+  gap: 64px;
+}
+.canvas--title .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 18px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+.canvas--title .title {
+  font-family: var(--type-display);
+  font-weight: 400;
+  font-size: 144px;
+  line-height: 0.96;
+  letter-spacing: -0.022em;
+  margin: 0;
+  align-self: center;
+  max-width: 1500px;
+  color: var(--color-ink);
+}
+.canvas--title .title .accent { color: var(--color-accent); }
+.canvas--title .foot {
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 32px; align-items: baseline;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-rule);
+}
+.canvas--title .speaker {
+  font-family: var(--type-display);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+.canvas--title .role {
+  font-family: var(--type-display);
+  font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 16px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+.canvas--title .venue {
+  font-family: var(--type-mono);
+  font-size: 16px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.canvas--title .venue .pos { color: var(--color-ink); }
+
+/* CONTENT SLIDE */
+.canvas--content {
+  grid-template-rows: auto auto 1fr auto;
+  gap: 32px;
+}
+.canvas--content .running-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+.canvas--content .running-head .meta {
+  font-family: var(--type-mono);
+  font-variant-caps: normal; font-feature-settings: normal;
+  text-transform: none; letter-spacing: 0.06em; font-size: 14px;
+  color: var(--color-ink-3);
+}
+.canvas--content .headline {
+  font-family: var(--type-display);
+  font-weight: 500;
+  font-size: 72px; line-height: 1.05; letter-spacing: -0.018em;
+  margin: 0;
+  max-width: 1500px;
+  color: var(--color-ink);
+}
+.canvas--content .headline .accent { color: var(--color-accent); }
+.canvas--content .body {
+  align-self: start;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+  margin-top: 32px;
+}
+.canvas--content .body-list {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: 24px;
+  font-family: var(--type-sans);
+  font-size: 32px; line-height: 1.4;
+  color: var(--color-ink);
+  max-width: 1200px;
+}
+.canvas--content .body-list li {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 24px; align-items: baseline;
+}
+.canvas--content .body-list .ord {
+  font-family: var(--type-mono);
+  font-size: 18px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.canvas--content .body-list .ord .pos { color: var(--color-ink); }
+.canvas--content .foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-rule);
+  font-family: var(--type-mono); font-size: 16px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.canvas--content .foot .pos { color: var(--color-ink); }
+
+/* SECTION-DIVIDER SLIDE — the one inversion moment in the deck */
+.canvas--divider {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 64px;
+}
+.canvas--divider .top {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 18px; letter-spacing: 0.1em;
+  color: var(--color-surface);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-rule-on-dark);
+}
+.canvas--divider .section-title {
+  align-self: center;
+  font-family: var(--type-display);
+  font-weight: 400;
+  font-size: 200px;
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--color-surface);
+}
+.canvas--divider .section-title .accent { color: var(--color-accent); }
+.canvas--divider .foot {
+  font-family: var(--type-mono);
+  font-size: 16px; letter-spacing: 0.06em;
+  color: var(--color-on-dark-3);
+  padding-top: 18px;
+  border-top: 1px solid var(--color-rule-on-dark);
+  display: flex; justify-content: space-between;
+}
+.canvas--divider .foot .pos { color: var(--color-surface); }
+
+@page { size: 1920px 1080px; margin: 0; }
+</style>
+</head>
+<body>
+
+<span class="slide-label">→ Slide 1 · TITLE · 1920×1080</span>
+<article class="canvas canvas--title">
+  <header class="running-head">
+    <span>strange loop · 2026.09.18</span>
+    <span>session 04</span>
+  </header>
+  <h1 class="title">What I look for in <span class="accent">operator</span> tooling.</h1>
+  <footer class="foot">
+    <span class="speaker">Shane Logsdon</span>
+    <span class="role">technical product leader · payments &amp; platforms</span>
+    <span class="venue">shane.logsdon.io · <span class="pos">slide 01</span></span>
+  </footer>
+</article>
+
+<span class="slide-label">→ Slide 2 · CONTENT · 1920×1080 · template — duplicate + edit per slide</span>
+<article class="canvas canvas--content">
+  <header class="running-head">
+    <span>operator tooling — what I look for</span>
+    <span class="meta">strange loop 2026 · slide 06</span>
+  </header>
+  <h2 class="headline">Three things, in order of how often they get them wrong.</h2>
+  <div class="body">
+    <span></span>
+    <ol class="body-list">
+      <li><span class="ord"><span class="pos">01</span></span><span>Failure modes you can read out loud — &ldquo;the gateway returned 504 after 30s on stripe&rdquo;, not &ldquo;something went wrong.&rdquo;</span></li>
+      <li><span class="ord"><span class="pos">02</span></span><span>An undo button that's actually undoable. Most aren't.</span></li>
+      <li><span class="ord"><span class="pos">03</span></span><span>Logs that survive the page being closed.</span></li>
+    </ol>
+  </div>
+  <footer class="foot">
+    <span>shane.logsdon.io</span>
+    <span><span class="pos">06</span> / 24</span>
+  </footer>
+</article>
+
+<span class="slide-label">→ Slide 3 · SECTION DIVIDER · 1920×1080 · the inversion moment</span>
+<article class="canvas canvas--divider">
+  <header class="top">part two — on settlement</header>
+  <h2 class="section-title">On <span class="accent">settlement</span>.</h2>
+  <footer class="foot">
+    <span>strange loop 2026 · 2026.09.18</span>
+    <span><span class="pos">12</span> / 24</span>
+  </footer>
+</article>
+
+<!--
+DECK NOTES:
+  - Title slide opens the deck; section-divider slides punctuate; content slides do the work
+  - The section divider is the only inversion in the deck — used as a deliberate punctuation
+    moment, NOT as decoration. If you use it more than 2-3 times in a 24-slide deck, the
+    impact dilutes — restraint is the point.
+  - Content slide is the template — duplicate it, edit headline + body, screenshot each.
+  - Type-accent on "operator" (slide 1) and "settlement" (slide 3) is intentional — both are
+    the SUBJECT of the page. No more than one accent per slide.
+
+VARIATION COMMENT:
+  color:       inversion-feature
+  type-press:  display-led
+  composition: asymmetric (left-anchored title; folio in lower-right; running heads top-left)
+-->
+</body>
+</html>

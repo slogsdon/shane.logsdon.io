@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — YouTube — Settled.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9; --color-surface-feature: #ede4d2;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; display: grid; place-items: center; font-family: var(--type-display); }
+
+/*
+  v2 changes from v1 YouTube (single-word "Settled.", caption row at bottom):
+  - The single word stays — that move was already strong
+  - Caption row at bottom REPLACED with publication-style chrome:
+    running-head (small caps) at top edge identifying the topic series,
+    folio (dateline + episode number) in lower-right corner
+  - Dateline now uses real folio convention instead of bottom-row caption
+  - Display scale BUMPED from 360px to 420px (more publication-cover energy)
+  - The period stays in ink (no accent-on-punctuation cliché)
+*/
+
+.canvas {
+  width: 1280px;
+  height: 720px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 32px 48px 48px;
+}
+
+/* Running head — small caps at top edge */
+.running-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+/* Word — display-xxl scale */
+.figure-wrap {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.word {
+  font-family: var(--type-display); font-weight: 500;
+  font-size: 420px; line-height: 0.9; letter-spacing: -0.028em;
+  color: var(--color-ink); margin: 0;
+  font-feature-settings: 'ss01', 'kern';
+  transform: translateY(-2%);
+}
+
+/* Folio in lower-right corner */
+.folio-corner {
+  position: absolute;
+  bottom: 32px; right: 0;
+  font-family: var(--type-mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+  display: inline-flex; gap: 14px; align-items: baseline;
+}
+.folio-corner .pos { color: var(--color-ink); }
+
+@page { size: 1280px 720px; margin: 0; }
+</style>
+</head>
+<body>
+<article class="canvas">
+  <header class="running-head">
+    <span>working notes — payments stack</span>
+    <span>shane logsdon</span>
+  </header>
+  <div class="figure-wrap">
+    <h1 class="word">Settled.</h1>
+    <span class="folio-corner"><span>2026.05.02</span><span class="pos">047</span></span>
+  </div>
+</article>
+
+<!--
+v2 vs v1 — what changed at the visual level:
+  v1: "Settled." centered, caption row at bottom (italic topic + URL)
+  v2: same word, but now framed by editorial chrome — running-head top edge,
+      folio in lower-right (publication convention). The word feels less
+      like a poster and more like a magazine cover spread title.
+  v2 word size: 420px (v1: 360px) — more cover scale
+  v2 added: episode number 047 in folio (since this IS a numbered series of
+      working notes, the convention is brand-earned)
+-->
+</body>
+</html>

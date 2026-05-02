@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Design System v2 — Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9; --color-surface-feature: #ede4d2; --color-surface-muted: #f1eee8;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de; --color-grid: #e0e2e6;
+  --color-accent: #c26a3b;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--color-surface); color: var(--color-ink); font-family: var(--type-sans); font-size: 17px; line-height: 1.65; font-feature-settings: 'ss01', 'cv11', 'kern'; }
+
+.page { max-width: 1180px; margin: 0 auto; padding: 96px 24px; }
+
+/* ─── Hero — display-xxl scale, no eyebrow above, type accent on one word ─── */
+.hero {
+  padding: 64px 0 144px;
+  position: relative;
+}
+.hero h1 {
+  font-family: var(--type-display);
+  font-weight: 400;
+  font-size: clamp(64px, 11vw, 144px);
+  line-height: 0.96;
+  letter-spacing: -0.022em;
+  margin: 0;
+  color: var(--color-ink);
+}
+.hero .accent { color: var(--color-accent); font-style: normal; }
+.hero .lead {
+  font-family: var(--type-sans);
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 56ch;
+  margin: 48px 0 0;
+  color: var(--color-ink-soft);
+}
+
+/* Folio — replaces footer-row pattern */
+.folio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--type-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+}
+.folio .pos { color: var(--color-ink); }
+
+.hero-folio {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* Running head — small-caps at top edge */
+.running-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+/* ─── Section structure — varied dividers ─── */
+.section { padding: 96px 0; }
+.section--major   { padding-top: 144px; border-top: 1px solid var(--color-rule); }   /* major: bigger gap + 1px hairline */
+.section--hairline { border-top: 1px solid var(--color-rule); }                       /* tight: 1px hairline */
+.section--no-rule { padding-top: 144px; }                                             /* whitespace alone */
+
+.section-head {
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: baseline;
+}
+.section-head .label {
+  font-family: var(--type-display);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-3);
+}
+.section-head h2 {
+  font-family: var(--type-display);
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+/* ─── Color section ─── */
+.swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-rule); border: 1px solid var(--color-rule); }
+.swatch { background: var(--color-surface); padding: 0; }
+.swatch .chip { height: 140px; }
+.swatch .label { display: flex; justify-content: space-between; padding: 12px 16px; }
+.swatch .name {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.08em;
+  color: var(--color-ink);
+}
+.swatch .hex { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
+
+/* ─── Typography section ─── */
+.specimen { padding: 32px 0; border-bottom: 1px solid var(--color-rule); display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: baseline; }
+.specimen .name {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+.t-display-xxl { font-family: var(--type-display); font-weight: 400; font-size: 144px; line-height: 0.96; letter-spacing: -0.022em; }
+.t-display-xl { font-family: var(--type-display); font-weight: 400; font-size: 96px; line-height: 1.0; letter-spacing: -0.02em; }
+.t-display { font-family: var(--type-display); font-weight: 400; font-size: 72px; line-height: 1.05; letter-spacing: -0.018em; }
+.t-headline-lg { font-family: var(--type-display); font-weight: 500; font-size: 56px; line-height: 1.1; letter-spacing: -0.015em; }
+.t-headline-md { font-family: var(--type-display); font-weight: 500; font-size: 36px; line-height: 1.18; letter-spacing: -0.012em; }
+.t-headline-sm { font-family: var(--type-display); font-weight: 500; font-size: 24px; line-height: 1.3; }
+.t-lead { font-family: var(--type-sans); font-size: 19px; line-height: 1.6; }
+.t-body { font-family: var(--type-sans); font-size: 17px; line-height: 1.65; }
+.t-smallcaps-lg {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.08em;
+}
+.t-smallcaps {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+.t-dateline { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; }
+.t-code { font-family: var(--type-mono); font-size: 14px; line-height: 1.5; }
+
+/* ─── Feature treatment — dark inversion block (canonical v2 feature) ─── */
+.feature {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  margin: 96px -32px;
+  padding: 96px 32px;
+}
+.feature h3 {
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 96px; line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-surface);
+}
+.feature h3 .accent { color: var(--color-accent); }
+.feature .meta {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: rgba(251, 250, 249, 0.55);
+  margin-top: 32px;
+}
+.feature .folio { color: rgba(251, 250, 249, 0.55); }
+.feature .folio .pos { color: var(--color-surface); }
+
+/* ─── Spacing scale ─── */
+.scale-row { display: flex; align-items: center; gap: 16px; padding: 6px 0; }
+.scale-row .name { width: 80px; font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
+.scale-row .bar { background: var(--color-ink); height: 4px; }
+.scale-row .px { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
+
+/* ─── Folio + running-head demos ─── */
+.demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-rule); }
+.demo-grid > div { background: var(--color-surface); padding: 48px 32px; min-height: 200px; position: relative; }
+.demo-grid .demo-label {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+  margin-bottom: 16px;
+}
+
+/* ─── Page footer — just a folio ─── */
+.page-foot {
+  margin-top: 144px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.page-foot .wordmark {
+  font-family: var(--type-display); font-weight: 600; font-size: 22px; letter-spacing: -0.005em; color: var(--color-ink);
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="hero">
+    <h1>Designing payment <span class="accent">primitives</span> engineers want to build on.</h1>
+    <p class="lead">A reimagined editorial system. Type does the work; the single amber accent now carries two roles — interaction signal AND deliberate type accent on the subject of a page.</p>
+    <span class="folio hero-folio"><span>2026.05.02</span><span class="pos">v2</span></span>
+  </header>
+
+  <!-- Major editorial division (2px ink rule) -->
+  <section class="section section--major">
+    <div class="section-head">
+      <span class="label">i. color</span>
+      <h2>Paper, ink, one accent. Plus a register shift.</h2>
+    </div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="chip" style="background:#fbfaf9"></div><div class="label"><span class="name">surface</span><span class="hex">#fbfaf9</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#ede4d2; opacity: 0.45"></div><div class="label"><span class="name">surface-feature · reserved</span><span class="hex">#ede4d2</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#f1eee8"></div><div class="label"><span class="name">surface-muted</span><span class="hex">#f1eee8</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#0e1116"></div><div class="label"><span class="name">ink</span><span class="hex">#0e1116</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#404550"></div><div class="label"><span class="name">ink-soft</span><span class="hex">#404550</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#62686f"></div><div class="label"><span class="name">ink-3</span><span class="hex">#62686f</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#d6d8de"></div><div class="label"><span class="name">rule</span><span class="hex">#d6d8de</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#c26a3b"></div><div class="label"><span class="name">accent</span><span class="hex">#c26a3b</span></div></div>
+    </div>
+  </section>
+
+  <!-- Feature treatment — dark inversion block, demonstrated -->
+  <section class="feature">
+    <span class="folio"><span>feature treatment</span><span class="pos">inversion</span></span>
+    <h3>Used <span class="accent">once</span> per artifact.</h3>
+    <p class="meta">Hero treatments. Feature articles. A register flip — ink as surface, cream as text — punctuating the committed cream page. Never as decoration.</p>
+  </section>
+
+  <!-- Tight separation (1px hairline) -->
+  <section class="section section--hairline">
+    <div class="section-head">
+      <span class="label">ii. typography</span>
+      <h2>Two families. Mono restricted to dateline + code.</h2>
+    </div>
+    <div class="specimen"><span class="name">display-xxl · 144px</span><span class="t-display-xxl">Settled.</span></div>
+    <div class="specimen"><span class="name">display-xl · 96px</span><span class="t-display-xl">Working notes.</span></div>
+    <div class="specimen"><span class="name">display · 72px</span><span class="t-display">An audit of the latency budget.</span></div>
+    <div class="specimen"><span class="name">headline-lg · 56px</span><span class="t-headline-lg">The shape of a payments primitive.</span></div>
+    <div class="specimen"><span class="name">headline-md · 36px</span><span class="t-headline-md">What I look for in operator tooling.</span></div>
+    <div class="specimen"><span class="name">lead · 19px Inter</span><span class="t-lead">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry.</span></div>
+    <div class="specimen"><span class="name">body · 17px Inter</span><span class="t-body">The shape of a payments primitive is determined by the shape of the failure modes you want to expose.</span></div>
+    <div class="specimen"><span class="name">smallcaps-lg · 14px</span><span class="t-smallcaps-lg">Lead — a section anchor</span></div>
+    <div class="specimen"><span class="name">smallcaps · 12px</span><span class="t-smallcaps">Section · field notes · category</span></div>
+    <div class="specimen"><span class="name">dateline · mono 12px</span><span class="t-dateline">2026.05.02 / 003 — Louisville · GMT−5</span></div>
+    <div class="specimen"><span class="name">code · mono 14px</span><span class="t-code">$ tail -f payments.log | grep settled</span></div>
+  </section>
+
+  <!-- Whitespace alone (no rule) -->
+  <section class="section section--no-rule">
+    <div class="section-head">
+      <span class="label">iii. spacing</span>
+      <h2>Same 8px scale. Bigger jumps at the top.</h2>
+    </div>
+    <div>
+      <div class="scale-row"><span class="name">s-1</span><span class="bar" style="width: 4px;"></span><span class="px">4px</span></div>
+      <div class="scale-row"><span class="name">s-2</span><span class="bar" style="width: 8px;"></span><span class="px">8px</span></div>
+      <div class="scale-row"><span class="name">s-3</span><span class="bar" style="width: 12px;"></span><span class="px">12px</span></div>
+      <div class="scale-row"><span class="name">s-4</span><span class="bar" style="width: 16px;"></span><span class="px">16px</span></div>
+      <div class="scale-row"><span class="name">s-5</span><span class="bar" style="width: 24px;"></span><span class="px">24px</span></div>
+      <div class="scale-row"><span class="name">s-6</span><span class="bar" style="width: 32px;"></span><span class="px">32px</span></div>
+      <div class="scale-row"><span class="name">s-7</span><span class="bar" style="width: 48px;"></span><span class="px">48px</span></div>
+      <div class="scale-row"><span class="name">s-8</span><span class="bar" style="width: 64px;"></span><span class="px">64px</span></div>
+      <div class="scale-row"><span class="name">s-9</span><span class="bar" style="width: 96px;"></span><span class="px">96px</span></div>
+      <div class="scale-row"><span class="name">s-10</span><span class="bar" style="width: 144px;"></span><span class="px">144px (cover scale jump)</span></div>
+    </div>
+  </section>
+
+  <!-- Major editorial division -->
+  <section class="section section--major">
+    <div class="section-head">
+      <span class="label">iv. publication conventions</span>
+      <h2>Folios, running heads, varied dividers.</h2>
+    </div>
+    <div class="demo-grid">
+      <div>
+        <span class="demo-label">folio · lower corner of any artifact</span>
+        <div style="margin-top: 64px;">
+          <span class="folio"><span>2026.05.02</span><span class="pos">001</span></span>
+        </div>
+        <div style="margin-top: 16px;">
+          <span class="folio"><span>louisville · gmt−5</span><span class="pos">v2</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="demo-label">running head · top edge of long-form artifacts</span>
+        <div class="running-head" style="margin-top: 32px;">
+          <span>working notes — payments stack</span>
+          <span>2026.05.02</span>
+        </div>
+      </div>
+      <div>
+        <span class="demo-label">divisions — whitespace, not weight</span>
+        <div style="margin-top: 32px;">
+          <hr style="height: 1px; background: var(--color-rule); border: 0; margin: 0;">
+          <p class="t-dateline" style="margin: 8px 0;">1px hairline · only rule weight in the system</p>
+          <div style="margin-top: 48px; padding-top: 0;">
+            <p class="t-dateline" style="margin: 0;">major divisions = larger gap (96–144px), not heavier rule</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="demo-label">column rule · vertical 1px in gutter</span>
+        <div style="display: grid; grid-template-columns: 1fr 1px 1fr; gap: 16px; margin-top: 32px; min-height: 80px;">
+          <div class="t-body" style="font-size: 14px;">Left column. The rule sits in the gutter — runs through the column structure.</div>
+          <div style="background: var(--color-rule);"></div>
+          <div class="t-body" style="font-size: 14px;">Right column. Same hairline, different position — vertical instead of horizontal.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span class="folio"><span>shane.logsdon.io</span><span class="pos">v2 / 2026.05.02</span></span>
+  </footer>
+
+</main>
+</body>
+</html>

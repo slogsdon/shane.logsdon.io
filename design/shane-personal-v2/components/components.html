@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Components v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --color-surface: #fbfaf9; --color-surface-feature: #ede4d2; --color-surface-muted: #f1eee8;
+  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
+  --color-rule: #d6d8de;
+  --color-accent: #c26a3b; --color-accent-hover: #a0542a;
+  --type-display: 'Fraunces', Georgia, serif;
+  --type-sans: 'Inter', system-ui, sans-serif;
+  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--color-surface); color: var(--color-ink); font-family: var(--type-sans); font-size: 17px; line-height: 1.65; font-feature-settings: 'ss01', 'cv11', 'kern'; }
+.page { max-width: 1180px; margin: 0 auto; padding: 96px 24px; }
+
+/* Hero */
+.hero { padding-bottom: 96px; position: relative; }
+.hero h1 {
+  font-family: var(--type-display); font-weight: 400;
+  font-size: clamp(56px, 9vw, 96px); line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0; color: var(--color-ink);
+}
+.hero h1 .accent { color: var(--color-accent); }
+.hero .lead { font-size: 19px; line-height: 1.6; color: var(--color-ink-soft); max-width: 56ch; margin: 32px 0 0; }
+
+/* Folio */
+.folio { display: inline-flex; align-items: baseline; gap: 12px; font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
+.folio .pos { color: var(--color-ink); }
+
+/* Section */
+.section { padding: 144px 0 0; border-top: 1px solid var(--color-rule); }    /* major divisions = bigger gap, 1px hairline */
+.section-head { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: baseline; margin-bottom: 48px; }
+.section-head .label {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.08em;
+  color: var(--color-ink-3);
+}
+.section-head h2 {
+  font-family: var(--type-display); font-weight: 500;
+  font-size: 56px; line-height: 1.1; letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.preview { padding: 48px 0; margin-bottom: 16px; }                                                                  /* no box — cream-on-cream borders earn nothing; whitespace + section-head carries the structure */
+.preview-feature { padding: 64px 32px; background: var(--color-ink); color: var(--color-surface); margin-bottom: 16px; }   /* dark inversion — the canonical v2 feature treatment */
+.preview-feature .accent { color: var(--color-accent); }
+
+/* ─── 1. Wordmark — replaces SL · | · Shane Logsdon ─── */
+.wordmark { font-family: var(--type-display); font-weight: 600; font-size: 22px; letter-spacing: -0.005em; color: var(--color-ink); }
+.wordmark--lg { font-size: 36px; }
+.wordmark--sm { font-size: 16px; }
+
+/* ─── 2. Editorial labels — Fraunces small caps ─── */
+.smallcaps-lg {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 14px; letter-spacing: 0.08em;
+  color: var(--color-ink);
+}
+.smallcaps {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+/* ─── 3. Running head ─── */
+.running-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+/* ─── 4. Btn-arrow (only button — filled .btn removed) ─── */
+.btn-arrow {
+  display: inline; font-family: var(--type-sans); font-size: 16px; font-weight: 400;
+  color: var(--color-ink); text-decoration: underline;
+  text-decoration-color: var(--color-rule); text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+.btn-arrow::after { content: ' →'; font-family: var(--type-mono); font-size: 0.85em; }
+.btn-arrow:hover { text-decoration-color: var(--color-ink); }
+.btn-arrow--accent { color: var(--color-accent); text-decoration-color: var(--color-accent-hover); }
+
+/* ─── 5. Article row — with column rule ─── */
+.article-row {
+  display: grid; grid-template-columns: 100px 1px 1fr auto; gap: 24px;
+  padding: 32px 0; border-top: 1px solid var(--color-rule);
+  align-items: baseline;
+}
+.article-row__num { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
+.article-row__num .pos { color: var(--color-ink); }
+.article-row__num .date { display: block; margin-top: 4px; }
+.article-row__rule { background: var(--color-rule); height: 100%; }
+.article-row__title {
+  font-family: var(--type-display); font-weight: 500;
+  font-size: 28px; line-height: 1.2; letter-spacing: -0.012em;
+  color: var(--color-ink); margin: 0;
+}
+.article-row__title .accent { color: var(--color-accent); }
+.article-row__title .dek {
+  display: block; margin-top: 12px;
+  font-family: var(--type-sans); font-weight: 400;
+  font-size: 16px; line-height: 1.6; letter-spacing: 0;
+  color: var(--color-ink-soft); max-width: 64ch;
+}
+.article-row__cat {
+  font-family: var(--type-display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+/* ─── 6. Drop-cap opening ─── */
+.dropcap-block { max-width: 64ch; }
+.dropcap-block::first-letter {
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 6.5em; line-height: 0.9;
+  float: left; padding: 8px 12px 0 0;
+  color: var(--color-ink);
+}
+
+/* ─── 7. Hero block — 96px display, designed to live inside .preview-feature (dark inversion) ─── */
+.hero-block {
+  padding: 0;
+}
+.hero-block h2 {
+  font-family: var(--type-display); font-weight: 400;
+  font-size: 96px; line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0;
+  color: inherit;       /* takes the surrounding inversion color (cream on dark) */
+}
+.hero-block h2 .accent { color: var(--color-accent); }
+
+/* Page foot */
+.page-foot {
+  margin-top: 144px; padding-top: 24px;
+  border-top: 1px solid var(--color-rule);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="hero">
+    <h1>Components, <span class="accent">reimagined</span>.</h1>
+    <p class="lead">Five named primitives replace v1's complete inventory. The signature swap: Fraunces small caps as the default editorial label. Mono restricted to dateline and code only.</p>
+    <span class="folio" style="position: absolute; bottom: 0; right: 0;"><span>library · v2</span><span class="pos">2026.05.02</span></span>
+  </header>
+
+  <!-- ─── 1. Wordmark ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">i. wordmark</span><h2>Just the name.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">No SL initials. No hairline pipe. The wordmark IS the mark.</p>
+    <div class="preview" style="display: flex; gap: 64px; align-items: baseline;">
+      <span class="wordmark wordmark--lg">Shane Logsdon</span>
+      <span class="wordmark">Shane Logsdon</span>
+      <span class="wordmark wordmark--sm">Shane Logsdon</span>
+    </div>
+  </section>
+
+  <!-- ─── 2. Editorial labels (small caps) ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">ii. editorial labels</span><h2>Fraunces small caps. Not mono caps.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">The signature v2 swap. Mono caps as labels were a 2010s designer move that AI inherited.</p>
+    <div class="preview" style="display: grid; gap: 16px;">
+      <span class="smallcaps-lg">Lead — a section anchor</span>
+      <span class="smallcaps">Section · field notes · category</span>
+      <span class="smallcaps">Working notes — may 2026</span>
+    </div>
+  </section>
+
+  <!-- ─── 3. Folio + Running head ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">iii. folio + running head</span><h2>Publication conventions, not chrome strips.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">Folios live in lower corners. Running heads sit at top edges. Both replace the v1 footer-row and eyebrow patterns.</p>
+    <div class="preview">
+      <div class="running-head"><span>working notes — payments stack</span><span>2026.05.02</span></div>
+      <p style="margin: 32px 0; color: var(--color-ink-soft); font-size: 15px;">— page body would sit between running head and folio —</p>
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <span class="folio"><span>louisville · gmt−5</span><span class="pos">003</span></span>
+        <span class="folio"><span>shane.logsdon.io</span><span class="pos">v2</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 4. Btn-arrow (only button) ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">iv. buttons</span><h2>One. Filled buttons removed.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">A senior editorial AD wouldn't have a filled button on this brand. The btn-arrow IS the action pattern.</p>
+    <div class="preview" style="display: flex; gap: 48px; align-items: baseline;">
+      <a class="btn-arrow" href="#">Read field notes</a>
+      <a class="btn-arrow btn-arrow--accent" href="#">Open to conversations</a>
+    </div>
+  </section>
+
+  <!-- ─── 5. Article row with column rule ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">v. article row</span><h2>Now with a column rule.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">A vertical 1px hairline in the gutter — column-rule, a real publication primitive missing from v1.</p>
+    <div class="preview" style="padding: 0 32px;">
+      <div class="article-row">
+        <div class="article-row__num"><span class="pos">001</span><span class="date">2026.05.02</span></div>
+        <div class="article-row__rule"></div>
+        <div>
+          <h3 class="article-row__title">The shape of a payments <span class="accent">primitive</span>.<span class="dek">The shape is determined by the failure modes you want to expose. Most platforms hide the wrong ones — and the failures you DO expose become the contract.</span></h3>
+        </div>
+        <span class="article-row__cat">strategic · 5 min</span>
+      </div>
+      <div class="article-row">
+        <div class="article-row__num"><span class="pos">002</span><span class="date">2026.04.18</span></div>
+        <div class="article-row__rule"></div>
+        <div>
+          <h3 class="article-row__title">An audit of the latency budget on settlements.<span class="dek">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry. Here is the breakdown.</span></h3>
+        </div>
+        <span class="article-row__cat">technical · 12 min</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 6. Drop cap ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">vi. drop cap</span><h2>One typographic event. Used rarely.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">A real publication move — replaces "italicize one word for emphasis." Used at the OPENING of long-form pieces, not as decoration.</p>
+    <div class="preview">
+      <p class="dropcap-block">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry. The shape of a payments primitive is determined by the shape of the failure modes you want to expose — and most platforms hide the wrong ones. The failures you DO expose become the contract; engineers will write code against them.</p>
+    </div>
+  </section>
+
+  <!-- ─── 7. Hero block (96px display) ─── -->
+  <section class="section">
+    <div class="section-head"><span class="label">vii. hero block</span><h2>Cover-scale display.</h2></div>
+    <p class="smallcaps" style="margin: 0 0 16px;">96px Fraunces. One word in amber per surface. Surface-feature register optional (one per artifact).</p>
+    <div class="preview-feature">
+      <div class="hero-block" style="padding: 0;">
+        <h2>An audit of the <span class="accent">latency</span> budget on settlements.</h2>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span class="folio"><span>component library</span><span class="pos">v2 · 2026.05.02</span></span>
+  </footer>
+
+</main>
+</body>
+</html>
