@@ -49,6 +49,8 @@ $this->layout('partials::layouts/main', [
                     <select id="interest" name="interest" required
                             class="w-full border border-rule bg-background px-4 py-3 text-sm text-foreground transition-colors focus:border-foreground focus:outline-none">
                         <option value="">Select an option</option>
+                        <option value="local-business-web-presence">Local Business Web Presence</option>
+                        <option value="gbp-audit">Free GBP Audit</option>
                         <option value="payment-systems">Payment Systems</option>
                         <option value="developer-platforms">Developer Platforms</option>
                         <option value="product-strategy">Product Strategy</option>
