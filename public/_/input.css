@@ -166,4 +166,14 @@
     @apply absolute -bottom-1 left-0 h-px w-full origin-left bg-foreground transition-transform;
   }
 
+  /* Scroll-based header state */
+  #site-header {
+    transition: background-color 200ms ease, backdrop-filter 200ms ease;
+  }
+  /* At top: solid cream, no blur — prevents dark body bleeding through */
+  #site-header.at-top {
+    background-color: hsl(var(--background));
+    backdrop-filter: none;
+  }
+
 }
