@@ -130,10 +130,18 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     <?php $this->insert('partials::components/author-bio'); ?>
 
     <section class="mt-16 border-t border-rule pt-10">
-        <script src="https://utteranc.es/client.js"
-                repo="slogsdon/shane.logsdon.io"
-                issue-term="pathname"
-                theme="github-light"
+        <script src="https://giscus.app/client.js"
+                data-repo="slogsdon/shane.logsdon.io"
+                data-repo-id="MDEwOlJlcG9zaXRvcnkxNTI0NTU2Mw=="
+                data-category="General"
+                data-category-id="DIC_kwDOAOig-84C8KQg"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="en"
                 crossorigin="anonymous"
                 async>
         </script>
