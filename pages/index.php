@@ -21,8 +21,11 @@ $articleCount = count($activeArticles);
                 <p class="eyebrow">
                     <span style="color:hsl(var(--foreground)/0.4)">§</span> 01 / Profile
                 </p>
-                <p class="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted-foreground">
-                    Louisville, KY · GMT-5
+                <p
+                    class="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted-foreground"
+                    data-locale-tz="America/Kentucky/Louisville"
+                >
+                    Louisville, KY · <span data-locale-offset>GMT-5</span>
                 </p>
             </div>
 
@@ -92,3 +95,19 @@ $articleCount = count($activeArticles);
 </section>
 
 <?php $this->insert('partials::components/contact-cta'); ?>
+
+<script>
+(function () {
+    var host = document.querySelector('[data-locale-tz]');
+    var target = host && host.querySelector('[data-locale-offset]');
+    if (!host || !target) return;
+    try {
+        var parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: host.dataset.localeTz,
+            timeZoneName: 'shortOffset'
+        }).formatToParts(new Date());
+        var name = parts.find(function (p) { return p.type === 'timeZoneName'; });
+        if (name && name.value) target.textContent = name.value;
+    } catch (e) {}
+})();
+</script>
