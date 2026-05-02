@@ -1,26 +1,28 @@
-// importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js');
-
-// self.workbox.routing.registerRoute(
-//   // Cache image files
-//   /.*\.(?:html|css|js|png|jpg|jpeg|svg|gif)/,
-//   // Use the cache if it's available
-//   workbox.strategies.cacheFirst()
-// );
-
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
-    caches.open('shane-logsdon-io-static-v1').then((cache) => {
-      return cache.addAll([
-        "/js/lib.js",
-        "/"
-      ]);
+    caches.open('shane-logsdon-io-static-v2').then((cache) => {
+      return cache.addAll(["/"]).catch(() => {});
     })
-    .catch(() => {})
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys
+          .filter((key) => key !== 'shane-logsdon-io-static-v2')
+          .map((key) => caches.delete(key))
+      )
+    ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request && event.request.mode === "no-cors") { return; }
+  // Let the browser handle cross-origin requests normally.
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) { return; }
 
   event.respondWith(
     caches.match(event.request).then((response) => {
