@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ollama-agent__gemma_start",
+      "WebFetch(domain:api.anthropic.com)",
+      "mcp__plugin_shane-config_lmstudio-agent__qwen_start",
+      "mcp__plugin_shane-config_lmstudio-agent__qwen_continue",
+      "Bash(rm /Users/shane/Code/shane.logsdon.io/.git/index.lock)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ]
+  }
+}
