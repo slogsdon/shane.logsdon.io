@@ -2,7 +2,8 @@
 title: "The AX Shift: You're Still Designing for Yourself"
 date: 2026-04-27
 layout: 'partials::layouts/writing-post'
-image: look-up-towards-skyscrapers.jpeg
+image: the-ax-shift-og.png
+heroImage: the-ax-shift-hero.png
 slug: the-ax-shift
 ---
 

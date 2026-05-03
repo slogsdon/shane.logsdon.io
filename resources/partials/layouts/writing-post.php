@@ -30,6 +30,8 @@ $this->layout('partials::layouts/main', [
     'title' => !empty($title) ? $title : null,
     'description' => $meta->description,
     'url' => !empty($url) ? $url : null,
+    'image' => !empty($image) ? $image : null,
+    'ogType' => 'article',
 ]);
 $formattedDate = DateTime::createFromFormat('U', $originalDate)->format('F j, Y');
 $folioDate = DateTime::createFromFormat('U', $originalDate)->format('Y.m.d');
@@ -123,6 +125,16 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
             </iframe>
         </div>
         <script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+    <?php endif; ?>
+
+    <?php if (!empty($heroImage)): ?>
+    <div class="mt-12">
+        <img src="/images/<?= $this->e($heroImage) ?>"
+             alt="<?= $this->e($title) ?>"
+             width="1440" height="600"
+             class="w-full"
+             style="display:block;">
     </div>
     <?php endif; ?>
 

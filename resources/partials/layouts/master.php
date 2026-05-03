@@ -13,6 +13,24 @@
   <link rel="canonical" href="https://shane.logsdon.io<?= $this->e($url); ?>">
 <?php endif; ?>
 
+<meta property="og:site_name" content="Shane Logsdon">
+<meta property="og:type" content="<?= !empty($ogType) ? $this->e($ogType) : 'website' ?>">
+<meta property="og:title" content="<?= $this->e(!empty($title) ? $title : $settings->title) ?>">
+<meta property="og:description" content="<?= $this->e(!empty($description) ? $description : $settings->description) ?>">
+<?php if (!empty($url)): ?>
+<meta property="og:url" content="https://shane.logsdon.io<?= $this->e($url) ?>">
+<?php endif; ?>
+<?php if (!empty($image)): ?>
+<meta property="og:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<?php endif; ?>
+<meta name="twitter:card" content="<?= !empty($image) ? 'summary_large_image' : 'summary' ?>">
+<meta name="twitter:site" content="@shanelogsdon">
+<?php if (!empty($image)): ?>
+<meta name="twitter:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
+<?php endif; ?>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
