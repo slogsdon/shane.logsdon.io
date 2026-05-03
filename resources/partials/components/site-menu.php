@@ -3,6 +3,7 @@ $navItems = [
     ['href' => '/about/', 'label' => 'About'],
     ['href' => '/articles/', 'label' => 'Articles'],
     ['href' => '/speaking/', 'label' => 'Speaking'],
+    ['href' => '/resume/', 'label' => 'Resume'],
 ];
 ?>
 <ul class="flex items-center gap-1 sm:gap-2" id="site-nav">

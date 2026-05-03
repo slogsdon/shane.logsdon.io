@@ -8,6 +8,7 @@
                     <li><a class="text-background/75 transition-colors hover:text-background" href="/about/">About</a></li>
                     <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/">Articles</a></li>
                     <li><a class="text-background/75 transition-colors hover:text-background" href="/speaking/">Speaking</a></li>
+                    <li><a class="text-background/75 transition-colors hover:text-background" href="/resume/">Resume</a></li>
                     <li><a class="text-background/75 transition-colors hover:text-background" href="/contact/">Contact</a></li>
                     <li><a class="text-background/75 transition-colors hover:text-background" href="/archive/">Archive</a></li>
                 </ul>

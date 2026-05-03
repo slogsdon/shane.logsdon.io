@@ -1,0 +1,684 @@
+<?php
+$this->layout('partials::layouts/main', [
+    'title'       => 'Resume',
+    'description' => 'Shane Logsdon — fourteen years shipping payment platforms and developer experiences. Senior Director of Product Management at Global Payments.',
+    'url'         => '/resume/',
+]);
+?>
+<style>
+/* ── Resume page tokens & layout ──────────────────────────────── */
+.resume-page {
+  --rp-paper:        #FBFAF7;
+  --rp-paper-2:      #F2EFE8;
+  --rp-ink:          #1A1714;
+  --rp-ink-2:        #3A342E;
+  --rp-ink-3:        #6B6258;
+  --rp-ink-4:        #9A9287;
+  --rp-accent:       #C26A3B;
+  --rp-accent-hover: #A0542A;
+  --rp-ok:           #3F6B3A;
+  --rp-line:         #1A17141F;
+  --rp-line-faint:   #1A17140A;
+
+  color: var(--rp-ink);
+  background: var(--rp-paper);
+}
+
+/* Container */
+.rp-frame { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+
+/* Hero */
+.rp-hero {
+  position: relative;
+  padding: 4rem 0 6rem;
+  border-bottom: 1px solid var(--rp-line);
+  overflow: hidden;
+}
+.rp-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right,  var(--rp-line-faint) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rp-line-faint) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+.rp-hero-inner { position: relative; }
+.rp-hero-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr 260px;
+  gap: 2rem;
+  align-items: start;
+}
+.rp-marg {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--rp-ink-3); line-height: 1.9;
+}
+.rp-marg .k { display: block; color: var(--rp-ink-2); }
+.rp-marg .k + .k { margin-top: 1rem; color: var(--rp-ink-3); }
+
+.rp-hero-byline {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--rp-ink-3); margin-bottom: 1.5rem;
+}
+.rp-hero-byline .sep { color: var(--rp-ink-4); margin: 0 0.5rem; }
+
+.rp-hero-title {
+  font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  line-height: 1.04; letter-spacing: -0.02em;
+  margin: 0 0 2rem; color: var(--rp-ink);
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+.rp-hero-title em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 60;
+}
+
+.rp-hero-lead {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 15px; line-height: 1.7; color: var(--rp-ink-2);
+  margin: 0 0 2rem; max-width: 58ch;
+}
+
+.rp-hero-actions {
+  display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.rp-hero-actions a {
+  color: var(--rp-ink-2); text-decoration: none;
+  border-bottom: 1px solid var(--rp-line); padding-bottom: 4px;
+}
+.rp-hero-actions a:hover { color: var(--rp-ink); border-bottom-color: var(--rp-ink); }
+.rp-hero-actions a::after { content: ' →'; color: var(--rp-ink-3); }
+
+.rp-hero-meta { display: grid; gap: 1rem; padding-top: 8px; }
+.rp-hero-meta .row { display: grid; grid-template-columns: 80px 1fr; gap: 0.75rem; align-items: baseline; }
+.rp-hero-meta .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rp-ink-3); }
+.rp-hero-meta .val { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--rp-ink); }
+.rp-hero-meta .val a { color: var(--rp-accent); text-decoration: underline; text-underline-offset: 3px; }
+.rp-hero-meta .led { width: 7px; height: 7px; border-radius: 50%; background: #3F6B3A; display: inline-block; margin-right: 6px; vertical-align: middle; box-shadow: 0 0 0 3px rgba(63,107,58,.12); }
+
+/* Section scaffold */
+.rp-section { padding: 4rem 0; border-bottom: 1px solid var(--rp-line); }
+.rp-section:last-of-type { border-bottom: 0; }
+
+.rp-sec-kicker {
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+  padding-bottom: 0.75rem; border-bottom: 1px solid var(--rp-line);
+  margin-bottom: 2rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--rp-ink-3);
+}
+
+.rp-sec-title {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 400;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 2rem;
+  color: var(--rp-ink);
+}
+.rp-sec-title em { font-style: italic; }
+
+.rp-sec-lead {
+  font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7;
+  color: var(--rp-ink-2); margin: 0 0 2rem; max-width: 58ch;
+}
+
+/* Two-column marginalia layout */
+.rp-two-col {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Experience entries */
+.rp-role {
+  display: grid;
+  grid-template-columns: 100px 1fr 180px;
+  column-gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rp-line);
+  align-items: baseline;
+}
+.rp-role:first-child { border-top: 1px solid var(--rp-line); }
+.rp-role:last-child  { border-bottom: 0; }
+
+.rp-role .n {
+  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
+  font-size: 1.5rem; color: var(--rp-accent); line-height: 1; padding-top: 6px;
+}
+
+.rp-role .body h3 {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 400;
+  font-size: 1.375rem; line-height: 1.25; letter-spacing: -0.01em;
+  margin: 0 0 0.5rem; color: var(--rp-ink);
+}
+.rp-role .body .sub {
+  font-family: 'Inter', sans-serif; font-size: 14px; color: var(--rp-ink-3);
+  margin: 0 0 1rem;
+}
+.rp-role .body .sub .dot { color: var(--rp-ink-4); margin: 0 0.5rem; }
+.rp-role .body .sub .co { color: var(--rp-ink-2); font-weight: 500; }
+
+.rp-role .body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.rp-role .body ul li {
+  font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.65;
+  color: var(--rp-ink-2); padding-left: 1.5rem; position: relative; max-width: 68ch;
+}
+.rp-role .body ul li::before {
+  content: '→'; position: absolute; left: 0; top: 0;
+  color: var(--rp-ink-4); font-family: 'Fraunces', Georgia, serif;
+}
+
+.rp-role .right {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rp-ink-3); line-height: 1.8; padding-top: 8px;
+}
+.rp-role .right b { display: block; color: var(--rp-ink-2); font-weight: 400; }
+.rp-role .right small { display: block; color: var(--rp-ink-3); }
+.rp-role .right .dur { color: var(--rp-ink-4); margin-top: 4px; display: block; letter-spacing: 0.2em; }
+
+/* Stats row */
+.rp-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rp-line);
+  border-bottom: 1px solid var(--rp-line);
+  margin-top: 2rem;
+}
+.rp-stat { padding: 1.5rem 1rem; border-right: 1px solid var(--rp-line); }
+.rp-stat:last-child { border-right: 0; }
+.rp-stat .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rp-ink-3); margin-bottom: 0.5rem; }
+.rp-stat .num { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 2rem; line-height: 1; letter-spacing: -0.02em; color: var(--rp-ink); }
+.rp-stat .num sup { font-size: 0.6em; color: var(--rp-ink-3); margin-left: 2px; font-style: italic; }
+.rp-stat .note { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--rp-ink-3); margin-top: 0.5rem; }
+
+/* Skills grid */
+.rp-skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rp-line); }
+.rp-skill {
+  padding: 1.5rem 2rem 1.5rem 0;
+  border-bottom: 1px solid var(--rp-line);
+  display: grid; grid-template-columns: 28px 1fr; gap: 1rem;
+  align-items: baseline;
+}
+.rp-skill:nth-child(odd)  { padding-right: 2rem; }
+.rp-skill:nth-child(even) { padding-left: 2rem; border-left: 1px solid var(--rp-line); }
+.rp-skill .idx { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; color: var(--rp-ink-4); text-transform: uppercase; }
+.rp-skill h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.0625rem; line-height: 1.25; letter-spacing: -0.005em; margin: 0 0 0.5rem; color: var(--rp-ink); }
+.rp-skill p  { font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; color: var(--rp-ink-2); margin: 0; }
+
+/* Doc strip */
+.rp-doc-strip {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 0;
+  border-top: 1px dashed var(--rp-line);
+  border-bottom: 1px dashed var(--rp-line);
+  margin-top: 2rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--rp-ink-3);
+}
+.rp-doc-strip a { color: var(--rp-ink-2); text-decoration: none; border-bottom: 1px solid var(--rp-line); padding-bottom: 3px; }
+.rp-doc-strip a:hover { color: var(--rp-ink); border-bottom-color: var(--rp-ink); }
+.rp-doc-strip a::after { content: ' ↓'; color: var(--rp-ink-3); }
+.rp-doc-strip .sep { color: var(--rp-ink-4); margin: 0 0.75rem; }
+
+/* CTA band */
+.rp-cta-band {
+  background: var(--rp-paper-2);
+  padding: 4rem 0;
+  border-top: 1px solid var(--rp-line);
+  border-bottom: 1px solid var(--rp-line);
+}
+.rp-cta-grid { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; align-items: start; }
+.rp-cta-body { max-width: 560px; }
+.rp-cta-body h2 {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1.1; letter-spacing: -0.02em;
+  margin: 0 0 1rem; color: var(--rp-ink);
+}
+.rp-cta-body p { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.65; color: var(--rp-ink-2); margin: 0 0 1.5rem; }
+
+.rp-btn-dark {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 10px 18px; background: var(--rp-ink); color: var(--rp-paper);
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+  text-decoration: none; transition: background 200ms ease;
+}
+.rp-btn-dark:hover { background: #000; color: var(--rp-paper); }
+.rp-btn-dark::after { content: '→'; font-family: 'Fraunces', Georgia, serif; font-size: 15px; }
+.rp-handle { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rp-ink-3); margin-left: 1rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .rp-hero-grid { grid-template-columns: 1fr; }
+  .rp-hero-meta { padding-top: 0; }
+  .rp-two-col { grid-template-columns: 1fr; }
+  .rp-role { grid-template-columns: 1fr; row-gap: 0.75rem; }
+  .rp-role .right { text-align: left; }
+  .rp-skills { grid-template-columns: 1fr; }
+  .rp-skill:nth-child(even) { border-left: 0; padding-left: 0; }
+  .rp-stats { grid-template-columns: repeat(2, 1fr); }
+  .rp-stat { border-right: 0; border-bottom: 1px solid var(--rp-line); }
+  .rp-cta-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .rp-frame { padding: 0 1.25rem; }
+  .rp-hero { padding: 2.5rem 0 4rem; }
+}
+
+/* Print */
+@media print {
+  .rp-hero::before, .rp-doc-strip, .rp-cta-band { display: none !important; }
+  .rp-hero { padding: 1.5rem 0 2rem; border-bottom: 1px solid #000; }
+  .rp-section { page-break-inside: avoid; padding: 1.5rem 0; }
+  .resume-page { background: #fff; }
+  a { color: var(--rp-ink) !important; }
+}
+</style>
+
+<div class="resume-page">
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <section class="rp-hero">
+    <div class="rp-frame rp-hero-inner">
+      <div class="rp-hero-grid">
+
+        <aside class="rp-marg" aria-hidden="true">
+          <span class="k">§ 01 / Resume</span>
+          <span class="k">Rev. May 2026</span>
+        </aside>
+
+        <div>
+          <div class="rp-hero-byline">Shane Logsdon <span class="sep">·</span> Curriculum Vitae <span class="sep">·</span> Est. 2008</div>
+          <h1 class="rp-hero-title">Fourteen years of shipping <em>payment platforms</em> engineers want to build on.</h1>
+          <p class="rp-hero-lead">Technical product leader with a working history that runs from production code to platform strategy. Currently leading vertical product at Global Payments, where I've spent the last decade turning payment primitives into SDKs, integrations, and developer experiences at scale.</p>
+          <nav class="rp-hero-actions" aria-label="Quick links">
+            <a href="#experience">Jump to experience</a>
+            <a href="mailto:shane@logsdon.io">Get in touch</a>
+          </nav>
+        </div>
+
+        <aside>
+          <dl class="rp-hero-meta">
+            <div class="row" data-locale-tz="America/Kentucky/Louisville"><dt class="lbl">Based</dt><dd class="val">Louisville, KY · <span data-locale-offset>GMT−5</span></dd></div>
+            <div class="row"><dt class="lbl">Email</dt><dd class="val"><a href="mailto:shane@logsdon.io">shane@logsdon.io</a></dd></div>
+            <div class="row"><dt class="lbl">Web</dt><dd class="val"><a href="https://shane.logsdon.io">shane.logsdon.io</a></dd></div>
+            <div class="row"><dt class="lbl">GitHub</dt><dd class="val"><a href="https://github.com/slogsdon">/slogsdon</a></dd></div>
+            <div class="row"><dt class="lbl">Status</dt><dd class="val"><span class="led" aria-hidden="true"></span>Open to conversations</dd></div>
+          </dl>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AT A GLANCE ──────────────────────────────── -->
+  <div class="rp-frame">
+    <section class="rp-section" style="padding-top: 3rem;">
+      <div class="rp-sec-kicker">
+        <span>02 / At a glance</span>
+        <span>Figures as of May 2026</span>
+      </div>
+
+      <div class="rp-stats">
+        <div class="rp-stat">
+          <div class="lbl">Years in industry</div>
+          <div class="num">14<sup>yrs</sup></div>
+          <div class="note">Since 2012 — web dev through product leadership.</div>
+        </div>
+        <div class="rp-stat">
+          <div class="lbl">At Global Payments</div>
+          <div class="num">11<sup>yrs</sup></div>
+          <div class="note">Five roles. Dec 2014 → present.</div>
+        </div>
+        <div class="rp-stat">
+          <div class="lbl">Merchant installs</div>
+          <div class="num">10k<sup>+</sup></div>
+          <div class="note">Via SDKs, integrations, and partner programs.</div>
+        </div>
+        <div class="rp-stat">
+          <div class="lbl">Languages shipped</div>
+          <div class="num">6</div>
+          <div class="note">C#, Java, PHP, Ruby, Python, JavaScript.</div>
+        </div>
+      </div>
+
+      <div class="rp-doc-strip">
+        <span>Resume · Shane Logsdon · 2026</span>
+        <span>
+          <a href="#" onclick="window.print();return false;">Print / Save as PDF</a>
+          <span class="sep">·</span>
+          <a href="mailto:shane@logsdon.io">Request a copy</a>
+        </span>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── EXPERIENCE ──────────────────────────────── -->
+  <div class="rp-frame">
+    <section class="rp-section" id="experience">
+      <div class="rp-two-col">
+
+        <aside class="rp-marg" aria-label="Section context">
+          <span class="k">§ 03 / Experience</span>
+          <span class="k">2012 — Present</span>
+          <span class="k">09 roles · 03 employers</span>
+        </aside>
+
+        <div>
+          <h2 class="rp-sec-title">Experience, in <em>reverse-chronological</em> order.</h2>
+          <p class="rp-sec-lead">Nine roles across three employers. Each entry reads as working notes — what the job actually was and what shipped — not a keyword sheet.</p>
+
+          <!-- i — Senior Director of Product Management -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">i</div>
+            <div class="body">
+              <h3>Senior Director of Product Management</h3>
+              <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Rebuilt the developer platform post-merger, consolidating two legacy GP+Worldpay API platforms into a single experience with multi-language sample projects, browser sandbox environments, and community infrastructure — growing developer engagement 55%+ from a standing start with no dedicated program budget.</li>
+                <li>Overhauled developer support from ad-hoc escalation to structured triage, introducing diagnostic frameworks, standardized playbooks, and cross-language reference implementations that cut repeat issues and enterprise integration resolution times.</li>
+                <li>Shipped GP's AI developer tooling ahead of most payment platforms — LLM context files for payment APIs, agentic workflow automations, and GP API Validator — building a support model that let a 3-person team operate at enterprise scale.</li>
+                <li>Built the team's KPI infrastructure from scratch, pulling support volume, product usage, and community signals into unified dashboards and monthly executive reporting, creating the first direct line from developer pain to product roadmap.</li>
+                <li>Stood up the developer advocacy function from scratch — 3-person team, FTE-only budget — establishing roadmaps, OKRs, and a career framework while driving product, engineering, and sales alignment through influence rather than spend.</li>
+                <li>Took a purpose-built payment product from concept to market in the professional and home services vertical (tens of millions in annual processing volume), acquiring nearly 1,000 merchants and $300k+ ARR as the initial foothold, with the product continuing to scale.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Jul 2023 — Present</b>
+              <small>Current role</small>
+              <span class="dur">~2.8 yrs</span>
+            </div>
+          </div>
+
+          <!-- ii — Director of Product Management -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">ii</div>
+            <div class="body">
+              <h3>Director of Product Management</h3>
+              <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Expanded developer-experience initiatives across multiple business units, cutting integration time from weeks to days.</li>
+                <li>Drove product strategy behind 20%+ year-over-year net revenue growth.</li>
+                <li>Established strategic partnerships leading to significant market expansion.</li>
+                <li>Managed technical resource allocation across multiple product lines, improving integration success rates.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Apr 2021 — Jul 2023</b>
+              <small>Director</small>
+              <span class="dur">2.3 yrs</span>
+            </div>
+          </div>
+
+          <!-- iii — Senior Manager, Solutions Consulting -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">iii</div>
+            <div class="body">
+              <h3>Senior Manager, Solutions Consulting</h3>
+              <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Led a 20+ person developer team while transitioning into product leadership for US Online Payments solutions.</li>
+                <li>Drove implementation strategy resulting in 10,000+ new merchant installations.</li>
+                <li>Generated multi-million dollar annual recurring revenue through successful partner onboarding.</li>
+                <li>Delivered technical evangelism at industry conferences, generating hundreds of qualified leads.</li>
+                <li>Shaped product strategy and technical roadmap while coordinating integration resources.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Mar 2020 — Apr 2021</b>
+              <small>Senior Manager</small>
+              <span class="dur">1.1 yrs</span>
+            </div>
+          </div>
+
+          <!-- iv — Solutions Architect -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">iv</div>
+            <div class="body">
+              <h3>Solutions Architect</h3>
+              <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Architected a multi-language SDK suite in C#/.NET, Java, PHP, Ruby, Python, and JavaScript.</li>
+                <li>Enabled 1,000+ merchant integrations generating millions of dollars in annual recurring revenue.</li>
+                <li>Led proof-of-concept projects securing 20+ strategic partner implementations.</li>
+                <li>Established technical strategy for integration patterns, improving developer experience.</li>
+                <li>Served as final escalation point for complex technical challenges while mentoring implementation teams.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Jul 2018 — Mar 2020</b>
+              <small>Architect</small>
+              <span class="dur">1.7 yrs</span>
+            </div>
+          </div>
+
+          <!-- v — Senior Software Developer -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">v</div>
+            <div class="body">
+              <h3>Senior Software Developer</h3>
+              <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Led development of enterprise payment SDKs as technical lead.</li>
+                <li>Designed and implemented scalable integration patterns, reducing partner onboarding time by 40%.</li>
+                <li>Established coding standards across multiple languages while mentoring junior developers.</li>
+                <li>Built robust testing practices through code-review leadership.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Mar 2017 — Jul 2018</b>
+              <small>Tech lead</small>
+              <span class="dur">1.4 yrs</span>
+            </div>
+          </div>
+
+          <!-- vi — Software Developer -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">vi</div>
+            <div class="body">
+              <h3>Software Developer</h3>
+              <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Implemented and maintained SDK libraries across multiple programming languages.</li>
+                <li>Achieved a 30% reduction in integration-related support tickets.</li>
+                <li>Collaborated with the support team to optimize integration patterns and documentation.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Dec 2014 — Mar 2017</b>
+              <small>Individual contributor</small>
+              <span class="dur">2.3 yrs</span>
+            </div>
+          </div>
+
+          <!-- vii — Software Architect, StarkNine -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">vii</div>
+            <div class="body">
+              <h3>Software Architect</h3>
+              <p class="sub"><span class="co">StarkNine</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Designed and managed infrastructure for ChatBlend.com and DashSocial.com.</li>
+                <li>Implemented fault-tolerant, scalable architecture for high service quality and availability.</li>
+                <li>Led product development lifecycle from conception to deployment.</li>
+                <li>Established monitoring and maintenance protocols for production systems.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Jan 2014 — Oct 2014</b>
+              <small>Architect</small>
+              <span class="dur">10 mo</span>
+            </div>
+          </div>
+
+          <!-- viii — Technical Lead, Blackstone -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">viii</div>
+            <div class="body">
+              <h3>Technical Lead</h3>
+              <p class="sub"><span class="co">Blackstone Media Network</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Oversaw full software development lifecycle for client projects.</li>
+                <li>Led systems design and specification writing for web applications.</li>
+                <li>Managed deployments across Linux and Windows environments.</li>
+                <li>Implemented both .NET and PHP solutions for diverse client needs.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Aug 2013 — Feb 2014</b>
+              <small>Tech lead</small>
+              <span class="dur">7 mo</span>
+            </div>
+          </div>
+
+          <!-- ix — Web Developer, Blackstone -->
+          <div class="rp-role">
+            <div class="n" aria-hidden="true">ix</div>
+            <div class="body">
+              <h3>Web Developer</h3>
+              <p class="sub"><span class="co">Blackstone Media Network</span><span class="dot">·</span>Louisville, KY</p>
+              <ul>
+                <li>Developed web applications using .NET (Web Forms and MVC) and PHP.</li>
+                <li>Implemented content-management solutions using WordPress and Magento.</li>
+                <li>Performed DevOps tasks across Linux and Windows environments.</li>
+                <li>Contributed to in-house product development initiatives.</li>
+              </ul>
+            </div>
+            <div class="right">
+              <b>Feb 2012 — Aug 2013</b>
+              <small>Developer</small>
+              <span class="dur">1.5 yrs</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── CAPABILITIES ─────────────────────────────── -->
+  <div class="rp-frame">
+    <section class="rp-section">
+      <div class="rp-two-col">
+
+        <aside class="rp-marg" aria-hidden="true">
+          <span class="k">§ 04 / Capabilities</span>
+          <span class="k">Grouped, not ranked</span>
+        </aside>
+
+        <div>
+          <h2 class="rp-sec-title">Capabilities &amp; <em>areas of practice</em>.</h2>
+          <p class="rp-sec-lead">Six working groups — the shapes I tend to recur to. Stacked by discipline rather than by hype; the tools in the first row are the ones I've shipped against, not simply touched.</p>
+
+          <div class="rp-skills">
+            <div class="rp-skill">
+              <div class="idx">01</div>
+              <div>
+                <h4>Development &amp; Tools</h4>
+                <p>C#/.NET · Java · PHP · Ruby · Python · JavaScript. Version control, CI/CD pipelines, testing frameworks, and cloud platforms — the stack of a working SDK author.</p>
+              </div>
+            </div>
+            <div class="rp-skill">
+              <div class="idx">02</div>
+              <div>
+                <h4>Payment Technology</h4>
+                <p>Gateway integration, multi-channel processing, PCI compliance, fraud prevention, payment authentication, alternative payment methods.</p>
+              </div>
+            </div>
+            <div class="rp-skill">
+              <div class="idx">03</div>
+              <div>
+                <h4>Technical Leadership</h4>
+                <p>System and enterprise architecture, SDK development, integration-pattern design, developer-experience strategy, technical documentation and API design.</p>
+              </div>
+            </div>
+            <div class="rp-skill">
+              <div class="idx">04</div>
+              <div>
+                <h4>Product Management</h4>
+                <p>Platform strategy, product lifecycle management, feature prioritization, roadmap development, market analysis, user research, metrics and analytics.</p>
+              </div>
+            </div>
+            <div class="rp-skill">
+              <div class="idx">05</div>
+              <div>
+                <h4>Domain Expertise</h4>
+                <p>Developer relations and platform advocacy, platform economics, digital transformation, fintech innovation, partner-ecosystem development.</p>
+              </div>
+            </div>
+            <div class="rp-skill">
+              <div class="idx">06</div>
+              <div>
+                <h4>Leadership &amp; Communication</h4>
+                <p>Team leadership, strategic planning, cross-functional collaboration, technical evangelism, developer-community building.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ── CTA ──────────────────────────────────────── -->
+  <section class="rp-cta-band">
+    <div class="rp-frame">
+      <div class="rp-cta-grid">
+        <aside class="rp-marg" aria-hidden="true">
+          <span class="k">§ 05 / Correspondence</span>
+        </aside>
+        <div class="rp-cta-body">
+          <h2>Open to conversations about payments, platforms, and developer-facing work.</h2>
+          <p>Currently at Global Payments and not actively looking, but always interested in talking to operators building developer-first products — whether that's a role, an advisory conversation, or just comparing notes.</p>
+          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem 0;">
+            <a href="mailto:shane@logsdon.io" class="rp-btn-dark">Send an email</a>
+            <span class="rp-handle">shane@logsdon.io &nbsp;·&nbsp; /in/shanelogsdon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+    var host = document.querySelector('[data-locale-tz]');
+    var target = host && host.querySelector('[data-locale-offset]');
+    if (!host || !target) return;
+    try {
+        var parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: host.dataset.localeTz,
+            timeZoneName: 'shortOffset'
+        }).formatToParts(new Date());
+        var name = parts.find(function (p) { return p.type === 'timeZoneName'; });
+        if (name && name.value) target.textContent = name.value;
+    } catch (e) {}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shane Logsdon",
+  "url": "https://shane.logsdon.io/resume/",
+  "email": "shane@logsdon.io",
+  "jobTitle": "Senior Director of Product Management",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Global Payments Inc."
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/shanelogsdon",
+    "https://github.com/slogsdon"
+  ]
+}
+</script>
