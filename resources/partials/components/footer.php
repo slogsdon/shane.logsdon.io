@@ -14,6 +14,7 @@ $folioDate = date('Y.m.d');
 
             <ul class="flex flex-wrap items-baseline gap-x-6 gap-y-2">
                 <li><a class="smallcaps hover:!text-foreground" href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener">linkedin</a></li>
+                <li><a class="smallcaps hover:!text-foreground" href="https://bsky.app/profile/shane.logsdon.io" target="_blank" rel="noreferrer noopener">bluesky</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener">github</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="https://twitter.com/shanelogsdon" target="_blank" rel="noreferrer noopener">twitter</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="/contact/">contact</a></li>

@@ -87,7 +87,7 @@ $this->layout('partials::layouts/main', [
             <div class="space-y-2">
                 <p class="smallcaps">email</p>
                 <p class="text-sm text-foreground">
-                    <a href="mailto:shane@shanelogsdon.com" class="link-quiet">shane@shanelogsdon.com</a>
+                    <a href="mailto:shane@logsdon.io" class="link-quiet">shane@logsdon.io</a>
                 </p>
             </div>
             <div class="space-y-2">
