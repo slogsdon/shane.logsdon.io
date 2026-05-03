@@ -25,8 +25,14 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <?php endif; ?>
+<meta name="author" content="Shane Logsdon">
+<?php if (!empty($ogType) && $ogType === 'article'): ?>
+<meta property="article:author" content="Shane Logsdon">
+<meta property="article:publisher" content="https://shane.logsdon.io">
+<?php endif; ?>
 <meta name="twitter:card" content="<?= !empty($image) ? 'summary_large_image' : 'summary' ?>">
 <meta name="twitter:site" content="@shanelogsdon">
+<meta name="twitter:creator" content="@shanelogsdon">
 <?php if (!empty($image)): ?>
 <meta name="twitter:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
 <?php endif; ?>
