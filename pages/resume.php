@@ -225,8 +225,6 @@ $this->layout('partials::layouts/main', [
 }
 .rp-doc-strip a { color: var(--rp-ink-2); text-decoration: none; border-bottom: 1px solid var(--rp-line); padding-bottom: 3px; }
 .rp-doc-strip a:hover { color: var(--rp-ink); border-bottom-color: var(--rp-ink); }
-.rp-doc-strip a::after { content: ' ↓'; color: var(--rp-ink-3); }
-.rp-doc-strip .sep { color: var(--rp-ink-4); margin: 0 0.75rem; }
 
 /* CTA band */
 .rp-cta-band {
@@ -274,11 +272,43 @@ $this->layout('partials::layouts/main', [
 
 /* Print */
 @media print {
+  /* Hide site chrome — header/footer come from the layout, not this page */
+  #site-header, footer { display: none !important; }
+
+  /* Reset the site's dark body background */
+  html, body { background: #fff !important; color: #1A1714 !important; }
+
+  /* Hide screen-only elements */
   .rp-hero::before, .rp-doc-strip, .rp-cta-band { display: none !important; }
-  .rp-hero { padding: 1.5rem 0 2rem; border-bottom: 1px solid #000; }
-  .rp-section { page-break-inside: avoid; padding: 1.5rem 0; }
+
+  /* Container */
   .resume-page { background: #fff; }
-  a { color: var(--rp-ink) !important; }
+  .rp-frame { padding: 0; }
+
+  /* Hero */
+  .rp-hero { padding: 1rem 0 1.5rem; border-bottom: 1px solid #ccc; }
+  .rp-hero-grid { grid-template-columns: 140px 1fr 210px; gap: 1.25rem; }
+
+  /* Sections */
+  .rp-section { padding: 1.25rem 0; border-bottom-color: #ddd; break-inside: avoid; page-break-inside: avoid; }
+  .rp-two-col { grid-template-columns: 140px 1fr; gap: 1.25rem; }
+
+  /* Experience rows — tighter for print */
+  .rp-role { grid-template-columns: 56px 1fr 145px; column-gap: 0.75rem; padding: 0.875rem 0; border-bottom-color: #ddd; }
+  .rp-role:first-child { border-top-color: #ddd; }
+  .rp-role .body ul li { font-size: 13px; }
+
+  /* Stats */
+  .rp-stats { border-color: #ddd; }
+  .rp-stat { border-right-color: #ddd; padding: 0.875rem 0.75rem; }
+
+  /* Skills */
+  .rp-skills { border-top-color: #ddd; }
+  .rp-skill { border-bottom-color: #ddd; padding: 0.875rem 1.25rem 0.875rem 0; }
+  .rp-skill:nth-child(even) { border-left-color: #ddd; }
+
+  /* Links */
+  a { color: #1A1714 !important; text-decoration: none !important; }
 }
 </style>
 
@@ -351,11 +381,7 @@ $this->layout('partials::layouts/main', [
 
       <div class="rp-doc-strip">
         <span>Resume · Shane Logsdon · 2026</span>
-        <span>
-          <a href="#" onclick="window.print();return false;">Print / Save as PDF</a>
-          <span class="sep">·</span>
-          <a href="mailto:shane@logsdon.io">Request a copy</a>
-        </span>
+        <a href="#" onclick="window.print();return false;">Print / Save as PDF</a>
       </div>
     </section>
   </div>
