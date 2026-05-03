@@ -12,6 +12,10 @@
 <?php if (!empty($url)): ?>
   <link rel="canonical" href="https://shane.logsdon.io<?= $this->e($url); ?>">
 <?php endif; ?>
+<link rel="me" href="https://bsky.app/profile/shane.logsdon.io">
+<link rel="me" href="https://twitter.com/shanelogsdon">
+<link rel="me" href="https://www.linkedin.com/in/shanelogsdon">
+<link rel="me" href="https://github.com/slogsdon">
 
 <meta property="og:site_name" content="Shane Logsdon">
 <meta property="og:type" content="<?= !empty($ogType) ? $this->e($ogType) : 'website' ?>">
@@ -24,11 +28,20 @@
 <meta property="og:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<?php if (!empty($imageAlt)): ?>
+<meta property="og:image:alt" content="<?= $this->e($imageAlt) ?>">
+<?php endif; ?>
 <?php endif; ?>
 <meta name="author" content="Shane Logsdon">
 <?php if (!empty($ogType) && $ogType === 'article'): ?>
 <meta property="article:author" content="Shane Logsdon">
 <meta property="article:publisher" content="https://shane.logsdon.io">
+<?php if (!empty($publishedTime)): ?>
+<meta property="article:published_time" content="<?= $this->e($publishedTime) ?>">
+<?php endif; ?>
+<?php if (!empty($modifiedTime)): ?>
+<meta property="article:modified_time" content="<?= $this->e($modifiedTime) ?>">
+<?php endif; ?>
 <?php endif; ?>
 <meta name="twitter:card" content="<?= !empty($image) ? 'summary_large_image' : 'summary' ?>">
 <meta name="twitter:site" content="@shanelogsdon">

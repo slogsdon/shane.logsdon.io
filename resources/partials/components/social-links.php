@@ -8,4 +8,7 @@
     <li><a href="https://twitter.com/shanelogsdon"
            class="social-link"
            title="Shane Logsdon on Twitter">Twitter</a></li>
+    <li><a href="https://bsky.app/profile/shane.logsdon.io"
+           class="social-link"
+           title="Shane Logsdon on Bluesky">Bluesky</a></li>
 </ul>

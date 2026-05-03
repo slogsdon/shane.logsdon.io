@@ -3,7 +3,10 @@
     'description' => !empty($description) ? $description : null,
     'url' => !empty($url) ? $url : null,
     'image' => !empty($image) ? $image : null,
+    'imageAlt' => !empty($imageAlt) ? $imageAlt : null,
     'ogType' => !empty($ogType) ? $ogType : null,
+    'publishedTime' => !empty($publishedTime) ? $publishedTime : null,
+    'modifiedTime' => !empty($modifiedTime) ? $modifiedTime : null,
 ]); ?>
 
 <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:text-background">

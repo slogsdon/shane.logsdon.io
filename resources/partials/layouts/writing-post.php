@@ -31,7 +31,10 @@ $this->layout('partials::layouts/main', [
     'description' => $meta->description,
     'url' => !empty($url) ? $url : null,
     'image' => !empty($image) ? $image : null,
+    'imageAlt' => !empty($title) ? $title : null,
     'ogType' => 'article',
+    'publishedTime' => DateTime::createFromFormat('U', $originalDate)->format('c'),
+    'modifiedTime' => DateTime::createFromFormat('U', isset($modified) ? $modified : $originalDate)->format('c'),
 ]);
 $formattedDate = DateTime::createFromFormat('U', $originalDate)->format('F j, Y');
 $folioDate = DateTime::createFromFormat('U', $originalDate)->format('Y.m.d');
