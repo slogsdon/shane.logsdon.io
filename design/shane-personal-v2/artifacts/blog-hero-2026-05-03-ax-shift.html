@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — the-ax-shift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ── Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-accent:          #c26a3b;
+  --color-accent-hover:    #a0542a;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:        1.1875rem;
+  --fs-body-lg:     1.0625rem;
+  --fs-body-md:     1rem;
+  --fs-meta:        0.875rem;
+  --fs-smallcaps-lg:0.875rem;
+  --fs-smallcaps:   0.75rem;
+  --fs-dateline:    0.75rem;
+  --fs-code:        0.875rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-smallcaps: 0.08em;
+  --tracking-mono:      0.06em;
+
+  --s-1:0.25rem; --s-2:0.5rem;  --s-3:0.75rem; --s-4:1rem;
+  --s-5:1.5rem;  --s-6:2rem;    --s-7:3rem;    --s-8:4rem;
+  --s-9:6rem;    --s-10:9rem;
+
+  --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
+}
+
+/* ── Page chrome ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #1c1c1c;
+  min-height: 100vh;
+  font-family: var(--type-sans-family);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 0 64px;
+}
+
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  align-self: flex-start;
+  margin-left: calc(50vw - 600px);
+}
+
+/* ── Shared canvas base ───────────────────────────────────────────── */
+.canvas {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ── Running head ─────────────────────────────────────────────────── */
+.running-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+.t-dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+
+/* ── Fragment — the core argument is the visual event ────────────── */
+.fragment {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  padding-left: var(--s-5);
+  border-left: 1px solid var(--color-rule);
+}
+
+/* ── Footer row ───────────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--color-rule);
+}
+.foot-title {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps-lg);
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink-3);
+}
+.t-accent { color: var(--color-accent); font-style: normal; }
+.wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+.wordmark::after { content: '.'; color: var(--color-accent); }
+.folio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+.folio .pos { color: var(--color-ink); }
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* OG card — 1200×630                                                  */
+/* ─────────────────────────────────────────────────────────────────── */
+.canvas-og {
+  width: 1200px;
+  height: 630px;
+  padding: var(--s-7); /* 48px */
+}
+
+.canvas-og .fragment {
+  font-size: clamp(var(--fs-headline-md), 3.2vw, 2.75rem);
+  max-width: 22ch;
+  margin: var(--s-6) 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* In-page hero — 1440×600                                             */
+/* ─────────────────────────────────────────────────────────────────── */
+.canvas-hero {
+  width: 1440px;
+  height: 600px;
+  padding: var(--s-8); /* 64px */
+}
+
+.canvas-hero .fragment {
+  font-size: var(--fs-headline-lg); /* 56px */
+  max-width: 24ch;
+  margin: var(--s-5) 0;
+}
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!--
+  Variation choices:
+    archetype:  object-of-content — the article's core argument is the visual event;
+                the title appears as the label below it, not as the primary headline.
+                Inner structure: pull-quote fragment + hairline + footer label row
+                (architecture applied recursively — no chrome-led inner block)
+    layout:     asymmetric — fragment left-anchored with pull-quote rule; folio right-anchored
+    color:      monochrome — cream surface (prior blog-hero used full inversion; this contrasts it)
+    type-press: mixed-weight — display-400 fragment + smallcaps-600 title label
+
+  Post slug:   the-ax-shift
+  OG desc:     AI coding tools don't fail on prompts. They fail on ambiguous artifacts.
+               Here's what Agent Experience means in practice and why it starts with your spec.
+  URL:         https://shane.logsdon.io/articles/strategic-insights/the-ax-shift/
+-->
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot for og:image meta tag</span>
+<article class="canvas canvas-og">
+
+  <div class="running-head">
+    <span>shane logsdon — strategic insights</span>
+    <span class="t-dateline">2026.05.03</span>
+  </div>
+
+  <p class="fragment">
+    AI coding tools don't fail on prompts. They fail on ambiguous artifacts.
+  </p>
+
+  <footer class="foot">
+    <span class="foot-title">
+      the ax shift: you're still designing for <span class="t-accent">yourself</span>.
+    </span>
+    <span class="folio">
+      <span class="t-dateline">2026.05.03</span>
+      <span class="pos">/ 001</span>
+    </span>
+  </footer>
+
+</article>
+
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot for article header</span>
+<article class="canvas canvas-hero">
+
+  <div class="running-head">
+    <span>shane logsdon — strategic insights</span>
+    <span class="t-dateline">2026.05.03</span>
+  </div>
+
+  <p class="fragment">
+    AI coding tools don't fail on prompts. They fail on ambiguous artifacts.
+  </p>
+
+  <footer class="foot">
+    <span class="foot-title">
+      the ax shift: you're still designing for <span class="t-accent">yourself</span>.
+    </span>
+    <span class="wordmark">Shane Logsdon</span>
+  </footer>
+
+</article>
+
+</body>
+</html>

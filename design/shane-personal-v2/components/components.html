@@ -2,258 +2,1022 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Shane Logsdon — Components v2</title>
+<title>Shane Logsdon — Component Library (v2)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+/* ══ Tokens (verbatim from tokens.css) ══════════════════════════════ */
 :root {
-  --color-surface: #fbfaf9; --color-surface-feature: #ede4d2; --color-surface-muted: #f1eee8;
-  --color-ink: #0e1116; --color-ink-soft: #404550; --color-ink-3: #62686f;
-  --color-rule: #d6d8de;
-  --color-accent: #c26a3b; --color-accent-hover: #a0542a;
-  --type-display: 'Fraunces', Georgia, serif;
-  --type-sans: 'Inter', system-ui, sans-serif;
-  --type-mono: 'JetBrains Mono', ui-monospace, monospace;
-}
-* { box-sizing: border-box; }
-html { -webkit-font-smoothing: antialiased; }
-body { margin: 0; background: var(--color-surface); color: var(--color-ink); font-family: var(--type-sans); font-size: 17px; line-height: 1.65; font-feature-settings: 'ss01', 'cv11', 'kern'; }
-.page { max-width: 1180px; margin: 0 auto; padding: 96px 24px; }
+  --color-surface:          #fbfaf9;
+  --color-surface-feature:  #ede4d2;
+  --color-surface-muted:    #f1eee8;
+  --color-ink:              #0e1116;
+  --color-ink-soft:         #404550;
+  --color-ink-3:            #62686f;
+  --color-rule:             #d6d8de;
+  --color-grid:             #e0e2e6;
+  --color-accent:           #c26a3b;
+  --color-accent-hover:     #a0542a;
 
-/* Hero */
-.hero { padding-bottom: 96px; position: relative; }
-.hero h1 {
-  font-family: var(--type-display); font-weight: 400;
-  font-size: clamp(56px, 9vw, 96px); line-height: 1.0; letter-spacing: -0.02em;
-  margin: 0; color: var(--color-ink);
-}
-.hero h1 .accent { color: var(--color-accent); }
-.hero .lead { font-size: 19px; line-height: 1.6; color: var(--color-ink-soft); max-width: 56ch; margin: 32px 0 0; }
+  --type-display-family:    'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:       'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:       'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-/* Folio */
-.folio { display: inline-flex; align-items: baseline; gap: 12px; font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
-.folio .pos { color: var(--color-ink); }
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:        1.1875rem;
+  --fs-body-lg:     1.0625rem;
+  --fs-body-md:     1rem;
+  --fs-meta:        0.875rem;
+  --fs-smallcaps-lg:0.875rem;
+  --fs-smallcaps:   0.75rem;
+  --fs-dateline:    0.75rem;
+  --fs-code:        0.875rem;
 
-/* Section */
-.section { padding: 144px 0 0; border-top: 1px solid var(--color-rule); }    /* major divisions = bigger gap, 1px hairline */
-.section-head { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: baseline; margin-bottom: 48px; }
-.section-head .label {
-  font-family: var(--type-display); font-weight: 600;
-  font-variant-caps: small-caps; font-feature-settings: 'smcp';
-  text-transform: lowercase; font-size: 14px; letter-spacing: 0.08em;
-  color: var(--color-ink-3);
-}
-.section-head h2 {
-  font-family: var(--type-display); font-weight: 500;
-  font-size: 56px; line-height: 1.1; letter-spacing: -0.015em;
-  margin: 0;
-}
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+  --lh-prose:  1.65;
 
-.preview { padding: 48px 0; margin-bottom: 16px; }                                                                  /* no box — cream-on-cream borders earn nothing; whitespace + section-head carries the structure */
-.preview-feature { padding: 64px 32px; background: var(--color-ink); color: var(--color-surface); margin-bottom: 16px; }   /* dark inversion — the canonical v2 feature treatment */
-.preview-feature .accent { color: var(--color-accent); }
+  --tracking-cover:          -0.022em;
+  --tracking-display:        -0.02em;
+  --tracking-tight:          -0.015em;
+  --tracking-normal:         0;
+  --tracking-smallcaps:      0.08em;
+  --tracking-smallcaps-tight:0.06em;
+  --tracking-mono:           0.06em;
 
-/* ─── 1. Wordmark — replaces SL · | · Shane Logsdon ─── */
-.wordmark { font-family: var(--type-display); font-weight: 600; font-size: 22px; letter-spacing: -0.005em; color: var(--color-ink); }
-.wordmark--lg { font-size: 36px; }
-.wordmark--sm { font-size: 16px; }
+  --s-1:0.25rem; --s-2:0.5rem;  --s-3:0.75rem; --s-4:1rem;
+  --s-5:1.5rem;  --s-6:2rem;    --s-7:3rem;    --s-8:4rem;
+  --s-9:6rem;    --s-10:9rem;
 
-/* ─── 2. Editorial labels — Fraunces small caps ─── */
-.smallcaps-lg {
-  font-family: var(--type-display); font-weight: 600;
-  font-variant-caps: small-caps; font-feature-settings: 'smcp';
-  text-transform: lowercase; font-size: 14px; letter-spacing: 0.08em;
-  color: var(--color-ink);
-}
-.smallcaps {
-  font-family: var(--type-display); font-weight: 600;
-  font-variant-caps: small-caps; font-feature-settings: 'smcp';
-  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
-  color: var(--color-ink-3);
+  --measure:   64ch;
+  --container: 1180px;
+  --gutter:    1.5rem;
+
+  --r-0:       0;
+  --r-hairline:1px;
+  --r-sm:      2px;
+  --r-full:    999px;
+
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
 }
 
-/* ─── 3. Running head ─── */
+/* ══ Type utilities ══════════════════════════════════════════════════ */
+.t-display-xxl { font-family:var(--type-display-family);font-weight:400;font-size:var(--fs-display-xxl);line-height:var(--lh-cover);letter-spacing:var(--tracking-cover); }
+.t-display-xl  { font-family:var(--type-display-family);font-weight:400;font-size:var(--fs-display-xl);line-height:var(--lh-tight);letter-spacing:var(--tracking-display); }
+.t-display     { font-family:var(--type-display-family);font-weight:400;font-size:var(--fs-display);line-height:var(--lh-snug);letter-spacing:var(--tracking-display); }
+.t-headline-lg { font-family:var(--type-display-family);font-weight:500;font-size:var(--fs-headline-lg);line-height:1.1;letter-spacing:var(--tracking-tight); }
+.t-headline-md { font-family:var(--type-display-family);font-weight:500;font-size:var(--fs-headline-md);line-height:var(--lh-normal);letter-spacing:var(--tracking-tight); }
+.t-headline-sm { font-family:var(--type-display-family);font-weight:500;font-size:var(--fs-headline-sm);line-height:1.3; }
+.t-lead        { font-family:var(--type-sans-family);font-size:var(--fs-lead);line-height:var(--lh-prose);color:var(--color-ink); }
+.t-body        { font-family:var(--type-sans-family);font-size:var(--fs-body-lg);line-height:var(--lh-prose);color:var(--color-ink); }
+.t-body-md     { font-family:var(--type-sans-family);font-size:var(--fs-body-md);line-height:var(--lh-prose);color:var(--color-ink-soft); }
+.t-meta        { font-family:var(--type-sans-family);font-size:var(--fs-meta);line-height:1.5;color:var(--color-ink-3); }
+.t-smallcaps-lg {
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps-lg);
+  line-height:1;letter-spacing:var(--tracking-smallcaps);color:var(--color-ink);
+}
+.t-smallcaps {
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps);
+  line-height:1;letter-spacing:0.1em;color:var(--color-ink-3);
+}
+.t-dateline { font-family:var(--type-mono-family);font-size:var(--fs-dateline);letter-spacing:var(--tracking-mono);color:var(--color-ink-3); }
+.t-code     { font-family:var(--type-mono-family);font-size:var(--fs-code);line-height:1.5;color:var(--color-ink); }
+.t-accent   { color:var(--color-accent);font-style:normal; }
+
+/* ══ Five named primitives ═══════════════════════════════════════════ */
+.inversion {
+  background:var(--color-ink);color:var(--color-surface);
+  --color-ink:var(--color-surface);
+  --color-ink-soft:rgba(251,250,249,0.72);
+  --color-ink-3:rgba(251,250,249,0.55);
+  --color-rule:rgba(251,250,249,0.18);
+}
+.rule        { height:1px;background:var(--color-rule);border:0;margin:0; }
+.column-rule { width:1px;background:var(--color-rule); }
+.folio {
+  display:inline-flex;align-items:baseline;gap:12px;
+  font-family:var(--type-mono-family);font-size:var(--fs-dateline);
+  letter-spacing:var(--tracking-mono);color:var(--color-ink-3);
+}
+.folio .pos { color:var(--color-ink); }
 .running-head {
-  display: flex; align-items: baseline; justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--color-rule);
-  font-family: var(--type-display); font-weight: 600;
-  font-variant-caps: small-caps; font-feature-settings: 'smcp';
-  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
-  color: var(--color-ink);
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding-bottom:12px;border-bottom:1px solid var(--color-rule);
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps);letter-spacing:0.1em;
+  color:var(--color-ink);
 }
-
-/* ─── 4. Btn-arrow (only button — filled .btn removed) ─── */
+.wordmark {
+  font-family:var(--type-display-family);font-weight:600;
+  font-size:22px;letter-spacing:-0.005em;color:var(--color-ink);
+}
+.wordmark--lg { font-size:36px; }
+.wordmark--sm { font-size:16px; }
 .btn-arrow {
-  display: inline; font-family: var(--type-sans); font-size: 16px; font-weight: 400;
-  color: var(--color-ink); text-decoration: underline;
-  text-decoration-color: var(--color-rule); text-decoration-thickness: 1px;
-  text-underline-offset: 5px;
+  display:inline;font-family:var(--type-sans-family);
+  font-size:var(--fs-body-md);font-weight:400;color:var(--color-ink);
+  text-decoration:underline;text-decoration-color:var(--color-rule);
+  text-decoration-thickness:1px;text-underline-offset:5px;
+  cursor:pointer;transition:color var(--dur) var(--ease),text-decoration-color var(--dur) var(--ease);
 }
-.btn-arrow::after { content: ' →'; font-family: var(--type-mono); font-size: 0.85em; }
-.btn-arrow:hover { text-decoration-color: var(--color-ink); }
-.btn-arrow--accent { color: var(--color-accent); text-decoration-color: var(--color-accent-hover); }
+.btn-arrow::after { content:' →';font-family:var(--type-mono-family);font-size:0.85em; }
+.btn-arrow:hover  { text-decoration-color:var(--color-ink); }
+.btn-arrow--accent { color:var(--color-accent);text-decoration-color:var(--color-accent-hover); }
+.btn-arrow--accent:hover { color:var(--color-accent-hover); }
+.btn-arrow--muted { color:var(--color-ink-3); }
+.btn-arrow--muted:hover { color:var(--color-ink); }
 
-/* ─── 5. Article row — with column rule ─── */
+/* ══ Additional components ═══════════════════════════════════════════ */
+
+/* Badge */
+.badge {
+  display:inline-flex;align-items:center;gap:var(--s-2);
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps);
+  letter-spacing:0.1em;padding:0.25em 0.6em;
+  border:1px solid var(--color-rule);color:var(--color-ink-3);
+}
+.badge--accent { border-color:var(--color-accent);color:var(--color-accent); }
+.badge--dot::before {
+  content:'';display:inline-block;width:5px;height:5px;
+  border-radius:var(--r-full);background:currentColor;
+}
+
+/* Callout — left rule, no filled background */
+.callout { display:flex;gap:var(--s-5);padding:var(--s-5) 0; }
+.callout-rule { width:2px;flex-shrink:0;background:var(--color-rule); }
+.callout--accent .callout-rule { background:var(--color-accent); }
+.callout--ok .callout-rule    { background:#3d7a5c; }
+.callout-body  { display:flex;flex-direction:column;gap:var(--s-2); }
+.callout-label {
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps);
+  letter-spacing:0.1em;color:var(--color-ink-3);
+}
+.callout--accent .callout-label { color:var(--color-accent); }
+.callout--ok    .callout-label  { color:#3d7a5c; }
+
+/* Pull quote */
+.pull-quote { padding-left:var(--s-6);border-left:1px solid var(--color-rule);max-width:var(--measure); }
+.pull-quote blockquote {
+  font-family:var(--type-display-family);font-weight:400;
+  font-size:clamp(1.25rem,3vw,var(--fs-headline-md));
+  line-height:var(--lh-normal);letter-spacing:var(--tracking-tight);
+  color:var(--color-ink);font-style:italic;margin:0;
+}
+.pull-quote cite {
+  display:block;margin-top:var(--s-4);
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps);
+  letter-spacing:0.1em;color:var(--color-ink-3);font-style:normal;
+}
+.pull-quote cite::before { content:'— '; }
+
+/* Stat callout */
+.stat-callout { display:inline-flex;flex-direction:column;gap:var(--s-2); }
+.stat-callout .num {
+  font-family:var(--type-display-family);font-weight:400;
+  font-size:clamp(3rem,8vw,var(--fs-display-xl));
+  line-height:1;letter-spacing:var(--tracking-display);color:var(--color-ink);
+}
+.stat-callout .num sup { font-size:0.45em;vertical-align:super;line-height:1;letter-spacing:0; }
+
+/* Article row */
 .article-row {
-  display: grid; grid-template-columns: 100px 1px 1fr auto; gap: 24px;
-  padding: 32px 0; border-top: 1px solid var(--color-rule);
-  align-items: baseline;
+  display:grid;grid-template-columns:100px 1px 1fr auto;
+  gap:24px;padding:32px 0;border-top:1px solid var(--color-rule);align-items:baseline;
 }
-.article-row__num { font-family: var(--type-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--color-ink-3); }
-.article-row__num .pos { color: var(--color-ink); }
-.article-row__num .date { display: block; margin-top: 4px; }
-.article-row__rule { background: var(--color-rule); height: 100%; }
+.article-row:last-child { border-bottom:1px solid var(--color-rule); }
+.article-row__num { font-family:var(--type-mono-family);font-size:12px;letter-spacing:0.06em;color:var(--color-ink-3); }
+.article-row__num .pos { color:var(--color-ink); }
+.article-row__num .date { display:block;margin-top:4px; }
+.article-row__rule { background:var(--color-rule); }
 .article-row__title {
-  font-family: var(--type-display); font-weight: 500;
-  font-size: 28px; line-height: 1.2; letter-spacing: -0.012em;
-  color: var(--color-ink); margin: 0;
+  font-family:var(--type-display-family);font-weight:500;
+  font-size:28px;line-height:1.2;letter-spacing:-0.012em;color:var(--color-ink);margin:0;
 }
-.article-row__title .accent { color: var(--color-accent); }
-.article-row__title .dek {
-  display: block; margin-top: 12px;
-  font-family: var(--type-sans); font-weight: 400;
-  font-size: 16px; line-height: 1.6; letter-spacing: 0;
-  color: var(--color-ink-soft); max-width: 64ch;
+.article-row__title a { color:inherit;text-decoration:none; }
+.article-row__title a:hover { color:var(--color-accent); }
+.article-row__dek {
+  display:block;margin-top:12px;
+  font-family:var(--type-sans-family);font-weight:400;
+  font-size:16px;line-height:1.6;color:var(--color-ink-soft);max-width:64ch;
 }
 .article-row__cat {
-  font-family: var(--type-display); font-weight: 600;
-  font-variant-caps: small-caps; font-feature-settings: 'smcp';
-  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
-  color: var(--color-ink-3);
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:12px;letter-spacing:0.1em;color:var(--color-ink-3);
 }
 
-/* ─── 6. Drop-cap opening ─── */
-.dropcap-block { max-width: 64ch; }
-.dropcap-block::first-letter {
-  font-family: var(--type-display); font-weight: 400;
-  font-size: 6.5em; line-height: 0.9;
-  float: left; padding: 8px 12px 0 0;
-  color: var(--color-ink);
+/* Drop cap */
+.dropcap::first-letter {
+  font-family:var(--type-display-family);font-weight:400;
+  font-size:6.5em;line-height:0.9;float:left;padding:8px 12px 0 0;color:var(--color-ink);
 }
 
-/* ─── 7. Hero block — 96px display, designed to live inside .preview-feature (dark inversion) ─── */
-.hero-block {
-  padding: 0;
+/* Avatar frame */
+.avatar-frame { display:inline-flex;flex-direction:column;align-items:center;gap:var(--s-3); }
+.avatar-circle {
+  width:72px;height:72px;border-radius:var(--r-full);
+  border:1px solid var(--color-rule);background:var(--color-surface-muted);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--type-display-family);font-size:1.25rem;color:var(--color-ink-3);
+  overflow:hidden;
 }
-.hero-block h2 {
-  font-family: var(--type-display); font-weight: 400;
-  font-size: 96px; line-height: 1.0; letter-spacing: -0.02em;
-  margin: 0;
-  color: inherit;       /* takes the surrounding inversion color (cream on dark) */
-}
-.hero-block h2 .accent { color: var(--color-accent); }
+.avatar-circle img { width:100%;height:100%;object-fit:cover; }
 
-/* Page foot */
-.page-foot {
-  margin-top: 144px; padding-top: 24px;
-  border-top: 1px solid var(--color-rule);
-  display: flex; justify-content: space-between; align-items: baseline;
+/* Code */
+.code-filename {
+  font-family:var(--type-mono-family);font-size:11px;letter-spacing:0.06em;
+  color:var(--color-ink-3);padding:var(--s-2) var(--s-4);
+  background:var(--color-surface-muted);border:1px solid var(--color-rule);border-bottom:none;
+}
+.code-block {
+  background:var(--color-ink);color:var(--color-surface);
+  font-family:var(--type-mono-family);font-size:var(--fs-code);line-height:1.6;
+  padding:var(--s-5);overflow-x:auto;border:1px solid var(--color-ink);margin:0;
+}
+code.inline {
+  font-family:var(--type-mono-family);font-size:0.875em;
+  background:var(--color-surface-muted);padding:0.1em 0.4em;
+  border:1px solid var(--color-rule);
+}
+
+/* Footer block */
+.footer-block {
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;
+  gap:var(--s-3);padding-top:var(--s-5);border-top:1px solid var(--color-rule);
+}
+
+/* Wordmark variants */
+.wordmark--period::after { content:'.';color:var(--color-accent); }
+.wordmark--rule-above    { border-top:1px solid var(--color-rule);padding-top:var(--s-3); }
+
+/* Lists */
+.list-numbered { list-style:none;padding:0;margin:0; }
+.list-numbered > li {
+  display:grid;grid-template-columns:auto 1fr;gap:var(--s-5);
+  padding:var(--s-4) 0;border-top:1px solid var(--color-rule);
+}
+.list-numbered > li:last-child { border-bottom:1px solid var(--color-rule); }
+.list-dash { list-style:none;padding:0;margin:0; }
+.list-dash li { padding:var(--s-2) 0 var(--s-2) var(--s-5);position:relative; }
+.list-dash li::before { content:'—';position:absolute;left:0;color:var(--color-ink-3); }
+.list-def { margin:0;padding:0; }
+.list-def dt {
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps);
+  letter-spacing:0.1em;color:var(--color-ink-3);margin-top:var(--s-4);
+}
+.list-def dt:first-child { margin-top:0; }
+.list-def dd { margin-left:0;color:var(--color-ink-soft);font-family:var(--type-sans-family);font-size:var(--fs-body-md);line-height:var(--lh-prose); }
+
+/* ══ Library chrome ══════════════════════════════════════════════════ */
+*,*::before,*::after { box-sizing:border-box;margin:0;padding:0; }
+html { -webkit-font-smoothing:antialiased; }
+body {
+  background:var(--color-surface);color:var(--color-ink);
+  font-family:var(--type-sans-family);font-size:var(--fs-body-lg);
+  line-height:var(--lh-prose);font-feature-settings:'ss01','cv11','kern';
+}
+.page { max-width:1180px;margin:0 auto;padding:var(--s-9) var(--s-6); }
+
+.lib-header { padding-bottom:var(--s-7);margin-bottom:var(--s-8);position:relative; }
+
+.lib-section { padding-top:var(--s-8);border-top:1px solid var(--color-rule);margin-bottom:var(--s-9); }
+.lib-section-head { display:grid;grid-template-columns:200px 1fr;gap:var(--s-7);align-items:baseline;margin-bottom:var(--s-6); }
+.lib-section-label {
+  font-family:var(--type-display-family);font-weight:600;
+  font-variant-caps:small-caps;font-feature-settings:'smcp';
+  text-transform:lowercase;font-size:var(--fs-smallcaps-lg);
+  letter-spacing:var(--tracking-smallcaps);color:var(--color-ink-3);
+}
+.lib-section-title { font-family:var(--type-display-family);font-weight:500;font-size:var(--fs-headline-md);line-height:var(--lh-normal);letter-spacing:var(--tracking-tight); }
+.lib-note {
+  font-family:var(--type-mono-family);font-size:11px;
+  letter-spacing:0.06em;color:var(--color-accent);
+  text-transform:uppercase;margin-bottom:var(--s-5);
+}
+.preview { padding:var(--s-6) 0; }
+.preview + .preview { padding-top:0; }
+.preview-label {
+  display:block;font-family:var(--type-mono-family);font-size:10px;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--color-ink-3);margin-bottom:var(--s-4);
+}
+.preview-box { padding:var(--s-6);background:var(--color-surface);border:1px solid var(--color-rule); }
+details { margin-top:var(--s-3); }
+summary {
+  font-family:var(--type-mono-family);font-size:11px;letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--color-ink-3);cursor:pointer;padding:var(--s-2) 0;
+}
+summary:hover { color:var(--color-ink); }
+pre.snippet {
+  background:var(--color-ink);color:var(--color-surface);
+  font-family:var(--type-mono-family);font-size:12px;line-height:1.6;
+  padding:var(--s-5);overflow-x:auto;margin-top:var(--s-2);
 }
 </style>
 </head>
 <body>
 <main class="page">
 
-  <header class="hero">
-    <h1>Components, <span class="accent">reimagined</span>.</h1>
-    <p class="lead">Five named primitives replace v1's complete inventory. The signature swap: Fraunces small caps as the default editorial label. Mono restricted to dateline and code only.</p>
-    <span class="folio" style="position: absolute; bottom: 0; right: 0;"><span>library · v2</span><span class="pos">2026.05.02</span></span>
+  <header class="lib-header">
+    <div class="running-head">
+      <span>shane logsdon — component library</span>
+      <span class="t-dateline">v2 · 2026.05.02</span>
+    </div>
+    <h1 class="t-headline-lg" style="margin-top:var(--s-7);">
+      Components, <span class="t-accent">distilled</span>.
+    </h1>
+    <p class="t-lead" style="margin-top:var(--s-5);max-width:var(--measure);color:var(--color-ink-soft);">
+      Five named primitives plus supporting components for platform artifacts. Every value from <code class="inline">tokens.css</code>. The <span class="t-smallcaps">primary</span> comment at the top of each section tells platform skills which variant to default to.
+    </p>
+    <span class="folio" style="position:absolute;bottom:0;right:0;">
+      <span>component library</span><span class="pos">v2 · 2026.05.02</span>
+    </span>
   </header>
 
-  <!-- ─── 1. Wordmark ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">i. wordmark</span><h2>Just the name.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">No SL initials. No hairline pipe. The wordmark IS the mark.</p>
-    <div class="preview" style="display: flex; gap: 64px; align-items: baseline;">
-      <span class="wordmark wordmark--lg">Shane Logsdon</span>
+
+  <!-- ── i. Wordmark ─────────────────────────────────────────────── -->
+  <!-- PRIMARY: wordmark--period — accent period gives the mark one idiosyncratic detail -->
+  <section class="lib-section" id="wordmark">
+    <div class="lib-section-head">
+      <span class="lib-section-label">i. wordmark</span>
+      <h2 class="lib-section-title">Just the name.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: wordmark--period (amber accent period)</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">No SL initials. No hairline pipe. The wordmark IS the mark.</p>
+
+    <div class="preview" style="display:flex;gap:var(--s-8);align-items:baseline;flex-wrap:wrap;">
+      <span class="preview-label" style="width:100%">scales</span>
+      <span class="wordmark wordmark--lg wordmark--period">Shane Logsdon</span>
+      <span class="wordmark wordmark--period">Shane Logsdon</span>
+      <span class="wordmark wordmark--sm wordmark--period">Shane Logsdon</span>
+    </div>
+
+    <div class="preview" style="display:flex;gap:var(--s-8);align-items:baseline;flex-wrap:wrap;">
+      <span class="preview-label" style="width:100%">variations</span>
       <span class="wordmark">Shane Logsdon</span>
-      <span class="wordmark wordmark--sm">Shane Logsdon</span>
+      <span class="wordmark wordmark--period">Shane Logsdon</span>
+      <span class="wordmark wordmark--rule-above">Shane Logsdon</span>
     </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;!-- default --&gt;
+&lt;span class="wordmark"&gt;Shane Logsdon&lt;/span&gt;
+
+&lt;!-- with amber period (PRIMARY) --&gt;
+&lt;span class="wordmark wordmark--period"&gt;Shane Logsdon&lt;/span&gt;
+
+&lt;!-- with hairline rule above — for footers --&gt;
+&lt;span class="wordmark wordmark--rule-above"&gt;Shane Logsdon&lt;/span&gt;</pre>
+    </details>
   </section>
 
-  <!-- ─── 2. Editorial labels (small caps) ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">ii. editorial labels</span><h2>Fraunces small caps. Not mono caps.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">The signature v2 swap. Mono caps as labels were a 2010s designer move that AI inherited.</p>
-    <div class="preview" style="display: grid; gap: 16px;">
-      <span class="smallcaps-lg">Lead — a section anchor</span>
-      <span class="smallcaps">Section · field notes · category</span>
-      <span class="smallcaps">Working notes — may 2026</span>
+
+  <!-- ── ii. Folio + Running head ────────────────────────────────── -->
+  <!-- PRIMARY: running-head brand/dateline + folio position -->
+  <section class="lib-section" id="folio">
+    <div class="lib-section-head">
+      <span class="lib-section-label">ii. folio + running head</span>
+      <h2 class="lib-section-title">Publication conventions.</h2>
     </div>
+    <p class="lib-note">PRIMARY: running-head (brand + dateline) at top; folio (dateline + position) in lower corner</p>
+
+    <div class="preview preview-box">
+      <div class="running-head">
+        <span>working notes — payments stack</span>
+        <span class="t-dateline">2026.05.02</span>
+      </div>
+      <p class="t-body-md" style="margin:var(--s-6) 0;color:var(--color-ink-3);">— article body —</p>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <span class="folio"><span>louisville · gmt−5</span><span class="pos">/ 003</span></span>
+        <span class="folio"><span>field notes</span><span class="pos">/ shane.logsdon.io</span></span>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="running-head"&gt;
+  &lt;span&gt;working notes — payments stack&lt;/span&gt;
+  &lt;span class="t-dateline"&gt;2026.05.02&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;span class="folio"&gt;
+  &lt;span&gt;louisville · gmt−5&lt;/span&gt;
+  &lt;span class="pos"&gt;/ 003&lt;/span&gt;
+&lt;/span&gt;</pre>
+    </details>
   </section>
 
-  <!-- ─── 3. Folio + Running head ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">iii. folio + running head</span><h2>Publication conventions, not chrome strips.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">Folios live in lower corners. Running heads sit at top edges. Both replace the v1 footer-row and eyebrow patterns.</p>
+
+  <!-- ── iii. Editorial labels ───────────────────────────────────── -->
+  <!-- PRIMARY: t-smallcaps-lg for section labels; t-smallcaps for metadata -->
+  <!-- CAUTION: OPTIONAL — apply only when the artifact genuinely needs category/section anchoring. Never include as default chrome in platform skill scaffolds. -->
+  <section class="lib-section" id="editorial-labels">
+    <div class="lib-section-head">
+      <span class="lib-section-label">iii. editorial labels</span>
+      <h2 class="lib-section-title">Fraunces small caps, not mono caps.</h2>
+    </div>
+    <p class="lib-note">OPTIONAL — use only when section anchoring is genuinely needed. Never as default chrome.</p>
+
+    <div class="preview" style="display:grid;gap:var(--s-4);">
+      <span class="t-smallcaps-lg">lead — a section anchor</span>
+      <span class="t-smallcaps">section · field notes · category</span>
+      <span class="t-smallcaps">working notes — may 2026</span>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;span class="t-smallcaps-lg"&gt;lead — a section anchor&lt;/span&gt;
+&lt;span class="t-smallcaps"&gt;section · field notes · category&lt;/span&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── iv. Hairlines ───────────────────────────────────────────── -->
+  <!-- PRIMARY: full-width rule; prefer whitespace over more rules -->
+  <section class="lib-section" id="hairlines">
+    <div class="lib-section-head">
+      <span class="lib-section-label">iv. hairlines</span>
+      <h2 class="lib-section-title">1px max. Always.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: full-width — major divisions use whitespace, not heavier rules</p>
+
     <div class="preview">
-      <div class="running-head"><span>working notes — payments stack</span><span>2026.05.02</span></div>
-      <p style="margin: 32px 0; color: var(--color-ink-soft); font-size: 15px;">— page body would sit between running head and folio —</p>
-      <div style="display: flex; justify-content: space-between; align-items: baseline;">
-        <span class="folio"><span>louisville · gmt−5</span><span class="pos">003</span></span>
-        <span class="folio"><span>shane.logsdon.io</span><span class="pos">v2</span></span>
-      </div>
+      <span class="preview-label">full-width</span>
+      <hr class="rule">
     </div>
-  </section>
-
-  <!-- ─── 4. Btn-arrow (only button) ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">iv. buttons</span><h2>One. Filled buttons removed.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">A senior editorial AD wouldn't have a filled button on this brand. The btn-arrow IS the action pattern.</p>
-    <div class="preview" style="display: flex; gap: 48px; align-items: baseline;">
-      <a class="btn-arrow" href="#">Read field notes</a>
-      <a class="btn-arrow btn-arrow--accent" href="#">Open to conversations</a>
-    </div>
-  </section>
-
-  <!-- ─── 5. Article row with column rule ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">v. article row</span><h2>Now with a column rule.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">A vertical 1px hairline in the gutter — column-rule, a real publication primitive missing from v1.</p>
-    <div class="preview" style="padding: 0 32px;">
-      <div class="article-row">
-        <div class="article-row__num"><span class="pos">001</span><span class="date">2026.05.02</span></div>
-        <div class="article-row__rule"></div>
-        <div>
-          <h3 class="article-row__title">The shape of a payments <span class="accent">primitive</span>.<span class="dek">The shape is determined by the failure modes you want to expose. Most platforms hide the wrong ones — and the failures you DO expose become the contract.</span></h3>
-        </div>
-        <span class="article-row__cat">strategic · 5 min</span>
-      </div>
-      <div class="article-row">
-        <div class="article-row__num"><span class="pos">002</span><span class="date">2026.04.18</span></div>
-        <div class="article-row__rule"></div>
-        <div>
-          <h3 class="article-row__title">An audit of the latency budget on settlements.<span class="dek">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry. Here is the breakdown.</span></h3>
-        </div>
-        <span class="article-row__cat">technical · 12 min</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 6. Drop cap ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">vi. drop cap</span><h2>One typographic event. Used rarely.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">A real publication move — replaces "italicize one word for emphasis." Used at the OPENING of long-form pieces, not as decoration.</p>
     <div class="preview">
-      <p class="dropcap-block">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry. The shape of a payments primitive is determined by the shape of the failure modes you want to expose — and most platforms hide the wrong ones. The failures you DO expose become the contract; engineers will write code against them.</p>
+      <span class="preview-label">indented</span>
+      <hr class="rule" style="margin-left:var(--s-8);">
     </div>
-  </section>
-
-  <!-- ─── 7. Hero block (96px display) ─── -->
-  <section class="section">
-    <div class="section-head"><span class="label">vii. hero block</span><h2>Cover-scale display.</h2></div>
-    <p class="smallcaps" style="margin: 0 0 16px;">96px Fraunces. One word in amber per surface. Surface-feature register optional (one per artifact).</p>
-    <div class="preview-feature">
-      <div class="hero-block" style="padding: 0;">
-        <h2>An audit of the <span class="accent">latency</span> budget on settlements.</h2>
+    <div class="preview">
+      <span class="preview-label">column rule (vertical — between columns)</span>
+      <div style="display:flex;gap:var(--s-6);height:var(--s-7);align-items:stretch;">
+        <p class="t-body-md">Left column</p>
+        <div class="column-rule"></div>
+        <p class="t-body-md">Right column</p>
       </div>
     </div>
   </section>
 
-  <footer class="page-foot">
-    <span class="wordmark">Shane Logsdon</span>
+
+  <!-- ── v. Type scale ───────────────────────────────────────────── -->
+  <section class="lib-section" id="type-scale">
+    <div class="lib-section-head">
+      <span class="lib-section-label">v. type scale</span>
+      <h2 class="lib-section-title">Publication cover to metadata.</h2>
+    </div>
+
+    <div class="preview preview-box" style="overflow:hidden;">
+      <span class="preview-label">display-xxl · 144px · cover</span>
+      <p class="t-display-xxl">Build.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">display-xl · 96px</span>
+      <p class="t-display-xl">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">display · 72px</span>
+      <p class="t-display">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">headline-lg · 56px</span>
+      <p class="t-headline-lg">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">headline-md · 36px</span>
+      <p class="t-headline-md">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">headline-sm · 24px</span>
+      <p class="t-headline-sm">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">lead · 19px · Inter</span>
+      <p class="t-lead">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">body-lg · 17px · Inter</span>
+      <p class="t-body">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">body-md · 16px · Inter</span>
+      <p class="t-body-md">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">meta · 14px · Inter</span>
+      <p class="t-meta">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">smallcaps-lg · 14px · Fraunces smcp</span>
+      <p class="t-smallcaps-lg">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">smallcaps · 12px · Fraunces smcp</span>
+      <p class="t-smallcaps">Build something obvious.</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">dateline · 12px · JetBrains Mono (technical only)</span>
+      <p class="t-dateline">2026.05.02 / 001</p>
+    </div>
+    <div class="preview">
+      <span class="preview-label">t-accent — one word per surface in amber Fraunces</span>
+      <p class="t-headline-md">Build something <span class="t-accent">obvious</span>.</p>
+    </div>
+  </section>
+
+
+  <!-- ── vi. Btn-arrow ───────────────────────────────────────────── -->
+  <!-- PRIMARY: default ink — the only button in v2; filled .btn removed -->
+  <section class="lib-section" id="btn-arrow">
+    <div class="lib-section-head">
+      <span class="lib-section-label">vi. btn-arrow</span>
+      <h2 class="lib-section-title">One. Filled buttons removed.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: default ink — a senior editorial AD wouldn't have a filled button on this brand</p>
+
+    <div class="preview" style="display:flex;gap:var(--s-7);flex-wrap:wrap;align-items:baseline;">
+      <div><span class="preview-label">default (ink)</span><a href="#" class="btn-arrow">Read the full post</a></div>
+      <div><span class="preview-label">accent</span><a href="#" class="btn-arrow btn-arrow--accent">Get your free audit</a></div>
+      <div><span class="preview-label">muted — back-links</span><a href="#" class="btn-arrow btn-arrow--muted">← All articles</a></div>
+    </div>
+
+    <div class="preview">
+      <div class="preview-box inversion">
+        <span class="preview-label" style="color:rgba(251,250,249,0.55);">on inversion surface</span>
+        <a href="#" class="btn-arrow" style="color:var(--color-surface);text-decoration-color:rgba(251,250,249,0.3);">Read the full post</a>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;a href="#" class="btn-arrow"&gt;Read the full post&lt;/a&gt;
+&lt;a href="#" class="btn-arrow btn-arrow--accent"&gt;Get your free audit&lt;/a&gt;
+&lt;a href="#" class="btn-arrow btn-arrow--muted"&gt;← All articles&lt;/a&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── vii. Badges ─────────────────────────────────────────────── -->
+  <!-- PRIMARY: outline (default smallcaps) -->
+  <section class="lib-section" id="badges">
+    <div class="lib-section-head">
+      <span class="lib-section-label">vii. badges / tags</span>
+      <h2 class="lib-section-title">Category tags, status labels.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: outline — zero-radius rectangular; no pills</p>
+
+    <div class="preview" style="display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;">
+      <span class="badge">payments</span>
+      <span class="badge">field notes</span>
+      <span class="badge badge--accent">active</span>
+      <span class="badge badge--dot">live</span>
+      <span class="badge">new · 3</span>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;span class="badge"&gt;payments&lt;/span&gt;
+&lt;span class="badge badge--accent"&gt;active&lt;/span&gt;
+&lt;span class="badge badge--dot"&gt;live&lt;/span&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── viii. Callouts ──────────────────────────────────────────── -->
+  <!-- PRIMARY: left rule only — no filled background -->
+  <section class="lib-section" id="callouts">
+    <div class="lib-section-head">
+      <span class="lib-section-label">viii. callouts</span>
+      <h2 class="lib-section-title">Left rule, not filled background.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: left rule carries the semantic weight; no color fill behind the text</p>
+
+    <div class="preview preview-box">
+      <span class="preview-label">note (neutral)</span>
+      <div class="callout">
+        <div class="callout-rule"></div>
+        <div class="callout-body">
+          <span class="callout-label">note</span>
+          <p class="t-body-md">This pattern applies every month across Jefferson, Oldham, Bullitt, Spencer, and Shelby counties.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--s-6);">
+        <span class="preview-label">important (accent)</span>
+        <div class="callout callout--accent">
+          <div class="callout-rule"></div>
+          <div class="callout-body">
+            <span class="callout-label">important</span>
+            <p class="t-body-md">Fixing a buried listing after six months takes significantly more effort than getting it right from day one.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--s-6);">
+        <span class="preview-label">done / success</span>
+        <div class="callout callout--ok">
+          <div class="callout-rule"></div>
+          <div class="callout-body">
+            <span class="callout-label">done</span>
+            <p class="t-body-md">Listing claimed, verified, and populated with hours, services, and photos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="callout callout--accent"&gt;
+  &lt;div class="callout-rule"&gt;&lt;/div&gt;
+  &lt;div class="callout-body"&gt;
+    &lt;span class="callout-label"&gt;important&lt;/span&gt;
+    &lt;p class="t-body-md"&gt;…&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── ix. Code blocks ─────────────────────────────────────────── -->
+  <!-- PRIMARY: multi-line with filename bar -->
+  <section class="lib-section" id="code">
+    <div class="lib-section-head">
+      <span class="lib-section-label">ix. code blocks</span>
+      <h2 class="lib-section-title">Dark block. Filename optional.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: multi-line with filename; inline code for inline references only</p>
+
+    <div class="preview">
+      <span class="preview-label">inline code</span>
+      <p class="t-body">Use <code class="inline">var(--color-accent)</code> for interactive states and deliberate type accents.</p>
+    </div>
+
+    <div class="preview">
+      <span class="preview-label">multi-line with filename</span>
+      <div class="code-filename">tokens.css</div>
+      <pre class="code-block">--color-accent:       #c26a3b;
+--color-accent-hover: #a0542a;</pre>
+    </div>
+
+    <div class="preview">
+      <span class="preview-label">multi-line — no filename</span>
+      <pre class="code-block">const readTime = Math.ceil(wordCount / 250);</pre>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;!-- inline --&gt;
+&lt;code class="inline"&gt;var(--color-accent)&lt;/code&gt;
+
+&lt;!-- multi-line with filename --&gt;
+&lt;div class="code-filename"&gt;tokens.css&lt;/div&gt;
+&lt;pre class="code-block"&gt;--color-accent: #c26a3b;&lt;/pre&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── x. Hero blocks ──────────────────────────────────────────── -->
+  <!-- PRIMARY: headline-led with t-accent word; running head above headline, no eyebrow -->
+  <section class="lib-section" id="hero-blocks">
+    <div class="lib-section-head">
+      <span class="lib-section-label">x. hero blocks</span>
+      <h2 class="lib-section-title">Cover-scale display. No eyebrow.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: headline-led — one t-accent word; running head OR nothing above; never eyebrow + headline + meta-row</p>
+
+    <div class="preview preview-box">
+      <span class="preview-label">headline-led (cream)</span>
+      <div style="padding:var(--s-7) 0;">
+        <div class="running-head"><span>field notes · 2026.05.02</span></div>
+        <h2 class="t-display" style="max-width:14ch;margin-top:var(--s-6);">
+          The payments stack nobody <span class="t-accent">talks</span> about.
+        </h2>
+        <p class="t-lead" style="margin-top:var(--s-5);max-width:var(--measure);color:var(--color-ink-soft);">
+          Most fintech builders inherit complexity they didn't choose.
+        </p>
+        <div style="margin-top:var(--s-6);">
+          <a href="#" class="btn-arrow">Read the post</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview">
+      <div class="inversion" style="padding:var(--s-7);">
+        <span class="preview-label" style="color:rgba(251,250,249,0.55);">inversion hero — canonical feature treatment</span>
+        <div class="running-head" style="color:var(--color-surface);">
+          <span>shane logsdon — field notes</span>
+          <span class="t-dateline">2026.05.02</span>
+        </div>
+        <h2 class="t-display" style="margin-top:var(--s-6);max-width:14ch;color:var(--color-surface);">
+          Build something <span class="t-accent">obvious</span>.
+        </h2>
+        <p class="t-lead" style="margin-top:var(--s-5);max-width:var(--measure);color:rgba(251,250,249,0.72);">
+          The best infrastructure is the kind no one knows is there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── xi. Stat callouts ───────────────────────────────────────── -->
+  <!-- PRIMARY: display-xl number + t-smallcaps-lg label; unit at half-scale -->
+  <section class="lib-section" id="stat-callouts">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xi. stat callouts</span>
+      <h2 class="lib-section-title">The number does the work.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: oversized num + smallcaps-lg label; unit (%, ×) at half-scale superscript</p>
+
+    <div class="preview preview-box" style="display:flex;flex-wrap:wrap;gap:var(--s-8);">
+      <div class="stat-callout">
+        <span class="num">112</span>
+        <span class="t-smallcaps-lg">new businesses registered</span>
+      </div>
+      <div class="stat-callout">
+        <span class="num">40<sup>%</sup></span>
+        <span class="t-smallcaps-lg">had no google listing</span>
+      </div>
+      <div class="stat-callout">
+        <span class="num t-accent">17<sup>:1</sup></span>
+        <span class="t-smallcaps-lg">contrast ratio</span>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="stat-callout"&gt;
+  &lt;span class="num"&gt;40&lt;sup&gt;%&lt;/sup&gt;&lt;/span&gt;
+  &lt;span class="t-smallcaps-lg"&gt;had no google listing&lt;/span&gt;
+&lt;/div&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xii. Article row ────────────────────────────────────────── -->
+  <!-- PRIMARY: folio-num + column-rule + title with dek + category -->
+  <section class="lib-section" id="article-row">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xii. article row</span>
+      <h2 class="lib-section-title">With column rule.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: folio num left + column-rule + title + smallcaps category right</p>
+
+    <div class="preview">
+      <ol class="list-numbered" style="display:block;">
+        <div class="article-row">
+          <div class="article-row__num"><span class="pos">001</span><span class="date">2026.05.02</span></div>
+          <div class="article-row__rule"></div>
+          <div>
+            <h3 class="article-row__title">
+              <a href="#">The shape of a payments <span class="t-accent">primitive</span>.</a>
+              <span class="article-row__dek">The shape is determined by the failure modes you want to expose.</span>
+            </h3>
+          </div>
+          <span class="article-row__cat">strategic · 5 min</span>
+        </div>
+        <div class="article-row">
+          <div class="article-row__num"><span class="pos">002</span><span class="date">2026.04.18</span></div>
+          <div class="article-row__rule"></div>
+          <div>
+            <h3 class="article-row__title">
+              <a href="#">An audit of the latency budget on settlements.</a>
+              <span class="article-row__dek">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry.</span>
+            </h3>
+          </div>
+          <span class="article-row__cat">technical · 12 min</span>
+        </div>
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- ── xiii. List variants ─────────────────────────────────────── -->
+  <!-- PRIMARY: list-numbered with folio index -->
+  <section class="lib-section" id="lists">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xiii. list variants</span>
+      <h2 class="lib-section-title">Folio index, em-dash, definition.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: list-numbered with folio index — for deliverables and steps</p>
+
+    <div class="preview preview-box">
+      <span class="preview-label">numbered — folio index</span>
+      <ol class="list-numbered">
+        <li>
+          <span class="folio"><span class="pos">01</span></span>
+          <div>
+            <p class="t-headline-sm">Website build</p>
+            <p class="t-body-md" style="margin-top:var(--s-2);">A clean, fast site built for local customers.</p>
+          </div>
+        </li>
+        <li>
+          <span class="folio"><span class="pos">02</span></span>
+          <div>
+            <p class="t-headline-sm">Google Business Profile setup</p>
+            <p class="t-body-md" style="margin-top:var(--s-2);">Claiming your listing and populating hours, services, and photos.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="preview preview-box" style="margin-top:var(--s-4);">
+      <span class="preview-label">dash-bulleted (em-dash marker)</span>
+      <ul class="list-dash t-body-md">
+        <li>No purple-to-cyan gradients</li>
+        <li>No floating orbs or glowing nodes</li>
+        <li>No filled buttons in this system</li>
+      </ul>
+    </div>
+
+    <div class="preview preview-box" style="margin-top:var(--s-4);">
+      <span class="preview-label">definition list</span>
+      <dl class="list-def">
+        <dt>surface</dt>
+        <dd>#fbfaf9 — warm cream; the page is committed to this</dd>
+        <dt>ink</dt>
+        <dd>#0e1116 — near-true-black with a slight blue cast</dd>
+        <dt>accent</dt>
+        <dd>#c26a3b — burnt amber; semantic AND type accent</dd>
+      </dl>
+    </div>
+  </section>
+
+
+  <!-- ── xiv. Pull quotes ────────────────────────────────────────── -->
+  <!-- PRIMARY: left rule + serif italic + smallcaps attribution — one italic use per artifact max -->
+  <section class="lib-section" id="pull-quotes">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xiv. pull quotes</span>
+      <h2 class="lib-section-title">One typographic event. Used rarely.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: left rule + display serif italic + smallcaps attribution; max one italic use per artifact</p>
+
+    <div class="preview preview-box">
+      <div class="pull-quote">
+        <blockquote>The algorithm rewards early consistency. A listing that gets claimed and kept current in the first 60 days compounds into more visibility and more reviews.</blockquote>
+        <cite>Shane Logsdon — field notes, 2026</cite>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="pull-quote"&gt;
+  &lt;blockquote&gt;The algorithm rewards early consistency.&lt;/blockquote&gt;
+  &lt;cite&gt;Shane Logsdon — field notes, 2026&lt;/cite&gt;
+&lt;/div&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xv. Avatar frame ────────────────────────────────────────── -->
+  <!-- PRIMARY: circle (r-full) + wordmark--sm name + t-smallcaps role -->
+  <section class="lib-section" id="avatar">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xv. avatar frame</span>
+      <h2 class="lib-section-title">Circular. With nameplate.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: r-full circle + wordmark--sm name + t-smallcaps role; used sparingly</p>
+
+    <div class="preview" style="display:flex;gap:var(--s-8);flex-wrap:wrap;align-items:flex-start;">
+      <div class="avatar-frame">
+        <div class="avatar-circle">SL</div>
+        <div style="text-align:center;">
+          <p class="wordmark wordmark--sm">Shane Logsdon</p>
+          <p class="t-smallcaps" style="margin-top:var(--s-1);">product · payments</p>
+        </div>
+      </div>
+      <div class="avatar-frame">
+        <div class="avatar-circle" style="width:48px;height:48px;font-size:1rem;">SL</div>
+        <p class="wordmark wordmark--sm">Shane Logsdon</p>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="avatar-frame"&gt;
+  &lt;img class="avatar-circle" src="/images/headshot.jpeg" alt="Shane Logsdon"&gt;
+  &lt;div&gt;
+    &lt;p class="wordmark wordmark--sm"&gt;Shane Logsdon&lt;/p&gt;
+    &lt;p class="t-smallcaps"&gt;product · payments&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xvi. Footer block ───────────────────────────────────────── -->
+  <!-- PRIMARY: wordmark--period left / folio right -->
+  <section class="lib-section" id="footer-block">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xvi. footer block</span>
+      <h2 class="lib-section-title">Wordmark left. Folio right.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: wordmark--period left, dateline + category folio right — artifact signature and page footer</p>
+
+    <div class="preview preview-box">
+      <span class="preview-label">standard artifact footer</span>
+      <div class="footer-block">
+        <span class="wordmark wordmark--period">Shane Logsdon</span>
+        <span class="folio"><span class="t-dateline">2026.05.02</span><span class="pos">/ field notes</span></span>
+      </div>
+    </div>
+
+    <div class="preview">
+      <div class="inversion" style="padding:var(--s-5);">
+        <span class="preview-label" style="color:rgba(251,250,249,0.55);">on inversion surface</span>
+        <div class="footer-block">
+          <span class="wordmark" style="color:var(--color-surface);">Shane Logsdon<span style="color:var(--color-accent);">.</span></span>
+          <span class="folio"><span class="t-dateline">2026.05.02</span><span class="pos">/ 001</span></span>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="footer-block"&gt;
+  &lt;span class="wordmark wordmark--period"&gt;Shane Logsdon&lt;/span&gt;
+  &lt;span class="folio"&gt;
+    &lt;span class="t-dateline"&gt;2026.05.02&lt;/span&gt;
+    &lt;span class="pos"&gt;/ field notes&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xvii. Inversion block ───────────────────────────────────── -->
+  <!-- PRIMARY: full dark inversion — used as punctuation, not decoration -->
+  <section class="lib-section" id="inversion">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xvii. inversion block</span>
+      <h2 class="lib-section-title">The canonical feature treatment.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: full dark inversion (.inversion class); one per artifact; --color-surface-feature is NOT used as a bg in v2</p>
+
+    <div class="preview" style="padding:0;">
+      <div class="inversion" style="padding:var(--s-7);">
+        <div class="running-head">
+          <span>historical content</span>
+        </div>
+        <p class="t-lead" style="margin-top:var(--s-5);max-width:var(--measure);">
+          Published on <strong style="color:var(--color-surface);">March 3, 2019</strong> and maintained for historical reference. The core ideas may still apply, but specific technical details may be outdated.
+        </p>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;aside class="inversion" style="padding: var(--s-7);"&gt;
+  &lt;div class="running-head"&gt;
+    &lt;span&gt;historical content&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="t-lead" style="margin-top: var(--s-5);"&gt;
+    Published on &lt;strong&gt;March 3, 2019&lt;/strong&gt; …
+  &lt;/p&gt;
+&lt;/aside&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── Drop cap ────────────────────────────────────────────────── -->
+  <!-- PRIMARY: ::first-letter float; used only at opening of long-form pieces -->
+  <section class="lib-section" id="dropcap">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xviii. drop cap</span>
+      <h2 class="lib-section-title">One typographic event. Opening only.</h2>
+    </div>
+    <p class="lib-note">OPTIONAL — opening of long-form pieces only; not used in platform artifact canvases</p>
+
+    <div class="preview preview-box">
+      <p class="dropcap t-body" style="max-width:var(--measure);">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry. The shape of a payments primitive is determined by the failure modes you want to expose — and most platforms hide the wrong ones.</p>
+    </div>
+  </section>
+
+
+  <footer style="margin-top:var(--s-10);padding-top:var(--s-5);border-top:1px solid var(--color-rule);display:flex;justify-content:space-between;align-items:baseline;">
+    <span class="wordmark wordmark--period">Shane Logsdon</span>
     <span class="folio"><span>component library</span><span class="pos">v2 · 2026.05.02</span></span>
   </footer>
 

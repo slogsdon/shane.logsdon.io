@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — the-ax-shift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ── Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-accent:          #c26a3b;
+  --color-accent-hover:    #a0542a;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:        1.1875rem;
+  --fs-body-lg:     1.0625rem;
+  --fs-body-md:     1rem;
+  --fs-meta:        0.875rem;
+  --fs-smallcaps-lg:0.875rem;
+  --fs-smallcaps:   0.75rem;
+  --fs-dateline:    0.75rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+  --lh-prose:  1.65;
+
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-smallcaps: 0.08em;
+  --tracking-mono:      0.06em;
+
+  --s-1:0.25rem; --s-2:0.5rem;  --s-3:0.75rem; --s-4:1rem;
+  --s-5:1.5rem;  --s-6:2rem;    --s-7:3rem;    --s-8:4rem;
+  --s-9:6rem;    --s-10:9rem;
+
+  --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
+}
+
+/* ── Page chrome ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #1c1c1c;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: var(--type-sans-family);
+  -webkit-font-smoothing: antialiased;
+  padding: 48px;
+}
+
+/* ── Canvas — exact 1200×627 ──────────────────────────────────────── */
+.canvas {
+  width: 1200px;
+  height: 627px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  padding: var(--s-7); /* 48px */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ── Running head ─────────────────────────────────────────────────── */
+.running-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+.t-dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+
+/* ── Pattern block — three escalating lines ───────────────────────── */
+/* The escalation is the argument. Each line is the same phrase,       */
+/* growing in scale and authority. The punctum is the scale break      */
+/* between line 2 and line 3 — that's where the article's claim lands. */
+.pattern-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5); /* 24px — generous breathing room between lines */
+}
+
+.pattern-line {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.08;
+}
+
+/* Line 1 — whisper register: the setup you've already accepted */
+.pattern-line--1 {
+  font-weight: 300;
+  font-size: var(--fs-headline-sm); /* 24px */
+  letter-spacing: -0.005em;
+  color: var(--color-ink-3);
+}
+
+/* Line 2 — clearer, closer: starting to feel the point */
+.pattern-line--2 {
+  font-size: var(--fs-headline-md); /* 36px */
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink-soft);
+}
+
+/* Line 3 — the break: scale jump is the punctum, not color */
+.pattern-line--3 {
+  font-size: var(--fs-headline-lg); /* 56px */
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  max-width: 20ch;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--color-rule);
+}
+.wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+.wordmark::after { content: '.'; color: var(--color-accent); }
+.folio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+.folio .pos { color: var(--color-ink); }
+
+@page { size: 1200px 627px; margin: 0; }
+@media print {
+  html, body { background: var(--color-surface); padding: 0; }
+  .canvas { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<!--
+  Variation choices:
+    archetype:    pattern-led — three escalating lines enact the article's core argument;
+                  the scale jump from line 2→3 is the punctum (not a color change).
+                  Prior LinkedIn used inverted chrome-led. Prior blog-hero used object-of-content.
+                  This archetype differs from both.
+    layout:       asymmetric — lines left-anchored; footer wordmark left / folio right
+    color:        monochrome — cream surface, ink type, no inversion. The three lines
+                  use ink-3 / ink-soft / ink to create depth without accent.
+    type-press:   display-dominant — all three lines in Fraunces display, 24→36→56px
+    composition:  quote-led — the pattern IS the argument; no separate quote or stat
+
+  Post slug:  the-ax-shift
+  Category:   strategic insights
+  URL:        https://shane.logsdon.io/articles/strategic-insights/the-ax-shift/
+-->
+
+<article class="canvas">
+
+  <div class="running-head">
+    <span>shane logsdon — strategic insights</span>
+    <span class="t-dateline">2026.05.03</span>
+  </div>
+
+  <div class="pattern-block">
+    <p class="pattern-line pattern-line--1">you're designing for the prompt.</p>
+    <p class="pattern-line pattern-line--2">you're designing for the model.</p>
+    <p class="pattern-line pattern-line--3">you're designing for yourself.</p>
+  </div>
+
+  <footer class="foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span class="folio">
+      <span class="t-dateline">the ax shift</span>
+      <span class="pos">/ strategic insights</span>
+    </span>
+  </footer>
+
+</article>
+
+</body>
+</html>
+
+<!--
+COMPANION TEXT:
+
+You're still designing for yourself.
+
+AI coding tools don't fail on prompts. They fail on ambiguous artifacts. When the spec is vague, the agent fills the gaps with what it was trained to assume — not what your system actually needs.
+
+That's the AX Shift. Agent Experience is the real design surface now. The spec, the schema, the interface contract — these are the artifacts your agent executes against. A crisp prompt can't compensate for a muddled spec.
+
+Where are you still designing for yourself when you should be designing for your agent?
+
+(Drop your article link in the first comment.)
+-->
