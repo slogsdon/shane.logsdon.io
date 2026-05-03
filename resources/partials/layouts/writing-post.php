@@ -32,63 +32,66 @@ $this->layout('partials::layouts/main', [
     'url' => !empty($url) ? $url : null,
 ]);
 $formattedDate = DateTime::createFromFormat('U', $originalDate)->format('F j, Y');
+$folioDate = DateTime::createFromFormat('U', $originalDate)->format('Y.m.d');
 $readTime = ceil(str_word_count(strip_tags($content)) / $settings->avgWordsPerMinute);
-$typeLabel = $meta->type === 'speaking' ? 'Speaking' : 'Articles';
+$typeLabel = $meta->type === 'speaking' ? 'speaking' : 'articles';
+$categoryLabel = isset($meta->category) && isset($allCategories[$meta->category])
+    ? $allCategories[$meta->category]
+    : null;
 $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['venue'])
     ? $meta->presentationMetadata['venue']
     : null;
 ?>
 
-<article class="mx-auto max-w-editorial px-6 pb-16 pt-20">
+<article class="mx-auto max-w-editorial px-6 pt-20 pb-16">
 
-    <a href="/<?= $meta->type ?>/"
-       class="inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground hover:no-underline">
-        ← <?= $typeLabel ?>
-    </a>
+    <div class="running-head" aria-hidden="true">
+        <span>shane logsdon &mdash; <?= $typeLabel ?><?= $categoryLabel ? ' / ' . strtolower($categoryLabel) : '' ?></span>
+        <span><?= $folioDate ?></span>
+    </div>
 
-    <header class="mt-8 border-b border-rule pb-10">
-        <?php if (isset($meta->category) && isset($allCategories[$meta->category])): ?>
-        <p class="eyebrow">§ <?= htmlspecialchars($allCategories[$meta->category]) ?></p>
-        <?php endif; ?>
-
-        <h1 class="mt-4 max-w-4xl font-display text-4xl font-normal leading-[1.08] tracking-tight text-foreground sm:text-5xl">
+    <header class="mt-12 border-b border-rule pb-12">
+        <h1 class="max-w-4xl font-display text-4xl font-normal leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl">
             <?= $title ?>
         </h1>
 
         <?php if (!empty($meta->description)): ?>
-        <p class="mt-6 max-w-prose text-base leading-relaxed text-muted-foreground">
+        <p class="mt-6 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft">
             <?= htmlspecialchars($meta->description) ?>
         </p>
         <?php endif; ?>
 
-        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
-            <span><?= $formattedDate ?></span>
+        <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 folio">
+            <span><?= $folioDate ?></span>
+            <span class="sr-only"><?= $formattedDate ?></span>
             <?php if ($meta->type === 'articles'): ?>
-                <span class="text-foreground/30">·</span>
+                <span class="pos">/</span>
                 <span><?= $readTime ?> min read</span>
             <?php endif; ?>
             <?php if ($venue): ?>
-                <span class="text-foreground/30">·</span>
+                <span class="pos">/</span>
                 <span><?= htmlspecialchars($venue) ?></span>
             <?php endif; ?>
-            <?php if (!empty($meta->tags)): ?>
-                <span class="text-foreground/30">·</span>
-                <ul class="flex flex-wrap items-center gap-x-3 gap-y-1 list-none p-0">
-                    <?php foreach ($meta->tags as $tag): ?>
-                        <li><span class="text-foreground/30">/</span> <a href="/<?= $meta->type ?>/tags/<?= $tag ?>/" class="transition-colors hover:text-foreground hover:no-underline"><?= htmlspecialchars($allTags[$tag]) ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
         </div>
+
+        <?php if (!empty($meta->tags) && is_array($meta->tags)): ?>
+        <ul class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <?php foreach ($meta->tags as $tag): ?>
+            <li class="smallcaps">
+                <a href="/<?= $meta->type ?>/tags/<?= $tag ?>/" class="hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
     </header>
 
     <?php if (isset($meta->archived) && $meta->archived === true): ?>
-    <div class="mt-10 border border-rule px-6 py-5" style="background-color: hsl(var(--accent) / 0.4);">
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-foreground">Historical Content</p>
-        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-            This was published on <strong class="font-medium text-foreground"><?= $formattedDate ?></strong> and is maintained for historical reference. While the core concepts may still be relevant, specific technical details may be outdated.
+    <aside class="inversion mt-10 px-6 py-6">
+        <p class="smallcaps-lg">historical content</p>
+        <p class="mt-3 max-w-prose text-[0.95rem] leading-relaxed" style="color: rgba(251, 250, 249, 0.72);">
+            Published on <strong class="font-medium" style="color: var(--color-surface);"><?= $formattedDate ?></strong> and maintained for historical reference. The core ideas may still apply, but specific technical details may be outdated.
         </p>
-    </div>
+    </aside>
     <?php endif; ?>
 
     <?php
@@ -123,7 +126,7 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     </div>
     <?php endif; ?>
 
-    <div class="prose mt-12 max-w-prose text-base leading-[1.75] text-foreground">
+    <div class="prose mt-12 max-w-prose text-[1.0625rem] leading-[1.65] text-foreground">
         <?= $content ?: $this->section('content'); ?>
     </div>
 
@@ -147,11 +150,14 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
         </script>
     </section>
 
-    <footer class="mt-12 border-t border-rule pt-8">
-        <a href="/<?= $meta->type ?>/"
-           class="inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground hover:no-underline">
-            ← All <?= strtolower($typeLabel) ?>
+    <footer class="mt-12 flex items-baseline justify-between gap-6 border-t border-rule pt-8">
+        <a href="/<?= $meta->type ?>/" class="btn-arrow btn-arrow--muted" style="text-decoration: none;">
+            &larr; All <?= $typeLabel ?>
         </a>
+        <span class="folio">
+            <span><?= $folioDate ?></span>
+            <span class="pos">/ <?= $typeLabel ?></span>
+        </span>
     </footer>
 
 </article>

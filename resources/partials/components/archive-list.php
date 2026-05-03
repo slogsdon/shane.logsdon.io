@@ -26,12 +26,12 @@ $years = array_reduce($posts, function ($result, $post) {
 }, []);
 ?>
 
-<div class="flex items-center justify-between border-y border-rule py-4" id="archive-filters">
-    <div class="flex items-center gap-1" role="tablist" aria-label="Filter by year">
+<div class="flex items-baseline justify-between border-y border-rule py-4" id="archive-filters">
+    <div class="flex items-baseline gap-4" role="tablist" aria-label="Filter by year">
         <?php $first = true; foreach ($years as $year): ?>
         <button role="tab" aria-selected="<?= $first ? 'true' : 'false' ?>" data-year="<?= $year ?>"
-                class="archive-year-btn font-mono text-[0.68rem] uppercase tracking-[0.18em] px-2 py-1 border
-                       <?= $first ? 'text-foreground border-foreground/20 bg-foreground/5' : 'text-muted-foreground border-transparent hover:text-foreground hover:border-foreground/20' ?>">
+                class="archive-year-btn folio
+                       <?= $first ? '!text-foreground' : 'hover:!text-foreground' ?>">
             <?= $year ?>
         </button>
         <?php $first = false; endforeach; ?>
@@ -44,21 +44,19 @@ $years = array_reduce($posts, function ($result, $post) {
 
 <?php foreach ($posts as $postSlug => $post):
     $year = DateTime::createFromFormat('Y-m-d', $post->date)->format('Y');
-    $dateFormatted = DateTime::createFromFormat('Y-m-d', $post->date)->format('F j, Y');
+    $dateFormatted = DateTime::createFromFormat('Y-m-d', $post->date)->format('Y.m.d');
+    $dateLong = DateTime::createFromFormat('Y-m-d', $post->date)->format('F j, Y');
     $categoryLabel = isset($post->category) && isset($allCategories[$post->category])
         ? $allCategories[$post->category]
         : ($post->category ?? '');
     $postUrl = sprintf('/%s/%s/%s/', $post->type, $post->category, $postSlug);
 ?>
-<article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 transition-colors sm:py-10 archive-card"
+<article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 sm:py-10 archive-card"
          data-year="<?= $year ?>"
-         style="display:none;"
-         onmouseenter="this.style.backgroundColor='hsl(var(--accent)/0.4)'"
-         onmouseleave="this.style.backgroundColor=''">
+         style="display:none;">
     <div class="col-span-12 sm:col-span-2">
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
-            <?= $dateFormatted ?>
-        </p>
+        <p class="folio"><?= $dateFormatted ?></p>
+        <p class="sr-only"><?= $dateLong ?></p>
     </div>
 
     <div class="col-span-12 sm:col-span-7">
@@ -71,38 +69,31 @@ $years = array_reduce($posts, function ($result, $post) {
             </a>
         </h3>
         <?php if (!empty($post->description)): ?>
-        <p class="mt-2 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">
+        <p class="mt-3 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">
             <?= htmlspecialchars($post->description) ?>
         </p>
         <?php endif; ?>
         <?php if (!empty($post->tags) && is_array($post->tags)): ?>
-        <ul class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <ul class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <?php foreach ($post->tags as $tag): ?>
-            <li class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
-                <span style="color:hsl(var(--foreground)/0.3)">/</span> <a href="/<?= $post->type ?>/tags/<?= $tag ?>/"
-                   style="color:inherit;"><?= isset($allTags[$tag]) ? $allTags[$tag] : $tag ?></a>
+            <li class="smallcaps">
+                <a href="/<?= $post->type ?>/tags/<?= $tag ?>/" class="hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
             </li>
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
     </div>
 
-    <div class="col-span-12 flex items-start justify-end gap-3 sm:col-span-3 sm:text-right">
-        <div class="flex flex-col items-end gap-2">
-            <?php if ($categoryLabel): ?>
-            <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
-                <?= htmlspecialchars($categoryLabel) ?>
-            </span>
-            <?php endif; ?>
-            <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
-                <?= ucfirst($post->type) ?>
-            </span>
-        </div>
+    <div class="col-span-12 flex items-baseline justify-between gap-3 sm:col-span-3 sm:flex-col sm:items-end sm:justify-start sm:gap-2">
+        <?php if ($categoryLabel): ?>
+        <span class="smallcaps"><?= strtolower(htmlspecialchars($categoryLabel)) ?></span>
+        <?php endif; ?>
+        <span class="smallcaps"><?= strtolower($post->type) ?></span>
     </div>
 </article>
 <?php endforeach; ?>
 
-<div class="border-t border-rule"></div>
+<div class="hairline"></div>
 
 <script>
 (function () {
@@ -117,16 +108,11 @@ $years = array_reduce($posts, function ($result, $post) {
             btns.forEach(function (b) {
                 var active = b === btn;
                 b.setAttribute('aria-selected', active ? 'true' : 'false');
-                b.classList.toggle('text-foreground', active);
-                b.classList.toggle('border-foreground\\/20', active);
-                b.classList.toggle('bg-foreground\\/5', active);
-                b.classList.toggle('text-muted-foreground', !active);
-                b.classList.toggle('border-transparent', !active);
+                b.classList.toggle('!text-foreground', active);
             });
             showYear(btn.dataset.year);
         });
     });
-    // show first year by default
     var first = document.querySelector('.archive-year-btn');
     if (first) showYear(first.dataset.year);
 })();

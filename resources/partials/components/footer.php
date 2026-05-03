@@ -1,39 +1,24 @@
-<footer class="bg-foreground" style="padding-bottom: env(safe-area-inset-bottom);">
-    <div class="mx-auto max-w-editorial px-6 py-14">
-        <div class="grid grid-cols-1 gap-10 sm:grid-cols-3">
-            <div class="space-y-4">
-                <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/50">Navigation</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/">Intro</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/about/">About</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/">Articles</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/speaking/">Speaking</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/resume/">Resume</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/contact/">Contact</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/archive/">Archive</a></li>
-                </ul>
+<?php
+$folioDate = date('Y.m.d');
+?>
+<footer class="border-t border-rule bg-background" style="padding-bottom: env(safe-area-inset-bottom);">
+    <div class="mx-auto max-w-editorial px-6 py-10">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-6">
+            <div class="flex items-baseline gap-6">
+                <a href="/" class="wordmark wordmark--sm hover:no-underline">Shane Logsdon</a>
+                <span class="folio">
+                    <span><?= $folioDate ?></span>
+                    <span class="pos">/ <?= date('Y') ?></span>
+                </span>
             </div>
-            <div class="space-y-4">
-                <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/50">Topics</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/industry-analysis/">Industry Analysis</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/leadership-and-management/">Leadership &amp; Management</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/strategic-insights/">Strategic Insights</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="/articles/technical-deep-dives/">Technical Deep Dives</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4">
-                <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/50">Connect</p>
-                <ul class="space-y-2 text-sm">
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener">GitHub</a></li>
-                    <li><a class="text-background/75 transition-colors hover:text-background" href="https://twitter.com/shanelogsdon" target="_blank" rel="noreferrer noopener">Twitter</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-12 flex items-center justify-between border-t border-background/10 pt-6">
-            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-background/30">&copy; <?= date('Y') ?> Shane Logsdon</p>
-            <p class="text-xs text-background/20">Set in Fraunces &amp; Inter.</p>
+
+            <ul class="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+                <li><a class="smallcaps hover:!text-foreground" href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener">linkedin</a></li>
+                <li><a class="smallcaps hover:!text-foreground" href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener">github</a></li>
+                <li><a class="smallcaps hover:!text-foreground" href="https://twitter.com/shanelogsdon" target="_blank" rel="noreferrer noopener">twitter</a></li>
+                <li><a class="smallcaps hover:!text-foreground" href="/contact/">contact</a></li>
+                <li><a class="smallcaps hover:!text-foreground" href="/archive/">archive</a></li>
+            </ul>
         </div>
     </div>
 </footer>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#1a1c1f">
+<meta name="theme-color" content="#fbfaf9">
 <meta name="description" content="<?= $this->e(!empty($description) ? $description : $settings->description); ?>">
 <?php if (!empty($url)): ?>
   <link rel="canonical" href="https://shane.logsdon.io<?= $this->e($url); ?>">

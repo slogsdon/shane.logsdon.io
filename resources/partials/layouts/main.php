@@ -10,10 +10,8 @@
 
 <header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-background/80 backdrop-blur transition-all" style="padding-top: env(safe-area-inset-top);">
     <div class="mx-auto flex h-14 max-w-editorial items-center justify-between px-6">
-        <a href="/" aria-label="Shane Logsdon — home" class="flex items-center gap-2 hover:no-underline">
-            <span class="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-muted-foreground">SL</span>
-            <span class="hidden h-3 w-px bg-rule sm:block" aria-hidden="true"></span>
-            <span class="hidden font-display text-[0.95rem] font-medium text-foreground sm:block">Shane Logsdon</span>
+        <a href="/" aria-label="Shane Logsdon — home" class="hover:no-underline">
+            <span class="wordmark wordmark--sm sm:!text-[1.05rem]">Shane Logsdon</span>
         </a>
 
         <nav aria-label="Primary">
@@ -48,7 +46,6 @@
         var href = a.getAttribute('href');
         if (href !== '/' && path.startsWith(href)) {
             a.setAttribute('aria-current', 'page');
-            a.classList.remove('text-muted-foreground');
             a.classList.add('text-foreground');
             var underline = a.querySelector('span[aria-hidden="true"]');
             if (underline) {

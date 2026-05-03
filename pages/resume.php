@@ -51,16 +51,28 @@ $this->layout('partials::layouts/main', [
   align-items: start;
 }
 .rp-marg {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em;
   color: var(--rp-ink-3); line-height: 1.9;
 }
 .rp-marg .k { display: block; color: var(--rp-ink-2); }
 .rp-marg .k + .k { margin-top: 1rem; color: var(--rp-ink-3); }
+.rp-marg .dateline {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-caps: normal; text-transform: none; font-weight: 400;
+  letter-spacing: 0.06em; font-size: 11px;
+}
 
 .rp-hero-byline {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em;
   color: var(--rp-ink-3); margin-bottom: 1.5rem;
 }
 .rp-hero-byline .sep { color: var(--rp-ink-4); margin: 0 0.5rem; }
@@ -73,9 +85,11 @@ $this->layout('partials::layouts/main', [
   margin: 0 0 2rem; color: var(--rp-ink);
   font-variation-settings: 'opsz' 144, 'SOFT' 30;
 }
+/* Single amber type-accent on the subject phrase — replaces italics-emphasis */
 .rp-hero-title em {
-  font-style: italic;
-  font-variation-settings: 'opsz' 144, 'SOFT' 60;
+  font-style: normal;
+  color: var(--rp-accent);
+  font-variation-settings: 'opsz' 144;
 }
 
 .rp-hero-lead {
@@ -86,8 +100,11 @@ $this->layout('partials::layouts/main', [
 
 .rp-hero-actions {
   display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 14px; letter-spacing: 0.08em;
 }
 .rp-hero-actions a {
   color: var(--rp-ink-2); text-decoration: none;
@@ -98,7 +115,12 @@ $this->layout('partials::layouts/main', [
 
 .rp-hero-meta { display: grid; gap: 1rem; padding-top: 8px; }
 .rp-hero-meta .row { display: grid; grid-template-columns: 80px 1fr; gap: 0.75rem; align-items: baseline; }
-.rp-hero-meta .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rp-ink-3); }
+.rp-hero-meta .lbl {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em; color: var(--rp-ink-3);
+}
 .rp-hero-meta .val { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--rp-ink); }
 .rp-hero-meta .val a { color: var(--rp-accent); text-decoration: underline; text-underline-offset: 3px; }
 .rp-hero-meta .led { width: 7px; height: 7px; border-radius: 50%; background: #3F6B3A; display: inline-block; margin-right: 6px; vertical-align: middle; box-shadow: 0 0 0 3px rgba(63,107,58,.12); }
@@ -111,8 +133,10 @@ $this->layout('partials::layouts/main', [
   display: grid; grid-template-columns: 1fr auto; align-items: baseline;
   padding-bottom: 0.75rem; border-bottom: 1px solid var(--rp-line);
   margin-bottom: 2rem;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--rp-ink-3);
+  font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em; color: var(--rp-ink-3);
 }
 
 .rp-sec-title {
@@ -121,7 +145,8 @@ $this->layout('partials::layouts/main', [
   line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 2rem;
   color: var(--rp-ink);
 }
-.rp-sec-title em { font-style: italic; }
+/* Amber type-accent — one phrase per section, replacing italics emphasis */
+.rp-sec-title em { font-style: normal; color: var(--rp-accent); }
 
 .rp-sec-lead {
   font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7;
@@ -149,8 +174,9 @@ $this->layout('partials::layouts/main', [
 .rp-role:last-child  { border-bottom: 0; }
 
 .rp-role .n {
-  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
+  font-family: 'Fraunces', Georgia, serif; font-weight: 400;
   font-size: 1.5rem; color: var(--rp-accent); line-height: 1; padding-top: 6px;
+  font-variant-numeric: oldstyle-nums;
 }
 
 .rp-role .body h3 {
@@ -177,13 +203,18 @@ $this->layout('partials::layouts/main', [
 
 .rp-role .right {
   text-align: right;
-  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
-  letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 0.06em;
   color: var(--rp-ink-3); line-height: 1.8; padding-top: 8px;
 }
 .rp-role .right b { display: block; color: var(--rp-ink-2); font-weight: 400; }
-.rp-role .right small { display: block; color: var(--rp-ink-3); }
-.rp-role .right .dur { color: var(--rp-ink-4); margin-top: 4px; display: block; letter-spacing: 0.2em; }
+.rp-role .right small {
+  display: block; color: var(--rp-ink-3);
+  font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: 12px; letter-spacing: 0.1em;
+}
+.rp-role .right .dur { color: var(--rp-ink-4); margin-top: 4px; display: block; }
 
 /* Stats row */
 .rp-stats {
@@ -194,9 +225,14 @@ $this->layout('partials::layouts/main', [
 }
 .rp-stat { padding: 1.5rem 1rem; border-right: 1px solid var(--rp-line); }
 .rp-stat:last-child { border-right: 0; }
-.rp-stat .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rp-ink-3); margin-bottom: 0.5rem; }
+.rp-stat .lbl {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em; color: var(--rp-ink-3); margin-bottom: 0.5rem;
+}
 .rp-stat .num { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 2rem; line-height: 1; letter-spacing: -0.02em; color: var(--rp-ink); }
-.rp-stat .num sup { font-size: 0.6em; color: var(--rp-ink-3); margin-left: 2px; font-style: italic; }
+.rp-stat .num sup { font-size: 0.6em; color: var(--rp-ink-3); margin-left: 2px; font-style: normal; }
 .rp-stat .note { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--rp-ink-3); margin-top: 0.5rem; }
 
 /* Skills grid */
@@ -209,7 +245,7 @@ $this->layout('partials::layouts/main', [
 }
 .rp-skill:nth-child(odd)  { padding-right: 2rem; }
 .rp-skill:nth-child(even) { padding-left: 2rem; border-left: 1px solid var(--rp-line); }
-.rp-skill .idx { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; color: var(--rp-ink-4); text-transform: uppercase; }
+.rp-skill .idx { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--rp-ink-4); }
 .rp-skill h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.0625rem; line-height: 1.25; letter-spacing: -0.005em; margin: 0 0 0.5rem; color: var(--rp-ink); }
 .rp-skill p  { font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; color: var(--rp-ink-2); margin: 0; }
 
@@ -217,22 +253,25 @@ $this->layout('partials::layouts/main', [
 .rp-doc-strip {
   display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 0;
-  border-top: 1px dashed var(--rp-line);
-  border-bottom: 1px dashed var(--rp-line);
+  border-top: 1px solid var(--rp-line);
+  border-bottom: 1px solid var(--rp-line);
   margin-top: 2rem;
   font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--rp-ink-3);
+  letter-spacing: 0.06em; color: var(--rp-ink-3);
 }
 .rp-doc-strip a { color: var(--rp-ink-2); text-decoration: none; border-bottom: 1px solid var(--rp-line); padding-bottom: 3px; }
 .rp-doc-strip a:hover { color: var(--rp-ink); border-bottom-color: var(--rp-ink); }
 
-/* CTA band */
+/* CTA band — dark inversion (the canonical v2 feature treatment), not a warm-on-warm clay block */
 .rp-cta-band {
-  background: var(--rp-paper-2);
+  background: var(--rp-ink);
+  color: var(--rp-paper);
   padding: 4rem 0;
-  border-top: 1px solid var(--rp-line);
-  border-bottom: 1px solid var(--rp-line);
 }
+.rp-cta-band .rp-marg { color: rgba(251, 250, 249, 0.55); }
+.rp-cta-band .rp-marg .k { color: rgba(251, 250, 249, 0.55); }
+.rp-cta-band h2 { color: var(--rp-paper); }
+.rp-cta-band p { color: rgba(251, 250, 249, 0.72); }
 .rp-cta-grid { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; align-items: start; }
 .rp-cta-body { max-width: 560px; }
 .rp-cta-body h2 {
@@ -242,15 +281,22 @@ $this->layout('partials::layouts/main', [
 }
 .rp-cta-body p { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.65; color: var(--rp-ink-2); margin: 0 0 1.5rem; }
 
+/* btn-arrow — the only button in v2 (filled .btn was removed) */
 .rp-btn-dark {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 10px 18px; background: var(--rp-ink); color: var(--rp-paper);
-  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-  text-decoration: none; transition: background 200ms ease;
+  display: inline; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400;
+  color: var(--rp-paper); text-decoration: underline;
+  text-decoration-color: rgba(251, 250, 249, 0.3); text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 200ms ease;
 }
-.rp-btn-dark:hover { background: #000; color: var(--rp-paper); }
-.rp-btn-dark::after { content: '→'; font-family: 'Fraunces', Georgia, serif; font-size: 15px; }
-.rp-handle { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rp-ink-3); margin-left: 1rem; }
+.rp-btn-dark:hover { text-decoration-color: var(--rp-paper); color: var(--rp-paper); }
+.rp-btn-dark::after { content: ' →'; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+.rp-handle {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: 12px; letter-spacing: 0.1em; color: rgba(251, 250, 249, 0.55); margin-left: 1.5rem;
+}
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -320,8 +366,8 @@ $this->layout('partials::layouts/main', [
       <div class="rp-hero-grid">
 
         <aside class="rp-marg" aria-hidden="true">
-          <span class="k">§ 01 / Resume</span>
-          <span class="k">Rev. May 2026</span>
+          <span class="k">resume / 01</span>
+          <span class="k dateline">Rev. May 2026</span>
         </aside>
 
         <div>
@@ -352,8 +398,8 @@ $this->layout('partials::layouts/main', [
   <div class="rp-frame">
     <section class="rp-section" style="padding-top: 3rem;">
       <div class="rp-sec-kicker">
-        <span>02 / At a glance</span>
-        <span>Figures as of May 2026</span>
+        <span>at a glance / 02</span>
+        <span>figures as of may 2026</span>
       </div>
 
       <div class="rp-stats">
@@ -392,9 +438,9 @@ $this->layout('partials::layouts/main', [
       <div class="rp-two-col">
 
         <aside class="rp-marg" aria-label="Section context">
-          <span class="k">§ 03 / Experience</span>
-          <span class="k">2012 — Present</span>
-          <span class="k">09 roles · 03 employers</span>
+          <span class="k">experience / 03</span>
+          <span class="k dateline">2012 — Present</span>
+          <span class="k dateline">09 roles · 03 employers</span>
         </aside>
 
         <div>
@@ -595,8 +641,8 @@ $this->layout('partials::layouts/main', [
       <div class="rp-two-col">
 
         <aside class="rp-marg" aria-hidden="true">
-          <span class="k">§ 04 / Capabilities</span>
-          <span class="k">Grouped, not ranked</span>
+          <span class="k">capabilities / 04</span>
+          <span class="k">grouped, not ranked</span>
         </aside>
 
         <div>
@@ -658,7 +704,7 @@ $this->layout('partials::layouts/main', [
     <div class="rp-frame">
       <div class="rp-cta-grid">
         <aside class="rp-marg" aria-hidden="true">
-          <span class="k">§ 05 / Correspondence</span>
+          <span class="k">correspondence / 05</span>
         </aside>
         <div class="rp-cta-body">
           <h2>Open to conversations about payments, platforms, and developer-facing work.</h2>

@@ -27,15 +27,18 @@ $index = 0;
 <?php endif; ?>
 
 <?php foreach ($posts as $postSlug => $post):
-    $num = str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+    $num = str_pad($index + 1, 3, '0', STR_PAD_LEFT);
     $dateFormatted = isset($post->date)
+        ? DateTime::createFromFormat('Y-m-d', $post->date)->format('Y.m.d')
+        : '';
+    $dateLong = isset($post->date)
         ? DateTime::createFromFormat('Y-m-d', $post->date)->format('F j, Y')
         : '';
     $readTime = '';
     if ('articles' === $slug) {
         $mdPath = sprintf('pages/articles/%s/%s.md', $post->category, $postSlug);
         if (file_exists($mdPath)) {
-            $readTime = ceil(str_word_count(strip_tags(file_get_contents($mdPath))) / $settings->avgWordsPerMinute) . ' min read';
+            $readTime = ceil(str_word_count(strip_tags(file_get_contents($mdPath))) / $settings->avgWordsPerMinute) . ' min';
         }
     }
     $categoryLabel = isset($post->category) && isset($allCategories[$post->category])
@@ -43,12 +46,13 @@ $index = 0;
         : ($post->category ?? '');
     $postUrl = sprintf('/%s/%s/%s/', $slug, $post->category, $postSlug);
 ?>
-<article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 transition-colors sm:py-10" data-category="<?= htmlspecialchars($post->category ?? '') ?>" style="--tw-bg-opacity:1;" onmouseenter="this.style.backgroundColor='hsl(var(--accent)/0.4)'" onmouseleave="this.style.backgroundColor=''">
+<article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 sm:py-10" data-category="<?= htmlspecialchars($post->category ?? '') ?>">
     <div class="col-span-12 sm:col-span-2">
-        <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground">
-            <span class="mr-3" style="color:hsl(var(--foreground)/0.4)"><?= $num ?></span>
-            <?= $dateFormatted ?>
+        <p class="folio">
+            <span class="pos"><?= $num ?></span>
+            <span><?= $dateFormatted ?></span>
         </p>
+        <p class="sr-only"><?= $dateLong ?></p>
     </div>
 
     <div class="col-span-12 sm:col-span-7">
@@ -61,34 +65,30 @@ $index = 0;
             </a>
         </h3>
         <?php if (!empty($post->description)): ?>
-        <p class="mt-2 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">
+        <p class="mt-3 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">
             <?= htmlspecialchars($post->description) ?>
         </p>
         <?php endif; ?>
         <?php if (!empty($post->tags) && is_array($post->tags)): ?>
-        <ul class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <ul class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <?php foreach ($post->tags as $tag): ?>
-            <li class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
-                <span style="color:hsl(var(--foreground)/0.3)">/</span> <a href="/<?= $slug ?>/tags/<?= $tag ?>/"
-                   style="color:inherit;"><?= isset($allTags[$tag]) ? $allTags[$tag] : $tag ?></a>
+            <li class="smallcaps">
+                <a href="/<?= $slug ?>/tags/<?= $tag ?>/" class="hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
             </li>
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
     </div>
 
-    <div class="col-span-12 flex items-start justify-between gap-3 sm:col-span-3 sm:justify-end sm:text-right">
-        <div class="flex flex-col items-start gap-2 sm:items-end">
-            <?php if ($categoryLabel): ?>
-            <a href="/<?= $slug ?>/<?= $post->category ?>/"
-               class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground">
-                <?= htmlspecialchars($categoryLabel) ?>
-            </a>
-            <?php endif; ?>
-            <?php if ($readTime): ?>
-            <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground"><?= $readTime ?></span>
-            <?php endif; ?>
-        </div>
+    <div class="col-span-12 flex items-baseline justify-between gap-3 sm:col-span-3 sm:flex-col sm:items-end sm:justify-start sm:gap-2">
+        <?php if ($categoryLabel): ?>
+        <a href="/<?= $slug ?>/<?= $post->category ?>/" class="smallcaps hover:!text-foreground">
+            <?= strtolower(htmlspecialchars($categoryLabel)) ?>
+        </a>
+        <?php endif; ?>
+        <?php if ($readTime): ?>
+        <span class="folio"><?= $readTime ?></span>
+        <?php endif; ?>
     </div>
 </article>
 <?php

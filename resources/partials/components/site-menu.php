@@ -6,13 +6,13 @@ $navItems = [
     ['href' => '/resume/', 'label' => 'Resume'],
 ];
 ?>
-<ul class="flex items-center gap-1 sm:gap-2" id="site-nav">
+<ul class="flex items-baseline gap-4 sm:gap-6" id="site-nav">
     <?php foreach ($navItems as $item): ?>
     <li>
         <a href="<?= $item['href'] ?>"
-           class="inline-flex h-9 items-center px-2 text-sm transition-colors text-muted-foreground hover:text-foreground hover:no-underline sm:px-3">
+           class="smallcaps inline-flex h-9 items-center transition-colors hover:!text-foreground hover:no-underline">
             <span class="relative">
-                <?= $item['label'] ?>
+                <?= strtolower($item['label']) ?>
                 <span aria-hidden="true" class="absolute -bottom-1 left-0 h-px w-full origin-left bg-foreground transition-transform scale-x-0"></span>
             </span>
         </a>
