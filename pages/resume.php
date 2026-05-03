@@ -297,7 +297,7 @@ $this->layout('partials::layouts/main', [
         <div>
           <div class="rp-hero-byline">Shane Logsdon <span class="sep">·</span> Curriculum Vitae <span class="sep">·</span> Est. 2008</div>
           <h1 class="rp-hero-title">Fourteen years of shipping <em>payment platforms</em> engineers want to build on.</h1>
-          <p class="rp-hero-lead">Technical product leader with a working history that runs from production code to platform strategy. Currently leading vertical product at Global Payments, where I've spent the last decade turning payment primitives into SDKs, integrations, and developer experiences at scale.</p>
+          <p class="rp-hero-lead">My work runs from production code to platform strategy. For the last decade at Global Payments, I've been turning payment primitives into the SDKs, integrations, and developer experiences that engineers actually want to use.</p>
           <nav class="rp-hero-actions" aria-label="Quick links">
             <a href="#experience">Jump to experience</a>
             <a href="mailto:shane@logsdon.io">Get in touch</a>
@@ -373,7 +373,7 @@ $this->layout('partials::layouts/main', [
 
         <div>
           <h2 class="rp-sec-title">Experience, in <em>reverse-chronological</em> order.</h2>
-          <p class="rp-sec-lead">Nine roles across three employers. Each entry reads as working notes — what the job actually was and what shipped — not a keyword sheet.</p>
+          <p class="rp-sec-lead">Nine roles across three employers. Each entry is working notes on what the job was and what shipped, not a keyword sheet.</p>
 
           <!-- i — Senior Director of Product Management -->
           <div class="rp-role">
@@ -382,12 +382,12 @@ $this->layout('partials::layouts/main', [
               <h3>Senior Director of Product Management</h3>
               <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
               <ul>
-                <li>Rebuilt the developer platform post-merger, consolidating two legacy GP+Worldpay API platforms into a single experience with multi-language sample projects, browser sandbox environments, and community infrastructure — growing developer engagement 55%+ from a standing start with no dedicated program budget.</li>
+                <li>Rebuilt the developer platform post-merger, consolidating two legacy GP+Worldpay API platforms into a single experience with multi-language sample projects, browser sandbox environments, and community infrastructure, growing developer engagement 55%+ from a standing start with no dedicated program budget.</li>
                 <li>Overhauled developer support from ad-hoc escalation to structured triage, introducing diagnostic frameworks, standardized playbooks, and cross-language reference implementations that cut repeat issues and enterprise integration resolution times.</li>
-                <li>Shipped GP's AI developer tooling ahead of most payment platforms — LLM context files for payment APIs, agentic workflow automations, and GP API Validator — building a support model that let a 3-person team operate at enterprise scale.</li>
+                <li>Shipped GP's AI developer tooling ahead of most payment platforms (LLM context files for payment APIs, agentic workflow automations, and GP API Validator), building a support model that let a 3-person team handle enterprise-scale support.</li>
                 <li>Built the team's KPI infrastructure from scratch, pulling support volume, product usage, and community signals into unified dashboards and monthly executive reporting, creating the first direct line from developer pain to product roadmap.</li>
-                <li>Stood up the developer advocacy function from scratch — 3-person team, FTE-only budget — establishing roadmaps, OKRs, and a career framework while driving product, engineering, and sales alignment through influence rather than spend.</li>
-                <li>Took a purpose-built payment product from concept to market in the professional and home services vertical (tens of millions in annual processing volume), acquiring nearly 1,000 merchants and $300k+ ARR as the initial foothold, with the product continuing to scale.</li>
+                <li>Stood up the developer advocacy function from scratch (3-person team, FTE-only budget), establishing roadmaps, OKRs, and a career framework while driving product, engineering, and sales alignment through influence rather than spend.</li>
+                <li>Took a purpose-built payment product from concept to market in the professional and home services vertical (tens of millions in annual processing volume), acquiring nearly 1,000 merchants and $300k+ ARR in the first year, with the product still growing.</li>
               </ul>
             </div>
             <div class="right">
@@ -406,8 +406,8 @@ $this->layout('partials::layouts/main', [
               <ul>
                 <li>Expanded developer-experience initiatives across multiple business units, cutting integration time from weeks to days.</li>
                 <li>Drove product strategy behind 20%+ year-over-year net revenue growth.</li>
-                <li>Established strategic partnerships leading to significant market expansion.</li>
-                <li>Managed technical resource allocation across multiple product lines, improving integration success rates.</li>
+                <li>Built strategic partnerships that opened new market segments.</li>
+                <li>Managed technical resources across multiple product lines and improved integration success rates.</li>
               </ul>
             </div>
             <div class="right">
@@ -426,9 +426,9 @@ $this->layout('partials::layouts/main', [
               <ul>
                 <li>Led a 20+ person developer team while transitioning into product leadership for US Online Payments solutions.</li>
                 <li>Drove implementation strategy resulting in 10,000+ new merchant installations.</li>
-                <li>Generated multi-million dollar annual recurring revenue through successful partner onboarding.</li>
-                <li>Delivered technical evangelism at industry conferences, generating hundreds of qualified leads.</li>
-                <li>Shaped product strategy and technical roadmap while coordinating integration resources.</li>
+                <li>Brought in multi-million dollar ARR through partner onboarding.</li>
+                <li>Spoke at industry conferences and came back with hundreds of qualified leads.</li>
+                <li>Shaped product strategy and roadmap while keeping integration teams coordinated.</li>
               </ul>
             </div>
             <div class="right">
@@ -448,8 +448,8 @@ $this->layout('partials::layouts/main', [
                 <li>Architected a multi-language SDK suite in C#/.NET, Java, PHP, Ruby, Python, and JavaScript.</li>
                 <li>Enabled 1,000+ merchant integrations generating millions of dollars in annual recurring revenue.</li>
                 <li>Led proof-of-concept projects securing 20+ strategic partner implementations.</li>
-                <li>Established technical strategy for integration patterns, improving developer experience.</li>
-                <li>Served as final escalation point for complex technical challenges while mentoring implementation teams.</li>
+                <li>Defined the technical approach to integration patterns, shortening the path to first success for most partners.</li>
+                <li>Handled final escalation on complex technical problems while mentoring the implementation teams.</li>
               </ul>
             </div>
             <div class="right">
@@ -466,10 +466,10 @@ $this->layout('partials::layouts/main', [
               <h3>Senior Software Developer</h3>
               <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
               <ul>
-                <li>Led development of enterprise payment SDKs as technical lead.</li>
+                <li>Led SDK development for enterprise payment systems.</li>
                 <li>Designed and implemented scalable integration patterns, reducing partner onboarding time by 40%.</li>
                 <li>Established coding standards across multiple languages while mentoring junior developers.</li>
-                <li>Built robust testing practices through code-review leadership.</li>
+                <li>Built testing culture through consistent code-review standards.</li>
               </ul>
             </div>
             <div class="right">
@@ -488,7 +488,7 @@ $this->layout('partials::layouts/main', [
               <ul>
                 <li>Implemented and maintained SDK libraries across multiple programming languages.</li>
                 <li>Achieved a 30% reduction in integration-related support tickets.</li>
-                <li>Collaborated with the support team to optimize integration patterns and documentation.</li>
+                <li>Worked with the support team to refine integration patterns and documentation.</li>
               </ul>
             </div>
             <div class="right">
@@ -506,8 +506,8 @@ $this->layout('partials::layouts/main', [
               <p class="sub"><span class="co">StarkNine</span><span class="dot">·</span>Louisville, KY</p>
               <ul>
                 <li>Designed and managed infrastructure for ChatBlend.com and DashSocial.com.</li>
-                <li>Implemented fault-tolerant, scalable architecture for high service quality and availability.</li>
-                <li>Led product development lifecycle from conception to deployment.</li>
+                <li>Built fault-tolerant, scalable architecture with availability as a first-class concern.</li>
+                <li>Ran the full product development cycle from concept to launch.</li>
                 <li>Established monitoring and maintenance protocols for production systems.</li>
               </ul>
             </div>
@@ -525,10 +525,10 @@ $this->layout('partials::layouts/main', [
               <h3>Technical Lead</h3>
               <p class="sub"><span class="co">Blackstone Media Network</span><span class="dot">·</span>Louisville, KY</p>
               <ul>
-                <li>Oversaw full software development lifecycle for client projects.</li>
+                <li>Ran the development process end-to-end for client projects.</li>
                 <li>Led systems design and specification writing for web applications.</li>
                 <li>Managed deployments across Linux and Windows environments.</li>
-                <li>Implemented both .NET and PHP solutions for diverse client needs.</li>
+                <li>Implemented .NET and PHP solutions across a range of client projects.</li>
               </ul>
             </div>
             <div class="right">
@@ -548,7 +548,7 @@ $this->layout('partials::layouts/main', [
                 <li>Developed web applications using .NET (Web Forms and MVC) and PHP.</li>
                 <li>Implemented content-management solutions using WordPress and Magento.</li>
                 <li>Performed DevOps tasks across Linux and Windows environments.</li>
-                <li>Contributed to in-house product development initiatives.</li>
+                <li>Contributed to in-house product work alongside client projects.</li>
               </ul>
             </div>
             <div class="right">
@@ -575,7 +575,7 @@ $this->layout('partials::layouts/main', [
 
         <div>
           <h2 class="rp-sec-title">Capabilities &amp; <em>areas of practice</em>.</h2>
-          <p class="rp-sec-lead">Six working groups — the shapes I tend to recur to. Stacked by discipline rather than by hype; the tools in the first row are the ones I've shipped against, not simply touched.</p>
+          <p class="rp-sec-lead">Six working groups, the shapes I tend to recur to. Stacked by discipline rather than by hype. The tools in the first row are the ones I've shipped against, not ones I've only read about.</p>
 
           <div class="rp-skills">
             <div class="rp-skill">
@@ -636,7 +636,7 @@ $this->layout('partials::layouts/main', [
         </aside>
         <div class="rp-cta-body">
           <h2>Open to conversations about payments, platforms, and developer-facing work.</h2>
-          <p>Currently at Global Payments and not actively looking, but always interested in talking to operators building developer-first products — whether that's a role, an advisory conversation, or just comparing notes.</p>
+          <p>Currently at Global Payments and not actively looking, but always interested in talking to operators building developer-first products, whether that's about a role, an advisory conversation, or comparing notes.</p>
           <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem 0;">
             <a href="mailto:shane@logsdon.io" class="rp-btn-dark">Send an email</a>
             <span class="rp-handle">shane@logsdon.io &nbsp;·&nbsp; /in/shanelogsdon</span>
