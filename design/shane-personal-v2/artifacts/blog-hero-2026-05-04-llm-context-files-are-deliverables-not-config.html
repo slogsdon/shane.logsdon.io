@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — llm-context-files-are-deliverables-not-config</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ── Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-accent:          #c26a3b;
+  --color-accent-hover:    #a0542a;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:        1.1875rem;
+  --fs-body-lg:     1.0625rem;
+  --fs-body-md:     1rem;
+  --fs-meta:        0.875rem;
+  --fs-smallcaps-lg:0.875rem;
+  --fs-smallcaps:   0.75rem;
+  --fs-dateline:    0.75rem;
+  --fs-code:        0.875rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-smallcaps: 0.08em;
+  --tracking-mono:      0.06em;
+
+  --s-1:0.25rem; --s-2:0.5rem;  --s-3:0.75rem; --s-4:1rem;
+  --s-5:1.5rem;  --s-6:2rem;    --s-7:3rem;    --s-8:4rem;
+  --s-9:6rem;    --s-10:9rem;
+
+  --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
+}
+
+/* ── Page chrome ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #1c1c1c;
+  min-height: 100vh;
+  font-family: var(--type-sans-family);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 0 64px;
+}
+
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  align-self: flex-start;
+  margin-left: calc(50vw - 600px);
+}
+
+/* ── Shared — accent word ─────────────────────────────────────────── */
+.t-accent { color: var(--color-accent); font-style: normal; }
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* OG card — 1200×630                                                  */
+/* ─────────────────────────────────────────────────────────────────── */
+.canvas-og {
+  width: 1200px;
+  height: 630px;
+  background: var(--color-ink);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 60px 80px 52px;
+}
+
+.canvas-og .main {
+  display: flex;
+  align-items: center;
+}
+
+.canvas-og .hl {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  font-size: var(--fs-display);          /* 72px */
+  line-height: var(--lh-snug);           /* 1.05 */
+  letter-spacing: var(--tracking-display);
+  color: var(--color-surface);
+  max-width: 14ch;
+}
+
+.canvas-og .foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.canvas-og .wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.005em;
+  color: rgba(251,250,249,0.65);
+}
+.canvas-og .wordmark::after { content: '.'; color: var(--color-accent); }
+
+.canvas-og .dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: rgba(251,250,249,0.38);
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* In-page hero — 1440×600                                             */
+/* ─────────────────────────────────────────────────────────────────── */
+.canvas-hero {
+  width: 1440px;
+  height: 600px;
+  background: var(--color-ink);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 64px 96px 56px;
+}
+
+.canvas-hero .hl {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  font-size: var(--fs-display-xl);       /* 96px */
+  line-height: var(--lh-tight);          /* 1.0 */
+  letter-spacing: var(--tracking-cover);
+  color: var(--color-surface);
+  max-width: 20ch;
+}
+
+.canvas-hero .foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: var(--s-4);
+  border-top: 1px solid rgba(251,250,249,0.15);
+}
+
+.canvas-hero .wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  color: rgba(251,250,249,0.65);
+}
+.canvas-hero .wordmark::after { content: '.'; color: var(--color-accent); }
+
+.canvas-hero .category {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
+  color: rgba(251,250,249,0.38);
+}
+
+.canvas-hero .dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: rgba(251,250,249,0.38);
+}
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!--
+  Variation choices:
+    archetype:  type-only × inverted — headline fills the dark field at display scale;
+                "context" (accent word) is the sole color event on the canvas.
+                No running-head chrome, no pull-quote framing.
+                Prior blog-hero (ax-shift) was object-of-content on cream;
+                payments-primitive was inverse-text. First pure type-only in this series.
+    layout:     off-grid — headline anchored left, vertically centered in its grid row;
+                foot strip pinned to bottom edge only (hero has hairline rule; OG has none)
+    color:      inverted — dark #0e1116 field with cream Fraunces; accent amber on "context"
+    type-press: display-dominant — Fraunces 400 at 72px (OG) / 96px (hero)
+
+  Post slug:   llm-context-files-are-deliverables-not-config
+  OG desc:     Most CLAUDE.md files decay because they're written as config and forgotten.
+               Here's how to treat them as living artifacts that improve over time.
+  URL:         https://shane.logsdon.io/articles/technical-deep-dives/llm-context-files-are-deliverables-not-config/
+-->
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
+<article class="canvas-og">
+
+  <div class="main">
+    <p class="hl">
+      LLM <span class="t-accent">context</span> files are deliverables, not config.
+    </p>
+  </div>
+
+  <footer class="foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span class="dateline">2026.05.04</span>
+  </footer>
+
+</article>
+
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot this for the article header</span>
+<article class="canvas-hero">
+
+  <p class="hl">
+    LLM <span class="t-accent">context</span> files are<br>deliverables, not config.
+  </p>
+
+  <footer class="foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span class="category">technical deep dives</span>
+    <span class="dateline">2026.05.04</span>
+  </footer>
+
+</article>
+
+</body>
+</html>

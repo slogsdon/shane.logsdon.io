@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — llm-context-files</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ── Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-accent:          #c26a3b;
+  --color-accent-hover:    #a0542a;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:        1.1875rem;
+  --fs-body-lg:     1.0625rem;
+  --fs-body-md:     1rem;
+  --fs-meta:        0.875rem;
+  --fs-smallcaps-lg:0.875rem;
+  --fs-smallcaps:   0.75rem;
+  --fs-dateline:    0.75rem;
+  --fs-code:        0.875rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-smallcaps: 0.08em;
+  --tracking-mono:      0.06em;
+
+  --s-1:0.25rem; --s-2:0.5rem;  --s-3:0.75rem; --s-4:1rem;
+  --s-5:1.5rem;  --s-6:2rem;    --s-7:3rem;    --s-8:4rem;
+  --s-9:6rem;    --s-10:9rem;
+
+  --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
+}
+
+/* ── Page chrome ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #1c1c1c;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: var(--type-sans-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Canvas — exact 1200×627 ──────────────────────────────────────── */
+.canvas {
+  width: 1200px;
+  height: 627px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 52px 72px 44px;
+}
+
+/* ── File header ──────────────────────────────────────────────────── */
+.file-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.filename {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-code);        /* 14px */
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+
+.file-label {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+/* ── Tier table ───────────────────────────────────────────────────── */
+.tier-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-6);
+  padding: var(--s-5) 0;
+}
+
+.tier-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--s-5);
+  align-items: start;
+}
+
+.tier-label {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps-lg);  /* 14px */
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+  padding-top: 2px;                   /* optical align with mono baseline */
+}
+
+.tier-label--accent {
+  color: var(--color-accent);
+}
+
+.tier-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.tier-item {
+  font-family: var(--type-mono-family);
+  font-size: 1.0625rem;               /* 17px — legible at thumbnail scale */
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-soft);
+}
+
+.tier-item::before {
+  content: '→ ';
+  color: var(--color-rule);
+  font-size: 0.875rem;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--color-rule);
+}
+
+.wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+.wordmark::after { content: '.'; color: var(--color-accent); }
+
+.dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+
+@page { size: 1200px 627px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!--
+  Variation choices:
+    archetype:    object-of-content — the canvas IS a CLAUDE.md boundary tier entry;
+                  the file fragment format makes the article's core concept legible at feed scale.
+                  Prior LinkedIn: pattern-led (ax-shift), chrome-led inverted (field-note).
+                  This is the first object-of-content in the LinkedIn series.
+    layout:       full-bleed — file header to footer, no negative-space tension
+    color:        monochrome — cream surface, ink-3 filename/labels, ink-soft for tier items
+    type-press:   mono-led — JetBrains Mono for all tier content; Fraunces smallcaps for labels
+    composition:  data-led — the three-tier structure IS the composition
+
+  Post slug:   llm-context-files-are-deliverables-not-config
+  OG desc:     Most CLAUDE.md files decay because they're written as config and forgotten.
+               Here's how to treat them as living artifacts that improve over time.
+-->
+
+<article class="canvas">
+
+  <header class="file-header">
+    <span class="filename">CLAUDE.md</span>
+    <span class="file-label">boundary tier</span>
+  </header>
+
+  <div class="tier-table">
+
+    <div class="tier-row">
+      <span class="tier-label">always</span>
+      <div class="tier-items">
+        <span class="tier-item">run tests before committing</span>
+        <span class="tier-item">include issue link in PR descriptions</span>
+      </div>
+    </div>
+
+    <div class="tier-row">
+      <span class="tier-label">ask-first</span>
+      <div class="tier-items">
+        <span class="tier-item">add new dependencies</span>
+        <span class="tier-item">delete files (even empty ones)</span>
+        <span class="tier-item">modify database migrations</span>
+      </div>
+    </div>
+
+    <div class="tier-row">
+      <span class="tier-label tier-label--accent">never</span>
+      <div class="tier-items">
+        <span class="tier-item">commit secrets or credentials</span>
+        <span class="tier-item">push directly to main</span>
+        <span class="tier-item">modify generated files in src/generated/</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <span class="wordmark">Shane Logsdon</span>
+    <span class="dateline">2026.05.04</span>
+  </footer>
+
+</article>
+
+<!--
+COMPANION TEXT:
+
+Your CLAUDE.md doesn't have a boundary tier. That's the gap.
+
+Most context files cover the stack, the folder structure, and maybe the commit format. What they skip is the layer that matters most: telling the agent what it can do autonomously, what requires a pause, and what's a hard stop.
+
+The three-tier structure — always / ask-first / never — is where most AI drift originates. The agent doesn't know it can't push to main. It doesn't know to ask before adding a dependency. It invents the convention, and that convention is wrong.
+
+"Never commit secrets" is the most consistently absent constraint I've seen across real-world CLAUDE.md files. It's also the one teams add after a close call.
+
+New post on treating LLM context files as living artifacts, not set-and-forget config — link in the first comment.
+-->
+</body>
+</html>
