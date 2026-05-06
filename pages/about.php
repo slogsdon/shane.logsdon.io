@@ -90,6 +90,11 @@ $expertise = [
                 make complex financial primitives feel inevitable to the engineers using them.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                I also run a small practice building and managing web presence systems for local
+                business owners: website build, AEO/SEO, and ongoing management. The technical
+                foundation is the same as enterprise work. The audience is different.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 I keep a small but steady stream of writing in
                 <a class="link-quiet" href="/articles/">Articles</a>
                 and notes from talks in
@@ -101,7 +106,7 @@ $expertise = [
 
 <?php $this->insert('partials::components/contact-cta', [
     'ctaEyebrow' => 'Let\'s talk',
-    'ctaTitle'   => 'Open to conversations on payments, platforms, and product.',
+    'ctaTitle'   => 'Open to conversations on payments, platforms, product, and local web presence.',
     'ctaBody'    => 'I enjoy comparing notes with operators building serious developer products. The best place to start a conversation is LinkedIn.',
 ]); ?>
 
