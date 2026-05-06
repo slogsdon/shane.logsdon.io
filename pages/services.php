@@ -169,20 +169,13 @@ $faqs = [
 </section>
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    <?php foreach ($faqs as $i => $faq): ?>
-    {
-      "@type": "Question",
-      "name": "<?= addslashes($faq['q']) ?>",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "<?= addslashes($faq['a']) ?>"
-      }
-    }<?= $i < count($faqs) - 1 ? ',' : '' ?>
-    <?php endforeach; ?>
-  ]
-}
+<?= json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => array_map(fn($faq) => [
+        '@type' => 'Question',
+        'name' => $faq['q'],
+        'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
+    ], $faqs),
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
 </script>
