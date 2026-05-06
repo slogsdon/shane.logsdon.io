@@ -100,3 +100,20 @@ $articleCount = count($activeArticles);
     } catch (e) {}
 })();
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shane Logsdon",
+  "url": "https://shane.logsdon.io",
+  "jobTitle": "Senior Director, Developer Advocacy",
+  "worksFor": { "@type": "Organization", "name": "Global Payments" },
+  "sameAs": [
+    "https://linkedin.com/in/shanelogsdon",
+    "https://github.com/slogsdon",
+    "https://x.com/shanelogsdon"
+  ],
+  "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
+}
+</script>
