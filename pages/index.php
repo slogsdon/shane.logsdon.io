@@ -2,7 +2,7 @@
 $settings = require('resources/settings.php');
 $this->layout('partials::layouts/main', [
     'title' => null,
-    'description' => 'Technical product leader building developer-first experiences for payment systems. Writing, speaking, and notes from the field.',
+    'description' => 'Shane Logsdon — developer advocate at Global Payments and builder of web presence systems for local business owners. Writing on fintech, developer tooling, and AI.',
     'url' => '/',
 ]);
 $articles = (array)json_decode(file_get_contents('resources/data/articles-list.json'));

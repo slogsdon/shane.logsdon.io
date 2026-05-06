@@ -3,6 +3,7 @@ $this->layout('partials::layouts/main', [
     'title' => $title,
     'slug' => $slug,
     'url' => sprintf('/%s/', $slug),
+    'description' => $description ?? null,
 ]);
 
 $allPosts = (array)json_decode(file_get_contents(sprintf('resources/data/%s-list.json', $slug)));
