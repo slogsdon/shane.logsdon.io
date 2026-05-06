@@ -128,7 +128,7 @@ $expertise = [
     "sameAs": [
         "https://www.linkedin.com/in/shanelogsdon",
         "https://github.com/slogsdon",
-        "https://twitter.com/shanelogsdon"
+        "https://x.com/shanelogsdon"
     ]
   }
 }
@@ -138,12 +138,13 @@ $expertise = [
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://shane.logsdon.io/about/#Person",
   "name": "Shane Logsdon",
   "url": "https://shane.logsdon.io",
   "jobTitle": "Senior Director, Developer Advocacy",
   "worksFor": { "@type": "Organization", "name": "Global Payments" },
   "sameAs": [
-    "https://linkedin.com/in/shanelogsdon",
+    "https://www.linkedin.com/in/shanelogsdon",
     "https://github.com/slogsdon",
     "https://x.com/shanelogsdon"
   ],
