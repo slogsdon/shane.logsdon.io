@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'Contact',
-    'description' => 'Get in touch to discuss fintech development, payment systems, or product strategy.',
+    'description' => 'Get in touch with Shane Logsdon — open to conversations about developer experience, payment systems, and web presence management for local businesses.',
     'url' => '/contact/',
 ]);
 ?>
