@@ -80,10 +80,10 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
         </div>
 
         <?php if (!empty($meta->tags) && is_array($meta->tags)): ?>
-        <ul class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <ul class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-0">
             <?php foreach ($meta->tags as $tag): ?>
             <li class="smallcaps">
-                <a href="/<?= $meta->type ?>/tags/<?= $tag ?>/" class="hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
+                <a href="/<?= $meta->type ?>/tags/<?= $tag ?>/" class="inline-flex items-center py-2 hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
             </li>
             <?php endforeach; ?>
         </ul>

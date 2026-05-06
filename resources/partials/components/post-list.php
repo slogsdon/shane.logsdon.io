@@ -70,10 +70,10 @@ $index = 0;
         </p>
         <?php endif; ?>
         <?php if (!empty($post->tags) && is_array($post->tags)): ?>
-        <ul class="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <ul class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-0">
             <?php foreach ($post->tags as $tag): ?>
             <li class="smallcaps">
-                <a href="/<?= $slug ?>/tags/<?= $tag ?>/" class="hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
+                <a href="/<?= $slug ?>/tags/<?= $tag ?>/" class="inline-flex items-center py-2 hover:!text-foreground"><?= isset($allTags[$tag]) ? strtolower($allTags[$tag]) : strtolower($tag) ?></a>
             </li>
             <?php endforeach; ?>
         </ul>
