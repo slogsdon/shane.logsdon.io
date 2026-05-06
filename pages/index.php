@@ -47,7 +47,7 @@ $articleCount = count($activeArticles);
         </div>
 
         <div class="mt-16 flex flex-wrap items-baseline gap-x-10 gap-y-4">
-            <a href="/about/" class="btn-arrow">Read about Shane</a>
+            <a href="/services/" class="btn-arrow">Work with me</a>
             <a href="/articles/" class="btn-arrow btn-arrow--muted">Browse writing</a>
         </div>
     </div>
