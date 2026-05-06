@@ -177,5 +177,5 @@ $faqs = [
         'name' => $faq['q'],
         'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
     ], $faqs),
-], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
 </script>

@@ -116,6 +116,8 @@ $expertise = [
     "@id": "https://shane.logsdon.io/about/#Person",
     "name": "Shane Logsdon",
     "url": "https://shane.logsdon.io/about/",
+    "jobTitle": "Senior Director, Developer Advocacy",
+    "worksFor": { "@type": "Organization", "name": "Global Payments" },
     "image": {
         "@type": "ImageObject",
         "@id": "https://shane.logsdon.io/images/headshot.jpeg",
@@ -129,25 +131,8 @@ $expertise = [
         "https://www.linkedin.com/in/shanelogsdon",
         "https://github.com/slogsdon",
         "https://x.com/shanelogsdon"
-    ]
+    ],
+    "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
   }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://shane.logsdon.io/about/#Person",
-  "name": "Shane Logsdon",
-  "url": "https://shane.logsdon.io",
-  "jobTitle": "Senior Director, Developer Advocacy",
-  "worksFor": { "@type": "Organization", "name": "Global Payments" },
-  "sameAs": [
-    "https://www.linkedin.com/in/shanelogsdon",
-    "https://github.com/slogsdon",
-    "https://x.com/shanelogsdon"
-  ],
-  "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
 }
 </script>
