@@ -9,7 +9,7 @@ $this->layout('partials::layouts/main', [
 <!-- Page header -->
 <section class="mx-auto max-w-editorial px-6 pt-20 pb-12">
     <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &mdash; archive</span>
+        <span>shane logsdon &middot; archive</span>
         <span><?= date('Y.m.d') ?></span>
     </div>
     <h1 class="mt-12 max-w-[20ch] font-display font-normal text-foreground"

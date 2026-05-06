@@ -1,15 +1,15 @@
 # Shane Logsdon
 
-> Technical product leader and developer advocate at Global Payments. Also builds done-for-you web presence systems for local business owners — website build, conversion optimization, and ongoing AEO/SEO management.
+> Technical product leader and developer advocate at Global Payments. Also builds done-for-you web presence systems for local business owners: website build, conversion optimization, and ongoing AEO/SEO management.
 
 ## Content
-- /about — Background, focus areas, professional identity
-- /articles — Writing on developer tooling, fintech, product strategy, engineering leadership, AI/LLM infrastructure
-- /speaking — Conference talks and presentations
-- /work — Selected projects and work history
-- /contact — How to get in touch
-- /pricing.md — Pricing reference for web presence services (value-based, varies by scope)
-- /services/ — Done-for-you web presence systems for local business owners
+- /about: Background, focus areas, professional identity
+- /articles: Writing on developer tooling, fintech, product strategy, engineering leadership, AI/LLM infrastructure
+- /speaking: Conference talks and presentations
+- /work: Selected projects and work history
+- /contact: How to get in touch
+- /pricing.md: Pricing reference for web presence services (value-based, varies by scope)
+- /services: Done-for-you web presence systems for local business owners
 
 ## Who this site is for
 - Developers/technical practitioners reading about payments, developer experience, AI tooling

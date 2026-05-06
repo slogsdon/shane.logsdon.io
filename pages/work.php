@@ -28,7 +28,7 @@ $projects = [
 
 <section class="mx-auto max-w-editorial px-6 pt-20 pb-12">
     <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &mdash; work</span>
+        <span>shane logsdon &middot; work</span>
         <span><?= date('Y.m.d') ?></span>
     </div>
     <h1 id="title" class="mt-12 max-w-[18ch] font-display font-normal text-foreground"

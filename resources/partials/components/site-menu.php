@@ -2,14 +2,14 @@
 $navItems = [
     ['href' => '/about/', 'label' => 'About'],
     ['href' => '/articles/', 'label' => 'Articles'],
-    ['href' => '/speaking/', 'label' => 'Speaking'],
+    ['href' => '/speaking/', 'label' => 'Speaking', 'mobileHidden' => true],
     ['href' => '/services/', 'label' => 'Services'],
-    ['href' => '/resume/', 'label' => 'Resume'],
+    ['href' => '/resume/', 'label' => 'Resume', 'mobileHidden' => true],
 ];
 ?>
 <ul class="flex items-baseline gap-4 sm:gap-6" id="site-nav">
     <?php foreach ($navItems as $item): ?>
-    <li>
+    <li<?= !empty($item['mobileHidden']) ? ' class="hidden sm:block"' : '' ?>>
         <a href="<?= $item['href'] ?>"
            class="smallcaps inline-flex h-9 items-center transition-colors hover:!text-foreground hover:no-underline">
             <span class="relative">

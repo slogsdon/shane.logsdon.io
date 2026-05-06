@@ -2,7 +2,7 @@
 $settings = require('resources/settings.php');
 $this->layout('partials::layouts/main', [
     'title' => null,
-    'description' => 'Shane Logsdon — developer advocate at Global Payments and builder of web presence systems for local business owners. Writing on fintech, developer tooling, and AI.',
+    'description' => 'Shane Logsdon, developer advocate at Global Payments and builder of web presence systems for local business owners. Writing on fintech, developer tooling, and AI.',
     'url' => '/',
 ]);
 $articles = (array)json_decode(file_get_contents('resources/data/articles-list.json'));
@@ -16,7 +16,7 @@ $articleCount = count($activeArticles);
 
     <div class="relative mx-auto max-w-editorial px-6 pb-32 pt-20 sm:pt-28">
         <div class="running-head" aria-hidden="true">
-            <span>shane logsdon &mdash; field notes</span>
+            <span>shane logsdon &middot; field notes</span>
             <span data-locale-tz="America/Kentucky/Louisville">louisville &middot; <span data-locale-offset>gmt&minus;5</span></span>
         </div>
 

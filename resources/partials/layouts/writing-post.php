@@ -51,7 +51,7 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
 <article class="mx-auto max-w-editorial px-6 pt-20 pb-16">
 
     <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &mdash; <?= $typeLabel ?><?= $categoryLabel ? ' / ' . strtolower($categoryLabel) : '' ?></span>
+        <span>shane logsdon &middot; <?= $typeLabel ?><?= $categoryLabel ? ' / ' . strtolower($categoryLabel) : '' ?></span>
         <span><?= $folioDate ?></span>
     </div>
 
