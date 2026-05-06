@@ -96,7 +96,7 @@ $articleCount = count($activeArticles);
             timeZoneName: 'shortOffset'
         }).formatToParts(new Date());
         var name = parts.find(function (p) { return p.type === 'timeZoneName'; });
-        if (name && name.value) target.textContent = 'louisville · ' + name.value.toLowerCase();
+        if (name && name.value) target.textContent = name.value.toLowerCase();
     } catch (e) {}
 })();
 </script>
