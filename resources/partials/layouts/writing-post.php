@@ -181,34 +181,26 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org/",
-    "@type": "BlogPosting",
-    "@id": "https://shane.logsdon.io/<?= $meta->type ?>/<?= $meta->category ?>/<?= $slug ?>/#BlogPosting",
-    "mainEntityOfPage": "https://shane.logsdon.io/<?= $meta->type ?>/<?= $meta->category ?>/<?= $slug ?>/",
+    "@context": "https://schema.org",
+    "@type": "Article",
     "headline": "<?= addslashes($title) ?>",
-    "name": "<?= addslashes($title) ?>",
-    "description": "<?= addslashes($meta->description) ?>",
+    "url": "https://shane.logsdon.io<?= $url ?>",
     "datePublished": "<?= DateTime::createFromFormat('U', $originalDate)->format('Y-m-d') ?>",
     "dateModified": "<?= DateTime::createFromFormat('U', isset($modified) ? $modified : $originalDate)->format('Y-m-d') ?>",
     "author": {
         "@type": "Person",
-        "@id": "https://shane.logsdon.io/about/#Person",
         "name": "Shane Logsdon",
-        "url": "https://shane.logsdon.io/about/",
-        "image": {
-            "@type": "ImageObject",
-            "@id": "https://shane.logsdon.io/images/headshot.jpeg",
-            "url": "https://shane.logsdon.io/images/headshot.jpeg",
-            "height": "2827",
-            "width": "1887"
-        }
+        "url": "https://shane.logsdon.io"
     },
-    "url": "https://shane.logsdon.io/<?= $meta->type ?>/<?= $meta->category ?>/<?= $slug ?>/",
+    "publisher": {
+        "@type": "Person",
+        "name": "Shane Logsdon"
+    },
+    "description": "<?= addslashes($meta->description) ?>",
     "isPartOf": {
         "@type": "Blog",
         "@id": "https://shane.logsdon.io/articles/",
         "name": "Shane Logsdon's Blog"
-    },
-    "wordCount": "<?= str_word_count(strip_tags($content)) ?>"
+    }
 }
 </script>
