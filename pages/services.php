@@ -43,6 +43,10 @@ $faqs = [
         style="font-size: clamp(2.5rem, 6.5vw, 5.5rem); line-height: 1.02; letter-spacing: -0.02em;">
         A web presence system that actively works to get you <span class="t-accent">found</span>.
     </h1>
+    <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3">
+        <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
+        <p class="text-sm text-muted-foreground">Free. No obligation. Takes about 48 hours.</p>
+    </div>
 </section>
 
 <!-- Quick answer -->
@@ -159,10 +163,11 @@ $faqs = [
                 Let's look at your current presence.
             </h2>
             <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Send a message and I'll pull together a free audit of your Google Business Profile and web presence: what's working, what's missing, and what closing the gaps would take.
+                I'll review your Google Business Profile and web presence and show you exactly what's working, what's missing, and what it's likely costing you in lost search traffic.
             </p>
-            <div class="mt-8">
-                <a href="/contact/" class="btn-arrow btn-arrow--accent">Get in touch</a>
+            <div class="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
+                <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
+                <p class="text-sm text-muted-foreground">Free. No obligation. Takes about 48 hours.</p>
             </div>
         </div>
     </div>

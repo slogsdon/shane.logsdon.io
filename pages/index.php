@@ -22,12 +22,12 @@ $articleCount = count($activeArticles);
 
         <h1 class="mt-12 max-w-[18ch] font-display font-normal text-foreground"
             style="font-size: clamp(3rem, 9vw, 7.5rem); line-height: 0.98; letter-spacing: -0.022em;">
-            Technical product leader building <span class="t-accent">developer-first</span> experiences for payment systems.
+            Your web presence is either working for you, or it <span class="t-accent">isn't</span>.
         </h1>
 
         <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-12 sm:gap-8">
             <p class="col-span-1 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft sm:col-span-7">
-                Fifteen-plus years at the intersection of fintech and developer tooling: designing payment APIs, scaling platform infrastructure, and turning complex financial primitives into products engineers actually want to build on.
+                I build and actively manage web presence systems for local business owners &mdash; done-for-you, conversion-optimized, and structured for how people actually search in 2026 (including AI assistants like ChatGPT and Perplexity).
             </p>
 
             <dl class="col-span-1 grid grid-cols-1 gap-3 sm:col-span-5">
@@ -47,8 +47,7 @@ $articleCount = count($activeArticles);
         </div>
 
         <div class="mt-16 flex flex-wrap items-baseline gap-x-10 gap-y-4">
-            <a href="/services/" class="btn-arrow">Work with me</a>
-            <a href="/articles/" class="btn-arrow btn-arrow--muted">Browse writing</a>
+            <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
         </div>
     </div>
 </section>

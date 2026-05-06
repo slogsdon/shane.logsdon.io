@@ -33,6 +33,9 @@
 <?php endif; ?>
 <?php endif; ?>
 <meta name="author" content="Shane Logsdon">
+<?php if (!empty($noindex)): ?>
+<meta name="robots" content="noindex">
+<?php endif; ?>
 <?php if (!empty($ogType) && $ogType === 'article'): ?>
 <meta property="article:author" content="Shane Logsdon">
 <meta property="article:publisher" content="https://shane.logsdon.io">

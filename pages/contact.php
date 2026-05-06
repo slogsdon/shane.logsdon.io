@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
-    'title' => 'Contact',
-    'description' => 'Get in touch with Shane Logsdon. Open to conversations about developer experience, payment systems, and web presence management for local businesses.',
+    'title' => 'Start here',
+    'description' => 'Book a free 20-minute call or send your site for a free audit. Shane Logsdon reviews your web presence and follows up within one business day.',
     'url' => '/contact/',
 ]);
 ?>
@@ -14,94 +14,91 @@ $this->layout('partials::layouts/main', [
     </div>
     <h1 class="mt-12 max-w-[18ch] font-display font-normal text-foreground"
         style="font-size: clamp(2.75rem, 7vw, 6rem); line-height: 1.0; letter-spacing: -0.02em;">
-        Get in <span class="t-accent">touch</span>.
+        Start <span class="t-accent">here</span>.
     </h1>
     <p class="mt-8 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-        Looking for expertise in fintech development, payment systems, or product strategy? Let&rsquo;s discuss how I can help with your technical product challenges.
+        The fastest way to start: book a 20-minute call. I&rsquo;ll look at your current web presence before we talk so we can spend the time on what actually matters.
     </p>
 </section>
 
-<!-- Contact form -->
-<section class="mx-auto max-w-editorial px-6 pb-24">
+<!-- Primary: Calendar booking -->
+<section class="mx-auto max-w-editorial px-6 pb-16">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
         <div class="col-span-12 sm:col-span-3">
-            <p class="smallcaps-lg">send a message</p>
+            <p class="smallcaps-lg">book a call</p>
         </div>
         <div class="col-span-12 sm:col-span-9">
-            <form method="POST" netlify class="space-y-6 max-w-prose">
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <div class="space-y-2">
-                        <label for="name" class="smallcaps block">name</label>
-                        <input type="text" id="name" name="name" required
-                               class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
-                    </div>
-                    <div class="space-y-2">
-                        <label for="email" class="smallcaps block">email</label>
-                        <input type="email" id="email" name="email" required
-                               class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="company" class="smallcaps block">company</label>
-                    <input type="text" id="company" name="company"
-                           class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
-                </div>
-
-                <div class="space-y-2">
-                    <label for="interest" class="smallcaps block">area of interest</label>
-                    <select id="interest" name="interest" required
-                            class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
-                        <option value="">Select an option</option>
-                        <option value="local-business-web-presence">Local Business Web Presence</option>
-                        <option value="gbp-audit">Free GBP Audit</option>
-                        <option value="payment-systems">Payment Systems</option>
-                        <option value="developer-platforms">Developer Platforms</option>
-                        <option value="product-strategy">Product Strategy</option>
-                        <option value="consulting">Technical Consulting</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="message" class="smallcaps block">message</label>
-                    <textarea id="message" name="message" required rows="6"
-                              class="w-full border border-rule bg-transparent px-4 py-3 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0"></textarea>
-                </div>
-
-                <div class="pt-4">
-                    <button type="submit" class="btn-arrow btn-arrow--accent">Send message</button>
-                </div>
-            </form>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                20 minutes. Free. I review your presence before we talk.
+            </p>
+            <div class="mt-8">
+                <a href="https://calendar.app.google/34ac2uYtwsR1NiTV6" target="_blank" rel="noreferrer noopener" class="btn-arrow btn-arrow--accent">Book a 20-minute call</a>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Other ways to connect -->
+<!-- Divider -->
+<div class="mx-auto max-w-editorial px-6 pb-12">
+    <div class="flex items-center gap-6">
+        <div class="hairline flex-1"></div>
+        <p class="smallcaps">or</p>
+        <div class="hairline flex-1"></div>
+    </div>
+</div>
+
+<!-- Secondary: Async form -->
 <section class="mx-auto max-w-editorial px-6 pb-24">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
         <div class="col-span-12 sm:col-span-3">
-            <p class="smallcaps-lg">other ways to connect</p>
+            <p class="smallcaps-lg">async audit request</p>
         </div>
-        <div class="col-span-12 grid grid-cols-1 gap-8 sm:col-span-9 sm:grid-cols-3">
-            <div class="space-y-2">
-                <p class="smallcaps">email</p>
-                <p class="text-sm text-foreground">
-                    <a href="mailto:shane@logsdon.io" class="link-quiet">shane@logsdon.io</a>
+        <div class="col-span-12 sm:col-span-9">
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                Prefer async? Send me your site and I&rsquo;ll reach out within one business day.
+            </p>
+
+            <form
+                name="audit-request"
+                method="POST"
+                netlify
+                netlify-honeypot="bot-field"
+                action="/thanks/"
+                class="mt-8 space-y-6 max-w-prose"
+            >
+                <input type="hidden" name="form-name" value="audit-request" />
+                <p class="visually-hidden">
+                    <label>Don&rsquo;t fill this out: <input name="bot-field" /></label>
                 </p>
-            </div>
-            <div class="space-y-2">
-                <p class="smallcaps">location</p>
-                <p class="text-sm text-muted-foreground">Louisville, KY, USA Area</p>
-            </div>
-            <div class="space-y-2">
-                <p class="smallcaps">profiles</p>
-                <ul class="space-y-1 text-sm">
-                    <li><a href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener" class="link-quiet">LinkedIn</a></li>
-                    <li><a href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener" class="link-quiet">GitHub</a></li>
-                    <li><a href="https://twitter.com/shanelogsdon" target="_blank" rel="noreferrer noopener" class="link-quiet">Twitter</a></li>
-                </ul>
-            </div>
+
+                <div class="space-y-2">
+                    <label for="audit-name" class="smallcaps block">name</label>
+                    <input type="text" id="audit-name" name="name" required autocomplete="name"
+                           class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="audit-email" class="smallcaps block">email</label>
+                    <input type="email" id="audit-email" name="email" required autocomplete="email"
+                           class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="audit-website" class="smallcaps block">your website url</label>
+                    <input type="url" id="audit-website" name="website" required placeholder="https://yourbusiness.com" autocomplete="url"
+                           class="w-full border-0 border-b border-rule bg-transparent py-2 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0">
+                </div>
+
+                <div class="space-y-2">
+                    <label for="audit-message" class="smallcaps block">anything specific you&rsquo;d like me to look at? <span class="text-muted-foreground normal-case" style="font-variant-caps: normal;">(optional)</span></label>
+                    <textarea id="audit-message" name="message" rows="3"
+                              class="w-full border border-rule bg-transparent px-4 py-3 text-base text-foreground transition-colors focus:border-foreground focus:outline-none focus:ring-0"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="btn-arrow btn-arrow--accent">Send</button>
+                </div>
+            </form>
         </div>
     </div>
 </section>
