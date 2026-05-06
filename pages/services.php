@@ -12,7 +12,7 @@ $faqs = [
     ],
     [
         'q' => 'How is this different from hiring a local web designer?',
-        'a' => 'Most web designers build once and disappear. This is an actively managed system — the build is the starting point, not the deliverable. The ongoing retainer is where the work actually compounds.',
+        'a' => 'Most web designers build once and disappear. This is an actively managed system. The build is the starting point, not the deliverable. The ongoing retainer is where the work actually compounds.',
     ],
     [
         'q' => 'Why can\'t I just use Wix or Squarespace?',
@@ -24,7 +24,7 @@ $faqs = [
     ],
     [
         'q' => 'Do I need to be involved on an ongoing basis?',
-        'a' => 'Minimally. Monthly check-ins to review the report and flag anything changing in your business. The operational work — content updates, GBP posts, citations — is handled. You stay focused on running the business.',
+        'a' => 'Minimally. Monthly check-ins to review the report and flag anything changing in your business. The operational work (content updates, GBP posts, citations) is handled. You stay focused on running the business.',
     ],
     [
         'q' => 'What does AEO mean and why does it matter?',
@@ -36,7 +36,7 @@ $faqs = [
 <!-- Hero -->
 <section class="mx-auto max-w-editorial px-6 pt-20 pb-20">
     <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &mdash; services</span>
+        <span>shane logsdon &middot; services</span>
         <span><?= date('Y.m.d') ?></span>
     </div>
     <h1 class="mt-12 max-w-[22ch] font-display font-normal text-foreground"
@@ -53,7 +53,7 @@ $faqs = [
         </div>
         <div class="col-span-12 space-y-5 sm:col-span-9">
             <p class="max-w-prose text-[1.1875rem] leading-[1.6] text-foreground">
-                I build done-for-you web presence systems for local business owners — website design and build, conversion-optimized from the start, paired with ongoing AEO and SEO management so your presence improves over time.
+                I build done-for-you web presence systems for local business owners: website design and build, conversion-optimized from the start, paired with ongoing AEO and SEO management so your presence improves over time.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 Most web services build once and disappear. The site goes live, the designer moves on, and the owner is left hoping search traffic materializes on its own. It usually doesn't. The gap between a site that exists and a site that actively brings in clients is active management, updated content, and the technical groundwork that search and AI systems look for.
@@ -159,7 +159,7 @@ $faqs = [
                 Let's look at your current presence.
             </h2>
             <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Send a message and I'll pull together a free audit of your Google Business Profile and web presence — what's working, what's missing, and what closing the gaps would take.
+                Send a message and I'll pull together a free audit of your Google Business Profile and web presence: what's working, what's missing, and what closing the gaps would take.
             </p>
             <div class="mt-8">
                 <a href="/contact/" class="btn-arrow btn-arrow--accent">Get in touch</a>

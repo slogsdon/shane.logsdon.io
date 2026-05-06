@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'Contact',
-    'description' => 'Get in touch with Shane Logsdon — open to conversations about developer experience, payment systems, and web presence management for local businesses.',
+    'description' => 'Get in touch with Shane Logsdon. Open to conversations about developer experience, payment systems, and web presence management for local businesses.',
     'url' => '/contact/',
 ]);
 ?>
@@ -9,7 +9,7 @@ $this->layout('partials::layouts/main', [
 <!-- Page header -->
 <section class="mx-auto max-w-editorial px-6 pt-20 pb-12">
     <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &mdash; contact</span>
+        <span>shane logsdon &middot; contact</span>
         <span><?= date('Y.m.d') ?></span>
     </div>
     <h1 class="mt-12 max-w-[18ch] font-display font-normal text-foreground"

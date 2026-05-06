@@ -18,7 +18,7 @@ $isSpeaking = $slug === 'speaking';
 <!-- Page header -->
 <section class="mx-auto max-w-editorial px-6 pt-20 pb-12">
     <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &mdash; <?= $isSpeaking ? 'speaking' : 'writing' ?></span>
+        <span>shane logsdon &middot; <?= $isSpeaking ? 'speaking' : 'writing' ?></span>
         <span><?= date('Y.m.d') ?></span>
     </div>
     <?php if ($isArticles): ?>
