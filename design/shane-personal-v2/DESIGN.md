@@ -214,5 +214,6 @@ Buttons: only `.btn-arrow` (text link with trailing arrow); the filled `.btn` is
 - **Don't** wrap content in a cream-on-cream box when the page is already committed cream. Either drop the box (use whitespace + a single hairline above), apply the `.inversion` class (dark ink with cream text — the canonical feature treatment), or use `--color-surface-muted` (a half-step deeper cream) only for genuine card affordance.
 - **Don't** use `--color-surface-feature` (aged-clay) as a background. It's a reserved token but warm-on-warm reads as a temperature mismatch on the committed cream page. Use the dark inversion instead.
 - **Don't** include filled buttons (`.btn`); only `.btn-arrow` exists in this system
+- **Don't** render inline text links (tags, meta links, smallcaps labels) without vertical padding. Text-only links at line-height (~15–18px) fail the 48px tap target threshold. Pattern: `inline-flex items-center py-2` on the `<a>` + `gap-y-0` on the wrapping flex list (padding handles row spacing). Applies to: tag lists, topic labels, archive meta, any smallcaps link row.
 
 See `../../plugins/shane-config/skills/design-anti-patterns.md` for universal rules. Brand-specific rules above are additive and supersede where they conflict.
