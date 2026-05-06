@@ -184,23 +184,23 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "<?= addslashes($title) ?>",
-    "url": "https://shane.logsdon.io<?= $url ?>",
+    "url": "https://shane.logsdon.io<?= addslashes($url) ?>",
     "datePublished": "<?= DateTime::createFromFormat('U', $originalDate)->format('Y-m-d') ?>",
     "dateModified": "<?= DateTime::createFromFormat('U', isset($modified) ? $modified : $originalDate)->format('Y-m-d') ?>",
     "author": {
         "@type": "Person",
         "name": "Shane Logsdon",
-        "url": "https://shane.logsdon.io"
+        "url": "https://shane.logsdon.io/about/"
     },
     "publisher": {
-        "@type": "Person",
+        "@type": "Organization",
         "name": "Shane Logsdon"
     },
     "description": "<?= addslashes($meta->description) ?>",
     "isPartOf": {
         "@type": "Blog",
-        "@id": "https://shane.logsdon.io/articles/",
-        "name": "Shane Logsdon's Blog"
+        "@id": "https://shane.logsdon.io/<?= $meta->type ?>/",
+        "name": "Shane Logsdon's <?= ucfirst($meta->type) ?>"
     }
 }
 </script>
