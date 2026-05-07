@@ -22,12 +22,12 @@ $articleCount = count($activeArticles);
 
         <h1 class="mt-12 max-w-[18ch] font-display font-normal text-foreground"
             style="font-size: clamp(3rem, 9vw, 7.5rem); line-height: 0.98; letter-spacing: -0.022em;">
-            Shane <span class="t-accent">Logsdon</span>.
+            Systems that get <span class="t-accent">found</span>.
         </h1>
 
         <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-12 sm:gap-8">
             <p class="col-span-1 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft sm:col-span-7">
-                I lead developer advocacy at Global Payments, building developer experience infrastructure at enterprise scale. I apply the same approach to local business web presence &mdash; done-for-you builds and ongoing management for owners who don&rsquo;t have time to figure it out themselves.
+                I lead developer advocacy at Global Payments, building developer experience infrastructure at enterprise scale. I apply the same approach to local business web presence: done-for-you builds and ongoing management for owners who don&rsquo;t have time to figure it out themselves.
             </p>
         </div>
 
