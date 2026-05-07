@@ -10,7 +10,7 @@ $activeArticles = array_filter($articles, fn($p) => !$p->archived);
 $articleCount = count($activeArticles);
 ?>
 
-<!-- HERO — publication-cover scale, no eyebrow, single amber type-accent on the subject phrase. -->
+<!-- HERO -->
 <section class="relative overflow-hidden">
     <div class="grid-paper absolute inset-0" style="opacity:0.55;" aria-hidden="true"></div>
 
@@ -22,32 +22,18 @@ $articleCount = count($activeArticles);
 
         <h1 class="mt-12 max-w-[18ch] font-display font-normal text-foreground"
             style="font-size: clamp(3rem, 9vw, 7.5rem); line-height: 0.98; letter-spacing: -0.022em;">
-            Your web presence is either working for you, or it <span class="t-accent">isn't</span>.
+            Shane <span class="t-accent">Logsdon</span>.
         </h1>
 
         <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-12 sm:gap-8">
             <p class="col-span-1 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft sm:col-span-7">
-                I build and actively manage web presence systems for local business owners &mdash; done-for-you, conversion-optimized, and structured for how people actually search in 2026 (including AI assistants like ChatGPT and Perplexity).
+                I lead developer advocacy at Global Payments, building developer experience infrastructure at enterprise scale. I apply the same approach to local business web presence &mdash; done-for-you builds and ongoing management for owners who don&rsquo;t have time to figure it out themselves.
             </p>
-
-            <dl class="col-span-1 grid grid-cols-1 gap-3 sm:col-span-5">
-                <div class="flex items-baseline justify-between gap-4 border-t border-rule pt-3">
-                    <dt class="smallcaps">focus</dt>
-                    <dd class="text-sm text-foreground">Payments &middot; DevEx &middot; Platforms</dd>
-                </div>
-                <div class="flex items-baseline justify-between gap-4 border-t border-rule pt-3">
-                    <dt class="smallcaps">writing</dt>
-                    <dd class="text-sm"><a href="/articles/" class="link-quiet"><?= $articleCount ?> articles</a></dd>
-                </div>
-                <div class="flex items-baseline justify-between gap-4 border-t border-rule pt-3">
-                    <dt class="smallcaps">status</dt>
-                    <dd class="text-sm text-foreground">Open to conversations</dd>
-                </div>
-            </dl>
         </div>
 
         <div class="mt-16 flex flex-wrap items-baseline gap-x-10 gap-y-4">
             <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
+            <a href="/articles/" class="btn-arrow btn-arrow--muted">Read the writing</a>
         </div>
     </div>
 </section>

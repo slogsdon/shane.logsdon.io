@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title'       => 'Resume',
-    'description' => 'Shane Logsdon — fourteen years shipping payment platforms and developer experiences. Senior Director of Product Management at Global Payments.',
+    'description' => 'Shane Logsdon: fourteen years shipping payment platforms and developer experiences. Senior Director of Product Management at Global Payments.',
     'url'         => '/resume/',
 ]);
 ?>
@@ -406,7 +406,7 @@ $this->layout('partials::layouts/main', [
         <div class="rp-stat">
           <div class="lbl">Years in industry</div>
           <div class="num">14<sup>yrs</sup></div>
-          <div class="note">Since 2012 — web dev through product leadership.</div>
+          <div class="note">Since 2012: web dev through product leadership.</div>
         </div>
         <div class="rp-stat">
           <div class="lbl">At Global Payments</div>
@@ -439,7 +439,7 @@ $this->layout('partials::layouts/main', [
 
         <aside class="rp-marg" aria-label="Section context">
           <span class="k">experience / 03</span>
-          <span class="k dateline">2012 — Present</span>
+          <span class="k dateline">2012 &ndash; Present</span>
           <span class="k dateline">09 roles · 03 employers</span>
         </aside>
 
@@ -463,7 +463,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Jul 2023 — Present</b>
+              <b>Jul 2023 &ndash; Present</b>
               <small>Current role</small>
               <span class="dur">~2.8 yrs</span>
             </div>
@@ -483,7 +483,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Apr 2021 — Jul 2023</b>
+              <b>Apr 2021 &ndash; Jul 2023</b>
               <small>Director</small>
               <span class="dur">2.3 yrs</span>
             </div>
@@ -504,7 +504,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Mar 2020 — Apr 2021</b>
+              <b>Mar 2020 &ndash; Apr 2021</b>
               <small>Senior Manager</small>
               <span class="dur">1.1 yrs</span>
             </div>
@@ -525,7 +525,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Jul 2018 — Mar 2020</b>
+              <b>Jul 2018 &ndash; Mar 2020</b>
               <small>Architect</small>
               <span class="dur">1.7 yrs</span>
             </div>
@@ -545,7 +545,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Mar 2017 — Jul 2018</b>
+              <b>Mar 2017 &ndash; Jul 2018</b>
               <small>Tech lead</small>
               <span class="dur">1.4 yrs</span>
             </div>
@@ -564,7 +564,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Dec 2014 — Mar 2017</b>
+              <b>Dec 2014 &ndash; Mar 2017</b>
               <small>Individual contributor</small>
               <span class="dur">2.3 yrs</span>
             </div>
@@ -584,7 +584,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Jan 2014 — Oct 2014</b>
+              <b>Jan 2014 &ndash; Oct 2014</b>
               <small>Architect</small>
               <span class="dur">10 mo</span>
             </div>
@@ -604,7 +604,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Aug 2013 — Feb 2014</b>
+              <b>Aug 2013 &ndash; Feb 2014</b>
               <small>Tech lead</small>
               <span class="dur">7 mo</span>
             </div>
@@ -624,7 +624,7 @@ $this->layout('partials::layouts/main', [
               </ul>
             </div>
             <div class="right">
-              <b>Feb 2012 — Aug 2013</b>
+              <b>Feb 2012 &ndash; Aug 2013</b>
               <small>Developer</small>
               <span class="dur">1.5 yrs</span>
             </div>
@@ -654,7 +654,7 @@ $this->layout('partials::layouts/main', [
               <div class="idx">01</div>
               <div>
                 <h4>Development &amp; Tools</h4>
-                <p>C#/.NET · Java · PHP · Ruby · Python · JavaScript. Version control, CI/CD pipelines, testing frameworks, and cloud platforms — the stack of a working SDK author.</p>
+                <p>C#/.NET · Java · PHP · Ruby · Python · JavaScript. Version control, CI/CD pipelines, testing frameworks, and cloud platforms: the stack of a working SDK author.</p>
               </div>
             </div>
             <div class="rp-skill">
