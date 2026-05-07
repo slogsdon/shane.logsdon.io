@@ -102,3 +102,17 @@ $this->layout('partials::layouts/main', [
         </div>
     </div>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://shane.logsdon.io/contact/#ContactPage",
+  "url": "https://shane.logsdon.io/contact",
+  "name": "Start here — Shane Logsdon",
+  "description": "Request a free web presence audit or book a 20-minute call with Shane Logsdon.",
+  "mainEntity": {
+    "@id": "https://shane.logsdon.io/#Person"
+  }
+}
+</script>

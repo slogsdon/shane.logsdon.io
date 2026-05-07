@@ -89,6 +89,19 @@ $articleCount = count($activeArticles);
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://shane.logsdon.io/#WebSite",
+  "url": "https://shane.logsdon.io",
+  "name": "Shane Logsdon",
+  "author": {
+    "@id": "https://shane.logsdon.io/#Person"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://shane.logsdon.io/#Person",
   "name": "Shane Logsdon",
