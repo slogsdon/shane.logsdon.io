@@ -6,6 +6,13 @@ image: llm-context-files-are-deliverables-not-config-og.png
 heroImage: llm-context-files-are-deliverables-not-config-hero.png
 slug: llm-context-files-are-deliverables-not-config
 description: "An LLM context file like CLAUDE.md is a deliverable, not a config toggle. Configuration tells tools how to behave; a context file tells the agent what the project is, what's been decided, and what it needs to navigate the work. The first kind sets and forgets. The second has to be maintained."
+faqs:
+  - q: "What's the difference between a global and a project CLAUDE.md?"
+    a: "A global CLAUDE.md (typically at ~/.claude/CLAUDE.md) is the behavioral layer — it shapes how the agent works regardless of project, like answer first, flag speculation, ask before large changes. A project CLAUDE.md (at the repo root) is the contextual layer — it shapes what the agent knows about this codebase: stack, folder structure, conventions, and explicit boundaries. Both matter and do different jobs."
+  - q: "What should a CLAUDE.md actually contain?"
+    a: "Three categories. Invocation details: exact commands with full flags (npm test -- --coverage --watch=false, not 'run the tests'), explicit file paths, and at least one canonical code snippet for any pattern that matters. Process conventions: where tests live, coverage thresholds, branch naming, and commit message format. The boundary tier: what the agent can do autonomously (always), what requires a check-in (ask-first), and what's off the table regardless of context (never)."
+  - q: "Why do most CLAUDE.md files decay?"
+    a: "Teams write them as a snapshot of what the project is right now, rather than as a record of decisions that have been made. State descriptions go stale on their own; decision records compound. The fix is the self-improving pattern: when you catch yourself re-explaining something to the agent a second time, update the file in-session so future sessions inherit the correction. Prune stale lines aggressively, since the agent reads the whole file every time."
 ---
 
 I wrote my first CLAUDE.md in about fifteen minutes. It covered the tech stack, a few notes about TypeScript over JavaScript, a reminder about commit message format. It felt thorough. I didn't touch it for three months.
