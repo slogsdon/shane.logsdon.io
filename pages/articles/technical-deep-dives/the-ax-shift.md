@@ -6,6 +6,13 @@ image: the-ax-shift-og.png
 heroImage: the-ax-shift-hero.png
 slug: the-ax-shift
 description: "The AX Shift is the move from designing software interfaces, documentation, and project context for humans to designing them for the agents now reading them. UX redesigned interfaces around users; DX redesigned APIs around the engineers consuming them; AX redesigns docs, context files, and specs around the autonomous agent that's now the primary reader."
+faqs:
+  - q: "What is AX (Agent Experience)?"
+    a: "Agent Experience is the practice of designing artifacts — specs, context files, documentation, API responses — for AI agents operating autonomously between sessions, not just for human readers. It's the next iteration after UX (designed around users) and DX (designed around developer-consumers)."
+  - q: "Why doesn't writing better prompts fix AI coding drift?"
+    a: "Prompts are interaction-level adjustments, but drift is artifact-level. Excellent prompts running against an underdeveloped CLAUDE.md and a vague spec will still produce drift, because the agent is making design decisions you haven't recorded. Every ambiguous line in your spec or context file is a decision the agent will make for you, in the direction of statistical probability."
+  - q: "Where should teams invest for reliable AI-assisted development?"
+    a: "Not in model selection or prompt engineering. Invest in the artifacts that give agents reliable context across sessions: a CLAUDE.md that's updated after every session, design specs authoritative enough that gap analyses can be written against them, and implementation tasks derived from the spec rather than improvised from the conversation."
 ---
 
 I kept improving my prompts.

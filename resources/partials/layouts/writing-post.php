@@ -206,3 +206,19 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     }
 }
 </script>
+
+<?php if (!empty($faqs) && is_array($faqs)): ?>
+<script type="application/ld+json">
+<?= json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    '@id' => 'https://shane.logsdon.io' . $url . '#FAQPage',
+    'url' => 'https://shane.logsdon.io' . $url,
+    'mainEntity' => array_map(fn($faq) => [
+        '@type' => 'Question',
+        'name' => $faq['q'],
+        'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
+    ], $faqs),
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
+</script>
+<?php endif; ?>
