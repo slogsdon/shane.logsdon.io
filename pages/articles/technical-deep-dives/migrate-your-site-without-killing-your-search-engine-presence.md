@@ -6,6 +6,8 @@ image: view-down-alley.jpeg
 slug: migrate-your-site-without-killing-your-search-engine-presence
 ---
 
+Migrating a site without losing search rankings comes down to three things: keep the existing URL structure where you can, set up 301 redirects for every URL that has to change, and verify the new domain in Search Console before cutover. The rest of this guide walks through preparation, redirect strategy, and post-migration checks.
+
 Let's face it. Search engine optimization (SEO) is a hard beast to tame. Once you have everything just right, moving to a new platform, a new URL structure, or even a new domain can be stressful without taking the necessary steps first. Oh, you need a guide? Let me walk you through.
 
 <!--more-->

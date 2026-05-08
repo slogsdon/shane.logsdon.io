@@ -18,3 +18,13 @@
 
 ## Key topics
 Developer advocacy, payment APIs, SDK design, LLM context files, AEO/SEO, agent experience (AX), web presence management, fintech, developer experience (DX)
+
+## Projects
+- [claude-code-config](https://github.com/slogsdon/claude-code-config): Public Claude Code configuration. Skills, hooks, and plugins for AI-assisted development.
+- [modern-developer-design-system](https://github.com/slogsdon/modern-developer-design-system): Zero-runtime web components design system.
+- [shane.logsdon.io](https://github.com/slogsdon/shane.logsdon.io): Source for this site.
+
+## Contact
+- GitHub: https://github.com/slogsdon
+- LinkedIn: https://www.linkedin.com/in/shanelogsdon
+- Book a call: https://calendar.app.google/34ac2uYtwsR1NiTV6

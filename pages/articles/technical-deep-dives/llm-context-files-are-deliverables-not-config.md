@@ -5,6 +5,7 @@ layout: 'partials::layouts/writing-post'
 image: llm-context-files-are-deliverables-not-config-og.png
 heroImage: llm-context-files-are-deliverables-not-config-hero.png
 slug: llm-context-files-are-deliverables-not-config
+description: "An LLM context file like CLAUDE.md is a deliverable, not a config toggle. Configuration tells tools how to behave; a context file tells the agent what the project is, what's been decided, and what it needs to navigate the work. The first kind sets and forgets. The second has to be maintained."
 ---
 
 I wrote my first CLAUDE.md in about fifteen minutes. It covered the tech stack, a few notes about TypeScript over JavaScript, a reminder about commit message format. It felt thorough. I didn't touch it for three months.

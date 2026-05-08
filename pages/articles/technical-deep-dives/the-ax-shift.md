@@ -5,6 +5,7 @@ layout: 'partials::layouts/writing-post'
 image: the-ax-shift-og.png
 heroImage: the-ax-shift-hero.png
 slug: the-ax-shift
+description: "The AX Shift is the move from designing software interfaces, documentation, and project context for humans to designing them for the agents now reading them. UX redesigned interfaces around users; DX redesigned APIs around the engineers consuming them; AX redesigns docs, context files, and specs around the autonomous agent that's now the primary reader."
 ---
 
 I kept improving my prompts.
