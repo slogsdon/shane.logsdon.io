@@ -5,6 +5,8 @@ layout: 'partials::layouts/writing-post'
 slug: migrating-from-mysql-server-to-percona-server
 ---
 
+Migrating from MySQL Server to Percona Server is a straightforward in-place upgrade because Percona Server is a drop-in MySQL replacement. The high-level path: stop MySQL, install the Percona packages, swap the binaries, and restart. Existing databases, users, and client tooling keep working. The rest of this walkthrough covers each step plus a few config tunables worth knowing about.
+
 ## What is Percona Server, and why should I care?
 
 Blogs across the Internet have been benchmarking Percona Server against MySQL Server, e.g. [MySQL Performance Blog][1], and the results continually seem to have Percona ahead in many regards. This increased and stable performance for your database will help ensure performance and reliability in your applications.

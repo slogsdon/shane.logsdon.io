@@ -6,6 +6,8 @@ image: water-against-cliffs.jpeg
 slug: application-deployment
 ---
 
+Deploying an Elixir application means building an OTP release on a system that matches your hosting environment, shipping the resulting tarball to that host, and starting it under a supervisor. This walkthrough covers the requirements, the build, and the moves between development and production.
+
 The deployment of Elixir applications. You may have experience in deploying your Ruby or .NET applications, but when it comes to Elixir, do you have what it takes to deploy your app? Learn the essentials for getting your application from development to production.
 
 <!--more-->

@@ -6,6 +6,8 @@ modified: 2017-01-22
 slug: exploring-fsharp-with-dotnet-core-and-kestrel
 ---
 
+F# is a first-class language on .NET Core, which means you can build and host functional ASP.NET-style applications on Linux, MacOS, or Windows through the `dotnet` CLI. This walkthrough scaffolds an F# project with `dotnet new --lang F#`, wires up Kestrel as the web server, and gets you to a running web app.
+
 Interested in functional programming, I've always felt F# would be a good tool to have at my disposal considering there are a plethora of .NET-focused development companies around my area. Even though Microsoft focuses its efforts on C# , F# is an excellent and viable alternative for developing applications that target the .NET Core platform, opening hosting options to more than just Windows.
 
 ## Basics

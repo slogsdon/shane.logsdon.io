@@ -5,6 +5,8 @@ date: 2017-01-22
 slug: fiddling-with-asp-dotnet-core-and-fsharp-with-suave
 ---
 
+Writing ASP.NET Core applications in F# without falling back to C# types means delegating request handling to a pure-F# framework. This walkthrough uses [Suave](https://suave.io/) with `Suave.AspNetCore` to bridge the two, so the ASP.NET host pipeline still runs but request handling stays idiomatic F#.
+
 ASP.NET is a great framework for building web applications. It's tried and trusted, fully extensible, has a great community, and thanks to .NET Core, supported across Linux, MacOS, and Windows. Being built with .NET, we have the wise option of building our application with F#, but without intervention, we'd be stuck with using the object-oriented C# types that are throughout ASP.NET.
 
 ## The Setup
