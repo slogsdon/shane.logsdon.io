@@ -1,11 +1,11 @@
 ---
 version: alpha
 name: Shane Logsdon (v2)
-description: Editorial system for a technical product leader at the intersection of payments and developer platforms. Fraunces display + small-caps + Inter sans + JetBrains Mono (technical-only). Single burnt-amber accent used as both status signal AND deliberate type accent. Real publication conventions — folios, running heads, varied dividers — replace AI-default editorial cosplay.
+description: Editorial system for a technical product leader at the intersection of payments and developer platforms. Fraunces display + small-caps + Inter sans + JetBrains Mono (technical-only). Single olive green accent used as both status signal AND deliberate type accent. Real publication conventions — folios, running heads, varied dividers — replace AI-default editorial cosplay.
 colors:
   primary: "#0e1116"
   secondary: "#62686f"
-  accent: "#c26a3b"
+  accent: "#556b2f"
   surface: "#fbfaf9"
   surface-feature: "#ede4d2"
   surface-muted: "#f1eee8"
@@ -16,7 +16,7 @@ colors:
   ink-3: "#62686f"
   rule: "#d6d8de"
   grid: "#e0e2e6"
-  accent-hover: "#a0542a"
+  accent-hover: "#3e5020"
 typography:
   display-xxl:
     fontFamily: Fraunces
@@ -138,7 +138,7 @@ components:
 <!--
 Variation choices (v2):
   surface:        warm cream (#fbfaf9) — page is COMMITTED to cream; the canonical "feature" treatment is a dark-inversion block (--color-ink bg + cream text), not a tonal warm-on-warm shift
-  accent:         single-color burnt amber, used in TWO roles — semantic status AND deliberate type accent (one word per surface)
+  accent:         single-color olive green, used in TWO roles — semantic status AND deliberate type accent (one word per surface)
   type-pairing:   serif-display + serif-smallcaps + sans-body + mono-technical (Fraunces does double duty for display AND editorial labels; mono restricted to genuinely technical contexts)
   radius:         hairline (1–2px on rare occasions; otherwise zero — more architectural)
   spacing:        8px-base, with display-scale jumps (96px / 144px) for editorial cover treatments
@@ -160,11 +160,11 @@ Diff from v1 (key changes):
 
 ## Overview
 
-A design language for a technical product leader at the intersection of payments and developer platforms. Editorial register — the typographic moves come from publication tradition (display set at cover scale, Fraunces small caps for labels, folios in corners, running heads at top edges) rather than UI tradition. Type does the work; the single amber accent serves two roles — interaction signal AND deliberate type accent on the subject word of a page. The system has fewer components than v1 but each is more idiosyncratic; the page's typographic personality replaces inventory completeness.
+A design language for a technical product leader at the intersection of payments and developer platforms. Editorial register — the typographic moves come from publication tradition (display set at cover scale, Fraunces small caps for labels, folios in corners, running heads at top edges) rather than UI tradition. Type does the work; the single olive accent serves two roles — interaction signal AND deliberate type accent on the subject word of a page. The system has fewer components than v1 but each is more idiosyncratic; the page's typographic personality replaces inventory completeness.
 
 ## Colors
 
-Paper, ink, one accent — held strictly. **Surface (#fbfaf9)** is the primary warm cream — the page is committed to it. The canonical "feature" treatment is a **dark inversion block** (background `--color-ink`, text `--color-surface`) used as a punctuation device — a register flip within the committed cream system. The earlier `--color-surface-feature` (aged-clay) is reserved as a token but no longer used as a background; warm-on-warm read as a temperature mismatch, and the dark inversion does the feature job more decisively. **Ink (#0e1116)** is darker than v1 (#181b21 was too gentle); this is near-true-black with a slight blue cast, set against cream for an architectural register. When ink becomes the surface (inversion blocks), the page-level cream becomes the text. **Accent (#C26A3B)** does double duty — its semantic role (active states, hover, status) AND a deliberate type-accent role (one word per surface, set in amber Fraunces, used to mark the subject of the page). The signal palette (ok-green, warn-amber, info-blue) is removed; this brand doesn't have a use for it.
+Paper, ink, one accent — held strictly. **Surface (#fbfaf9)** is the primary warm cream — the page is committed to it. The canonical "feature" treatment is a **dark inversion block** (background `--color-ink`, text `--color-surface`) used as a punctuation device — a register flip within the committed cream system. The earlier `--color-surface-feature` (aged-clay) is reserved as a token but no longer used as a background; warm-on-warm read as a temperature mismatch, and the dark inversion does the feature job more decisively. **Ink (#0e1116)** is darker than v1 (#181b21 was too gentle); this is near-true-black with a slight blue cast, set against cream for an architectural register. When ink becomes the surface (inversion blocks), the page-level cream becomes the text. **Accent (#556B2F)** does double duty — its semantic role (active states, hover, status) AND a deliberate type-accent role (one word per surface, set in olive Fraunces, used to mark the subject of the page). The signal palette (ok-green, warn-amber, info-blue) is removed; this brand doesn't have a use for it.
 
 ## Typography
 
@@ -176,7 +176,7 @@ Container 1180px; gutter 24px; measure 64ch (tightened from v1's 68ch — denser
 
 ## Elevation & Depth
 
-Strictly flat (unchanged from v1). Hierarchy comes from: type weight + scale, the single amber accent, and **whitespace as the primary divider**. Rules are **1px max, always** — heavier rules read as visible lines rather than surface divisions, which is the wrong register for editorial work. Where a stronger division is needed, increase the spatial gap (96–144px) rather than the rule weight. Column rules (vertical 1px in gutters) are the one place hairlines are doing structural work. No shadows, no card lifts, no z-axis treatment.
+Strictly flat (unchanged from v1). Hierarchy comes from: type weight + scale, the single olive accent, and **whitespace as the primary divider**. Rules are **1px max, always** — heavier rules read as visible lines rather than surface divisions, which is the wrong register for editorial work. Where a stronger division is needed, increase the spatial gap (96–144px) rather than the rule weight. Column rules (vertical 1px in gutters) are the one place hairlines are doing structural work. No shadows, no card lifts, no z-axis treatment.
 
 ## Shapes
 
@@ -198,7 +198,7 @@ Buttons: only `.btn-arrow` (text link with trailing arrow); the filled `.btn` is
 
 - **Do** push display headlines to publication scale (96–144px for hero contexts)
 - **Do** use Fraunces small caps as the default editorial label; reserve JetBrains Mono for dateline + code only
-- **Do** use the amber accent as a deliberate TYPE accent — one word per surface, set in amber Fraunces, marking the subject of the page
+- **Do** use the olive accent as a deliberate TYPE accent — one word per surface, set in olive Fraunces, marking the subject of the page
 - **Do** keep all rules at 1px max. Major divisions communicated through whitespace (96–144px gaps) — never thicker rules.
 - **Do** drop a rule entirely when whitespace alone can carry the division. A gap is usually stronger than a heavy rule anyway.
 - **Do** add folios (dateline + position) in lower corners as the default footer pattern

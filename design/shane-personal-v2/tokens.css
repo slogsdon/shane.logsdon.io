@@ -14,8 +14,8 @@
   --color-ink-3:           #62686f;        /* metadata ink */
   --color-rule:            #d6d8de;        /* the only rule color — 1px hairline; major divisions communicated via whitespace, not weight */
   --color-grid:            #e0e2e6;        /* technical grid */
-  --color-accent:          #c26a3b;        /* burnt amber — used semantically AND as deliberate type accent */
-  --color-accent-hover:    #a0542a;
+  --color-accent:          #556b2f;        /* olive green — used semantically AND as deliberate type accent */
+  --color-accent-hover:    #3e5020;
   /* No signal palette — this brand doesn't use it. */
 
   /* ─── Typography — Fraunces does display AND small-caps editorial labels ─── */
@@ -134,7 +134,7 @@
   color: var(--color-ink);
 }
 
-/* Type accent — one word per surface in amber Fraunces. Used DELIBERATELY. */
+/* Type accent — one word per surface in olive Fraunces. Used DELIBERATELY. */
 .t-accent {
   color: var(--color-accent);
   font-style: normal;            /* not italic — italics-emphasis is the AI tell */

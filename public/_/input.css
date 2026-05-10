@@ -11,7 +11,7 @@
     --foreground: 220 14% 7%;        /* #0e1116 — architectural near-black */
     --muted: 36 15% 92%;             /* #ede4d2-ish */
     --muted-foreground: 220 6% 41%;  /* #62686f */
-    --accent: 22 53% 50%;            /* #c26a3b — burnt amber */
+    --accent: 82 39% 30%;            /* #556b2f — olive green */
     --accent-foreground: 220 14% 7%;
     --border: 220 7% 86%;
     --rule: 224 9% 86%;              /* #d6d8de */
@@ -30,8 +30,8 @@
     --color-ink-3:           #62686f;
     --color-rule:            #d6d8de;
     --color-grid:            #e0e2e6;
-    --color-accent:          #c26a3b;
-    --color-accent-hover:    #a0542a;
+    --color-accent:          #556b2f;
+    --color-accent-hover:    #3e5020;
   }
 
   html {
@@ -100,7 +100,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9em;
   }
-  /* Italics earn their place inside blockquotes; everywhere else, the amber
+  /* Italics earn their place inside blockquotes; everywhere else, the olive
      type-accent does the emphasis work. */
   .prose blockquote {
     @apply pl-6 my-8;
@@ -136,7 +136,7 @@
     color: hsl(var(--foreground));
   }
 
-  /* ── Type accent — one amber word per surface, marking the subject.
+  /* ── Type accent — one olive word per surface, marking the subject.
      Replaces the v1 italics-emphasis pattern. */
   .t-accent {
     color: var(--color-accent);
