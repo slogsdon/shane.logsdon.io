@@ -76,3 +76,9 @@ The genuinely non-obvious part, the part that isn't visible until you've maintai
 For teams evaluating AI-assisted development at scale, this is the discipline worth investing in ahead of model selection or prompt engineering. The context file shapes every session, and its quality determines the quality of the work that comes out of it. The model you're running, the prompt you've written, the workflow you've built around it — all secondary. Treat the context file with the same rigor as a spec. Review it the way you'd review a significant PR. It sets behavioral constraints: how the agent works. The spec that Post 3 introduces sets scope and decisions: what it builds. Both need to exist before the first prompt.
 
 A CLAUDE.md that hasn't been updated since you wrote it isn't config that's working quietly. It's a gap between how you think the project is and how the agent is navigating it. That gap compounds. The sessions that feel inexplicably off, where the agent makes choices that don't quite fit and where you correct the same thing again, are often the file speaking.
+
+---
+
+*Part 2 of 6 in the [Agentic Product Development Workflows](/articles/technical-deep-dives) series.*
+
+*Next: [The Spec Is the Work: PRD-First AI Development](/articles/technical-deep-dives/the-spec-is-the-work/) →*
