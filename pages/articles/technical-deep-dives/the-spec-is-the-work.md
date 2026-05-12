@@ -3,6 +3,8 @@ title: "The Spec Is the Work: PRD-First AI Development"
 date: 2026-05-11
 layout: 'partials::layouts/writing-post'
 slug: the-spec-is-the-work
+image: the-spec-is-the-work-og.png
+heroImage: the-spec-is-the-work-hero.png
 description: "The reason AI-assisted builds stall isn't the model: design decisions were never made. Here's why writing the spec first changes everything."
 faqs:
   - q: "What does 'spec-first' AI development actually mean?"
