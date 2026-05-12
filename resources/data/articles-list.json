@@ -1,43 +1,4 @@
 {
-  "the-framework-emergence-loop": {
-    "title": "The Framework Emergence Loop: How Durable AI Workflows Are Actually Found",
-    "description": "You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.",
-    "date": "2026-06-01",
-    "category": "technical-deep-dives",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "developer-tooling",
-      "tech-strategy",
-      "engineering-leadership"
-    ]
-  },
-  "how-to-know-if-your-agentic-workflow-is-actually-working": {
-    "title": "How to Know If Your Agentic Workflow Is Actually Working",
-    "description": "The workflow ran clean. No errors, no alerts. Two weeks later, you find out it's been wrong the whole time. Here's how to build evaluation that catches drift before someone has to ask.",
-    "date": "2026-05-25",
-    "category": "technical-deep-dives",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "developer-tooling",
-      "tech-strategy",
-      "engineering-leadership"
-    ]
-  },
-  "the-75-percent-problem": {
-    "title": "The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line",
-    "description": "AI gets you to 75% fast. That's the trap: the 75% mark looks finished, and the last 25% takes as long as the first 75%. Here's how to plan for it.",
-    "date": "2026-05-18",
-    "category": "technical-deep-dives",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "developer-tooling",
-      "tech-strategy",
-      "engineering-leadership"
-    ]
-  },
   "the-spec-is-the-work": {
     "title": "The Spec Is the Work: PRD-First AI Development",
     "description": "The reason AI-assisted builds stall isn't the model: design decisions were never made. Here's why writing the spec first changes everything.",
@@ -48,54 +9,6 @@
       "developer-tooling",
       "tech-strategy",
       "engineering-leadership"
-    ]
-  },
-  "the-difference-between-a-website-that-exists-and-one-that-works": {
-    "title": "The Difference Between a Website That Exists and One That Works",
-    "description": "A static website is a digital brochure — it loads, it has your phone number, it exists. An actively managed web presence is a system that updates, signals, and compounds.",
-    "date": "2026-06-02",
-    "category": "strategic-insights",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "product-strategy",
-      "tech-strategy"
-    ]
-  },
-  "your-website-is-working-fine-thats-the-problem": {
-    "title": "Your Website Is Working Fine. That's the Problem.",
-    "description": "Referral-based businesses build websites for people who already know them. Cold search visitors are a different audience, and most businesses never find out until a deal goes quiet.",
-    "date": "2026-05-26",
-    "category": "strategic-insights",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "product-strategy",
-      "tech-strategy"
-    ]
-  },
-  "what-i-check-first-when-i-audit-a-local-business-web-presence": {
-    "title": "What I Check First When I Audit a Local Business Web Presence",
-    "description": "Most web presence audits start with design. The right starting point is machine-readability: robots.txt crawler access, llms.txt, schema markup, and meta descriptions.",
-    "date": "2026-05-19",
-    "category": "strategic-insights",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "product-strategy",
-      "tech-strategy"
-    ]
-  },
-  "what-aeo-actually-means-for-a-local-business": {
-    "title": "What AEO Actually Means for a Local Business",
-    "description": "Answer engine optimization structures your website so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires.",
-    "date": "2026-05-12",
-    "category": "strategic-insights",
-    "draft": true,
-    "archived": false,
-    "tags": [
-      "product-strategy",
-      "tech-strategy"
     ]
   },
   "llm-context-files-are-deliverables-not-config": {
