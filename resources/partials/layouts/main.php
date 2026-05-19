@@ -14,8 +14,7 @@
     Skip to content
 </a>
 
-<!-- TODO(design-v2): bg-background/80 + backdrop-blur is glassmorphism — flagged by design-anti-patterns §1. The .at-top JS already removes blur; rework to opaque surface with hairline rule on scroll. -->
-<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-background/80 backdrop-blur transition-all" style="padding-top: env(safe-area-inset-top);">
+<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-background transition-colors" style="padding-top: env(safe-area-inset-top);">
     <div class="mx-auto flex h-14 max-w-editorial items-center justify-between px-6">
         <a href="/" aria-label="Shane Logsdon" class="hover:no-underline">
             <span class="wordmark wordmark--sm sm:!text-[1.05rem]">Shane Logsdon</span>
