@@ -2,7 +2,7 @@
    Reimagined to push further from AI-default editorial defaults.
    See ../shane-personal/tokens.css for v1 (which preserved the artifact verbatim). */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   /* ─── Color — committed cream page + dark-inversion feature treatment ─── */
@@ -20,7 +20,7 @@
 
   /* ─── Typography — Fraunces does display AND small-caps editorial labels ─── */
   --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
-  --type-sans-family:      'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Display scale — pushed to publication cover sizes */

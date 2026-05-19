@@ -8,17 +8,18 @@ $this->layout('partials::layouts/main', [
 <style>
 /* ── Resume page tokens & layout ──────────────────────────────── */
 .resume-page {
-  --rp-paper:        #FBFAF7;
-  --rp-paper-2:      #F2EFE8;
-  --rp-ink:          #1A1714;
-  --rp-ink-2:        #3A342E;
-  --rp-ink-3:        #6B6258;
-  --rp-ink-4:        #9A9287;
-  --rp-accent:       #C26A3B;
-  --rp-accent-hover: #A0542A;
-  --rp-ok:           #3F6B3A;
-  --rp-line:         #1A17141F;
-  --rp-line-faint:   #1A17140A;
+  /* Aliases to v2 design tokens — kept namespaced so the resume's CSS stays scoped. */
+  --rp-paper:        var(--color-surface);
+  --rp-paper-2:      var(--color-surface-muted);
+  --rp-ink:          var(--color-ink);
+  --rp-ink-2:        var(--color-ink-soft);
+  --rp-ink-3:        var(--color-ink-3);
+  --rp-ink-4:        #9a9287;
+  --rp-accent:       var(--color-accent);
+  --rp-accent-hover: var(--color-accent-hover);
+  --rp-ok:           #3f6b3a;
+  --rp-line:         var(--color-rule);
+  --rp-line-faint:   #1a17140a;
 
   color: var(--rp-ink);
   background: var(--rp-paper);
@@ -93,7 +94,7 @@ $this->layout('partials::layouts/main', [
 }
 
 .rp-hero-lead {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   font-size: 15px; line-height: 1.7; color: var(--rp-ink-2);
   margin: 0 0 2rem; max-width: 58ch;
 }
@@ -121,7 +122,7 @@ $this->layout('partials::layouts/main', [
   text-transform: lowercase;
   font-size: 12px; letter-spacing: 0.1em; color: var(--rp-ink-3);
 }
-.rp-hero-meta .val { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--rp-ink); }
+.rp-hero-meta .val { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 14px; color: var(--rp-ink); }
 .rp-hero-meta .val a { color: var(--rp-accent); text-decoration: underline; text-underline-offset: 3px; }
 .rp-hero-meta .led { width: 7px; height: 7px; border-radius: 50%; background: #3F6B3A; display: inline-block; margin-right: 6px; vertical-align: middle; box-shadow: 0 0 0 3px rgba(63,107,58,.12); }
 
@@ -149,7 +150,7 @@ $this->layout('partials::layouts/main', [
 .rp-sec-title em { font-style: normal; color: var(--rp-accent); }
 
 .rp-sec-lead {
-  font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7;
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 15px; line-height: 1.7;
   color: var(--rp-ink-2); margin: 0 0 2rem; max-width: 58ch;
 }
 
@@ -185,7 +186,7 @@ $this->layout('partials::layouts/main', [
   margin: 0 0 0.5rem; color: var(--rp-ink);
 }
 .rp-role .body .sub {
-  font-family: 'Inter', sans-serif; font-size: 14px; color: var(--rp-ink-3);
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 14px; color: var(--rp-ink-3);
   margin: 0 0 1rem;
 }
 .rp-role .body .sub .dot { color: var(--rp-ink-4); margin: 0 0.5rem; }
@@ -193,7 +194,7 @@ $this->layout('partials::layouts/main', [
 
 .rp-role .body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .rp-role .body ul li {
-  font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.65;
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 14.5px; line-height: 1.65;
   color: var(--rp-ink-2); padding-left: 1.5rem; position: relative; max-width: 68ch;
 }
 .rp-role .body ul li::before {
@@ -233,7 +234,7 @@ $this->layout('partials::layouts/main', [
 }
 .rp-stat .num { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 2rem; line-height: 1; letter-spacing: -0.02em; color: var(--rp-ink); }
 .rp-stat .num sup { font-size: 0.6em; color: var(--rp-ink-3); margin-left: 2px; font-style: normal; }
-.rp-stat .note { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--rp-ink-3); margin-top: 0.5rem; }
+.rp-stat .note { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 12px; color: var(--rp-ink-3); margin-top: 0.5rem; }
 
 /* Skills grid */
 .rp-skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rp-line); }
@@ -247,7 +248,7 @@ $this->layout('partials::layouts/main', [
 .rp-skill:nth-child(even) { padding-left: 2rem; border-left: 1px solid var(--rp-line); }
 .rp-skill .idx { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--rp-ink-4); }
 .rp-skill h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 1.0625rem; line-height: 1.25; letter-spacing: -0.005em; margin: 0 0 0.5rem; color: var(--rp-ink); }
-.rp-skill p  { font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; color: var(--rp-ink-2); margin: 0; }
+.rp-skill p  { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 13.5px; line-height: 1.6; color: var(--rp-ink-2); margin: 0; }
 
 /* Doc strip */
 .rp-doc-strip {
@@ -279,11 +280,11 @@ $this->layout('partials::layouts/main', [
   font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1.1; letter-spacing: -0.02em;
   margin: 0 0 1rem; color: var(--rp-ink);
 }
-.rp-cta-body p { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.65; color: var(--rp-ink-2); margin: 0 0 1.5rem; }
+.rp-cta-body p { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 15px; line-height: 1.65; color: var(--rp-ink-2); margin: 0 0 1.5rem; }
 
 /* btn-arrow — the only button in v2 (filled .btn was removed) */
 .rp-btn-dark {
-  display: inline; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400;
+  display: inline; font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 16px; font-weight: 400;
   color: var(--rp-paper); text-decoration: underline;
   text-decoration-color: rgba(251, 250, 249, 0.3); text-underline-offset: 5px;
   text-decoration-thickness: 1px;
