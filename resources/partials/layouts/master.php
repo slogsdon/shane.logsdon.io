@@ -81,15 +81,4 @@
       .register('/sw.js')
       .catch(() => {});
 </script>
-<script>
-(function() {
-  var header = document.getElementById('site-header');
-  if (!header) return;
-  function update() {
-    header.classList.toggle('at-top', window.scrollY < header.offsetHeight + 5);
-  }
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-</script>
 </body>
