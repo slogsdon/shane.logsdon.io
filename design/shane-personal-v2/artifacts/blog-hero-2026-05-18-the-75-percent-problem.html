@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — the-75-percent-problem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   tokens.css — Shane Logsdon v2 (embedded verbatim)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-grid:            #e0e2e6;
+  --color-accent:          #556b2f;
+  --color-accent-hover:    #3e5020;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:         1.1875rem;
+  --fs-body-lg:      1.0625rem;
+  --fs-body-md:      1rem;
+  --fs-meta:         0.875rem;
+  --fs-smallcaps-lg: 0.875rem;
+  --fs-smallcaps:    0.75rem;
+  --fs-dateline:     0.75rem;
+  --fs-code:         0.875rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+  --lh-prose:  1.65;
+
+  --tracking-cover:           -0.022em;
+  --tracking-display:         -0.02em;
+  --tracking-tight:           -0.015em;
+  --tracking-normal:           0;
+  --tracking-smallcaps:        0.08em;
+  --tracking-smallcaps-tight:  0.06em;
+  --tracking-mono:             0.06em;
+
+  --s-1: 0.25rem;  --s-2: 0.5rem;  --s-3: 0.75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;   --s-6: 2rem;    --s-7: 3rem;      --s-8: 4rem;
+  --s-9: 6rem;     --s-10: 9rem;
+
+  --measure:   64ch;
+  --container: 1180px;
+  --gutter:    1.5rem;
+
+  --r-0: 0; --r-hairline: 1px; --r-sm: 2px; --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
+}
+
+/* ─── Type utilities ─── */
+.t-display-xxl { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display-xxl); line-height: var(--lh-cover); letter-spacing: var(--tracking-cover); }
+.t-display-xl  { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display-xl); line-height: var(--lh-tight); letter-spacing: var(--tracking-display); }
+.t-display     { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display); line-height: var(--lh-snug); letter-spacing: var(--tracking-display); }
+.t-meta        { font-family: var(--type-sans-family); font-size: var(--fs-meta); line-height: 1.5; color: var(--color-ink-3); }
+.t-dateline    { font-family: var(--type-mono-family); font-size: var(--fs-dateline); letter-spacing: var(--tracking-mono); color: var(--color-ink-3); }
+.t-accent      { color: var(--color-accent); font-style: normal; }
+
+/* ─── Running head (top edge) ─── */
+.running-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: var(--fs-smallcaps); letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Page shell
+   ═══════════════════════════════════════════════════════════════ */
+html, body {
+  margin: 0; padding: 0;
+  background: #2a2a2a;
+  min-height: 100vh;
+  font-family: var(--type-sans-family);
+}
+body {
+  display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0;
+}
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  align-self: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Canvas — shared
+   ═══════════════════════════════════════════════════════════════ */
+.canvas {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+.canvas-og   { width: 1200px; height: 630px; padding: 40px 64px; }
+.canvas-hero { width: 1440px; height: 600px; padding: 44px 80px; }
+
+.canvas .running-head { flex-shrink: 0; position: relative; z-index: 3; background: var(--color-surface); }
+
+/* ═══════════════════════════════════════════════════════════════
+   Inverse-text body wall — article fragments fill the surface
+   at low opacity. The headline carves through.
+   ═══════════════════════════════════════════════════════════════ */
+.body-wall {
+  position: absolute;
+  inset: 88px 64px 40px 64px;     /* below running-head, above bottom padding */
+  pointer-events: none;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+  font-family: var(--type-sans-family);
+  font-weight: 400;
+  color: rgba(14, 17, 22, 0.10);
+  line-height: 1.55;
+  text-align: justify;
+  hyphens: auto;
+}
+.canvas-og .body-wall   { inset: 80px 64px 40px 64px; grid-template-columns: 1fr 1fr 1fr; font-size: 13px; }
+.canvas-hero .body-wall { inset: 88px 80px 44px 80px; grid-template-columns: 1fr 1fr 1fr 1fr; font-size: 13px; }
+
+.body-wall p { margin: 0 0 14px; }
+
+/* Olive marks every numeric "problem identifier" — semantic, not decorative */
+.body-wall .pct {
+  color: rgba(85, 107, 47, 0.55);
+  font-weight: 500;
+}
+
+/* ─── Headline overlay — punctures the wall ─── */
+.headline-wrap {
+  position: absolute;
+  z-index: 2;
+  background: var(--color-surface);
+  /* Subtle vertical fade so the headline doesn't feel pasted on */
+  box-shadow:
+    0 0 0 16px var(--color-surface),
+    0 0 28px 36px rgba(251, 250, 249, 0.92);
+}
+.canvas-og .headline-wrap {
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px 0;
+}
+.canvas-hero .headline-wrap {
+  left: 80px;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px 0;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+.canvas-og .headline   { font-size: 78px; }
+.canvas-hero .headline { font-size: 92px; }
+
+.headline .t-accent { color: var(--color-accent); font-weight: 500; }
+
+/* ─── Embedded meta (replaces the lower-right folio of the prior artifact) ─── */
+.canvas-meta {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+  background: var(--color-surface);
+  padding: 6px 8px 6px 0;
+}
+.canvas-og .canvas-meta   { left: 64px; bottom: 36px; }
+.canvas-hero .canvas-meta { left: 80px; bottom: 40px; }
+.canvas-meta .pos { color: var(--color-ink); }
+</style>
+</head>
+<body>
+
+<!--
+  Variation choices:
+    archetype:  inverse-text — article body fragments fill the surface at watermark opacity;
+                headline carves through the wall as the punctum
+    layout:     full-bleed — body wall edge-to-edge under the running-head
+    color:      single-accent — committed cream surface; olive marks every "75%" / "25%"
+                instance in body AND headline (semantic role: percent-identifier of the
+                problem, used consistently — not single-word decorative accent)
+    type-press: display-dominant — Fraunces 78px (OG) / 92px (hero) headline against
+                a 13px Plex Sans body wall at 0.10 opacity
+
+  Cross-artifact check:
+    blog-hero-2026-05-11: pattern-led × asymmetric × single-accent (ghost spec doc)
+    blog-hero-2026-05-04: type-only × off-grid × inverted (dark, headline only)
+    blog-hero-2026-05-03: object-of-content × asymmetric × monochrome (fragment + rule)
+    THIS:                 inverse-text × full-bleed × single-accent — new archetype ✓
+
+  Footer / mark placement check:
+    Wordmark: embedded in running-head TOP edge (rotates with series convention)
+    Bottom meta: BOTTOM-LEFT (prior artifact used BOTTOM-RIGHT folio — placement varies) ✓
+    No three-column footer row ✓ No `eyebrow + headline + meta-row` chrome inside ✓
+-->
+
+<!-- ─────────────────────────────────────────────────────── -->
+<span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
+
+<article class="canvas canvas-og">
+
+  <div class="running-head">
+    <span>Shane Logsdon</span>
+    <span>agentic product development workflows &mdash; 004</span>
+  </div>
+
+  <div class="body-wall" aria-hidden="true">
+    <p>The demo worked. I had run it three times, walked through the flow twice, and it did exactly what I'd described. By any reasonable interpretation of working, it was working. Then I tried to ship it.</p>
+    <p>The authentication edge case that only appeared with expired tokens turned out to be one thing. The schema field that was optional in the prototype turned out to be required by the consuming service.</p>
+    <p>None of these were complicated problems. They were the <span class="pct">25%</span> of the problem that the first <span class="pct">75%</span> hadn't touched yet. The <span class="pct">75%</span> felt like 95%.</p>
+
+    <p>This pattern has a name now, the <span class="pct">75%</span> Problem, and it's the convergence point for the discipline Posts 2 and 3 described. The spec-first work exists partly for this reason.</p>
+    <p>The scaffolding phase is fast. AI tools generate boilerplate, translate requirements into code structure, and handle the high-frequency patterns with impressive accuracy.</p>
+    <p>When the first <span class="pct">75%</span> takes two hours, the temptation is to assume the remaining work is proportional. It almost never is.</p>
+
+    <p>The last <span class="pct">25%</span> of most software problems is where the domain-specific judgment lives. Which failure modes are distinct enough to handle separately, and which can be collapsed into a single error state?</p>
+    <p>The model can generate code for authentication edge cases, error handling, performance optimization, and integration nuance. What it generates will be plausible, it will compile, and it will address the obvious version of each problem.</p>
+    <p>The <span class="pct">75%</span> problem is not a capability ceiling. It's a specification boundary. The model works reliably within the specified territory and infers, plausibly but not correctly, outside it.</p>
+  </div>
+
+  <div class="headline-wrap">
+    <h1 class="headline">The <span class="t-accent">75%</span> problem: why AI-assisted builds stall at the finish line.</h1>
+  </div>
+
+  <div class="canvas-meta">2026.05.18 &middot; <span class="pos">part 4 of 6</span></div>
+
+</article>
+
+
+<!-- ─────────────────────────────────────────────────────── -->
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot this for the article header</span>
+
+<article class="canvas canvas-hero">
+
+  <div class="running-head">
+    <span>Shane Logsdon</span>
+    <span>agentic product development workflows &mdash; 004</span>
+  </div>
+
+  <div class="body-wall" aria-hidden="true">
+    <p>The demo worked. I had run it three times, walked through the flow twice, and it did exactly what I'd described. By any reasonable interpretation of working, it was working. Then I tried to ship it.</p>
+    <p>The authentication edge case that only appeared with expired tokens turned out to be one thing. The schema field that was optional in the prototype turned out to be required by the consuming service.</p>
+    <p>None of these were complicated problems. They were the <span class="pct">25%</span> of the problem that the first <span class="pct">75%</span> hadn't touched yet. The <span class="pct">75%</span> felt like 95%.</p>
+    <p>The scaffolding phase is fast. AI tools generate boilerplate, translate requirements into code structure, and handle the high-frequency patterns with impressive accuracy.</p>
+
+    <p>This pattern has a name now, the <span class="pct">75%</span> Problem, and it's the convergence point for the discipline Posts 2 and 3 described. The spec-first work exists partly for this reason.</p>
+    <p>When the first <span class="pct">75%</span> takes two hours, the temptation is to assume the remaining work is proportional. It almost never is.</p>
+    <p>The last <span class="pct">25%</span> of most software problems is where the domain-specific judgment lives. Which failure modes are distinct enough to handle separately?</p>
+    <p>The model has no access to your system, your constraints, your users, or your operational context except through what you tell it explicitly.</p>
+
+    <p>The model can generate code for authentication edge cases, error handling, performance optimization, and integration nuance. What it generates will be plausible, it will compile.</p>
+    <p>The <span class="pct">75%</span> problem is not a capability ceiling. It's a specification boundary. The model works reliably within the specified territory.</p>
+    <p>A complete design spec that names failure modes, edge cases, integration constraints, and operational requirements doesn't only improve the first <span class="pct">75%</span>. It extends the specified territory into the last <span class="pct">25%</span>.</p>
+    <p>When the spec covers that territory explicitly, the AI can operate in it reliably. When the spec leaves it open, the AI fills it with probability.</p>
+
+    <p>The specification work that would close the <span class="pct">25%</span> gap is often the work you don't know to do until you've seen the <span class="pct">75%</span>.</p>
+    <p>The practical response is the alignment pass: after the first implementation, compare the output against the spec, identify where the spec was silent on things that turned out to matter, and close the gaps with a second pass.</p>
+    <p>The <span class="pct">75%</span> mark is not a failure. The scaffold is real, the speed was real, and the AI did exactly what it was specified to do.</p>
+    <p>What it couldn't do is fill in what the spec left out, and in the last <span class="pct">25%</span>, what the spec left out is everything that requires knowing your system. That's the work.</p>
+  </div>
+
+  <div class="headline-wrap">
+    <h1 class="headline">The <span class="t-accent">75%</span> problem: why AI-assisted builds stall at the finish line.</h1>
+  </div>
+
+  <div class="canvas-meta">2026.05.18 &middot; <span class="pos">part 4 of 6</span></div>
+
+</article>
+
+<!--
+  Slug:           the-75-percent-problem
+  OG description: AI gets you to 75% fast. That's the trap: the 75% mark looks finished, and the last 25% takes as long as the first 75%. Here's how to plan for it.
+  Series:         Agentic Product Development Workflows, Part 4 of 6
+
+  Export OG (1200×630):
+    Browser → DevTools → device toolbar → set viewport 1200×630 → screenshot .canvas-og element
+  Export in-page hero (1440×600):
+    Browser → DevTools → device toolbar → set viewport 1440×600 → screenshot .canvas-hero element
+-->
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — the-75-percent-problem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   tokens.css — Shane Logsdon v2 (embedded verbatim)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-grid:            #e0e2e6;
+  --color-accent:          #556b2f;
+  --color-accent-hover:    #3e5020;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:         1.1875rem;
+  --fs-body-lg:      1.0625rem;
+  --fs-body-md:      1rem;
+  --fs-meta:         0.875rem;
+  --fs-smallcaps-lg: 0.875rem;
+  --fs-smallcaps:    0.75rem;
+  --fs-dateline:     0.75rem;
+  --fs-code:         0.875rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+  --lh-prose:  1.65;
+
+  --tracking-cover:           -0.022em;
+  --tracking-display:         -0.02em;
+  --tracking-tight:           -0.015em;
+  --tracking-normal:           0;
+  --tracking-smallcaps:        0.08em;
+  --tracking-smallcaps-tight:  0.06em;
+  --tracking-mono:             0.06em;
+
+  --s-1: 0.25rem;  --s-2: 0.5rem;  --s-3: 0.75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;   --s-6: 2rem;    --s-7: 3rem;      --s-8: 4rem;
+  --s-9: 6rem;     --s-10: 9rem;
+
+  --r-0: 0; --r-hairline: 1px; --r-sm: 2px; --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
+}
+
+/* ─── Page shell ─── */
+html, body {
+  margin: 0; padding: 0;
+  background: #2a2a2a;
+  min-height: 100vh;
+  display: grid; place-items: center;
+  font-family: var(--type-sans-family);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Canvas — 1200×627 (LinkedIn)
+   ═══════════════════════════════════════════════════════════════ */
+.canvas {
+  width: 1200px;
+  height: 627px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  padding: 56px 80px 48px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 36px;
+}
+
+/* ─── Top edge: running head ─── */
+.running-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; font-size: var(--fs-smallcaps); letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+/* ─── Center: two-figure split with column rule between ─── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+  gap: 0;
+}
+
+.figure-block {
+  padding: 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.figure-block .label {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+.figure {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  font-size: 232px;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.figure-block .caption {
+  font-family: var(--type-sans-family);
+  font-size: var(--fs-body-md);
+  line-height: 1.35;
+  color: var(--color-ink-soft);
+  max-width: 22ch;
+}
+
+.split .col-rule {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-rule);
+  margin: 12px 0;
+}
+
+/* ─── Bottom: title + footer ─── */
+.outro {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-rule);
+}
+
+.title-block .title {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  margin: 0;
+}
+.title-block .equation {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-code);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+  margin-top: 8px;
+}
+
+.outro .meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+.outro .wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+
+/* Print: export at exact dimensions */
+@page { size: 1200px 627px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!--
+  Variation choices:
+    archetype:    number-led — the two figures ARE the artifact; everything bows to them
+    layout:       split — vertical 1px column rule divides 75% and 25%; equal weight on both sides
+                  enacts the article's central claim (both halves take the same time)
+    color:        monochrome — committed cream surface, ink on both figures; NO accent color used
+                  (avoiding single-word color-emphasis anti-pattern; the structural split carries the design)
+    type-press:   display-dominant — Fraunces 232px figures dominate ~55% of the canvas
+    composition:  data-led — the numbers are the argument; copy serves the numbers
+
+  Cross-artifact check (LinkedIn series):
+    linkedin-2026-05-11 (spec):         type-only × off-grid × inverted × headline-led
+    linkedin-2026-05-07 (skill-audit):  number-led × asymmetric × single-accent × data-led
+    linkedin-2026-05-04 (llm-context):  object-of-content × full-bleed × monochrome × data-led
+    linkedin-2026-05-03 (ax-shift):     pattern-led × asymmetric × monochrome × quote-led
+    THIS: number-led × split × monochrome × data-led
+      → number-led reused after a 2-artifact gap, but executed entirely differently from
+        skill-audit (paired split vs single hero figure; no accent; mono equation footer)
+
+  Cross-artifact check (vs today's blog hero):
+    blog-hero-2026-05-18: inverse-text × full-bleed × single-accent
+    THIS:                 number-led × split × monochrome  →  archetype differs ✓
+
+  Footer / mark placement:
+    Wordmark + meta: BOTTOM-RIGHT in the outro row (skill-audit had bottom-left wordmark;
+    spec had no footer at all; ax-shift had wordmark-left/folio-right)
+    Title sits LEFT of footer in a 2-col outro grid — not a 3-col footer chrome row ✓
+-->
+
+<article class="canvas">
+
+  <div class="running-head">
+    <span>Shane Logsdon</span>
+    <span>agentic product development workflows &mdash; 004</span>
+  </div>
+
+  <div class="split">
+    <div class="figure-block">
+      <span class="label">first</span>
+      <p class="figure">75%</p>
+      <p class="caption">ships in hours. The scaffold is fast and the demo runs clean.</p>
+    </div>
+
+    <div class="col-rule"></div>
+
+    <div class="figure-block">
+      <span class="label">last</span>
+      <p class="figure">25%</p>
+      <p class="caption">takes as long as the first 75%. The spec gaps live here.</p>
+    </div>
+  </div>
+
+  <div class="outro">
+    <div class="title-block">
+      <h1 class="title">The 75% problem.</h1>
+      <p class="equation">75% + 25% &ne; 100% of effort</p>
+    </div>
+    <div class="meta">
+      <span class="wordmark">Shane Logsdon</span>
+      <span>2026.05.18 &middot; part 4 of 6</span>
+    </div>
+  </div>
+
+</article>
+
+<!--
+COMPANION TEXT:
+
+The 75% mark on an AI-assisted build doesn't announce itself. It looks, from the inside, a lot like 95%.
+
+The scaffold is clean. Components are wired up. API calls return data. The demo works. By any reasonable interpretation of "working," it's working.
+
+Then you try to ship it.
+
+The authentication edge case that only appears with expired tokens. The schema field that's optional in the prototype but required by the consuming service. The error state that the UI handled gracefully on the happy path and catastrophically in the one case that actually matters in production. None of these are complicated problems. They're the 25% the first 75% didn't touch yet.
+
+The 75% problem isn't a model capability ceiling. It's a specification boundary. Inside the territory the spec covers, the model works reliably. Outside it, the model fills the gap with probability — plausible, but not necessarily correct.
+
+When estimating AI-assisted work, don't discount the last 25%. Add time there. That's where domain expertise matters most and AI assistance is least reliable. The speed you gain in scaffold is real. Treat it as time freed for finishing work, not as a reason to shrink the overall estimate.
+
+Part 4 of 6 in the Agentic Product Development Workflows series. Reply with the link in first comment.
+-->
+</body>
+</html>

@@ -1,4 +1,16 @@
 {
+  "the-75-percent-problem": {
+    "title": "The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line",
+    "description": "AI gets you to 75% fast. That's the trap: the 75% mark looks finished, and the last 25% takes as long as the first 75%. Here's how to plan for it.",
+    "date": "2026-05-18",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
   "the-spec-is-the-work": {
     "title": "The Spec Is the Work: PRD-First AI Development",
     "description": "The reason AI-assisted builds stall isn't the model: design decisions were never made. Here's why writing the spec first changes everything.",
