@@ -3,20 +3,22 @@ title: "What AEO Actually Means for a Local Business"
 date: 2026-05-12
 layout: 'partials::layouts/writing-post'
 slug: what-aeo-actually-means-for-a-local-business
+image: what-aeo-actually-means-for-a-local-business-og.png
+heroImage: what-aeo-actually-means-for-a-local-business-hero.png
 draft: false
-description: "Answer engine optimization structures your website so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires."
+description: "Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires."
 faqs:
   - q: "What's the difference between SEO and AEO?"
     a: "SEO optimizes for ranking on a search results page — the ten blue links. AEO optimizes for being cited in AI-generated answers, where there are no links, just a synthesized recommendation. The underlying technical signals overlap (clean structure, good content), but AEO adds FAQ schema, Quick Answer blocks, llms.txt, and explicit AI crawler access that traditional SEO ignores."
   - q: "Does my local business actually need AEO?"
     a: "If any of your potential clients use ChatGPT, Perplexity, or Google's AI Overviews to look for services like yours — and they do — then yes. You don't need it to keep serving referrals. You need it to capture cold searches, which is the segment most likely to become new clients."
-  - q: "What does an AEO-optimized local business website look like?"
+  - q: "What does an AEO-optimized local business web site look like?"
     a: "Structurally: robots.txt open to AI crawlers, llms.txt at the root, FAQPage schema markup, Quick Answer blocks on key pages, Article schema on any content, clean meta descriptions, structured content organized around questions and direct answers. Visually, it looks the same as any other site — the difference is in what the machines see."
   - q: "How long does it take to see results from AEO?"
     a: "Indexing and citation behavior changes faster than organic ranking — some clients see AI citation within 30–60 days of implementation. That said, consistency matters. One-time AEO work degrades as content ages. Active management — updating signals, adding new FAQ content, monitoring citation rate — is what keeps results compounding."
 ---
 
-> **Quick answer:** Answer engine optimization (AEO) is the practice of structuring your website so AI assistants — ChatGPT, Perplexity, Google's AI Overviews — can extract and cite your business when someone asks for a local recommendation. Unlike traditional SEO, it's not about ranking on a results page. It's about being the answer.
+> **Quick answer:** Answer engine optimization (AEO) is the practice of structuring your web site so AI assistants (ChatGPT, Perplexity, Google's AI Overviews) can extract and cite your business when someone asks for a local recommendation. Unlike traditional SEO, it's not about ranking on a results page. It's about being the answer.
 
 I ran a search last month for "best financial advisor near me" and then asked ChatGPT the same question.
 
@@ -30,11 +32,11 @@ They hadn't thought about how AI assistants surface recommendations. Most local 
 
 ## What's actually happening
 
-When someone types a query into ChatGPT, Perplexity, or Google's AI Overview, they're not getting a list of links. They're getting a synthesized answer. The AI is reading available content, extracting what's useful, and presenting a recommendation — often without the user ever clicking through to a website.
+When someone types a query into ChatGPT, Perplexity, or Google's AI Overview, they're not getting a list of links. They're getting a synthesized answer. The AI is reading available content, extracting what's useful, and presenting a recommendation. This often happens without the user ever clicking through to a web site.
 
 For local service businesses, this matters more than most SEO advice will tell you. AI-assisted local search is already answering "best [service] in [city]" queries at scale. Gartner estimates a 25% shift in organic traffic toward AI chatbots by 2026. Google AI Overviews appear in roughly 68% of local searches.
 
-Most local business websites were not built for this. They were built for humans who read top to bottom. AI assistants don't read that way. They parse.
+Most local business web sites were not built for this. They were built for humans who read top to bottom. AI assistants don't read that way. They parse.
 
 ---
 
@@ -68,6 +70,6 @@ The technical bar isn't high. For most local sites, full AEO implementation take
 
 I added AEO signals to my own site as part of a baseline audit before opening this service to clients. The work came to four things: llms.txt at the root, FAQPage schema on the services page, Quick Answer blocks on key content, and Article schema on every post. About four hours total.
 
-Before those changes, an AI assistant asked to summarize what I do gave back nothing useful. After, it gets it right.
+Before those changes, an AI assistant asked what I do gave back nothing useful. After, it gets it right.
 
 That's the test. Not a ranking report. Not an analytics dashboard. Ask ChatGPT or Perplexity: "who would you recommend for [your service] in [your city]?" If your name isn't in the answer, you have an AEO gap.
