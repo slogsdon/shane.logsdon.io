@@ -1,76 +1,255 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-<meta charset='utf-8'>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — what-aeo-actually-means-for-a-local-business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-
+/* ═══════════════════════════════════════════════════════════════
+   tokens.css — Shane Logsdon v2 (embedded verbatim)
+   ═══════════════════════════════════════════════════════════════ */
 :root {
-  --color-surface: #fbfaf9;
-  --color-ink: #0e1116;
-  --color-accent: #556b2f;
-  --color-rule: #d6d8de;
-  --type-sans-family: sans-serif;
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-grid:            #e0e2e6;
+  --color-accent:          #556b2f;
+  --color-accent-hover:    #3e5020;
+
+  --type-display-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:    'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl: 9rem;
+  --fs-display-xl:  6rem;
+  --fs-display:     4.5rem;
+  --fs-headline-lg: 3.5rem;
+  --fs-headline-md: 2.25rem;
+  --fs-headline-sm: 1.5rem;
+  --fs-lead:         1.1875rem;
+  --fs-body-lg:      1.0625rem;
+  --fs-body-md:      1rem;
+  --fs-meta:         0.875rem;
+  --fs-smallcaps-lg: 0.875rem;
+  --fs-smallcaps:    0.75rem;
+  --fs-dateline:     0.75rem;
+  --fs-code:         0.875rem;
+
+  --lh-cover:  0.96;
+  --lh-tight:  1.0;
+  --lh-snug:   1.05;
+  --lh-normal: 1.18;
+  --lh-prose:  1.65;
+
+  --tracking-cover:           -0.022em;
+  --tracking-display:         -0.02em;
+  --tracking-tight:           -0.015em;
+  --tracking-normal:           0;
+  --tracking-smallcaps:        0.08em;
+  --tracking-smallcaps-tight:  0.06em;
+  --tracking-mono:             0.06em;
+
+  --s-1: 0.25rem;  --s-2: 0.5rem;  --s-3: 0.75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;   --s-6: 2rem;    --s-7: 3rem;      --s-8: 4rem;
+  --s-9: 6rem;     --s-10: 9rem;
+
+  --measure:   64ch;
+  --container: 1180px;
+  --gutter:    1.5rem;
+
+  --r-0: 0; --r-hairline: 1px; --r-sm: 2px; --r-full: 999px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:  200ms;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Page shell
+   ═══════════════════════════════════════════════════════════════ */
+html, body {
+  margin: 0; padding: 0;
+  background: #2a2a2a;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: var(--type-sans-family);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Canvas — 1200×627 (LinkedIn spec)
+   Split-register: grid with dark column (left) + cream column (right)
+   ═══════════════════════════════════════════════════════════════ */
 .canvas {
   width: 1200px;
   height: 627px;
+  display: grid;
+  grid-template-columns: 496px 1fr;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* ─── Dark zone ─── */
+.zone-dark {
+  background: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 52px 60px 64px;
+  box-sizing: border-box;
+}
+
+.zone-dark .headline {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--color-surface);
+  margin: 0;
+}
+
+.zone-dark .dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: rgba(251, 250, 249, 0.45);
+  margin-top: 24px;
+}
+
+/* ─── Cream zone ─── */
+.zone-cream {
   background: var(--color-surface);
+  border-left: 1px solid var(--color-rule);
+  display: flex;
+  flex-direction: column;
+  padding: 48px 64px 60px 52px;
+  box-sizing: border-box;
+}
+
+/* Running head */
+.running-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
   color: var(--color-ink);
+}
+
+/* Signal inventory */
+.signal-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px;
-  font-family: var(--type-sans-family);
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.headline {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  line-height: 1.1;
-}
-.description {
-  font-size: 24px;
-  line-height: 1.4;
-  color: #404550;
-  margin-bottom: 48px;
-}
-.eyebrow {
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-accent);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-.footer {
-  margin-top: auto;
-  padding-top: 24px;
-  border-top: 1px solid var(--color-rule);
-  font-size: 16px;
-  color: #62686f;
+  margin-top: 16px;
 }
 
+.signal-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
+}
+.signal-item:first-child { border-top: 1px solid var(--color-rule); }
+
+.signal-item .num {
+  font-family: var(--type-mono-family);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-3);
+  flex-shrink: 0;
+  min-width: 20px;
+}
 </style>
 </head>
 <body>
-  <div class='canvas'>
-    <div class='eyebbarow'>strategic insights</div>
-    <h1 class='headline'>What AEO actually means for a local business.</h1>
-    <p class='description'>Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires.</p>
-    <div class='footer'>2026-05-12</div>
+
+<!--
+  Variation choices:
+    archetype:  split-register × inventory — dark column left, cream column right;
+                dark side holds the headline (bottom-anchored); cream side holds running head + five AEO signals.
+                Thematically tied: the five signals ARE the article — the inventory IS the answer.
+    layout:     grid split (496px dark / remainder cream); 1px column rule at boundary
+    color:      two-register — dark (ink bg, cream text) + cream (ink text)
+    type-press: display 72px in dark zone; Fraunces small-caps inventory in cream zone
+
+  Cross-artifact check (LinkedIn series):
+    linkedin-2026-05-11: type-only × off-grid × inverted
+    linkedin-2026-05-07: number-led × asymmetric × single-accent
+    linkedin-2026-05-04: object-of-content × full-bleed × monochrome
+    linkedin-2026-05-03: pattern-led × asymmetric × monochrome
+    THIS:               split-register × inventory × two-zone — new archetype ✓
+
+  Blog hero for same article:
+    blog-hero-2026-05-12: question-wall × centered × cream — different register ✓
+
+  Anti-pattern compliance:
+    No eyebrow above headline ✓  No 3-column footer row ✓
+    No center-aligned composition ✓  No gradients or orbs ✓
+    Wordmark in running head (cream zone) ✓
+-->
+
+<article class="canvas">
+
+  <!-- Left: dark zone -->
+  <div class="zone-dark">
+    <h1 class="headline">What<br>AEO<br>actually<br>means.</h1>
+    <div class="dateline">2026.05.12</div>
   </div>
-</body>
-</html>
+
+  <!-- Right: cream zone -->
+  <div class="zone-cream">
+    <div class="running-head">
+      <span>shane logsdon</span>
+      <span>strategic insights</span>
+    </div>
+
+    <div class="signal-list">
+      <div class="signal-item"><span class="num">01</span> faq schema markup</div>
+      <div class="signal-item"><span class="num">02</span> quick answer blocks</div>
+      <div class="signal-item"><span class="num">03</span> llms.txt</div>
+      <div class="signal-item"><span class="num">04</span> open crawler access</div>
+      <div class="signal-item"><span class="num">05</span> structured, extractable content</div>
+    </div>
+  </div>
+
+</article>
+
 <!--
 COMPANION TEXT:
 
-What AEO actually means for a local business.
+Most local business owners I talk to have heard of SEO. Fewer than one in ten has heard of AEO, and almost none of them know what it actually requires.
 
-Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires.
+AEO (Answer Engine Optimization) is not SEO renamed. It is structuring your web site so AI assistants — ChatGPT, Perplexity, Google's AI Overviews — can extract your business as a citation when someone asks for a recommendation. The AI is not returning a results page. It is returning an answer. If your site is not structured for extraction, you are not a candidate for that answer, regardless of your search ranking.
 
-AEO is changing how local customers find you. If you aren't optimizing for AI assistants like ChatGPT and Perplexity, you're missing out on the next wave of local search. It's about more than just keywords; it's about structure and direct answers.
+The structural signals are specific: FAQPage schema markup, Quick Answer blocks at the top of key pages, an llms.txt file at your root, open access for AI crawlers in your robots.txt, and content organized around clear questions and direct answers.
 
+For most local sites, implementing all five takes a few hours of structured work. The window to do it before it becomes table stakes is real and short.
+
+I wrote the full breakdown for business owners who want to understand what this is before hiring someone to do it. Link in the first comment.
 -->
+
+</body>
+</html>
