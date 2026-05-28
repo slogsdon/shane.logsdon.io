@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon (v2) — LinkedIn — Skill audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+@import url('../tokens.css');
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #2a2a2a;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: var(--type-sans-family);
+}
+
+/*
+  Variation choices:
+    archetype:        number-led (one oversized figure dominates ~55% of canvas)
+    layout:           asymmetric (figure left-aligned, caption stack right; footer hairline only)
+    type-pressure:    display-dominant (single 320px figure carries the artifact)
+    color:            single-accent (burnt amber reserved for the figure ONLY; everything else committed-cream + ink)
+    composition:      data-led (the number IS the artifact; copy serves the number)
+
+  Anti-tell verification:
+    - Not center-aligned (committed asymmetric)
+    - No quote glyphs, no italics, no folios, no fake VOL./ISS. labels
+    - Footer differs from quote-card-2026-05-02 (no bottom-anchored signature row; uses hairline bottom-left + date upper-right instead)
+    - Accent color used semantically (the dead-skills figure) not decoratively
+    - No mono-led caps stacks; small-caps reserved for one eyebrow + one footer label
+*/
+
+.canvas {
+  width: 1200px;
+  height: 627px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* TOP META BAR — asymmetric: dateline pushed right, eyebrow left */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--s-6) var(--s-7) var(--s-3) var(--s-7);
+  border-bottom: 1px solid var(--color-rule);
+}
+.meta-eyebrow {
+  font-family: var(--type-display-family);
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink-soft);
+}
+.meta-date {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+
+/* MAIN BLOCK — figure-led, asymmetric */
+.main {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  align-items: end;
+  padding: 0 var(--s-7);
+  gap: var(--s-7);
+}
+
+/* The number — 320px Fraunces 300 weight (light, editorial), accent color */
+.figure {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  line-height: 0.85;
+  margin-bottom: -8px; /* optical descent compensation for Fraunces */
+}
+.figure-num {
+  font-family: var(--type-display-family);
+  font-weight: 300;
+  font-size: 320px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--color-accent);
+}
+.figure-tail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-bottom: 24px;
+}
+.figure-divisor {
+  font-family: var(--type-display-family);
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+.figure-label {
+  font-family: var(--type-display-family);
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink-soft);
+}
+
+/* RIGHT COLUMN — claim + reasoning */
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding-bottom: var(--s-6);
+}
+.headline {
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  color: var(--color-ink);
+  margin: 0;
+}
+.headline em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+.support {
+  font-family: var(--type-sans-family);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+  max-width: 36ch;
+  margin: 0;
+}
+
+/* FOOTER — hairline above, brand mark + author byline only. Differs from quote-card's three-column */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  border-top: 1px solid var(--color-rule);
+  padding: var(--s-4) var(--s-7) var(--s-5) var(--s-7);
+}
+.footer-mark {
+  font-family: var(--type-display-family);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+.footer-mark .dot {
+  color: var(--color-accent);
+}
+.footer-tag {
+  font-family: var(--type-display-family);
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink-3);
+}
+
+@page { size: 1200px 627px; margin: 0; }
+@media print {
+  html, body { background: var(--color-surface); }
+  .canvas { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<article class="canvas">
+  <header class="meta">
+    <span class="meta-eyebrow">Field notes — Agent Experience</span>
+    <span class="meta-date">2026.05.07</span>
+  </header>
+
+  <section class="main">
+    <div class="figure" aria-label="68 of 124 skills">
+      <span class="figure-num">68</span>
+      <div class="figure-tail">
+        <span class="figure-divisor">/124</span>
+        <span class="figure-label">skills · zero invocations</span>
+      </div>
+    </div>
+
+    <div class="copy">
+      <h1 class="headline">Half my context layer was already <em>dead.</em></h1>
+      <p class="support">An audit of every Claude Code skill across 6 weeks of sessions. The skills with vague triggers sat untouched; the ones that named the situation fired automatically.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="footer-mark">Shane Logsdon<span class="dot">.</span></span>
+    <span class="footer-tag">shane.logsdon.io</span>
+  </footer>
+</article>
+
+<!--
+COMPANION TEXT:
+
+68 of 124 skills in my Claude Code setup had never fired.
+
+I audited every one. Mined six weeks of session transcripts. Scored each on trigger clarity, instruction quality, output spec, and anti-pattern density. Then ranked them by composite score against actual usage.
+
+The pattern was the same shape as the CLAUDE.md problem I wrote about last week: I had built once and walked away. The skills with the clearest situational triggers — the ones that named when to use them, not what they were — fired automatically and produced zero rework. The skills with vague descriptions sat untouched for weeks. Same codebase, same model, completely different leverage.
+
+Context isn't config. Skills, AGENTS.md, CLAUDE.md, system prompts — these are living artifacts. They earn their keep by being audited, pruned, and rewritten. The ones that aren't are quietly making every session worse.
+
+The audit is now its own skill. Run it monthly, like a vault lint or a dependency check. If your AI context layer hasn't been measured against actual session data, you're making decisions in the dark about a system you ship through every day.
+
+What's the dead weight in your context layer right now?
+
+(Full audit + ranking methodology in the first comment.)
+-->
+</content>
+</invoke>
