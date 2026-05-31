@@ -1,7 +1,7 @@
 # Blog Pipeline Quality (Strictly Local) — Design (Sub-project B)
 
 **Date:** 2026-05-30
-**Status:** Draft for review
+**Status:** Approved — decisions D1–D4 resolved 2026-05-31; ready for implementation plan
 **Scope:** Sub-project B of the two-part effort. A = reliability + source-of-truth (shipped). B = writing/output quality, **strictly local** (this doc).
 
 ## Context
@@ -48,9 +48,9 @@ re-architecting the v4 creation flow; SEO/AEO content strategy.
   surface **high-confidence** "unsupported" findings (suppress the noise that makes the
   axis read 0/10). Stop feeding low-confidence accuracy notes into `revise_prompt()` as
   imperatives (they cause the writer to delete valid claims).
-- **Open decision (D1):** how hard accuracy gates — block on *any* confirmed-unsupported
-  claim, or block only above a small tolerance. Default proposal: block on any claim the
-  Python verifier is confident is unsupported; treat low-confidence as advisory.
+- **Decided (D1):** gate on **high-confidence** unsupported claims only — any claim the
+  Python verifier is confident is unsupported blocks publish; low-confidence findings stay
+  advisory (avoids blocking on verifier noise).
 
 ### B2 — Trustworthy gate via a Python decision (demote the weak model)
 - Replace the lfm2 gate's *gestalt verdict* as the decider with a **Python decision
@@ -58,8 +58,12 @@ re-architecting the v4 creation flow; SEO/AEO content strategy.
   no hard anti-pattern hits`. Keep the LLM gate output as advisory commentary only.
 - Removes the current need for the "gate-vs-per-axis >2 disagreement" override (the
   override exists because the gate model is unreliable).
-- **Open decision (D2):** the per-axis threshold (current target 30/40 total). Default:
-  each scored axis ≥ 7/10 AND total ≥ 32/40.
+- **Decided (D2):** `publishable` requires **each scored axis ≥ 8/10 AND total ≥ 34/40**
+  (stricter than the current 30/40, with a per-axis floor). **Decided (D3):** the LLM gate
+  (now advisory) and the per-axis judges route through a **stronger local model** (e.g. the
+  `quality` alias / qwen3.6:35b-mlx) — slower but better evaluation; the judge is manual so
+  latency is acceptable. The stricter bar raises non-convergence risk within the 6-round
+  cap — watch round counts via the B7 eval and lift `MAX_ROUNDS` if needed.
 
 ### B3 — Judge-loop correctness fixes (from the engine audit)
 - `extract_json`: use `JSONDecoder().raw_decode()` from the first `{` (first complete
@@ -86,8 +90,8 @@ re-architecting the v4 creation flow; SEO/AEO content strategy.
 - **Teasers/LinkedIn:** require a `<!-- COMPANION TEXT: … -->` block in the artifact
   (fail if absent) so initial LinkedIn posts are insight-led, not generic; have the
   hero/LinkedIn generators emit a one-line archetype rationale.
-- **Model routing (D3):** assess whether the publish-side `writing` alias should differ
-  from the draft/revise aliases. (Local only.)
+- **Model routing:** per D3, evaluation (judge/gate) moves to a stronger local model; the
+  publish-side `writing` alias is reviewed separately (local only) and measured via B7.
 
 ### B6 — Maintainability cleanup
 - De-duplicate the SSH key-file boilerplate across inline scripts (a single sourced helper
@@ -99,16 +103,18 @@ re-architecting the v4 creation flow; SEO/AEO content strategy.
 - Document the `articles-list.json` schema + article frontmatter spec (a `schema.json`
   + a short `ARTICLE_FRONTMATTER.md`).
 
-### B7 — Measurement (optional, recommended)
-- A lightweight eval over the last N posts (reuse `otel-local-ai/eval/`): score voice /
-  structure / anti-patterns and fact-offender counts before vs after B's changes, so
-  quality claims are measured, not asserted. **Open decision (D4):** do B7 now or after
-  B1–B5.
+### B7 — Measurement (FIRST, per D4)
+- Build the eval **before** B1–B5 (reuse `otel-local-ai/eval/`): score voice / structure /
+  anti-patterns and fact-offender counts over the last N posts to establish a **baseline**,
+  then re-run after each change so every quality claim is measured, not asserted. The
+  baseline also answers the empirical side of D3 (current vs stronger local model).
 
-## Open decisions to confirm (defaults proposed above)
-- **D1** accuracy gate hardness · **D2** axis thresholds · **D3** judge/gate model routing
-  within local options (keep current, or route judge/gate through a stronger local model
-  e.g. `quality`/qwen3.6:35b-mlx, accepting slower runs) · **D4** eval now vs later.
+## Decisions (resolved 2026-05-31)
+- **D1** — gate on **high-confidence** unsupported claims only (low-confidence advisory).
+- **D2** — quality bar: **each scored axis ≥ 8/10 AND total ≥ 34/40**.
+- **D3** — route the judge **and** gate through a **stronger local model** (`quality`
+  alias / qwen3.6:35b-mlx); LLM gate is advisory, Python decides.
+- **D4** — build the **eval first** (baseline before B1–B5), then measure each change.
 
 ## Testing / measurement
 - Unit tests for the Python changes (extract_json, tie-break, plateau, length-floor,
@@ -118,10 +124,11 @@ re-architecting the v4 creation flow; SEO/AEO content strategy.
 - Each engine change validated by a real judge-pipeline run (human-gated) before deploy.
 
 ## Rollout
-B3 (judge correctness, low-risk) → B2 (Python gate) → B1 (fact-check gating) → B4
-(brief prompts) → B5 (publish artifacts) → B6 (cleanup) → B7 (eval). Engine changes ship
-as commits in `otel-local-ai`; any flow-shape change deploys via `wmill sync push` from
-`windmill-workspace`.
+**B7 (eval + baseline, FIRST)** → B3 (judge correctness, low-risk) → B2 (Python gate, with
+the each-axis-≥8/total-≥34 bar and stronger local model) → B1 (fact-check gating,
+high-confidence only) → B4 (brief prompts) → B5 (publish artifacts) → B6 (cleanup). Re-run
+the B7 eval after each step. Engine changes ship as commits in `otel-local-ai`; any
+flow-shape change deploys via `wmill sync push` from `windmill-workspace`.
 
 ## Risks
 - Making accuracy gating could **block publishes** if local fact-check is noisy — mitigated
