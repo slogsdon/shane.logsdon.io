@@ -12,6 +12,12 @@ $patentUrl =
 
 $projects = [
     [
+        'href' => '/hermes-dispatch/',
+        'title' => 'Hermes Dispatch',
+        'body' => 'Open source, local-first agent dispatch system. Type a request into a mobile chat, a routing layer sends it to the right one of two dozen specialized agents, and the agent runs on your own models via Ollama and LiteLLM.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/hermes-dispatch']],
+    ],
+    [
         'href' => 'https://github.com/hps/heartland-tokenization',
         'title' => 'Secure Submit',
         'body' => 'Heartland Payment Systems\' JavaScript library for single-use tokenization across card-present and card-not-present merchants.',
@@ -41,6 +47,8 @@ $projects = [
     <ol class="border-t border-rule">
         <?php foreach ($projects as $i => $p):
             $num = str_pad($i + 1, 3, '0', STR_PAD_LEFT);
+            $external = str_starts_with($p['href'], 'http');
+            $rel = $external ? ' target="_blank" rel="noreferrer noopener"' : '';
         ?>
         <li class="grid grid-cols-12 gap-6 border-b border-rule py-10">
             <div class="col-span-12 sm:col-span-2">
@@ -48,7 +56,7 @@ $projects = [
             </div>
             <div class="col-span-12 sm:col-span-10">
                 <h2 class="font-display text-2xl font-medium text-foreground sm:text-3xl">
-                    <a href="<?= htmlspecialchars($p['href']) ?>" target="_blank" rel="noreferrer noopener" class="link-quiet"><?= htmlspecialchars($p['title']) ?></a>
+                    <a href="<?= htmlspecialchars($p['href']) ?>"<?= $rel ?> class="link-quiet"><?= htmlspecialchars($p['title']) ?></a>
                 </h2>
                 <p class="mt-3 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                     <?= htmlspecialchars($p['body']) ?>
