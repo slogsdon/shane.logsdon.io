@@ -8,14 +8,14 @@ $this->layout('partials::layouts/main', [
 $repo = 'https://github.com/slogsdon/hermes-dispatch';
 
 $aliases = [
-    ['name' => 'classify', 'use' => 'Fast routing. Picks the agent.'],
-    ['name' => 'chat', 'use' => 'General conversation and back-and-forth.'],
-    ['name' => 'review', 'use' => 'Critique, editing, second-pass work.'],
-    ['name' => 'code', 'use' => 'Writing and changing code.'],
-    ['name' => 'analyze', 'use' => 'Prompt expansion and reasoning over context.'],
-    ['name' => 'pipeline', 'use' => 'Multi-step jobs that chain calls.'],
-    ['name' => 'write', 'use' => 'Long-form drafting.'],
-    ['name' => 'quality', 'use' => 'The heavier model for work that has to be right.'],
+    ['name' => 'classify', 'use' => 'Fast triage and routing. Picks the agent.'],
+    ['name' => 'chat', 'use' => 'Fast conversational back-and-forth.'],
+    ['name' => 'review', 'use' => 'Code review.'],
+    ['name' => 'code', 'use' => 'Code generation.'],
+    ['name' => 'analyze', 'use' => 'Reasoning and analysis, including prompt expansion.'],
+    ['name' => 'pipeline', 'use' => 'Fast structured tasks.'],
+    ['name' => 'write', 'use' => 'Long-form prose.'],
+    ['name' => 'quality', 'use' => 'Best quality, for accuracy-critical work.'],
 ];
 
 $tiers = [
