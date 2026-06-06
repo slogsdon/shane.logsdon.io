@@ -7,15 +7,17 @@ $this->layout('partials::layouts/main', [
 
 $repo = 'https://github.com/slogsdon/hermes-dispatch';
 
-$aliases = [
-    ['name' => 'classify', 'use' => 'Fast triage and routing. Picks the agent.'],
-    ['name' => 'chat', 'use' => 'Fast conversational back-and-forth.'],
-    ['name' => 'review', 'use' => 'Code review.'],
-    ['name' => 'code', 'use' => 'Code generation.'],
-    ['name' => 'analyze', 'use' => 'Reasoning and analysis, including prompt expansion.'],
-    ['name' => 'pipeline', 'use' => 'Fast structured tasks.'],
-    ['name' => 'write', 'use' => 'Long-form prose.'],
-    ['name' => 'quality', 'use' => 'Best quality, for accuracy-critical work.'],
+$tiers_alias = [
+    ['name' => 'fast', 'use' => 'Smallest and quickest: triage, routing, extraction, short chat.'],
+    ['name' => 'balanced', 'use' => 'Mid capability: a solid default for most work.'],
+    ['name' => 'max', 'use' => 'Largest: best quality, reserved for high-consequence work.'],
+];
+
+$roles_alias = [
+    ['name' => 'structured', 'inherits' => 'fast', 'use' => 'A model that reliably emits clean JSON and fixed schemas.'],
+    ['name' => 'code', 'inherits' => 'balanced', 'use' => 'A dedicated coding model.'],
+    ['name' => 'writing', 'inherits' => 'balanced', 'use' => 'A prose-tuned model for long-form.'],
+    ['name' => 'reasoning', 'inherits' => 'max', 'use' => 'A chain-of-thought model for analysis and arithmetic.'],
 ];
 
 $tiers = [
@@ -64,7 +66,7 @@ $tiers = [
                 Hermes Dispatch turns a fleet of local LLM agents into something you can use from your phone like a single assistant. You type a request in plain language. A dispatch layer figures out which agent is the right one, expands your prompt into a proper brief, and hands it off. The agent runs locally through Ollama and LiteLLM and streams the answer back.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                There are 24 or more agents out of the box, covering developer advocacy, content and go-to-market, finance, sales, client delivery, productivity, and legal. Each one is a Hermes profile: a system prompt in a SOUL.md file plus a set of pinned model aliases. You decide which model sits behind each alias.
+                There are 24 or more agents out of the box, covering developer advocacy, content and go-to-market, finance, sales, client delivery, productivity, and legal. Each one is a Hermes profile: a system prompt in a SOUL.md file plus a pinned model alias. You decide which model sits behind each alias.
             </p>
         </div>
     </div>
@@ -95,7 +97,7 @@ $tiers = [
         </div>
         <div class="col-span-12 sm:col-span-9">
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Every request makes two quick LLM calls before it reaches an agent. The first is a fast router on the <span class="smallcaps">classify</span> alias that reads your message and chooses the target agent. The second is a prompt enhancer on the <span class="smallcaps">analyze</span> alias that turns your one-line request into a fuller brief the agent can act on. Then the chosen agent runs.
+                Every request makes two quick LLM calls before it reaches an agent. The first is a fast router on the <span class="smallcaps">structured</span> alias that reads your message and chooses the target agent. The second is a prompt enhancer on the <span class="smallcaps">reasoning</span> alias that turns your one-line request into a fuller brief the agent can act on. Then the chosen agent runs on its own pinned alias.
             </p>
             <ol class="mt-8 grid grid-cols-1">
                 <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
@@ -132,12 +134,27 @@ $tiers = [
         </div>
         <div class="col-span-12 sm:col-span-9">
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Agents never name a model directly. They reference one of eight aliases, and you map each alias to whatever you actually have. Put a small fast model behind <span class="smallcaps">classify</span> and a heavier one behind <span class="smallcaps">quality</span>, or run everything on one model to start. Swap models later without touching a single agent.
+                Agents never name a model directly. They name an alias, and you map the alias to whatever you actually have. Aliases come in two axes. The three tiers are the capability and cost spine, and they are all you have to map to get running. The four task roles are optional specializations: point one at a dedicated model when a specialist beats the tier, or leave it blank and it inherits the tier shown. Swap models later without touching a single agent.
             </p>
-            <dl class="mt-8 grid grid-cols-1">
-                <?php foreach ($aliases as $a): ?>
+
+            <p class="mt-8 smallcaps">tiers, required</p>
+            <dl class="mt-3 grid grid-cols-1">
+                <?php foreach ($tiers_alias as $a): ?>
                 <div class="grid grid-cols-12 gap-6 border-t border-rule py-5">
                     <dt class="col-span-12 sm:col-span-3"><span class="smallcaps"><?= htmlspecialchars($a['name']) ?></span></dt>
+                    <dd class="col-span-12 max-w-prose text-[1rem] leading-relaxed text-muted-foreground sm:col-span-9"><?= htmlspecialchars($a['use']) ?></dd>
+                </div>
+                <?php endforeach; ?>
+            </dl>
+
+            <p class="mt-10 smallcaps">task roles, optional</p>
+            <dl class="mt-3 grid grid-cols-1">
+                <?php foreach ($roles_alias as $a): ?>
+                <div class="grid grid-cols-12 gap-6 border-t border-rule py-5">
+                    <dt class="col-span-12 sm:col-span-3">
+                        <span class="smallcaps"><?= htmlspecialchars($a['name']) ?></span>
+                        <span class="block text-xs text-muted-foreground">inherits <?= htmlspecialchars($a['inherits']) ?></span>
+                    </dt>
                     <dd class="col-span-12 max-w-prose text-[1rem] leading-relaxed text-muted-foreground sm:col-span-9"><?= htmlspecialchars($a['use']) ?></dd>
                 </div>
                 <?php endforeach; ?>
