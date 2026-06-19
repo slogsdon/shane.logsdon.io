@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      /* ─── Color — committed cream page + dark-inversion feature treatment ─── */
+      --color-surface:         #fbfaf9;        /* primary warm cream — the page is committed to this */
+      --color-surface-feature: #ede4d2;        /* RESERVED token — aged-clay; not used as a background in v2 (kept for special tonal accents only; canonical "feature" treatment is dark inversion below) */
+      --color-surface-muted:   #f1eee8;        /* a half-step deeper cream — for genuine card affordance only */
+      --color-ink:             #0e1116;        /* darkened from v1's #181b21 — more architectural */
+      --color-ink-soft:        #404550;        /* secondary ink */
+      --color-ink-3:           #62686f;        /* metadata ink */
+      --color-rule:            #d6d8de;        /* the only rule color — 1px hairline; major divisions communicated via whitespace, not weight */
+      --color-grid:            #e0e2e6;        /* technical grid */
+      --color-accent:          #556b2f;        /* olive green — used semantically AND as deliberate type accent */
+      --color-accent-hover:    #3e5020;
+      /* No signal palette — this brand doesn't use it. */
+
+      /* ─── Typography — Fraunces does display AND small-caps editorial labels ─── */
+      --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+      --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      /* Display scale — pushed to publication cover sizes */
+      --fs-display-xxl:  9rem;       /* 144px — hero cover scale */
+      --fs-display-xl:   6rem;       /* 96px — secondary hero */
+      --fs-display:      4.5rem;     /* 72px */
+      --fs-headline-lg:  3.5rem;     /* 56px */
+      --fs-headline-md:  2.25rem;    /* 36px */
+      --fs-headline-sm:  1.5rem;     /* 24px */
+
+      /* Body — shifted up; real publication body sizes */
+      --fs-lead:         1.1875rem;  /* 19px — lead paragraph */
+      --fs-body-lg:      1.0625rem;  /* 17px — body */
+      --fs-body-md:      1rem;       /* 16px — secondary body */
+      --fs-meta:         0.875rem;   /* 14px */
+
+      /* Editorial labels — Fraunces small caps, NOT mono caps */
+      --fs-smallcaps-lg: 0.875rem;   /* 14px */
+      --fs-smallcaps:    0.75rem;    /* 12px */
+
+      /* Mono — restricted to dateline + code only */
+      --fs-dateline:     0.75rem;    /* 12px */
+      --fs-code:         0.875rem;   /* 14px */
+
+      /* Line heights */
+      --lh-cover:        0.96;       /* 144px display */
+      --lh-tight:        1.0;        /* 96px display */
+      --lh-snug:         1.05;
+      --lh-normal:       1.18;
+      --lh-prose:        1.65;       /* tightened body — denser column */
+
+      /* Letter-spacing */
+      --tracking-cover:    -0.022em;
+      --tracking-display:  -0.02em;
+      --tracking-tight:    -0.015em;
+      --tracking-normal:   0;
+      --tracking-smallcaps: 0.08em;     /* Fraunces small-caps default */
+      --tracking-smallcaps-tight: 0.06em;
+      --tracking-mono:     0.06em;       /* mono dateline */
+
+      /* ─── Spacing (unchanged from v1) ─── */
+      --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+      --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+      --s-9:  6rem;     --s-10: 9rem;     /* upper bumped to 144px for cover-scale jumps */
+
+      /* ─── Layout ─── */
+      --measure:    64ch;       /* tightened from v1's 68ch — denser column */
+      --container:  1180px;     /* unchanged */
+      --gutter:     1.5rem;
+
+      /* ─── Radii — sharper than v1 */
+      --r-0:        0;
+      --r-hairline: 1px;
+      --r-sm:       2px;        /* used rarely — only on a few interactive elements */
+      --r-full:     999px;      /* avatars only */
+
+      /* ─── Motion ─── */
+      --ease:       cubic-bezier(0.2, 0.6, 0.2, 1);
+      --dur:        200ms;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 627px;
+      background: var(--color-surface);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: var(--s-6) var(--s-8);
+    }
+
+    /* Inversion logic for the canvas when surface is cream */
+    .inversion {
+      background: var(--color-ink);
+      color: var(--color-surface);
+      --color-ink:       var(--color-surface);
+      --color-ink-soft:  rgba(251, 250, 249, 0.72);
+      --color-ink-3:     rgba(251, 250, 249, 0.55);
+      --color-rule:      rgba(251, 250, 249, 0.18);
+    }
+
+    .running-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--color-rule);
+      font-family: var(--type-display-family);
+      font-weight: 600;
+      font-variant-caps: small-caps;
+      font-feature-settings: 'smcp';
+      text-transform: lowercase;
+      font-size: var(--fs-smallcaps);
+      letter-spacing: 0.1em;
+      color: var(--color-ink);
+    }
+
+    .headline {
+      font-family: var(--type-display-family);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: var(--tracking-tight);
+      margin-top: var(--s-8);
+      color: var(--color-ink);
+    }
+
+    .headline-xl { font-size: var(--fs-display-xl); }
+
+    .accent-word {
+      color: var(--color-accent);
+    }
+
+    .folio {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--type-mono-family);
+      font-size: var(--fs-dateline);
+      letter-spacing: var(--tracking-mono);
+      color: var(--color-ink-3);
+      margin-top: auto;
+    }
+
+    .wordmark {
+      font-family: var(--type-display-family);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.005em;
+      color: var(--color-ink);
+    }
+
+    .category {
+      font-family: var(--type-sans-family);
+      font-size: var(--fs-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-ink-3);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="canvas inversion">
+    <div class="running-head">
+      <span class="category">technical deep-dives</span>
+      <span class="wordmark">shane logsdon</span>
+    </div>
+
+    <h1 class="headline headline-xl">
+      How to Know If Your <span class="accent-word">Agentic</span> Workflow Is Actually Working
+    </h1>
+
+    <div class="folio">
+      <span>2026.06.18</span>
+      <span>001</span>
+    </div>
+  </div>
+</body>
+</html>
+<!--
+COMPANION TEXT:
+Evaluating the performance of automated systems often leads to a trap of superficial metrics. We tend to watch for successful completions or error rates, but these signals rarely capture whether an agent is actually achieving the intended outcome. A workflow can run perfectly while drifting further from its goal with every iteration.
+
+True reliability requires looking at how closely the agent's intermediate reasoning aligns with your stated objectives. This means moving beyond simple success/failure checks and instead inspecting the semantic coherence of the steps taken. We must ask if the automation is solving the problem or merely navigating around it. To build better systems, we need to start measuring the quality of intent rather than just the speed of execution.
+
+Read more at shane.logsdon.io
+-->
+<!-- ARCHETYPE: inversion-block — The dark background provides a striking visual break from the light surface used in split-register heroes, focusing attention entirely on the headline and its subject word. -->

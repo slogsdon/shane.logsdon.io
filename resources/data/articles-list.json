@@ -1,4 +1,12 @@
 {
+  "evaluating-agentic-workflows": {
+    "title": "How to Know If Your Agentic Workflow Is Actually Working",
+    "description": "You ship the workflow.",
+    "date": "2026-06-18",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": []
+  },
   "what-aeo-actually-means-for-a-local-business": {
     "title": "What AEO Actually Means for a Local Business",
     "description": "Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires.",
@@ -301,7 +309,7 @@
     ]
   },
   "im-already-tired-of-rails-already": {
-    "title": "I'm already tired of Rails…already",
+    "title": "I'm already tired of Rails\u2026already",
     "description": "Neckbeards of the Internet. Prepare yourselves for the following comment: I don't think Rails is for me.",
     "date": "2013-08-15",
     "category": "industry-analysis",

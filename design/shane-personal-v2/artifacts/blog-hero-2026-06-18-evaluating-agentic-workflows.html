@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How to Know If Your Agentic Workflow Is Actually Working</title>
+  <link rel="preconnect" href="https">
+  <link rel="preconnect" href="https">
+  <link rel="preconnect" href="https">
+  <link rel="preconnect" href="https">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Shane Logsdon — Design Tokens (v2) */
+    :root {
+      --color-surface:         #fbfaf9;
+      --color-surface-feature: #ede4d2;
+      --color-surface-muted:   #f1eee8;
+      --color-ink:             #0e1116;
+      --color-ink-soft:        #404550;
+      --color-ink-3:           #62686f;
+      --color-rule:            #d6d8de;
+      --color-grid:            #e0e2e6;
+      --color-accent:          #556b2f;
+      --color-accent-hover:    #3e5020;
+
+      --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+      --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      --fs-display-xxl:  9rem;
+      --fs-display-xl:   6rem;
+      --fs-display:      4.5rem;
+      --fs-headline-lg:  3.5rem;
+      --fs-headline-md:  2.25rem;
+      --fs-headline-sm:  1.5rem;
+
+      --fs-lead:         1.1875rem;
+      --fs-body-lg:      1.0625rem;
+      --fs-body-md:      1rem;
+      --fs-meta:         0.875rem;
+
+      --fs-smallcaps-lg: 0.875rem;
+      --fs-smallcaps:    0.75rem;
+
+      --fs-dateline:     0.75rem;
+      --fs-code:         0.875rem;
+
+      --lh-cover:        0.96;
+      --lh-tight:        1.0;
+      --lh-snug:         1.05;
+      --lh-normal:       1.18;
+      --lh-prose:        1.65;
+
+      --tracking-cover:    -0.022em;
+      --tracking-display:  -0.02em;
+      --tracking-tight:    -0.015em;
+      --tracking-normal:   0;
+      --tracking-smallcaps: 0.08em;
+      --tracking-smallcaps-tight: 0.06em;
+      --tracking-mono:     0.06em;
+
+      --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+      --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+      --s-9:  6rem;     --s-10: 9rem;
+
+      --measure:    64ch;
+      --container:  1180px;
+      --gutter:     1.5rem;
+
+      --r-0:        0;
+      --r-hairline: 1px;
+      --r-sm:       2px;
+      --r-full:     999px;
+
+      --ease:       cubic-bezier(0.2, 0.6, 0.2, 1);
+      --dur:        200ms;
+    }
+
+    .t-display-xxl  { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display-xxl); line-height: var(--lh-cover); letter-spacing: var(--tracking-cover); }
+    .t-display-xl   { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display-xl); line-height: var(--lh-tight); letter-spacing: var(--tracking-display); }
+    .t-display      { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display); line-height: var(--lh-snug); letter-spacing: var(--tracking-display); }
+    .t-headline-lg  { font-family: var(--type-display-family); font-weight: 500; font-size: var(--fs-headline-lg); line-height: 1.1; letter-spacing: var(--tracking-tight); }
+    .t-headline-md  { font-family: var(--type-display-family); font-weight: 500; font-size: var(--fs-headline-md); line-height: var(--lh-normal); letter-spacing: var(--tracking-tight); }
+    .t-headline-sm  { font-family: var(--type-display-family); font-weight: 500; font-size: var(--fs-headline-sm); line-height: 1.3; }
+
+    .t-lead         { font-family: var(--type-sans-family); font-size: var(--fs-lead); line-height: var(--lh-prose); color: var(--color-ink); }
+    .t-body         { font-family: var(--type-sans-family); font-size: var(--fs-body-lg); line-height: var(--lh-prose); color: var(--color-ink); }
+    .t-body-md      { font-family: var(--type-sans-family); font-size: var(--fs-body-md); line-height: var(--lh-prose); color: var(--color-ink-soft); }
+    .t-meta         { font-family: var(--type-sans-family); font-size: var(--fs-meta); line-height: 1.5; color: var(--color-ink-3); }
+
+    .t-smallcaps-lg {
+      font-family: var(--type-display-family);
+      font-weight: 600;
+      font-variant-caps: small-caps;
+      font-feature-settings: 'smcp';
+      text-transform: lowercase;
+      font-size: var(--fs-smallcaps-lg);
+      line-height: 1;
+      letter-spacing: var(--tracking-smallcaps);
+      color: var(--color-ink);
+    }
+    .t-smallcaps {
+      font-family: var(--type-display-family);
+      font-weight: 600;
+      font-variant-caps: small-caps;
+      font-feature-settings: 'smcp';
+      text-transform: lowercase;
+      font-size: var(--fs-smallcaps);
+      line-height: 1;
+      letter-spacing: 0.1em;
+      color: var(--color-ink-3);
+    }
+
+    .t-dateline {
+      font-family: var(--type-mono-family);
+      font-size: var(--fs-dateline);
+      letter-spacing: var(--tracking-mono);
+      color: var(--color-ink-3);
+    }
+    .t-code {
+      font-family: var(--type-mono-family);
+      font-size: var(--fs-code);
+      line-height: 1.5;
+      color: var(--color-ink);
+    }
+
+    .t-accent { color: var(--color-accent); font-style: normal; }
+
+    .inversion {
+      background: var(--color-ink);
+      color: var(--color-surface);
+      --color-ink:       var(--color-surface);
+      --color-ink-soft:  rgba(251, 250, 249, 0.72);
+      --color-ink-3:     rgba(251, 250, 249, 0.55);
+      --color-rule:      rgba(251, 250, 249, 0.18);
+    }
+
+    .rule          { height: 1px; background: var(--color-rule); border: 0; margin: 0; }
+    .column-rule   { width: 1px; background: var(--color-rule); }
+
+    .folio {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 12px;
+      font-family: var(--type-mono-family);
+      font-size: var(--fs-dateline);
+      letter-spacing: var(--tracking-mono);
+      color: var(--color-ink-3);
+    }
+    .folio .pos { color: var(--color-ink); }
+
+    .running-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-rule);
+      font-family: var(--type-display-family);
+      font-weight: 600;
+      font-variant-caps: small-caps;
+      font-feature-settings: 'smcp';
+      text-transform: lowercase;
+      font-size: var(--fs-smallcaps);
+      letter-spacing: 0.1em;
+      color: var(--color-ink);
+    }
+
+    .wordmark {
+      font-family: var(--type-display-family);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.005em;
+      color: var(--color-ink);
+    }
+
+    .btn-arrow {
+      display: inline;
+      font-family: var(--type-sans-family);
+      font-size: var(--fs-body-md);
+      font-weight: 400;
+      color: var(--color-ink);
+      text-decoration: underline;
+      text-decoration-color: var(--color-rule);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+      cursor: pointer;
+      transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
+    }
+    .btn-arrow::after { content: ' →'; font-family: var(--type-mono-family); font-size: 0.85em; }
+    .btn-arrow--accent { color: var(--color-accent); text-decoration-color: var(--color-accent-hover); }
+    .btn-arrow--accent:hover { color: var(--color-accent-hover); }
+
+    /* Layout Helpers */
+    body { margin: 0; padding: 0; background: #eee; font-family: var(--type-sans-family); }
+    .canvas-og, .canvas-hero { margin: 2rem auto; background: var(--color-surface); position: relative; overflow: hidden; display: block; }
+    .canvas-og { width: 1200px; height: 630px; }
+    .canvas-hero { width: 1440px; height: 600px; }
+
+    /* Archetype Styles: pattern-led */
+    .pattern-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--color-rule) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Content Overlay */
+    .content-layer {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: var(--s-6) var(--s-8);
+      z-index: 2;
+    }
+
+    .headline-container { margin-top: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- OG CARD (1200x630) -->
+  <div class="canvas-og">
+    <div class="pattern-grid"></div>
+    <div class="content-layer">
+      <header class="running-head">
+        <span class="wordmark">Shane Logsdon</span>
+        <span class="t-smallcaps">technical deep dives</span>
+      </header>
+
+      <div class="headline-container">
+        <h1 class="t-display" style="margin: 0;">
+          How to Know If Your <br>Agentic Workflow Is <span class="t-accent">Actually</span> Working
+        </h1>
+      </div>
+
+      <footer style="margin-top: var(--s-8);">
+        <div class="folio">
+          <span class="pos">2026.06.18</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- HERO (1440x600) -->
+  <div class="canvas-hero">
+    <div class="pattern-grid"></div>
+    <div class="content-layer">
+      <header class="running-head">
+        <span class="wordmark">Shane Logsdon</span>
+        <span class="t-smallcaps">technical deep dives</span>
+      </header>
+
+      <div style="margin-top: auto;">
+        <h1 class="t-display-xl" style="margin: 0; line-height: 0.96;">
+          How to Know If Your <br>Agentic Workflow Is <span class="t-accent">Actually</span> Working
+        </h1>
+      </div>
+
+      <footer style="margin-top: var(--s-10); display: flex; justify-content: space-between; align-items: baseline;">
+        <div class="folio">
+          <span class="pos">2026.06.18</span>
+        </div>
+        <div class="t-smallcaps" style="letter-spacing: 0.2em; opacity: 0.6;">TECHNICAL DEEP DIVE</div>
+      </footer>
+    </div>
+  </div>
+
+</body>
+</html>
+<!--
+  Variation choices:
+    archetype:  pattern-led — uses a technical grid pattern to reflect the "workflow/technical" subject matter without relying on high-contrast splits.
+    layout:     centered typography with spatial breathing room; headline anchored towards bottom for architectural weight.
+    color:      cream surface with dark ink and single olive accent word.
+    type-press: Fraunces display, 96px (hero) / 72px (og).
+-->
+<!--
+COMPANION TEXT:
+The shift from static automation to agentic workflows introduces a fundamental tension: you can no longer rely on simple success/failure signals. An agent might complete its task while drifting entirely away from the intended outcome. This creates a measurement gap that standard observability tools are not yet equipped to bridge.
+
+To understand if your workflow is actually working, you must move beyond monitoring execution state and begin tracking intent alignment. This requires looking at how frequently an agent deviates from its logical constraints before it reaches a terminal node. We need to build evaluation loops that treat "correctness" as a probabilistic range rather than a binary status.
+
+In this piece, I break down the three specific telemetry vectors required to quantify agency: trace divergence, semantic stability, and tool-use efficiency. By implementing these checks, you can transition from guessing if your agents are reliable to knowing exactly where they fail.
+
+Explore the full breakdown at shane.logsdon.io
+-->
+<!-- ARCHETYPE: pattern-led — uses a subtle technical grid as a thematic foundation for technical content. -->
