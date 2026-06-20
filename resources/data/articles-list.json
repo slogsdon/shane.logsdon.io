@@ -1,7 +1,7 @@
 {
   "evaluating-agentic-workflows": {
     "title": "How to Know If Your Agentic Workflow Is Actually Working",
-    "description": "You ship the workflow.",
+    "description": "A broken agentic workflow fails loudly. The wrong one runs cleanly and quietly drifts. How to define correctness and evaluate against it before you ship.",
     "date": "2026-06-18",
     "category": "technical-deep-dives",
     "archived": false,

@@ -5,7 +5,7 @@ layout: 'partials::layouts/writing-post'
 image: evaluating-agentic-workflows-og.png
 heroImage: evaluating-agentic-workflows-hero.png
 slug: evaluating-agentic-workflows
-description: "You ship the workflow."
+description: "A broken agentic workflow fails loudly. The wrong one runs cleanly and quietly drifts. How to define correctness and evaluate against it before you ship."
 ---
 
 # How to know if your agentic workflow is actually working
@@ -84,13 +84,6 @@ Running without errors is not a success criterion. The true criterion is output 
 
 ---
 
-*Part 5 of 6 in the [[Projects/Blog Series — Agentic Product Development Workflows|Agentic Product Development Workflows]] series.*
+*Part 5 of 6 in the Agentic Product Development Workflows series.*
 
-*← [The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line](Post 4 - The 75 Percent Problem (G).md) | [The Framework Emergence Loop](Post 6 - Framework Emergence Loop (G).md) →*
-
----
-
-## Related
-- [[Concepts/Agentic Workflows]]
-- [[Concepts/How We Evaluate Agentic Workflows]]
-- [[Projects/Blog Series — Agentic Product Development Workflows]]
+*← The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line | The Framework Emergence Loop →*
