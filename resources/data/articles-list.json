@@ -5,7 +5,11 @@
     "date": "2026-06-18",
     "category": "technical-deep-dives",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "system-architecture"
+    ]
   },
   "what-aeo-actually-means-for-a-local-business": {
     "title": "What AEO Actually Means for a Local Business",

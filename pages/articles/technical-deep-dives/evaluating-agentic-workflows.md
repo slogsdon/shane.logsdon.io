@@ -8,8 +8,6 @@ slug: evaluating-agentic-workflows
 description: "A broken agentic workflow fails loudly. The wrong one runs cleanly and quietly drifts. How to define correctness and evaluate against it before you ship."
 ---
 
-# How to know if your agentic workflow is actually working
-
 You ship the workflow. It runs. The output lands in the right place, formatted correctly, and there are no errors in the log. You move on. Two weeks later, someone mentions that the summaries have been missing caveats, that the code review has been passing style issues, or that the documentation looks right but is citing an API that changed a month ago. The workflow never broke. It has been wrong the whole time, and you did not catch it because there was nothing to catch—only clean runs and accumulating drift.
 
 The wrong workflow is harder to find than the broken one. A broken workflow is loud: the JSON parse fails, the output file is empty, or the downstream step throws an exception. There is a notification, a log entry, or something else to chase. The wrong workflow runs cleanly and produces output that is approximately what you intended but not quite, and the gap accumulates. For example, a summarization workflow might consistently omit caveats because the prompt did not specify that they were required. A code review workflow might pass style issues because the style guide was written for human reviewers rather than model evaluators. Or a documentation generator might produce accurate-looking content with outdated API references because no session context told it what had changed.
