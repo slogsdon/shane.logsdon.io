@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Shane Logsdon">
 <meta property="og:type" content="<?= !empty($ogType) ? $this->e($ogType) : 'website' ?>">
 <meta property="og:title" content="<?= $this->e(!empty($title) ? $title : $settings->title) ?>">
-<meta property="og:description" content="<?= $this->e(!empty($description) ? $description : $settings->description) ?>">
+<meta property="og:description" content="<?= $this->e(!empty($ogSummary) ? $ogSummary : (!empty($description) ? $description : $settings->description)) ?>">
 <?php if (!empty($url)): ?>
 <meta property="og:url" content="https://shane.logsdon.io<?= $this->e($url) ?>">
 <?php endif; ?>
