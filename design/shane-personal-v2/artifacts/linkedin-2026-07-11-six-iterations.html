@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — The Framework Emergence Loop</title>
+<style>
+  /* ─── Tokens (embedded verbatim from tokens.css) ─── */
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --color-surface:         #fbfaf9;
+    --color-surface-feature: #ede4d2;
+    --color-surface-muted:   #f1eee8;
+    --color-ink:             #0e1116;
+    --color-ink-soft:        #404550;
+    --color-ink-3:           #62686f;
+    --color-rule:            #d6d8de;
+    --color-grid:            #e0e2e6;
+    --color-accent:          #556b2f;
+    --color-accent-hover:    #3e5020;
+
+    --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --fs-display-xxl:  9rem;
+    --fs-display-xl:   6rem;
+    --fs-display:      4.5rem;
+    --fs-headline-lg:  3.5rem;
+    --fs-headline-md:  2.25rem;
+    --fs-headline-sm:  1.5rem;
+    --fs-lead:         1.1875rem;
+    --fs-body-lg:      1.0625rem;
+    --fs-body-md:      1rem;
+    --fs-meta:         0.875rem;
+    --fs-smallcaps-lg: 0.875rem;
+    --fs-smallcaps:    0.75rem;
+    --fs-dateline:     0.75rem;
+    --fs-code:         0.875rem;
+
+    --lh-cover:        0.96;
+    --lh-tight:        1.0;
+    --lh-snug:         1.05;
+    --lh-normal:       1.18;
+    --lh-prose:        1.65;
+
+    --tracking-cover:    -0.022em;
+    --tracking-display:  -0.02em;
+    --tracking-tight:    -0.015em;
+    --tracking-normal:   0;
+    --tracking-smallcaps: 0.08em;
+    --tracking-smallcaps-tight: 0.06em;
+    --tracking-mono:     0.06em;
+
+    --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+    --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+    --s-9:  6rem;     --s-10: 9rem;
+
+    --measure:    64ch;
+    --container:  1180px;
+    --gutter:     1.5rem;
+
+    --r-0:        0;
+    --r-hairline: 1px;
+    --r-sm:       2px;
+    --r-full:     999px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2a2a;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+  }
+
+  /* ─── THE CANVAS — exact LinkedIn dimensions ─── */
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    position: relative;
+    overflow: hidden;
+    padding: var(--s-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  /* ─── Running head — Fraunces small caps at top edge (brand convention) ─── */
+  .running-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-rule);
+    font-family: var(--type-display-family);
+    font-weight: 600;
+    font-variant-caps: small-caps;
+    font-feature-settings: 'smcp';
+    text-transform: lowercase;
+    font-size: var(--fs-smallcaps);
+    letter-spacing: 0.1em;
+    color: var(--color-ink);
+  }
+
+  /* ─── Split body — headline left, supporting line right, column rule between ─── */
+  .split {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) 1px minmax(0, 1fr);
+    align-items: center;
+    gap: var(--s-7);
+    padding: var(--s-6) 0;
+  }
+  .column-rule {
+    width: 1px;
+    height: 100%;
+    background: var(--color-rule);
+    justify-self: center;
+  }
+
+  /* Headline — Fraunces display, the left mass */
+  .headline {
+    font-family: var(--type-display-family);
+    font-weight: 400;
+    font-size: 58px;
+    line-height: 1.02;
+    letter-spacing: var(--tracking-display);
+    color: var(--color-ink);
+    margin: 0;
+    max-width: 14ch;
+  }
+  .headline .colon { color: var(--color-ink-3); }
+
+  /* Supporting line — IBM Plex in its proper body role, right column */
+  .support {
+    font-family: var(--type-sans-family);
+    font-weight: 400;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-prose);
+    color: var(--color-ink-soft);
+    margin: 0;
+    max-width: 34ch;
+  }
+  /* Brand-permitted deliberate type accent: olive Fraunces, ONE word, paired with a
+     family + weight shift (not a flat color-on-sans tell) */
+  .t-accent {
+    font-family: var(--type-display-family);
+    font-weight: 500;
+    color: var(--color-accent);
+    font-style: normal;
+  }
+
+  /* ─── Folio — mono dateline rotated to LOWER-RIGHT (prior artifact used lower-left) ─── */
+  .folio {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--type-mono-family);
+    font-size: var(--fs-dateline);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-ink-3);
+    align-self: flex-end;
+  }
+  .folio .pos { color: var(--color-ink); }
+
+  @page { size: 1200px 627px; margin: 0; }
+  @media print {
+    body { background: var(--color-surface); padding: 0; }
+    .canvas { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<!--
+Variation choices (cross-artifact check vs the LinkedIn series, most-recent first):
+  prior #1 (2026-07-11, intentional-failures): inverse-text — full-canvas ink inversion,
+            huge headline as the surface, carved body, running head top, folio lower-LEFT.
+  prior #2 (2026-07-11, framework-emergence-loop): object-of-content — cream rebuild-log
+            fragment with a six-iteration loop diagram pinned to the bottom, no footer.
+
+  This artifact MUST differ on archetype AND footer from the immediate predecessor:
+  archetype:    split — the canvas is divided by the brand's own 1px column rule into a
+                headline mass (left) and a supporting-line column (right). Not object-of-content
+                (no diagram/object), not inverse-text (committed cream, not ink inversion).
+                Differs from both recent artifacts on architecture register AND structure.
+  layout:       split / asymmetric — left column owns ~57% of the width, vertical hairline,
+                narrower right column for the finding. Reads editorial, not centered-hero.
+  type-pressure: mixed-weight — Fraunces display owns the headline (400); IBM Plex carries the
+                supporting sentence in its proper body role; JetBrains Mono only for the folio
+                dateline. Exactly the brand's three-role discipline.
+  color:        monochrome (committed cream + ink) with the single olive accent on ONE word
+                ("find"), paired with a family + weight shift so it reads as a typographic
+                event, not the forbidden single-word color tell.
+  composition:  headline-led — the eye lands on the Fraunces headline first; the support
+                column recedes to its proper secondary weight.
+  Chrome:       running head at TOP edge with ROTATED text ("durable ai workflows" / "field note
+                · v1 → v6") — differs from the prior running head's "framework emergence — field
+                note / v1 → v6". Folio rotated to LOWER-RIGHT (prior used lower-left); attribution
+                and CTA omitted per brief. No 3-column footer row, no eyebrow, no brand mark.
+-->
+<article class="canvas">
+
+  <header>
+    <div class="running-head">
+      <span>durable ai workflows</span>
+      <span>field note · v1 → v6</span>
+    </div>
+  </header>
+
+  <div class="split">
+    <h1 class="headline">
+      The Framework<br>
+      Emergence Loop<span class="colon">:</span><br>
+      How Durable<br>
+      AI Workflows
+    </h1>
+
+    <div class="column-rule" aria-hidden="true"></div>
+
+    <p class="support">
+      You don't design a durable AI agent framework. You
+      <span class="t-accent">find</span>
+      one through a series of intentional failures. Here's what six iterations taught me.
+    </p>
+  </div>
+
+  <footer>
+    <span class="folio"><span>2026.07.11</span> · <span class="pos">six iterations</span></span>
+  </footer>
+
+</article>
+</body>
+</html>
+<!--
+COMPANION TEXT (style: insight — claim → reasoning → invitation):
+
+You don't design a durable AI framework. You find one.
+
+I rebuilt ours six times. Each version failed the moment it met a real task — and every failure left behind the part that actually held. The framework wasn't drawn up front. It's the residue of what survived the rebuilds.
+
+What's the failure that taught you the most? I'm collecting them.
+-->
