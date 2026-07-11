@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — The Framework Emergence Loop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Shane Logsdon — Design Tokens (v2) — embedded verbatim */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ─── Color — committed cream page + dark-inversion feature treatment ─── */
+  --color-surface:         #fbfaf9;        /* primary warm cream — the page is committed to this */
+  --color-surface-feature: #ede4d2;        /* RESERVED token — aged-clay; not used as a background in v2 (kept for special tonal accents only; canonical "feature" treatment is dark inversion below) */
+  --color-surface-muted:   #f1eee8;        /* a half-step deeper cream — for genuine card affordance only */
+  --color-ink:             #0e1116;        /* darkened from v1's #181b21 — more architectural */
+  --color-ink-soft:        #404550;        /* secondary ink */
+  --color-ink-3:           #62686f;        /* metadata ink */
+  --color-rule:            #d6d8de;        /* the only rule color — 1px hairline; major divisions communicated via whitespace, not weight */
+  --color-grid:            #e0e2e6;        /* technical grid */
+  --color-accent:          #556b2f;        /* olive green — used semantically AND as deliberate type accent */
+  --color-accent-hover:    #3e5020;
+  /* No signal palette — this brand doesn't use it. */
+
+  /* ─── Typography — Fraunces does display AND small-caps editorial labels ─── */
+  --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Display scale — pushed to publication cover sizes */
+  --fs-display-xxl:  9rem;       /* 144px — hero cover scale */
+  --fs-display-xl:   6rem;       /* 96px — secondary hero */
+  --fs-display:      4.5rem;     /* 72px */
+  --fs-headline-lg:  3.5rem;     /* 56px */
+  --fs-headline-md:  2.25rem;    /* 36px */
+  --fs-headline-sm:  1.5rem;     /* 24px */
+
+  /* Body — shifted up; real publication body sizes */
+  --fs-lead:         1.1875rem;  /* 19px — lead paragraph */
+  --fs-body-lg:      1.0625rem;  /* 17px — body */
+  --fs-body-md:      1rem;       /* 16px — secondary body */
+  --fs-meta:         0.875rem;   /* 14px */
+
+  /* Editorial labels — Fraunces small caps, NOT mono caps */
+  --fs-smallcaps-lg: 0.875rem;   /* 14px */
+  --fs-smallcaps:    0.75rem;    /* 12px */
+
+  /* Mono — restricted to dateline + code only */
+  --fs-dateline:     0.75rem;    /* 12px */
+  --fs-code:         0.875rem;   /* 14px */
+
+  /* Line heights */
+  --lh-cover:        0.96;       /* 144px display */
+  --lh-tight:        1.0;        /* 96px display */
+  --lh-snug:         1.05;
+  --lh-normal:       1.18;
+  --lh-prose:        1.65;       /* tightened body — denser column */
+
+  /* Letter-spacing */
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-normal:   0;
+  --tracking-smallcaps: 0.08em;     /* Fraunces small-caps default */
+  --tracking-smallcaps-tight: 0.06em;
+  --tracking-mono:     0.06em;       /* mono dateline */
+
+  /* ─── Spacing (unchanged from v1) ─── */
+  --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+  --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+  --s-9:  6rem;     --s-10: 9rem;     /* upper bumped to 144px for cover-scale jumps */
+
+  /* ─── Layout ─── */
+  --measure:    64ch;       /* tightened from v1's 68ch — denser column */
+  --container:  1180px;     /* unchanged */
+  --gutter:     1.5rem;
+
+  /* ─── Radii — sharper than v1 ─── */
+  --r-0:        0;
+  --r-hairline: 1px;
+  --r-sm:       2px;        /* used rarely — only on a few interactive elements */
+  --r-full:     999px;      /* avatars only */
+
+  /* ─── Motion ─── */
+  --ease:       cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:        200ms;
+}
+
+/* ─── Type utility classes ─── */
+.t-display-xxl  { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display-xxl); line-height: var(--lh-cover); letter-spacing: var(--tracking-cover); }
+.t-display-xl   { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display-xl); line-height: var(--lh-tight); letter-spacing: var(--tracking-display); }
+.t-display      { font-family: var(--type-display-family); font-weight: 400; font-size: var(--fs-display); line-height: var(--lh-snug); letter-spacing: var(--tracking-display); }
+.t-headline-lg  { font-family: var(--type-display-family); font-weight: 500; font-size: var(--fs-headline-lg); line-height: 1.1; letter-spacing: var(--tracking-tight); }
+.t-headline-md  { font-family: var(--type-display-family); font-weight: 500; font-size: var(--fs-headline-md); line-height: var(--lh-normal); letter-spacing: var(--tracking-tight); }
+.t-headline-sm  { font-family: var(--type-display-family); font-weight: 500; font-size: var(--fs-headline-sm); line-height: 1.3; }
+
+/* Lead + body */
+.t-lead         { font-family: var(--type-sans-family); font-size: var(--fs-lead); line-height: var(--lh-prose); color: var(--color-ink); }
+.t-body         { font-family: var(--type-sans-family); font-size: var(--fs-body-lg); line-height: var(--lh-prose); color: var(--color-ink); }
+.t-body-md      { font-family: var(--type-sans-family); font-size: var(--fs-body-md); line-height: var(--lh-prose); color: var(--color-ink-soft); }
+.t-meta         { font-family: var(--type-sans-family); font-size: var(--fs-meta); line-height: 1.5; color: var(--color-ink-3); }
+
+/* Editorial labels — Fraunces small caps. The signature v2 swap. */
+.t-smallcaps-lg {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;     /* lowercase text + small-caps feature renders as small caps */
+  font-size: var(--fs-smallcaps-lg);
+  line-height: 1;
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink);
+}
+.t-smallcaps {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+/* Mono — only for dateline + code */
+.t-dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+.t-code {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-code);
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+/* Type accent — one word per surface in olive Fraunces. Used DELIBERATELY. */
+.t-accent {
+  color: var(--color-accent);
+  font-style: normal;            /* not italic — italics-emphasis is the AI tell */
+}
+
+/* ─── Inversion — the canonical "feature" treatment ─── */
+/* Dark ink block with cream text on a committed cream page. */
+/* Used as a punctuation device, not decorative chrome. Examples: hero blocks, */
+/* a single highlighted entry in a working-notes index, full-canvas LinkedIn artifact. */
+.inversion {
+  background: var(--color-ink);
+  color: var(--color-surface);
+  /* Scoped variable swaps so descendants use cream-on-dark naturally */
+  --color-ink:       var(--color-surface);
+  --color-ink-soft:  rgba(251, 250, 249, 0.72);
+  --color-ink-3:     rgba(251, 250, 249, 0.55);
+  --color-rule:      rgba(251, 250, 249, 0.18);
+}
+
+/* ─── Rules — 1px max, always. Major divisions = whitespace, not weight. ─── */
+.rule          { height: 1px; background: var(--color-rule); border: 0; margin: 0; }
+.column-rule   { width: 1px; background: var(--color-rule); }     /* vertical rule between columns */
+
+/* ─── Folio — publication page-number convention ─── */
+.folio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+.folio .pos { color: var(--color-ink); }     /* the page-position number is in ink */
+
+/* ─── Running head — small-caps title at top edge of an artifact ─── */
+.running-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-rule);
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+}
+
+/* ─── Wordmark — replaces v1's SL · | · Shane Logsdon ─── */
+.wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+
+/* ─── Page scaffold (for the screenshotter, not the artifact) ─── */
+html, body { margin: 0; padding: 0; background: #2a2a2a; }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 0;
+  font-family: var(--type-sans-family);
+}
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  align-self: center;
+  margin: 0;
+}
+
+/* ─── Canvases (exact pixel dimensions) ─── */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-ink);     /* canonical v2 hero feature treatment = dark inversion */
+  color: var(--color-surface);
+}
+.canvas-og    { width: 1200px; height: 630px; }
+.canvas-hero  { width: 1440px; height: 600px; }
+
+/* ─── Inverted surface wrapper — swaps descendant vars to cream-on-dark.
+       Placed on the inner surface (NOT the canvas) so the canvas background,
+       which reads var(--color-ink) at the canvas level, stays true ink. ─── */
+.surface {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-surface);
+  --color-ink:       var(--color-surface);
+  --color-ink-soft:  rgba(251, 250, 249, 0.72);
+  --color-ink-3:     rgba(251, 250, 249, 0.55);
+  --color-rule:      rgba(251, 250, 249, 0.18);
+}
+.canvas-og   .surface { padding: var(--s-7) var(--s-8); }
+.canvas-hero .surface { padding: var(--s-7) var(--s-8); }
+
+/* Running head — category (left) + wordmark (right), hairline beneath */
+.canvas-og   .running-head { padding-bottom: var(--s-3); }
+.canvas-hero .running-head { padding-bottom: var(--s-4); }
+.running-head .wordmark { font-size: 20px; }
+
+/* Headline — upper-dominant, flush-left; "framework" set in olive as the type accent */
+.headline {
+  margin: 0;
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  color: var(--color-surface);
+  text-align: left;
+}
+.canvas-og   .headline { font-size: var(--fs-headline-lg); line-height: 1.08; letter-spacing: var(--tracking-tight); }
+.canvas-hero .headline { font-size: var(--fs-display);      line-height: 1.04; letter-spacing: var(--tracking-display); }
+.headline .accent { color: var(--color-accent); font-style: normal; }   /* one word per surface — brand type accent */
+
+.content { margin-top: var(--s-8); }
+.canvas-hero .content { margin-top: var(--s-9); }
+
+/* Standfirst / dek */
+.dek {
+  margin: 0;
+  font-family: var(--type-sans-family);
+  color: var(--color-ink-soft);     /* on inversion → soft cream */
+  max-width: 760px;
+  text-align: left;
+}
+.canvas-og   .dek { font-size: var(--fs-body-lg); line-height: var(--lh-prose); margin-top: var(--s-5); }
+.canvas-hero .dek { font-size: var(--fs-lead);    line-height: var(--lh-prose); margin-top: var(--s-6); }
+
+/* Footer — single folio in the lower-left corner (rotates from predecessor's lower-right) */
+.foot {
+  display: flex;
+  align-items: baseline;
+  margin-top: auto;
+  padding-top: var(--s-5);
+}
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!--
+Variation choices:
+  archetype:  chrome-led — a v2 editorial cover: running-head (Fraunces small caps)
+              holding the category, wordmark embedded in the running head (top-right),
+              the headline as the upper-dominant voice, dek beneath, folio at the foot.
+              Differs from the artifact being replaced (object-of-content) and from the
+              recent blog-hero set: 2026-06-18 pattern-led, 2026-05-18 inverse-text.
+  layout:     asymmetric / strong left axis; headline flush-left in the upper body,
+              footer pushed to the lower-left corner (off-grid, not centered).
+  color:      INVERTED — full dark inversion (ink bg + cream text), the canonical v2
+              "feature" treatment for hero contexts. Single olive accent on "framework".
+  type-press: display-dominant Fraunces (headline + small-caps running head) +
+              IBM Plex standfirst + JetBrains Mono dateline/folio.
+  Cross-artifact notes:
+    • Wordmark rotated to TOP-RIGHT (predecessor had it top-left in a byline; the
+      2026-07-11 LinkedIn had it lower-left). Here it lives in the running head.
+    • Folio rotated to LOWER-LEFT (predecessor's folio was lower-right).
+    • Footer signature differs: predecessor = single corner folio (lower-right) +
+      wordmark embedded top-left; here = lower-left folio only, wordmark top-right.
+    • Accent word "framework" differs from the sibling LinkedIn (which accented "Loop"),
+      so the two artifacts of the same topic carry distinct type accents.
+-->
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
+<article class="canvas canvas-og">
+  <div class="surface">
+    <div class="running-head">
+      <span class="t-smallcaps-lg">technical deep dives</span>
+      <span class="wordmark">Shane Logsdon</span>
+    </div>
+
+    <div class="content">
+      <h1 class="headline">
+        The <span class="accent">Framework</span> Emergence Loop:<br>
+        How Durable AI Workflows<br>
+        Are Actually Found
+      </h1>
+
+      <p class="dek">
+        Durable AI workflows aren't designed upfront, they're found through repeated
+        rebuilding. Six iterations reveal why the framework emergence loop works.
+      </p>
+    </div>
+
+    <div class="foot">
+      <span class="folio"><span class="pos">2026.07.09</span> / 001</span>
+    </div>
+  </div>
+</article>
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot this for the article header</span>
+<article class="canvas canvas-hero">
+  <div class="surface">
+    <div class="running-head">
+      <span class="t-smallcaps-lg">technical deep dives</span>
+      <span class="wordmark">Shane Logsdon</span>
+    </div>
+
+    <div class="content">
+      <h1 class="headline">
+        The <span class="accent">Framework</span> Emergence Loop:<br>
+        How Durable AI Workflows<br>
+        Are Actually Found
+      </h1>
+
+      <p class="dek">
+        Durable AI workflows aren't designed upfront, they're found through repeated
+        rebuilding. Six iterations reveal why the framework emergence loop works.
+      </p>
+    </div>
+
+    <div class="foot">
+      <span class="folio"><span class="pos">2026.07.09</span> / 001</span>
+    </div>
+  </div>
+</article>
+
+<!--
+COMPANION TEXT:
+  slug:        framework-emergence-loop
+  title:       The Framework Emergence Loop: How Durable AI Workflows Are Actually Found
+  og:image:    ./design/shane-personal-v2/artifacts/blog-hero-2026-07-09-framework-emergence-loop.html (OG canvas, 1200×630)
+  description: Durable AI workflows aren't designed upfront, they're found through repeated rebuilding. Six iterations reveal why the framework emergence loop works.
+  category:    technical deep dives
+  dateline:    2026.07.09
+  accent-word: framework
+-->
+</body>
+</html>
