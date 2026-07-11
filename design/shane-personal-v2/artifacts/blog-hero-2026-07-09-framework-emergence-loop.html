@@ -227,65 +227,86 @@ body {
 .canvas {
   position: relative;
   overflow: hidden;
-  background: var(--color-ink);     /* canonical v2 hero feature treatment = dark inversion */
-  color: var(--color-surface);
+  background: var(--color-surface);     /* committed cream — monochrome, NOT the inverted feature treatment */
+  color: var(--color-ink);
 }
 .canvas-og    { width: 1200px; height: 630px; }
 .canvas-hero  { width: 1440px; height: 600px; }
 
-/* ─── Inverted surface wrapper — swaps descendant vars to cream-on-dark.
-       Placed on the inner surface (NOT the canvas) so the canvas background,
-       which reads var(--color-ink) at the canvas level, stays true ink. ─── */
+/* ─── Surface wrapper ─── */
 .surface {
   height: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  color: var(--color-surface);
-  --color-ink:       var(--color-surface);
-  --color-ink-soft:  rgba(251, 250, 249, 0.72);
-  --color-ink-3:     rgba(251, 250, 249, 0.55);
-  --color-rule:      rgba(251, 250, 249, 0.18);
+  color: var(--color-ink);
 }
 .canvas-og   .surface { padding: var(--s-7) var(--s-8); }
 .canvas-hero .surface { padding: var(--s-7) var(--s-8); }
 
 /* Running head — category (left) + wordmark (right), hairline beneath */
-.canvas-og   .running-head { padding-bottom: var(--s-3); }
-.canvas-hero .running-head { padding-bottom: var(--s-4); }
-.running-head .wordmark { font-size: 20px; }
+.canvas-og   .running-head .wordmark { font-size: 20px; }
+.canvas-hero .running-head .wordmark { font-size: 22px; }
 
-/* Headline — upper-dominant, flush-left; "framework" set in olive as the type accent */
+/* ─── Main body — grows to push the folio to the foot ─── */
+.main { flex: 1 1 auto; display: flex; flex-direction: column; }
+
+/* Headline — upper-dominant, flush-left; "Framework" set in olive as the type accent */
 .headline {
   margin: 0;
   font-family: var(--type-display-family);
   font-weight: 400;
-  color: var(--color-surface);
+  color: var(--color-ink);
   text-align: left;
 }
-.canvas-og   .headline { font-size: var(--fs-headline-lg); line-height: 1.08; letter-spacing: var(--tracking-tight); }
-.canvas-hero .headline { font-size: var(--fs-display);      line-height: 1.04; letter-spacing: var(--tracking-display); }
+.canvas-og   .headline { font-size: var(--fs-headline-lg); line-height: 1.08; letter-spacing: var(--tracking-tight); margin-top: var(--s-6); }
+.canvas-hero .headline { font-size: var(--fs-display);      line-height: 1.04; letter-spacing: var(--tracking-display); margin-top: var(--s-7); }
 .headline .accent { color: var(--color-accent); font-style: normal; }   /* one word per surface — brand type accent */
 
-.content { margin-top: var(--s-8); }
-.canvas-hero .content { margin-top: var(--s-9); }
+/* ─── Split — asymmetric two-column with a 1px column-rule (object-of-content) ─── */
+.split {
+  display: flex;
+  gap: var(--s-7);
+  margin-top: var(--s-6);
+}
+.canvas-hero .split { margin-top: var(--s-7); gap: var(--s-8); }
+
+.col-standfirst { flex: 0 0 38%; display: flex; flex-direction: column; }
+.col-fragment   { flex: 1 1 auto; display: flex; flex-direction: column; min-width: 0; }
+.col-rule       { flex: 0 0 1px; width: 1px; background: var(--color-rule); }
+
+/* Inline editorial labels (Fraunces small caps, inline — never a chrome strip) */
+.col-label { margin-bottom: var(--s-4); }
 
 /* Standfirst / dek */
 .dek {
   margin: 0;
   font-family: var(--type-sans-family);
-  color: var(--color-ink-soft);     /* on inversion → soft cream */
-  max-width: 760px;
+  color: var(--color-ink-soft);
   text-align: left;
+  max-width: 38ch;
 }
-.canvas-og   .dek { font-size: var(--fs-body-lg); line-height: var(--lh-prose); margin-top: var(--s-5); }
-.canvas-hero .dek { font-size: var(--fs-lead);    line-height: var(--lh-prose); margin-top: var(--s-6); }
+.canvas-og   .dek { font-size: var(--fs-body-lg); line-height: var(--lh-prose); }
+.canvas-hero .dek { font-size: var(--fs-lead);    line-height: var(--lh-prose); }
+
+/* Article fragment — a pull-quote clipped at the canvas edge (the "fragment" cue) */
+.fragment-quote {
+  margin: 0;
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  color: var(--color-ink);
+  text-align: left;
+  /* clip the tail so the surface reads as a fragment of the longer piece */
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+.canvas-og   .fragment-quote { font-size: 1.5rem; line-height: 1.32; letter-spacing: -0.01em; }
+.canvas-hero .fragment-quote { font-size: 1.75rem; line-height: 1.3;  letter-spacing: -0.012em; }
 
 /* Footer — single folio in the lower-left corner (off-grid, not centered) */
 .foot {
   display: flex;
   align-items: baseline;
-  margin-top: auto;
   padding-top: var(--s-5);
 }
 
@@ -296,23 +317,25 @@ body {
 
 <!--
 Variation choices:
-  archetype:  chrome-led — a v2 editorial cover: running-head (Fraunces small caps)
-              holding the category, wordmark embedded in the running head (top-right),
-              the headline as the upper-dominant voice, dek beneath, folio at the foot.
-  layout:     asymmetric / strong left axis; headline flush-left in the upper body,
-              footer pushed to the lower-left corner (off-grid, not centered).
-  color:      INVERTED — full dark inversion (ink bg + cream text), the canonical v2
-              "feature" treatment for hero contexts. Single olive accent on "framework".
-  type-press: display-dominant Fraunces (headline + small-caps running head) +
-              IBM Plex standfirst + JetBrains Mono dateline/folio.
-  Cross-artifact notes:
-    • Wordmark rotated to TOP-RIGHT (predecessor blog-hero-2026-06-18 was pattern-led
-      centered; this breaks that centered/default into a committed left axis).
-    • Folio rotated to LOWER-LEFT (no predecessor folio had the same corner).
-    • Footer signature: single corner folio only — no 3-column footer row.
-    • Accent word "framework" marks the subject of the page — the brand's deliberate
-      one-word-per-surface olive type accent (DESIGN.md: "one word per surface, set in
-      olive Fraunces, marking the subject of the page"). Earned, not decorative.
+  archetype:  object-of-content — the hero reads as a FRAGMENT of the article itself:
+              a running-head, the display title, the standfirst, and a clipped pull-quote
+              from the piece (masked at the lower edge so it visibly continues).
+  layout:     asymmetric / off-grid split — a 38% standfirst column and a wider fragment
+              column divided by a single 1px column-rule (structural hairline, on-brand).
+  color:      MONOCHROME CREAM (committed surface) — deliberately NOT the inverted feature
+              treatment used by the previous framework-emergence-loop hero. Dark ink + one
+              olive accent word only.
+  type-press: display-dominant Fraunces (headline + small-caps running head + small-caps
+              inline labels + Fraunces pull-quote) + IBM Plex standfirst + JetBrains Mono folio.
+  Cross-artifact notes (differs from the most recent blog hero, framework-emergence-loop):
+    • archetype: chrome-led → object-of-content
+    • color:     INVERTED (ink bg) → committed cream monochrome
+    • layout:    single left column → asymmetric split with a 1px column-rule
+    • accent word "framework" marks the subject of the page — brand's deliberate
+      one-word-per-surface olive type accent (used exactly once, in the headline).
+  Anti-pattern check: no indigo/violet/gradients/glass; no italics emphasis; 1px rules only;
+  zero radius; no filled button; mono restricted to the folio; single corner folio (no
+  3-column footer); running-head (not an eyebrow) carries the category.
 -->
 
 <span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
@@ -323,16 +346,30 @@ Variation choices:
       <span class="wordmark">Shane Logsdon</span>
     </div>
 
-    <div class="content">
+    <div class="main">
       <h1 class="headline">
         The <span class="accent">Framework</span> Emergence Loop:<br>
         How Durable AI Workflows<br>
         Are Actually Found
       </h1>
 
-      <p class="dek">
-        You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.
-      </p>
+      <div class="split">
+        <div class="col-standfirst">
+          <span class="t-smallcaps col-label">standfirst —</span>
+          <p class="dek">
+            Discover how to build a blog pipeline that automates content creation, review, and publishing for a faster, more reliable workflow.
+          </p>
+        </div>
+
+        <div class="col-rule"></div>
+
+        <div class="col-fragment">
+          <span class="t-smallcaps col-label">from the piece —</span>
+          <p class="fragment-quote">
+            A durable workflow is never specified on a whiteboard and handed to a team. It is the residue left behind after a pipeline has run, broken, and been rebuilt enough times that the pieces finally stop moving. You begin with a loose intent, watch where it fails, and keep only the parts that survive the next pass.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="foot">
@@ -349,16 +386,30 @@ Variation choices:
       <span class="wordmark">Shane Logsdon</span>
     </div>
 
-    <div class="content">
+    <div class="main">
       <h1 class="headline">
         The <span class="accent">Framework</span> Emergence Loop:<br>
         How Durable AI Workflows<br>
         Are Actually Found
       </h1>
 
-      <p class="dek">
-        You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.
-      </p>
+      <div class="split">
+        <div class="col-standfirst">
+          <span class="t-smallcaps col-label">standfirst —</span>
+          <p class="dek">
+            Discover how to build a blog pipeline that automates content creation, review, and publishing for a faster, more reliable workflow.
+          </p>
+        </div>
+
+        <div class="col-rule"></div>
+
+        <div class="col-fragment">
+          <span class="t-smallcaps col-label">from the piece —</span>
+          <p class="fragment-quote">
+            A durable workflow is never specified on a whiteboard and handed to a team. It is the residue left behind after a pipeline has run, broken, and been rebuilt enough times that the pieces finally stop moving. You begin with a loose intent, watch where it fails, and keep only the parts that survive the next pass.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="foot">
@@ -372,7 +423,7 @@ COMPANION TEXT:
   slug:        framework-emergence-loop
   title:       The Framework Emergence Loop: How Durable AI Workflows Are Actually Found
   og:image:    ./design/shane-personal-v2/artifacts/blog-hero-2026-07-09-framework-emergence-loop.html (OG canvas, 1200×630)
-  description: You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.
+  description: Discover how to build a blog pipeline that automates content creation, review, and publishing for a faster, more reliable workflow.
   category:    technical deep dives
   dateline:    2026.07.09
   accent-word: framework

@@ -1,1 +1,7 @@
-/srv/shane.logsdon.io
+Most AI workflows I've built that lasted weren't built to last. They started as a messy script that solved one annoying problem, got reused by accident, and then got refactored into something with structure.
+
+The article calls this the framework emergence loop, and it matches what I've seen. We like to think durable systems come from solid upfront architecture. In practice, they come from using something often enough that the right abstractions appear on their own. The frameworks worth keeping earn their structure through use, not from someone drawing boxes in a doc before writing code.
+
+The hard part is resisting the urge to overbuild before you know the problem's shape. A workflow that's too rigid early fights you once real edge cases appear, and you usually lose.
+
+What's one AI workflow you built that looked throwaway at first but became the one you reach for most?
