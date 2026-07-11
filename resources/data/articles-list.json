@@ -1,4 +1,17 @@
 {
+  "framework-emergence-loop": {
+    "title": "The Framework Emergence Loop: How Durable AI Workflows Are Actually Found",
+    "description": "You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.",
+    "date": "2026-07-09",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "system-architecture",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
   "evaluating-agentic-workflows": {
     "title": "How to Know If Your Agentic Workflow Is Actually Working",
     "description": "A broken agentic workflow fails loudly. The wrong one runs cleanly and quietly drifts. How to define correctness and evaluate against it before you ship.",
@@ -313,7 +326,7 @@
     ]
   },
   "im-already-tired-of-rails-already": {
-    "title": "I'm already tired of Rails\u2026already",
+    "title": "I'm already tired of Rails…already",
     "description": "Neckbeards of the Internet. Prepare yourselves for the following comment: I don't think Rails is for me.",
     "date": "2013-08-15",
     "category": "industry-analysis",

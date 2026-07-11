@@ -1,0 +1,1 @@
+#!/usr/bin/env -S node -e "cat('/usr/lib/node_modules/@earendil-works/pi-coding-agent/docs/skills.md')" 2>/dev/null || cat /usr/lib/node_modules/@earendil-works/pi-coding-agent/docs/skills.md

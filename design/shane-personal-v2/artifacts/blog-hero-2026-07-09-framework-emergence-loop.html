@@ -281,7 +281,7 @@ body {
 .canvas-og   .dek { font-size: var(--fs-body-lg); line-height: var(--lh-prose); margin-top: var(--s-5); }
 .canvas-hero .dek { font-size: var(--fs-lead);    line-height: var(--lh-prose); margin-top: var(--s-6); }
 
-/* Footer — single folio in the lower-left corner (rotates from predecessor's lower-right) */
+/* Footer — single folio in the lower-left corner (off-grid, not centered) */
 .foot {
   display: flex;
   align-items: baseline;
@@ -299,8 +299,6 @@ Variation choices:
   archetype:  chrome-led — a v2 editorial cover: running-head (Fraunces small caps)
               holding the category, wordmark embedded in the running head (top-right),
               the headline as the upper-dominant voice, dek beneath, folio at the foot.
-              Differs from the artifact being replaced (object-of-content) and from the
-              recent blog-hero set: 2026-06-18 pattern-led, 2026-05-18 inverse-text.
   layout:     asymmetric / strong left axis; headline flush-left in the upper body,
               footer pushed to the lower-left corner (off-grid, not centered).
   color:      INVERTED — full dark inversion (ink bg + cream text), the canonical v2
@@ -308,13 +306,13 @@ Variation choices:
   type-press: display-dominant Fraunces (headline + small-caps running head) +
               IBM Plex standfirst + JetBrains Mono dateline/folio.
   Cross-artifact notes:
-    • Wordmark rotated to TOP-RIGHT (predecessor had it top-left in a byline; the
-      2026-07-11 LinkedIn had it lower-left). Here it lives in the running head.
-    • Folio rotated to LOWER-LEFT (predecessor's folio was lower-right).
-    • Footer signature differs: predecessor = single corner folio (lower-right) +
-      wordmark embedded top-left; here = lower-left folio only, wordmark top-right.
-    • Accent word "framework" differs from the sibling LinkedIn (which accented "Loop"),
-      so the two artifacts of the same topic carry distinct type accents.
+    • Wordmark rotated to TOP-RIGHT (predecessor blog-hero-2026-06-18 was pattern-led
+      centered; this breaks that centered/default into a committed left axis).
+    • Folio rotated to LOWER-LEFT (no predecessor folio had the same corner).
+    • Footer signature: single corner folio only — no 3-column footer row.
+    • Accent word "framework" marks the subject of the page — the brand's deliberate
+      one-word-per-surface olive type accent (DESIGN.md: "one word per surface, set in
+      olive Fraunces, marking the subject of the page"). Earned, not decorative.
 -->
 
 <span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
@@ -333,8 +331,7 @@ Variation choices:
       </h1>
 
       <p class="dek">
-        Durable AI workflows aren't designed upfront, they're found through repeated
-        rebuilding. Six iterations reveal why the framework emergence loop works.
+        You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.
       </p>
     </div>
 
@@ -360,8 +357,7 @@ Variation choices:
       </h1>
 
       <p class="dek">
-        Durable AI workflows aren't designed upfront, they're found through repeated
-        rebuilding. Six iterations reveal why the framework emergence loop works.
+        You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.
       </p>
     </div>
 
@@ -376,7 +372,7 @@ COMPANION TEXT:
   slug:        framework-emergence-loop
   title:       The Framework Emergence Loop: How Durable AI Workflows Are Actually Found
   og:image:    ./design/shane-personal-v2/artifacts/blog-hero-2026-07-09-framework-emergence-loop.html (OG canvas, 1200×630)
-  description: Durable AI workflows aren't designed upfront, they're found through repeated rebuilding. Six iterations reveal why the framework emergence loop works.
+  description: You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.
   category:    technical deep dives
   dateline:    2026.07.09
   accent-word: framework
