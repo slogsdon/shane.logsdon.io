@@ -1,7 +1,9 @@
-Most AI workflows I've built that lasted weren't built to last. They started as a messy script that solved one annoying problem, got reused by accident, and then got refactored into something with structure.
+I rebuilt my AI agent framework for the fifth time and figured something was wrong with me.
 
-The article calls this the framework emergence loop, and it matches what I've seen. We like to think durable systems come from solid upfront architecture. In practice, they come from using something often enough that the right abstractions appear on their own. The frameworks worth keeping earn their structure through use, not from someone drawing boxes in a doc before writing code.
+It wasn't. The version that finally worked didn't appear because I'd gotten smarter about the first design. Every rebuild encoded a lesson the previous version couldn't survive, and the working version was just what that accumulation produced.
 
-The hard part is resisting the urge to overbuild before you know the problem's shape. A workflow that's too rigid early fights you once real edge cases appear, and you usually lose.
+The trap is premature convergence, the urge to lock a design down before it meets real conditions. You ship a clean v1 that solves the problems you knew about, then production shows those were never the real ones. Six months of bolt-ons later, you admit a v2 has to exist.
 
-What's one AI workflow you built that looked throwaway at first but became the one you reach for most?
+I used to read the rebuilds as proof the last version failed. They were the mechanism that made the next one better. I'd taken the loop for a symptom of doing it wrong, but it's the process itself.
+
+Where in your own work are you calling the rebuild a failure when it's just how the design gets found?

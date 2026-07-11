@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — The Framework Emergence Loop (rebuild, not design)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* ─── Tokens (embedded verbatim from tokens.css) ─── */
+  :root {
+    --color-surface:         #fbfaf9;
+    --color-surface-feature: #ede4d2;
+    --color-surface-muted:   #f1eee8;
+    --color-ink:             #0e1116;
+    --color-ink-soft:        #404550;
+    --color-ink-3:           #62686f;
+    --color-rule:            #d6d8de;
+    --color-grid:            #e0e2e6;
+    --color-accent:          #556b2f;
+    --color-accent-hover:    #3e5020;
+
+    --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --fs-display-xxl:  9rem;
+    --fs-display-xl:   6rem;
+    --fs-display:      4.5rem;
+    --fs-headline-lg:  3.5rem;
+    --fs-headline-md:  2.25rem;
+    --fs-headline-sm:  1.5rem;
+    --fs-lead:         1.1875rem;
+    --fs-body-lg:      1.0625rem;
+    --fs-body-md:      1rem;
+    --fs-meta:         0.875rem;
+    --fs-smallcaps-lg: 0.875rem;
+    --fs-smallcaps:    0.75rem;
+    --fs-dateline:     0.75rem;
+    --fs-code:         0.875rem;
+
+    --lh-cover:        0.96;
+    --lh-tight:        1.0;
+    --lh-snug:         1.05;
+    --lh-normal:       1.18;
+    --lh-prose:        1.65;
+
+    --tracking-cover:    -0.022em;
+    --tracking-display:  -0.02em;
+    --tracking-tight:    -0.015em;
+    --tracking-normal:   0;
+    --tracking-smallcaps: 0.08em;
+    --tracking-smallcaps-tight: 0.06em;
+    --tracking-mono:     0.06em;
+
+    --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+    --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+    --s-9:  6rem;     --s-10: 9rem;
+
+    --measure:    64ch;
+    --container:  1180px;
+    --gutter:     1.5rem;
+
+    --r-0:        0;
+    --r-hairline: 1px;
+    --r-sm:       2px;
+    --r-full:     999px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2a2a;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+  }
+
+  /* ─── THE CANVAS — exact LinkedIn dimensions ─── */
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    position: relative;
+    overflow: hidden;
+    padding: var(--s-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;   /* type-only: the words anchor to the lower-left, void above-right */
+  }
+
+  /* ─── Type-only: nothing but the type. No eyebrow, no rule, no footer, no mark. ─── */
+  /* The headline IS the artifact. Emphasis carried by weight + tonal shift only —    */
+  /* no italics, no single-word color (the olive-color tell used on the last 4).      */
+  .headline {
+    font-family: var(--type-display-family);
+    font-weight: 400;
+    font-size: clamp(54px, 6.4vw, 90px);
+    line-height: 1.0;
+    letter-spacing: var(--tracking-display);
+    color: var(--color-ink);
+    margin: 0;
+    max-width: 17ch;
+  }
+  .headline .l { display: block; }
+  /* the key word — a weight shift (400 → 600), a real typographic event, not a color tell */
+  .headline .strong {
+    font-weight: 600;
+  }
+  /* the second clause drops a line and softens to ink-soft — a tonal, NOT color, hierarchy */
+  .headline .sub {
+    color: var(--color-ink-soft);
+  }
+
+  /* Supporting line — IBM Plex in its proper body role, the standfirst beneath the headline */
+  .support {
+    font-family: var(--type-sans-family);
+    font-weight: 400;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-prose);
+    color: var(--color-ink-soft);
+    max-width: 56ch;
+    margin-top: var(--s-6);
+  }
+
+  @page { size: 1200px 627px; margin: 0; }
+  @media print {
+    body { background: var(--color-surface); padding: 0; }
+    .canvas { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<!--
+Variation choices (cross-artifact check vs the 4 most-recent LinkedIn artifacts):
+  recent A (2026-07-11 04:01, framework-emergence-loop): object-of-content — cream
+            rebuild-log fragment + six-iteration loop diagram pinned to bottom; no footer.
+  recent B (2026-07-11 04:16, intentional-failures):      inverse-text — full-canvas ink
+            inversion, huge headline as surface, carved body, folio lower-LEFT.
+  recent C (2026-07-11 04:47, six-iterations):           split — cream, 1px column rule,
+            headline left / support right, folio lower-RIGHT.
+  recent D (2026-07-11 05:25, emergence-loop-blog-pipeline): pattern-led — faint pipeline-log
+            texture + centered break, embedded dateline caption, olive on "Loop".
+
+  THIS MUST differ from all four on archetype and on the color/footer axes:
+  archetype:    type-only — the headline IS the artifact. No eyebrow, no rule, no folio,
+                no wordmark, no diagram, no pattern. Just the type on committed cream. Differs
+                from object-of-content (no object/diagram), inverse-text (no ink inversion),
+                split (no column rule / two-column body), pattern-led (no texture / no break).
+  layout:       flush-left, bottom-anchored (asymmetric) — the words sit lower-left; a void
+                opens above-right. Not centered (the anti-pattern hero tell), not split.
+  type-pressure: display-dominant — Fraunces owns the whole voice; IBM Plex only for the
+                supporting standfirst (its proper body role). Exactly two families.
+  color:        monochrome (committed cream + ink). DELIBERATE rotation off the olive-accent
+                run of the last four artifacts (which colored one word each). Emphasis is a
+                weight shift (400 → 600 on "Loop") + a tonal shift (ink-soft on the second
+                clause) — zero accent color, so it also clears the single-word-color tell
+                cleanly. Two intentional decisions that differ from the safe default AND the
+                recent set: (1) archetype, (2) dropping the accent entirely.
+  composition:  headline-led — the eye lands on the Fraunces headline; the standfirst recedes.
+  Chrome:       none. No running head, no eyebrow, no rule, no folio, no mark. Footer treatment
+                rotates to ABSENT (recent set used: absent, folio-lower-left, folio-lower-right,
+                embedded caption). Attribution and CTA omitted per brief.
+-->
+<article class="canvas">
+
+  <h1 class="headline">
+    <span class="l">The Framework</span>
+    <span class="l">Emergence <span class="strong">Loop</span>:</span>
+    <span class="l sub">How Durable AI Workflows</span>
+  </h1>
+
+  <p class="support">
+    Durable AI workflows are found through iterative rebuilding, not upfront design.
+    The framework emergence loop turns each failure into the next version's lesson.
+  </p>
+
+</article>
+</body>
+</html>
+<!--
+COMPANION TEXT (style: insight — claim → reasoning → invitation):
+
+You don't design a durable AI workflow. You rebuild your way toward it.
+
+The framework emergence loop is plain: ship a version, watch it break against a real task, keep what survived, repeat. Durable workflows are never drawn up front — they're the residue of what held through each rebuild. Every failure becomes the next version's lesson.
+
+What's the workflow you've rebuilt so often it finally runs itself? I'm comparing notes.
+-->
