@@ -83,4 +83,6 @@ The spec is not documentation of what you built. It is the record of what you de
 
 ---
 
-*Part 3 of 6 in the [Agentic Product Development Workflows](/articles/technical-deep-dives) series.*
+*Part 3 of 6 in the [Agentic Product Development Workflows](/articles/agentic-workflows/) series.*
+
+*Next: [The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line](/articles/technical-deep-dives/the-75-percent-problem/) →*

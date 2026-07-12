@@ -71,6 +71,6 @@ The shift from DX to AX isn't a new tool or a new model. It's a new relationship
 
 ---
 
-*Part 1 of 6 in the Agentic Product Development Workflows series.*
+*Part 1 of 6 in the [Agentic Product Development Workflows](/articles/agentic-workflows/) series.*
 
 *Next: [LLM Context Files Are Deliverables, Not Config](/articles/technical-deep-dives/llm-context-files-are-deliverables-not-config/) →*

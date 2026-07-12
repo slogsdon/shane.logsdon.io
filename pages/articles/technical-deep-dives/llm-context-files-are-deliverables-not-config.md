@@ -79,6 +79,6 @@ A CLAUDE.md that hasn't been updated since you wrote it isn't config that's work
 
 ---
 
-*Part 2 of 6 in the [Agentic Product Development Workflows](/articles/technical-deep-dives) series.*
+*Part 2 of 6 in the [Agentic Product Development Workflows](/articles/agentic-workflows/) series.*
 
 *Next: [The Spec Is the Work: PRD-First AI Development](/articles/technical-deep-dives/the-spec-is-the-work/) →*

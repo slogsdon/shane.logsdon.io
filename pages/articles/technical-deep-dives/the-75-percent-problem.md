@@ -84,4 +84,6 @@ The 75% mark is not a failure. The scaffold is real, the speed was real, and the
 
 ---
 
-*Part 4 of 6 in the [Agentic Product Development Workflows](/articles/technical-deep-dives) series.*
+*Part 4 of 6 in the [Agentic Product Development Workflows](/articles/agentic-workflows/) series.*
+
+*Next: [How to Know If Your Agentic Workflow Is Actually Working](/articles/technical-deep-dives/evaluating-agentic-workflows/) →*

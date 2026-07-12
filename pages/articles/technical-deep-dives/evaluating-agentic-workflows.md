@@ -82,6 +82,6 @@ Running without errors is not a success criterion. The true criterion is output 
 
 ---
 
-*Part 5 of 6 in the Agentic Product Development Workflows series.*
+*Part 5 of 6 in the [Agentic Product Development Workflows](/articles/agentic-workflows/) series.*
 
-*← The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line | The Framework Emergence Loop →*
+*Next: [The Framework Emergence Loop: How Durable AI Workflows Are Actually Found](/articles/technical-deep-dives/framework-emergence-loop/) →*

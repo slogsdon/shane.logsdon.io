@@ -81,6 +81,6 @@ The answer has rarely been better prompts. It's been better decisions, made earl
 
 ---
 
-*Part 6 of 6 in the Agentic Product Development Workflows series.*
+*Part 6 of 6 in the [Agentic Product Development Workflows](/articles/agentic-workflows/) series.*
 
-*← [How to Know If Your Agentic Workflow Is Actually Working](https://shane.logsdon.io/articles/technical-deep-dives/evaluating-agentic-workflows/)*
+*← Previous: [How to Know If Your Agentic Workflow Is Actually Working](/articles/technical-deep-dives/evaluating-agentic-workflows/)*
