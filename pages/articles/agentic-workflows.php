@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'Agentic Product Development Workflows',
-    'description' => 'A six-part series on moving past prompt engineering toward reliable AI-assisted development — designing specs, context files, and documentation for the agent reading them, not just the humans.',
+    'description' => 'A six-part series on moving past prompt engineering toward reliable AI-assisted development by designing specs, context files, and documentation for the agent reading them, not just the humans.',
     'url' => '/articles/agentic-workflows/',
 ]);
 
@@ -10,37 +10,37 @@ $posts = [
         'slug' => 'the-ax-shift',
         'title' => 'The AX Shift: You\'re Still Designing for Yourself',
         'date' => 'April 27, 2026',
-        'body' => 'The move from UX to DX to AX (Agent Experience). Why the fundamental problem with AI-assisted development isn\'t prompt engineering — it\'s that we\'re still creating artifacts designed for human readers who can read between the lines.',
+        'body' => 'The move from UX to DX to AX (Agent Experience), and why the fundamental problem with AI-assisted development isn\'t prompt engineering. We\'re still creating artifacts designed for human readers who can read between the lines.',
     ],
     [
         'slug' => 'llm-context-files-are-deliverables-not-config',
         'title' => 'LLM Context Files Are Deliverables, Not Config',
         'date' => 'May 4, 2026',
-        'body' => 'Why treating CLAUDE.md like a set-and-forget .editorconfig is a mistake. A context file that isn\'t maintained as decisions change isn\'t a context file — it\'s archaeology. Here\'s what a living, first-class context file actually looks like.',
+        'body' => 'Why treating CLAUDE.md like a set-and-forget .editorconfig is a mistake. A context file that isn\'t maintained as decisions change isn\'t a context file. It\'s archaeology. Here\'s what a living, first-class context file looks like.',
     ],
     [
         'slug' => 'the-spec-is-the-work',
         'title' => 'The Spec Is the Work: PRD-First AI Development',
         'date' => 'May 11, 2026',
-        'body' => 'The argument for writing the implementation plan before opening the AI tool. A precise design spec is a decision-forcing function. Without it, the agent fills your architectural gaps with statistical probability — which is plausible, and wrong.',
+        'body' => 'The argument for writing the implementation plan before opening the AI tool. A precise design spec is a decision-forcing function. Without it, the agent fills your architectural gaps with statistical probability, and what you get back is plausible, and wrong.',
     ],
     [
         'slug' => 'the-75-percent-problem',
         'title' => 'The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line',
         'date' => 'May 18, 2026',
-        'body' => 'AI gets you to scaffold incredibly fast. Then it leaves you at the edge of the specification boundary, where domain expertise and explicit constraints matter more than generative power. How to prepare for that phase rather than discover it.',
+        'body' => 'AI gets you to scaffold incredibly fast. Then it leaves you at the edge of the specification boundary, where domain expertise and explicit constraints matter more than generative power. Here\'s how to prepare for that phase rather than discover it.',
     ],
     [
         'slug' => 'evaluating-agentic-workflows',
         'title' => 'How to Know If Your Agentic Workflow Is Actually Working',
         'date' => 'June 18, 2026',
-        'body' => 'Moving beyond "it ran without errors." How to build evaluation infrastructure that catches not just broken workflows, but wrong ones — workflows that run cleanly and degrade quietly through semantic drift.',
+        'body' => 'Moving beyond "it ran without errors." How to build evaluation infrastructure that catches not just broken workflows, but wrong ones, the kind that run cleanly and degrade quietly through semantic drift.',
     ],
     [
         'slug' => 'framework-emergence-loop',
         'title' => 'The Framework Emergence Loop: How Durable AI Workflows Are Actually Found',
         'date' => 'July 9, 2026',
-        'body' => 'A retrospective on why you cannot design a perfect agentic workflow in advance. Durable systems are found through a cycle of intentional failures, where each iteration reveals the structural lesson required for the next.',
+        'body' => 'A retrospective on why you can\'t design a perfect agentic workflow in advance, at least not so far. Durable systems are found through a cycle of intentional failures, where each iteration reveals the structural lesson required for the next.',
     ],
 ];
 ?>
@@ -56,7 +56,7 @@ $posts = [
         Agentic product development <span class="t-accent">workflows</span>.
     </h1>
     <p class="mt-8 max-w-prose text-[1.1875rem] leading-[1.6] text-muted-foreground">
-        A six-part series on the shift from building for yourself to designing for the agent. Not a tool upgrade — a new discipline.
+        A six-part series on the shift from building for yourself to designing for the agent. It isn't a tool upgrade so much as a new discipline.
     </p>
     <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3">
         <a href="/articles/technical-deep-dives/<?= $posts[0]['slug'] ?>/" class="btn-arrow btn-arrow--accent">Start with the first post</a>
@@ -71,19 +71,19 @@ $posts = [
         </div>
         <div class="col-span-12 space-y-5 sm:col-span-9">
             <p class="max-w-prose text-[1.1875rem] leading-[1.6] text-foreground">
-                I kept improving my prompts. Every session that drifted — the agent generating code in a style we'd already moved away from, missing a pattern we'd established, or making the same mistake I'd corrected twice before — I diagnosed as a prompt quality problem. The fix, obviously, was better prompts. More specific. More examples. More context. I got quite good at prompting. The drift kept happening.
+                I kept improving my prompts. Every time a session drifted, I diagnosed it as a prompt quality problem. The agent would generate code in a style we'd already moved away from, miss a pattern we'd established, or make the same mistake I'd corrected twice before. The fix, obviously, was better prompts, more specific ones with more examples and more context. I got quite good at prompting. The drift kept happening.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 Six months in, I had a growing library of refined prompts and a corrections list that looked nearly identical to the one from month two. The thing I kept adjusting wasn't the problem. The problem was somewhere I hadn't looked yet.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                What I was missing was this: I was still designing everything for myself. The prompts, the context files, the project notes, the spec — all of it was written for a human reading it later, not for an agent trying to infer intent from it right now. And inference at the edges of an AI session is exactly where drift lives.
+                What I was missing was this: I was still designing everything for myself. The prompts, the context files, the project notes, the spec: all of it was written for a human reading it later, not for an agent trying to infer intent from it right now. Inference at the edges of an AI session is exactly where drift lives.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                This series is about the shift from building for yourself to designing for the agent. One that treats your artifacts — your documentation, your specs, your configuration — as the primary communication layer with the agent, not the secondary layer behind prompting.
+                This series is about the shift from building for yourself to designing for the agent, one that treats your artifacts (your documentation, your specs, your configuration) as the primary communication layer with the agent, not the secondary layer behind prompting.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                If you're a developer or technical PM who's already shipped something with AI assistance, you've likely hit the 75% wall or watched a session slowly lose its thread. This series is for those who want to move past prompting and toward something reliable.
+                If you're a developer or technical PM who's already shipped something with AI assistance, you've likely hit the 75% wall or watched a session slowly lose its thread. This series is for anyone who wants to move past prompting toward something reliable.
             </p>
         </div>
     </div>
