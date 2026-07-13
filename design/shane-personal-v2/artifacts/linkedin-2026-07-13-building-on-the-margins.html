@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — Building on the Margins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* ─── Tokens (embedded verbatim from tokens.css) ─── */
+  :root {
+    --color-surface:         #fbfaf9;
+    --color-surface-feature: #ede4d2;
+    --color-surface-muted:   #f1eee8;
+    --color-ink:             #0e1116;
+    --color-ink-soft:        #404550;
+    --color-ink-3:           #62686f;
+    --color-rule:            #d6d8de;
+    --color-grid:            #e0e2e6;
+    --color-accent:          #556b2f;
+    --color-accent-hover:    #3e5020;
+
+    --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --fs-display-xxl:  9rem;
+    --fs-display-xl:   6rem;
+    --fs-display:      4.5rem;
+    --fs-headline-lg:  3.5rem;
+    --fs-headline-md:  2.25rem;
+    --fs-headline-sm:  1.5rem;
+    --fs-lead:         1.1875rem;
+    --fs-body-lg:      1.0625rem;
+    --fs-body-md:      1rem;
+    --fs-meta:         0.875rem;
+    --fs-smallcaps-lg: 0.875rem;
+    --fs-smallcaps:    0.75rem;
+    --fs-dateline:     0.75rem;
+    --fs-code:         0.875rem;
+
+    --lh-cover:        0.96;
+    --lh-tight:        1.0;
+    --lh-snug:         1.05;
+    --lh-normal:       1.18;
+    --lh-prose:        1.65;
+
+    --tracking-cover:    -0.022em;
+    --tracking-display:  -0.02em;
+    --tracking-tight:    -0.015em;
+    --tracking-normal:   0;
+    --tracking-smallcaps: 0.08em;
+    --tracking-smallcaps-tight: 0.06em;
+    --tracking-mono:     0.06em;
+
+    --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+    --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+    --s-9:  6rem;     --s-10: 9rem;
+
+    --measure:    64ch;
+    --container:  1180px;
+    --gutter:     1.5rem;
+
+    --r-0:        0;
+    --r-hairline: 1px;
+    --r-sm:       2px;
+    --r-full:     999px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2a2a;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+  }
+
+  /* ─── THE CANVAS — exact LinkedIn dimensions ─── */
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    position: relative;
+    overflow: hidden;
+    padding: var(--s-8);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  /* ─── Left margin gutter — the literal "margins" of the page ─── */
+  /* Holds the small-caps running head, dateline, a marginal note, and the mark/  */
+  /* folio pinned at the bottom. Olive appears in exactly two consistent roles:   */
+  /* the small-caps label color and the structural column rule (never a body word). */
+  .margin {
+    width: 300px;
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .margin-top { display: flex; flex-direction: column; gap: var(--s-4); }
+
+  .running-head {
+    font-family: var(--type-display-family);
+    font-weight: 600;
+    font-variant-caps: small-caps;
+    font-feature-settings: 'smcp';
+    text-transform: lowercase;
+    font-size: var(--fs-smallcaps);
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .dateline {
+    font-family: var(--type-mono-family);
+    font-size: var(--fs-dateline);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-ink-3);
+  }
+  /* The marginal annotation — a real note, not editorial cosplay labels        */
+  .note {
+    font-family: var(--type-sans-family);
+    font-weight: 400;
+    font-size: var(--fs-meta);
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+    max-width: 26ch;
+  }
+  .note .loop { font-family: var(--type-mono-family); font-size: var(--fs-dateline); letter-spacing: var(--tracking-mono); color: var(--color-ink); }
+
+  .margin-bottom { display: flex; flex-direction: column; gap: var(--s-3); }
+  .wordmark {
+    font-family: var(--type-display-family);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink);
+    line-height: 1;
+  }
+  .folio {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--type-mono-family);
+    font-size: var(--fs-dateline);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-ink-3);
+  }
+  .folio .pos { color: var(--color-ink); }
+
+  /* ─── Structural column rule — olive, the brand's deliberate accent role ─── */
+  .column-rule {
+    width: 1px;
+    align-self: stretch;
+    background: var(--color-accent);
+    margin: 0 var(--s-7);
+  }
+
+  /* ─── Body — headline + one supporting line. No eyebrow, no meta row. ─── */
+  .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* Scale-shift emphasis: "Building on the" recedes; "Margins" dominates in     */
+  /* display-xl — a 3×+ typographic event, no italics, no single-word color tell. */
+  .headline-kicker {
+    font-family: var(--type-display-family);
+    font-weight: 400;
+    font-size: clamp(30px, 3.4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+  .headline-focal {
+    font-family: var(--type-display-family);
+    font-weight: 400;
+    font-size: clamp(72px, 8vw, 104px);
+    line-height: 0.98;
+    letter-spacing: var(--tracking-display);
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .support {
+    font-family: var(--type-sans-family);
+    font-weight: 400;
+    font-size: var(--fs-lead);
+    line-height: var(--lh-prose);
+    color: var(--color-ink-soft);
+    max-width: 46ch;
+    margin-top: var(--s-6);
+  }
+
+  @page { size: 1200px 627px; margin: 0; }
+  @media print {
+    body { background: var(--color-surface); padding: 0; }
+    .canvas { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<!--
+Variation choices (cross-artifact check vs the most-recent LinkedIn set in this brand):
+  recent framework-emergence-loop : archetype object-of-content (cream rebuild-log + loop diagram), no footer/mark
+  recent emergence-loop-blog-pipeline: archetype pattern-led (faint pipeline texture), olive on "Loop", embedded caption
+  recent intentional-failures      : archetype inverse-text (full-canvas ink inversion), folio lower-LEFT
+  recent six-iterations            : archetype split (column rule, headline left / support right), olive on "find", folio lower-RIGHT
+  recent rebuild-not-design        : archetype type-only (monochrome, bottom-anchored, weight-shift on "Loop"), no footer/mark
+
+  THIS MUST differ on archetype AND on mark/footer placement:
+  archetype:    marginalia / off-grid — the canvas is organized as a real page with a literal
+                left margin gutter holding the running head, dateline, a marginal note, and the
+                mark+folio. The headline sits in the body, off the centered grid. Differs from
+                object-of-content (no diagram/object), pattern-led (no texture), inverse-text (no
+                ink inversion), split (no symmetric two-column body), type-only (no bottom-anchored
+                lone type block). The "margins" of the headline become the literal layout device.
+  layout:       off-grid (asymmetric) — a committed 300px margin column, a 1px olive column rule,
+                then the body. Not centered, not split-symmetric, not full-bleed.
+  type-pressure: display-dominant — Fraunces owns the voice (kicker + 3× focal scale shift); IBM
+                Plex carries the support line in its proper body role; JetBrains Mono owns the
+                dateline + folio (its only permitted role). Exactly the brand's three-role discipline.
+  color:        monochrome committed cream + ink, with olive in TWO consistent structural/label
+                roles — the small-caps running-head label AND the column rule. Deliberately NOT a
+                colored body word (clears the single-word-color tell that the recent set leaned on
+                for "Loop" / "find"), and the emphasis device here is a 3× scale shift, not color.
+  composition:  headline-led — the eye lands on the oversized "Margins"; the margin annotations
+                recede to their proper secondary weight.
+  Chrome:       no eyebrow above headline, no top-metadata mono row, no 3-col footer, no centered
+                hero. Mark/footer placement ROTATES to the BOTTOM of the LEFT MARGIN gutter —
+                differs from absent (x2), folio-lower-left (canvas), folio-lower-right (canvas),
+                embedded-in-body. Attribution and CTA omitted per brief.
+-->
+<article class="canvas">
+
+  <aside class="margin">
+    <div class="margin-top">
+      <span class="running-head">field note</span>
+      <span class="dateline">2026.07.13</span>
+      <p class="note">
+        the gaps between a day job and a family —
+        <span class="loop">loop &amp; gate</span> keeps the strategy human.
+      </p>
+    </div>
+    <div class="margin-bottom">
+      <span class="wordmark">Shane Logsdon</span>
+      <span class="folio"><span>building on the margins</span> · <span class="pos">001</span></span>
+    </div>
+  </aside>
+
+  <div class="column-rule" aria-hidden="true"></div>
+
+  <div class="body">
+    <h1 class="headline-kicker">Building on the</h1>
+    <h1 class="headline-focal">Margins</h1>
+    <p class="support">
+      A founder with a day job and family builds LeadSurface via a Loop &amp; Gate
+      workflow — keeping product strategy human, handing disciplined execution to a pipeline.
+    </p>
+  </div>
+
+</article>
+</body>
+</html>
+<!--
+COMPANION TEXT (style: insight — claim → reasoning → invitation):
+
+I have a day job, a family, and a company I'm building in the margins.
+
+LeadSurface wasn't born from long, uninterrupted focus. It's the output of a Loop & Gate workflow: I keep product strategy human and hand the disciplined execution to a pipeline. The loop runs the work; the gate keeps me in it.
+
+What are you building in the margins? I'd like to hear how you protect the thinking from the doing.
+-->

@@ -1,4 +1,17 @@
 {
+  "building-on-the-margins": {
+    "title": "Building on the Margins",
+    "description": "A founder with a day job and family builds LeadSurface via a Loop & Gate workflow, keeping product strategy human, handing disciplined execution to a pipeline.",
+    "date": "2026-07-13",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": [
+      "product-strategy",
+      "developer-tooling",
+      "tech-strategy",
+      "system-architecture"
+    ]
+  },
   "framework-emergence-loop": {
     "title": "The Framework Emergence Loop: How Durable AI Workflows Are Actually Found",
     "description": "You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.",

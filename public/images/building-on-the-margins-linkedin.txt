@@ -1,0 +1,9 @@
+I used to think the thing that would crack under a full-time job and a family was the product. The code holds up fine. What doesn't is the discipline around it.
+
+The forty-minute window between a meeting and dinner is enough to write the code. It isn't enough to keep the habits that make the code worth shipping. When I'm tired or holding four things in my head, I skip writing down what I'm building, tell myself I'll test later, and make a call at 10pm I can't reconstruct by the weekend.
+
+I've stopped blaming skill for this. The constraint is attention. There isn't enough of it to spare, and the building work loses to everything else pulling at it.
+
+Most of the work on the margins is catching the thought before it slips, so a spark at 2pm actually reaches that forty-minute window at 9. The bug fix and the right onboarding wording show up at red lights and in the shower. Without a place to capture them, they're gone.
+
+What's your system for holding onto the ideas that don't arrive when you're actually at the computer?

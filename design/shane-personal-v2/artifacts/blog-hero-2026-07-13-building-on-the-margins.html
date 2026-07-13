@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — Building on the Margins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Shane Logsdon — Design Tokens (v2) — embedded verbatim */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ─── Color — committed cream page + dark-inversion feature treatment ─── */
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-grid:            #e0e2e6;
+  --color-accent:          #556b2f;
+  --color-accent-hover:    #3e5020;
+
+  /* ─── Typography ─── */
+  --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl:  9rem;
+  --fs-display-xl:   6rem;
+  --fs-display:      4.5rem;
+  --fs-headline-lg:  3.5rem;
+  --fs-headline-md:  2.25rem;
+  --fs-headline-sm:  1.5rem;
+
+  --fs-lead:         1.1875rem;
+  --fs-body-lg:      1.0625rem;
+  --fs-body-md:      1rem;
+  --fs-meta:         0.875rem;
+
+  --fs-smallcaps-lg: 0.875rem;
+  --fs-smallcaps:    0.75rem;
+
+  --fs-dateline:     0.75rem;
+  --fs-code:         0.875rem;
+
+  --lh-cover:        0.96;
+  --lh-tight:        1.0;
+  --lh-snug:         1.05;
+  --lh-normal:       1.18;
+  --lh-prose:        1.65;
+
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-normal:   0;
+  --tracking-smallcaps: 0.08em;
+  --tracking-smallcaps-tight: 0.06em;
+  --tracking-mono:     0.06em;
+
+  --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+  --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+  --s-9:  6rem;     --s-10: 9rem;
+
+  --measure:    64ch;
+  --container:  1180px;
+  --gutter:     1.5rem;
+
+  --r-0:        0;
+  --r-hairline: 1px;
+  --r-sm:       2px;
+  --r-full:     999px;
+
+  --ease:       cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:        200ms;
+}
+
+/* Editorial labels — Fraunces small caps (not mono caps) */
+.t-smallcaps-lg {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps-lg);
+  line-height: 1;
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink);
+}
+.t-smallcaps {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-3);
+}
+
+/* Mono — only for dateline + code */
+.t-dateline {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+
+/* Type accent — one word per surface in olive Fraunces (brand signature) */
+.t-accent { color: var(--color-accent); font-style: normal; }
+
+/* Wordmark */
+.wordmark {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  color: var(--color-ink);
+}
+
+/* Folio — publication page-number convention */
+.folio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+}
+.folio .pos { color: var(--color-ink); }
+
+/* ─── Page scaffold (for the screenshotter, not the artifact) ─── */
+html, body { margin: 0; padding: 0; background: #2a2a2a; }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 0;
+  font-family: var(--type-sans-family);
+}
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  align-self: center;
+  margin: 0;
+}
+
+/* ─── Canvases (exact pixel dimensions) ─── */
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+.canvas-og    { width: 1200px; height: 630px; }
+.canvas-hero  { width: 1440px; height: 600px; }
+
+/* ─── Surface wrapper ─── */
+.surface {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.canvas-og   .surface { padding: var(--s-7) var(--s-8); }
+.canvas-hero .surface { padding: var(--s-7) var(--s-8); }
+
+/* ─── Page body: marginalia rail + column rule + main column ─── */
+.page-body {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+  min-height: 0;
+}
+.canvas-og   .page-body { gap: var(--s-6); }
+.canvas-hero .page-body { gap: var(--s-7); }
+
+/* Left margin rail — the literal "margins" the piece is built on */
+.margin {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.canvas-og   .margin { width: 232px; }
+.canvas-hero .margin { width: 280px; }
+
+.column-rule {
+  flex: 0 0 1px;
+  width: 1px;
+  background: var(--color-rule);
+}
+
+/* Main column — headline + dek, vertically centered, flush-left */
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Marginalia notes — object-of-content: real article fragments, not chrome */
+.m-label {
+  font-family: var(--type-display-family);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp';
+  text-transform: lowercase;
+  font-size: var(--fs-smallcaps-lg);
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink);
+  line-height: 1;
+}
+.m-date {
+  font-family: var(--type-mono-family);
+  font-size: var(--fs-dateline);
+  letter-spacing: var(--tracking-mono);
+  color: var(--color-ink-3);
+  margin-top: var(--s-3);
+}
+.m-rule {
+  height: 1px;
+  background: var(--color-rule);
+  border: 0;
+  margin: var(--s-5) 0;
+}
+.m-note {
+  font-family: var(--type-mono-family);
+  color: var(--color-ink-3);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+.canvas-og   .m-note { font-size: 11.5px; }
+.canvas-hero .m-note { font-size: 12.5px; }
+.m-note .lead-ink { color: var(--color-ink-soft); }
+
+/* Headline — the punctum: display-dominant, flush-left; "Building" in olive */
+.headline {
+  margin: 0;
+  font-family: var(--type-display-family);
+  font-weight: 400;
+  color: var(--color-ink);
+  text-align: left;
+}
+.canvas-og   .headline { font-size: var(--fs-display);    line-height: var(--lh-snug); letter-spacing: var(--tracking-display); }
+.canvas-hero .headline { font-size: var(--fs-display-xl); line-height: var(--lh-tight); letter-spacing: var(--tracking-cover); }
+.headline .accent { color: var(--color-accent); font-style: normal; }   /* one word per surface */
+
+/* Standfirst / dek — single supporting line, never a meta-row */
+.dek {
+  margin: var(--s-6) 0 0;
+  font-family: var(--type-sans-family);
+  color: var(--color-ink-soft);
+  text-align: left;
+  max-width: 46ch;
+}
+.canvas-og   .dek { font-size: var(--fs-body-lg); line-height: var(--lh-prose); }
+.canvas-hero .dek { font-size: var(--fs-lead);    line-height: var(--lh-prose); }
+
+/* Foot — wordmark (lower-LEFT) + folio (lower-RIGHT): a 2-end row, not a 3-col footer */
+.foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: var(--s-5);
+  margin-top: var(--s-6);
+  border-top: 1px solid var(--color-rule);
+}
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+
+<!--
+Variation choices:
+  archetype:  object-of-content — the hero IS a fragment of the article page: a left
+              marginalia rail (the real Loop & Gate working notes, "built after hours")
+              beside the headline in the main column. The composition literalizes the
+              title: the piece is built "on the margins."
+  layout:     asymmetric split — narrow margin rail | 1px column rule | wide main column.
+              Headline weighted into the main column, flush-left (no centered hero block).
+  color:      committed-cream surface, single olive accent word ("building") — the brand's
+              deliberate one-word-per-surface type accent; olive appears nowhere else.
+  type-press: display-dominant Fraunces headline + Fraunces small-caps margin label +
+              IBM Plex Sans dek + JetBrains Mono marginalia/date/folio.
+
+  Cross-artifact (must differ from the immediately-preceding 2026-07-09 hero, which was
+  inverse-text on a dark inversion block):
+    • archetype: inverse-text (dark punctum) → object-of-content (cream page fragment) ✓
+    • color:     INVERTED dark feature treatment → committed-cream single-accent ✓
+    • top chrome:running-head pinned top → NONE (category lives in the margin rail, not a
+                 top eyebrow/metadata row; per anti-pattern §4) ✓
+    • footer:    single lower-RIGHT folio → lower-LEFT wordmark + lower-RIGHT folio (2-end
+                 row, not a 3-col footer; mark placement rotated off the prior top) ✓
+    • inner block matches outer: main holds headline + dek only; the margin holds content
+                 notes (not a meta-row), so no chrome-led reversion.
+
+  Anti-pattern check: no indigo/violet/gradients/glass/orbs; no italic emphasis (olive
+  accent is the brand's explicit one-word-per-surface signature, user-named); 1px rules
+  only; zero radius; no filled button; mono restricted to marginalia/date/folio; single
+  corner-anchored footer pair (no 3-column row); no center-aligned hero; category carried
+  as a small-caps margin label, never a mono-caps eyebrow above the headline.
+-->
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
+<article class="canvas canvas-og">
+  <div class="surface">
+    <div class="page-body">
+      <aside class="margin">
+        <span class="m-label">strategic insights</span>
+        <span class="m-date">2026.07.13</span>
+        <hr class="m-rule">
+        <div class="m-note">
+          <span class="lead-ink">— from the margin —</span><br><br>
+          loop → gate → loop<br>
+          strategy: kept human<br>
+          execution: the pipeline<br><br>
+          LeadSurface,<br>
+          built after hours
+        </div>
+      </aside>
+
+      <div class="column-rule"></div>
+
+      <div class="main">
+        <h1 class="headline">
+          <span class="accent">Building</span><br>
+          on the Margins
+        </h1>
+
+        <p class="dek">
+          A founder with a day job and family builds LeadSurface via a Loop &amp; Gate workflow, keeping product strategy human, handing disciplined execution to a pipeline.
+        </p>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span class="wordmark">Shane Logsdon</span>
+      <span class="folio"><span class="pos">2026.07.13</span> / 002</span>
+    </div>
+  </div>
+</article>
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot this for the article header</span>
+<article class="canvas canvas-hero">
+  <div class="surface">
+    <div class="page-body">
+      <aside class="margin">
+        <span class="m-label">strategic insights</span>
+        <span class="m-date">2026.07.13</span>
+        <hr class="m-rule">
+        <div class="m-note">
+          <span class="lead-ink">— from the margin —</span><br><br>
+          loop → gate → loop<br>
+          strategy: kept human<br>
+          execution: the pipeline<br><br>
+          LeadSurface,<br>
+          built after hours
+        </div>
+      </aside>
+
+      <div class="column-rule"></div>
+
+      <div class="main">
+        <h1 class="headline">
+          <span class="accent">Building</span><br>
+          on the Margins
+        </h1>
+
+        <p class="dek">
+          A founder with a day job and family builds LeadSurface via a Loop &amp; Gate workflow, keeping product strategy human, handing disciplined execution to a pipeline.
+        </p>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span class="wordmark">Shane Logsdon</span>
+      <span class="folio"><span class="pos">2026.07.13</span> / 002</span>
+    </div>
+  </div>
+</article>
+
+<!--
+COMPANION TEXT:
+  slug:        building-on-the-margins
+  title:       Building on the Margins
+  og:image:    ./design/shane-personal-v2/artifacts/blog-hero-2026-07-13-building-on-the-margins.html (OG canvas, 1200×630)
+  description: A founder with a day job and family builds LeadSurface via a Loop & Gate workflow, keeping product strategy human, handing disciplined execution to a pipeline.
+  category:    strategic insights
+  dateline:    2026.07.13
+  accent-word: building
+-->
+</body>
+</html>
