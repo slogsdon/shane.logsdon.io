@@ -1,7 +1,7 @@
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open('shane-logsdon-io-static-v22').then((cache) => {
+    caches.open('shane-logsdon-io-static-v23').then((cache) => {
       return cache.addAll(["/"]).catch(() => {});
     })
   );
@@ -12,7 +12,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter((key) => key !== 'shane-logsdon-io-static-v22')
+          .filter((key) => key !== 'shane-logsdon-io-static-v23')
           .map((key) => caches.delete(key))
       )
     ).then(() => self.clients.claim())
