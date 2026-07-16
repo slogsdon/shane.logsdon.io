@@ -12,6 +12,12 @@ $patentUrl =
 
 $projects = [
     [
+        'href' => '/loop-and-gate/',
+        'title' => 'The Loop & Gate System',
+        'body' => 'A Foundation layer plus three kits for building, marketing, and following through on your own projects with an AI agent. An agentic loop runs on its own most of the time, but stops at a fixed set of gates where a human has to decide.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/second-brain-agent']],
+    ],
+    [
         'href' => '/hermes-dispatch/',
         'title' => 'Hermes Dispatch',
         'body' => 'Open source, local-first agent dispatch system. Type a request into a mobile chat, a routing layer sends it to the right one of two dozen specialized agents, and the agent runs on your own models via Ollama and LiteLLM.',

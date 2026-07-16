@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — The Loop &amp; Gate System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ─── tokens.css (embedded verbatim) ─── */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-grid:            #e0e2e6;
+  --color-accent:          #556b2f;
+  --color-accent-hover:    #3e5020;
+
+  --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-display-xxl:  9rem;
+  --fs-display-xl:   6rem;
+  --fs-display:      4.5rem;
+  --fs-headline-lg:  3.5rem;
+  --fs-headline-md:  2.25rem;
+  --fs-headline-sm:  1.5rem;
+
+  --fs-lead:         1.1875rem;
+  --fs-body-lg:      1.0625rem;
+  --fs-body-md:      1rem;
+  --fs-meta:         0.875rem;
+
+  --fs-smallcaps-lg: 0.875rem;
+  --fs-smallcaps:    0.75rem;
+
+  --fs-dateline:     0.75rem;
+  --fs-code:         0.875rem;
+
+  --lh-cover:        0.96;
+  --lh-tight:        1.0;
+  --lh-snug:         1.05;
+  --lh-normal:       1.18;
+  --lh-prose:        1.65;
+
+  --tracking-cover:    -0.022em;
+  --tracking-display:  -0.02em;
+  --tracking-tight:    -0.015em;
+  --tracking-normal:   0;
+  --tracking-smallcaps: 0.08em;
+  --tracking-smallcaps-tight: 0.06em;
+  --tracking-mono:     0.06em;
+
+  --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+  --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+  --s-9:  6rem;     --s-10: 9rem;
+
+  --measure:    64ch;
+  --container:  1180px;
+  --gutter:     1.5rem;
+
+  --r-0:        0;
+  --r-hairline: 1px;
+  --r-sm:       2px;
+  --r-full:     999px;
+
+  --ease:       cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur:        200ms;
+}
+
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans-family); }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  align-self: center;
+}
+
+/* ─── Shared type-only architecture ───
+   Two sentences, two registers. "The loop does the work." is the setup, set small
+   and soft. "You work the gates." is the claim, set at cover scale. The emphasis is
+   carried by a ~3.4x scale shift + weight shift + line position — NOT by italics and
+   NOT by coloring one word (both are anti-pattern §2). Nothing else on the canvas.
+*/
+.canvas {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.setup {
+  font-family: var(--type-display-family);
+  font-weight: 300;
+  color: var(--color-ink-3);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+
+.claim {
+  font-family: var(--type-display-family);
+  font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: var(--tracking-cover);
+  line-height: var(--lh-cover);
+  margin: 0;
+  text-indent: -0.04em;   /* optical flush-left on the cap T/Y */
+}
+
+/* OG canvas — exact 1200×630.
+   Claim is sized to fill the measure edge-to-edge on one line: type-only means the
+   type owns the canvas, so anything that leaves the headline floating in dead space
+   is the wrong size. */
+.canvas-og {
+  width: 1200px;
+  height: 630px;
+  padding: var(--s-8);
+}
+.canvas-og .setup { font-size: var(--fs-headline-lg); }
+.canvas-og .claim { font-size: 142px; margin-top: var(--s-4); }
+
+/* In-page hero — 1440×600 */
+.canvas-hero {
+  width: 1440px;
+  height: 600px;
+  padding: var(--s-9);
+}
+.canvas-hero .setup { font-size: var(--fs-headline-lg); }
+.canvas-hero .claim { font-size: 166px; margin-top: var(--s-4); }
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+<!--
+Variation choices:
+  archetype:  type-only — headline at maximum scale, nothing else on the canvas. No
+              eyebrow, no dateline, no wordmark, no folio, no rules. Chosen because the
+              three most recent shane-personal-v2 blog heroes used object-of-content
+              (2026-07-13), inverse-text (2026-07-09), and pattern-led (2026-06-18);
+              the cross-artifact rule (§7) forces a different archetype. type-only is
+              also the correct read for the subject: the whole system reduces to one
+              two-clause sentence, so the artifact is that sentence and nothing more.
+  layout:     asymmetric / flush-left, vertically centered. No centered hero block (§2).
+              The two clauses are the only elements; their scale ratio IS the layout.
+  color:      monochrome. Deliberately NO olive accent word — anti-pattern §2 forbids
+              single-word color-emphasis as a default move, and there is no semantic
+              role for the accent on a canvas with two elements. Emphasis is carried by
+              scale (36px → 96px, ~2.7x on OG; 36px → 144px, 4x on hero) plus weight
+              (300 → 500) plus the line break.
+  type-press: display-dominant. Fraunces only — one family, no mono, no sans in the
+              artwork itself. The sans/mono in this file are chrome for the screenshotter.
+  footer:     ABSENT entirely. Previous artifacts used a marginalia rail (2026-07-13)
+              and a lower-right folio (2026-07-09); §7 requires the signature treatment
+              to differ. Brand recognition on the OG unfurl comes from the domain chip.
+-->
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
+<article class="canvas canvas-og">
+  <p class="setup">The loop does the work.</p>
+  <p class="claim">You work the gates.</p>
+</article>
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot this for the page header</span>
+<article class="canvas canvas-hero">
+  <p class="setup">The loop does the work.</p>
+  <p class="claim">You work the gates.</p>
+</article>
+
+<!--
+Companion meta
+  url:   /loop-and-gate/
+  slug:  loop-and-gate
+  image: loop-and-gate-og.png
+  alt:   "The loop does the work. You work the gates." set in Fraunces on a cream field.
+  og description:
+    A Foundation layer plus three kits for building, marketing, and following through
+    on your own projects with an AI agent. The loop does the work between the gates.
+    You work the gates.
+-->
+</body>
+</html>

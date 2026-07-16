@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — The Loop &amp; Gate System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* ─── Tokens (embedded verbatim from tokens.css) ─── */
+  :root {
+    --color-surface:         #fbfaf9;
+    --color-surface-feature: #ede4d2;
+    --color-surface-muted:   #f1eee8;
+    --color-ink:             #0e1116;
+    --color-ink-soft:        #404550;
+    --color-ink-3:           #62686f;
+    --color-rule:            #d6d8de;
+    --color-grid:            #e0e2e6;
+    --color-accent:          #556b2f;
+    --color-accent-hover:    #3e5020;
+
+    --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --fs-display-xxl:  9rem;
+    --fs-display-xl:   6rem;
+    --fs-display:      4.5rem;
+    --fs-headline-lg:  3.5rem;
+    --fs-headline-md:  2.25rem;
+    --fs-headline-sm:  1.5rem;
+    --fs-lead:         1.1875rem;
+    --fs-body-lg:      1.0625rem;
+    --fs-body-md:      1rem;
+    --fs-meta:         0.875rem;
+    --fs-smallcaps-lg: 0.875rem;
+    --fs-smallcaps:    0.75rem;
+    --fs-dateline:     0.75rem;
+    --fs-code:         0.875rem;
+
+    --lh-cover:        0.96;
+    --lh-tight:        1.0;
+    --lh-snug:         1.05;
+    --lh-normal:       1.18;
+    --lh-prose:        1.65;
+
+    --tracking-cover:    -0.022em;
+    --tracking-display:  -0.02em;
+    --tracking-tight:    -0.015em;
+    --tracking-normal:   0;
+    --tracking-smallcaps: 0.08em;
+    --tracking-smallcaps-tight: 0.06em;
+    --tracking-mono:     0.06em;
+
+    --s-1:  0.25rem;  --s-2:  0.5rem;   --s-3:  0.75rem;  --s-4:  1rem;
+    --s-5:  1.5rem;   --s-6:  2rem;     --s-7:  3rem;     --s-8:  4rem;
+    --s-9:  6rem;     --s-10: 9rem;
+
+    --measure:    64ch;
+    --container:  1180px;
+    --gutter:     1.5rem;
+
+    --r-0:        0;
+    --r-hairline: 1px;
+    --r-sm:       2px;
+    --r-full:     999px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2a2a;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+  }
+
+  /* ─── THE CANVAS — exact LinkedIn dimensions ─── */
+  .canvas {
+    width: 1200px;
+    height: 627px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── The wall — every real gate in the system, set as texture, not as a list ───
+     This is the "text becomes surface" half of inverse-text. It is genuine content
+     (the actual gate questions from all three kits), never lorem and never decoration.
+  */
+  .wall {
+    position: absolute;
+    inset: 0;
+    padding: var(--s-6) var(--s-6) var(--s-6) var(--s-6);
+    padding-top: var(--s-9);
+    columns: 3;
+    column-gap: var(--s-6);
+    font-family: var(--type-sans-family);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--color-ink-3);
+  }
+  .wall p { break-inside: avoid; margin-bottom: 0; }
+
+  /* ─── The void — the headline carved out of the wall ───
+     An opaque ink band cuts straight through the type wall. The wall does not stop
+     for it; it is occluded by it. That is the whole argument of the system rendered
+     literally: the loop runs continuously, and the gate is the hard stop across it.
+  */
+  .void {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 47%;
+    transform: translateY(-50%);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    padding: var(--s-7) var(--s-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+  /* Scale-shift emphasis, not italics and not a colored word (anti-pattern §2). */
+  .setup {
+    font-family: var(--type-display-family);
+    font-weight: 300;
+    font-size: var(--fs-headline-md);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--tracking-tight);
+    color: rgba(251, 250, 249, 0.72);
+  }
+  .claim {
+    font-family: var(--type-display-family);
+    font-weight: 500;
+    font-size: 76px;
+    line-height: var(--lh-cover);
+    letter-spacing: var(--tracking-cover);
+    color: var(--color-surface);
+    text-indent: -0.04em;
+  }
+
+  /* ─── Wordmark — pinned UPPER-LEFT on the bare wall, above the void ───
+     Placement rotates per anti-pattern §4/§7: the previous LinkedIn artifact put the
+     mark at the bottom of a left margin gutter; the 2026-07-16 blog hero omits it.
+  */
+  .wordmark {
+    position: absolute;
+    top: var(--s-6);
+    left: var(--s-6);
+    font-family: var(--type-display-family);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    color: var(--color-ink);
+    line-height: 1;
+  }
+
+  @page { size: 1200px 627px; margin: 0; }
+  @media print {
+    body { background: var(--color-surface); padding: 0; }
+  }
+</style>
+</head>
+<body>
+<!--
+Variation choices (cross-artifact check vs the recent set in this brand):
+  2026-07-16 blog-hero loop-and-gate  : archetype type-only (monochrome cream, no mark, no chrome)
+  2026-07-13 building-on-the-margins  : archetype marginalia/off-grid, mark bottom-of-left-margin
+  2026-07-11 framework-emergence-loop : archetype object-of-content, no footer/mark
+  2026-07-11 emergence-loop-pipeline  : archetype pattern-led, olive on "Loop", embedded caption
+  2026-07-11 intentional-failures     : archetype inverse-text (full-canvas ink inversion), folio lower-LEFT
+  2026-07-11 six-iterations           : archetype split, folio lower-RIGHT
+
+  archetype:    inverse-text — but executed as the OTHER reading of the archetype than
+                2026-07-11's intentional-failures used. That artifact took "inverse-text"
+                to mean full-canvas ink inversion. This one takes the literal definition:
+                a block of body type IS the surface, and the headline is a void carved
+                through it. The wall is real content (every gate in all three kits), so
+                the type-as-texture is never decoration — it is the product spec, and the
+                band cutting across it is the gate. Differs from the most recent artifact
+                (type-only) and from marginalia, object-of-content, pattern-led, split.
+  layout:       full-bleed — the void band runs edge to edge, breaking the canvas in two
+                unequal parts (47% axis, not centered). Not symmetric, not split-column.
+  type-pressure: mixed-weight — the wall is body-dominant IBM Plex at 13px; the void is
+                display-dominant Fraunces at 76px. The ~6x ratio between them is the
+                emphasis device. Mono is absent (no dateline, no folio) — correct, since
+                mono's only permitted roles in this brand are dateline and code.
+  color:        monochrome + inversion. The ink band on committed cream IS the brand's
+                canonical feature treatment, used here as punctuation rather than chrome.
+                Deliberately NO olive: there is no semantic role for the accent on this
+                canvas, and coloring a headline word would be the exact tell anti-pattern
+                §2 forbids. Emphasis comes from scale + weight + the inversion itself.
+  composition:  headline-led — the eye lands in the void first, then discovers the wall
+                is made of the questions the void is talking about.
+  Chrome:       no eyebrow, no top-metadata mono row, no 3-col footer row, no centered
+                hero block, no dateline. Mark placement ROTATES to UPPER-LEFT.
+-->
+<article class="canvas">
+
+  <span class="wordmark">Shane Logsdon</span>
+
+  <div class="wall" aria-hidden="true">
+    <p>
+      Should this exist at all?
+      Who is it for, and what counts as a win?
+      Which direction fits the strategy?
+      Is the plan right?
+      Is the architecture sane?
+      Is the agent off the rails?
+      Does the test actually prove it, or is it a demo?
+      Is the cost right?
+      Is the risk acceptable to ship?
+      Ship now, and to whom?
+      How much of this process does this change even deserve?
+      Who is the audience?
+      What is the one claim?
+      Does the design carry the claim without looking like slop?
+      Is the copy true, and is it in your voice?
+      Is this the right channel, and is this the right week?
+      Did it actually move anything?
+      What is the one thing that matters today?
+      What did you actually do?
+      Did you do the thing you said you would?
+      What do you keep quietly deferring?
+      Three strikes — re-commit with a reason, or kill it?
+      Should this exist at all?
+      Who is it for, and what counts as a win?
+      Which direction fits the strategy?
+      Is the plan right?
+      Is the architecture sane?
+      Is the agent off the rails?
+      Does the test actually prove it, or is it a demo?
+      Is the cost right?
+      Is the risk acceptable to ship?
+      Ship now, and to whom?
+      How much of this process does this change even deserve?
+      Who is the audience?
+      What is the one claim?
+      Does the design carry the claim without looking like slop?
+      Is the copy true, and is it in your voice?
+      Is this the right channel, and is this the right week?
+      Did it actually move anything?
+      What is the one thing that matters today?
+      What did you actually do?
+      Did you do the thing you said you would?
+      What do you keep quietly deferring?
+      Three strikes — re-commit with a reason, or kill it?
+      Should this exist at all?
+      Who is it for, and what counts as a win?
+      Which direction fits the strategy?
+      Is the plan right?
+      Is the architecture sane?
+      Is the agent off the rails?
+      Does the test actually prove it, or is it a demo?
+      Is the cost right?
+      Is the risk acceptable to ship?
+      Ship now, and to whom?
+      How much of this process does this change even deserve?
+      Who is the audience?
+      What is the one claim?
+      Does the design carry the claim without looking like slop?
+      Is the copy true, and is it in your voice?
+      Is this the right channel, and is this the right week?
+      Did it actually move anything?
+      What is the one thing that matters today?
+      What did you actually do?
+      Did you do the thing you said you would?
+      What do you keep quietly deferring?
+      Three strikes — re-commit with a reason, or kill it?
+      Should this exist at all?
+      Who is it for, and what counts as a win?
+      Which direction fits the strategy?
+      Is the plan right?
+      Is the architecture sane?
+      Is the agent off the rails?
+      Does the test actually prove it, or is it a demo?
+      Is the cost right?
+      Is the risk acceptable to ship?
+      Ship now, and to whom?
+      How much of this process does this change even deserve?
+      Who is the audience?
+      What is the one claim?
+      Does the design carry the claim without looking like slop?
+      Is the copy true, and is it in your voice?
+      Is this the right channel, and is this the right week?
+      Did it actually move anything?
+      What is the one thing that matters today?
+      What did you actually do?
+      Did you do the thing you said you would?
+      What do you keep quietly deferring?
+      Three strikes — re-commit with a reason, or kill it?
+      Should this exist at all?
+      Who is it for, and what counts as a win?
+      Which direction fits the strategy?
+      Is the plan right?
+      Is the architecture sane?
+      Is the agent off the rails?
+      Does the test actually prove it, or is it a demo?
+      Is the cost right?
+      Is the risk acceptable to ship?
+      Ship now, and to whom?
+      How much of this process does this change even deserve?
+      Who is the audience?
+      What is the one claim?
+      Does the design carry the claim without looking like slop?
+      Is the copy true, and is it in your voice?
+      Is this the right channel, and is this the right week?
+      Did it actually move anything?
+      What is the one thing that matters today?
+      What did you actually do?
+      Did you do the thing you said you would?
+      What do you keep quietly deferring?
+      Three strikes — re-commit with a reason, or kill it?
+    </p>
+  </div>
+
+  <div class="void">
+    <p class="setup">The loop does the work.</p>
+    <p class="claim">You work the gates.</p>
+  </div>
+
+</article>
+</body>
+</html>
+<!--
+COMPANION TEXT (style: insight — claim → reasoning → invitation):
+
+An agent will build whatever you ask it to, including the wrong thing, confidently.
+
+That's not a model problem. It's a process problem. The loop — brainstorm, plan, build, test, ship — can run on its own most of the time. What it can't do is decide whether the thing should exist, whether the test proves anything or is just a demo, or whether the risk is yours to accept. Those are gates. A human works them.
+
+So I wrote the gates down. Eleven for building, six for taking it to market, eight for whether I actually did what I said. Underneath them sits a Foundation that remembers my projects, my voice, and my taste across sessions, so the agent isn't meeting me for the first time every morning.
+
+The part I keep coming back to is the master gate: how much of this process does this particular change even deserve? A typo fix and a billing change don't get the same treatment. Skip that question and the whole system becomes ceremony.
+
+It's all free and open source. What are you letting your agent decide that it shouldn't?
+
+(Link in first comment.)
+-->
