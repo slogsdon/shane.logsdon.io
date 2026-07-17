@@ -27,6 +27,7 @@ $pieces = [
         'name' => 'The Build Kit',
         'slug' => 'loop-and-gate-build-kit',
         'repo' => $repos['build'],
+        'guide' => '/loop-and-gate/build-field-guide/',
         'body' => 'Turns "an AI agent that writes code" into "an AI agent that ships good software." It is a map of the eleven points in a build where a human has to decide, and how to work each one — even the ones whose expertise you do not have yet.',
         'gives' => 'Should this exist at all? Who is it for, and what is a win? Is the plan right? Is the architecture sane? Is the agent off the rails? Does the test prove it, or is it a demo? And above all of them, the master gate: how much of this process does this change even deserve, because a typo fix and a billing change do not get the same treatment.',
         'needs' => 'The gates sit on top of an actual build loop, so you also install two free public plugins that provide the loop itself (superpowers and agent-skills). Works with or without the Foundation, better with it.',
@@ -35,6 +36,7 @@ $pieces = [
         'name' => 'The Grow Kit',
         'slug' => 'loop-and-gate-grow-kit',
         'repo' => $repos['grow'],
+        'guide' => '/loop-and-gate/grow-field-guide/',
         'body' => 'The other half of the loop: taking finished software to the right people and reading whether it worked. Same method, pointed at go-to-market.',
         'gives' => 'Who the audience is, what the one claim is, whether the design carries it without looking like slop, whether the copy is true and in your voice, the right channel and timing, and finally whether it actually moved anything.',
         'needs' => 'Requires the Foundation, because two of its gates are your Foundation profiles: the design gate reads your taste, the copy gate reads your voice. It also uses two free public plugins for the design and writing work.',
@@ -43,6 +45,7 @@ $pieces = [
         'name' => 'The Accountability Kit',
         'slug' => 'loop-and-gate-accountability-kit',
         'repo' => $repos['accountability'],
+        'guide' => '/loop-and-gate/accountability-field-guide/',
         'body' => 'Points the loop at your own follow-through. A daily rhythm with eight gates: set the one thing that matters today, capture what you actually did, reckon honestly at night, and get caught when you keep quietly deferring the hard thing.',
         'gives' => 'The deferral engine is the part that makes it more than a journal. Every morning focus that does not show up in the day\'s log gets counted, and at three strikes it stops being polite and forces a decision: re-commit with a reason, or kill it.',
         'needs' => 'Nothing. It runs on Claude alone — no extra plugins, no account, no local model. It keeps plain-text state by default, and uses your Obsidian vault instead when one is present.',
@@ -140,8 +143,11 @@ $order = [
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($p['body']) ?></p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($p['gives']) ?></p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($p['needs']) ?></p>
-                        <p class="mt-4">
+                        <p class="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2">
                             <a href="<?= htmlspecialchars($p['repo']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow">View on GitHub</a>
+                            <?php if (!empty($p['guide'])): ?>
+                            <a href="<?= htmlspecialchars($p['guide']) ?>" class="btn-arrow">Read the field guide</a>
+                            <?php endif; ?>
                         </p>
                     </div>
                 </li>
