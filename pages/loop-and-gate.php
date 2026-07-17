@@ -96,6 +96,28 @@ $order = [
     </div>
 </section>
 
+<!-- A gate at work -->
+<section class="mx-auto max-w-editorial px-6 pb-20">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="smallcaps-lg">the gate that earns its keep</p>
+        </div>
+        <div class="col-span-12 space-y-5 sm:col-span-9">
+            <p class="max-w-prose text-[1.1875rem] leading-[1.6] text-foreground">
+                Here is the whole idea in one moment. Mid-session the agent hits a test that fails once, digs in, and decides it has learned something worth keeping: the payments suite is flaky, so wrap the assertions in a retry before checking. A blank chat box forgets that by tomorrow. A naive memory writes it down forever.
+            </p>
+            <pre class="overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code># MEMORY.md
++ Payments tests are flaky. Wrap assertions in retry() before asserting.</code></pre>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                That line would load into every future session. It is also wrong. The test failed once because a fixture had not finished seeding, not because the suite is flaky, and now the agent hides real failures behind a retry it never needed.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                So the loop proposes the lesson and a gate stops the write. One observation is a coincidence with a good story, not a rule. The candidate waits in a holding file for a second, independent time the same thing happens. It never does, so nothing enters your memory. The diff above is the one that did not happen. That is loop and gate turned on the memory itself: the loop decides what to remember, the gate decides what is true enough to keep.
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- The pieces -->
 <section class="mx-auto max-w-editorial px-6 pb-20">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
