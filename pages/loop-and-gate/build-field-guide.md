@@ -3,7 +3,7 @@ title: 'The Build Field Guide'
 layout: 'partials::layouts/loop-and-gate-guide'
 date: 2026-07-11
 slug: build-field-guide
-image: loop-and-gate-og.png
+image: build-field-guide-og.png
 description: >-
   The eleven human-judgment gates of an agentic build loop: what you decide at
   each, how to work the ones outside your lens, and how to tell when the pipeline

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — Blog hero — The Grow Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ─── tokens.css (embedded verbatim) ─── */
+:root {
+  --color-surface:         #fbfaf9;
+  --color-surface-feature: #ede4d2;
+  --color-surface-muted:   #f1eee8;
+  --color-ink:             #0e1116;
+  --color-ink-soft:        #404550;
+  --color-ink-3:           #62686f;
+  --color-rule:            #d6d8de;
+  --color-grid:            #e0e2e6;
+  --color-accent:          #556b2f;
+  --color-accent-hover:    #3e5020;
+
+  --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --type-sans-family:      'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --type-mono-family:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-headline-lg:  3.5rem;
+  --fs-smallcaps-lg: 0.875rem;
+
+  --lh-cover:        0.96;
+  --lh-snug:         1.05;
+
+  --tracking-cover:    -0.022em;
+  --tracking-tight:    -0.015em;
+  --tracking-smallcaps: 0.08em;
+
+  --s-4:  1rem;   --s-5:  1.5rem;   --s-6:  2rem;   --s-7:  3rem;   --s-8:  4rem;   --s-9:  6rem;
+}
+
+html, body { margin: 0; padding: 0; background: #2a2a2a; min-height: 100vh; font-family: var(--type-sans-family); }
+body { display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 32px 0; }
+
+.canvas-label {
+  font-family: var(--type-mono-family);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  align-self: center;
+}
+
+/* ─── pattern-led: bold headline punctum over a faint gate-index pattern ─── */
+.canvas {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: grid;
+}
+.col-main { display: flex; flex-direction: column; justify-content: center; }
+.col-pattern {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--color-rule);
+  overflow: hidden;
+}
+.eyebrow {
+  font-family: var(--type-mono-family);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-smallcaps);
+  color: var(--color-ink-3);
+  margin: 0 0 var(--s-4) 0;
+}
+.headline {
+  font-family: var(--type-display-family);
+  font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: var(--tracking-cover);
+  line-height: var(--lh-cover);
+  margin: 0;
+  text-indent: -0.04em;
+}
+.gate-index { margin: 0; padding: 0; list-style: none; }
+.gate-index li {
+  font-family: var(--type-display-family);
+  font-weight: 300;
+  color: var(--color-grid);
+  letter-spacing: var(--tracking-tight);
+  white-space: nowrap;
+}
+
+/* OG canvas — exact 1200×630 */
+.canvas-og { width: 1200px; height: 630px; grid-template-columns: 1.32fr 1fr; }
+.canvas-og .col-main { padding: var(--s-8); }
+.canvas-og .col-pattern { padding-left: var(--s-7); }
+.canvas-og .eyebrow { font-size: var(--fs-smallcaps-lg); }
+.canvas-og .headline { font-size: 64px; }
+.canvas-og .gate-index li { font-size: 22px; line-height: 1.66; }
+
+/* In-page hero — 1440×600 */
+.canvas-hero { width: 1440px; height: 600px; grid-template-columns: 1.4fr 1fr; }
+.canvas-hero .col-main { padding: var(--s-9); }
+.canvas-hero .col-pattern { padding-left: var(--s-8); }
+.canvas-hero .eyebrow { font-size: 1rem; }
+.canvas-hero .headline { font-size: 78px; }
+.canvas-hero .gate-index li { font-size: 23px; line-height: 1.78; }
+
+@page { size: 1200px 630px; margin: 0; }
+</style>
+</head>
+<body>
+<!--
+Variation choices:
+  archetype:  pattern-led — faint full-height gate-index in the right column, headline as
+              punctum. Member of the three-guide SET (build/grow/accountability) sharing this
+              treatment as a series. Differs from the loop-and-gate landing (type-only) and
+              the 07-13/07-09 posts (object-of-content, inverse-text) per §7.
+  layout:     split / asymmetric — headline column over faint index, hairline rule between.
+  color:      monochrome. No accent word (§2). Pattern carried by --color-grid faintness.
+  type-press: display-dominant. Fraunces only; mono eyebrow is chrome-scale.
+  footer:     absent. Wordmark lives in the eyebrow.
+-->
+
+<span class="canvas-label">→ OG card · 1200×630 · screenshot this for og:image meta tag</span>
+<article class="canvas canvas-og">
+  <div class="col-main">
+    <p class="eyebrow">Loop &amp; Gate · Grow Field Guide</p>
+    <h1 class="headline">Nine gates between shipped software and the right people.</h1>
+  </div>
+  <div class="col-pattern">
+    <ul class="gate-index">
+      <li>How much does it deserve?</li>
+      <li>Who is the audience?</li>
+      <li>What would a win be?</li>
+      <li>Ready to show?</li>
+      <li>What is the one claim?</li>
+      <li>Does the design carry it?</li>
+      <li>Is the copy true?</li>
+      <li>Right channel and time?</li>
+      <li>Did it work?</li>
+    </ul>
+  </div>
+</article>
+
+<span class="canvas-label">→ In-page hero · 1440×600 · screenshot this for the article header</span>
+<article class="canvas canvas-hero">
+  <div class="col-main">
+    <p class="eyebrow">Loop &amp; Gate · Grow Field Guide</p>
+    <h1 class="headline">Nine gates between shipped software and the right people.</h1>
+  </div>
+  <div class="col-pattern">
+    <ul class="gate-index">
+      <li>How much does it deserve?</li>
+      <li>Who is the audience?</li>
+      <li>What would a win be?</li>
+      <li>Ready to show?</li>
+      <li>What is the one claim?</li>
+      <li>Does the design carry it?</li>
+      <li>Is the copy true?</li>
+      <li>Right channel and time?</li>
+      <li>Did it work?</li>
+    </ul>
+  </div>
+</article>
+
+<!--
+Companion meta
+  url:   /loop-and-gate/grow-field-guide/
+  slug:  grow-field-guide
+  image: grow-field-guide-og.png
+  alt:   "Nine gates between shipped software and the right people." over a faint index of the grow gates.
+-->
+</body>
+</html>

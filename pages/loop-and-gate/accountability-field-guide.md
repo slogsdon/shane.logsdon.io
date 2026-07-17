@@ -3,7 +3,7 @@ title: 'The Accountability Field Guide'
 layout: 'partials::layouts/loop-and-gate-guide'
 date: 2026-07-14
 slug: accountability-field-guide
-image: loop-and-gate-og.png
+image: accountability-field-guide-og.png
 description: >-
   Eight gates for the loop on your own follow-through: what to commit to, facing
   what you actually did, and the deferral engine that catches the task you keep
