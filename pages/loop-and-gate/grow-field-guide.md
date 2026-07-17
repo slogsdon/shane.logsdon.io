@@ -4,6 +4,7 @@ layout: 'partials::layouts/loop-and-gate-guide'
 date: 2026-07-12
 slug: grow-field-guide
 image: grow-field-guide-og.png
+heroImage: grow-field-guide-hero.png
 description: >-
   The grow-side gates of the loop: taste, the one true claim, the right audience,
   and reading whether it actually worked, grouped into strategy, per-piece, and
