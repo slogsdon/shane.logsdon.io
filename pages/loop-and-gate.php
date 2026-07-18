@@ -200,9 +200,12 @@ $order = [
                 <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
                     <p class="folio col-span-12 sm:col-span-2"><span class="pos">02</span></p>
                     <div class="col-span-12 sm:col-span-10">
-                        <h3 class="font-display text-xl font-medium text-foreground">Install the Claude Code desktop app</h3>
+                        <h3 class="font-display text-xl font-medium text-foreground">Install the Claude desktop app</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             A normal app you double-click, no terminal required. Installers are on <a class="link-quiet" href="https://code.claude.com/docs" target="_blank" rel="noreferrer noopener">Anthropic's download page</a>. On Windows, if it asks you to install Git first, say yes and reopen the app. Sign in, then click the Code tab.
+                        </p>
+                        <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
+                            Optional, but worth it: install the <a class="link-quiet" href="https://code.claude.com/docs/en/mobile" target="_blank" rel="noreferrer noopener">Claude mobile app</a> too. With Remote Control on, it lets you steer a session running on your desktop from your phone, or hand a task to Dispatch and get pinged when it needs you — the flexibility covered in <a class="link-quiet" href="#working-across-devices">working across devices</a> below.
                         </p>
                     </div>
                 </li>
@@ -211,10 +214,17 @@ $order = [
                     <div class="col-span-12 sm:col-span-10">
                         <h3 class="font-display text-xl font-medium text-foreground">Set up the Foundation first</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            On the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a>, click the green Code button, then Download ZIP. Unzip it, put the folder somewhere you will find it, and open it in the app with File &rarr; Open folder. That is the whole install — the skills are already inside, and the memory-loader turns on automatically.
+                            The Foundation installs the same way as the kits — one command in the chat, no download:
+                        </p>
+                        <pre class="mt-4 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/second-brain-agent</code></pre>
+                        <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
+                            Click Install on the menu that appears. Then, in your first session, ask it to run the setup — this is the step that places your vault (in iCloud on a Mac, so it syncs to your phone and tablet):
+                        </p>
+                        <p class="mt-3 max-w-prose border-l border-rule pl-4 text-[1rem] italic leading-relaxed text-muted-foreground">
+                            Run the Foundation setup script to place my vault.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Then run your first session by typing a plain-language goal:
+                            With that done, give it a real goal:
                         </p>
                         <p class="mt-3 max-w-prose border-l border-rule pl-4 text-[1rem] italic leading-relaxed text-muted-foreground">
                             Get to know me: ask about my current project and my preferences, then save what you learn.
@@ -225,10 +235,25 @@ $order = [
                         <p class="mt-3 max-w-prose border-l border-rule pl-4 text-[1rem] italic leading-relaxed text-muted-foreground">
                             Run the profile interview so you know how I write and what good looks like to me.
                         </p>
+                        <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
+                            One caveat: installed as a plugin, the Foundation's skills sit in a read-only cache, so on some platforms the agent can improve its memory but not rewrite its own skill files. If you want the full self-improving loop, download the repo instead — the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quickest start; the download is the complete one.
+                        </p>
                     </div>
                 </li>
                 <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
                     <p class="folio col-span-12 sm:col-span-2"><span class="pos">04</span></p>
+                    <div class="col-span-12 sm:col-span-10">
+                        <h3 class="font-display text-xl font-medium text-foreground">Install Obsidian and open your vault</h3>
+                        <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
+                            Your memory is a folder of plain markdown files, and <a class="link-quiet" href="https://obsidian.md/download" target="_blank" rel="noreferrer noopener">Obsidian</a> is the free app for reading and editing them — with links between notes and a graph you can watch grow. Install it on your desktop, choose <span class="smallcaps">Open folder as vault</span>, and point it at the vault the setup script just created.
+                        </p>
+                        <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
+                            Install the Obsidian app on your phone and tablet too, pointed at the same vault, and you have the cross-platform half: jot a thought into the inbox from your phone and the agent triages it on your desktop next session. It is optional — the system is just files and runs fine without it — but it is how you actually see and steer what the agent knows.
+                        </p>
+                    </div>
+                </li>
+                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
+                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">05</span></p>
                     <div class="col-span-12 sm:col-span-10">
                         <h3 class="font-display text-xl font-medium text-foreground">Add your first kit</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
@@ -285,7 +310,7 @@ $order = [
 </section>
 
 <!-- Working across devices -->
-<section class="mx-auto max-w-editorial px-6 pb-20">
+<section id="working-across-devices" class="mx-auto max-w-editorial px-6 pb-20 scroll-mt-24">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
         <div class="col-span-12 sm:col-span-3">
             <p class="smallcaps-lg">working across devices</p>
