@@ -284,6 +284,29 @@ $order = [
     </div>
 </section>
 
+<!-- Working across devices -->
+<section class="mx-auto max-w-editorial px-6 pb-20">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="smallcaps-lg">working across devices</p>
+        </div>
+        <div class="col-span-12 space-y-5 sm:col-span-9">
+            <p class="max-w-prose text-[1.1875rem] leading-[1.6] text-foreground">
+                None of this is chained to one desk. The whole stack runs from your phone, your tablet, or your laptop against one shared vault — because the session always runs on the machine that holds your files, and two Claude Code features reach it from anywhere.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                <span class="smallcaps">Remote Control</span> lets a session running on your desktop be driven from any other Claude app — web, mobile, tablet. Turn it on once (<span class="smallcaps">remoteControlAtStartup</span> in settings, or the desktop app's Claude Code settings) and you can start a session at your desk and keep steering it from the couch. <span class="smallcaps">Dispatch</span> is the other half: from the mobile app you hand off a task, it spins up a Code session on your desktop, and it notifies you when it needs a decision. Delegate from the beach, the work runs where your vault lives.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                Underneath, the vault just has to sync. On Apple devices that is iCloud, set up for you — with one caveat for a large vault: tell iCloud Drive to keep the Obsidian folder downloaded on each device, or you wait on it. On Android or Windows, where iCloud is not an option, Obsidian Sync, the community git plugin, or a Dropbox / OneDrive folder all do the same job. Sync is not instant, so a note you just wrote on your phone can read as missing or stale to a desktop session for a few seconds — that is lag, not loss.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                Running more than one session at once? Git keeps them from clobbering each other — the clean move is a separate worktree per session, deleted when you are done so copies do not pile up, with one machine, your desktop, as the single writer that commits and pushes to a private backup. All of this is Foundation-level: every kit rides the same vault, so none of it is kit-specific.
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- Suggested order -->
 <section class="mx-auto max-w-editorial px-6 pb-20">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
