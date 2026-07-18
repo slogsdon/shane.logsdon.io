@@ -362,6 +362,23 @@ $order = [
     </div>
 </section>
 
+<!-- Built on -->
+<section class="mx-auto max-w-editorial px-6 pb-20">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="smallcaps-lg">built on</p>
+        </div>
+        <div class="col-span-12 space-y-5 sm:col-span-9">
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                The gates are the original work here. The thinking underneath them is a synthesis of others': Andrej Karpathy's <a class="link-quiet" href="https://x.com/karpathy/status/1921368644069765486" target="_blank" rel="noreferrer noopener">system-prompt learning</a> — an agent that edits its own instructions — Addy Osmani's <a class="link-quiet" href="https://addyosmani.com/blog/self-improving-agents/" target="_blank" rel="noreferrer noopener">self-improving coding agents</a>, and a widely shared agent configuration by Forrest Chang that the Foundation's operating rules adapt. The <a class="link-quiet" href="https://github.com/slogsdon/second-brain-agent/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer noopener">Foundation's ARCHITECTURE.md</a> credits the full set.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                The kits reference — and never vendor — free community plugins for the loop between the gates: <a class="link-quiet" href="https://github.com/obra/superpowers-marketplace" target="_blank" rel="noreferrer noopener">superpowers</a> by obra, <a class="link-quiet" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noreferrer noopener">agent-skills</a> and <a class="link-quiet" href="https://github.com/addyosmani/web-quality-skills" target="_blank" rel="noreferrer noopener">web-quality-skills</a> by Addy Osmani, <a class="link-quiet" href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noreferrer noopener">worktrunk</a> by max-sixty, and <a class="link-quiet" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noreferrer noopener">ponytail</a> by Dietrich Gebert. Each stays theirs; swap in your own equivalents any time.
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- CTA / Reference -->
 <section class="relative mx-auto max-w-editorial px-6 pb-24">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
