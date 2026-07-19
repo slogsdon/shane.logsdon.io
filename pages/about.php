@@ -6,7 +6,7 @@ $this->layout('partials::layouts/main', [
 ]);
 $settings = require('resources/settings.php');
 // Honest freshness: last real content change from git, not build time.
-$aboutModified = @trim((string) shell_exec('git log -1 --format=%cs -- pages/about.php 2>/dev/null')) ?: '2026-07-18';
+$aboutModified = @trim((string) shell_exec('git log -1 --format=%cI -- pages/about.php 2>/dev/null')) ?: '2026-07-18T00:00:00-04:00';
 
 $expertise = [
     ['num' => '01', 'title' => 'Payment systems',     'body' => 'Designing scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns.'],

@@ -87,8 +87,8 @@ $readTime = ceil(str_word_count(strip_tags($body)) / $settings->avgWordsPerMinut
     "@id": <?= json_encode('https://shane.logsdon.io' . $url . '#Article') ?>,
     "headline": <?= json_encode($title) ?>,
     "url": <?= json_encode('https://shane.logsdon.io' . $url) ?>,
-    "datePublished": "<?= date('Y-m-d', $ts) ?>",
-    "dateModified": "<?= date('Y-m-d', $modTs) ?>",
+    "datePublished": "<?= date('c', $ts) ?>",
+    "dateModified": "<?= date('c', $modTs) ?>",
     "author": {
         "@type": "Person",
         "@id": "https://shane.logsdon.io/about/#Person",
