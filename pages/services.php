@@ -46,7 +46,7 @@ $faqs = [
         A web presence system that actively works to get you <span class="t-accent">found</span>.
     </h1>
     <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3">
-        <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
+        <a href="#request-audit" class="btn-arrow btn-arrow--accent">Request a free audit</a>
         <p class="text-sm text-muted-foreground">Free. No obligation. Takes about 48 hours.</p>
     </div>
 </section>
@@ -206,7 +206,7 @@ $proofQuotes = [];
 </section>
 
 <!-- CTA -->
-<section class="relative mx-auto max-w-editorial px-6 pb-24">
+<section id="request-audit" class="relative mx-auto max-w-editorial px-6 pb-24">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
         <div class="col-span-12 sm:col-span-3">
             <p class="smallcaps-lg">get started</p>
@@ -218,10 +218,8 @@ $proofQuotes = [];
             <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 I'll review your Google Business Profile and web presence and show you exactly what's working, what's missing, and what it's likely costing you in lost search traffic.
             </p>
-            <div class="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
-                <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
-                <p class="text-sm text-muted-foreground">Free. No obligation. Takes about 48 hours.</p>
-            </div>
+            <p class="mt-3 max-w-prose text-sm text-muted-foreground">Free. No obligation. Takes about 48 hours.</p>
+            <?php $this->insert('partials::components/audit-form'); ?>
         </div>
     </div>
 </section>

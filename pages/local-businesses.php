@@ -20,7 +20,7 @@ $this->layout('partials::layouts/main', [
         In April 2026, 40 newly registered Louisville-area businesses had no Google listing at all. Another 30 had a listing but no working website. That's nearly two out of three new businesses with a gap between where customers look and what they find, and the cost shows up before most owners realize it's happening.
     </p>
     <div class="mt-10">
-        <a href="/contact/" class="btn-arrow btn-arrow--accent">Get your free GBP audit</a>
+        <a href="#request-audit" class="btn-arrow btn-arrow--accent">Get your free GBP audit</a>
     </div>
 </section>
 
@@ -146,7 +146,7 @@ $this->layout('partials::layouts/main', [
 </section>
 
 <!-- Free audit CTA -->
-<section class="relative mx-auto max-w-editorial px-6 pb-24">
+<section id="request-audit" class="relative mx-auto max-w-editorial px-6 pb-24">
     <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
         <div class="col-span-12 sm:col-span-3">
             <p class="smallcaps-lg">free audit</p>
@@ -161,9 +161,7 @@ $this->layout('partials::layouts/main', [
             <p class="mt-3 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 No pitch attached. You get the report and decide whether to do anything with it.
             </p>
-            <div class="mt-8">
-                <a href="/contact/" class="btn-arrow btn-arrow--accent">Request your free audit</a>
-            </div>
+            <?php $this->insert('partials::components/audit-form'); ?>
         </div>
     </div>
 </section>

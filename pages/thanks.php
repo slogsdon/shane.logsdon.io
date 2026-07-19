@@ -17,7 +17,7 @@ $this->layout('partials::layouts/main', [
         You&rsquo;re all <span class="t-accent">set</span>.
     </h1>
     <p class="mt-8 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-        I&rsquo;ll look at your site and follow up within one business day.
+        Your message came through. I&rsquo;ll follow up within one business day.
     </p>
     <div class="mt-10">
         <a href="/" class="btn-arrow">Back to the site</a>
