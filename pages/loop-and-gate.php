@@ -19,8 +19,8 @@ $pieces = [
         'name' => 'The Foundation',
         'slug' => 'loop-and-gate-foundation',
         'repo' => $repos['foundation'],
-        'body' => 'An AI agent that remembers you and gets a little sharper every session. Its memory is plain, readable notes in an Obsidian vault — no vector database, no cloud service, nothing to sign up for. It captures what you tell it, files it, and writes down one lesson at the end of each session.',
-        'gives' => 'Cross-session memory, so your projects and decisions survive the window closing. And your voice and taste profiles — a short interview turns "how you write" and "what good looks like to you" into notes the kits can read.',
+        'body' => 'An AI agent that remembers you and gets a little sharper every session. Its memory is plain, readable notes in an Obsidian vault, with no vector database, no cloud service, and nothing to sign up for. It captures what you tell it, files it, and writes down one lesson at the end of each session.',
+        'gives' => 'Cross-session memory, so your projects and decisions survive the window closing. Your voice and taste profiles come from a short interview that turns "how you write" and "what good looks like to you" into notes the kits can read.',
         'needs' => 'Not a plugin. It is a folder you open and work inside. The skills live in the folder, and a memory-loader turns on automatically every time you open it.',
     ],
     [
@@ -28,7 +28,7 @@ $pieces = [
         'slug' => 'loop-and-gate-build-kit',
         'repo' => $repos['build'],
         'guide' => '/loop-and-gate/build-field-guide/',
-        'body' => 'Turns "an AI agent that writes code" into "an AI agent that ships good software." It is a map of the eleven points in a build where a human has to decide, and how to work each one — even the ones whose expertise you do not have yet.',
+        'body' => 'Turns "an AI agent that writes code" into "an AI agent that ships good software." It is a map of the eleven points in a build where a human has to decide, and how to work each one, even the ones whose expertise you do not have yet.',
         'gives' => 'Should this exist at all? Who is it for, and what is a win? Is the plan right? Is the architecture sane? Is the agent off the rails? Does the test prove it, or is it a demo? And above all of them, the master gate: how much of this process does this change even deserve, because a typo fix and a billing change do not get the same treatment.',
         'needs' => 'The gates sit on top of an actual build loop, so you also install two free public plugins that provide the loop itself (superpowers and agent-skills). Works with or without the Foundation, better with it.',
     ],
@@ -48,7 +48,7 @@ $pieces = [
         'guide' => '/loop-and-gate/accountability-field-guide/',
         'body' => 'Points the loop at your own follow-through. A daily rhythm with eight gates: set the one thing that matters today, capture what you actually did, reckon honestly at night, and get caught when you keep quietly deferring the hard thing.',
         'gives' => 'The deferral engine is the part that makes it more than a journal. Every morning focus that does not show up in the day\'s log gets counted, and at three strikes it stops being polite and forces a decision: re-commit with a reason, or kill it.',
-        'needs' => 'Nothing. It runs on Claude alone — no extra plugins, no account, no local model. It keeps plain-text state by default, and uses your Obsidian vault instead when one is present.',
+        'needs' => 'Nothing. It runs on Claude alone, with no extra plugins, no account, and no local model. It keeps plain-text state by default, and uses your Obsidian vault instead when one is present.',
     ],
 ];
 
@@ -174,7 +174,7 @@ $order = [
                 You build something with the Build Kit. You take it to market with the Grow Kit, whose final gate reads whether it actually landed and writes those customer signals back into the Foundation vault. The Build Kit's first gate reads those same signals to decide what is worth building next. And the Accountability Kit runs underneath the whole thing, so when a build stalls or a launch never goes out, the nightly reckoning is where it gets caught instead of quietly slipping.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                The Foundation is the shared bus in the middle. It is how the halves talk to each other, and it is why the profiles and memory are worth setting up first. You do not need all four to get value — each kit stands on its own, with the one exception that Grow needs the Foundation. Start with what maps to your actual problem and add the rest when you feel the seam.
+                The Foundation is the shared bus in the middle. It is how the halves talk to each other, and it is why the profiles and memory are worth setting up first. You do not need all four to get value. Each kit stands on its own, with the one exception that Grow needs the Foundation. Start with what maps to your actual problem and add the rest when you feel the seam.
             </p>
         </div>
     </div>
@@ -208,7 +208,7 @@ $order = [
                             A normal app you double-click, no terminal required. Installers are on <a class="link-quiet" href="https://code.claude.com/docs" target="_blank" rel="noreferrer noopener">Anthropic's download page</a>. On Windows, if it asks you to install Git first, say yes and reopen the app. Sign in, then click the Code tab.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Optional, but worth it: install the <a class="link-quiet" href="https://code.claude.com/docs/en/mobile" target="_blank" rel="noreferrer noopener">Claude mobile app</a> too. With Remote Control on, it lets you steer a session running on your desktop from your phone, or hand a task to Dispatch and get pinged when it needs you — the flexibility covered in <a class="link-quiet" href="#working-across-devices">working across devices</a> below.
+                            Optional, but worth it: install the <a class="link-quiet" href="https://code.claude.com/docs/en/mobile" target="_blank" rel="noreferrer noopener">Claude mobile app</a> too. With Remote Control on, it lets you steer a session running on your desktop from your phone, or hand a task to Dispatch and get pinged when it needs you. That flexibility is covered in <a class="link-quiet" href="#working-across-devices">working across devices</a> below.
                         </p>
                     </div>
                 </li>
@@ -217,11 +217,11 @@ $order = [
                     <div class="col-span-12 sm:col-span-10">
                         <h3 class="font-display text-xl font-medium text-foreground">Set up the Foundation first</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            The Foundation installs the same way as the kits — one command in the chat, no download:
+                            The Foundation installs the same way as the kits: one command in the chat, no download:
                         </p>
                         <pre class="mt-4 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-foundation</code></pre>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Click Install on the menu that appears. Then, in your first session, ask it to run the setup — this is the step that places your vault (in iCloud on a Mac, so it syncs to your phone and tablet):
+                            Click Install on the menu that appears. Then, in your first session, ask it to run the setup. This is the step that places your vault (in iCloud on a Mac, so it syncs to your phone and tablet):
                         </p>
                         <p class="mt-3 max-w-prose border-l border-rule pl-4 text-[1rem] italic leading-relaxed text-muted-foreground">
                             Run the Foundation setup script to place my vault.
@@ -233,13 +233,13 @@ $order = [
                             Get to know me: ask about my current project and my preferences, then save what you learn.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            While you are here, seed your voice and taste — the Grow Kit will need them:
+                            While you are here, seed your voice and taste, which the Grow Kit will need:
                         </p>
                         <p class="mt-3 max-w-prose border-l border-rule pl-4 text-[1rem] italic leading-relaxed text-muted-foreground">
                             Run the profile interview so you know how I write and what good looks like to me.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            One caveat: installed as a plugin, the Foundation's skills sit in a read-only cache, so on some platforms the agent can improve its memory but not rewrite its own skill files. If you want the full self-improving loop, download the repo instead — the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quickest start; the download is the complete one.
+                            One caveat: installed as a plugin, the Foundation's skills sit in a read-only cache, so on some platforms the agent can improve its memory but not rewrite its own skill files. If you want the full self-improving loop, download the repo instead. Use the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quickest start; the download is the complete one.
                         </p>
                     </div>
                 </li>
@@ -248,10 +248,10 @@ $order = [
                     <div class="col-span-12 sm:col-span-10">
                         <h3 class="font-display text-xl font-medium text-foreground">Install Obsidian and open your vault</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Your memory is a folder of plain markdown files, and <a class="link-quiet" href="https://obsidian.md/download" target="_blank" rel="noreferrer noopener">Obsidian</a> is the free app for reading and editing them — with links between notes and a graph you can watch grow. Install it on your desktop, choose <span class="smallcaps">Open folder as vault</span>, and point it at the vault the setup script just created.
+                            Your memory is a folder of plain markdown files, and <a class="link-quiet" href="https://obsidian.md/download" target="_blank" rel="noreferrer noopener">Obsidian</a> is the free app for reading and editing them, with links between notes and a graph you can watch grow. Install it on your desktop, choose <span class="smallcaps">Open folder as vault</span>, and point it at the vault the setup script just created.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Install the Obsidian app on your phone and tablet too, pointed at the same vault, and you have the cross-platform half: jot a thought into the inbox from your phone and the agent triages it on your desktop next session. It is optional — the system is just files and runs fine without it — but it is how you actually see and steer what the agent knows.
+                            Install the Obsidian app on your phone and tablet too, pointed at the same vault, and you have the cross-platform half: jot a thought into the inbox from your phone and the agent triages it on your desktop next session. It is optional, since the system is just files and runs fine without it, but it is how you actually see and steer what the agent knows.
                         </p>
                     </div>
                 </li>
@@ -260,7 +260,7 @@ $order = [
                     <div class="col-span-12 sm:col-span-10">
                         <h3 class="font-display text-xl font-medium text-foreground">Add your first kit</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Kits install differently from the Foundation — they are plugins, added with one command in the chat, no download. The simplest to start with is the Accountability Kit, because it needs nothing else.
+                            Kits install differently from the Foundation. They are plugins, added with one command in the chat, no download. The simplest to start with is the Accountability Kit, because it needs nothing else.
                         </p>
                         <pre class="mt-4 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-accountability-kit</code></pre>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
@@ -284,13 +284,13 @@ $order = [
                 With the Foundation set up, each kit is a one-time plugin install plus, in two cases, a couple of free public plugins that provide the underlying loop.
             </p>
 
-            <p class="mt-10 smallcaps">accountability kit — needs nothing else</p>
+            <p class="mt-10 smallcaps">accountability kit: needs nothing else</p>
             <pre class="mt-3 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-accountability-kit</code></pre>
             <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                 Then use the five daily commands: <span class="smallcaps">/morning</span> sets the one thing today, <span class="smallcaps">/log</span> captures what you did as you go, <span class="smallcaps">/eod</span> reckons honestly at night, <span class="smallcaps">/plan-tomorrow</span> sets you up to start cold, and <span class="smallcaps">/weekly-signals</span> reads your patterns once a week.
             </p>
 
-            <p class="mt-10 smallcaps">build kit — needs the build-loop plugins</p>
+            <p class="mt-10 smallcaps">build kit: needs the build-loop plugins</p>
             <pre class="mt-3 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-build-kit
 /plugin marketplace add obra/superpowers-marketplace
 /plugin install superpowers@superpowers-marketplace
@@ -300,7 +300,7 @@ $order = [
                 The first line is the gates. The rest are the free public plugins that run the loop underneath them. Then, at any build decision, run <span class="smallcaps">/loop-and-gate</span> and tell it what you want to build. It sizes the change first, then walks you only through the gates that change actually earns.
             </p>
 
-            <p class="mt-10 smallcaps">grow kit — needs the foundation plus the design and writing plugins</p>
+            <p class="mt-10 smallcaps">grow kit: needs the foundation plus the design and writing plugins</p>
             <pre class="mt-3 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-grow-kit
 /plugin marketplace add slogsdon/claude-code-config
 /plugin install skills-design@slogsdon-claude-code-config
@@ -320,16 +320,16 @@ $order = [
         </div>
         <div class="col-span-12 space-y-5 sm:col-span-9">
             <p class="max-w-prose text-[1.1875rem] leading-[1.6] text-foreground">
-                None of this is chained to one desk. The whole stack runs from your phone, your tablet, or your laptop against one shared vault — because the session always runs on the machine that holds your files, and two Claude Code features reach it from anywhere.
+                None of this is chained to one desk. The whole stack runs from your phone, your tablet, or your laptop against one shared vault, because the session always runs on the machine that holds your files, and two Claude Code features reach it from anywhere.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                <span class="smallcaps">Remote Control</span> lets a session running on your desktop be driven from any other Claude app — web, mobile, tablet. Turn it on once (<span class="smallcaps">remoteControlAtStartup</span> in settings, or the desktop app's Claude Code settings) and you can start a session at your desk and keep steering it from the couch. <span class="smallcaps">Dispatch</span> is the other half: from the mobile app you hand off a task, it spins up a Code session on your desktop, and it notifies you when it needs a decision. Delegate from the beach, the work runs where your vault lives.
+                <span class="smallcaps">Remote Control</span> lets a session running on your desktop be driven from any other Claude app: web, mobile, or tablet. Turn it on once (<span class="smallcaps">remoteControlAtStartup</span> in settings, or the desktop app's Claude Code settings) and you can start a session at your desk and keep steering it from the couch. <span class="smallcaps">Dispatch</span> is the other half: from the mobile app you hand off a task, it spins up a Code session on your desktop, and it notifies you when it needs a decision. Delegate from the beach, the work runs where your vault lives.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Underneath, the vault just has to sync. On Apple devices that is iCloud, set up for you — with one caveat for a large vault: tell iCloud Drive to keep the Obsidian folder downloaded on each device, or you wait on it. On Android or Windows, where iCloud is not an option, Obsidian Sync, the community git plugin, or a Dropbox / OneDrive folder all do the same job. Sync is not instant, so a note you just wrote on your phone can read as missing or stale to a desktop session for a few seconds — that is lag, not loss.
+                Underneath, the vault just has to sync. On Apple devices that is iCloud, set up for you, with one caveat for a large vault: tell iCloud Drive to keep the Obsidian folder downloaded on each device, or you wait on it. On Android or Windows, where iCloud is not an option, Obsidian Sync, the community git plugin, or a Dropbox / OneDrive folder all do the same job. Sync is not instant, so a note you just wrote on your phone can read as missing or stale to a desktop session for a few seconds. That is lag, not loss.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Running more than one session at once? Git keeps them from clobbering each other — the clean move is a separate worktree per session, deleted when you are done so copies do not pile up, with one machine, your desktop, as the single writer that commits and pushes to a private backup. All of this is Foundation-level: every kit rides the same vault, so none of it is kit-specific.
+                Running more than one session at once? Git keeps them from clobbering each other. The clean move is a separate worktree per session, deleted when you are done so copies do not pile up, with one machine, your desktop, as the single writer that commits and pushes to a private backup. All of this is Foundation-level: every kit rides the same vault, so none of it is kit-specific.
             </p>
         </div>
     </div>
@@ -373,10 +373,10 @@ $order = [
         </div>
         <div class="col-span-12 space-y-5 sm:col-span-9">
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                The gates are the original work here. The thinking underneath them is a synthesis of others': Andrej Karpathy's <a class="link-quiet" href="https://x.com/karpathy/status/1921368644069765486" target="_blank" rel="noreferrer noopener">system-prompt learning</a> — an agent that edits its own instructions — Addy Osmani's <a class="link-quiet" href="https://addyosmani.com/blog/self-improving-agents/" target="_blank" rel="noreferrer noopener">self-improving coding agents</a>, and a widely shared agent configuration by Forrest Chang that the Foundation's operating rules adapt. The <a class="link-quiet" href="https://github.com/slogsdon/loop-and-gate-foundation/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer noopener">Foundation's ARCHITECTURE.md</a> credits the full set.
+                The gates are the original work here. The thinking underneath them is a synthesis of others': Andrej Karpathy's system-prompt learning, an agent that edits its own instructions, Addy Osmani's <a class="link-quiet" href="https://addyosmani.com/blog/self-improving-agents/" target="_blank" rel="noreferrer noopener">self-improving coding agents</a>, and a widely shared agent configuration by Forrest Chang that the Foundation's operating rules adapt. The <a class="link-quiet" href="https://github.com/slogsdon/loop-and-gate-foundation/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer noopener">Foundation's ARCHITECTURE.md</a> credits the full set.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                The kits reference — and never vendor — free community plugins for the loop between the gates: <a class="link-quiet" href="https://github.com/obra/superpowers-marketplace" target="_blank" rel="noreferrer noopener">superpowers</a> by obra, <a class="link-quiet" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noreferrer noopener">agent-skills</a> and <a class="link-quiet" href="https://github.com/addyosmani/web-quality-skills" target="_blank" rel="noreferrer noopener">web-quality-skills</a> by Addy Osmani, <a class="link-quiet" href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noreferrer noopener">worktrunk</a> by max-sixty, and <a class="link-quiet" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noreferrer noopener">ponytail</a> by Dietrich Gebert. Each stays theirs; swap in your own equivalents any time.
+                The kits reference, and never vendor, free community plugins for the loop between the gates: <a class="link-quiet" href="https://github.com/obra/superpowers-marketplace" target="_blank" rel="noreferrer noopener">superpowers</a> by obra, <a class="link-quiet" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noreferrer noopener">agent-skills</a> and <a class="link-quiet" href="https://github.com/addyosmani/web-quality-skills" target="_blank" rel="noreferrer noopener">web-quality-skills</a> by Addy Osmani, <a class="link-quiet" href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noreferrer noopener">worktrunk</a> by max-sixty, and <a class="link-quiet" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noreferrer noopener">ponytail</a> by Dietrich Gebert. Each stays theirs; swap in your own equivalents any time.
             </p>
         </div>
     </div>
@@ -393,7 +393,7 @@ $order = [
                 Start with the Foundation. Add the kit that matches your problem.
             </h2>
             <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Every repo has its own <span class="smallcaps">getting-started.md</span> — a no-terminal walkthrough — and a <span class="smallcaps">reference/</span> folder with the gates in plain language. This page is the map; those are the detail.
+                Every repo has its own <span class="smallcaps">getting-started.md</span>, a no-terminal walkthrough, and a <span class="smallcaps">reference/</span> folder with the gates in plain language. This page is the map; those are the detail.
             </p>
             <ul class="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
                 <li><a href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow btn-arrow--accent">Foundation</a></li>
