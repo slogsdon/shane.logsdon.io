@@ -239,7 +239,7 @@ $order = [
                             Run the profile interview so you know how I write and what good looks like to me.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            One caveat: installed as a plugin, the Foundation's skills sit in a read-only cache, so on some platforms the agent can improve its memory but not rewrite its own skill files. If you want the full self-improving loop, download the repo instead. Use the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quickest start; the download is the complete one.
+                            One caveat: installed as a plugin, the Foundation's skills sit in a read-only cache, so on some platforms the agent can improve its memory but not rewrite its own skill files. If you want the full self-improving loop, download the repo instead. Use the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quickest start. The download is the complete one.
                         </p>
                     </div>
                 </li>
@@ -376,7 +376,7 @@ $order = [
                 The gates are the original work here. The thinking underneath them is a synthesis of others': Andrej Karpathy's system-prompt learning, an agent that edits its own instructions, Addy Osmani's <a class="link-quiet" href="https://addyosmani.com/blog/self-improving-agents/" target="_blank" rel="noreferrer noopener">self-improving coding agents</a>, and a widely shared agent configuration by Forrest Chang that the Foundation's operating rules adapt. The <a class="link-quiet" href="https://github.com/slogsdon/loop-and-gate-foundation/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer noopener">Foundation's ARCHITECTURE.md</a> credits the full set.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                The kits reference, and never vendor, free community plugins for the loop between the gates: <a class="link-quiet" href="https://github.com/obra/superpowers-marketplace" target="_blank" rel="noreferrer noopener">superpowers</a> by obra, <a class="link-quiet" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noreferrer noopener">agent-skills</a> and <a class="link-quiet" href="https://github.com/addyosmani/web-quality-skills" target="_blank" rel="noreferrer noopener">web-quality-skills</a> by Addy Osmani, <a class="link-quiet" href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noreferrer noopener">worktrunk</a> by max-sixty, and <a class="link-quiet" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noreferrer noopener">ponytail</a> by Dietrich Gebert. Each stays theirs; swap in your own equivalents any time.
+                The kits reference, and never vendor, free community plugins for the loop between the gates: <a class="link-quiet" href="https://github.com/obra/superpowers-marketplace" target="_blank" rel="noreferrer noopener">superpowers</a> by obra, <a class="link-quiet" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noreferrer noopener">agent-skills</a> and <a class="link-quiet" href="https://github.com/addyosmani/web-quality-skills" target="_blank" rel="noreferrer noopener">web-quality-skills</a> by Addy Osmani, <a class="link-quiet" href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noreferrer noopener">worktrunk</a> by max-sixty, and <a class="link-quiet" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noreferrer noopener">ponytail</a> by Dietrich Gebert. Each stays theirs. Swap in your own equivalents any time.
             </p>
         </div>
     </div>
@@ -393,7 +393,7 @@ $order = [
                 Start with the Foundation. Add the kit that matches your problem.
             </h2>
             <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Every repo has its own <span class="smallcaps">getting-started.md</span>, a no-terminal walkthrough, and a <span class="smallcaps">reference/</span> folder with the gates in plain language. This page is the map; those are the detail.
+                Every repo has its own <span class="smallcaps">getting-started.md</span>, a no-terminal walkthrough, and a <span class="smallcaps">reference/</span> folder with the gates in plain language. This page is the map. Those are the detail.
             </p>
             <ul class="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
                 <li><a href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow btn-arrow--accent">Foundation</a></li>
