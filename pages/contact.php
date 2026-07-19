@@ -4,7 +4,7 @@ $this->layout('partials::layouts/main', [
     'description' => 'Book a free 20-minute call or send your site for a free audit. Shane Logsdon reviews your web presence and follows up within one business day.',
     'url' => '/contact/',
     'image' => 'og-default.png',
-    'imageAlt' => 'Shane Logsdon — start here',
+    'imageAlt' => 'Shane Logsdon, start here',
 ]);
 ?>
 

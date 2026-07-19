@@ -5,7 +5,7 @@ $this->layout('partials::layouts/main', [
     'description' => 'Shane Logsdon leads developer advocacy at Global Payments, building developer experience at enterprise scale. Writing on fintech, developer tooling, payment APIs, and AI.',
     'url' => '/',
     'image' => 'og-default.png',
-    'imageAlt' => 'Shane Logsdon — systems that get found',
+    'imageAlt' => 'Shane Logsdon, systems that get found',
 ]);
 $articles = (array)json_decode(file_get_contents('resources/data/articles-list.json'));
 $activeArticles = array_filter($articles, fn($p) => !$p->archived);

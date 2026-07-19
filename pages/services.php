@@ -4,7 +4,7 @@ $this->layout('partials::layouts/main', [
     'description' => 'Done-for-you web presence: website build, conversion optimization, and ongoing AEO/SEO management. Built and managed by a practitioner who does this at enterprise scale.',
     'url' => '/services/',
     'image' => 'og-default.png',
-    'imageAlt' => 'Shane Logsdon — web presence systems',
+    'imageAlt' => 'Shane Logsdon, web presence systems',
 ]);
 
 $faqs = [
