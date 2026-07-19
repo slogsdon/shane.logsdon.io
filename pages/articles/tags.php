@@ -2,6 +2,8 @@
 $title = 'Article Tags';
 $this->layout('partials::layouts/main', [
     'title' => $title,
+    'description' => 'Browse Shane Logsdon\'s writing by topic — payment systems, developer tooling, fintech, engineering leadership, and system architecture.',
+    'url' => '/articles/tags/',
 ]);
 $tags = json_decode(file_get_contents('resources/data/tags.json'));
 $posts = (array)json_decode(file_get_contents("resources/data/articles-list.json"));
