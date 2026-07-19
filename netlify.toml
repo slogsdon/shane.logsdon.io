@@ -1,5 +1,5 @@
 [build]
-command = "npm install && npm run build:css && composer clean && composer build && php scripts/generate-md.php"
+command = "npm install && npm run build:css && composer clean && composer build && php scripts/generate-md.php && php scripts/indexnow.php"
 publish = "dist"
 
 [[plugins]]
