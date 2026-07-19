@@ -49,7 +49,7 @@ $years = array_reduce($posts, function ($result, $post) {
     $categoryLabel = isset($post->category) && isset($allCategories[$post->category])
         ? $allCategories[$post->category]
         : ($post->category ?? '');
-    $postUrl = sprintf('/%s/%s/%s/', $post->type, $post->category, $postSlug);
+    $postUrl = sprintf('/archive/%s/%s/', $year, $postSlug);
 ?>
 <article class="group relative grid grid-cols-12 gap-4 border-t border-rule py-8 sm:py-10 archive-card"
          data-year="<?= $year ?>"
