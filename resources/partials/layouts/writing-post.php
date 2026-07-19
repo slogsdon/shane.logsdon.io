@@ -35,6 +35,9 @@ $this->layout('partials::layouts/main', [
     'ogType' => 'article',
     'publishedTime' => DateTime::createFromFormat('U', $originalDate)->format('c'),
     'modifiedTime' => DateTime::createFromFormat('U', isset($modified) ? $modified : $originalDate)->format('c'),
+    'markdownUrl' => (!$meta->archived && $meta->type === 'articles')
+        ? sprintf('/articles/%s/%s.md', $meta->category, $slug)
+        : null,
 ]);
 $formattedDate = DateTime::createFromFormat('U', $originalDate)->format('F j, Y');
 $folioDate = DateTime::createFromFormat('U', $originalDate)->format('Y.m.d');

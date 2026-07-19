@@ -7,6 +7,7 @@
     'ogType' => !empty($ogType) ? $ogType : null,
     'publishedTime' => !empty($publishedTime) ? $publishedTime : null,
     'modifiedTime' => !empty($modifiedTime) ? $modifiedTime : null,
+    'markdownUrl' => !empty($markdownUrl) ? $markdownUrl : null,
     'noindex' => !empty($noindex) ? $noindex : false,
 ]); ?>
 
