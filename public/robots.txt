@@ -2,40 +2,54 @@ User-agent: *
 Disallow: /thanks/
 
 # AI crawlers and answer-engine bots are explicitly welcome.
+# A matched specific group REPLACES the generic one (robots spec), so the
+# /thanks/ disallow is repeated in each named group; Allow: / keeps the rest open.
 User-agent: GPTBot
 Allow: /
+Disallow: /thanks/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /thanks/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /thanks/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /thanks/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /thanks/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /thanks/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /thanks/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /thanks/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /thanks/
 
 User-agent: CCBot
 Allow: /
+Disallow: /thanks/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /thanks/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /thanks/
 
 Sitemap: https://shane.logsdon.io/sitemap.xml
