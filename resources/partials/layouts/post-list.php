@@ -4,6 +4,8 @@ $this->layout('partials::layouts/main', [
     'slug' => $slug,
     'url' => sprintf('/%s/', $slug),
     'description' => $description ?? null,
+    'image' => $image ?? null,
+    'imageAlt' => $imageAlt ?? null,
 ]);
 
 $allPosts = (array)json_decode(file_get_contents(sprintf('resources/data/%s-list.json', $slug)));
