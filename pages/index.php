@@ -1,8 +1,8 @@
 <?php
 $settings = require('resources/settings.php');
 $this->layout('partials::layouts/main', [
-    'title' => null,
-    'description' => 'Shane Logsdon, developer advocate at Global Payments and builder of web presence systems for local business owners. Writing on fintech, developer tooling, and AI.',
+    'title' => 'Payments & Developer Platforms',
+    'description' => 'Shane Logsdon leads developer advocacy at Global Payments, building developer experience at enterprise scale. Writing on fintech, developer tooling, payment APIs, and AI.',
     'url' => '/',
 ]);
 $articles = (array)json_decode(file_get_contents('resources/data/articles-list.json'));
@@ -89,29 +89,20 @@ $articleCount = count($activeArticles);
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://shane.logsdon.io/#WebSite",
-  "url": "https://shane.logsdon.io",
-  "name": "Shane Logsdon",
-  "author": {
-    "@id": "https://shane.logsdon.io/#Person"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://shane.logsdon.io/#Person",
   "name": "Shane Logsdon",
-  "url": "https://shane.logsdon.io",
-  "jobTitle": "Senior Director, Developer Advocacy",
+  "url": "https://shane.logsdon.io/about/",
+  "jobTitle": "Senior Director, Product Management – Developer Advocacy",
   "worksFor": { "@type": "Organization", "name": "Global Payments" },
+  "image": "https://shane.logsdon.io/images/headshot.jpeg",
   "sameAs": [
-    "https://www.linkedin.com/in/shanelogsdon",
     "https://github.com/slogsdon",
-    "https://x.com/shanelogsdon"
+    "https://www.linkedin.com/in/shanelogsdon",
+    "https://x.com/shanelogsdon",
+    "https://bsky.app/profile/shane.logsdon.io",
+    "https://gitlab.com/slogsdon",
+    "https://speakerdeck.com/slogsdon"
   ],
   "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
 }

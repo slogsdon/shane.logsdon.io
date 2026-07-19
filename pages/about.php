@@ -118,10 +118,10 @@ $expertise = [
   "dateModified": "<?= date('Y-m-d') ?>",
   "mainEntity": {
     "@type": "Person",
-    "@id": "https://shane.logsdon.io/about/#Person",
+    "@id": "https://shane.logsdon.io/#Person",
     "name": "Shane Logsdon",
     "url": "https://shane.logsdon.io/about/",
-    "jobTitle": "Senior Director, Developer Advocacy",
+    "jobTitle": "Senior Director, Product Management – Developer Advocacy",
     "worksFor": { "@type": "Organization", "name": "Global Payments" },
     "image": {
         "@type": "ImageObject",
@@ -133,9 +133,12 @@ $expertise = [
     "alternateName": "slogsdon",
     "description": "<?= htmlspecialchars($settings->author->shane->description) ?>",
     "sameAs": [
-        "https://www.linkedin.com/in/shanelogsdon",
         "https://github.com/slogsdon",
-        "https://x.com/shanelogsdon"
+        "https://www.linkedin.com/in/shanelogsdon",
+        "https://x.com/shanelogsdon",
+        "https://bsky.app/profile/shane.logsdon.io",
+        "https://gitlab.com/slogsdon",
+        "https://speakerdeck.com/slogsdon"
     ],
     "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
   }

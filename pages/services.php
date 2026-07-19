@@ -176,6 +176,20 @@ $faqs = [
 <script type="application/ld+json">
 <?= json_encode([
     '@context' => 'https://schema.org',
+    '@type' => 'ProfessionalService',
+    '@id' => 'https://shane.logsdon.io/services/#ProfessionalService',
+    'name' => 'Web Presence Systems for Local Business Owners',
+    'url' => 'https://shane.logsdon.io/services/',
+    'description' => 'Done-for-you web presence: website build, conversion optimization, and ongoing AEO/SEO management for local business owners, built and managed by a practitioner who does this at enterprise scale.',
+    'provider' => ['@id' => 'https://shane.logsdon.io/#Person'],
+    'areaServed' => ['@type' => 'Country', 'name' => 'United States'],
+    'serviceType' => ['Web design and development', 'Answer Engine Optimization', 'Search Engine Optimization', 'Web presence management'],
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
+</script>
+
+<script type="application/ld+json">
+<?= json_encode([
+    '@context' => 'https://schema.org',
     '@type' => 'FAQPage',
     'mainEntity' => array_map(fn($faq) => [
         '@type' => 'Question',

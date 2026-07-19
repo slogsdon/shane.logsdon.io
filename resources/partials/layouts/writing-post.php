@@ -38,6 +38,7 @@ $this->layout('partials::layouts/main', [
 ]);
 $formattedDate = DateTime::createFromFormat('U', $originalDate)->format('F j, Y');
 $folioDate = DateTime::createFromFormat('U', $originalDate)->format('Y.m.d');
+$isoDate = DateTime::createFromFormat('U', $originalDate)->format('Y-m-d');
 $readTime = ceil(str_word_count(strip_tags($content)) / $settings->avgWordsPerMinute);
 $typeLabel = $meta->type === 'speaking' ? 'speaking' : 'articles';
 $categoryLabel = isset($meta->category) && isset($allCategories[$meta->category])
@@ -67,7 +68,7 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
         <?php endif; ?>
 
         <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 folio">
-            <span><?= $folioDate ?></span>
+            <time datetime="<?= $isoDate ?>"><?= $folioDate ?></time>
             <span class="sr-only"><?= $formattedDate ?></span>
             <?php if ($meta->type === 'articles'): ?>
                 <span class="pos">/</span>
@@ -179,32 +180,59 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
 
 <?php $this->insert('partials::components/contact-cta'); ?>
 
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "@id": <?= json_encode('https://shane.logsdon.io' . $url . '#Article') ?>,
-    "headline": <?= json_encode($title) ?>,
-    "url": <?= json_encode('https://shane.logsdon.io' . $url) ?>,
-    "datePublished": "<?= DateTime::createFromFormat('U', $originalDate)->format('Y-m-d') ?>",
-    "dateModified": "<?= DateTime::createFromFormat('U', isset($modified) ? $modified : $originalDate)->format('Y-m-d') ?>",
-    "author": {
-        "@type": "Person",
-        "@id": "https://shane.logsdon.io/about/#Person",
-        "name": "Shane Logsdon",
-        "url": "https://shane.logsdon.io/about/"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Shane Logsdon"
-    },
-    "description": <?= json_encode($meta->description) ?>,
-    "isPartOf": {
-        "@type": "Blog",
-        "@id": "https://shane.logsdon.io/<?= $meta->type ?>/",
-        "name": "Shane Logsdon's <?= ucfirst($meta->type) ?>"
-    }
+<?php
+$isSpeaking = $meta->type === 'speaking';
+$ldType = $isSpeaking ? 'CreativeWork' : 'BlogPosting';
+$absUrl = 'https://shane.logsdon.io' . $url;
+$mainLd = [
+    '@context' => 'https://schema.org',
+    '@type' => $ldType,
+    '@id' => $absUrl . '#' . $ldType,
+    'headline' => $title,
+    'name' => $title,
+    'url' => $absUrl,
+    'mainEntityOfPage' => $absUrl,
+    'datePublished' => DateTime::createFromFormat('U', $originalDate)->format('Y-m-d'),
+    'dateModified' => DateTime::createFromFormat('U', isset($modified) ? $modified : $originalDate)->format('Y-m-d'),
+    'author' => ['@id' => 'https://shane.logsdon.io/#Person'],
+    'publisher' => ['@id' => 'https://shane.logsdon.io/#Person'],
+    'description' => $meta->description,
+    'isPartOf' => [
+        '@type' => $isSpeaking ? 'CollectionPage' : 'Blog',
+        '@id' => 'https://shane.logsdon.io/' . $meta->type . '/',
+        'name' => "Shane Logsdon's " . ucfirst($meta->type),
+    ],
+];
+if (!$isSpeaking && $categoryLabel) {
+    $mainLd['articleSection'] = $categoryLabel;
 }
+if (!empty($image)) {
+    $mainLd['image'] = 'https://shane.logsdon.io/images/' . $image;
+}
+
+if ($meta->archived) {
+    $section = ['name' => 'Archive', 'path' => '/archive/'];
+} elseif ($isSpeaking) {
+    $section = ['name' => 'Speaking', 'path' => '/speaking/'];
+} else {
+    $section = ['name' => 'Articles', 'path' => '/articles/'];
+}
+$breadcrumb = [
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => 'https://shane.logsdon.io/'],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => $section['name'], 'item' => 'https://shane.logsdon.io' . $section['path']],
+        ['@type' => 'ListItem', 'position' => 3, 'name' => $title, 'item' => $absUrl],
+    ],
+];
+?>
+<script type="application/ld+json">
+<?= json_encode($mainLd, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
+</script>
+
+<script type="application/ld+json">
+<?= json_encode($breadcrumb, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
 </script>
 
 <?php if (!empty($faqs) && is_array($faqs)): ?>

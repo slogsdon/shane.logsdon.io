@@ -3,6 +3,7 @@ $this->layout('partials::layouts/main', [
     'title' => $title,
     'slug' => $slug,
     'url' => '/archive/',
+    'description' => $description ?? null,
 ]);
 ?>
 

@@ -61,6 +61,19 @@
 <style id="site"><?= file_get_contents('public/_/site.css') ?></style>
 <style id="hljs-atom-one"><?= file_get_contents('public/_/hljs-atom-one.css') ?></style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://shane.logsdon.io/#WebSite",
+  "url": "https://shane.logsdon.io/",
+  "name": <?= json_encode($settings->title) ?>,
+  "description": <?= json_encode($settings->description) ?>,
+  "inLanguage": "en",
+  "publisher": { "@id": "https://shane.logsdon.io/#Person" }
+}
+</script>
+
 <?php if (!isset($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] !== 'localhost'): ?>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y89SVEQW9"></script>
