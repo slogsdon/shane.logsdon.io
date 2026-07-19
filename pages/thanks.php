@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'You\'re all set',
-    'description' => 'Thanks — your request came through. Shane will follow up within one business day.',
+    'description' => 'Your request came through. Shane will follow up within one business day.',
     'url' => '/thanks/',
     'noindex' => true,
 ]);

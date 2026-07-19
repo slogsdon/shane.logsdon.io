@@ -170,7 +170,7 @@ $proofQuotes = [];
                         <dd class="mt-1 font-display text-3xl font-medium text-foreground">0 &rarr; full set</dd>
                     </div>
                 </dl>
-                <p class="mt-4 text-sm text-muted-foreground">Search-index and AI-citation results are tracked monthly and published as they land.</p>
+                <p class="mt-4 text-sm text-muted-foreground">I track search-index and AI-citation results monthly and publish them as they land.</p>
             </div>
             <?php if (!empty($proofQuotes)): ?>
             <ul class="space-y-6">

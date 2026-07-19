@@ -29,7 +29,7 @@ $articleCount = count($activeArticles);
 
         <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-12 sm:gap-8">
             <p class="col-span-1 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft sm:col-span-7">
-                I lead developer advocacy at Global Payments, building developer-experience infrastructure at enterprise scale &mdash; payment APIs, SDKs, and the docs and tooling that make them usable. I write here about developer platforms, payments, and AI-assisted engineering.
+                I lead developer advocacy at Global Payments, where I build developer-experience infrastructure at enterprise scale. That work is the payment APIs, SDKs, and documentation engineers actually reach for. I write here about developer platforms, payments, and AI-assisted engineering.
             </p>
         </div>
 
@@ -41,7 +41,7 @@ $articleCount = count($activeArticles);
         <p class="mt-10 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">
             I also run a small
             <a class="link-quiet" href="/services/">web presence practice</a>
-            for local business owners &mdash;
+            for local business owners, covering
             <a class="link-quiet" href="/services/">website build, AEO, and ongoing management</a>.
         </p>
     </div>

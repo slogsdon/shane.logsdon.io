@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
   'title' => 'Work',
-    'description' => 'Selected projects and work by Shane Logsdon — the Loop & Gate system, Hermes Dispatch, developer platforms at Global Payments, and a payments patent.',
+    'description' => 'Selected projects and work by Shane Logsdon, including the Loop & Gate system, Hermes Dispatch, developer platforms at Global Payments, and a payments patent.',
     'url' => '/work/',
 ]);
 $patentUrl =

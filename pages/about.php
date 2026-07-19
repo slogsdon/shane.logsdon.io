@@ -92,11 +92,13 @@ $expertise = [
                 make complex financial primitives feel inevitable to the engineers using them.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                On the side I build tools in the open &mdash;
+                On the side I build tools in the open. Two recent ones are
                 <a class="link-quiet" href="/loop-and-gate/">Loop &amp; Gate</a>,
                 an agentic build system, and
                 <a class="link-quiet" href="/hermes-dispatch/">Hermes Dispatch</a>,
-                a local-first agent dispatcher &mdash; alongside a few older projects in
+                a local-first agent dispatcher. I'm using that same Loop &amp; Gate workflow to build
+                <a class="link-quiet" href="/articles/strategic-insights/building-on-the-margins/">LeadSurface</a>,
+                with a few older projects collected in
                 <a class="link-quiet" href="/work/">Work</a>.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">

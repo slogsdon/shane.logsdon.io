@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/images/icons/icon-512x512.png">
 <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
-<link rel="alternate" type="application/atom+xml" title="Shane Logsdon — Atom feed" href="/feed.xml">
+<link rel="alternate" type="application/atom+xml" title="Shane Logsdon Atom feed" href="/feed.xml">
 <?php if (!empty($markdownUrl)): ?>
 <link rel="alternate" type="text/markdown" href="<?= $this->e($markdownUrl) ?>">
 <?php endif; ?>

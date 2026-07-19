@@ -24,8 +24,8 @@ $topicNoun = $slug === 'articles' ? 'article' : 'talk';
 $topicNounPlural = $topicCount === 1 ? $topicNoun : $topicNoun . 's';
 $topicLabel = strtolower(trim(preg_replace('/\b(Articles?|Talks?|Engagements?)\b/i', '', $title)));
 $topicDescription = $topicCount > 0
-    ? sprintf('%d %s on %s by Shane Logsdon — developer platforms, payments, and AI tooling.', $topicCount, $topicNounPlural, $topicLabel)
-    : sprintf('%s on %s by Shane Logsdon — developer platforms, payments, and AI tooling.', ucfirst($topicNounPlural), $topicLabel);
+    ? sprintf('%d %s on %s by Shane Logsdon, covering developer platforms, payments, and AI tooling.', $topicCount, $topicNounPlural, $topicLabel)
+    : sprintf('%s on %s by Shane Logsdon, covering developer platforms, payments, and AI tooling.', ucfirst($topicNounPlural), $topicLabel);
 
 $this->layout('partials::layouts/main', [
     'title' => $title,

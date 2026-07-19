@@ -1,5 +1,5 @@
 <?php
-// Newsletter signup via Kit (ConvertKit) — plain HTML form POST, no JavaScript.
+// Newsletter signup via Kit (ConvertKit). Plain HTML form POST, no JavaScript.
 // Dormant until configured: set the KIT_FORM_ID build env var to your Kit form
 // ID (Kit → your form → Embed → HTML: the number in the action URL). Renders
 // nothing until set, so no broken form ever ships. Kit's free tier handles up
@@ -20,7 +20,7 @@ $kitAction = 'https://app.kit.com/forms/' . rawurlencode($kitFormId) . '/subscri
             </div>
             <div class="col-span-12 sm:col-span-8">
                 <p class="max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                    Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam; unsubscribe anytime.
+                    Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.
                 </p>
                 <form action="<?= htmlspecialchars($kitAction) ?>" method="post"
                       class="mt-5 flex flex-wrap items-baseline gap-3">
