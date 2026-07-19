@@ -33,12 +33,6 @@ package = "@netlify/plugin-lighthouse"
 # ---------------------------------------------------------------------------
 
 [[redirects]]
-from = "https://www.shane.logsdon.io/*"
-to = "https://shane.logsdon.io/:splat"
-status = 301
-force = true
-
-[[redirects]]
 from = "https://shanelogsdon.com/*"
 to = "https://shane.logsdon.io/:splat"
 status = 301
