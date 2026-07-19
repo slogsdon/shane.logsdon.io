@@ -100,7 +100,7 @@
     "description": "Suave is a possible replacement for the ASP.NET stack, but with some help, the two can be used together to build composable F# web applications.",
     "date": "2017-01-22",
     "category": "technical-deep-dives",
-    "archived": false,
+    "archived": true,
     "tags": [
       "backend-engineering",
       "functional-programming",
@@ -118,7 +118,7 @@
     "description": "In my opinion, Azure App Services are an easy and direct way to launch your ASP.NET Core application for the outside world to access.",
     "date": "2017-01-21",
     "category": "strategic-insights",
-    "archived": false,
+    "archived": true,
     "tags": [
       "backend-engineering",
       "cloud-infrastructure",
@@ -148,7 +148,7 @@
     "description": "While not the primary focus of Microsoft's efforts, F# makes for an excellent language choice for applications targeting .NET Core.",
     "date": "2016-12-23",
     "category": "technical-deep-dives",
-    "archived": false,
+    "archived": true,
     "tags": [
       "backend-engineering",
       "functional-programming",
@@ -226,7 +226,7 @@
     "description": "You may have experience in deploying your Ruby or .NET applications, but when it comes to Elixir, do you have what it takes to deploy your app?",
     "date": "2014-08-25",
     "category": "strategic-insights",
-    "archived": false,
+    "archived": true,
     "tags": [
       "cloud-infrastructure",
       "system-architecture",
@@ -256,7 +256,7 @@
     "description": "SEO is a hard beast to tame. Once you have everything just right, moving to a new platform, a new URL structure, or even a new domain can be stressful.",
     "date": "2013-12-20",
     "category": "technical-deep-dives",
-    "archived": false,
+    "archived": true,
     "tags": [
       "tech-strategy",
       "backend-engineering"
@@ -273,7 +273,7 @@
     "description": "Recently, I built an API wrapper for Mandrill. Let's walk through the steps I used to create it.",
     "date": "2013-12-08",
     "category": "technical-deep-dives",
-    "archived": false,
+    "archived": true,
     "tags": [
       "backend-engineering",
       "system-architecture",
@@ -291,7 +291,7 @@
     "description": "Don't rely on MD5/SHA1/SHA256/etc. hashes for storing passwords. Join me in learning how to bcrypt in Erlang applications.",
     "date": "2013-10-03",
     "category": "technical-deep-dives",
-    "archived": false,
+    "archived": true,
     "tags": [
       "backend-engineering",
       "system-architecture"
@@ -367,7 +367,7 @@
     "description": "What is Percona Server, and why should I care?",
     "date": "2013-08-06",
     "category": "strategic-insights",
-    "archived": false,
+    "archived": true,
     "tags": [
       "backend-engineering",
       "system-architecture",
