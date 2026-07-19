@@ -373,7 +373,7 @@ $this->layout('partials::layouts/main', [
 
         <div>
           <div class="rp-hero-byline">Shane Logsdon <span class="sep">·</span> Curriculum Vitae <span class="sep">·</span> Est. 2008</div>
-          <h1 class="rp-hero-title">Fourteen years of shipping <em>payment platforms</em> engineers want to build on.</h1>
+          <h1 class="rp-hero-title">Over fifteen years of shipping <em>payment platforms</em> engineers want to build on.</h1>
           <p class="rp-hero-lead">My work runs from production code to platform strategy. For the last decade at Global Payments, I've been turning payment primitives into the SDKs, integrations, and developer experiences that engineers actually want to use.</p>
           <nav class="rp-hero-actions" aria-label="Quick links">
             <a href="#experience">Jump to experience</a>
@@ -385,7 +385,7 @@ $this->layout('partials::layouts/main', [
           <dl class="rp-hero-meta">
             <div class="row" data-locale-tz="America/Kentucky/Louisville"><dt class="lbl">Based</dt><dd class="val">Louisville, KY · <span data-locale-offset>GMT−5</span></dd></div>
             <div class="row"><dt class="lbl">Email</dt><dd class="val"><a href="mailto:shane@logsdon.io">shane@logsdon.io</a></dd></div>
-            <div class="row"><dt class="lbl">Web</dt><dd class="val"><a href="https://shane.logsdon.io">shane.logsdon.io</a></dd></div>
+            <div class="row"><dt class="lbl">LinkedIn</dt><dd class="val"><a href="https://www.linkedin.com/in/shanelogsdon">/in/shanelogsdon</a></dd></div>
             <div class="row"><dt class="lbl">GitHub</dt><dd class="val"><a href="https://github.com/slogsdon">/slogsdon</a></dd></div>
             <div class="row"><dt class="lbl">Status</dt><dd class="val"><span class="led" aria-hidden="true"></span>Open to conversations</dd></div>
           </dl>
@@ -406,8 +406,8 @@ $this->layout('partials::layouts/main', [
       <div class="rp-stats">
         <div class="rp-stat">
           <div class="lbl">Years in industry</div>
-          <div class="num">14<sup>yrs</sup></div>
-          <div class="note">Since 2012: web dev through product leadership.</div>
+          <div class="num">15+<sup>yrs</sup></div>
+          <div class="note">Since 2008: web dev through product leadership.</div>
         </div>
         <div class="rp-stat">
           <div class="lbl">At Global Payments</div>
