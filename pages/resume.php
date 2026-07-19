@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title'       => 'Resume',
-    'description' => 'Shane Logsdon: fourteen years shipping payment platforms and developer experiences. Senior Director of Product Management at Global Payments.',
+    'description' => 'Shane Logsdon: 15+ years shipping payment platforms and developer experiences. Senior Director, Product Management – Developer Advocacy at Global Payments.',
     'url'         => '/resume/',
 ]);
 ?>
@@ -448,11 +448,11 @@ $this->layout('partials::layouts/main', [
           <h2 class="rp-sec-title">Experience, in <em>reverse-chronological</em> order.</h2>
           <p class="rp-sec-lead">Nine roles across three employers. Each entry is working notes on what the job was and what shipped, not a keyword sheet.</p>
 
-          <!-- i — Senior Director of Product Management -->
+          <!-- i — Senior Director, Product Management – Developer Advocacy -->
           <div class="rp-role">
             <div class="n" aria-hidden="true">i</div>
             <div class="body">
-              <h3>Senior Director of Product Management</h3>
+              <h3>Senior Director, Product Management – Developer Advocacy</h3>
               <p class="sub"><span class="co">Global Payments Inc.</span><span class="dot">·</span>Louisville, KY</p>
               <ul>
                 <li>Rebuilt the developer platform post-merger, consolidating two legacy GP+Worldpay API platforms into a single experience with multi-language sample projects, browser sandbox environments, and community infrastructure, growing developer engagement 55%+ from a standing start with no dedicated program budget.</li>
@@ -741,17 +741,7 @@ $this->layout('partials::layouts/main', [
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Shane Logsdon",
-  "url": "https://shane.logsdon.io/resume/",
-  "email": "shane@logsdon.io",
-  "jobTitle": "Senior Director of Product Management",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Global Payments Inc."
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/shanelogsdon",
-    "https://github.com/slogsdon"
-  ]
+  "@id": "https://shane.logsdon.io/#Person",
+  "email": "shane@logsdon.io"
 }
 </script>

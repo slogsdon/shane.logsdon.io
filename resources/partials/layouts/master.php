@@ -8,12 +8,19 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#fbfaf9">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/images/icons/icon-512x512.png">
+<link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
+<link rel="alternate" type="application/atom+xml" title="Shane Logsdon — Atom feed" href="/feed.xml">
+<?php if (!empty($markdownUrl)): ?>
+<link rel="alternate" type="text/markdown" href="<?= $this->e($markdownUrl) ?>">
+<?php endif; ?>
 <meta name="description" content="<?= $this->e(!empty($description) ? $description : $settings->description); ?>">
 <?php if (!empty($url)): ?>
   <link rel="canonical" href="https://shane.logsdon.io<?= $this->e($url); ?>">
 <?php endif; ?>
 <link rel="me" href="https://bsky.app/profile/shane.logsdon.io">
-<link rel="me" href="https://twitter.com/shanelogsdon">
 <link rel="me" href="https://www.linkedin.com/in/shanelogsdon">
 <link rel="me" href="https://github.com/slogsdon">
 
@@ -47,8 +54,6 @@
 <?php endif; ?>
 <?php endif; ?>
 <meta name="twitter:card" content="<?= !empty($image) ? 'summary_large_image' : 'summary' ?>">
-<meta name="twitter:site" content="@shanelogsdon">
-<meta name="twitter:creator" content="@shanelogsdon">
 <?php if (!empty($image)): ?>
 <meta name="twitter:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
 <?php endif; ?>
@@ -71,6 +76,29 @@
   "description": <?= json_encode($settings->description) ?>,
   "inLanguage": "en",
   "publisher": { "@id": "https://shane.logsdon.io/#Person" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://shane.logsdon.io/#Person",
+  "name": "Shane Logsdon",
+  "alternateName": "slogsdon",
+  "url": "https://shane.logsdon.io/about/",
+  "jobTitle": "Senior Director, Product Management – Developer Advocacy",
+  "worksFor": { "@type": "Organization", "name": "Global Payments Inc." },
+  "image": "https://shane.logsdon.io/images/headshot.jpeg",
+  "description": <?= json_encode($settings->author->shane->description) ?>,
+  "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"],
+  "sameAs": [
+    "https://github.com/slogsdon",
+    "https://www.linkedin.com/in/shanelogsdon",
+    "https://bsky.app/profile/shane.logsdon.io",
+    "https://gitlab.com/slogsdon",
+    "https://speakerdeck.com/slogsdon"
+  ]
 }
 </script>
 
