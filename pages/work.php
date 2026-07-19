@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
   'title' => 'Work',
-    'description' => 'Selected projects and work by Shane Logsdon, including the Loop & Gate system, Hermes Dispatch, developer platforms at Global Payments, and a payments patent.',
+    'description' => 'Selected projects and work by Shane Logsdon, including LeadSurface, the Loop & Gate system, Hermes Dispatch, developer platforms at Global Payments, and a payments patent.',
     'url' => '/work/',
 ]);
 $patentUrl =
@@ -12,6 +12,12 @@ $patentUrl =
     . "DN/20180060867&RS=DN/20180060867";
 
 $projects = [
+    [
+        'href' => 'https://www.leadsurface.com',
+        'title' => 'LeadSurface',
+        'body' => 'Competitor-switch intelligence for revenue teams. It reads developer and SaaS communities and surfaces high-intent switching signals while the conversation is still live. A real product with real customers, built and shipped weekly through a Loop & Gate workflow.',
+        'meta' => [['label' => 'read the story', 'href' => '/articles/strategic-insights/building-on-the-margins/']],
+    ],
     [
         'href' => '/loop-and-gate/',
         'title' => 'The Loop & Gate System',
