@@ -5,6 +5,8 @@ $this->layout('partials::layouts/main', [
     'url' => '/about/',
 ]);
 $settings = require('resources/settings.php');
+// Honest freshness: last real content change from git, not build time.
+$aboutModified = @trim((string) shell_exec('git log -1 --format=%cs -- pages/about.php 2>/dev/null')) ?: '2026-07-18';
 
 $expertise = [
     ['num' => '01', 'title' => 'Payment systems',     'body' => 'Designing scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns.'],
@@ -90,8 +92,19 @@ $expertise = [
                 make complex financial primitives feel inevitable to the engineers using them.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                I also run a small practice building and managing web presence systems for local
-                business owners: website build, AEO/SEO, and ongoing management. The technical
+                On the side I build tools in the open &mdash;
+                <a class="link-quiet" href="/loop-and-gate/">Loop &amp; Gate</a>,
+                an agentic build system, and
+                <a class="link-quiet" href="/hermes-dispatch/">Hermes Dispatch</a>,
+                a local-first agent dispatcher &mdash; alongside a few older projects in
+                <a class="link-quiet" href="/work/">Work</a>.
+            </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                I also run a small
+                <a class="link-quiet" href="/services/">web presence practice</a>
+                for
+                <a class="link-quiet" href="/local-businesses/">local business owners</a>:
+                website build, AEO/SEO, and ongoing management. The technical
                 foundation is the same as enterprise work. The audience is different.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
@@ -115,32 +128,7 @@ $expertise = [
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "dateCreated": "2024-12-19",
-  "dateModified": "<?= date('Y-m-d') ?>",
-  "mainEntity": {
-    "@type": "Person",
-    "@id": "https://shane.logsdon.io/#Person",
-    "name": "Shane Logsdon",
-    "url": "https://shane.logsdon.io/about/",
-    "jobTitle": "Senior Director, Product Management – Developer Advocacy",
-    "worksFor": { "@type": "Organization", "name": "Global Payments" },
-    "image": {
-        "@type": "ImageObject",
-        "@id": "https://shane.logsdon.io/images/headshot.jpeg",
-        "url": "https://shane.logsdon.io/images/headshot.jpeg",
-        "height": "2827",
-        "width": "1887"
-    },
-    "alternateName": "slogsdon",
-    "description": "<?= htmlspecialchars($settings->author->shane->description) ?>",
-    "sameAs": [
-        "https://github.com/slogsdon",
-        "https://www.linkedin.com/in/shanelogsdon",
-        "https://x.com/shanelogsdon",
-        "https://bsky.app/profile/shane.logsdon.io",
-        "https://gitlab.com/slogsdon",
-        "https://speakerdeck.com/slogsdon"
-    ],
-    "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
-  }
+  "dateModified": "<?= $aboutModified ?>",
+  "mainEntity": { "@id": "https://shane.logsdon.io/#Person" }
 }
 </script>

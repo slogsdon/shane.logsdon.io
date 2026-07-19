@@ -3,7 +3,7 @@ $navItems = [
     ['href' => '/about/', 'label' => 'About'],
     ['href' => '/articles/', 'label' => 'Articles'],
     ['href' => '/speaking/', 'label' => 'Speaking', 'mobileHidden' => true],
-    ['href' => '/services/', 'label' => 'Services'],
+    ['href' => '/work/', 'label' => 'Work', 'mobileHidden' => true],
     ['href' => '/resume/', 'label' => 'Resume', 'mobileHidden' => true],
 ];
 ?>

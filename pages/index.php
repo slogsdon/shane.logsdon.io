@@ -29,14 +29,21 @@ $articleCount = count($activeArticles);
 
         <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-12 sm:gap-8">
             <p class="col-span-1 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft sm:col-span-7">
-                I lead developer advocacy at Global Payments, building developer experience infrastructure at enterprise scale. I apply the same approach to local business web presence: done-for-you builds and ongoing management for owners who don&rsquo;t have time to figure it out themselves.
+                I lead developer advocacy at Global Payments, building developer-experience infrastructure at enterprise scale &mdash; payment APIs, SDKs, and the docs and tooling that make them usable. I write here about developer platforms, payments, and AI-assisted engineering.
             </p>
         </div>
 
         <div class="mt-16 flex flex-wrap items-baseline gap-x-10 gap-y-4">
-            <a href="/contact/" class="btn-arrow btn-arrow--accent">Request a free audit</a>
-            <a href="/articles/" class="btn-arrow btn-arrow--muted">Read the writing</a>
+            <a href="/articles/" class="btn-arrow btn-arrow--accent">Read the writing</a>
+            <a href="/about/" class="btn-arrow btn-arrow--muted">About</a>
         </div>
+
+        <p class="mt-10 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground">
+            I also run a small
+            <a class="link-quiet" href="/services/">web presence practice</a>
+            for local business owners &mdash;
+            <a class="link-quiet" href="/services/">website build, AEO, and ongoing management</a>.
+        </p>
     </div>
 </section>
 
@@ -86,26 +93,4 @@ $articleCount = count($activeArticles);
         if (name && name.value) target.textContent = name.value.toLowerCase();
     } catch (e) {}
 })();
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://shane.logsdon.io/#Person",
-  "name": "Shane Logsdon",
-  "url": "https://shane.logsdon.io/about/",
-  "jobTitle": "Senior Director, Product Management – Developer Advocacy",
-  "worksFor": { "@type": "Organization", "name": "Global Payments" },
-  "image": "https://shane.logsdon.io/images/headshot.jpeg",
-  "sameAs": [
-    "https://github.com/slogsdon",
-    "https://www.linkedin.com/in/shanelogsdon",
-    "https://x.com/shanelogsdon",
-    "https://bsky.app/profile/shane.logsdon.io",
-    "https://gitlab.com/slogsdon",
-    "https://speakerdeck.com/slogsdon"
-  ],
-  "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"]
-}
 </script>
