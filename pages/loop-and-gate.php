@@ -401,6 +401,9 @@ $order = [
                 <li><a href="<?= htmlspecialchars($repos['grow']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow">Grow Kit</a></li>
                 <li><a href="<?= htmlspecialchars($repos['accountability']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow">Accountability Kit</a></li>
             </ul>
+            <p class="mt-6 max-w-prose text-[0.9375rem] leading-relaxed text-muted-foreground">
+                If it earns a place in your setup, a <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">star on the Foundation repo</a> helps other people find it.
+            </p>
             <p class="mt-8 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 The story behind it is in <a class="link-quiet" href="/articles/strategic-insights/building-on-the-margins/">Building on the Margins</a>, the essay this whole system came out of.
             </p>
