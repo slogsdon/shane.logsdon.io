@@ -3,8 +3,8 @@
   "short_name": "ShaneLogsdon",
   "scope": "/",
   "start_url": "/",
-  "background_color": "#1a1c1f",
-  "theme_color": "#1a1c1f",
+  "background_color": "#fbfaf9",
+  "theme_color": "#fbfaf9",
   "display": "minimal-ui",
   "icons": [
     {

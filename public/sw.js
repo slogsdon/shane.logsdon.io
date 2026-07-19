@@ -1,33 +1,55 @@
+const CACHE = 'shane-logsdon-io-static-v24';
+
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open('shane-logsdon-io-static-v23').then((cache) => {
-      return cache.addAll(["/"]).catch(() => {});
-    })
+    caches.open(CACHE).then((cache) => cache.addAll(['/']).catch(() => {}))
   );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== 'shane-logsdon-io-static-v23')
-          .map((key) => caches.delete(key))
-      )
+      Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))
     ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  if (request.method !== 'GET') { return; }
+
+  const url = new URL(request.url);
   // Let the browser handle cross-origin requests normally.
-  const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) { return; }
 
+  const isDocument =
+    request.mode === 'navigate' ||
+    (request.headers.get('accept') || '').includes('text/html');
+
+  if (isDocument) {
+    // Network-first for pages: fresh HTML on every load, cache as offline fallback.
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
+          return response;
+        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match('/')))
+    );
+    return;
+  }
+
+  // Cache-first for static assets (fingerprinted CSS/JS, images, icons).
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request, { mode: "same-origin" });
-    })
-    .catch(() => {})
+    caches.match(request).then((cached) =>
+      cached ||
+      fetch(request, { mode: 'same-origin' }).then((response) => {
+        const copy = response.clone();
+        caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
+        return response;
+      })
+    ).catch(() => {})
   );
 });
