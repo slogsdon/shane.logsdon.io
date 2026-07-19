@@ -8,7 +8,7 @@ $this->layout('partials::layouts/main', [
 ]);
 
 $repos = [
-    'foundation'     => 'https://github.com/slogsdon/second-brain-agent',
+    'foundation'     => 'https://github.com/slogsdon/loop-and-gate-foundation',
     'build'          => 'https://github.com/slogsdon/loop-and-gate-build-kit',
     'grow'           => 'https://github.com/slogsdon/loop-and-gate-grow-kit',
     'accountability' => 'https://github.com/slogsdon/loop-and-gate-accountability-kit',
@@ -17,7 +17,7 @@ $repos = [
 $pieces = [
     [
         'name' => 'The Foundation',
-        'slug' => 'second-brain-agent',
+        'slug' => 'loop-and-gate-foundation',
         'repo' => $repos['foundation'],
         'body' => 'An AI agent that remembers you and gets a little sharper every session. Its memory is plain, readable notes in an Obsidian vault — no vector database, no cloud service, nothing to sign up for. It captures what you tell it, files it, and writes down one lesson at the end of each session.',
         'gives' => 'Cross-session memory, so your projects and decisions survive the window closing. And your voice and taste profiles — a short interview turns "how you write" and "what good looks like to you" into notes the kits can read.',
@@ -72,6 +72,9 @@ $order = [
     </h1>
     <p class="mt-8 max-w-prose text-[1.1875rem] leading-[1.6] text-muted-foreground">
         A small stack of tools for building, marketing, and following through on your own projects with an AI agent. One Foundation layer, three kits that sit on top of it. All of it runs inside Claude Code, and all of it is free and open source.
+    </p>
+    <p class="mt-6 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+        Loop &amp; Gate is the name for a specific way of working with an AI agent: the loop runs on its own, and it stops at a fixed set of gates where a human has to decide. It's the opinionated instance of what the field now calls loop engineering and human-in-the-loop control.
     </p>
     <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3">
         <a href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow btn-arrow--accent">Start with the Foundation</a>
@@ -216,7 +219,7 @@ $order = [
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             The Foundation installs the same way as the kits — one command in the chat, no download:
                         </p>
-                        <pre class="mt-4 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/second-brain-agent</code></pre>
+                        <pre class="mt-4 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-foundation</code></pre>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             Click Install on the menu that appears. Then, in your first session, ask it to run the setup — this is the step that places your vault (in iCloud on a Mac, so it syncs to your phone and tablet):
                         </p>
@@ -370,7 +373,7 @@ $order = [
         </div>
         <div class="col-span-12 space-y-5 sm:col-span-9">
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                The gates are the original work here. The thinking underneath them is a synthesis of others': Andrej Karpathy's <a class="link-quiet" href="https://x.com/karpathy/status/1921368644069765486" target="_blank" rel="noreferrer noopener">system-prompt learning</a> — an agent that edits its own instructions — Addy Osmani's <a class="link-quiet" href="https://addyosmani.com/blog/self-improving-agents/" target="_blank" rel="noreferrer noopener">self-improving coding agents</a>, and a widely shared agent configuration by Forrest Chang that the Foundation's operating rules adapt. The <a class="link-quiet" href="https://github.com/slogsdon/second-brain-agent/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer noopener">Foundation's ARCHITECTURE.md</a> credits the full set.
+                The gates are the original work here. The thinking underneath them is a synthesis of others': Andrej Karpathy's <a class="link-quiet" href="https://x.com/karpathy/status/1921368644069765486" target="_blank" rel="noreferrer noopener">system-prompt learning</a> — an agent that edits its own instructions — Addy Osmani's <a class="link-quiet" href="https://addyosmani.com/blog/self-improving-agents/" target="_blank" rel="noreferrer noopener">self-improving coding agents</a>, and a widely shared agent configuration by Forrest Chang that the Foundation's operating rules adapt. The <a class="link-quiet" href="https://github.com/slogsdon/loop-and-gate-foundation/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer noopener">Foundation's ARCHITECTURE.md</a> credits the full set.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 The kits reference — and never vendor — free community plugins for the loop between the gates: <a class="link-quiet" href="https://github.com/obra/superpowers-marketplace" target="_blank" rel="noreferrer noopener">superpowers</a> by obra, <a class="link-quiet" href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noreferrer noopener">agent-skills</a> and <a class="link-quiet" href="https://github.com/addyosmani/web-quality-skills" target="_blank" rel="noreferrer noopener">web-quality-skills</a> by Addy Osmani, <a class="link-quiet" href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noreferrer noopener">worktrunk</a> by max-sixty, and <a class="link-quiet" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noreferrer noopener">ponytail</a> by Dietrich Gebert. Each stays theirs; swap in your own equivalents any time.
@@ -404,3 +407,22 @@ $order = [
         </div>
     </div>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "@id": "https://shane.logsdon.io/loop-and-gate/#LoopAndGate",
+  "name": "Loop & Gate",
+  "termCode": "loop-and-gate",
+  "description": "A named pattern for working with an AI agent: the agentic loop runs on its own between checkpoints and stops at a fixed set of gates where a human makes the decision. An opinionated instance of loop engineering and human-in-the-loop control, delivered as a Foundation layer plus three kits (Build, Grow, Accountability).",
+  "url": "https://shane.logsdon.io/loop-and-gate/",
+  "sameAs": "https://github.com/slogsdon/loop-and-gate-foundation",
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "The Loop & Gate System",
+    "url": "https://shane.logsdon.io/loop-and-gate/",
+    "author": { "@id": "https://shane.logsdon.io/#Person" }
+  }
+}
+</script>

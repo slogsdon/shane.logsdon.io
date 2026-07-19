@@ -22,7 +22,7 @@ $projects = [
         'href' => '/loop-and-gate/',
         'title' => 'The Loop & Gate System',
         'body' => 'A Foundation layer plus three kits for building, marketing, and following through on your own projects with an AI agent. An agentic loop runs on its own most of the time, but stops at a fixed set of gates where a human has to decide.',
-        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/second-brain-agent']],
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/loop-and-gate-foundation']],
     ],
     [
         'href' => '/hermes-dispatch/',
