@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'Hermes Dispatch',
-    'description' => 'An open source, local-first agent dispatch system. Type a request into a mobile chat, a dispatch layer routes it to the right specialized agent, and the agent runs on your own models via Ollama and LiteLLM.',
+    'description' => 'An open source, local-first dispatch layer for the Hermes agent by Nous Research. Type a request into a mobile chat, a router sends it to the right specialized agent, and it runs on your own models via Ollama and LiteLLM.',
     'url' => '/hermes-dispatch/',
 ]);
 
@@ -47,11 +47,11 @@ $tiers = [
         Type a request. The right <span class="t-accent">agent</span> answers.
     </h1>
     <p class="mt-8 max-w-prose text-[1.1875rem] leading-[1.6] text-muted-foreground">
-        An open source, local-first agent dispatch system. One chat box on your phone, a routing layer that knows which of two dozen specialized agents should take the job, and models that run on your own hardware.
+        An open source, local-first dispatch layer for the Hermes agent by Nous Research. One chat box on your phone, a routing layer that knows which of two dozen specialized agents should take the job, and models that run on your own hardware.
     </p>
     <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3">
         <a href="<?= htmlspecialchars($repo) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow btn-arrow--accent">View on GitHub</a>
-        <p class="text-sm text-muted-foreground">MIT licensed. Built on the Hermes AI harness.</p>
+        <p class="text-sm text-muted-foreground">MIT licensed. Built on the <a href="https://hermes-agent.nousresearch.com" target="_blank" rel="noreferrer noopener" class="link-quiet">Hermes agent</a> by Nous Research.</p>
     </div>
 </section>
 
@@ -66,7 +66,7 @@ $tiers = [
                 Hermes Dispatch turns a fleet of local LLM agents into something you can use from your phone like a single assistant. You type a request in plain language. A dispatch layer figures out which agent is the right one, expands your prompt into a proper brief, and hands it off. The agent runs locally through Ollama and LiteLLM and streams the answer back.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                There are 24 or more agents out of the box, covering developer advocacy, content and go-to-market, finance, sales, client delivery, productivity, and legal. Each one is a Hermes profile: a system prompt in a SOUL.md file plus a pinned model alias. You decide which model sits behind each alias.
+                The agent runtime is the Hermes agent from Nous Research. Dispatch doesn't reimplement the loop. Hermes is the loop, and each agent is that harness constrained by a short profile. There are 24 or more out of the box, covering developer advocacy, content and go-to-market, finance, sales, client delivery, productivity, and legal. Each profile is a system prompt in a SOUL.md file plus a pinned model alias, and you decide which model sits behind each alias.
             </p>
         </div>
     </div>
