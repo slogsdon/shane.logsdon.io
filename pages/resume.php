@@ -278,9 +278,9 @@ $this->layout('partials::layouts/main', [
 .rp-cta-body h2 {
   font-family: 'Fraunces', Georgia, serif; font-weight: 400;
   font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1.1; letter-spacing: -0.02em;
-  margin: 0 0 1rem; color: var(--rp-ink);
+  margin: 0 0 1rem; color: var(--rp-paper);
 }
-.rp-cta-body p { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 15px; line-height: 1.65; color: var(--rp-ink-2); margin: 0 0 1.5rem; }
+.rp-cta-body p { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; font-size: 15px; line-height: 1.65; color: rgba(251, 250, 249, 0.72); margin: 0 0 1.5rem; }
 
 /* btn-arrow — the only button in v2 (filled .btn was removed) */
 .rp-btn-dark {
