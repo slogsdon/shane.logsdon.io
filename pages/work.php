@@ -27,7 +27,7 @@ $projects = [
     [
         'href' => '/hermes-dispatch/',
         'title' => 'Hermes Dispatch',
-        'body' => 'Open source, local-first agent dispatch system. Type a request into a mobile chat, a routing layer sends it to the right one of two dozen specialized agents, and the agent runs on your own models via Ollama and LiteLLM.',
+        'body' => 'Open source, local-first dispatch layer for the Hermes agent by Nous Research. Type a request into a mobile chat, a router sends it to the right one of two dozen specialized agents, and it runs on your own models via Ollama and LiteLLM.',
         'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/hermes-dispatch']],
     ],
     [
