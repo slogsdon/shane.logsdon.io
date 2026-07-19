@@ -167,3 +167,25 @@ $this->layout('partials::layouts/main', [
         </div>
     </div>
 </section>
+
+<script type="application/ld+json">
+<?= json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'ProfessionalService',
+    '@id' => 'https://shane.logsdon.io/services/#ProfessionalService',
+    'name' => 'Web Presence Systems for Local Business Owners',
+    'url' => 'https://shane.logsdon.io/services/',
+    'provider' => ['@id' => 'https://shane.logsdon.io/#Person'],
+    'areaServed' => [
+        ['@type' => 'City', 'name' => 'Louisville', 'sameAs' => 'https://en.wikipedia.org/wiki/Louisville,_Kentucky'],
+        ['@type' => 'AdministrativeArea', 'name' => 'Louisville metropolitan area'],
+    ],
+    'address' => [
+        '@type' => 'PostalAddress',
+        'addressLocality' => 'Louisville',
+        'addressRegion' => 'KY',
+        'addressCountry' => 'US',
+    ],
+    'priceRange' => '$$',
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
+</script>

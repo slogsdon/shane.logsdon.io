@@ -22,7 +22,7 @@ No obligation. If the audit doesn't surface anything worth fixing, I'll tell you
 
 ---
 
-## $499: Web Presence Build
+## $499–$999: Web Presence Build
 
 Everything a local business needs to get found: by search engines, by AI assistants, and by the people who've never heard of you yet.
 
@@ -36,11 +36,11 @@ Includes:
 - /pricing.md and /services.md for AI agent research
 - One clear conversion path above the fold
 
-Delivered in two to three weeks. You don't touch anything.
+Delivered in two to three weeks. You don't touch anything. Final build price depends on page count and scope; most projects land at $499–$999.
 
 ---
 
-## $99/month: Active Presence Management
+## $99–$199/month: Active Presence Management
 
 A static website degrades. This keeps yours working.
 
@@ -59,7 +59,7 @@ Most clients start with the build and move to management. The audit tells you wh
 
 ## The return on one client
 
-Before deciding whether $99/month makes sense, ask: what is one new client worth to your business per year?
+Before deciding whether $99–$199/month makes sense, ask: what is one new client worth to your business per year?
 
 - Financial advisor: $3,000-$8,000 in annual fees
 - Dental practice: $500-$2,000 per new patient, recurring

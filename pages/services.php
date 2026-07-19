@@ -111,6 +111,10 @@ $faqs = [
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 This isn't the right fit for e-commerce, franchise operations, or businesses that want to build and manage their own presence. It's for owners who want to hand it off and get back to work.
             </p>
+            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                Based in Louisville? See how this works for
+                <a class="link-quiet" href="/local-businesses/">local businesses in the Louisville metro</a>.
+            </p>
         </div>
     </div>
 </section>
@@ -131,6 +135,53 @@ $faqs = [
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 And it's actively managed, not handed off. That's the one thing that separates a presence that improves from one that slowly decays.
             </p>
+        </div>
+    </div>
+</section>
+
+<!-- Proof -->
+<?php
+// Real client quotes go here as they come in; the block below renders only when populated.
+// Shape: ['quote' => '...', 'attribution' => 'Name, Business, Louisville'].
+$proofQuotes = [];
+?>
+<section class="mx-auto max-w-editorial px-6 pb-20">
+    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
+        <div class="col-span-12 sm:col-span-3">
+            <p class="smallcaps-lg">proof</p>
+        </div>
+        <div class="col-span-12 space-y-8 sm:col-span-9">
+            <div>
+                <h3 class="font-display text-xl font-medium text-foreground">The practitioner's own site</h3>
+                <p class="mt-3 max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+                    This site runs the same playbook I sell. A July 2026 rebuild and full AEO/SEO audit put the fixes into production and set up monthly tracking of index coverage and AI-answer visibility.
+                </p>
+                <dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3">
+                    <div>
+                        <dt class="folio">duplicate meta descriptions</dt>
+                        <dd class="mt-1 font-display text-3xl font-medium text-foreground">40 &rarr; 0</dd>
+                    </div>
+                    <div>
+                        <dt class="folio">pages with a resolving author identity</dt>
+                        <dd class="mt-1 font-display text-3xl font-medium text-foreground">2 &rarr; every page</dd>
+                    </div>
+                    <div>
+                        <dt class="folio">custom security headers</dt>
+                        <dd class="mt-1 font-display text-3xl font-medium text-foreground">0 &rarr; full set</dd>
+                    </div>
+                </dl>
+                <p class="mt-4 text-sm text-muted-foreground">Search-index and AI-citation results are tracked monthly and published as they land.</p>
+            </div>
+            <?php if (!empty($proofQuotes)): ?>
+            <ul class="space-y-6">
+                <?php foreach ($proofQuotes as $q): ?>
+                <li class="border-l-2 border-rule pl-5">
+                    <p class="max-w-prose text-[1.0625rem] italic leading-relaxed text-foreground">&ldquo;<?= htmlspecialchars($q['quote']) ?>&rdquo;</p>
+                    <p class="mt-2 folio"><?= htmlspecialchars($q['attribution']) ?></p>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -184,7 +235,17 @@ $faqs = [
     'url' => 'https://shane.logsdon.io/services/',
     'description' => 'Done-for-you web presence: website build, conversion optimization, and ongoing AEO/SEO management for local business owners, built and managed by a practitioner who does this at enterprise scale.',
     'provider' => ['@id' => 'https://shane.logsdon.io/#Person'],
-    'areaServed' => ['@type' => 'Country', 'name' => 'United States'],
+    'areaServed' => [
+        ['@type' => 'City', 'name' => 'Louisville', 'sameAs' => 'https://en.wikipedia.org/wiki/Louisville,_Kentucky'],
+        ['@type' => 'AdministrativeArea', 'name' => 'Louisville metropolitan area'],
+    ],
+    'address' => [
+        '@type' => 'PostalAddress',
+        'addressLocality' => 'Louisville',
+        'addressRegion' => 'KY',
+        'addressCountry' => 'US',
+    ],
+    'priceRange' => '$$',
     'serviceType' => ['Web design and development', 'Answer Engine Optimization', 'Search Engine Optimization', 'Web presence management'],
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
 </script>
