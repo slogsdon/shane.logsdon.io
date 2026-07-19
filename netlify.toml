@@ -122,19 +122,25 @@ force = true
 
 [[redirects]]
 from = "/writing/the-75-percent-problem"
-to = "/articles/technical-deep-dives/the-75-percent-problem/"
+to = "/articles/technical-deep-dives/the-specification-boundary/"
 status = 301
 force = true
 
 [[redirects]]
 from = "/posts/the-75-percent-problem"
-to = "/articles/technical-deep-dives/the-75-percent-problem/"
+to = "/articles/technical-deep-dives/the-specification-boundary/"
 status = 301
 force = true
 
 [[redirects]]
 from = "/articles/the-75-percent-problem"
-to = "/articles/technical-deep-dives/the-75-percent-problem/"
+to = "/articles/technical-deep-dives/the-specification-boundary/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/articles/technical-deep-dives/the-75-percent-problem"
+to = "/articles/technical-deep-dives/the-specification-boundary/"
 status = 301
 force = true
 

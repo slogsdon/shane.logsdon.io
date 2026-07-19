@@ -1,12 +1,12 @@
 ---
-title: "The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line"
+title: "The Specification Boundary: Why AI-Assisted Builds Stall at 75%"
 date: 2026-05-18
 layout: 'partials::layouts/writing-post'
-slug: the-75-percent-problem
-image: the-75-percent-problem-og.png
-heroImage: the-75-percent-problem-hero.png
+slug: the-specification-boundary
+image: the-specification-boundary-og.png
+heroImage: the-specification-boundary-hero.png
 draft: false
-description: "AI gets you to 75% fast. That's the trap: the 75% mark looks finished, and the last 25% takes as long as the first 75%. Here's how to plan for it."
+description: "AI gets you to 75% fast, then stalls. The wall isn't the model's capability, it's the specification boundary: the territory your spec left undefined. Here's how to plan for it."
 faqs:
   - q: "What is the 75% problem in AI-assisted development?"
     a: "The pattern where AI-assisted builds stall at the 75% mark — the scaffold is done, the demo works, the tests pass — but the domain-specific finishing work (edge cases, integration nuance, operational constraints) takes as long as the first 75% and requires expertise the model doesn't have access to."
@@ -30,7 +30,7 @@ The uncomfortable part is that the 75% felt like 95%. The demo looked complete, 
 
 ## Why the 75% mark feels like the finish line
 
-This pattern has a name now, the 75% Problem, and it's the convergence point for the discipline Posts 2 and 3 described. The spec-first work from those posts exists partly for this reason: without an authoritative spec, the 75% mark looks like completion, because there's nothing to tell you what's still missing.
+Much has been made of this shape. Addy Osmani called it the 70% problem: AI gets you most of the way, then the returns fall off a cliff. The observation is right and the number is close, but the usual diagnosis is not. The stall gets framed as a skill gap, or as a capability ceiling, as if the model runs out of road at some threshold. That's not what I keep hitting. What I keep hitting is a specification boundary, and it's the convergence point for the discipline Posts 2 and 3 described. The spec-first work from those posts exists partly for this reason: without an authoritative spec, the 75% mark looks like completion, because there's nothing to tell you what's still missing.
 
 The scaffolding phase is fast. AI tools generate boilerplate, translate requirements into code structure, and handle the high-frequency patterns, including CRUD operations, standard API integrations, and component wiring, with impressive accuracy. The speed creates a real benefit: you can validate an approach in hours rather than days.
 
@@ -48,7 +48,7 @@ These are not questions a language model answers well from general training data
 
 ## The actual problem isn't capability
 
-There's a common misconception embedded in how teams talk about the 75% Problem: that the issue is the AI stopping, as if the model runs out of capability at some threshold and the human has to take over. That's not what's happening. The model can generate code for authentication edge cases, error handling, performance optimization, and integration nuance. What it generates will be plausible, it will compile, and it will address the obvious version of each problem.
+There's a common misconception embedded in how teams talk about this stall: that the issue is the AI stopping, as if the model runs out of capability at some threshold and the human has to take over. That's not what's happening. The model can generate code for authentication edge cases, error handling, performance optimization, and integration nuance. What it generates will be plausible, it will compile, and it will address the obvious version of each problem.
 
 The actual issue is that plausible and correct diverge as you approach the boundary of what's specified. In the scaffold phase, the specified territory is large: "build a component that fetches user data and renders a list" has enough signal for a capable model to produce something useful. In the finishing phase, the territory is narrow and domain-specific: handle the case where the API returns a 206 Partial Content for this endpoint in particular, because the consuming client has a race condition in its retry logic that our retry policy needs to account for. That's not a prompt the model can answer from training data. It's a prompt that requires information the model doesn't have.
 

@@ -25,8 +25,8 @@ $posts = [
         'body' => 'The argument for writing the implementation plan before opening the AI tool. A precise design spec is a decision-forcing function. Without it, the agent fills your architectural gaps with statistical probability, and what you get back is plausible, and wrong.',
     ],
     [
-        'slug' => 'the-75-percent-problem',
-        'title' => 'The 75% Problem: Why AI-Assisted Builds Stall at the Finish Line',
+        'slug' => 'the-specification-boundary',
+        'title' => 'The Specification Boundary: Why AI-Assisted Builds Stall at 75%',
         'date' => 'May 18, 2026',
         'body' => 'AI gets you to scaffold incredibly fast. Then it leaves you at the edge of the specification boundary, where domain expertise and explicit constraints matter more than generative power. Here\'s how to prepare for that phase rather than discover it.',
     ],
