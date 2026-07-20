@@ -221,10 +221,10 @@ $order = [
                         </p>
                         <pre class="mt-4 overflow-x-auto border border-rule p-4 text-xs leading-relaxed text-muted-foreground"><code>/plugin marketplace add slogsdon/loop-and-gate-foundation</code></pre>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            Click Install on the menu that appears. Then, in your first session, ask it to run the setup. This is the step that places your vault (in iCloud on a Mac, so it syncs to your phone and tablet):
+                            Click Install on the menu that appears. Then, in your first session, ask it to set up your vault. The setup skill asks where your vault should live (recommending iCloud on a Mac, so it syncs to your phone and tablet), then places it:
                         </p>
                         <p class="mt-3 max-w-prose border-l border-rule pl-4 text-[1rem] italic leading-relaxed text-muted-foreground">
-                            Run the Foundation setup script to place my vault.
+                            Set up my vault.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             With that done, give it a real goal:
