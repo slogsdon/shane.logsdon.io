@@ -1,6 +1,6 @@
 ---
 title: 'The Split Audience: The First Reader of Your Docs Isn''t a Developer'
-date: '2026-07-22'
+date: 2026-07-22
 layout: partials::layouts/writing-post
 slug: the-split-audience
 description: AI coding agents read your documentation before any developer does, and
