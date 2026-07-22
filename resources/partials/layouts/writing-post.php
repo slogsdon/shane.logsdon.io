@@ -238,6 +238,33 @@ $breadcrumb = [
 <?= json_encode($breadcrumb, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
 </script>
 
+<?php
+$vimeoLdId = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['vimeoId'])
+    ? $meta->presentationMetadata['vimeoId']
+    : null;
+if ($vimeoLdId && !empty($image)):
+    $videoLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'VideoObject',
+        '@id' => $absUrl . '#VideoObject',
+        'name' => $title,
+        'description' => $meta->description,
+        'thumbnailUrl' => 'https://shane.logsdon.io/images/' . $image,
+        'uploadDate' => DateTime::createFromFormat('U', $originalDate)->format('c'),
+        'embedUrl' => 'https://player.vimeo.com/video/' . $vimeoLdId,
+        'url' => $absUrl,
+        'mainEntityOfPage' => $absUrl,
+        'publisher' => ['@id' => 'https://shane.logsdon.io/#Person'],
+    ];
+    if (!empty($meta->presentationMetadata['videoDuration'])) {
+        $videoLd['duration'] = $meta->presentationMetadata['videoDuration'];
+    }
+?>
+<script type="application/ld+json">
+<?= json_encode($videoLd, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) ?>
+</script>
+<?php endif; ?>
+
 <?php if (!empty($faqs) && is_array($faqs)): ?>
 <script type="application/ld+json">
 <?= json_encode([
