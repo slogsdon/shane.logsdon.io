@@ -2,6 +2,7 @@
 <?php $settings = require('resources/settings.php'); ?>
 
 <html lang="en">
+<head>
 <meta charset="utf-8">
 <title><?= $this->e(!empty($title) ? $title . ' · ' . $settings->title : $settings->title . ' · ' . $settings->subtitle); ?></title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
@@ -112,6 +113,8 @@
     gtag('config', 'G-9Y89SVEQW9');
   </script>
 <?php endif; ?>
+
+</head>
 
 <body>
 <?= $this->section('content'); ?>
