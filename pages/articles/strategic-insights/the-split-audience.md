@@ -101,10 +101,3 @@ Then ask the more uncomfortable question: when a developer asks ChatGPT what to 
 *Next: AEO Is DevRel Infrastructure → · ← All articles*
 
 *Related reading: [The AX Shift: You're Still Designing for Yourself](https://shane.logsdon.io/articles/technical-deep-dives/the-ax-shift/): the engineering-side treatment of the same consumer change.*
-
----
-
-*Suggested title: "The Split Audience: The First Reader of Your Docs Isn't a Developer"*
-*Meta description: AI agents now read your documentation before developers do. What the Agent Experience shift means for DevRel distribution, docs structure, and the metrics that just stopped working.*
-
-*Sources: Sunil Pai, "developer relations after the cheat code machine" (sunilpai.dev, Apr 2026); Netlify, "Introducing AX: Why Agent Experience Matters"; Joey de Villa, "AEO (AI Engine Optimization): Writing Docs and Code for Machines" (Arc of AI, 2026); Oleksii Borysenko, "Developer Experience for AI Coding Agents: HTTP Behavioral Signatures in Documentation Portals" (arXiv:2604.02544), source of the navigation-compression finding and the 193,217-token guide example.*
