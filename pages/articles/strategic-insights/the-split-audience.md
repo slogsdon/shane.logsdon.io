@@ -108,26 +108,3 @@ Then ask the more uncomfortable question: when a developer asks ChatGPT what to 
 *Meta description: AI agents now read your documentation before developers do. What the Agent Experience shift means for DevRel distribution, docs structure, and the metrics that just stopped working.*
 
 *Sources: Sunil Pai, "developer relations after the cheat code machine" (sunilpai.dev, Apr 2026); Netlify, "Introducing AX: Why Agent Experience Matters"; Joey de Villa, "AEO (AI Engine Optimization): Writing Docs and Code for Machines" (Arc of AI, 2026); Oleksii Borysenko, "Developer Experience for AI Coding Agents: HTTP Behavioral Signatures in Documentation Portals" (arXiv:2604.02544), source of the navigation-compression finding and the 193,217-token guide example.*
-
-## Distribution
-
-### LinkedIn – Shane
-
-Your documentation has a new first reader, and it isn't a developer.
-
-When someone points an AI coding agent at your API, it reads the README, the API reference, maybe an OpenAPI spec, before a human ever does. It compresses what used to be a twenty-minute skim across a dozen pages into one or two requests, then decides which auth pattern to use, which endpoint to call, and whether your product is even the right choice for the job.
-
-None of that showed up in analytics. Bounce rate, session depth, and page views all assume a visitor who loads your site. Increasingly, the first reader doesn't.
-
-I wrote about the two surfaces this creates: a human asking an AI what to use, and an agent consuming your docs to actually build the integration. Here's the test I'd run this week. Point a coding agent at your own quickstart and watch exactly where it starts guessing.
-
-Is your documentation still legible when the reader isn't a person?
-
-Link's in the first comment.
-
-[first comment]
-The test I'd run this week. Point a coding agent at your own quickstart and watch where it starts guessing: {{URL}}
-
-### Bluesky – Shane
-
-AI coding agents read your docs before any developer does, and no analytics metric captures it. Bounce rate, session depth, and page views stop meaning what they used to when the reader never loads your site. {{URL}}
