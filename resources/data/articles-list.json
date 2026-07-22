@@ -1,4 +1,12 @@
 {
+  "the-split-audience": {
+    "title": "The Split Audience: The First Reader of Your Docs Isn't a Developer",
+    "description": "AI coding agents read your documentation before any developer does, and no analytics metric you're reporting captures it. Here's what changes when you write docs for the reader that shows up first.",
+    "date": "2026-07-22",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": []
+  },
   "building-on-the-margins": {
     "title": "Building on the Margins",
     "description": "A founder with a day job and family builds LeadSurface via a Loop & Gate workflow, keeping product strategy human, handing disciplined execution to a pipeline.",
