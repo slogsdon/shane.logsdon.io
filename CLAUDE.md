@@ -25,7 +25,7 @@ The rule that matters most: **page architecture is a function of content type, n
 Also normative, and each already violated once during design:
 
 - **Lists are date descending, always.** `001` = newest. Category is metadata on the row and a *filter* above the list, never a grouping.
-- **Figures are additive.** Five types, each with an entry requirement (§Figures). Every figure carries a caption naming its source and the date it was read. If the page is no worse without the figure, cut it.
+- **Figures are additive.** Six types, each with an entry requirement (§Figures). Every figure carries a caption naming its source and the date it was read. A Sourced chart may plot only values the prose actually states, never an interpolated trend. If the page is no worse without the figure, cut it.
 - **Annotation red (`--color-mark`, `#c0392b`) marks only what a drawing calls out.** Never a heading, never a link, never on a page with no figure.
 - **The local-business practice stays demoted** — footer link only, never in the primary nav, one muted line on the home page. The primary nav is About · Articles · Speaking · Work · Resume. The audit funnel lives on the practice pages, not `/contact/`.
 

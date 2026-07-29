@@ -155,7 +155,10 @@ Diff from v2 (key changes):
   + --color-mark (#c0392b) added — annotation red, one strict role (see Colors)
   + FIVE NAMED ARCHITECTURES + an ORDERED TEST that derives one from the
     content — the defining change of v3. The mapping table is worked examples.
-  + Figure taxonomy — five figure types, each with a stated entry requirement
+  + Figure taxonomy — six figure types, each with a stated entry requirement
+    (Sourced chart added after auditing the DevRel series, which is research-
+    backed where the 2026 posts were prose-argument; nothing covered a
+    verified third-party statistic)
   + Title block promoted to a named primitive; replaces the footer on Sheet pages
   + Drawing classes (.s-ink / .s-edge / .s-mark / .s-rule / .f-* / .hatch) so
     inline SVG inherits the palette instead of hard-coding hex
@@ -258,15 +261,20 @@ The rows below are **worked examples of the questions above**, not the extent of
 
 ## Figures
 
-Five types. A figure is additive or it doesn't ship. Each states what it requires before it may be used.
+Six types. A figure is additive or it doesn't ship. Each states what it requires before it may be used.
 
 | Figure | Use it for | Requires |
 |---|---|---|
 | Dimensioned diagram | A claim about proportion, or where a line sits | Two regions and a measured split you can defend |
 | Cycle | A process with a genuine return edge | Three or more stages and a real loop back |
 | Record chart | A claim about your own history or data | A file it reconciles to, named in the caption |
+| Sourced chart | A claim about data you did not produce but verified | A citable source named in the caption, **and every plotted value stated in the text** |
 | Detail | Clarifying one step of an assembly | A step that is actually unclear without it |
 | Footed table | Anything with numbers, including pricing | Figures that add up, shown adding up |
+
+**Record chart and Sourced chart stay separate on purpose.** The distinction is provenance, and provenance is exactly what a reader should be able to check. A Record chart reconciles to a file in this repo. A Sourced chart cites someone else's published figures, and its caption names them so the claim stays clickable.
+
+The Sourced chart's second requirement does the real work: **no interpolation.** Every point drawn must be a value the prose states. If an argument turns on an inflection the source never quantified, that inflection cannot be drawn, and the figure is either redrawn around what is stated or dropped. A trend line through values you inferred is invention wearing a citation.
 
 ### Density
 
