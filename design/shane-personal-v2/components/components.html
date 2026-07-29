@@ -160,19 +160,22 @@
 }
 
 /* Callout — left rule, no filled background */
-.callout { display:flex;gap:var(--s-5);padding:var(--s-5) 0; }
-.callout-rule { width:2px;flex-shrink:0;background:var(--color-rule); }
-.callout--accent .callout-rule { background:var(--color-accent); }
-.callout--ok .callout-rule    { background:#3d7a5c; }
-.callout-body  { display:flex;flex-direction:column;gap:var(--s-2); }
-.callout-label {
+/* Content note block. Renamed from .callout in v3: the v3 callout BUBBLE owns
+   that class name in tokens.css, and the two rules were colliding in this file,
+   which rendered these boxes as 17px red circles. */
+.note-block { display:flex;gap:var(--s-5);padding:var(--s-5) 0; }
+.note-block__rule { width:2px;flex-shrink:0;background:var(--color-rule); }
+.note-block--accent .note-block__rule { background:var(--color-accent); }
+.note-block--ok .note-block__rule    { background:#3d7a5c; }
+.note-block__body  { display:flex;flex-direction:column;gap:var(--s-2); }
+.note-block__label {
   font-family:var(--type-display-family);font-weight:600;
   font-variant-caps:small-caps;font-feature-settings:'smcp';
   text-transform:lowercase;font-size:var(--fs-smallcaps);
   letter-spacing:0.1em;color:var(--color-ink-3);
 }
-.callout--accent .callout-label { color:var(--color-accent); }
-.callout--ok    .callout-label  { color:#3d7a5c; }
+.note-block--accent .note-block__label { color:var(--color-accent); }
+.note-block--ok    .note-block__label  { color:#3d7a5c; }
 
 /* Pull quote */
 .pull-quote { padding-left:var(--s-6);border-left:1px solid var(--color-rule);max-width:var(--measure); }
@@ -374,9 +377,34 @@ pre.snippet {
 .list-strip { display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--color-rule);border-bottom:1px solid var(--color-rule);padding:11px 0; }
 .filters { display:flex;gap:18px;flex-wrap:wrap; }
 .filters button { background:none;border:0;padding:0;cursor:pointer;font-family:var(--type-display-family);font-weight:600;font-variant-caps:small-caps;font-feature-settings:'smcp';text-transform:lowercase;letter-spacing:0.1em;font-size:13px;color:var(--color-ink-3); }
-.filters button[aria-selected="true"] { color:var(--color-ink);border-bottom:1px solid var(--color-mark); }
+.filters button[aria-selected="true"] { color:var(--color-ink);border-bottom:1px solid var(--color-ink); }
 .foot-links { display:flex;gap:18px;flex-wrap:wrap;list-style:none;margin:0;padding:0; }
 .foot-links a { font-family:var(--type-display-family);font-weight:600;font-variant-caps:small-caps;font-feature-settings:'smcp';text-transform:lowercase;letter-spacing:0.1em;font-size:12.5px;color:var(--color-ink-3);text-decoration:none; }
+
+/* The library shipped with no media queries at all, so every section head pushed
+   the page sideways on a phone. */
+@media (max-width: 900px) {
+  .lib-section-head { grid-template-columns:1fr;gap:var(--s-3); }
+  .newsletter { grid-template-columns:1fr; }
+  .author-bio { flex-wrap:wrap; }
+  .snippet { overflow-x:auto; }
+  /* Four columns at 100px + 1px + 1fr + auto do not fit a phone. */
+  .article-row { grid-template-columns:1fr;gap:var(--s-3);padding:var(--s-5) 0; }
+  .article-row__rule { display:none; }
+  .article-row__title { font-size:22px; }
+  /* Display specimens run wider than a phone by design. Give them their own
+     scroll track rather than let them push the whole page sideways. */
+  .preview { overflow-x:auto; }
+}
+/* Mirrors the same rule in tokens.css. This file embeds its tokens rather than
+   linking them, so anything added there has to be added here by hand. */
+@media (max-width: 640px) {
+  .title-block { grid-template-columns:1fr; }
+  .title-block__cells { grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));border-left:0;border-top:1px solid var(--color-ink); }
+  .title-block__cells > div { border-bottom:1px solid var(--color-rule); }
+  .title-block__cells > div:nth-child(2n) { border-right:0; }
+  .title-block__cells > div:nth-last-child(-n+2) { border-bottom:0; }
+}
 
 </style>
 </head>
@@ -386,7 +414,7 @@ pre.snippet {
   <header class="lib-header">
     <div class="running-head">
       <span>shane logsdon — component library</span>
-      <span class="t-dateline">v2 · 2026.05.02</span>
+      <span class="t-dateline">v3 · 2026.07.28</span>
     </div>
     <h1 class="t-headline-lg" style="margin-top:var(--s-7);">
       Components, <span class="t-accent">distilled</span>.
@@ -651,29 +679,30 @@ pre.snippet {
 
   <!-- ── viii. Callouts ──────────────────────────────────────────── -->
   <!-- PRIMARY: left rule only — no filled background -->
-  <section class="lib-section" id="callouts">
+  <section class="lib-section" id="note-blocks">
     <div class="lib-section-head">
-      <span class="lib-section-label">viii. callouts</span>
+      <span class="lib-section-label">viii. note blocks</span>
       <h2 class="lib-section-title">Left rule, not filled background.</h2>
     </div>
-    <p class="lib-note">PRIMARY: left rule carries the semantic weight; no color fill behind the text</p>
+    <p class="lib-note">PRIMARY: the left rule carries the semantic weight. No color fill behind the text</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">Not the callout bubble in section xix. This one is a prose aside and never carries annotation red.</p>
 
     <div class="preview preview-box">
       <span class="preview-label">note (neutral)</span>
-      <div class="callout">
-        <div class="callout-rule"></div>
-        <div class="callout-body">
-          <span class="callout-label">note</span>
+      <div class="note-block">
+        <div class="note-block__rule"></div>
+        <div class="note-block__body">
+          <span class="note-block__label">note</span>
           <p class="t-body-md">This pattern applies every month across Jefferson, Oldham, Bullitt, Spencer, and Shelby counties.</p>
         </div>
       </div>
 
       <div style="margin-top:var(--s-6);">
         <span class="preview-label">important (accent)</span>
-        <div class="callout callout--accent">
-          <div class="callout-rule"></div>
-          <div class="callout-body">
-            <span class="callout-label">important</span>
+        <div class="note-block note-block--accent">
+          <div class="note-block__rule"></div>
+          <div class="note-block__body">
+            <span class="note-block__label">important</span>
             <p class="t-body-md">Fixing a buried listing after six months takes significantly more effort than getting it right from day one.</p>
           </div>
         </div>
@@ -681,10 +710,10 @@ pre.snippet {
 
       <div style="margin-top:var(--s-6);">
         <span class="preview-label">done / success</span>
-        <div class="callout callout--ok">
-          <div class="callout-rule"></div>
-          <div class="callout-body">
-            <span class="callout-label">done</span>
+        <div class="note-block note-block--ok">
+          <div class="note-block__rule"></div>
+          <div class="note-block__body">
+            <span class="note-block__label">done</span>
             <p class="t-body-md">Listing claimed, verified, and populated with hours, services, and photos.</p>
           </div>
         </div>
@@ -693,10 +722,10 @@ pre.snippet {
 
     <details>
       <summary>HTML</summary>
-      <pre class="snippet">&lt;div class="callout callout--accent"&gt;
-  &lt;div class="callout-rule"&gt;&lt;/div&gt;
-  &lt;div class="callout-body"&gt;
-    &lt;span class="callout-label"&gt;important&lt;/span&gt;
+      <pre class="snippet">&lt;div class="note-block note-block--accent"&gt;
+  &lt;div class="note-block__rule"&gt;&lt;/div&gt;
+  &lt;div class="note-block__body"&gt;
+    &lt;span class="note-block__label"&gt;important&lt;/span&gt;
     &lt;p class="t-body-md"&gt;…&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
