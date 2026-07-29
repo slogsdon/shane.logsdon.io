@@ -65,6 +65,30 @@ The third was the implementation itself.
 
 After the first implementation pass, I ran an alignment review: a gap analysis comparing the spec to the code. It found four significant deviations: `node_id` and `api_url` missing from the canonical schema, the full metadata contract incomplete, JSONL buffered in memory rather than streaming to disk, and the retry-aware HTTP client behavior absent. Every one of those was specified in the design doc. The gap wasn't between the spec and reality. It was between the spec and the first implementation pass.
 
+<figure class="post-figure">
+<table class="footed-table">
+<caption class="sr-only">The canonical record schema for gh-monthly: seven fields specified, five delivered in the first implementation pass, two missing.</caption>
+<thead>
+<tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">First pass</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><code>item_type</code></th><td>"issue" | "pull_request"</td><td data-state="delivered">delivered</td></tr>
+<tr><th scope="row"><code>id</code></th><td>integer</td><td data-state="delivered">delivered</td></tr>
+<tr><th scope="row"><code>node_id</code> <span class="callout">1</span></th><td>string</td><td data-state="missing">missing</td></tr>
+<tr><th scope="row"><code>created_at</code></th><td>ISO8601 string</td><td data-state="delivered">delivered</td></tr>
+<tr><th scope="row"><code>html_url</code></th><td>string</td><td data-state="delivered">delivered</td></tr>
+<tr><th scope="row"><code>api_url</code> <span class="callout">2</span></th><td>string</td><td data-state="missing">missing</td></tr>
+<tr><th scope="row"><code>title</code></th><td>string</td><td data-state="delivered">delivered</td></tr>
+</tbody>
+<tfoot>
+<tr><th scope="row" colspan="2">7 specified</th><td>5 delivered + 2 missing</td></tr>
+</tfoot>
+</table>
+<figcaption class="figcaption">
+<b>Fig. 01</b> The canonical record schema, as specified and as delivered. Source: the design spec and the alignment review, both quoted in this post, read 2026.07.28. Callouts <span class="callout">1</span> and <span class="callout">2</span> mark the two fields the review found missing. The review found four deviations in total and this table covers only the first of them. The other three were the incomplete metadata contract, JSONL buffered in memory rather than streamed to disk, and the absent retry-aware HTTP client.
+</figcaption>
+</figure>
+
 The alignment review's existence, the ability to write one at all, was only possible because the spec was precise enough to be falsifiable. The first implementation wasn't a failure. The alignment pass is the mechanism by which the spec stays authoritative. It worked because there was something authoritative to align against.
 
 ---

@@ -462,6 +462,62 @@
   }
   .row-title-link:hover { background-size: 100% 1px; }
 
+  /* ── Figure inside an article body. Breaks the prose measure so a drawing or
+     a table can use the column it needs. */
+  .post-figure { margin: 2.5rem 0; }
+  .post-figure > table { margin-bottom: 0; }
+
+  /* ── Footed table. One of the figure types: anything with numbers, including
+     pricing, where the figures add up and are shown adding up. The foot IS the
+     figure, so it carries the ink rule and the sum. */
+  .footed-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .footed-table th,
+  .footed-table td { text-align: left; padding: 0.625rem 1rem 0.625rem 0; vertical-align: baseline; }
+  .footed-table thead th {
+    @apply font-display;
+    font-weight: 600;
+    font-variant-caps: small-caps;
+    font-feature-settings: 'smcp';
+    text-transform: lowercase;
+    font-size: 0.8125rem;
+    letter-spacing: 0.09em;
+    color: hsl(var(--foreground));
+    border-bottom: 1px solid var(--color-ink);
+    padding-bottom: 0.5rem;
+  }
+  .footed-table tbody tr { border-bottom: 1px solid var(--color-rule); }
+  .footed-table tbody th { font-weight: 400; color: hsl(var(--foreground)); }
+  .footed-table td { color: var(--color-ink-soft); }
+  .footed-table code {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.875em;
+  }
+  /* The value that turned red. Scoped to the table rather than exposed as a
+     utility, so annotation red cannot leak onto anything a drawing is not
+     calling out. */
+  .footed-table td[data-state="missing"] { color: var(--color-mark); }
+  .footed-table tfoot th,
+  .footed-table tfoot td {
+    border-top: 1px solid var(--color-ink);
+    padding-top: 0.75rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: hsl(var(--foreground));
+    font-weight: 400;
+  }
+  @media (max-width: 600px) {
+    .footed-table { font-size: 0.875rem; }
+    .footed-table th,
+    .footed-table td { padding-right: 0.5rem; }
+  }
+
   /* ── Sheet. Border plus field plus title block. No zone references or edge
      rulers: they looked systematic and addressed nothing. */
   .sheet { border: 2px solid var(--color-ink); position: relative; }
