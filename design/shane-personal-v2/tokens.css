@@ -302,6 +302,23 @@
   margin: 0; font-family: var(--type-mono-family); font-size: 12px; color: var(--color-ink);
 }
 
+/* Below ~420px the four title-block cells cannot hold minmax(76px, auto) side by side
+   and the block overflows the viewport. Found while building the v3 showcase; the
+   site mockup solved it the same way. Stack the id above the cells and run the cells
+   two up. */
+@media (max-width: 640px) {
+  .title-block { grid-template-columns: 1fr; }
+  .title-block__cells {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 0;
+    border-top: 1px solid var(--color-ink);
+  }
+  .title-block__cells > div { border-bottom: 1px solid var(--color-rule); }
+  .title-block__cells > div:nth-child(2n) { border-right: 0; }
+  .title-block__cells > div:nth-last-child(-n+2) { border-bottom: 0; }
+}
+
 /* ─── Sheet — border + field + title block. No zone references or edge rulers. ─── */
 .sheet { border: 2px solid var(--color-ink); position: relative; }
 .sheet__field { padding: 34px 34px 0; }
