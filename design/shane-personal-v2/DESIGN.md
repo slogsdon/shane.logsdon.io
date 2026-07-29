@@ -159,7 +159,8 @@ Diff from v2 (key changes):
     (Sourced chart added after auditing the DevRel series, which is research-
     backed where the 2026 posts were prose-argument; nothing covered a
     verified third-party statistic)
-  + Title block promoted to a named primitive; replaces the footer on Sheet pages
+  + Title block promoted to a named primitive; carries revision state on Sheet
+    pages (it does not replace the site footer)
   + Drawing classes (.s-ink / .s-edge / .s-mark / .s-rule / .f-* / .hatch) so
     inline SVG inherits the palette instead of hard-coding hex
   + Site-wide components documented: newsletter, contact CTA, author bio,
@@ -215,7 +216,7 @@ Five. Each is earned by a kind of content. **The ordered test below is what's no
 
 1. **A · Drawing First** — the figure opens the page at full width and the prose beneath it is the *key*, numbered to the callouts. The headline is demoted below the drawing. Requires a piece that genuinely reduces to one drawing; has no honest fallback without one.
 2. **B · Facing Spread** — two equal columns divided by a hairline gutter, argument left and apparatus right, locked to horizontal registration lines that cross both so a figure always sits level with the paragraph citing it. The right column is content, not chrome.
-3. **C · Sheet** — a bordered field with a **title block** in the lower right carrying sheet number, revision, date, and author. The title block replaces the footer. No zone references or edge rulers: they looked systematic but addressed nothing.
+3. **C · Sheet** — a bordered field with a **title block** in the lower right carrying sheet number, revision, date, and author. The title block sits inside the field and carries the sheet's own metadata. It does **not** replace the site footer, which carries navigation the title block has no business carrying. Newsletter and footer follow it as on every other page. No zone references or edge rulers: they looked systematic but addressed nothing.
 4. **D · Assembly Order** — a numbered sequence down a central axis, text and detail drawing alternating sides. Steps are addressable, so a reader can enter at step 4. The strongest architecture on mobile: the axis slides left and everything stacks.
 5. **E · Set** — a permanent list column beside the open item. Navigation never leaves the page and the size of the body of work stays legible.
 
@@ -242,7 +243,7 @@ Ask these five questions **in this order** and stop at the first yes. The order 
 
 The rows below are **worked examples of the questions above**, not the extent of the system. Each cites the question that decided it.
 
-| Page / content type | Architecture | Why (Q) | Figure it carries |
+| Page / content type | Architecture | Why (Q) | Figure it may carry |
 |---|---|---|---|
 | Home | B · Facing Spread | Q4 — several claims, each needing evidence | Boundary drawing + record chart |
 | Articles index | E · Set | Q1 — the job stops at browsing | None — the list is the object |
@@ -251,7 +252,7 @@ The rows below are **worked examples of the questions above**, not the extent of
 | Field guide / process | D · Assembly Order | Q2 — reordering the gates breaks them | One detail per step |
 | Practice / services | D · Assembly Order | Q2 — build → AEO → management is ordered | Footed price blocks |
 | About | C · Sheet | Q3 — changes, so it must say when it last did | Category share chart |
-| Work | C · Sheet | Q3 — each project carries its own revision | Project schematic |
+| Work | C · Sheet | Q3 — each project carries its own revision | None — no project carries dated figures |
 | Resume | C · Sheet | Q3 — staleness is the whole risk | Career timeline |
 | Speaking | E · Set | Q1 — a catalog browses like a catalog | Talk structure timeline |
 | Archive | E · Set | Q1 — same browsing job, different subset | None |
@@ -275,6 +276,8 @@ Six types. A figure is additive or it doesn't ship. Each states what it requires
 **Record chart and Sourced chart stay separate on purpose.** The distinction is provenance, and provenance is exactly what a reader should be able to check. A Record chart reconciles to a file in this repo. A Sourced chart cites someone else's published figures, and its caption names them so the claim stays clickable.
 
 The Sourced chart's second requirement does the real work: **no interpolation.** Every point drawn must be a value the prose states. If an argument turns on an inflection the source never quantified, that inflection cannot be drawn, and the figure is either redrawn around what is stated or dropped. A trend line through values you inferred is invention wearing a citation.
+
+**A figure does not reflow, and it does not scale its own type.** A drawing scaled to fit a phone renders `.t-mono` at around 6px, which is a label nobody reads. Cap the SVG at its natural width and let the figure scroll horizontally inside its own container when the viewport is narrower. This is the drafting answer as well as the legible one: a drawing is the same drawing on a smaller sheet, not a smaller drawing.
 
 ### Density
 

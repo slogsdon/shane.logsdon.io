@@ -22,6 +22,8 @@ npm run dev:css      # tailwind watch
 
 The rule that matters most: **page architecture is a function of content type, not a style choice.** There are five architectures (Drawing First · Facing Spread · Sheet · Assembly Order · Set) and an **ordered test** in §Architectures that derives one from the content. Run the test, name the architecture and the question that decided it, then write markup. A page type not already in the mapping table gets a new row citing its question — never an improvised layout, and never a blend of two.
 
+**`design/shane-personal-v2/iterations/` is exploration, not authority.** `v3-site-mockup.html` is where v3 was worked out and it is kept for that record, but it disagrees with DESIGN.md in three known places: it puts annotation red on the active nav underline and the selected filter tab (forbidden), its WORK section is invented placeholder content, and it uses a `.c-sheet` / `.c-tb` class vocabulary that `tokens.css` does not. Where they disagree, DESIGN.md and `tokens.css` win.
+
 Also normative, and each already violated once during design:
 
 - **Lists are date descending, always.** `001` = newest. Category is metadata on the row and a *filter* above the list, never a grouping.
