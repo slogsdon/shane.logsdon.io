@@ -81,7 +81,7 @@ $this->layout('partials::layouts/main', [
 
     <div class="mt-8 max-w-prose space-y-5">
         <p class="text-[1.0625rem] leading-relaxed text-muted-foreground">
-            In April 2026, 40 newly registered Louisville-area businesses had no Google listing at all. <span class="callout">1</span> Another 30 had a listing but no working website. <span class="callout">2</span> That's nearly two out of three new businesses with a gap between where customers look and what they find, and the cost shows up before most owners realize it's happening.
+            In April 2026, 40 newly registered Oldham County businesses had no Google listing at all. <span class="callout">1</span> Another 30 had a listing but no working website. <span class="callout">2</span> That's nearly two out of three new businesses with a gap between where customers look and what they find, and the cost shows up before most owners realize it's happening.
         </p>
         <p class="text-[1.0625rem] leading-relaxed text-muted-foreground">
             April 2026 is not an anomaly. The same pattern repeats every month across Jefferson, Oldham, Bullitt, Spencer, and Shelby counties. Someone forms an LLC, signs a lease, puts up signage, opens the doors, and then disappears from Google Maps. Or worse, their listing shows yesterday's hours, a phone number that doesn't connect, or a placeholder page that still says "coming soon."

@@ -1,7 +1,7 @@
 ---
 version: v3
 name: Shane Logsdon (v3)
-description: Drafting system for a technical product leader at the intersection of payments and developer platforms. Fraunces display + small-caps, IBM Plex Sans body, JetBrains Mono technical-only. Cream/ink/olive from v2, plus a single annotation red with one strict role. The defining move of v3 is that page architecture is a function of content type — five named architectures chosen by an ordered test — and that figures are content-bearing apparatus with entry requirements, never decoration.
+description: Drafting system for a technical product leader at the intersection of payments and developer platforms. Fraunces display + small-caps, IBM Plex Sans body, JetBrains Mono technical-only. Cream/ink/olive from v2, plus a single annotation red with one strict role. The defining move of v3 is that page architecture is a function of content type — six named architectures, five chosen by an ordered test and one by position in the set — and that figures are content-bearing apparatus with entry requirements, never decoration.
 colors:
   primary: "#0e1116"
   secondary: "#62686f"
@@ -153,8 +153,11 @@ only alongside an update to `skills-workflows/skills/publish-post/SKILL.md`.
 
 Diff from v2 (key changes):
   + --color-mark (#c0392b) added — annotation red, one strict role (see Colors)
-  + FIVE NAMED ARCHITECTURES + an ORDERED TEST that derives one from the
+  + SIX NAMED ARCHITECTURES + an ORDERED TEST that derives one from the
     content — the defining change of v3. The mapping table is worked examples.
+    (F · Frontispiece added last: Home fell through all five ordered questions
+    because it is defined by position in the set rather than by content, and a
+    front door with no named architecture is a front door that gets improvised.)
   + Figure taxonomy — six figure types, each with a stated entry requirement
     (Sourced chart added after auditing the DevRel series, which is research-
     backed where the 2026 posts were prose-argument; nothing covered a
@@ -180,7 +183,7 @@ Diff from v2 (key changes):
 
 A drafting language for a technical product leader at the intersection of payments and developer platforms. v2 established the editorial register — Fraunces at publication scale, small-caps labels, hairline rules, a committed cream page. v3 keeps all of it and adds the thing v2 lacked: **a rule for choosing a page's shape.**
 
-The defining idea is that **architecture is a function of content type.** There are five named architectures and an ordered test that derives one from the content. A reader who lands on a sequence gets a sequence; a reader who lands on a reference page gets a title block telling them when it was last true. The second idea is that **figures are apparatus, not ornament** — dimensioned drawings, hatched regions, and numbered callouts that carry information the prose would otherwise have to carry badly, each with a stated requirement it must meet before it may be used.
+The defining idea is that **architecture is a function of content type.** There are six named architectures: five derived from the content by an ordered test, and **F · Frontispiece**, which is decided by a page's position in the set rather than by what it contains. A reader who lands on a sequence gets a sequence; a reader who lands on a reference page gets a title block telling them when it was last true. The second idea is that **figures are apparatus, not ornament** — dimensioned drawings, hatched regions, and numbered callouts that carry information the prose would otherwise have to carry badly, each with a stated requirement it must meet before it may be used.
 
 ## Colors
 
@@ -212,17 +215,22 @@ Zero radius across the board. The two exceptions are `rounded.full` for avatars 
 
 ## Architectures
 
-Five. Each is earned by a kind of content. **The ordered test below is what's normative**; the mapping table after it is worked examples, not the extent of the system. A page type that isn't in the table is answered by running the test, then added as a row citing the question that decided it.
+Six. Five are earned by a kind of content and one by position in the set. **The ordered test below is what's normative**; the mapping table after it is worked examples, not the extent of the system. A page type that isn't in the table is answered by running the test, then added as a row citing the question that decided it.
 
 1. **A · Drawing First** — the figure opens the page at full width and the prose beneath it is the *key*, numbered to the callouts. The headline is demoted below the drawing. Requires a piece that genuinely reduces to one drawing; has no honest fallback without one.
 2. **B · Facing Spread** — two equal columns divided by a hairline gutter, argument left and apparatus right, locked to horizontal registration lines that cross both so a figure always sits level with the paragraph citing it. The right column is content, not chrome.
 3. **C · Sheet** — a bordered field with a **title block** in the lower right carrying sheet number, revision, date, and author. The title block sits inside the field and carries the sheet's own metadata. It does **not** replace the site footer, which carries navigation the title block has no business carrying. Newsletter and footer follow it as on every other page. No zone references or edge rulers: they looked systematic but addressed nothing.
 4. **D · Assembly Order** — a numbered sequence down a central axis, text and detail drawing alternating sides. Steps are addressable, so a reader can enter at step 4. The strongest architecture on mobile: the axis slides left and everything stacks.
 5. **E · Set** — a permanent list column beside the open item. Navigation never leaves the page and the size of the body of work stays legible.
+6. **F · Frontispiece** — the title sheet of the set. It names the work, states position, and indexes what follows. It carries no argument, so it carries no figure. A site has exactly one. The recent-work list on it is the **sheet index**, not a nested Set, and that is the one place the no-nesting rule takes an explicit exception.
+
+   F is reached when a page is the single entry point to the whole set. That is a question about position rather than content, which is why the five ordered questions below do not find it. Home fell through all five and was briefly headed for a "None" row, which would have left the next person to touch the front door improvising. Improvised layout is the failure this system exists to prevent, so the architecture is named instead.
 
 ### Choosing an architecture
 
-Ask these five questions **in this order** and stop at the first yes. The order is the rule — several will often be true at once, and the earlier question wins because it describes the reader's job rather than the author's intent.
+**First, one question that is not about content:** is this page the single entry point to the whole set? If yes, it is **F · Frontispiece** and the five below do not apply. Exactly one page in a site can answer yes. Ask it first because position outranks content: the front door is the front door whatever it happens to say this month.
+
+Then ask these five questions **in this order** and stop at the first yes. The order is the rule — several will often be true at once, and the earlier question wins because it describes the reader's job rather than the author's intent.
 
 1. **Does the page's job stop at browsing a body of work?** → **E · Set**
    The reader came to scan and pick, not to read this page. If the page would still work with every item replaced, it's a Set.
@@ -239,13 +247,15 @@ Ask these five questions **in this order** and stop at the first yes. The order 
 
 **One page, one architecture.** Architectures don't nest. If a section of a page genuinely wants a different architecture, that section is a different page.
 
+**The one exception is F.** A Frontispiece indexes what follows, so it carries a list of recent work. That list is the **sheet index**, not a nested Set: it exists to point at the set, not to be browsed as one, which is why it is short and why it is not the page's job. No other architecture gets an exception.
+
 ### The mapping
 
 The rows below are **worked examples of the questions above**, not the extent of the system. Each cites the question that decided it.
 
 | Page / content type | Architecture | Why (Q) | Figure it may carry |
 |---|---|---|---|
-| Home | B · Facing Spread | Q4 — several claims, each needing evidence | Boundary drawing + record chart |
+| Home | F · Frontispiece | The single entry point; position decides it, not content | None |
 | Articles index | E · Set | Q1 — the job stops at browsing | None — the list is the object |
 | Article — one central idea | A · Drawing First | Q5 — reduces to one drawing | Dimensioned diagram, required |
 | Article — multi-claim argument | B · Facing Spread | Q4 — each claim faces its evidence | One figure per band |
@@ -292,6 +302,7 @@ The ceiling is **one figure per structural unit**, and the architecture defines 
 | C · Sheet | the field | At most one. The title block is not a figure. |
 | D · Assembly Order | the step, plus the intro | At most one detail per step; steps may have none. The intro may carry **one** summary figure — a footed total, a cycle — standing for the assembly as a whole. |
 | E · Set | the open pane | At most one. The list is not a figure. |
+| F · Frontispiece | the page | **None.** It carries no argument, so there is nothing for a figure to be evidence for. A figure here is decoration by definition. |
 
 Three further limits:
 
@@ -305,7 +316,7 @@ Drawings are authored as inline SVG using the drawing classes in `tokens.css` (`
 
 ## Components
 
-Named primitives, plus the site-wide components that must survive under all five architectures.
+Named primitives, plus the site-wide components that must survive under all six architectures.
 
 **Primitives:** Wordmark · Folio (mono dateline + position) · Running head (Fraunces small caps at the top edge) · Editorial label (Fraunces small caps, inline) · **Title block** (new in v3) · **Callout bubble** (new in v3) · Article row.
 

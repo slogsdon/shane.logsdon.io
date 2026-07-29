@@ -475,8 +475,16 @@
   .row-title-link:hover { background-size: 100% 1px; }
 
   /* ── Figure inside an article body. Breaks the prose measure so a drawing or
-     a table can use the column it needs. */
-  .post-figure { margin: 2.5rem 0; }
+     a table can use the column it needs.
+
+     It carries .figure-plate's two rules as well, which makes the wrapper
+     optional in post markdown rather than required. An author who writes a bare
+     <svg> in a post still gets the no-reflow behavior §Figures asks for, instead
+     of a silently squeezed drawing with 6px labels. The child combinator means
+     this does nothing when the plate IS used: the svg is not a direct child
+     then, and the inner plate scrolls first. */
+  .post-figure { margin: 2.5rem 0; overflow-x: auto; }
+  .post-figure > svg { display: block; max-width: none; }
   .post-figure > table { margin-bottom: 0; }
 
   /* ── Footed table. One of the figure types: anything with numbers, including
