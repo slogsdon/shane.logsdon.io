@@ -76,11 +76,12 @@
     letter-spacing: -0.015em;
   }
 
-  /* ── Figures. A drawing scales to its column; without this an SVG carrying
-     only a viewBox renders at its intrinsic size and pushes the page sideways
-     on a phone. */
+  /* ── Figures. DESIGN.md §Figures: a figure does not reflow and does not
+     scale its own type. A drawing squeezed to fit a phone renders .t-mono near
+     6px, which is a label nobody reads. The drawing keeps its natural width and
+     the plate around it scrolls (.figure-plate, in @layer components). Same
+     drawing on a smaller sheet, not a smaller drawing. */
   figure { margin: 0; }
-  figure svg { display: block; width: 100%; height: auto; }
 
   /* ── Article prose — restrained editorial register ── */
   .prose p {
@@ -380,6 +381,13 @@
     font-size: 10px; line-height: 1;
     vertical-align: 1px; margin: 0 1px;
   }
+
+  /* ── Figure plate. The drawing's own container: it keeps its natural width
+     and scrolls sideways when the viewport is narrower. max-width is reset
+     because Tailwind's preflight caps every svg at 100%, which is exactly the
+     reflow DESIGN.md §Figures rules out. */
+  .figure-plate { overflow-x: auto; }
+  .figure-plate > svg { display: block; max-width: none; }
 
   /* ── Figure caption. Every figure names its source and the date it was read. */
   .figcaption {

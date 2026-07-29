@@ -283,7 +283,7 @@ foreach ($byEmployer as $company => $group) {
           <div>
             <p class="smallcaps">at global payments</p>
             <p class="mt-2 font-display text-[2rem] font-normal leading-none tracking-tight text-foreground">11<sup class="text-[0.6em] text-muted-foreground">yrs</sup></p>
-            <p class="mt-2 text-[0.8125rem] leading-relaxed text-muted-foreground">Five roles. Dec 2014 &rarr; present.</p>
+            <p class="mt-2 text-[0.8125rem] leading-relaxed text-muted-foreground">Six roles. Dec 2014 &rarr; present.</p>
           </div>
           <div>
             <p class="smallcaps">merchant installs</p>
@@ -298,7 +298,8 @@ foreach ($byEmployer as $company => $group) {
         </div>
 
         <figure class="mt-10">
-          <svg viewBox="0 0 520 212" role="img"
+          <div class="figure-plate">
+          <svg width="520" height="212" viewBox="0 0 520 212" role="img"
                aria-label="Career timeline, February 2012 to present. <?= htmlspecialchars(implode(' ', $timelineAria)) ?>">
             <text x="0" y="12" class="t-mono f-3">NINE ROLES, THREE EMPLOYERS</text>
             <line x1="0" y1="26" x2="520" y2="26" class="s-ink"/>
@@ -351,6 +352,7 @@ foreach ($byEmployer as $company => $group) {
             <text x="<?= $tickX ?>" y="205" text-anchor="middle" class="t-mono f-3"><?= $year ?></text>
             <?php endfor; ?>
           </svg>
+          </div>
           <figcaption class="figcaption">
             <b>Fig. 01</b> Employment span by employer. Source <b>pages/resume.php</b>, the nine dated
             roles listed below, read <?= date('Y.m.d') ?>. Bar length is time in role, divided at each

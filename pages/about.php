@@ -72,7 +72,8 @@ $barMax    = 276; // px at the chart's own scale
 
       <div>
         <figure>
-          <svg viewBox="0 0 420 200" role="img"
+          <div class="figure-plate">
+          <svg width="420" height="200" viewBox="0 0 420 200" role="img"
                aria-label="Published articles by category. <?= implode(', ', array_map(function ($k, $v) use ($categoryLabels) {
                    return ($categoryLabels[$k] ?? $k) . ': ' . $v;
                }, array_keys($categoryCounts), $categoryCounts)) ?>. <?= $postTotal ?> total.">
@@ -93,6 +94,7 @@ $barMax    = 276; // px at the chart's own scale
             <line x1="0" y1="184" x2="420" y2="184" class="s-rule"/>
             <text x="0" y="197" class="t-mono f-mark"><?= $postTotal ?> total on file</text>
           </svg>
+          </div>
           <figcaption class="figcaption">
             <b>Fig. 01</b> Category share. Source <b>resources/data/articles-list.json</b>,
             counted at build time, <?= date('Y.m.d') ?>. Bar length is share of the largest category.

@@ -270,6 +270,14 @@
   vertical-align: 1px; margin: 0 1px;
 }
 
+/* ─── Figure plate. The drawing's own container.
+   DESIGN.md §Figures: a figure does not reflow and does not scale its own type.
+   Squeezed to a phone, .t-mono lands near 6px and stops being a label. So the
+   drawing keeps its natural width and the plate scrolls sideways under it. The
+   caption sits outside the plate and wraps like ordinary text. ─── */
+.figure-plate { overflow-x: auto; }
+.figure-plate > svg { display: block; max-width: none; }
+
 /* ─── Figure caption — every figure names its source and the date it was read ─── */
 .figcaption {
   font-family: var(--type-mono-family);
