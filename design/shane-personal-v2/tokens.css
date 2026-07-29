@@ -1,6 +1,9 @@
-/* Shane Logsdon — Design Tokens (v2)
-   Reimagined to push further from AI-default editorial defaults.
-   See ../shane-personal/tokens.css for v1 (which preserved the artifact verbatim). */
+/* Shane Logsdon — Design Tokens (v3)
+   v2 established the editorial register; v3 adds the drafting apparatus —
+   annotation red, drawing classes, callout bubbles, and the title block.
+   All v3 additions are ADDITIVE: every existing artifact keeps rendering.
+   Directory slug stays `shane-personal-v2` (publish-post hardcodes it).
+   See DESIGN.md for the architecture mapping table and figure taxonomy. */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -16,7 +19,13 @@
   --color-grid:            #e0e2e6;        /* technical grid */
   --color-accent:          #556b2f;        /* olive green — used semantically AND as deliberate type accent */
   --color-accent-hover:    #3e5020;
+  --color-mark:            #c0392b;        /* v3: annotation red. ONE job — marking what a drawing calls out:
+                                              dimension lines, witness marks, callout bubbles, hatch, a value
+                                              that turned red. Never a heading, never a link, and never on a
+                                              page with no figure on it. */
   /* No signal palette — this brand doesn't use it. */
+  /* Contrast: --color-accent on --color-ink is 3.2:1 — large text only. Inside
+     .inversion, links take the cream text color, not olive. */
 
   /* ─── Typography — Fraunces does display AND small-caps editorial labels ─── */
   --type-display-family:   'Fraunces', 'Iowan Old Style', Georgia, serif;
@@ -215,3 +224,84 @@
 .btn-arrow:hover { text-decoration-color: var(--color-ink); }
 .btn-arrow--accent { color: var(--color-accent); text-decoration-color: var(--color-accent-hover); }
 .btn-arrow--accent:hover { color: var(--color-accent-hover); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   v3 — DRAFTING APPARATUS
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Drawing classes — inline SVG inherits the palette; never hard-code hex ─── */
+.s-ink   { stroke: var(--color-ink);   fill: none; stroke-width: 1; }
+.s-mark  { stroke: var(--color-mark);  fill: none; stroke-width: 1; }
+.s-rule  { stroke: var(--color-rule);  fill: none; stroke-width: 1; }
+/* Stroke-only. Use this — NOT .s-ink — on any rect carrying fill="url(#hatch)".
+   .s-ink declares fill:none, and CSS beats the presentation attribute, which
+   silently erases the hatch. This trap has cost real debugging time. */
+.s-edge  { stroke: var(--color-ink); stroke-width: 1; }
+
+.f-ink   { fill: var(--color-ink); }
+.f-mark  { fill: var(--color-mark); }
+.f-soft  { fill: var(--color-ink-soft); }
+.f-3     { fill: var(--color-ink-3); }
+.f-paper { fill: var(--color-surface); }
+
+/* Hatch — the 45° fill marking a region under discussion. Pattern contents
+   can't inherit currentColor from the referencing element (they resolve against
+   the pattern's own context), so the line is styled by class:
+     <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse"
+              patternTransform="rotate(45)">
+       <line x1="0" y1="0" x2="0" y2="7" class="hatch"/>
+     </pattern>                                                             */
+.hatch { stroke: var(--color-mark); stroke-width: 0.6; opacity: 0.5; }
+
+/* Text inside drawings — mono for values, Fraunces for region names */
+.t-mono  { font-family: var(--type-mono-family); font-size: 10px; }
+.t-serif { font-family: var(--type-display-family); font-size: 16px; }
+.t-sans  { font-family: var(--type-sans-family); font-size: 12px; }
+
+/* ─── Callout bubble — a figure reference number, inline in prose or on a drawing ─── */
+.callout {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 17px; height: 17px;
+  border: 1px solid var(--color-mark);
+  color: var(--color-mark);
+  border-radius: var(--r-full);          /* the only other place full radius is allowed */
+  font-family: var(--type-mono-family);
+  font-size: 10px; line-height: 1;
+  vertical-align: 1px; margin: 0 1px;
+}
+
+/* ─── Figure caption — every figure names its source and the date it was read ─── */
+.figcaption {
+  font-family: var(--type-mono-family);
+  font-size: 11px; line-height: 1.6; letter-spacing: 0.04em;
+  color: var(--color-ink-3);
+  margin-top: 10px; padding-top: 8px;
+  border-top: 1px solid var(--color-rule);
+}
+.figcaption b { color: var(--color-ink); font-weight: 500; }
+
+/* ─── Title block — the Sheet architecture's footer. Revision and date are content. ─── */
+.title-block {
+  border-top: 1px solid var(--color-ink);
+  display: grid; grid-template-columns: 1fr auto;
+}
+.title-block__id { padding: 14px 30px 16px; }
+.title-block__cells {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(76px, auto);
+  border-left: 1px solid var(--color-ink);
+  margin: 0;
+}
+.title-block__cells > div { padding: 12px 14px; border-right: 1px solid var(--color-rule); }
+.title-block__cells > div:last-child { border-right: 0; }
+.title-block__cells dt {
+  font-family: var(--type-mono-family);
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-ink-3); margin: 0 0 5px;
+}
+.title-block__cells dd {
+  margin: 0; font-family: var(--type-mono-family); font-size: 12px; color: var(--color-ink);
+}
+
+/* ─── Sheet — border + field + title block. No zone references or edge rulers. ─── */
+.sheet { border: 2px solid var(--color-ink); position: relative; }
+.sheet__field { padding: 34px 34px 0; }
