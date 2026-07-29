@@ -5,6 +5,15 @@ $this->layout('partials::layouts/main', [
     'url' => '/hermes-dispatch/',
 ]);
 
+// D · Assembly Order, by Q2. Route, expand, run is a pipeline: the enhancer
+// cannot write a brief before the router has picked who it is for, and the
+// agent cannot run before the brief exists. Shuffling the three breaks the
+// explanation, which is the test.
+//
+// The axis goes on that pipeline only. "Three ways to set it up" is a choice
+// between paths, not a sequence through them, and "model aliases" is a
+// reference table. Numbering either would be a lie about the order.
+
 $repo = 'https://github.com/slogsdon/hermes-dispatch';
 
 $tiers_alias = [
@@ -99,24 +108,24 @@ $tiers = [
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 Every request makes two quick LLM calls before it reaches an agent. The first is a fast router on the <span class="smallcaps">structured</span> alias that reads your message and chooses the target agent. The second is a prompt enhancer on the <span class="smallcaps">reasoning</span> alias that turns your one-line request into a fuller brief the agent can act on. Then the chosen agent runs on its own pinned alias.
             </p>
-            <ol class="mt-8 grid grid-cols-1">
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">01</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+            <ol class="assembly mt-8">
+                <li class="assembly__step" id="step-01">
+                    <span class="assembly__num" aria-hidden="true">01</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Route</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">A fast classifier reads the request and names the agent that should handle it.</p>
                     </div>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">02</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+                <li class="assembly__step" id="step-02">
+                    <span class="assembly__num" aria-hidden="true">02</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Expand</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">A prompt enhancer rewrites your short request into a complete brief, so the agent starts with context instead of a fragment.</p>
                     </div>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">03</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+                <li class="assembly__step" id="step-03">
+                    <span class="assembly__num" aria-hidden="true">03</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Run</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">The chosen agent runs on its pinned models and streams the answer back to your chat.</p>
                     </div>

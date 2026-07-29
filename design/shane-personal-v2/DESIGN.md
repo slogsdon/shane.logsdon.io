@@ -257,8 +257,10 @@ The rows below are **worked examples of the questions above**, not the extent of
 | Speaking | E · Set | Q1 — a catalog browses like a catalog | Talk structure timeline |
 | Archive | E · Set | Q1 — same browsing job, different subset | None |
 | Loop & Gate (product) | D · Assembly Order | Q2 — Foundation then kits is an install order | Detail per kit |
-| Local businesses (landing) | A · Drawing First | Q5 — one claim, one chart | Timeline drawing, required |
+| Local businesses (landing) | A · Drawing First | Q5 — one claim, one chart | Dimensioned diagram, required |
+| Hermes Dispatch (product) | D · Assembly Order | Q2 — route, expand, run is a pipeline | Detail per step |
 | Contact | C · Sheet | Q3 — metadata-led; title block is most of the page | None |
+| Confirmation / thanks | None. A notice, not a document | Fails all five: nothing to browse, no sequence, no state that can go stale, one statement with no evidence behind it, nothing to draw | None |
 
 ## Figures
 
