@@ -537,4 +537,30 @@
   @media (max-width: 900px) {
     .sheet__field { padding: 22px 18px 0; }
   }
+
+  /* ── Assembly. The D architecture's spine: a numbered sequence down an axis.
+     Every step carries an id, so a reader arriving from a link lands on step 4
+     rather than at the top. The axis holds at the left edge and the bodies
+     stack beside it, which is why D is the strongest architecture on a phone.
+
+     The alternating detail side in §Architectures is deliberately not built.
+     A detail has to earn its place under §Figures, meaning a step that is
+     genuinely unclear without it, and no step on this site has one. Build the
+     second column when a step earns a drawing, not before. */
+  .assembly { position: relative; }
+  .assembly::before {
+    content: ""; position: absolute; top: 0; bottom: 0;
+    left: 12px; width: 1px; background: hsl(var(--rule));
+  }
+  .assembly__step { position: relative; padding: 1.875rem 0 1.875rem 3.5rem; }
+  .assembly__step + .assembly__step { border-top: 1px solid hsl(var(--rule)); }
+  .assembly__num {
+    position: absolute; left: 0; top: 2rem;
+    width: 25px; height: 25px; border-radius: var(--r-full);
+    display: inline-flex; align-items: center; justify-content: center;
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--foreground));
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; line-height: 1; color: hsl(var(--foreground));
+  }
 }
