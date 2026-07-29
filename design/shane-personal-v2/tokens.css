@@ -327,8 +327,15 @@
   .title-block__cells > div:nth-last-child(-n+2) { border-bottom: 0; }
 }
 
-/* ─── Sheet — border + field + title block. No zone references or edge rulers. ─── */
-.sheet { border: 2px solid var(--color-ink); position: relative; }
+/* ─── Sheet — border + field + title block. No zone references or edge rulers.
+   The border is a hairline in rule color, not the 2px ink it shipped as. Ink at
+   2px read as a slab dropped on the page, and it contradicted the doctrine
+   --color-rule states at the top of this file: one rule color, 1px hairline,
+   major divisions carried by whitespace rather than weight. The sheet's edge is
+   a division like any other. The title block's ink top rule stays the heaviest
+   line on the sheet, which is correct, since that is where content ends and
+   metadata begins. ─── */
+.sheet { border: 1px solid var(--color-rule); position: relative; }
 .sheet__field { padding: 34px 34px 0; }
 
 /* ─── Assembly. The D architecture's spine: a numbered sequence down an axis.

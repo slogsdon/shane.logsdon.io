@@ -540,7 +540,7 @@
 
   /* ── Sheet. Border plus field plus title block. No zone references or edge
      rulers: they looked systematic and addressed nothing. */
-  .sheet { border: 2px solid var(--color-ink); position: relative; }
+  .sheet { border: 1px solid hsl(var(--rule)); position: relative; }
   .sheet__field { padding: 34px 34px 0; }
   @media (max-width: 900px) {
     .sheet__field { padding: 22px 18px 0; }
