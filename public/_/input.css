@@ -21,7 +21,9 @@
     --radius: 0;
 
     /* v2 raw hex tokens — paired with the HSL bridge above. New work should
-       prefer these so the palette can move without re-deriving HSL. */
+       prefer these so the palette can move without re-deriving HSL.
+       This block is a PARALLEL COPY of design/shane-personal-v2/tokens.css.
+       Change a color here and you must change it there, or they drift. */
     --color-surface:         #fbfaf9;
     --color-surface-muted:   #f1eee8;
     --color-surface-feature: #ede4d2; /* RESERVED — never used as a background */
@@ -32,6 +34,13 @@
     --color-grid:            #e0e2e6;
     --color-accent:          #556b2f;
     --color-accent-hover:    #3e5020;
+    /* v3: annotation red. One job, marking what a drawing calls out. Dimension
+       lines and their witness marks, callout bubbles, hatch fill, a correction.
+       Never a heading, never a link, and never on a page with no drawing on it. */
+    --color-mark:            #c0392b;
+
+    /* Radius. Zero everywhere except avatars and the callout bubble. */
+    --r-full:                999px;
   }
 
   html {
@@ -319,5 +328,139 @@
   /* Header transition */
   #site-header {
     transition: border-color 200ms ease;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════
+     v3 · DRAFTING APPARATUS
+     Mirrors design/shane-personal-v2/tokens.css. Class names match, so
+     markup can move between the component library and the site unchanged.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ── Drawing classes. Inline SVG inherits the palette instead of
+     hard-coding hex. Strokes are 1px so a figure and the page share one
+     line weight. */
+  .s-ink   { stroke: var(--color-ink);   fill: none; stroke-width: 1; }
+  .s-mark  { stroke: var(--color-mark);  fill: none; stroke-width: 1; }
+  .s-rule  { stroke: var(--color-rule);  fill: none; stroke-width: 1; }
+  /* Stroke-only. Use this, NOT .s-ink, on any rect carrying fill="url(#hatch)".
+     .s-ink declares fill:none and CSS beats the presentation attribute, which
+     erases the hatch silently. */
+  .s-edge  { stroke: var(--color-ink); stroke-width: 1; }
+
+  .f-ink   { fill: var(--color-ink); }
+  .f-mark  { fill: var(--color-mark); }
+  .f-soft  { fill: var(--color-ink-soft); }
+  .f-3     { fill: var(--color-ink-3); }
+  .f-paper { fill: var(--color-surface); }
+
+  /* Pattern contents cannot inherit currentColor, so the hatch line is
+     styled by class. */
+  .hatch { stroke: var(--color-mark); stroke-width: 0.6; opacity: 0.5; }
+
+  /* Text set inside a drawing. Mono for values, Fraunces for region names. */
+  .t-mono  { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; }
+  .t-serif { @apply font-display; font-size: 16px; }
+  .t-sans  { @apply font-sans; font-size: 12px; }
+
+  /* ── Callout bubble. A figure reference number, inline in prose and on the
+     drawing. The same number appears in both places or it is a bug. */
+  .callout {
+    display: inline-flex; align-items: center; justify-content: center; flex: none;
+    width: 17px; height: 17px;
+    border: 1px solid var(--color-mark);
+    color: var(--color-mark);
+    border-radius: var(--r-full);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; line-height: 1;
+    vertical-align: 1px; margin: 0 1px;
+  }
+
+  /* ── Figure caption. Every figure names its source and the date it was read. */
+  .figcaption {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; line-height: 1.6; letter-spacing: 0.04em;
+    color: var(--color-ink-3);
+    margin-top: 10px; padding-top: 8px;
+    border-top: 1px solid var(--color-rule);
+  }
+  .figcaption b { color: var(--color-ink); font-weight: 500; }
+
+  /* ── Title block. The C · Sheet footer. Revision and date are content. */
+  .title-block {
+    border-top: 1px solid var(--color-ink);
+    display: grid; grid-template-columns: 1fr auto;
+  }
+  .title-block__id { padding: 14px 30px 16px; }
+  .title-block__cells {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(76px, auto);
+    border-left: 1px solid var(--color-ink);
+    margin: 0;
+  }
+  .title-block__cells > div { padding: 12px 14px; border-right: 1px solid var(--color-rule); }
+  .title-block__cells > div:last-child { border-right: 0; }
+  .title-block__cells dt {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-ink-3); margin: 0 0 5px;
+  }
+  .title-block__cells dd {
+    margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px; color: var(--color-ink);
+  }
+  /* Four cells at minmax(76px, auto) do not fit a phone. */
+  @media (max-width: 640px) {
+    .title-block { grid-template-columns: 1fr; }
+    .title-block__cells {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-left: 0;
+      border-top: 1px solid var(--color-ink);
+    }
+    .title-block__cells > div { border-bottom: 1px solid var(--color-rule); }
+    .title-block__cells > div:nth-child(2n) { border-right: 0; }
+    .title-block__cells > div:nth-last-child(-n+2) { border-bottom: 0; }
+  }
+
+  /* ── Index strip. Count folio plus category filter tabs, above every list.
+     The selected tab is marked in INK, not annotation red: these strips sit
+     above lists that carry no figure, and red on a page with no drawing is the
+     one thing the color rule forbids outright. */
+  .filter-tab {
+    @apply font-display;
+    font-weight: 600;
+    font-variant-caps: small-caps;
+    font-feature-settings: 'smcp';
+    text-transform: lowercase;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    color: hsl(var(--muted-foreground));
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+  .filter-tab:hover { color: hsl(var(--foreground)); }
+  .filter-tab[aria-selected="true"] {
+    color: hsl(var(--foreground));
+    border-bottom-color: hsl(var(--foreground));
+  }
+
+  /* ── List row title. The underline grows from the left on hover. This used to
+     be two inline onmouseenter/onmouseleave handlers repeated on every row of
+     every list page. */
+  .row-title-link {
+    background-image: linear-gradient(hsl(var(--foreground)), hsl(var(--foreground)));
+    background-size: 0% 1px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    transition: background-size 300ms var(--ease, ease);
+  }
+  .row-title-link:hover { background-size: 100% 1px; }
+
+  /* ── Sheet. Border plus field plus title block. No zone references or edge
+     rulers: they looked systematic and addressed nothing. */
+  .sheet { border: 2px solid var(--color-ink); position: relative; }
+  .sheet__field { padding: 34px 34px 0; }
+  @media (max-width: 900px) {
+    .sheet__field { padding: 22px 18px 0; }
   }
 }
