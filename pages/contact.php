@@ -105,8 +105,8 @@ $this->layout('partials::layouts/main', [
       'sheetFile'  => 'pages/contact.php',
       'sheetTitle' => 'shane logsdon &middot; contact',
       'sheetMeta'  => 'Louisville, Kentucky &middot; replies within one business day &middot; <a class="link-quiet" href="https://www.linkedin.com/in/shanelogsdon" target="_blank" rel="noreferrer noopener">linkedin</a> &middot; <a class="link-quiet" href="/about/">what I work on</a>',
-      'sheetRevFallback'  => '17',
-      'sheetDateFallback' => '2026-07-19',
+      'sheetRevFallback'  => '18',
+      'sheetDateFallback' => '2026-07-28',
   ]); ?>
 </div>
 </div>

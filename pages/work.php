@@ -123,8 +123,8 @@ $projectTotal = count($projects);
       'sheetFile'  => 'pages/work.php',
       'sheetTitle' => 'shane logsdon &middot; selected work',
       'sheetMeta'  => $projectTotal . ' projects on file &middot; <a class="link-quiet" href="/about/">how I got here</a> &middot; <a class="link-quiet" href="/contact/">start a conversation</a>',
-      'sheetRevFallback'  => '14',
-      'sheetDateFallback' => '2026-07-19',
+      'sheetRevFallback'  => '15',
+      'sheetDateFallback' => '2026-07-28',
   ]); ?>
 </div>
 </div>

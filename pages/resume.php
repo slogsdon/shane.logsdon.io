@@ -448,8 +448,8 @@ foreach ($byEmployer as $company => $group) {
       'sheetFile'  => 'pages/resume.php',
       'sheetTitle' => 'shane logsdon &middot; curriculum vitae',
       'sheetMeta'  => 'Louisville, Kentucky &middot; <a class="link-quiet" href="mailto:shane@logsdon.io">shane@logsdon.io</a> &middot; <a class="link-quiet" href="https://www.linkedin.com/in/shanelogsdon">/in/shanelogsdon</a>',
-      'sheetRevFallback'  => '1',
-      'sheetDateFallback' => '2026-07-28',
+      'sheetRevFallback'  => '11',
+      'sheetDateFallback' => '2026-07-29',
   ]); ?>
 </div>
 </div>

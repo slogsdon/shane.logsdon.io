@@ -5,12 +5,17 @@ $this->layout('partials::layouts/main', [
     'url' => '/about/',
 ]);
 $settings = require('resources/settings.php');
-// Honest freshness: last real content change from git, not build time.
-$aboutModified = @trim((string) shell_exec('git log -1 --format=%cI -- pages/about.php 2>/dev/null')) ?: '2026-07-18T00:00:00-04:00';
+require_once 'resources/git.php';
+// Honest freshness: last real content change from git, not build time. Returns
+// null on a shallow clone, where git would report the deploy date for every
+// file and this would claim the page changed when it did not.
+$aboutModified = git_last_modified('pages/about.php', '%cI') ?? '2026-07-18T00:00:00-04:00';
 
 // C · Sheet, by Q3: this page has a current state that can go stale, so it has
 // to say when it last changed. The title block at the foot of the sheet does
-// that, and every value in it is read from git rather than typed.
+// that, and its values are read from git rather than typed whenever git can
+// answer honestly. On a history-less clone it falls back to the values passed
+// below instead of reporting a wrong revision. See resources/git.php.
 
 $expertise = [
     ['num' => '01', 'title' => 'Payment systems',     'body' => 'Designing scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns.'],
@@ -146,8 +151,8 @@ $barMax    = 276; // px at the chart's own scale
       'sheetFile'  => 'pages/about.php',
       'sheetTitle' => 'shane logsdon &middot; payments and developer platforms',
       'sheetMeta'  => 'Louisville, Kentucky &middot; <a class="link-quiet" href="/contact/">get in touch</a> &middot; <a class="link-quiet" href="/articles/">' . $postTotal . ' pieces on file</a>',
-      'sheetRevFallback'  => '19',
-      'sheetDateFallback' => '2026-07-19',
+      'sheetRevFallback'  => '21',
+      'sheetDateFallback' => '2026-07-29',
   ]); ?>
 </div>
 </div>

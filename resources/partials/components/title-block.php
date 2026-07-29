@@ -16,18 +16,15 @@
  *   $sheetRevFallback   string  used when git is unavailable (shallow clone)
  *   $sheetDateFallback  string  ISO date, same
  */
+require_once 'resources/git.php';
+
 $sheetRevFallback  = $sheetRevFallback  ?? '1';
 $sheetDateFallback = $sheetDateFallback ?? date('Y-m-d');
 
-$gitCount = @trim((string) shell_exec(
-    sprintf('git rev-list --count HEAD -- %s 2>/dev/null', escapeshellarg($sheetFile))
-));
-$sheetRev = ($gitCount !== '' && $gitCount !== '0') ? $gitCount : $sheetRevFallback;
-
-$gitDate = @trim((string) shell_exec(
-    sprintf('git log -1 --format=%%cs -- %s 2>/dev/null', escapeshellarg($sheetFile))
-));
-$sheetDate = $gitDate !== '' ? $gitDate : $sheetDateFallback;
+// Both helpers return null on a shallow clone rather than the wrong answer
+// git would otherwise give. See resources/git.php.
+$sheetRev  = git_commit_count($sheetFile)  ?? $sheetRevFallback;
+$sheetDate = git_last_modified($sheetFile) ?? $sheetDateFallback;
 $sheetDateDisplay = str_replace('-', '.', $sheetDate);
 ?>
 <div class="title-block">
