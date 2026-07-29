@@ -33,8 +33,6 @@ $this->layout('partials::layouts/main', [
     'description' => $topicDescription,
     'url' => !empty($url) ? $url : null,
 ]);
-$backLabel = $slug === 'articles' ? 'All articles' : 'All speaking';
-$backHref  = sprintf('/%s/', $slug);
 ?>
 
 <!-- Page header -->
@@ -50,11 +48,14 @@ $backHref  = sprintf('/%s/', $slug);
 </section>
 
 <section class="mx-auto max-w-editorial px-6">
-    <div class="flex items-baseline justify-between border-y border-rule py-4">
-        <a href="<?= htmlspecialchars($backHref) ?>" class="btn-arrow btn-arrow--muted" style="text-decoration: none;">
-            &larr; <?= htmlspecialchars($backLabel) ?>
-        </a>
-    </div>
+    <?php // The strip's own "all" tab is the way back, so the old back-link bar
+          // would be a second control doing the same job. On a tag page no tab
+          // matches, which is honest: a tag is not one of the categories.
+    $this->insert('partials::components/index-strip', [
+        'stripSlug'    => $slug,
+        'stripCount'   => $topicCount,
+        'stripCurrent' => $topicType === 'category' ? $topic : null,
+    ]); ?>
 
     <?php $this->insert('partials::components/post-list', [
         'slug' => $slug,

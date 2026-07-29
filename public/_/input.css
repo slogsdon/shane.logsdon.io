@@ -453,7 +453,11 @@
     cursor: pointer;
   }
   .filter-tab:hover { color: hsl(var(--foreground)); }
-  .filter-tab[aria-selected="true"] {
+  /* aria-current is the selected state now that a tab is a link to a real
+     route rather than a button toggling rows in place. aria-selected is kept
+     for the component library, which still shows the tablist form. */
+  .filter-tab[aria-selected="true"],
+  .filter-tab[aria-current="page"] {
     color: hsl(var(--foreground));
     border-bottom-color: hsl(var(--foreground));
   }
