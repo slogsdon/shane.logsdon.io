@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane Logsdon — v3 Round 2: five color worlds on one architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   ROUND 2 — the experiment changed.
+
+   Round 1 varied ARCHITECTURE and held color constant. You picked B on
+   livability, not on its structural trick. So: B's architecture is now the
+   CONSTANT across all five, and the variables are (1) a color world and
+   (2) a visual layer. Type spine is unchanged from v2 — Fraunces + IBM
+   Plex + JetBrains Mono — because that's the continuity thread.
+
+   Every figure below is content-bearing and drawn from the real
+   articles-list.json: 32 posts, 23 of them 2013–2017, then a nine-year
+   gap, then 9 in 2026. No invented data, no decorative pattern-as-texture.
+   Per-year: 2013=12, 2014=3, 2015=3, 2016=2, 2017=3, 2018–2025=0, 2026=9.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Doc chrome (not part of any direction) ─── */
+:root {
+  --doc-paper: #fbfaf9; --doc-ink: #0e1116; --doc-soft: #404550;
+  --doc-3: #62686f; --doc-rule: #d6d8de; --doc-accent: #556b2f;
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0; background: var(--doc-paper); color: var(--doc-ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65;
+  font-feature-settings: 'ss01','cv11','kern';
+}
+a { color: inherit; }
+.doc-head { border-bottom: 1px solid var(--doc-rule); padding: 40px 32px 28px; max-width: 1400px; margin: 0 auto; }
+.doc-head h1 { font-family: var(--display); font-weight: 400; font-size: 40px; letter-spacing: -0.018em; line-height: 1.1; margin: 0 0 14px; }
+.doc-head p { max-width: 76ch; color: var(--doc-soft); margin: 0 0 16px; font-size: 16px; }
+.doc-head code { font-family: var(--mono); font-size: 13px; }
+.doc-nav { display: flex; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; margin-top: 8px; }
+.doc-nav a { padding: 7px 16px 7px 0; margin-right: 16px; border-right: 1px solid var(--doc-rule); text-decoration: none; color: var(--doc-3); }
+.doc-nav a:last-child { border-right: 0; }
+.doc-nav a:hover { color: var(--doc-accent); }
+.spec { max-width: 1400px; margin: 0 auto; padding: 72px 32px 26px; display: grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr); gap: 48px; align-items: start; }
+.spec-id { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--doc-accent); margin: 0 0 12px; text-transform: uppercase; }
+.spec h2 { font-family: var(--display); font-weight: 500; font-size: 34px; letter-spacing: -0.014em; line-height: 1.12; margin: 0 0 14px; }
+.spec .thesis { font-size: 16px; color: var(--doc-soft); margin: 0 0 18px; max-width: 60ch; }
+.spec dl { margin: 0; font-size: 14px; line-height: 1.55; border-top: 1px solid var(--doc-rule); }
+.spec dt { font-family: var(--display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.09em; font-size: 13px; padding-top: 12px; }
+.spec dd { margin: 2px 0 12px; color: var(--doc-soft); border-bottom: 1px solid var(--doc-rule); padding-bottom: 12px; }
+.spec dd code { font-family: var(--mono); font-size: 12.5px; background: #f1eee8; padding: 1px 5px; }
+.swatches { display: flex; flex-wrap: wrap; gap: 0; margin: 4px 0 12px; border: 1px solid var(--doc-rule); }
+.swatches i { display: block; width: 46px; height: 34px; border-right: 1px solid rgba(0,0,0,0.08); }
+.swatches i:last-child { border-right: 0; }
+.frame-note { max-width: 1400px; margin: 0 auto; padding: 0 32px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--doc-3); text-transform: uppercase; }
+.frame { max-width: 1400px; margin: 0 auto 96px; padding: 0 32px; }
+.frame > .inner { border: 1px solid var(--doc-rule); overflow: hidden; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   THE CONSTANT — B's architecture, themed by CSS custom properties.
+   Nothing below this line changes between directions except the theme
+   block on `.pg` and the contents of the `.fig` slot.
+   ══════════════════════════════════════════════════════════════════════ */
+.pg {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans);
+  position: relative;
+}
+.pg-runhead {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 18px 48px 10px; border-bottom: 1px solid var(--ink);
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase;
+  font-size: 13px; letter-spacing: 0.11em; position: relative; z-index: 2;
+}
+.pg-body {
+  display: grid; grid-template-columns: 20ch 1px minmax(0, 60ch) 1fr;
+  gap: 0 36px; padding: 44px 48px 8px; position: relative; z-index: 2;
+}
+.pg-rail { text-align: right; }
+.pg-spine { background: var(--rule); }
+.pg-note { font-size: 13.5px; line-height: 1.5; color: var(--ink-3); margin-bottom: 24px; }
+.pg-note b {
+  display: block; font-family: var(--display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; letter-spacing: 0.09em; font-size: 12.5px;
+  color: var(--ink); margin-bottom: 3px;
+}
+.pg-note a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.pg-note a:hover { color: var(--accent); border-color: var(--accent); }
+.pg-note .num { font-family: var(--mono); font-size: 11px; color: var(--mark); }
+.pg-main { min-width: 0; }
+.pg-main h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(38px, 4.4vw, 58px); line-height: 1.04;
+  letter-spacing: -0.02em; margin: 0;
+}
+.pg-main .stand { font-size: 18px; line-height: 1.6; color: var(--ink-soft); margin: 26px 0 0; }
+.pg-main .stand sup { font-family: var(--mono); font-size: 10px; color: var(--mark); vertical-align: super; line-height: 0; padding-left: 2px; }
+
+/* Figure slot — the variable visual layer. Always captioned, always real data. */
+.fig { margin: 40px 0 0; }
+.fig svg { display: block; width: 100%; height: auto; }
+.fig figcaption {
+  font-family: var(--mono); font-size: 11px; line-height: 1.6; letter-spacing: 0.04em;
+  color: var(--ink-3); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule);
+}
+.fig figcaption b { color: var(--ink); font-weight: 500; }
+
+.pg-list { margin: 40px 0 0; padding: 0; list-style: none; }
+.pg-list li { padding: 14px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 4ch 1fr; gap: 16px; align-items: baseline; }
+.pg-list .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.pg-list a { font-family: var(--display); font-weight: 500; font-size: 18px; letter-spacing: -0.008em; text-decoration: none; line-height: 1.3; display: block; }
+.pg-list a:hover { color: var(--accent); }
+.pg-list .when { font-family: var(--mono); font-size: 11px; color: var(--ink-3); display: block; margin-top: 4px; }
+.pg-colophon {
+  padding: 28px 48px 32px; margin-top: 40px; border-top: 1px solid var(--ink);
+  font-size: 13.5px; color: var(--ink-3); position: relative; z-index: 2;
+}
+.pg-colophon p { margin: 0; max-width: 92ch; }
+.pg-colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+@media (max-width: 900px) {
+  .pg-body { grid-template-columns: 1fr; padding: 28px 20px 8px; }
+  .pg-rail { text-align: left; order: 2; margin-top: 32px; }
+  .pg-spine { display: none; }
+  .pg-main { order: 1; }
+  .pg-runhead, .pg-colophon { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   THEME 1 — RISO. Two spot inks on newsprint; they overprint.
+   ══════════════════════════════════════════════════════════════════════ */
+.t-riso {
+  --paper: #f2efe4; --ink: #17181a; --ink-soft: #46484c; --ink-3: #6c6e6f;
+  --rule: #cdc8b8; --accent: #556b2f; --mark: #e04e2f; --over: #3f3a1e;
+}
+.t-riso .pg-main h1 { position: relative; }
+/* misregistration: the second ink sits 2px off, as a real two-pass press would */
+.t-riso .pg-main h1 .ghost {
+  position: absolute; left: 2px; top: 2px; color: var(--mark);
+  mix-blend-mode: multiply; opacity: 0.5; pointer-events: none;
+}
+.t-riso .pg-runhead { border-bottom-color: var(--mark); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   THEME 2 — DRAFTING. Annotation ink is a second, semantic color.
+   ══════════════════════════════════════════════════════════════════════ */
+.t-draft {
+  --paper: #fbfaf9; --ink: #0e1116; --ink-soft: #404550; --ink-3: #62686f;
+  --rule: #d6d8de; --accent: #556b2f; --mark: #c0392b;
+}
+.t-draft .callout {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 17px; height: 17px; border: 1px solid var(--mark); color: var(--mark);
+  border-radius: 999px; font-family: var(--mono); font-size: 10px; line-height: 1;
+  vertical-align: 1px; margin: 0 1px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   THEME 3 — PLOTTED. Olive becomes a sequential ramp; amber is the signal.
+   ══════════════════════════════════════════════════════════════════════ */
+.t-plot {
+  --paper: #f7f7f4; --ink: #14171c; --ink-soft: #3d434b; --ink-3: #676d76;
+  --rule: #d8dad6; --accent: #556b2f; --mark: #b06f16;
+  --ramp-1: #e7ebdd; --ramp-2: #c3cfa5; --ramp-3: #94a86a; --ramp-4: #6b8138; --ramp-5: #3e5020;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   THEME 4 — SURVEY. Sand stock, sepia ink, contour olive, signal orange.
+   ══════════════════════════════════════════════════════════════════════ */
+.t-survey {
+  --paper: #f0e9dc; --ink: #33291f; --ink-soft: #5c4f3e; --ink-3: #7d6f5c;
+  --rule: #cbbda6; --accent: #6b7f45; --mark: #cc5b25;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   THEME 5 — LEDGER STOCK. Banded accounting paper, red thread rule.
+   ══════════════════════════════════════════════════════════════════════ */
+.t-ledger {
+  --paper: #f8f9f5; --ink: #14161a; --ink-soft: #3f444a; --ink-3: #6a7079;
+  --rule: #c6cfc0; --accent: #4d6129; --mark: #b0342a; --band: #eaf0e4;
+}
+.t-ledger .pg-list li:nth-child(odd) { background: var(--band); }
+.t-ledger .pg-list li { padding-left: 10px; padding-right: 10px; margin: 0 -10px; }
+.t-ledger .pg-runhead { border-bottom: 2px solid var(--mark); }
+.t-ledger .pg-colophon { border-top: 2px solid var(--mark); }
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <h1>Round 2 — five color worlds on one architecture</h1>
+  <p>
+    The experiment changed. Round 1 varied the architecture and held color constant; you picked B on
+    <em>livability</em>, not on its structural trick. So B's architecture is now the constant across all five —
+    reading-first, rail + hairline spine + 60ch measure — and the two variables are a <strong>color world</strong>
+    and a <strong>visual layer</strong>. The type spine (Fraunces + IBM&nbsp;Plex + JetBrains&nbsp;Mono) is
+    unchanged from v2, because that's the thread that keeps this recognizably yours.
+  </p>
+  <p>
+    Every figure is drawn from the real <code>articles-list.json</code> — 32 posts, 23 of them between 2013 and
+    2017, a nine-year gap, then 9 in 2026. Nothing here is invented data and nothing is a texture applied for
+    atmosphere; each visual layer is a figure that carries information and a caption that says where it came from.
+  </p>
+  <nav class="doc-nav">
+    <a href="#r1">1 / Riso</a>
+    <a href="#r2">2 / Drafting</a>
+    <a href="#r3">3 / Plotted</a>
+    <a href="#r4">4 / Survey</a>
+    <a href="#r5">5 / Ledger Stock</a>
+  </nav>
+</header>
+
+<!-- ══════════════════ 1 — RISO ══════════════════ -->
+<section class="spec" id="r1">
+  <div>
+    <p class="spec-id">Direction 1</p>
+    <h2>Riso</h2>
+    <p class="thesis">
+      The system is printed with two spot inks on newsprint stock, and it doesn't hide it. Olive and a hot coral
+      each get their own pass; where they overlap they multiply into a third color you never specify directly.
+      The headline carries a 2px misregistration because a two-pass press produces one.
+    </p>
+    <p class="thesis">
+      Where the visual layer comes from: halftone screens. Density of dots encodes the data, so the texture
+      <em>is</em> the figure rather than a background applied behind it.
+    </p>
+  </div>
+  <dl>
+    <dt>Palette</dt>
+    <dd>
+      <span class="swatches">
+        <i style="background:#f2efe4"></i><i style="background:#17181a"></i>
+        <i style="background:#556b2f"></i><i style="background:#e04e2f"></i><i style="background:#3f3a1e"></i>
+      </span>
+      Newsprint <code>#f2efe4</code> replaces cream. Olive stays. Coral <code>#e04e2f</code> is the new second ink;
+      overprint <code>#3f3a1e</code> is a <em>result</em>, not a token you pick.
+    </dd>
+    <dt>Visual layer</dt>
+    <dd>Halftone dot screens at varying density, drawn as SVG patterns. Deliberate misregistration on display type only — never on body copy, where it would hurt legibility.</dd>
+    <dt>Why it's livable</dt>
+    <dd>Two inks is a rule, not a mood. Any new page type inherits it automatically: one ink for structure, one for signal, overprint where they meet.</dd>
+    <dt>Risk</dt>
+    <dd>Riso is having a moment in indie print and zine design — it's distinct on the web but not un-trendy in general. The misregistration reads as a bug to anyone who doesn't know the reference.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen 1 — home</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-riso">
+    <div class="pg-runhead">
+      <span>shane logsdon · payments &amp; developer platforms</span>
+      <span>louisville, kentucky</span>
+    </div>
+    <div class="pg-body">
+      <div class="pg-rail">
+        <div class="pg-note">
+          <b>elsewhere</b>
+          <a href="#">writing (32)</a><br><a href="#">speaking</a><br>
+          <a href="#">local business practice</a><br><a href="#">about</a>
+        </div>
+        <div class="pg-note"><span class="num">1.</span> Global Payments — developer advocacy. Payment APIs, SDKs, reference docs.</div>
+        <div class="pg-note"><b>reachable</b> shane@shanelogsdon.com</div>
+      </div>
+      <div class="pg-spine"></div>
+      <div class="pg-main">
+        <h1><span class="ghost" aria-hidden="true">Systems that get found.</span>Systems that get found.</h1>
+        <p class="stand">
+          I lead developer advocacy at Global Payments<sup>1</sup>, building the payment APIs, SDKs, and
+          documentation engineers actually reach for. I write here about developer platforms, payments, and
+          AI-assisted engineering.
+        </p>
+
+        <figure class="fig">
+          <svg viewBox="0 0 620 190" role="img" aria-label="Halftone density chart of posts per year, 2013 to 2026">
+            <defs>
+              <pattern id="ht-a" width="6" height="6" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="2.4" fill="#e04e2f"/>
+              </pattern>
+              <pattern id="ht-b" width="6" height="6" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="1.5" fill="#e04e2f"/>
+              </pattern>
+              <pattern id="ht-c" width="6" height="6" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="0.75" fill="#e04e2f"/>
+              </pattern>
+              <pattern id="ht-olive" width="6" height="6" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="2.4" fill="#556b2f"/>
+              </pattern>
+            </defs>
+            <!-- baseline -->
+            <line x1="0" y1="150" x2="620" y2="150" stroke="#17181a" stroke-width="1"/>
+            <!-- 2013–2017, one bar per year, 10px per post -->
+            <rect x="8"   y="30"  width="52" height="120" fill="url(#ht-a)"/>
+            <rect x="70"  y="120" width="52" height="30"  fill="url(#ht-b)"/>
+            <rect x="132" y="120" width="52" height="30"  fill="url(#ht-b)"/>
+            <rect x="194" y="130" width="52" height="20"  fill="url(#ht-c)"/>
+            <rect x="256" y="120" width="52" height="30"  fill="url(#ht-b)"/>
+            <!-- the gap: no bars, just a rule -->
+            <line x1="320" y1="150" x2="466" y2="150" stroke="#e04e2f" stroke-width="3"/>
+            <text x="393" y="141" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#e04e2f">2018—2025</text>
+            <text x="393" y="168" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6c6e6f">nine years, nothing</text>
+            <!-- 2026: 9 posts, overprint where both inks land -->
+            <rect x="480" y="60" width="52" height="90" fill="url(#ht-olive)"/>
+            <rect x="480" y="60" width="52" height="90" fill="url(#ht-b)" style="mix-blend-mode:multiply"/>
+            <text x="34"  y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6c6e6f">2013</text>
+            <text x="282" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6c6e6f">2017</text>
+            <text x="506" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6c6e6f">2026</text>
+          </svg>
+          <figcaption>
+            <b>Fig. 1</b> — Posts per year, screened by density: 12, 3, 3, 2, 3 across 2013–2017, then nine
+            empty years, then 9 in 2026. Both inks land on 2026, so it prints as the overprint color.
+            Source: <code>articles-list.json</code>, 32 entries, read 2026.07.28.
+          </figcaption>
+        </figure>
+
+        <ol class="pg-list">
+          <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22</span></span></li>
+          <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13</span></span></li>
+          <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09</span></span></li>
+          <li><span class="n">029</span><span><a href="#">How to Know If Your Agentic Workflow Is Actually Working</a><span class="when">2026.06.18</span></span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="pg-colophon"><p>
+      Two inks, one stock. Set in Fraunces and IBM Plex Sans. Source and corrections:
+      <a href="#">github.com/slogsdon</a>.
+    </p></div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ 2 — DRAFTING ══════════════════ -->
+<section class="spec" id="r2">
+  <div>
+    <p class="spec-id">Direction 2</p>
+    <h2>Drafting</h2>
+    <p class="thesis">
+      The visual layer is technical drawing convention used honestly: dimension lines with witness marks, hatch
+      fill for a region under discussion, and numbered callout bubbles in the margin keyed to points in the text.
+      Diagrams stop being illustrations of the argument and become part of its apparatus.
+    </p>
+    <p class="thesis">
+      Color gains one member with a real job: annotation red. It only ever marks something the drawing is calling
+      out — a dimension, a callout number, a correction. It never styles a heading.
+    </p>
+  </div>
+  <dl>
+    <dt>Palette</dt>
+    <dd>
+      <span class="swatches">
+        <i style="background:#fbfaf9"></i><i style="background:#0e1116"></i>
+        <i style="background:#556b2f"></i><i style="background:#c0392b"></i>
+      </span>
+      Cream and ink survive untouched from v2 — this is the smallest color change of the five. Olive keeps links
+      and states. Annotation red <code>#c0392b</code> is added with a strict single role.
+    </dd>
+    <dt>Visual layer</dt>
+    <dd>Dimension lines, witness marks, 45° hatch, callout bubbles. Drawn in SVG at 1px to match the system's existing rule weight — the diagram and the page share a line.</dd>
+    <dt>Why it's livable</dt>
+    <dd>Closest to v2 of anything here, so nothing already built breaks. The callout apparatus is a genuine writing tool you'd use in long-form posts, not a home-page ornament.</dd>
+    <dt>Risk</dt>
+    <dd>It only pays off if you actually draw diagrams. A drafting system with no drawings in it is just cream with a red accent, and that's a weaker place than v2.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen 2 — home</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-draft">
+    <div class="pg-runhead">
+      <span>shane logsdon · payments &amp; developer platforms</span>
+      <span>louisville, kentucky</span>
+    </div>
+    <div class="pg-body">
+      <div class="pg-rail">
+        <div class="pg-note">
+          <b>elsewhere</b>
+          <a href="#">writing (32)</a><br><a href="#">speaking</a><br>
+          <a href="#">local business practice</a><br><a href="#">about</a>
+        </div>
+        <div class="pg-note"><span class="num">1.</span> The boundary moves with the tooling. Every release redraws it.</div>
+        <div class="pg-note"><span class="num">2.</span> Below the line the model is filling in, not deciding. That's the part that stalls.</div>
+        <div class="pg-note"><b>reachable</b> shane@shanelogsdon.com</div>
+      </div>
+      <div class="pg-spine"></div>
+      <div class="pg-main">
+        <h1>Systems that get found.</h1>
+        <p class="stand">
+          I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+          engineers actually reach for. Most of what I write about is where a specification stops
+          <span class="callout">1</span> and an implementation starts owning the decision <span class="callout">2</span>.
+        </p>
+
+        <figure class="fig">
+          <svg viewBox="0 0 620 220" role="img" aria-label="Dimensioned diagram of the specification boundary">
+            <defs>
+              <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="7" stroke="#c0392b" stroke-width="0.6" opacity="0.55"/>
+              </pattern>
+            </defs>
+            <!-- outer plate -->
+            <rect x="60" y="26" width="470" height="150" fill="none" stroke="#0e1116" stroke-width="1"/>
+            <!-- the spec region -->
+            <rect x="60" y="26" width="330" height="150" fill="none" stroke="#0e1116" stroke-width="1"/>
+            <text x="80" y="56" font-family="Fraunces, serif" font-size="17" fill="#0e1116">Specified</text>
+            <text x="80" y="78" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#404550">Shape, contract, failure modes,</text>
+            <text x="80" y="94" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#404550">what turns red when it breaks.</text>
+            <!-- the hatched remainder -->
+            <rect x="390" y="26" width="140" height="150" fill="url(#hatch)" stroke="#0e1116" stroke-width="1"/>
+            <text x="404" y="56" font-family="Fraunces, serif" font-size="17" fill="#0e1116">Assumed</text>
+            <text x="404" y="78" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#404550">The 25% that</text>
+            <text x="404" y="94" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#404550">stalls the build.</text>
+            <!-- witness + dimension lines -->
+            <line x1="60"  y1="182" x2="60"  y2="204" stroke="#c0392b" stroke-width="0.8"/>
+            <line x1="390" y1="182" x2="390" y2="204" stroke="#c0392b" stroke-width="0.8"/>
+            <line x1="530" y1="182" x2="530" y2="204" stroke="#c0392b" stroke-width="0.8"/>
+            <line x1="60"  y1="197" x2="390" y2="197" stroke="#c0392b" stroke-width="0.8"/>
+            <line x1="390" y1="197" x2="530" y2="197" stroke="#c0392b" stroke-width="0.8"/>
+            <path d="M60 197 l6 -3 v6 z M390 197 l-6 -3 v6 z" fill="#c0392b"/>
+            <path d="M390 197 l6 -3 v6 z M530 197 l-6 -3 v6 z" fill="#c0392b"/>
+            <rect x="196" y="189" width="58" height="16" fill="#fbfaf9"/>
+            <text x="225" y="201" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c0392b">75%</text>
+            <rect x="437" y="189" width="46" height="16" fill="#fbfaf9"/>
+            <text x="460" y="201" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c0392b">25%</text>
+            <!-- callout bubbles keyed to the rail -->
+            <circle cx="390" cy="26" r="9" fill="none" stroke="#c0392b" stroke-width="1"/>
+            <text x="390" y="30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c0392b">1</text>
+            <circle cx="460" cy="176" r="9" fill="none" stroke="#c0392b" stroke-width="1"/>
+            <text x="460" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#c0392b">2</text>
+          </svg>
+          <figcaption>
+            <b>Fig. 2</b> — The specification boundary, dimensioned. Callouts <span class="callout">1</span> and
+            <span class="callout">2</span> are keyed to the margin notes at left. Drawn from
+            <i>The Specification Boundary</i> (2026.05.18).
+          </figcaption>
+        </figure>
+
+        <ol class="pg-list">
+          <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22</span></span></li>
+          <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13</span></span></li>
+          <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09</span></span></li>
+          <li><span class="n">029</span><span><a href="#">How to Know If Your Agentic Workflow Is Actually Working</a><span class="when">2026.06.18</span></span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="pg-colophon"><p>
+      Drawings at 1px, same weight as the rules. Set in Fraunces and IBM Plex Sans.
+      Source and corrections: <a href="#">github.com/slogsdon</a>.
+    </p></div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ 3 — PLOTTED ══════════════════ -->
+<section class="spec" id="r3">
+  <div>
+    <p class="spec-id">Direction 3</p>
+    <h2>Plotted</h2>
+    <p class="thesis">
+      The visual layer is your own data, plotted. Publishing cadence, category weight, the nine-year gap — the
+      site charts itself, and the charts are the decoration because there isn't any other. This is the direction
+      that matches how you actually judge things: evidence over demos, a claim you can click through to.
+    </p>
+    <p class="thesis">
+      Color widens by turning the single olive into a five-step sequential ramp, so the palette gains range
+      without gaining hues. Amber is the one signal color and it marks exactly one thing per chart.
+    </p>
+  </div>
+  <dl>
+    <dt>Palette</dt>
+    <dd>
+      <span class="swatches">
+        <i style="background:#e7ebdd"></i><i style="background:#c3cfa5"></i><i style="background:#94a86a"></i>
+        <i style="background:#6b8138"></i><i style="background:#3e5020"></i><i style="background:#b06f16"></i>
+      </span>
+      Olive becomes a ramp <code>#e7ebdd → #3e5020</code>. Amber <code>#b06f16</code> is the signal. Paper cools
+      slightly to <code>#f7f7f4</code> so the ramp's light end still separates from it.
+    </dd>
+    <dt>Visual layer</dt>
+    <dd>Real charts from <code>articles-list.json</code>, drawn in the system's own line weights. Every figure caption names its source and the date it was read.</dd>
+    <dt>Why it's livable</dt>
+    <dd>The ramp is a genuine system asset — it covers every chart, table heat, and category weight you'll ever need, which the single olive could not.</dd>
+    <dt>Risk</dt>
+    <dd>Needs data to stay honest. A chart of nothing is worse than no chart, and the gap only reads as candor once — after that it's a bit that needs retiring.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen 3 — home</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-plot">
+    <div class="pg-runhead">
+      <span>shane logsdon · payments &amp; developer platforms</span>
+      <span>louisville, kentucky</span>
+    </div>
+    <div class="pg-body">
+      <div class="pg-rail">
+        <div class="pg-note">
+          <b>elsewhere</b>
+          <a href="#">writing (32)</a><br><a href="#">speaking</a><br>
+          <a href="#">local business practice</a><br><a href="#">about</a>
+        </div>
+        <div class="pg-note"><span class="num">1.</span> 21 of 32 posts are technical deep-dives. 7 strategic, 4 industry analysis.</div>
+        <div class="pg-note"><b>reachable</b> shane@shanelogsdon.com</div>
+      </div>
+      <div class="pg-spine"></div>
+      <div class="pg-main">
+        <h1>Systems that get found.</h1>
+        <p class="stand">
+          I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+          engineers actually reach for. I wrote here for four years, stopped for nine, and started again in
+          April 2026<sup>1</sup>.
+        </p>
+
+        <figure class="fig">
+          <svg viewBox="0 0 620 210" role="img" aria-label="Posts per year, 2013 to 2026, with a nine-year gap">
+            <line x1="0" y1="160" x2="620" y2="160" stroke="#14171c" stroke-width="1"/>
+            <!-- 2013–2017, one bar per year, 10px per post -->
+            <rect x="10"  y="40"  width="46" height="120" fill="#3e5020"/>
+            <rect x="66"  y="130" width="46" height="30"  fill="#94a86a"/>
+            <rect x="122" y="130" width="46" height="30"  fill="#94a86a"/>
+            <rect x="178" y="140" width="46" height="20"  fill="#c3cfa5"/>
+            <rect x="234" y="130" width="46" height="30"  fill="#94a86a"/>
+            <text x="33"  y="34"  text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#14171c">12</text>
+            <text x="89"  y="124" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">3</text>
+            <text x="145" y="124" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">3</text>
+            <text x="201" y="134" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">2</text>
+            <text x="257" y="124" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">3</text>
+            <!-- the gap, marked in the signal color -->
+            <line x1="290" y1="160" x2="500" y2="160" stroke="#b06f16" stroke-width="2" stroke-dasharray="4 4"/>
+            <line x1="290" y1="152" x2="290" y2="168" stroke="#b06f16" stroke-width="2"/>
+            <line x1="500" y1="152" x2="500" y2="168" stroke="#b06f16" stroke-width="2"/>
+            <text x="395" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#b06f16">nine years, zero posts</text>
+            <!-- 2026 -->
+            <rect x="510" y="70" width="46" height="90" fill="#3e5020"/>
+            <text x="533" y="64" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#14171c">9</text>
+            <text x="33"  y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">2013</text>
+            <text x="257" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">2017</text>
+            <text x="533" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#676d76">2026</text>
+            <!-- category strip -->
+            <rect x="10"  y="196" width="341" height="8" fill="#3e5020"/>
+            <rect x="351" y="196" width="114" height="8" fill="#94a86a"/>
+            <rect x="465" y="196" width="65"  height="8" fill="#c3cfa5"/>
+          </svg>
+          <figcaption>
+            <b>Fig. 3</b> — Posts per year: 12, 3, 3, 2, 3 across 2013–2017, nine empty years, 9 in 2026.
+            The strip below is category share: technical deep-dives (21), strategic insights (7), industry
+            analysis (4). Source: <code>articles-list.json</code>, 32 entries, read 2026.07.28.
+          </figcaption>
+        </figure>
+
+        <ol class="pg-list">
+          <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22 · technical deep-dive</span></span></li>
+          <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13 · strategic</span></span></li>
+          <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09 · technical deep-dive</span></span></li>
+          <li><span class="n">029</span><span><a href="#">How to Know If Your Agentic Workflow Is Actually Working</a><span class="when">2026.06.18 · technical deep-dive</span></span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="pg-colophon"><p>
+      Every figure names its source. Set in Fraunces and IBM Plex Sans. Data and corrections:
+      <a href="#">github.com/slogsdon</a>.
+    </p></div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ 4 — SURVEY ══════════════════ -->
+<section class="spec" id="r4">
+  <div>
+    <p class="spec-id">Direction 4</p>
+    <h2>Survey</h2>
+    <p class="thesis">
+      The largest color departure in the set: sand stock and sepia ink instead of cream and near-black. The
+      visual layer is topographic — contour lines whose elevation is real (how deeply a subject has been worked),
+      with a legend and grid references that double as the site's navigation.
+    </p>
+    <p class="thesis">
+      This is the one that stops looking like the current site. It's also the one where the metaphor has to
+      justify itself on every page, not just the home page.
+    </p>
+  </div>
+  <dl>
+    <dt>Palette</dt>
+    <dd>
+      <span class="swatches">
+        <i style="background:#f0e9dc"></i><i style="background:#33291f"></i>
+        <i style="background:#6b7f45"></i><i style="background:#cc5b25"></i>
+      </span>
+      Sand <code>#f0e9dc</code> replaces cream; sepia <code>#33291f</code> replaces near-black. Olive warms to
+      <code>#6b7f45</code> to sit on sand; signal orange <code>#cc5b25</code> marks the current position.
+    </dd>
+    <dt>Visual layer</dt>
+    <dd>Contour rings drawn from category depth, a legend block, and grid references. The legend is a real nav component — it appears on every page type.</dd>
+    <dt>Why it's livable</dt>
+    <dd>A legend and a key scale to any content. And warm sepia is genuinely easier on the eye for long reading than #0e1116 on white.</dd>
+    <dt>Risk</dt>
+    <dd>Highest of the five. Cartography-as-metaphor gets twee fast, and sand-and-sepia is one step from a coffee-shop menu. It works only if the contours stay tied to data.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen 4 — home</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-survey">
+    <div class="pg-runhead">
+      <span>shane logsdon · payments &amp; developer platforms</span>
+      <span>louisville, kentucky</span>
+    </div>
+    <div class="pg-body">
+      <div class="pg-rail">
+        <div class="pg-note">
+          <b>legend</b>
+          <a href="#">writing (32)</a><br><a href="#">speaking</a><br>
+          <a href="#">local business practice</a><br><a href="#">about</a>
+        </div>
+        <div class="pg-note"><span class="num">▲</span> Deepest ground: technical deep-dives, 21 of 32 posts.</div>
+        <div class="pg-note"><b>reachable</b> shane@shanelogsdon.com</div>
+      </div>
+      <div class="pg-spine"></div>
+      <div class="pg-main">
+        <h1>Systems that get found.</h1>
+        <p class="stand">
+          I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+          engineers actually reach for. The ground below shows where the writing has actually been worked, and
+          where it's only been walked across.
+        </p>
+
+        <figure class="fig">
+          <svg viewBox="0 0 620 230" role="img" aria-label="Contour map of subject depth by category">
+            <!-- technical deep-dives: deepest -->
+            <ellipse cx="180" cy="112" rx="168" ry="88" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="180" cy="112" rx="132" ry="68" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="180" cy="112" rx="96"  ry="49" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="180" cy="112" rx="60"  ry="31" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="180" cy="112" rx="26"  ry="14" fill="#6b7f45" fill-opacity="0.18" stroke="#6b7f45" stroke-width="1"/>
+            <text x="180" y="116" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#33291f">21</text>
+            <text x="180" y="18" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#33291f">Technical deep-dives</text>
+            <!-- strategic -->
+            <ellipse cx="428" cy="82" rx="86" ry="46" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="428" cy="82" rx="52" ry="28" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="428" cy="82" rx="20" ry="11" fill="#6b7f45" fill-opacity="0.18" stroke="#6b7f45" stroke-width="1"/>
+            <text x="428" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#33291f">7</text>
+            <text x="428" y="26" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#33291f">Strategic</text>
+            <!-- industry analysis: shallow -->
+            <ellipse cx="500" cy="182" rx="66" ry="32" fill="none" stroke="#6b7f45" stroke-width="1"/>
+            <ellipse cx="500" cy="182" rx="26" ry="13" fill="#6b7f45" fill-opacity="0.18" stroke="#6b7f45" stroke-width="1"/>
+            <text x="500" y="186" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#33291f">4</text>
+            <text x="500" y="224" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#33291f">Industry analysis</text>
+            <!-- you-are-here marker in the signal color -->
+            <line x1="150" y1="112" x2="112" y2="112" stroke="#cc5b25" stroke-width="1.4"/>
+            <circle cx="106" cy="112" r="5" fill="none" stroke="#cc5b25" stroke-width="1.4"/>
+            <circle cx="106" cy="112" r="1.6" fill="#cc5b25"/>
+            <text x="96" y="130" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#cc5b25">latest post</text>
+          </svg>
+          <figcaption>
+            <b>Fig. 4</b> — Subject depth by category; each ring is roughly four posts. The orange mark is the
+            most recent piece. Source: <code>articles-list.json</code>, 32 entries, read 2026.07.28.
+          </figcaption>
+        </figure>
+
+        <ol class="pg-list">
+          <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22</span></span></li>
+          <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13</span></span></li>
+          <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09</span></span></li>
+          <li><span class="n">029</span><span><a href="#">How to Know If Your Agentic Workflow Is Actually Working</a><span class="when">2026.06.18</span></span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="pg-colophon"><p>
+      Contours drawn from post counts, not from feel. Set in Fraunces and IBM Plex Sans.
+      Data and corrections: <a href="#">github.com/slogsdon</a>.
+    </p></div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ 5 — LEDGER STOCK ══════════════════ -->
+<section class="spec" id="r5">
+  <div>
+    <p class="spec-id">Direction 5</p>
+    <h2>Ledger Stock</h2>
+    <p class="thesis">
+      The material is accounting paper: pale green banded stock, a red thread rule at the top and bottom of every
+      record, and figures that always reconcile. For someone whose day job is payments infrastructure this is the
+      one direction where the visual language and the subject are the same thing.
+    </p>
+    <p class="thesis">
+      The banding isn't a striped-table style choice — it's the stock. It runs behind everything on the page,
+      which is what makes it a material rather than a component.
+    </p>
+  </div>
+  <dl>
+    <dt>Palette</dt>
+    <dd>
+      <span class="swatches">
+        <i style="background:#f8f9f5"></i><i style="background:#eaf0e4"></i>
+        <i style="background:#14161a"></i><i style="background:#4d6129"></i><i style="background:#b0342a"></i>
+      </span>
+      Two-tone stock: <code>#f8f9f5</code> base with <code>#eaf0e4</code> bands. Olive deepens slightly to
+      <code>#4d6129</code>. Thread red <code>#b0342a</code> rules the top and bottom of each record.
+    </dd>
+    <dt>Visual layer</dt>
+    <dd>The banded stock itself, plus reconciled figures — running totals, column sums, a footing line. Numbers are tabular and they add up, which is checkable.</dd>
+    <dt>Why it's livable</dt>
+    <dd>Banding is a background property, so every new page type inherits it for free. It's also the most durable: accounting stock has looked like this for a century and shows no sign of trending.</dd>
+    <dt>Risk</dt>
+    <dd>Green banded paper reads "spreadsheet" to some people before it reads "ledger." And it's the closest of the five to Round 1's catalog idea, so it may feel like ground you've already rejected.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen 5 — home</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-ledger">
+    <div class="pg-runhead">
+      <span>shane logsdon · payments &amp; developer platforms</span>
+      <span>louisville, kentucky</span>
+    </div>
+    <div class="pg-body">
+      <div class="pg-rail">
+        <div class="pg-note">
+          <b>elsewhere</b>
+          <a href="#">writing (32)</a><br><a href="#">speaking</a><br>
+          <a href="#">local business practice</a><br><a href="#">about</a>
+        </div>
+        <div class="pg-note"><span class="num">§</span> Every figure on this site reconciles to a file you can open.</div>
+        <div class="pg-note"><b>reachable</b> shane@shanelogsdon.com</div>
+      </div>
+      <div class="pg-spine"></div>
+      <div class="pg-main">
+        <h1>Systems that get found.</h1>
+        <p class="stand">
+          I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+          engineers actually reach for. I write here about developer platforms, payments, and AI-assisted
+          engineering.
+        </p>
+
+        <figure class="fig">
+          <svg viewBox="0 0 620 200" role="img" aria-label="Ledger of posts by period, footed to a total of 32">
+            <rect x="0" y="0"   width="620" height="26" fill="#eaf0e4"/>
+            <rect x="0" y="52"  width="620" height="26" fill="#eaf0e4"/>
+            <rect x="0" y="104" width="620" height="26" fill="#eaf0e4"/>
+            <line x1="0" y1="0" x2="620" y2="0" stroke="#b0342a" stroke-width="1.5"/>
+            <text x="10"  y="18" font-family="JetBrains Mono, monospace" font-size="11" fill="#6a7079">PERIOD</text>
+            <text x="300" y="18" font-family="JetBrains Mono, monospace" font-size="11" fill="#6a7079">CATEGORY WEIGHT</text>
+            <text x="610" y="18" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#6a7079">POSTS</text>
+
+            <text x="10"  y="44" font-family="IBM Plex Sans, sans-serif" font-size="13.5" fill="#14161a">2013 – 2017</text>
+            <rect x="300" y="34" width="222" height="9" fill="#4d6129"/>
+            <text x="610" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" fill="#14161a">23</text>
+
+            <text x="10"  y="70" font-family="IBM Plex Sans, sans-serif" font-size="13.5" fill="#14161a">2018 – 2025</text>
+            <text x="300" y="70" font-family="JetBrains Mono, monospace" font-size="11" fill="#b0342a">— no entries —</text>
+            <text x="610" y="70" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" fill="#b0342a">0</text>
+
+            <text x="10"  y="96" font-family="IBM Plex Sans, sans-serif" font-size="13.5" fill="#14161a">2026</text>
+            <rect x="300" y="86" width="87" height="9" fill="#4d6129"/>
+            <text x="610" y="96" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" fill="#14161a">9</text>
+
+            <!-- footing: the three periods sum to the total on file -->
+            <line x1="520" y1="108" x2="610" y2="108" stroke="#14161a" stroke-width="1"/>
+            <text x="10"  y="126" font-family="Fraunces, serif" font-size="15" fill="#14161a">Total on file</text>
+            <text x="610" y="126" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="14" fill="#14161a">32</text>
+            <line x1="520" y1="132" x2="610" y2="132" stroke="#14161a" stroke-width="1"/>
+            <line x1="520" y1="135" x2="610" y2="135" stroke="#14161a" stroke-width="1"/>
+
+            <!-- memo lines: a breakdown of the total, not an addition to it -->
+            <text x="10"  y="158" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="#6a7079">of which — live in the index</text>
+            <text x="610" y="158" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#6a7079">9</text>
+            <text x="10"  y="176" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="#6a7079">of which — archived</text>
+            <text x="610" y="176" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#6a7079">23</text>
+            <line x1="0" y1="192" x2="620" y2="192" stroke="#b0342a" stroke-width="1.5"/>
+          </svg>
+          <figcaption>
+            <b>Fig. 5</b> — 23 + 0 + 9 = 32, footing to the total on file. The memo lines below the footing
+            split that same 32 by status; they don't add to it. Source: <code>articles-list.json</code>,
+            read 2026.07.28.
+          </figcaption>
+        </figure>
+
+        <ol class="pg-list">
+          <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22</span></span></li>
+          <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13</span></span></li>
+          <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09</span></span></li>
+          <li><span class="n">029</span><span><a href="#">How to Know If Your Agentic Workflow Is Actually Working</a><span class="when">2026.06.18</span></span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="pg-colophon"><p>
+      Figures reconcile to <code>articles-list.json</code>. Set in Fraunces and IBM Plex Sans.
+      Data and corrections: <a href="#">github.com/slogsdon</a>.
+    </p></div>
+  </div>
+</div></div>
+
+</body>
+</html>

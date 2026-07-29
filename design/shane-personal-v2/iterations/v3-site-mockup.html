@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>shanelogsdon.com — v3 site mockup (Drafting)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   shanelogsdon.com — v3 · Drafting
+
+   One visual system (Drafting palette + apparatus). Page architecture is
+   a FUNCTION OF CONTENT TYPE, not a style choice — see the System page
+   for the governing table. Five architectures, each earned by a kind of
+   content:
+
+     A · Drawing First   one idea that reduces to a single drawing
+     B · Facing Spread   claims that each need evidence beside them
+     C · Sheet           reference pages where revision + date matter
+     D · Assembly Order  anything genuinely sequential
+     E · Set             browsing a body of work
+
+   Figures are additive, never decorative: a figure ships only if the page
+   is worse without it, and every figure carries a caption naming its
+   source. Data here is real (articles-list.json, 32 posts, read
+   2026.07.28); article body prose is illustrative placeholder.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --paper: #fbfaf9; --ink: #0e1116; --ink-soft: #404550; --ink-3: #62686f;
+  --rule: #d6d8de; --accent: #556b2f; --accent-hover: #3e5020;
+  --mark: #c0392b; --fill: #f1eee8;
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --gut: 48px;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65;
+  font-feature-settings: 'ss01','cv11','kern';
+}
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; letter-spacing: -0.018em; margin: 0; }
+
+/* ─── Site chrome — the one element every page shares ─── */
+.site-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  padding: 16px var(--gut) 13px; border-bottom: 1px solid var(--ink);
+  position: sticky; top: 0; background: var(--paper); z-index: 20;
+}
+.wordmark { font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -0.005em; text-decoration: none; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0 20px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.07em; }
+.site-nav a { text-decoration: none; color: var(--ink-3); padding: 3px 0; border-bottom: 1px solid transparent; cursor: pointer; }
+.site-nav a:hover { color: var(--ink); }
+.site-nav a.on { color: var(--ink); border-bottom-color: var(--mark); }
+
+/* ─── Shared type + apparatus ─── */
+.smallcaps {
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.1em; font-size: 13px;
+}
+.mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.07em; color: var(--ink-3); }
+.lnk { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.lnk:hover { border-color: var(--accent); }
+.callout {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 17px; height: 17px; border: 1px solid var(--mark); color: var(--mark);
+  border-radius: 999px; font-family: var(--mono); font-size: 10px; line-height: 1; vertical-align: 1px; margin: 0 1px;
+}
+figure { margin: 0; }
+svg { display: block; width: 100%; height: auto; }
+figcaption {
+  font-family: var(--mono); font-size: 11px; line-height: 1.6; letter-spacing: 0.04em;
+  color: var(--ink-3); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule);
+}
+figcaption b { color: var(--ink); font-weight: 500; }
+/* Drawing classes — every SVG styles by class so the palette stays swappable */
+.s-ink  { stroke: var(--ink); fill: none; stroke-width: 1; }
+.s-edge { stroke: var(--ink); stroke-width: 1; }        /* stroke only — lets fill="url(#…)" survive */
+.s-mark { stroke: var(--mark); fill: none; stroke-width: 1; }
+.s-rule { stroke: var(--rule); fill: none; stroke-width: 1; }
+.f-ink { fill: var(--ink); } .f-mark { fill: var(--mark); }
+.f-soft { fill: var(--ink-soft); } .f-3 { fill: var(--ink-3); } .f-paper { fill: var(--paper); }
+.t-mono { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+.t-serif { font-family: 'Fraunces', serif; font-size: 16px; }
+.t-sans { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; }
+.hatch { stroke: var(--mark); stroke-width: 0.6; opacity: 0.5; }
+
+.idx { margin: 0; padding: 0; list-style: none; }
+.idx li { padding: 13px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 4ch 1fr; gap: 14px; align-items: baseline; }
+.idx .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.idx a { font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: -0.008em; text-decoration: none; line-height: 1.3; display: block; }
+.idx a:hover { color: var(--accent); }
+.idx .when { font-family: var(--mono); font-size: 11px; color: var(--ink-3); display: block; margin-top: 3px; }
+
+.page { display: none; }
+.page.on { display: block; }
+.arch-tag {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 8px var(--gut); background: var(--fill); border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+}
+.arch-tag b { color: var(--mark); font-weight: 500; }
+
+/* ═══════ A · DRAWING FIRST ═══════ */
+.a-plate { padding: 34px var(--gut) 0; }
+.a-key { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 32px; padding: 30px var(--gut) 0; border-top: 1px solid var(--rule); margin-top: 26px; }
+.a-key-item { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+.a-key-item h3 { font-size: 19px; font-weight: 500; margin: 0 0 6px; line-height: 1.2; }
+.a-key-item p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+.a-body { padding: 40px var(--gut) 0; max-width: 68ch; }
+.a-body h2 { font-size: 24px; font-weight: 500; margin: 34px 0 10px; }
+.a-body p { margin: 0 0 16px; color: var(--ink-soft); }
+.a-body p.lead { font-size: 19px; color: var(--ink); }
+
+/* ═══════ B · FACING SPREAD ═══════ */
+.b-spread { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 34px; padding: 0 var(--gut); }
+.b-gutter { background: var(--rule); }
+.b-reg { grid-column: 1 / -1; border: 0; border-top: 1px solid var(--rule); margin: 0; height: 0; }
+.b-l, .b-r { padding: 28px 0 32px; min-width: 0; }
+.b-l h1 { font-size: clamp(34px, 3.6vw, 48px); line-height: 1.04; margin: 0 0 16px; }
+.b-l h2 { font-size: 23px; font-weight: 500; margin: 0 0 12px; }
+.b-l p, .b-r p { margin: 0 0 14px; font-size: 16px; line-height: 1.62; color: var(--ink-soft); }
+.b-l p.lead { font-size: 17.5px; color: var(--ink); }
+.b-r > .smallcaps { display: block; margin-bottom: 14px; color: var(--ink-3); }
+
+/* ═══════ C · SHEET ═══════ */
+.c-wrap { padding: 18px; }
+/* Sheet = border + field + title block. No zone references — they were the
+   decorative half of the drawing-sheet convention and carried no information. */
+.c-sheet { border: 2px solid var(--ink); position: relative; }
+.c-field { padding: 34px 34px 0; }
+.c-field h1 { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.05; margin: 0 0 14px; max-width: 22ch; }
+.c-field .stand { font-size: 17px; line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 0 0 30px; }
+.c-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 34px; align-items: start; }
+.c-tb { margin: 30px 0 0; border-top: 1px solid var(--ink); display: grid; grid-template-columns: 1fr auto; }
+.c-tb-l { padding: 14px 30px 16px; }
+.c-tb-cells { display: grid; grid-template-columns: repeat(4, minmax(76px, auto)); border-left: 1px solid var(--ink); }
+.c-tb-cells div { padding: 12px 14px; border-right: 1px solid var(--rule); }
+.c-tb-cells div:last-child { border-right: 0; }
+.c-tb-cells dt { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 5px; }
+.c-tb-cells dd { margin: 0; font-family: var(--mono); font-size: 12px; }
+.c-rows { margin: 0; padding: 0; list-style: none; }
+.c-rows li { display: grid; grid-template-columns: 5ch 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.c-rows .k { font-family: var(--mono); font-size: 11px; color: var(--mark); }
+.c-rows h3 { font-size: 18px; font-weight: 500; margin: 0 0 4px; }
+.c-rows p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+
+/* ═══════ D · ASSEMBLY ORDER ═══════ */
+.d-intro { padding: 32px var(--gut) 8px; max-width: 70ch; }
+/* Intro with a summary block — used where the page opens with numbers (practice) */
+.d-intro-grid { display: grid; grid-template-columns: minmax(0,1fr) 360px; gap: 48px; align-items: start; padding: 32px var(--gut) 8px; }
+.d-intro-grid .d-intro { padding: 0; max-width: none; }
+.d-intro-grid .summary > .smallcaps { display: block; color: var(--ink-3); margin-bottom: 12px; }
+@media (max-width: 900px) { .d-intro-grid { grid-template-columns: 1fr; gap: 28px; } }
+.d-intro h1 { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.05; margin: 0 0 14px; }
+.d-intro p { font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 12px; }
+.d-steps { padding: 22px var(--gut) 0; position: relative; }
+.d-axis { position: absolute; left: 50%; top: 0; bottom: 30px; width: 1px; background: var(--rule); }
+.d-step { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center; padding: 24px 0; }
+.d-node {
+  grid-column: 2; justify-self: center; width: 26px; height: 26px;
+  border: 1px solid var(--mark); color: var(--mark); background: var(--paper);
+  border-radius: 999px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; position: relative; z-index: 2;
+}
+.d-step .txt { padding-right: 30px; text-align: right; }
+.d-step .art { padding-left: 30px; }
+.d-step.flip .txt { grid-column: 3; padding-right: 0; padding-left: 30px; text-align: left; }
+.d-step.flip .art { grid-column: 1; padding-left: 0; padding-right: 30px; display: flex; justify-content: flex-end; }
+.d-step h3 { font-size: 20px; font-weight: 500; margin: 0 0 8px; line-height: 1.2; }
+.d-step p { margin: 0; font-size: 15px; line-height: 1.58; color: var(--ink-soft); }
+.d-step .art svg { max-width: 340px; }
+.d-step .art .price { max-width: 340px; }
+.d-price { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 10px 0; }
+.d-price div { display: flex; justify-content: space-between; gap: 16px; padding: 5px 0; font-family: var(--mono); font-size: 12px; }
+.d-price div b { font-weight: 500; color: var(--ink); }
+
+/* ═══════ E · SET ═══════ */
+.e-wrap { display: grid; grid-template-columns: 34ch 1px minmax(0,1fr); min-height: 60vh; }
+.e-div { background: var(--rule); }
+.e-list-head { padding: 15px 22px 12px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.e-sheets { margin: 0; padding: 0; list-style: none; }
+.e-sheets a { display: grid; grid-template-columns: 5ch 1fr; gap: 10px; align-items: baseline; padding: 11px 22px; border-bottom: 1px solid var(--rule); text-decoration: none; }
+.e-sheets a:hover { background: var(--fill); }
+.e-sheets .no { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+.e-sheets .ti { font-size: 14.5px; line-height: 1.3; color: var(--ink-soft); }
+.e-sheets .meta { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; color: var(--ink-3); margin-top: 4px; }
+.e-sheets .cur .meta { color: rgba(251,250,249,0.55); }
+.e-sheets .cur { background: var(--ink); }
+.e-sheets .cur .no { color: var(--paper); opacity: 0.65; }
+.e-sheets .cur .ti { color: var(--paper); }
+.e-group { padding: 16px 22px 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.e-open-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 15px 34px 12px; border-bottom: 1px solid var(--ink); }
+.e-open-body { padding: 30px 34px 40px; }
+.e-open-body h1 { font-size: clamp(28px, 3vw, 40px); line-height: 1.06; margin: 0 0 14px; max-width: 24ch; }
+.e-open-body .stand { font-size: 16.5px; line-height: 1.6; color: var(--ink-soft); max-width: 62ch; margin: 0 0 26px; }
+.e-open-grid { display: grid; grid-template-columns: minmax(0,1fr) 24ch; gap: 34px; align-items: start; }
+.e-notes { font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+.e-notes p { margin: 0 0 16px; }
+.e-notes .num { font-family: var(--mono); font-size: 11px; color: var(--mark); }
+
+/* ═══════ Site-wide components — live on every page, under every architecture ═══════ */
+
+/* Contact CTA — the v2 inversion block, kept. Parameterized eyebrow/title/body. */
+.cta-invert {
+  background: var(--ink); color: var(--paper); margin-top: 44px;
+  padding: 54px var(--gut) 58px;
+  display: grid; grid-template-columns: 3fr 9fr; gap: 24px;
+  --rule: rgba(251,250,249,0.18);
+}
+.cta-invert .smallcaps { color: rgba(251,250,249,0.6); }
+.cta-invert h2 { font-size: clamp(26px, 2.6vw, 34px); font-weight: 500; line-height: 1.16; margin: 0 0 16px; max-width: 26ch; }
+.cta-invert p { margin: 0 0 26px; max-width: 58ch; font-size: 17px; line-height: 1.6; color: rgba(251,250,249,0.72); }
+.cta-invert .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 36px; }
+.cta-invert .btn-arrow { color: var(--paper); }
+.cta-invert .handle { font-family: var(--display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.1em; font-size: 13px; color: rgba(251,250,249,0.6); }
+
+.btn-arrow {
+  font-family: var(--sans); font-size: 16px; color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid currentColor; padding-bottom: 2px; cursor: pointer;
+}
+.btn-arrow::after { content: ' →'; font-family: var(--mono); font-size: 0.85em; }
+
+/* Newsletter — sits above the footer on every page */
+.newsletter {
+  border-top: 1px solid var(--rule); padding: 34px var(--gut) 36px;
+  display: grid; grid-template-columns: 4fr 8fr; gap: 24px;
+}
+.newsletter h2 { font-size: 23px; font-weight: 500; margin: 6px 0 0; }
+.newsletter .smallcaps { color: var(--ink-3); }
+.newsletter p { margin: 0; max-width: 62ch; font-size: 16px; color: var(--ink-soft); }
+.field-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; margin-top: 18px; max-width: 52ch; }
+.field-row input {
+  flex: 1 1 220px; min-width: 0; border: 0; border-bottom: 1px solid var(--rule);
+  background: transparent; padding: 7px 0; font-family: var(--sans); font-size: 16px; color: var(--ink);
+}
+.field-row input::placeholder { color: var(--ink-3); }
+.field-row input:focus { outline: none; border-bottom-color: var(--ink); }
+
+/* Stacked form fields — audit request. Same underline language as the drawings. */
+.form-stack { margin-top: 22px; max-width: 46ch; }
+.form-stack label { display: block; font-family: var(--display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.09em; font-size: 12.5px; color: var(--ink); margin-bottom: 4px; }
+.form-stack .f { margin-bottom: 18px; }
+.form-stack input, .form-stack textarea {
+  width: 100%; border: 0; border-bottom: 1px solid var(--rule); background: transparent;
+  padding: 7px 0; font-family: var(--sans); font-size: 15.5px; color: var(--ink);
+}
+.form-stack textarea { border: 1px solid var(--rule); padding: 10px 12px; resize: vertical; }
+.form-stack input:focus, .form-stack textarea:focus { outline: none; border-color: var(--ink); }
+
+/* Author bio — article + guide layouts */
+.author-bio { margin-top: 44px; padding: 30px var(--gut) 0; border-top: 1px solid var(--rule); display: flex; gap: 28px; align-items: flex-start; }
+.author-bio img, .author-bio .shot {
+  width: 72px; height: 96px; flex: none; background: var(--fill);
+  border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 9px; color: var(--ink-3); text-align: center; line-height: 1.4;
+}
+.author-bio .smallcaps { color: var(--ink-3); }
+.author-bio h3 { font-family: var(--display); font-weight: 600; font-size: 19px; margin: 6px 0 10px; letter-spacing: -0.005em; }
+.author-bio p { margin: 0 0 10px; max-width: 68ch; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+
+/* Index header strip — count folio + category filter tabs (articles) */
+.list-strip {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 11px 0;
+}
+.folio { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; color: var(--ink-3); display: inline-flex; gap: 10px; }
+.folio .pos { color: var(--ink); }
+.filters { display: flex; gap: 18px; flex-wrap: wrap; }
+.filters button {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; letter-spacing: 0.1em; font-size: 13px; color: var(--ink-3);
+}
+.filters button[aria-selected="true"] { color: var(--ink); border-bottom: 1px solid var(--mark); }
+
+/* ═══════ Footer, shared ═══════ */
+.site-foot {
+  padding: 16px var(--gut) 26px; border-top: 1px solid var(--ink);
+  display: flex; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap; align-items: baseline;
+}
+.foot-links { display: flex; gap: 18px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+.foot-links a {
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; letter-spacing: 0.1em; font-size: 12.5px; color: var(--ink-3); text-decoration: none; cursor: pointer;
+}
+.foot-links a:hover { color: var(--ink); }
+@media (max-width: 900px) {
+  .cta-invert, .newsletter { grid-template-columns: 1fr; }
+  .author-bio { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ═══════ The System page (the spec itself) ═══════ */
+.sys { padding: 34px var(--gut) 0; }
+.sys h1 { font-size: clamp(32px, 3.4vw, 44px); line-height: 1.05; margin: 0 0 16px; max-width: 24ch; }
+.sys .stand { font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 68ch; margin: 0 0 34px; }
+.sys h2 { font-size: 23px; font-weight: 500; margin: 40px 0 6px; }
+.sys h2 + p { margin: 0 0 18px; color: var(--ink-soft); max-width: 68ch; font-size: 15.5px; }
+.sys table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.sys th {
+  text-align: left; font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.09em; font-size: 13px;
+  padding: 0 16px 8px 0; border-bottom: 1px solid var(--ink); vertical-align: bottom;
+}
+.sys td { padding: 11px 16px 11px 0; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink-soft); }
+.sys td:first-child { color: var(--ink); }
+.sys td .tag { font-family: var(--mono); font-size: 11px; color: var(--mark); white-space: nowrap; }
+.sys td .mocked { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+.sys .rules { margin: 14px 0 0; padding: 0; list-style: none; max-width: 76ch; }
+.sys .rules li { padding: 12px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 3ch 1fr; gap: 14px; font-size: 15px; color: var(--ink-soft); }
+.sys .rules .n { font-family: var(--mono); font-size: 11px; color: var(--mark); }
+.sys .rules b { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 900px) {
+  :root { --gut: 20px; }
+  .b-spread { grid-template-columns: 1fr; } .b-gutter { display: none; }
+  .b-l, .b-r { padding: 20px 0; }
+  .c-field { margin: 0; padding: 22px 18px 0; }
+  .c-grid { grid-template-columns: 1fr; }
+  .c-tb { margin-left: 0; grid-template-columns: 1fr; }
+  .c-tb-cells { grid-template-columns: repeat(2, 1fr); border-left: 0; border-top: 1px solid var(--rule); }
+  .a-key { grid-template-columns: 1fr; gap: 20px 0; }
+  .d-axis { left: 13px; }
+  .d-step { grid-template-columns: 26px 1fr; gap: 0 16px; padding: 20px 0; }
+  .d-node { grid-column: 1; justify-self: start; }
+  .d-step .txt, .d-step.flip .txt { grid-column: 2; padding: 0; text-align: left; }
+  .d-step .art, .d-step.flip .art { grid-column: 2; padding: 14px 0 0; justify-content: flex-start; }
+  .e-wrap { grid-template-columns: 1fr; } .e-div { display: none; }
+  .e-open-grid { grid-template-columns: 1fr; }
+  .e-open-head, .e-open-body { padding-left: 20px; padding-right: 20px; }
+  .sys table, .sys thead, .sys tbody, .sys tr, .sys th, .sys td { display: block; width: 100%; }
+  .sys thead { display: none; }
+  .sys td { border: 0; padding: 2px 0; }
+  .sys tr { border-bottom: 1px solid var(--rule); padding: 12px 0; display: block; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <a class="wordmark" data-go="home">Shane Logsdon</a>
+  <nav class="site-nav">
+    <a data-go="about">about</a>
+    <a data-go="articles">articles</a>
+    <a data-go="speaking">speaking</a>
+    <a data-go="work">work</a>
+    <a data-go="resume">resume</a>
+    <span style="color:var(--rule);">|</span>
+    <a data-go="home" class="on">home</a>
+    <a data-go="article">an article</a>
+    <a data-go="guide">field guide</a>
+    <a data-go="system">the system</a>
+  </nav>
+</header>
+
+<!-- ══════════════════════════ HOME · B · FACING SPREAD ══════════════════════════ -->
+<main class="page on" id="p-home">
+  <div class="arch-tag"><b>Architecture B — Facing Spread</b> <span>· chosen because the home page is a set of claims that each need evidence beside them</span></div>
+
+  <div class="b-spread">
+    <div class="b-l">
+      <h1>Systems that get found.</h1>
+      <p class="lead">
+        I lead developer advocacy at Global Payments, building developer-experience infrastructure at enterprise
+        scale — the payment APIs, SDKs, and documentation engineers actually reach for.
+      </p>
+      <p>
+        Most of what I write about lives at one line: where a specification stops <span class="callout">1</span>
+        and an implementation starts owning the decision.
+      </p>
+    </div>
+    <div class="b-gutter"></div>
+    <div class="b-r">
+      <span class="smallcaps">the shape of it</span>
+      <figure>
+        <svg viewBox="0 0 460 168" role="img" aria-label="The specification boundary: 75 percent specified, 25 percent assumed">
+          <defs><pattern id="h-home" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="7" class="hatch"/></pattern></defs>
+          <rect x="8" y="14" width="444" height="96" class="s-ink"/>
+          <rect x="8" y="14" width="333" height="96" class="s-ink"/>
+          <rect x="341" y="14" width="111" height="96" fill="url(#h-home)" class="s-edge"/>
+          <text x="24" y="48" class="t-serif f-ink">Specified</text>
+          <text x="24" y="70" class="t-sans f-soft">Contract, failure modes,</text>
+          <text x="24" y="86" class="t-sans f-soft">what turns red.</text>
+          <text x="352" y="48" class="t-serif f-ink" font-size="14">Assumed</text>
+          <line x1="8" y1="116" x2="8" y2="144" class="s-mark"/>
+          <line x1="341" y1="116" x2="341" y2="144" class="s-mark"/>
+          <line x1="452" y1="116" x2="452" y2="144" class="s-mark"/>
+          <line x1="8" y1="134" x2="341" y2="134" class="s-mark"/>
+          <line x1="341" y1="134" x2="452" y2="134" class="s-mark"/>
+          <path d="M8 134 l6 -3 v6 z M341 134 l-6 -3 v6 z" class="f-mark"/>
+          <path d="M341 134 l6 -3 v6 z M452 134 l-6 -3 v6 z" class="f-mark"/>
+          <rect x="152" y="127" width="46" height="14" class="f-paper"/>
+          <text x="175" y="138" text-anchor="middle" class="t-mono f-mark">75%</text>
+          <rect x="378" y="127" width="40" height="14" class="f-paper"/>
+          <text x="398" y="138" text-anchor="middle" class="t-mono f-mark">25%</text>
+          <circle cx="341" cy="14" r="9" class="s-mark f-paper"/><text x="341" y="18" text-anchor="middle" class="t-mono f-mark">1</text>
+        </svg>
+        <figcaption><b>Fig. 1</b> — From <i>The Specification Boundary</i> (2026.05.18).</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <hr class="b-reg">
+
+  <div class="b-spread">
+    <div class="b-l">
+      <h2>I stopped writing for nine years.</h2>
+      <p>
+        I published here from 2013 to 2017, then nothing until April 2026. The gap isn't a gap in the work — it's
+        a gap in writing the work down <span class="callout">2</span>, which turns out to be a different failure
+        and a more expensive one.
+      </p>
+      <p>
+        Everything since April has been an attempt to make the writing a byproduct of the building rather than a
+        separate task competing with it.
+      </p>
+    </div>
+    <div class="b-gutter"></div>
+    <div class="b-r">
+      <span class="smallcaps">the record</span>
+      <figure>
+        <svg viewBox="0 0 460 148" role="img" aria-label="Posts per year 2013 to 2026 with a nine year gap">
+          <line x1="8" y1="110" x2="452" y2="110" class="s-ink"/>
+          <rect x="14" y="20" width="34" height="90" class="f-ink"/>
+          <rect x="56" y="88" width="34" height="22" class="f-ink" opacity="0.55"/>
+          <rect x="98" y="88" width="34" height="22" class="f-ink" opacity="0.55"/>
+          <rect x="140" y="95" width="34" height="15" class="f-ink" opacity="0.4"/>
+          <rect x="182" y="88" width="34" height="22" class="f-ink" opacity="0.55"/>
+          <text x="31" y="14" text-anchor="middle" class="t-mono f-ink">12</text>
+          <text x="73" y="82" text-anchor="middle" class="t-mono f-3">3</text>
+          <text x="115" y="82" text-anchor="middle" class="t-mono f-3">3</text>
+          <text x="157" y="89" text-anchor="middle" class="t-mono f-3">2</text>
+          <text x="199" y="82" text-anchor="middle" class="t-mono f-3">3</text>
+          <line x1="228" y1="110" x2="382" y2="110" class="s-mark" stroke-dasharray="4 4" stroke-width="1.5"/>
+          <line x1="228" y1="103" x2="228" y2="117" class="s-mark" stroke-width="1.5"/>
+          <line x1="382" y1="103" x2="382" y2="117" class="s-mark" stroke-width="1.5"/>
+          <text x="305" y="98" text-anchor="middle" class="t-mono f-mark">nine years, zero</text>
+          <circle cx="305" cy="110" r="9" class="s-mark f-paper"/><text x="305" y="114" text-anchor="middle" class="t-mono f-mark">2</text>
+          <rect x="392" y="43" width="34" height="67" class="f-ink"/>
+          <text x="409" y="37" text-anchor="middle" class="t-mono f-ink">9</text>
+          <text x="31" y="128" text-anchor="middle" class="t-mono f-3">2013</text>
+          <text x="199" y="128" text-anchor="middle" class="t-mono f-3">2017</text>
+          <text x="409" y="128" text-anchor="middle" class="t-mono f-3">2026</text>
+        </svg>
+        <figcaption><b>Fig. 2</b> — Posts per year. Source: <code>articles-list.json</code>, 32 entries, read 2026.07.28.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <hr class="b-reg">
+
+  <div class="b-spread">
+    <div class="b-l">
+      <h2>Recent</h2>
+      <ol class="idx">
+        <li><span class="n">001</span><span><a data-go="article">The Split Audience</a><span class="when">2026.07.22 · strategic · 9 min</span></span></li>
+        <li><span class="n">002</span><span><a data-go="article">Building on the Margins</a><span class="when">2026.07.13 · strategic · 7 min</span></span></li>
+        <li><span class="n">003</span><span><a data-go="article">The Framework Emergence Loop</a><span class="when">2026.07.09 · technical · 15 min</span></span></li>
+      </ol>
+      <p style="margin-top:16px;"><a class="lnk" data-go="articles">All 9 pieces →</a></p>
+
+      <!-- Services, demoted. One quiet line at the bottom of the column, muted, no
+           heading and no figure — matching the live site, where the practice is
+           footer-linked only and never occupies a band of its own. -->
+      <p style="margin-top:30px;font-size:15px;color:var(--ink-3);">
+        I also run a small <a class="lnk" data-go="services">web presence practice</a> for local business
+        owners, covering build, AEO, and ongoing management.
+      </p>
+    </div>
+    <div class="b-gutter"></div>
+    <div class="b-r">
+      <span class="smallcaps">what's in the index</span>
+      <figure>
+        <svg viewBox="0 0 460 118" role="img" aria-label="Category share of 32 posts">
+          <text x="0" y="12" class="t-sans f-soft">technical deep-dives</text>
+          <rect x="0" y="20" width="302" height="11" class="f-ink"/>
+          <text x="310" y="30" class="t-mono f-3">21</text>
+          <text x="0" y="56" class="t-sans f-soft">strategic insights</text>
+          <rect x="0" y="64" width="101" height="11" class="f-ink" opacity="0.55"/>
+          <text x="109" y="74" class="t-mono f-3">7</text>
+          <text x="0" y="100" class="t-sans f-soft">industry analysis</text>
+          <rect x="0" y="108" width="58" height="11" class="f-ink" opacity="0.35"/>
+          <text x="66" y="118" class="t-mono f-3">4</text>
+        </svg>
+        <figcaption><b>Fig. 3</b> — Category share, 32 on file. Source: <code>articles-list.json</code>, read 2026.07.28.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section class="cta-invert">
+    <p class="smallcaps">stay in touch</p>
+    <div>
+      <h2>Networking, openly.</h2>
+      <p>
+        I write and connect with operators building developer-first products and payment systems. Follow along on
+        LinkedIn. That's where conversations happen.
+      </p>
+      <div class="row">
+        <a class="btn-arrow" href="#">Follow on LinkedIn</a>
+        <span class="handle">/in/shanelogsdon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div>
+      <p class="smallcaps">the newsletter</p>
+      <h2>New posts by email</h2>
+    </div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ ARTICLES · E · SET ══════════════════════════ -->
+<main class="page" id="p-articles">
+  <div class="arch-tag"><b>Architecture E — Set</b> <span>· chosen because the index's only job is browsing a body of work</span></div>
+
+  <div class="e-wrap">
+    <div>
+      <!-- Ordered by date desc. Category is metadata on the row and a FILTER above
+           the list — never a grouping, which would break reverse-chronology. -->
+      <div class="e-list-head"><span class="smallcaps">sheet list</span><span class="folio"><span class="pos">009</span><span>entries</span></span></div>
+      <div style="padding: 10px 22px 11px; border-bottom: 1px solid var(--rule);">
+        <div class="filters" role="tablist" aria-label="Filter by category">
+          <button role="tab" aria-selected="true">all</button>
+          <button role="tab" aria-selected="false">technical</button>
+          <button role="tab" aria-selected="false">strategic</button>
+        </div>
+      </div>
+      <ul class="e-sheets">
+        <li><a data-go="article"><span class="no">001</span><span class="ti">The Split Audience<span class="meta">2026.07.22 · strategic · 9 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">002</span><span class="ti">Building on the Margins<span class="meta">2026.07.13 · strategic · 7 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">003</span><span class="ti">The Framework Emergence Loop<span class="meta">2026.07.09 · technical · 15 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">004</span><span class="ti">How to Know If Your Agentic Workflow Is Actually Working<span class="meta">2026.06.18 · technical · 14 min</span></span></a></li>
+        <li><a class="cur"><span class="no">005</span><span class="ti">The Specification Boundary<span class="meta">2026.05.18 · technical · 11 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">006</span><span class="ti">What AEO Actually Means for a Local Business<span class="meta">2026.05.12 · strategic · 8 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">007</span><span class="ti">The Spec Is the Work<span class="meta">2026.05.11 · technical · 8 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">008</span><span class="ti">LLM Context Files Are Deliverables, Not Config<span class="meta">2026.05.04 · technical · 10 min</span></span></a></li>
+        <li><a data-go="article"><span class="no">009</span><span class="ti">The AX Shift<span class="meta">2026.04.27 · technical · 12 min</span></span></a></li>
+      </ul>
+    </div>
+
+    <div class="e-div"></div>
+
+    <div>
+      <div class="e-open-head">
+        <span class="mono">sheet 005 · rev b · 2026.05.18 · technical deep-dive</span>
+        <span class="mono">11 min</span>
+      </div>
+      <div class="e-open-body">
+        <h1>The Specification Boundary</h1>
+        <p class="stand">
+          AI gets you to 75% fast, then stalls. The wall isn't the model's capability, it's the specification
+          boundary: the territory your spec left undefined <span class="callout">1</span>.
+        </p>
+        <div class="e-open-grid">
+          <figure>
+            <svg viewBox="0 0 600 156" role="img" aria-label="Specified versus assumed territory">
+              <defs><pattern id="h-set" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="7" class="hatch"/></pattern></defs>
+              <rect x="8" y="12" width="584" height="94" class="s-ink"/>
+              <rect x="8" y="12" width="438" height="94" class="s-ink"/>
+              <rect x="446" y="12" width="146" height="94" fill="url(#h-set)" class="s-edge"/>
+              <text x="26" y="46" class="t-serif f-ink" font-size="18">Specified</text>
+              <text x="26" y="70" class="t-sans f-soft">Contract, failure modes, what turns red when it breaks.</text>
+              <text x="462" y="46" class="t-serif f-ink" font-size="16">Assumed</text>
+              <text x="462" y="70" class="t-sans f-soft">The 25% that stalls.</text>
+              <line x1="8" y1="112" x2="8" y2="140" class="s-mark"/>
+              <line x1="446" y1="112" x2="446" y2="140" class="s-mark"/>
+              <line x1="592" y1="112" x2="592" y2="140" class="s-mark"/>
+              <line x1="8" y1="130" x2="446" y2="130" class="s-mark"/>
+              <line x1="446" y1="130" x2="592" y2="130" class="s-mark"/>
+              <path d="M8 130 l6 -3 v6 z M446 130 l-6 -3 v6 z" class="f-mark"/>
+              <path d="M446 130 l6 -3 v6 z M592 130 l-6 -3 v6 z" class="f-mark"/>
+              <rect x="204" y="123" width="46" height="14" class="f-paper"/>
+              <text x="227" y="134" text-anchor="middle" class="t-mono f-mark">75%</text>
+              <rect x="498" y="123" width="42" height="14" class="f-paper"/>
+              <text x="519" y="134" text-anchor="middle" class="t-mono f-mark">25%</text>
+              <circle cx="446" cy="12" r="9" class="s-mark f-paper"/><text x="446" y="16" text-anchor="middle" class="t-mono f-mark">1</text>
+            </svg>
+            <figcaption><b>Fig.</b> — The boundary, dimensioned. Sheet 005.</figcaption>
+          </figure>
+          <div class="e-notes">
+            <p><span class="num">1.</span> The boundary isn't fixed by the problem. It's fixed by the tooling, and every capable release redraws it.</p>
+            <p style="color:var(--ink-soft);">Open the sheet to read it in full — the list stays put, so moving to the next piece costs no navigation.</p>
+            <p><a class="lnk" data-go="article">Open sheet 005 →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="newsletter">
+    <div><p class="smallcaps">the newsletter</p><h2>New posts by email</h2></div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ ARTICLE · A · DRAWING FIRST ══════════════════════════ -->
+<main class="page" id="p-article">
+  <div class="arch-tag"><b>Architecture A — Drawing First</b> <span>· chosen because this piece reduces to one drawing; the prose is its key</span></div>
+
+  <div class="a-plate">
+    <figure>
+      <svg viewBox="0 0 1180 250" role="img" aria-label="Dimensioned drawing of the specification boundary">
+        <defs><pattern id="h-art" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="7" class="hatch"/></pattern></defs>
+        <rect x="60" y="30" width="1060" height="150" class="s-ink"/>
+        <rect x="60" y="30" width="795" height="150" class="s-ink"/>
+        <rect x="855" y="30" width="265" height="150" fill="url(#h-art)" class="s-edge"/>
+        <text x="86" y="72" class="t-serif f-ink" font-size="21">Specified</text>
+        <text x="86" y="100" class="t-sans f-soft" font-size="13.5">Shape, contract, failure modes, and what turns red when it breaks.</text>
+        <text x="86" y="122" class="t-sans f-soft" font-size="13.5">Written down before the build starts, and revised when it's wrong.</text>
+        <text x="881" y="72" class="t-serif f-ink" font-size="21">Assumed</text>
+        <text x="881" y="100" class="t-sans f-soft" font-size="13.5">The quarter that stalls</text>
+        <text x="881" y="122" class="t-sans f-soft" font-size="13.5">the build.</text>
+        <line x1="60" y1="186" x2="60" y2="216" class="s-mark"/>
+        <line x1="855" y1="186" x2="855" y2="216" class="s-mark"/>
+        <line x1="1120" y1="186" x2="1120" y2="216" class="s-mark"/>
+        <line x1="60" y1="206" x2="855" y2="206" class="s-mark"/>
+        <line x1="855" y1="206" x2="1120" y2="206" class="s-mark"/>
+        <path d="M60 206 l7 -3.5 v7 z M855 206 l-7 -3.5 v7 z" class="f-mark"/>
+        <path d="M855 206 l7 -3.5 v7 z M1120 206 l-7 -3.5 v7 z" class="f-mark"/>
+        <rect x="425" y="198" width="60" height="16" class="f-paper"/>
+        <text x="455" y="210" text-anchor="middle" class="t-mono f-mark">75%</text>
+        <rect x="960" y="198" width="52" height="16" class="f-paper"/>
+        <text x="986" y="210" text-anchor="middle" class="t-mono f-mark">25%</text>
+        <circle cx="855" cy="30" r="11" class="s-mark f-paper"/><text x="855" y="34.5" text-anchor="middle" class="t-mono f-mark">1</text>
+        <circle cx="988" cy="180" r="11" class="s-mark f-paper"/><text x="988" y="184.5" text-anchor="middle" class="t-mono f-mark">2</text>
+        <line x1="36" y1="105" x2="60" y2="105" class="s-mark"/>
+        <circle cx="24" cy="105" r="11" class="s-mark f-paper"/><text x="24" y="109.5" text-anchor="middle" class="t-mono f-mark">3</text>
+      </svg>
+      <figcaption>
+        <b>Fig. A</b> — The specification boundary. Sheet 005, rev B · 2026.05.18 · 11 min.
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="a-key">
+    <div class="a-key-item"><span class="callout">1</span><div>
+      <h3>The boundary moves</h3>
+      <p>It isn't fixed by the problem, it's fixed by the tooling. Every capable release redraws it, which is why a spec written for last quarter's model under-specifies this quarter's.</p>
+    </div></div>
+    <div class="a-key-item"><span class="callout">2</span><div>
+      <h3>Below the line, nobody decided</h3>
+      <p>The hatched region isn't unbuilt — it's built on assumptions no one wrote down. That's what stalls at 75%: not missing work, missing decisions.</p>
+    </div></div>
+    <div class="a-key-item"><span class="callout">3</span><div>
+      <h3>The left edge is the real test</h3>
+      <p>"If this breaks next month, what turns red?" A spec that can't answer that hasn't specified anything; it's described a demo.</p>
+    </div></div>
+  </div>
+
+  <div class="a-body">
+    <h2>The Specification Boundary</h2>
+    <p class="lead">
+      AI gets you to 75% fast, then stalls. The wall isn't the model's capability — it's the specification
+      boundary: the territory your spec left undefined.
+    </p>
+    <p>
+      The drawing above is the whole argument, and the rest of this piece is the key to it. What follows walks
+      each callout in order: where the line sits today, why the hatched region is more dangerous than an empty
+      one, and the single question that tells you whether you've specified anything at all.
+    </p>
+    <p class="mono" style="color:var(--ink-3);">[ article body continues — illustrative placeholder ]</p>
+    <p style="margin-top:26px;"><a class="lnk" data-go="articles">← Back to the set</a></p>
+  </div>
+
+  <!-- Author bio — live on the writing-post and field-guide layouts -->
+  <aside class="author-bio">
+    <div class="shot">headshot<br>72×96</div>
+    <div>
+      <p class="smallcaps">about the author</p>
+      <h3>Shane Logsdon</h3>
+      <p>
+        Shane Logsdon is a technical product leader with 15+ years at the intersection of payments and developer
+        platforms. He designs payment APIs, shapes platform infrastructure, and turns complex financial primitives
+        into products engineers actually want to build on.
+      </p>
+      <p>
+        He writes about developer experience, system architecture, and the realities of working in regulated
+        payments. Connect on <a class="lnk" href="#">LinkedIn</a> or <a class="lnk" href="#">Bluesky</a>.
+      </p>
+    </div>
+  </aside>
+
+  <section class="cta-invert">
+    <p class="smallcaps">stay in touch</p>
+    <div>
+      <h2>Networking, openly.</h2>
+      <p>
+        I write and connect with operators building developer-first products and payment systems. Follow along on
+        LinkedIn. That's where conversations happen.
+      </p>
+      <div class="row">
+        <a class="btn-arrow" href="#">Follow on LinkedIn</a>
+        <span class="handle">/in/shanelogsdon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div>
+      <p class="smallcaps">the newsletter</p>
+      <h2>New posts by email</h2>
+    </div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">Sheet 005 · rev B</span><span>2026.05.18</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ FIELD GUIDE · D · ASSEMBLY ══════════════════════════ -->
+<main class="page" id="p-guide">
+  <div class="arch-tag"><b>Architecture D — Assembly Order</b> <span>· chosen because eleven gates is a sequence, not a narrative</span></div>
+
+  <div class="d-intro">
+    <h1>The Build Field Guide</h1>
+    <p>
+      Eleven gates, each carrying a decision I actually made and at least one I got wrong. The loop does the work
+      between the gates; you work the gates. Four of the eleven are shown here.
+    </p>
+    <p class="mono">Loop &amp; Gate · Build Kit · rev 0.2.0</p>
+  </div>
+
+  <div class="d-steps">
+    <div class="d-axis" aria-hidden="true"></div>
+
+    <div class="d-step">
+      <div class="txt">
+        <h3>Run it by hand first</h3>
+        <p>Concierge the whole workflow yourself before you automate a step of it. You're not testing whether it can be automated — you're finding out which part was actually the work.</p>
+      </div>
+      <span class="d-node">1</span>
+      <div class="art">
+        <svg viewBox="0 0 300 74" role="img" aria-label="Detail: manual pass before automation">
+          <rect x="6" y="14" width="82" height="42" class="s-ink"/>
+          <text x="47" y="40" text-anchor="middle" class="t-mono f-ink">BY HAND</text>
+          <line x1="88" y1="35" x2="124" y2="35" class="s-rule"/>
+          <path d="M130 35 l-8 -4 v8 z" class="f-3"/>
+          <rect x="130" y="14" width="82" height="42" class="s-rule" stroke-dasharray="3 3"/>
+          <text x="171" y="40" text-anchor="middle" class="t-mono f-3">AUTOMATED</text>
+          <text x="222" y="39" class="t-mono f-mark">not yet</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="d-step flip">
+      <div class="txt">
+        <h3>Specify the failure, not the feature</h3>
+        <p>"If this breaks next month, what turns red?" A spec that can't name its own alarm hasn't specified anything — it's described a demo, and demos don't survive contact with next month.</p>
+      </div>
+      <span class="d-node">2</span>
+      <div class="art">
+        <svg viewBox="0 0 300 74" role="img" aria-label="Detail: the alarm a spec must name">
+          <rect x="6" y="14" width="196" height="42" class="s-ink"/>
+          <text x="20" y="40" class="t-sans f-soft">expected shape</text>
+          <line x1="202" y1="35" x2="240" y2="35" class="s-mark"/>
+          <circle cx="254" cy="35" r="11" class="s-mark"/>
+          <circle cx="254" cy="35" r="4" class="f-mark"/>
+          <text x="270" y="39" class="t-mono f-mark">red</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="d-step">
+      <div class="txt">
+        <h3>Let rigor scale to blast radius</h3>
+        <p>Two gates for a copy change, all ten for anything touching billing or customer data. Process weight is a function of what you can't take back, not of how important the work feels.</p>
+      </div>
+      <span class="d-node">3</span>
+      <div class="art">
+        <svg viewBox="0 0 300 74" role="img" aria-label="Detail: gates scaled to reversibility">
+          <line x1="6" y1="52" x2="294" y2="52" class="s-ink"/>
+          <rect x="14" y="42" width="4" height="10" class="f-ink"/>
+          <rect x="34" y="42" width="4" height="10" class="f-ink"/>
+          <text x="14" y="34" class="t-mono f-3">reversible · 2</text>
+          <g class="f-mark">
+            <rect x="196" y="36" width="4" height="16"/><rect x="212" y="36" width="4" height="16"/>
+            <rect x="228" y="36" width="4" height="16"/><rect x="244" y="36" width="4" height="16"/>
+            <rect x="260" y="36" width="4" height="16"/><rect x="276" y="36" width="4" height="16"/>
+          </g>
+          <text x="196" y="28" class="t-mono f-mark">irreversible · 10</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="d-step flip">
+      <div class="txt">
+        <h3>Kill the framing before the tech</h3>
+        <p>The tell is "you can only charge for it once." When a product only works as a one-time discovery, the engine is usually fine — it's pointed at the wrong job.</p>
+      </div>
+      <span class="d-node">4</span>
+      <div class="art">
+        <svg viewBox="0 0 300 74" role="img" aria-label="Detail: same engine, different job">
+          <rect x="6" y="18" width="96" height="36" class="s-ink"/>
+          <text x="54" y="41" text-anchor="middle" class="t-mono f-ink">ENGINE</text>
+          <line x1="102" y1="36" x2="150" y2="36" class="s-rule"/>
+          <rect x="150" y="4" width="122" height="28" class="s-mark" stroke-dasharray="3 3"/>
+          <text x="211" y="22" text-anchor="middle" class="t-mono f-mark">one-time · killed</text>
+          <rect x="150" y="40" width="122" height="28" class="s-ink"/>
+          <text x="211" y="58" text-anchor="middle" class="t-mono f-ink">durable job</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <aside class="author-bio">
+    <div class="shot">headshot<br>72×96</div>
+    <div>
+      <p class="smallcaps">about the author</p>
+      <h3>Shane Logsdon</h3>
+      <p>
+        Shane Logsdon is a technical product leader with 15+ years at the intersection of payments and developer
+        platforms. He writes about developer experience, system architecture, and the realities of working in
+        regulated payments.
+      </p>
+    </div>
+  </aside>
+
+  <section class="cta-invert">
+    <p class="smallcaps">stay in touch</p>
+    <div>
+      <h2>Networking, openly.</h2>
+      <p>
+        I write and connect with operators building developer-first products and payment systems. Follow along on
+        LinkedIn. That's where conversations happen.
+      </p>
+      <div class="row">
+        <a class="btn-arrow" href="#">Follow on LinkedIn</a>
+        <span class="handle">/in/shanelogsdon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div>
+      <p class="smallcaps">the newsletter</p>
+      <h2>New posts by email</h2>
+    </div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">Four of eleven gates</span><span>Build Kit rev 0.2.0</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ PRACTICE · D · ASSEMBLY (reuse proof) ══════════════════════════ -->
+<main class="page" id="p-services">
+  <div class="arch-tag"><b>Architecture D — Assembly Order</b> <span>· reused: build → AEO → management is a sequence too. Same architecture, different content type.</span></div>
+
+  <div class="d-intro-grid">
+    <div class="d-intro">
+      <h1>Web presence for local business owners.</h1>
+      <p>
+        Done in order, one owner at a time. I build developer platforms at enterprise scale during the day; this is
+        the same discipline pointed at a business that needs to be found.
+      </p>
+      <p class="mono">Louisville, Kentucky · currently taking 2 new owners per month</p>
+    </div>
+
+    <div class="summary">
+      <span class="smallcaps">what year one costs</span>
+      <figure>
+        <svg viewBox="0 0 360 150" role="img" aria-label="Year one cost, footed: build plus twelve months of management">
+          <line x1="0" y1="0" x2="360" y2="0" class="s-ink"/>
+          <text x="0" y="26" class="t-sans f-soft">Website build</text>
+          <text x="360" y="26" text-anchor="end" class="t-mono f-ink" font-size="12">2,400</text>
+          <line x1="0" y1="38" x2="360" y2="38" class="s-rule"/>
+          <text x="0" y="62" class="t-sans f-soft">Management — 12 × 450</text>
+          <text x="360" y="62" text-anchor="end" class="t-mono f-ink" font-size="12">5,400</text>
+          <line x1="0" y1="74" x2="360" y2="74" class="s-rule"/>
+          <text x="0" y="98" class="t-sans f-soft">Setup, hosting, revisions</text>
+          <text x="360" y="98" text-anchor="end" class="t-mono f-3" font-size="12">included</text>
+          <line x1="250" y1="110" x2="360" y2="110" class="s-ink"/>
+          <text x="0" y="130" class="t-serif f-ink" font-size="15">Year one, all in</text>
+          <text x="360" y="130" text-anchor="end" class="t-mono f-ink" font-size="13">7,800</text>
+          <line x1="250" y1="138" x2="360" y2="138" class="s-ink"/>
+          <line x1="250" y1="141" x2="360" y2="141" class="s-ink"/>
+        </svg>
+        <figcaption>
+          <b>Fig.</b> — 2,400 + 5,400 = 7,800, footed. Month-to-month after the build, so the second number
+          stops whenever you stop.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="d-steps">
+    <div class="d-axis" aria-hidden="true"></div>
+
+    <div class="d-step">
+      <div class="txt">
+        <h3>Build the site</h3>
+        <p>A real website you own, not a template on a platform that rents it to you. Fast, accessible, and structured so the next two steps have something to work with.</p>
+      </div>
+      <span class="d-node">1</span>
+      <div class="art">
+        <div class="price">
+          <div class="d-price">
+            <div><span>Website build</span><b>$2,400 one-time</b></div>
+            <div><span>Typical delivery</span><b>3 weeks</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-step flip">
+      <div class="txt">
+        <h3>Get found — by people and by answer engines</h3>
+        <p>Google Business Profile, structured data, and the page structure that lets an AI assistant quote you correctly. This is the part most local sites skip, and it's the part that now decides who gets named.</p>
+      </div>
+      <span class="d-node">2</span>
+      <div class="art">
+        <svg viewBox="0 0 300 84" role="img" aria-label="Detail: one page, two readers">
+          <rect x="112" y="10" width="76" height="64" class="s-ink"/>
+          <text x="150" y="30" text-anchor="middle" class="t-mono f-ink">YOUR PAGE</text>
+          <line x1="124" y1="44" x2="176" y2="44" class="s-rule"/>
+          <line x1="124" y1="54" x2="176" y2="54" class="s-rule"/>
+          <line x1="124" y1="64" x2="160" y2="64" class="s-rule"/>
+          <line x1="58" y1="42" x2="106" y2="42" class="s-ink"/>
+          <path d="M112 42 l-8 -4 v8 z" class="f-ink"/>
+          <text x="6" y="46" class="t-mono f-3">a person</text>
+          <line x1="194" y1="42" x2="240" y2="42" class="s-mark"/>
+          <path d="M188 42 l8 -4 v8 z" class="f-mark"/>
+          <text x="246" y="46" class="t-mono f-mark">an engine</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="d-step">
+      <div class="txt">
+        <h3>Keep it working</h3>
+        <p>Monthly management: content, profile updates, and a plain report of what changed and what it moved. Cancel any month — no annual lock-in, because a service that needs a contract to retain you isn't working.</p>
+      </div>
+      <span class="d-node">3</span>
+      <div class="art">
+        <div class="price">
+          <div class="d-price">
+            <div><span>Ongoing management</span><b>$450 / month</b></div>
+            <div><span>Commitment</span><b>month to month</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audit funnel. Lives ONLY on the practice pages — it was deliberately moved
+       off /contact/ so the general contact route stays general. -->
+  <section style="padding: 40px var(--gut) 0; border-top: 1px solid var(--ink); margin-top: 30px;">
+    <div style="display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:start;">
+      <div>
+        <p class="smallcaps" style="color:var(--ink-3);">request the audit</p>
+        <h2 style="font-size:26px;font-weight:500;margin:8px 0 12px;">Find out where you actually stand.</h2>
+        <p style="margin:0;color:var(--ink-soft);font-size:16px;max-width:52ch;">
+          I'll look at your site and your Google Business Profile and send back what's working, what isn't, and
+          what I'd do first. Free, no obligation, about 48 hours.
+        </p>
+        <form class="form-stack" onsubmit="return false;">
+          <div class="f"><label for="a-name">name</label><input id="a-name" type="text"></div>
+          <div class="f"><label for="a-email">email</label><input id="a-email" type="email"></div>
+          <div class="f"><label for="a-url">your website url</label><input id="a-url" type="url" placeholder="https://yourbusiness.com"></div>
+          <div class="f"><label for="a-msg">anything specific you'd like me to look at?</label><textarea id="a-msg" rows="3"></textarea></div>
+          <a class="btn-arrow" href="#">Request the audit</a>
+        </form>
+      </div>
+      <div>
+        <span class="smallcaps" style="display:block;color:var(--ink-3);margin-bottom:14px;">what the audit covers</span>
+        <ol class="c-rows">
+          <li><span class="k">01</span><div><h3>Search visibility</h3><p>Where you rank, where you don't, and which competitors are taking the queries you should own.</p></div></li>
+          <li><span class="k">02</span><div><h3>AEO readiness</h3><p>Whether an AI assistant can find, interpret, and cite you correctly — structured data, page structure, and profile consistency.</p></div></li>
+          <li><span class="k">03</span><div><h3>The first thing I'd fix</h3><p>One prioritized recommendation, not a 40-page report you won't read.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div>
+      <p class="smallcaps">the newsletter</p>
+      <h2>New posts by email</h2>
+    </div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">shane@shanelogsdon.com</span><span>you reach me, not a form</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ ABOUT · C · SHEET ══════════════════════════ -->
+<main class="page" id="p-about">
+  <div class="arch-tag"><b>Architecture C — Sheet</b> <span>· chosen because a page that changes should say when it last did</span></div>
+
+  <div class="c-wrap"><div class="c-sheet">
+
+    <div class="c-field">
+      <h1>Fifteen years at the seam between payments and developer tools.</h1>
+      <p class="stand">
+        I lead developer advocacy at Global Payments — the payment APIs, SDKs, and reference documentation
+        engineers actually reach for. Before that, fifteen years of shipping payment platforms. The through-line
+        is the same either way: the interface someone else has to build against is the product
+        <span class="callout">1</span>.
+      </p>
+
+      <div class="c-grid">
+        <div>
+          <ol class="c-rows">
+            <li><span class="k">01</span><div>
+              <h3>Payment systems</h3>
+              <p>Scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns rather than a later hardening pass.</p>
+            </div></li>
+            <li><span class="k">02</span><div>
+              <h3>Developer experience</h3>
+              <p>APIs, SDKs, and documentation treated as one product. A deliverable, not config.</p>
+            </div></li>
+            <li><span class="k">03</span><div>
+              <h3>AI-assisted engineering</h3>
+              <p>Where specifications stop and agents start guessing — and what has to be written down for the guess to be right.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <figure>
+            <svg viewBox="0 0 420 200" role="img" aria-label="Where the writing concentrates, by category">
+              <text x="0" y="12" class="t-mono f-3">WHERE THE WRITING CONCENTRATES</text>
+              <line x1="0" y1="26" x2="420" y2="26" class="s-ink"/>
+              <text x="0" y="52" class="t-sans f-soft">technical deep-dives</text>
+              <rect x="0" y="60" width="276" height="12" class="f-ink"/>
+              <text x="284" y="70" class="t-mono f-3">21</text>
+              <text x="0" y="100" class="t-sans f-soft">strategic insights</text>
+              <rect x="0" y="108" width="92" height="12" class="f-ink" opacity="0.55"/>
+              <text x="100" y="118" class="t-mono f-3">7</text>
+              <text x="0" y="148" class="t-sans f-soft">industry analysis</text>
+              <rect x="0" y="156" width="53" height="12" class="f-ink" opacity="0.35"/>
+              <text x="61" y="166" class="t-mono f-3">4</text>
+              <line x1="0" y1="184" x2="420" y2="184" class="s-rule"/>
+              <text x="0" y="197" class="t-mono f-mark">32 total on file</text>
+            </svg>
+            <figcaption><b>Fig.</b> — Category share. Source: <code>articles-list.json</code>, read 2026.07.28.</figcaption>
+          </figure>
+          <p style="margin-top:22px;font-size:14.5px;color:var(--ink-soft);">
+            I also run a small <a class="lnk" data-go="services">web-presence practice</a> for local business
+            owners, which is where most of what I know about being found gets tested against someone else's revenue.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-tb">
+      <div class="c-tb-l">
+        <span class="smallcaps">shane logsdon · payments &amp; developer platforms</span>
+        <p style="margin:8px 0 0;font-size:14px;color:var(--ink-soft);">
+          Louisville, Kentucky · shane@shanelogsdon.com · <a class="lnk" data-go="articles">sheet index (32)</a>
+        </p>
+      </div>
+      <dl class="c-tb-cells">
+        <div><dt>Sheet</dt><dd>A-01</dd></div>
+        <div><dt>Rev</dt><dd>C</dd></div>
+        <div><dt>Date</dt><dd>2026.07.28</dd></div>
+        <div><dt>Drawn</dt><dd>SL</dd></div>
+      </dl>
+    </div>
+  </div></div>
+
+  <section class="newsletter">
+    <div><p class="smallcaps">the newsletter</p><h2>New posts by email</h2></div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ WORK · C · SHEET (reuse proof) ══════════════════════════ -->
+<main class="page" id="p-work">
+  <div class="arch-tag"><b>Architecture C — Sheet</b> <span>· reused: each project is a sheet with its own revision and date</span></div>
+
+  <div class="c-wrap"><div class="c-sheet">
+
+    <div class="c-field">
+      <h1>Work</h1>
+      <p class="stand">
+        Selected projects. Each one is a sheet in its own right — open it for the drawing, the decisions, and what
+        turned red along the way <span class="callout">1</span>.
+      </p>
+
+      <div class="c-grid">
+        <div>
+          <ol class="c-rows">
+            <li><span class="k">W-01</span><div>
+              <h3>LeadSurface</h3>
+              <p>Finds live buying signals for a product a team already sells. Started as a discovery tool; the framing was killed, the engine kept.</p>
+            </div></li>
+            <li><span class="k">W-02</span><div>
+              <h3>Loop &amp; Gate</h3>
+              <p>A Foundation layer plus three kits for building, marketing, and following through with an AI agent. Open source.</p>
+            </div></li>
+            <li><span class="k">W-03</span><div>
+              <h3>Developer platforms — Global Payments</h3>
+              <p>Payment APIs, SDKs, and documentation at enterprise scale.</p>
+            </div></li>
+            <li><span class="k">W-04</span><div>
+              <h3>Payments patent</h3>
+              <p>Granted. Payment processing infrastructure.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <figure>
+            <svg viewBox="0 0 420 176" role="img" aria-label="LeadSurface: the framing that was killed and the one that replaced it">
+              <text x="0" y="12" class="t-mono f-3">W-01 · WHAT THE KILL GATE CHANGED</text>
+              <line x1="0" y1="26" x2="420" y2="26" class="s-ink"/>
+              <rect x="0" y="48" width="120" height="44" class="s-ink"/>
+              <text x="60" y="75" text-anchor="middle" class="t-mono f-ink">ENGINE</text>
+              <line x1="120" y1="70" x2="168" y2="70" class="s-rule"/>
+              <rect x="168" y="38" width="182" height="30" class="s-mark" stroke-dasharray="3 3"/>
+              <text x="259" y="57" text-anchor="middle" class="t-mono f-mark">discovery · charge once</text>
+              <rect x="168" y="80" width="182" height="30" class="s-ink"/>
+              <text x="259" y="99" text-anchor="middle" class="t-mono f-ink">live leads · durable</text>
+              <text x="0" y="140" class="t-sans f-soft">Same engine. The tell was that you could</text>
+              <text x="0" y="158" class="t-sans f-soft">only charge for it once.</text>
+            </svg>
+            <figcaption><b>Fig.</b> — Sheet W-01, the framing change. From the build field guide, gate 4.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-tb">
+      <div class="c-tb-l">
+        <span class="smallcaps">shane logsdon · selected work</span>
+        <p style="margin:8px 0 0;font-size:14px;color:var(--ink-soft);">
+          4 sheets · <a class="lnk" data-go="guide">the gates behind them</a>
+        </p>
+      </div>
+      <dl class="c-tb-cells">
+        <div><dt>Sheet</dt><dd>W-00</dd></div>
+        <div><dt>Rev</dt><dd>A</dd></div>
+        <div><dt>Date</dt><dd>2026.07.28</dd></div>
+        <div><dt>Drawn</dt><dd>SL</dd></div>
+      </dl>
+    </div>
+  </div></div>
+
+  <section class="newsletter">
+    <div><p class="smallcaps">the newsletter</p><h2>New posts by email</h2></div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ SPEAKING · E · SET (reuse proof) ══════════════════════════ -->
+<main class="page" id="p-speaking">
+  <div class="arch-tag"><b>Architecture E — Set</b> <span>· reused: a catalog of talks browses the same way a catalog of writing does</span></div>
+
+  <div class="e-wrap">
+    <div>
+      <!-- Date desc, no year groupings. Speaking gets an "archive" label instead of
+           filter tabs, matching the live post-list layout. -->
+      <div class="e-list-head"><span class="smallcaps">talks</span><span class="folio"><span class="pos">006</span><span>talks</span></span></div>
+      <div style="padding: 10px 22px 11px; border-bottom: 1px solid var(--rule);">
+        <span class="smallcaps" style="color:var(--ink-3);">archive</span>
+      </div>
+      <ul class="e-sheets">
+        <li><a class="cur"><span class="no">001</span><span class="ti">Shipping developer-facing products<span class="meta">2026.06.04 · conference</span></span></a></li>
+        <li><a><span class="no">002</span><span class="ti">Partnerships without a platform team<span class="meta">2026.02.19 · podcast</span></span></a></li>
+        <li><a><span class="no">003</span><span class="ti">What payments teams get wrong about docs<span class="meta">2025.10.08 · conference</span></span></a></li>
+        <li><a><span class="no">004</span><span class="ti">The API is the product<span class="meta">2025.05.21 · panel</span></span></a></li>
+        <li><a><span class="no">005</span><span class="ti">Integrations at enterprise scale<span class="meta">2024.11.13 · conference</span></span></a></li>
+        <li><a><span class="no">006</span><span class="ti">Payments 101 for product teams<span class="meta">2024.03.27 · internal</span></span></a></li>
+      </ul>
+    </div>
+
+    <div class="e-div"></div>
+
+    <div>
+      <div class="e-open-head">
+        <span class="mono">talk 001 · 2026.06.04 · conference</span>
+        <span class="mono">38 min + q&amp;a</span>
+      </div>
+      <div class="e-open-body">
+        <h1>Shipping developer-facing products</h1>
+        <p class="stand">
+          What changes when the person integrating your product is an engineer under deadline — and, increasingly,
+          an agent reading your docs before that engineer ever does.
+        </p>
+        <div class="e-open-grid">
+          <figure>
+            <svg viewBox="0 0 600 120" role="img" aria-label="Talk structure in three movements">
+              <line x1="8" y1="70" x2="592" y2="70" class="s-ink"/>
+              <g class="f-mark">
+                <circle cx="120" cy="70" r="5"/><circle cx="330" cy="70" r="5"/><circle cx="520" cy="70" r="5"/>
+              </g>
+              <text x="120" y="52" text-anchor="middle" class="t-sans f-soft">the integrator</text>
+              <text x="330" y="52" text-anchor="middle" class="t-sans f-soft">the docs</text>
+              <text x="520" y="52" text-anchor="middle" class="t-sans f-soft">the agent</text>
+              <text x="120" y="92" text-anchor="middle" class="t-mono f-3">0:00</text>
+              <text x="330" y="92" text-anchor="middle" class="t-mono f-3">14:00</text>
+              <text x="520" y="92" text-anchor="middle" class="t-mono f-3">27:00</text>
+            </svg>
+            <figcaption><b>Fig.</b> — Talk structure, three movements. Recording and slides on request.</figcaption>
+          </figure>
+          <div class="e-notes">
+            <p style="color:var(--ink-soft);">Available for conferences, podcasts, and internal sessions on payments, developer platforms, and AI-assisted engineering.</p>
+            <p><a class="lnk" href="#">shane@shanelogsdon.com →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="newsletter">
+    <div><p class="smallcaps">the newsletter</p><h2>New posts by email</h2></div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ RESUME · C · SHEET ══════════════════════════ -->
+<main class="page" id="p-resume">
+  <div class="arch-tag"><b>Architecture C — Sheet</b> <span>· the title block is literally a resume's metadata: revision, date, drawn by</span></div>
+
+  <div class="c-wrap"><div class="c-sheet">
+
+    <div class="c-field">
+      <h1>Shane Logsdon</h1>
+      <p class="stand">
+        Senior Director, Product Management — Developer Advocacy at Global Payments. 15+ years shipping payment
+        platforms and developer experiences, since 2008 <span class="callout">1</span>.
+      </p>
+
+      <div class="c-grid">
+        <div>
+          <ol class="c-rows">
+            <li><span class="k">now</span><div>
+              <h3>Senior Director, Product Management — Developer Advocacy</h3>
+              <p>Global Payments. Payment APIs, SDKs, and the documentation engineers actually reach for, at enterprise scale.</p>
+            </div></li>
+            <li><span class="k">prior</span><div>
+              <h3>Product &amp; platform leadership</h3>
+              <p>Payment processing infrastructure with reliability, security, and compliance as first-class concerns.</p>
+            </div></li>
+            <li><span class="k">also</span><div>
+              <h3>Granted patent — payment processing</h3>
+              <p>See <a class="lnk" data-go="work">work</a>, sheet W-04.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <figure>
+            <svg viewBox="0 0 420 130" role="img" aria-label="Career timeline from 2008 to 2026">
+              <text x="0" y="12" class="t-mono f-3">TENURE · SINCE 2008</text>
+              <line x1="0" y1="60" x2="420" y2="60" class="s-ink"/>
+              <g class="f-mark"><circle cx="0" cy="60" r="4"/><circle cx="420" cy="60" r="4"/></g>
+              <line x1="0" y1="52" x2="0" y2="68" class="s-mark"/>
+              <line x1="420" y1="52" x2="420" y2="68" class="s-mark"/>
+              <text x="0" y="44" class="t-mono f-3">2008</text>
+              <text x="420" y="44" text-anchor="end" class="t-mono f-3">2026</text>
+              <rect x="286" y="54" width="134" height="12" class="f-ink"/>
+              <text x="286" y="88" class="t-sans f-soft">Global Payments</text>
+              <text x="0" y="112" class="t-mono f-mark">since 2008</text>
+            </svg>
+            <figcaption><b>Fig.</b> — Tenure. Reconciled to "15+ years, since 2008."</figcaption>
+          </figure>
+          <p style="margin-top:22px;font-size:14.5px;color:var(--ink-soft);">
+            Full history and references on request — <a class="lnk" href="#">shane@shanelogsdon.com</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-tb">
+      <div class="c-tb-l">
+        <span class="smallcaps">shane logsdon · resume</span>
+        <p style="margin:8px 0 0;font-size:14px;color:var(--ink-soft);">
+          Louisville, Kentucky · <a class="lnk" href="#">LinkedIn</a>
+        </p>
+      </div>
+      <dl class="c-tb-cells">
+        <div><dt>Sheet</dt><dd>R-01</dd></div>
+        <div><dt>Rev</dt><dd>D</dd></div>
+        <div><dt>Date</dt><dd>2026.07.28</dd></div>
+        <div><dt>Drawn</dt><dd>SL</dd></div>
+      </dl>
+    </div>
+  </div></div>
+
+  <section class="newsletter">
+    <div><p class="smallcaps">the newsletter</p><h2>New posts by email</h2></div>
+    <div>
+      <p>Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+      <div class="field-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email address">
+        <a class="btn-arrow" href="#">Subscribe</a>
+      </div>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+    <ul class="foot-links">
+      <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+      <li><a data-go="work">work</a></li><li><a data-go="services">services</a></li>
+      <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ══════════════════════════ THE SYSTEM ══════════════════════════ -->
+<main class="page" id="p-system">
+  <div class="arch-tag"><b>The governing rule</b> <span>· this page is the spec, not a site page</span></div>
+
+  <div class="sys">
+    <h1>Architecture is a function of content type.</h1>
+    <p class="stand">
+      One visual system — Drafting palette, dimensioned figures, 45° hatch, numbered callouts. Five architectures,
+      each earned by a kind of content. The point isn't variety; it's that a reader who lands on a sequence gets a
+      sequence, and a reader who lands on a reference page gets a title block telling them when it was last true.
+    </p>
+
+    <h2>The mapping</h2>
+    <p>Every page on the site, and which architecture it gets. Nine are mocked in this file; the rest are assigned.</p>
+    <table>
+      <thead>
+        <tr><th>Page / content type</th><th>Architecture</th><th>Why this one</th><th>Figure it carries</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Home <span class="mocked">· mocked</span></td><td><span class="tag">B · Facing Spread</span></td><td>A set of claims that each need evidence beside them</td><td>Boundary drawing + record chart</td></tr>
+        <tr><td>Articles index <span class="mocked">· mocked</span></td><td><span class="tag">E · Set</span></td><td>Its only job is browsing a body of work</td><td>None — the list is the object</td></tr>
+        <tr><td>Article — one central idea <span class="mocked">· mocked</span></td><td><span class="tag">A · Drawing First</span></td><td>The piece reduces to a single drawing; prose is its key</td><td>Dimensioned diagram, required</td></tr>
+        <tr><td>Article — multi-claim argument</td><td><span class="tag">B · Facing Spread</span></td><td>Each claim faces its evidence, band by band</td><td>One figure per band</td></tr>
+        <tr><td>Field guide / process <span class="mocked">· mocked</span></td><td><span class="tag">D · Assembly Order</span></td><td>Eleven gates is a sequence, not a narrative</td><td>One detail per step</td></tr>
+        <tr><td>Practice / services <span class="mocked">· mocked</span></td><td><span class="tag">D · Assembly Order</span></td><td>Build → AEO → management is an assembly</td><td>Price blocks that foot</td></tr>
+        <tr><td>About <span class="mocked">· mocked</span></td><td><span class="tag">C · Sheet</span></td><td>A page that changes should say when it last did</td><td>Category share chart</td></tr>
+        <tr><td>Work <span class="mocked">· mocked</span></td><td><span class="tag">C · Sheet</span></td><td>Each project is a sheet with its own revision</td><td>Project schematic</td></tr>
+        <tr><td>Speaking <span class="mocked">· mocked</span></td><td><span class="tag">E · Set</span></td><td>A catalog of talks browses like a catalog of writing</td><td>Talk structure timeline</td></tr>
+        <tr><td>Resume <span class="mocked">· mocked</span></td><td><span class="tag">C · Sheet</span></td><td>Rev / date / drawn-by is exactly a resume's metadata</td><td>Career timeline</td></tr>
+        <tr><td>Loop &amp; Gate (product)</td><td><span class="tag">D · Assembly Order</span></td><td>Foundation then three kits is an install order</td><td>Detail per kit</td></tr>
+        <tr><td>Local businesses (landing)</td><td><span class="tag">A · Drawing First</span></td><td>One claim — invisible for 60 days — that reduces to one chart</td><td>Timeline drawing, required</td></tr>
+        <tr><td>Contact</td><td><span class="tag">C · Sheet</span></td><td>Short field, metadata-led; the title block is most of the page</td><td>None</td></tr>
+        <tr><td>Archive</td><td><span class="tag">E · Set</span></td><td>Same browsing job, different subset</td><td>None</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Figure taxonomy</h2>
+    <p>Five figure types. A figure is additive or it doesn't ship — these are the only shapes, and each states what it requires before it may be used.</p>
+    <table>
+      <thead><tr><th>Figure</th><th>Use it for</th><th>Requires</th></tr></thead>
+      <tbody>
+        <tr><td>Dimensioned diagram</td><td>A claim about proportion or where a line sits</td><td>Two regions and a measured split you can defend</td></tr>
+        <tr><td>Cycle</td><td>A process with a genuine return edge</td><td>Three or more stages and a real loop back</td></tr>
+        <tr><td>Record chart</td><td>A claim about your own history or data</td><td>A file it reconciles to, named in the caption</td></tr>
+        <tr><td>Detail</td><td>Clarifying one step of an assembly</td><td>A step that's actually unclear without it</td></tr>
+        <tr><td>Footed table</td><td>Anything with numbers, including pricing</td><td>Figures that add up, shown adding up</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Component inventory — captured from the live site</h2>
+    <p>
+      These already exist in <code>resources/partials/components/</code> and are load-bearing. They're site-wide
+      chrome, which means they have to survive under all five architectures — so they're specified here rather
+      than left to whichever page happens to use them.
+    </p>
+    <table>
+      <thead><tr><th>Component</th><th>Where it appears</th><th>Shape in this system</th></tr></thead>
+      <tbody>
+        <tr><td>Newsletter</td><td>Site-wide, above the footer, every page</td><td>4/8 split, underline input + arrow link. Renders nothing until <code>KIT_FORM_ID</code> is set, so no broken form ever ships</td></tr>
+        <tr><td>Contact CTA</td><td>Home, About, articles, archive, guides — parameterized eyebrow/title/body</td><td>The v2 inversion block, kept. 3/9 split, one action, no second button</td></tr>
+        <tr><td>Author bio</td><td>Article and field-guide layouts</td><td>72×96 headshot + bio, after the body, before the CTA</td></tr>
+        <tr><td>Post-list row</td><td>Articles, Speaking, Archive</td><td>Folio (number + date) · title + description · category + read time. Date desc, always</td></tr>
+        <tr><td>Index strip</td><td>Above every list</td><td>Count folio (<code>009 entries</code>) + category filter tabs, or "archive" on Speaking</td></tr>
+        <tr><td>Audit form</td><td>Practice pages only — deliberately moved off <code>/contact/</code></td><td>Underline fields, smallcaps labels, one arrow submit</td></tr>
+        <tr><td>Footer</td><td>Site-wide</td><td>Folio date + smallcaps link row. This is where services lives</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Two corrections this pass</h2>
+    <ol class="rules">
+      <li><span class="n">01</span><div><b>Lists are ordered by date descending, never grouped by category.</b> Category is metadata on the row and a <em>filter</em> above the list — grouping breaks reverse chronology, which is the only ordering a reader can predict. Numbering runs <code>001</code> = newest, matching the live folio.</div></li>
+      <li><span class="n">02</span><div><b>The practice is demoted, on purpose.</b> It's not in the primary nav — footer only — and on the home page it's one muted line with no heading and no figure. An earlier draft of this mockup gave it a nav slot and a featured band, which contradicts how the live site actually weights it.</div></li>
+    </ol>
+
+    <h2>The rules that keep it honest</h2>
+    <ol class="rules">
+      <li><span class="n">01</span><div><b>No figure without a caption naming its source.</b> A drawing that can't say where its numbers came from is decoration wearing a lab coat.</div></li>
+      <li><span class="n">02</span><div><b>If the page is no worse without the figure, cut the figure.</b> Additive means additive. This is the rule that stops the system becoming a house style you decorate with.</div></li>
+      <li><span class="n">03</span><div><b>Architecture follows content, never mood.</b> If a page doesn't match a row in the mapping table, the answer is a new row with a stated reason — not an improvised layout.</div></li>
+      <li><span class="n">04</span><div><b>Annotation red marks only what the drawing calls out.</b> Dimensions, callouts, corrections, the one thing that turned red. It never styles a heading.</div></li>
+      <li><span class="n">05</span><div><b>Every rule is 1px.</b> Bigger divisions are whitespace, not heavier lines. Inherited from v2 and unchanged.</div></li>
+      <li><span class="n">06</span><div><b>Revision and date are content.</b> Any page carrying a title block states when it was last true. A stale sheet that admits it beats a fresh-looking one that doesn't.</div></li>
+    </ol>
+
+    <h2>What changes from v2</h2>
+    <ol class="rules">
+      <li><span class="n">+</span><div><b>Annotation red <code>#c0392b</code></b> joins the palette with one strict role. Cream, ink, and olive are unchanged — olive keeps links and states.</div></li>
+      <li><span class="n">+</span><div><b>Five named architectures</b> and the mapping table above. v2 had one page shape and a component list; this has five shapes and a rule for choosing.</div></li>
+      <li><span class="n">+</span><div><b>A figure taxonomy</b> with entry requirements, plus the title block as a real primitive.</div></li>
+      <li><span class="n">−</span><div><b>The generic footer row</b> is gone from any page carrying a title block — the block is the footer.</div></li>
+    </ol>
+
+    <div class="site-foot" style="margin-top:48px;">
+      <span class="mono">v3 · Drafting · mockup 2026.07.28</span>
+      <span class="mono">Data: articles-list.json, 32 entries</span>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var pages = document.querySelectorAll('.page');
+  var links = document.querySelectorAll('.site-nav a');
+  function go(id) {
+    pages.forEach(function (p) { p.classList.toggle('on', p.id === 'p-' + id); });
+    links.forEach(function (l) { l.classList.toggle('on', l.dataset.go === id); });
+    window.scrollTo(0, 0);
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-go]');
+    if (!t) return;
+    e.preventDefault();
+    go(t.dataset.go);
+  });
+})();
+</script>
+
+</body>
+</html>
