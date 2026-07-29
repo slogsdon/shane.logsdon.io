@@ -76,6 +76,12 @@
     letter-spacing: -0.015em;
   }
 
+  /* ── Figures. A drawing scales to its column; without this an SVG carrying
+     only a viewBox renders at its intrinsic size and pushes the page sideways
+     on a phone. */
+  figure { margin: 0; }
+  figure svg { display: block; width: 100%; height: auto; }
+
   /* ── Article prose — restrained editorial register ── */
   .prose p {
     @apply mb-6;

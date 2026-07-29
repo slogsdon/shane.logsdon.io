@@ -8,116 +8,147 @@ $settings = require('resources/settings.php');
 // Honest freshness: last real content change from git, not build time.
 $aboutModified = @trim((string) shell_exec('git log -1 --format=%cI -- pages/about.php 2>/dev/null')) ?: '2026-07-18T00:00:00-04:00';
 
+// C · Sheet, by Q3: this page has a current state that can go stale, so it has
+// to say when it last changed. The title block at the foot of the sheet does
+// that, and every value in it is read from git rather than typed.
+
 $expertise = [
     ['num' => '01', 'title' => 'Payment systems',     'body' => 'Designing scalable payment processing infrastructure with reliability, security, and compliance as first-class concerns.'],
     ['num' => '02', 'title' => 'Developer platforms', 'body' => 'Building APIs and SDKs that prioritize developer experience: clear contracts, honest errors, and short paths to first success.'],
     ['num' => '03', 'title' => 'Product leadership',  'body' => 'Translating complex financial capabilities into developer platforms that drive adoption and durable revenue.'],
     ['num' => '04', 'title' => 'Technical leadership','body' => 'Leading engineering teams, setting architecture direction, and bridging business strategy with implementation.'],
 ];
+
+// Figure data. Record chart, so it reconciles to a file: counted live from
+// articles-list.json at build time rather than transcribed, which means the
+// drawing cannot drift away from the list it describes.
+$allPosts = (array) json_decode(file_get_contents('resources/data/articles-list.json'));
+$categoryLabels = json_decode(file_get_contents('resources/data/categories.json'), true);
+$categoryCounts = [];
+foreach ($allPosts as $post) {
+    $key = $post->category ?? 'uncategorized';
+    $categoryCounts[$key] = ($categoryCounts[$key] ?? 0) + 1;
+}
+arsort($categoryCounts);
+$postTotal = array_sum($categoryCounts);
+$countMax  = max($categoryCounts);
+$barMax    = 276; // px at the chart's own scale
 ?>
 
-<!-- Page header -->
-<section class="mx-auto max-w-editorial px-6 pt-20 pb-16">
-    <div class="running-head" aria-hidden="true">
-        <span>shane logsdon &middot; about</span>
-        <span><?= date('Y.m.d') ?></span>
-    </div>
-    <h1 class="mt-12 max-w-[20ch] font-display font-normal text-foreground"
-        style="font-size: clamp(2.75rem, 7vw, 6rem); line-height: 1.0; letter-spacing: -0.02em;">
+<div class="mx-auto max-w-editorial px-6 pt-10 pb-16">
+<div class="sheet">
+  <div class="sheet__field">
+
+    <h1 class="max-w-[22ch] font-display font-normal text-foreground"
+        style="font-size: clamp(2rem, 4.4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.018em;">
         A technical product leader writing <span class="t-accent">developer-first</span> software for the payments stack.
     </h1>
-</section>
 
-<!-- Background -->
-<section class="mx-auto max-w-editorial px-6 pt-12">
-    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
-        <div class="col-span-12 sm:col-span-3">
-            <p class="smallcaps-lg">background</p>
-        </div>
-        <div class="col-span-12 space-y-6 sm:col-span-9">
-            <p class="max-w-prose text-[1.1875rem] leading-[1.6] text-foreground">
-                For more than a decade I&rsquo;ve worked at the intersection of financial technology and
-                developer tooling, helping companies build and scale the payment infrastructure and
-                platforms that quietly move billions of dollars.
-            </p>
-            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                My focus is on systems that have to be both correct and humane: payment APIs that
-                behave under load, developer experiences that respect the engineer&rsquo;s time, and
-                product strategy that holds up to scrutiny from finance, security, and the people
-                actually integrating the thing.
-            </p>
-            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                I combine deep technical context with product judgment. Whether the work is shaping
-                an API surface, untangling a payment flow, or aligning a roadmap with regulatory
-                reality, I optimize for clarity, reliability, and adoption, in that order.
-            </p>
-        </div>
-    </div>
-</section>
+    <p class="mt-6 max-w-prose text-[1.0625rem] leading-[1.6] text-ink-soft">
+        For more than a decade I&rsquo;ve worked at the intersection of financial technology and
+        developer tooling, helping companies build and scale the payment infrastructure that quietly
+        moves billions of dollars. The through-line is the same everywhere: the interface someone
+        else has to build against is the product.
+    </p>
 
-<!-- Areas of expertise -->
-<section class="mx-auto max-w-editorial px-6 pt-24">
-    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
-        <div class="col-span-12 sm:col-span-3">
-            <p class="smallcaps-lg">areas of expertise</p>
-        </div>
-        <div class="col-span-12 sm:col-span-9">
-            <ul class="grid grid-cols-1 sm:grid-cols-2">
-                <?php foreach ($expertise as $i => $item):
-                    $border = '';
-                    if ($i >= 2) { $border .= ' sm:border-t sm:border-rule sm:pt-8'; }
-                    if ($i === 1 || $i === 3) { $border .= ' sm:border-l sm:border-rule sm:pl-8'; }
-                ?>
-                <li class="py-6 sm:py-8<?= $border ?>">
-                    <p class="folio"><span class="pos"><?= $item['num'] ?></span></p>
-                    <h3 class="mt-3 font-display text-xl font-medium text-foreground"><?= htmlspecialchars($item['title']) ?></h3>
-                    <p class="mt-2 max-w-prose text-[0.95rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($item['body']) ?></p>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
-</section>
+    <!-- Field, two columns. The expertise rows carry the argument; the chart is
+         the sheet's one figure. C · Sheet allows at most one. -->
+    <div class="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 border-t border-rule pt-10 lg:grid-cols-[7fr_5fr]">
 
-<!-- Currently -->
-<section class="mx-auto max-w-editorial px-6 pt-24 pb-12">
-    <div class="grid grid-cols-12 gap-6 border-t border-rule pt-12">
-        <div class="col-span-12 sm:col-span-3">
-            <p class="smallcaps-lg">currently</p>
-        </div>
-        <div class="col-span-12 space-y-4 sm:col-span-9">
-            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                Building, advising, and writing about developer-first payment products. Most days
-                that means thinking about API ergonomics, integration journeys, and what it takes to
-                make complex financial primitives feel inevitable to the engineers using them.
-            </p>
-            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                On the side I build tools in the open. Two recent ones are
-                <a class="link-quiet" href="/loop-and-gate/">Loop &amp; Gate</a>,
-                an agentic build system, and
-                <a class="link-quiet" href="/hermes-dispatch/">Hermes Dispatch</a>,
-                a local-first agent dispatcher. I'm using that same Loop &amp; Gate workflow to build
-                <a class="link-quiet" href="/articles/strategic-insights/building-on-the-margins/">LeadSurface</a>,
-                with a few older projects collected in
-                <a class="link-quiet" href="/work/">Work</a>.
-            </p>
-            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                I also run a small
-                <a class="link-quiet" href="/services/">web presence practice</a>
-                for
-                <a class="link-quiet" href="/local-businesses/">local business owners</a>:
-                website build, AEO/SEO, and ongoing management. The technical
-                foundation is the same as enterprise work. The audience is different.
-            </p>
-            <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                I keep a small but steady stream of writing in
-                <a class="link-quiet" href="/articles/">Articles</a>
-                and notes from talks in
-                <a class="link-quiet" href="/speaking/">Speaking</a>.
-            </p>
-        </div>
+      <div>
+        <p class="smallcaps-lg">areas of expertise</p>
+        <ul class="mt-6">
+          <?php foreach ($expertise as $item): ?>
+          <li class="grid grid-cols-[3.5rem_1fr] gap-4 border-b border-rule py-5">
+            <span class="folio"><span class="pos"><?= $item['num'] ?></span></span>
+            <div>
+              <h2 class="font-display text-lg font-medium leading-snug text-foreground"><?= htmlspecialchars($item['title']) ?></h2>
+              <p class="mt-1 max-w-prose text-[0.9375rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($item['body']) ?></p>
+            </div>
+          </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+
+      <div>
+        <figure>
+          <svg viewBox="0 0 420 200" role="img"
+               aria-label="Published articles by category. <?= implode(', ', array_map(function ($k, $v) use ($categoryLabels) {
+                   return ($categoryLabels[$k] ?? $k) . ': ' . $v;
+               }, array_keys($categoryCounts), $categoryCounts)) ?>. <?= $postTotal ?> total.">
+            <text x="0" y="12" class="t-mono f-3">WHERE THE WRITING CONCENTRATES</text>
+            <line x1="0" y1="26" x2="420" y2="26" class="s-ink"/>
+            <?php
+            $rowY = 52;
+            $fade = [1, 0.55, 0.35, 0.2];
+            foreach (array_keys($categoryCounts) as $i => $key):
+                $count = $categoryCounts[$key];
+                $barW  = (int) round($count / $countMax * $barMax);
+                $label = $categoryLabels[$key] ?? $key;
+            ?>
+            <text x="0" y="<?= $rowY ?>" class="t-sans f-soft"><?= htmlspecialchars(strtolower($label)) ?></text>
+            <rect x="0" y="<?= $rowY + 8 ?>" width="<?= $barW ?>" height="12" class="f-ink" opacity="<?= $fade[$i] ?? 0.2 ?>"/>
+            <text x="<?= $barW + 8 ?>" y="<?= $rowY + 18 ?>" class="t-mono f-3"><?= $count ?></text>
+            <?php $rowY += 48; endforeach; ?>
+            <line x1="0" y1="184" x2="420" y2="184" class="s-rule"/>
+            <text x="0" y="197" class="t-mono f-mark"><?= $postTotal ?> total on file</text>
+          </svg>
+          <figcaption class="figcaption">
+            <b>Fig. 01</b> Category share. Source <b>resources/data/articles-list.json</b>,
+            counted at build time, <?= date('Y.m.d') ?>. Bar length is share of the largest category.
+          </figcaption>
+        </figure>
+
+        <p class="mt-8 max-w-prose text-[0.9375rem] leading-relaxed text-muted-foreground">
+            I also run a small <a class="link-quiet" href="/services/">web presence practice</a> for
+            <a class="link-quiet" href="/local-businesses/">local business owners</a>, which is where
+            most of what I know about being found gets tested against someone else&rsquo;s revenue.
+        </p>
+      </div>
     </div>
-</section>
+
+    <!-- Currently -->
+    <div class="mt-16 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-rule pt-10 pb-12 sm:grid-cols-[3fr_9fr]">
+      <div>
+        <p class="smallcaps-lg">currently</p>
+      </div>
+      <div class="space-y-4">
+        <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+            Building, advising, and writing about developer-first payment products. Most days
+            that means thinking about API ergonomics, integration journeys, and what it takes to
+            make complex financial primitives feel inevitable to the engineers using them.
+        </p>
+        <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+            On the side I build tools in the open. Two recent ones are
+            <a class="link-quiet" href="/loop-and-gate/">Loop &amp; Gate</a>,
+            an agentic build system, and
+            <a class="link-quiet" href="/hermes-dispatch/">Hermes Dispatch</a>,
+            a local-first agent dispatcher. I&rsquo;m using that same Loop &amp; Gate workflow to build
+            <a class="link-quiet" href="/articles/strategic-insights/building-on-the-margins/">LeadSurface</a>,
+            with a few older projects collected in
+            <a class="link-quiet" href="/work/">Work</a>.
+        </p>
+        <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+            I keep a small but steady stream of writing in
+            <a class="link-quiet" href="/articles/">Articles</a>
+            and notes from talks in
+            <a class="link-quiet" href="/speaking/">Speaking</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <?php $this->insert('partials::components/title-block', [
+      'sheetNo'    => 'A-01',
+      'sheetFile'  => 'pages/about.php',
+      'sheetTitle' => 'shane logsdon &middot; payments and developer platforms',
+      'sheetMeta'  => 'Louisville, Kentucky &middot; <a class="link-quiet" href="/contact/">get in touch</a> &middot; <a class="link-quiet" href="/articles/">' . $postTotal . ' pieces on file</a>',
+      'sheetRevFallback'  => '19',
+      'sheetDateFallback' => '2026-07-19',
+  ]); ?>
+</div>
+</div>
 
 <?php $this->insert('partials::components/contact-cta', [
     'ctaEyebrow' => 'Let\'s talk',
