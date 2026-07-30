@@ -5,7 +5,11 @@
     "date": "2026-07-29",
     "category": "technical-deep-dives",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
   },
   "the-split-audience": {
     "title": "The Split Audience: The First Reader of Your Docs Isn't a Developer",
@@ -13,7 +17,11 @@
     "date": "2026-07-22",
     "category": "strategic-insights",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
   },
   "building-on-the-margins": {
     "title": "Building on the Margins",
@@ -355,7 +363,7 @@
     ]
   },
   "im-already-tired-of-rails-already": {
-    "title": "I'm already tired of Rails…already",
+    "title": "I'm already tired of Railsâ¦already",
     "description": "Neckbeards of the Internet. Prepare yourselves for the following comment: I don't think Rails is for me.",
     "date": "2013-08-15",
     "category": "industry-analysis",
