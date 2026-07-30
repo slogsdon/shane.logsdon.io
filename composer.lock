@@ -679,12 +679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/slogsdon/php-flat-file.git",
-                "reference": "ca6f0249c32a0e2ee68233b89e0f0d59b100845a"
+                "reference": "3ba5285e424aa376af324db0424f53c33a2c07a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slogsdon/php-flat-file/zipball/ca6f0249c32a0e2ee68233b89e0f0d59b100845a",
-                "reference": "ca6f0249c32a0e2ee68233b89e0f0d59b100845a",
+                "url": "https://api.github.com/repos/slogsdon/php-flat-file/zipball/3ba5285e424aa376af324db0424f53c33a2c07a5",
+                "reference": "3ba5285e424aa376af324db0424f53c33a2c07a5",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "issues": "https://github.com/slogsdon/php-flat-file/issues",
                 "source": "https://github.com/slogsdon/php-flat-file/tree/code-highlight"
             },
-            "time": "2024-12-30T04:48:52+00:00"
+            "time": "2026-07-30T19:18:39+00:00"
         },
         {
             "name": "spatie/commonmark-highlighter",
