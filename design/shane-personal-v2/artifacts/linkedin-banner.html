@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn Banner — 1584×396</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-surface:#fbfaf9;
+    --color-ink:#0e1116;
+    --color-accent:#556b2f;
+    --cream:#fbfaf9;
+    --cream-soft:rgba(251,250,249,0.72);
+    --cream-3:rgba(251,250,249,0.52);
+    --rule:rgba(251,250,249,0.16);
+    --display:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#333;}
+
+  /* Exact LinkedIn personal banner canvas */
+  .banner{
+    position:relative;
+    width:1584px;height:396px;
+    background:var(--color-ink);
+    color:var(--cream);
+    overflow:hidden;
+    /* IBM Plex Sans feature settings for editorial register */
+    font-feature-settings:'ss01','cv11';
+  }
+
+  /* faint technical grid — low opacity, architectural */
+  .grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(to right, rgba(251,250,249,0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(251,250,249,0.045) 1px, transparent 1px);
+    background-size:88px 88px;
+    pointer-events:none;
+  }
+  /* single olive vertical hairline — deliberate accent, right column */
+  .accent-rule{
+    position:absolute;top:0;bottom:0;left:1058px;width:1px;
+    background:linear-gradient(to bottom, transparent, var(--color-accent) 22%, var(--color-accent) 78%, transparent);
+    opacity:0.9;
+  }
+
+  .pad{position:absolute;inset:0;padding:44px 64px;display:flex;flex-direction:column;}
+
+  /* ── Running head — top edge, small-caps Fraunces ── */
+  .running-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    font-family:var(--display);font-weight:600;
+    font-variant-caps:small-caps;font-feature-settings:'smcp';
+    text-transform:lowercase;
+    font-size:13px;letter-spacing:0.14em;
+    color:var(--cream);
+    padding-bottom:13px;border-bottom:1px solid var(--rule);
+  }
+  .running-head .r{color:var(--cream-3);}
+  .running-head .sep{color:var(--cream-3);padding:0 10px;}
+
+  /* ── Headline — Fraunces display, clear of lower-left avatar zone ── */
+  .headline{
+    flex:1;display:flex;align-items:center;
+    padding-left:236px;   /* clears the desktop avatar circle at lower-left */
+  }
+  .headline h1{
+    font-family:var(--display);font-weight:400;
+    font-size:104px;line-height:0.94;letter-spacing:-0.024em;
+    color:var(--cream);
+    max-width:19ch;
+  }
+  .headline h1 .accent{color:var(--color-accent);font-style:normal;}
+
+  /* ── Folio strip — dateline + dual-track callout + position ── */
+  .folio{
+    display:flex;align-items:flex-end;justify-content:flex-end;gap:48px;
+    padding-top:14px;border-top:1px solid var(--rule);
+  }
+  .tracks{display:flex;gap:40px;align-items:flex-end;}  /* right-clustered — lower-left kept clear for profile photo */
+  .track .lbl{
+    font-family:var(--display);font-weight:600;
+    font-variant-caps:small-caps;font-feature-settings:'smcp';
+    text-transform:lowercase;font-size:12px;letter-spacing:0.12em;
+    color:var(--cream-3);display:block;margin-bottom:5px;
+  }
+  .track .val{
+    font-family:var(--sans);font-size:15px;font-weight:500;
+    letter-spacing:-0.005em;color:var(--cream);line-height:1.2;
+  }
+  .track .val .mut{color:var(--cream-soft);font-weight:400;}
+  .track.leadsurface .lbl{color:var(--color-accent);}
+  .track-rule{width:1px;align-self:stretch;background:var(--rule);}
+
+  .position{
+    display:flex;align-items:baseline;gap:12px;
+    font-family:var(--mono);font-size:12px;letter-spacing:0.06em;
+    color:var(--cream-3);white-space:nowrap;
+  }
+  .position .pos{color:var(--cream);}
+</style>
+</head>
+<body>
+<div class="banner" id="banner">
+  <div class="grid"></div>
+  <div class="accent-rule"></div>
+  <div class="pad">
+
+    <div class="running-head">
+      <span>shane logsdon <span class="sep">·</span> field notes</span>
+      <span class="r">louisville <span class="sep">·</span> gmt&minus;5</span>
+    </div>
+
+    <div class="headline">
+      <h1>Systems that get <span class="accent">found</span>.</h1>
+    </div>
+
+    <div class="folio">
+      <div class="tracks">
+        <div class="track">
+          <span class="lbl">developer advocacy</span>
+          <span class="val">Global Payments <span class="mut">— developer experience at enterprise scale</span></span>
+        </div>
+        <div class="track-rule"></div>
+        <div class="track leadsurface">
+          <span class="lbl">leadsurface</span>
+          <span class="val">Finds your next customer <span class="mut">before your competitor does</span></span>
+        </div>
+      </div>
+      <div class="position">
+        <span>shanelogsdon.com</span>
+        <span class="pos">2026</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
