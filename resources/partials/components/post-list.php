@@ -17,6 +17,15 @@ if (isset($filterByTopic)) {
 $posts = array_filter($posts, function ($post) {
     return !$post->archived;
 });
+// DESIGN.md §Lists: ordered by date descending, always, with 001 = newest.
+// Until now this partial rendered whatever order the JSON file happened to be
+// in, which put 2026-05-12 ahead of 2026-05-18 on the live /articles/ index and
+// made the folio number a lie. Sorting here rather than in the data file means
+// the next hand-edited entry cannot reintroduce it. uasort preserves the slug
+// keys the loop below relies on.
+uasort($posts, function ($a, $b) {
+    return strcmp($b->date ?? '', $a->date ?? '');
+});
 $allCategories = json_decode(file_get_contents('resources/data/categories.json'), true);
 $allTags = json_decode(file_get_contents('resources/data/tags.json'), true);
 $index = 0;
@@ -57,10 +66,7 @@ $index = 0;
 
     <div class="col-span-12 sm:col-span-7">
         <h3 class="font-display text-xl font-medium leading-snug text-foreground sm:text-2xl">
-            <a href="<?= $postUrl ?>" class="transition-[background-size] duration-300 hover:no-underline"
-               style="background-image:linear-gradient(hsl(var(--foreground)),hsl(var(--foreground)));background-size:0% 1px;background-position:left bottom;background-repeat:no-repeat;"
-               onmouseenter="this.style.backgroundSize='100% 1px'"
-               onmouseleave="this.style.backgroundSize='0% 1px'">
+            <a href="<?= $postUrl ?>" class="row-title-link hover:no-underline">
                 <?= htmlspecialchars($post->title) ?>
             </a>
         </h3>

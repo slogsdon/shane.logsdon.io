@@ -7,6 +7,16 @@ $this->layout('partials::layouts/main', [
     'imageAlt' => 'Shane Logsdon, web presence systems',
 ]);
 
+// D · Assembly Order, by Q2: the engagement is ordered. The build comes first
+// and the retainer only makes sense on top of it, so reordering them breaks the
+// offer. The steps carry ids because an owner sent here from an email should be
+// able to land on the retainer without reading the build again.
+//
+// The mapping table says this row may carry footed price blocks. It carries no
+// figure. §Figures requires a footed table to show figures adding up, and this
+// page states no prices at all, so there is nothing to add up. The pricing that
+// does exist is on /local-businesses/.
+
 $faqs = [
     [
         'q' => 'What\'s included in the monthly retainer?',
@@ -78,20 +88,16 @@ $faqs = [
             <p class="smallcaps-lg">what's included</p>
         </div>
         <div class="col-span-12 sm:col-span-9">
-            <ol class="grid grid-cols-1">
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">01</span></p>
-                    <div class="col-span-12 sm:col-span-10">
-                        <h3 class="font-display text-xl font-medium text-foreground">Website build</h3>
-                        <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">Design, development, and conversion-optimized copy. Mobile-first, fast load, basic schema markup, Google Business Profile setup and optimization, and sitemap submission. Built to rank, not just to exist.</p>
-                    </div>
+            <ol class="assembly">
+                <li class="assembly__step" id="step-01">
+                    <span class="assembly__num" aria-hidden="true">01</span>
+                    <h3 class="font-display text-xl font-medium text-foreground">Website build</h3>
+                    <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">Design, development, and conversion-optimized copy. Mobile-first, fast load, basic schema markup, Google Business Profile setup and optimization, and sitemap submission. Built to rank, not just to exist.</p>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">02</span></p>
-                    <div class="col-span-12 sm:col-span-10">
-                        <h3 class="font-display text-xl font-medium text-foreground">Monthly retainer</h3>
-                        <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">AEO/SEO content updates, GBP posts, citation management, schema maintenance, AI search visibility monitoring, and a monthly report. The retainer is where the compounding happens. A presence that's actively maintained outperforms one that was built well but left alone.</p>
-                    </div>
+                <li class="assembly__step" id="step-02">
+                    <span class="assembly__num" aria-hidden="true">02</span>
+                    <h3 class="font-display text-xl font-medium text-foreground">Monthly retainer</h3>
+                    <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">AEO/SEO content updates, GBP posts, citation management, schema maintenance, AI search visibility monitoring, and a monthly report. The retainer is where the compounding happens. A presence that's actively maintained outperforms one that was built well but left alone.</p>
                 </li>
             </ol>
         </div>

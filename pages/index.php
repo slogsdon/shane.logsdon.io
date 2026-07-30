@@ -7,6 +7,16 @@ $this->layout('partials::layouts/main', [
     'image' => 'og-default.png',
     'imageAlt' => 'Shane Logsdon, systems that get found',
 ]);
+// F · Frontispiece. Not chosen by the ordered test: Home falls through all five
+// questions, because it is defined by its position in the set rather than by
+// what it contains. It names the work, states position, and indexes what
+// follows. It carries no argument, so it carries no figure, and adding one here
+// would be decoration by definition.
+//
+// The featured list below is the sheet index, the single exception to the
+// no-nesting rule. It points at /articles/ rather than being browsed here,
+// which is why it is limited to three and why it is not the page's job.
+
 $articles = (array)json_decode(file_get_contents('resources/data/articles-list.json'));
 $activeArticles = array_filter($articles, fn($p) => !$p->archived);
 $articleCount = count($activeArticles);

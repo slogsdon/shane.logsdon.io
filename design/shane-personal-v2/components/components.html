@@ -19,6 +19,7 @@
   --color-grid:             #e0e2e6;
   --color-accent:           #556b2f;
   --color-accent-hover:     #3e5020;
+  --color-mark:             #c0392b;        /* v3: annotation red — marks only what a drawing calls out */
 
   --type-display-family:    'Fraunces', 'Iowan Old Style', Georgia, serif;
   --type-sans-family:       'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
@@ -159,19 +160,22 @@
 }
 
 /* Callout — left rule, no filled background */
-.callout { display:flex;gap:var(--s-5);padding:var(--s-5) 0; }
-.callout-rule { width:2px;flex-shrink:0;background:var(--color-rule); }
-.callout--accent .callout-rule { background:var(--color-accent); }
-.callout--ok .callout-rule    { background:#3d7a5c; }
-.callout-body  { display:flex;flex-direction:column;gap:var(--s-2); }
-.callout-label {
+/* Content note block. Renamed from .callout in v3: the v3 callout BUBBLE owns
+   that class name in tokens.css, and the two rules were colliding in this file,
+   which rendered these boxes as 17px red circles. */
+.note-block { display:flex;gap:var(--s-5);padding:var(--s-5) 0; }
+.note-block__rule { width:2px;flex-shrink:0;background:var(--color-rule); }
+.note-block--accent .note-block__rule { background:var(--color-accent); }
+.note-block--ok .note-block__rule    { background:#3d7a5c; }
+.note-block__body  { display:flex;flex-direction:column;gap:var(--s-2); }
+.note-block__label {
   font-family:var(--type-display-family);font-weight:600;
   font-variant-caps:small-caps;font-feature-settings:'smcp';
   text-transform:lowercase;font-size:var(--fs-smallcaps);
   letter-spacing:0.1em;color:var(--color-ink-3);
 }
-.callout--accent .callout-label { color:var(--color-accent); }
-.callout--ok    .callout-label  { color:#3d7a5c; }
+.note-block--accent .note-block__label { color:var(--color-accent); }
+.note-block--ok    .note-block__label  { color:#3d7a5c; }
 
 /* Pull quote */
 .pull-quote { padding-left:var(--s-6);border-left:1px solid var(--color-rule);max-width:var(--measure); }
@@ -334,6 +338,74 @@ pre.snippet {
   font-family:var(--type-mono-family);font-size:12px;line-height:1.6;
   padding:var(--s-5);overflow-x:auto;margin-top:var(--s-2);
 }
+
+/* ══ v3 — DRAFTING APPARATUS ════════════════════════════════════════ */
+.s-ink   { stroke:var(--color-ink);fill:none;stroke-width:1; }
+.s-mark  { stroke:var(--color-mark);fill:none;stroke-width:1; }
+.s-rule  { stroke:var(--color-rule);fill:none;stroke-width:1; }
+.s-edge  { stroke:var(--color-ink);stroke-width:1; }   /* stroke only — lets fill=url(#hatch) survive */
+.f-ink { fill:var(--color-ink); } .f-mark { fill:var(--color-mark); }
+.f-soft { fill:var(--color-ink-soft); } .f-3 { fill:var(--color-ink-3); }
+.f-paper { fill:var(--color-surface); }
+.hatch { stroke:var(--color-mark);stroke-width:0.6;opacity:0.5; }
+.t-mono-svg  { font-family:var(--type-mono-family);font-size:10px; }
+.t-serif-svg { font-family:var(--type-display-family);font-size:16px; }
+.t-sans-svg  { font-family:var(--type-sans-family);font-size:12px; }
+.callout { display:inline-flex;align-items:center;justify-content:center;flex:none;width:17px;height:17px;border:1px solid var(--color-mark);color:var(--color-mark);border-radius:var(--r-full);font-family:var(--type-mono-family);font-size:10px;line-height:1;vertical-align:1px;margin:0 1px; }
+.figcaption { font-family:var(--type-mono-family);font-size:11px;line-height:1.6;letter-spacing:0.04em;color:var(--color-ink-3);margin-top:10px;padding-top:8px;border-top:1px solid var(--color-rule); }
+.figcaption b { color:var(--color-ink);font-weight:500; }
+.title-block { border-top:1px solid var(--color-ink);display:grid;grid-template-columns:1fr auto; }
+.title-block__id { padding:14px 24px 16px; }
+.title-block__cells { display:grid;grid-auto-flow:column;grid-auto-columns:minmax(76px,auto);border-left:1px solid var(--color-ink);margin:0; }
+.title-block__cells > div { padding:12px 14px;border-right:1px solid var(--color-rule); }
+.title-block__cells > div:last-child { border-right:0; }
+.title-block__cells dt { font-family:var(--type-mono-family);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-ink-3);margin:0 0 5px; }
+.title-block__cells dd { margin:0;font-family:var(--type-mono-family);font-size:12px;color:var(--color-ink); }
+.sheet { border:1px solid var(--color-rule); }
+.sheet__field { padding:28px 24px 0; }
+.newsletter { border-top:1px solid var(--color-rule);padding:28px 0 0;display:grid;grid-template-columns:4fr 8fr;gap:24px; }
+.field-row { display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-top:16px;max-width:52ch; }
+.field-row input { flex:1 1 220px;min-width:0;border:0;border-bottom:1px solid var(--color-rule);background:transparent;padding:7px 0;font-family:var(--type-sans-family);font-size:16px;color:var(--color-ink); }
+.field-row input:focus { outline:none;border-bottom-color:var(--color-ink); }
+.form-stack { max-width:46ch; }
+.form-stack .f { margin-bottom:18px; }
+.form-stack label { display:block;font-family:var(--type-display-family);font-weight:600;font-variant-caps:small-caps;font-feature-settings:'smcp';text-transform:lowercase;letter-spacing:0.09em;font-size:12.5px;color:var(--color-ink);margin-bottom:4px; }
+.form-stack input, .form-stack textarea { width:100%;border:0;border-bottom:1px solid var(--color-rule);background:transparent;padding:7px 0;font-family:var(--type-sans-family);font-size:15.5px;color:var(--color-ink); }
+.form-stack textarea { border:1px solid var(--color-rule);padding:10px 12px; }
+.author-bio { display:flex;gap:24px;align-items:flex-start; }
+.author-bio .shot { width:72px;height:96px;flex:none;background:var(--color-surface-muted);border:1px solid var(--color-rule);display:flex;align-items:center;justify-content:center;font-family:var(--type-mono-family);font-size:9px;color:var(--color-ink-3);text-align:center; }
+.list-strip { display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--color-rule);border-bottom:1px solid var(--color-rule);padding:11px 0; }
+.filters { display:flex;gap:18px;flex-wrap:wrap; }
+.filters button { background:none;border:0;padding:0;cursor:pointer;font-family:var(--type-display-family);font-weight:600;font-variant-caps:small-caps;font-feature-settings:'smcp';text-transform:lowercase;letter-spacing:0.1em;font-size:13px;color:var(--color-ink-3); }
+.filters button[aria-selected="true"] { color:var(--color-ink);border-bottom:1px solid var(--color-ink); }
+.foot-links { display:flex;gap:18px;flex-wrap:wrap;list-style:none;margin:0;padding:0; }
+.foot-links a { font-family:var(--type-display-family);font-weight:600;font-variant-caps:small-caps;font-feature-settings:'smcp';text-transform:lowercase;letter-spacing:0.1em;font-size:12.5px;color:var(--color-ink-3);text-decoration:none; }
+
+/* The library shipped with no media queries at all, so every section head pushed
+   the page sideways on a phone. */
+@media (max-width: 900px) {
+  .lib-section-head { grid-template-columns:1fr;gap:var(--s-3); }
+  .newsletter { grid-template-columns:1fr; }
+  .author-bio { flex-wrap:wrap; }
+  .snippet { overflow-x:auto; }
+  /* Four columns at 100px + 1px + 1fr + auto do not fit a phone. */
+  .article-row { grid-template-columns:1fr;gap:var(--s-3);padding:var(--s-5) 0; }
+  .article-row__rule { display:none; }
+  .article-row__title { font-size:22px; }
+  /* Display specimens run wider than a phone by design. Give them their own
+     scroll track rather than let them push the whole page sideways. */
+  .preview { overflow-x:auto; }
+}
+/* Mirrors the same rule in tokens.css. This file embeds its tokens rather than
+   linking them, so anything added there has to be added here by hand. */
+@media (max-width: 640px) {
+  .title-block { grid-template-columns:1fr; }
+  .title-block__cells { grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));border-left:0;border-top:1px solid var(--color-ink); }
+  .title-block__cells > div { border-bottom:1px solid var(--color-rule); }
+  .title-block__cells > div:nth-child(2n) { border-right:0; }
+  .title-block__cells > div:nth-last-child(-n+2) { border-bottom:0; }
+}
+
 </style>
 </head>
 <body>
@@ -342,7 +414,7 @@ pre.snippet {
   <header class="lib-header">
     <div class="running-head">
       <span>shane logsdon — component library</span>
-      <span class="t-dateline">v2 · 2026.05.02</span>
+      <span class="t-dateline">v3 · 2026.07.28</span>
     </div>
     <h1 class="t-headline-lg" style="margin-top:var(--s-7);">
       Components, <span class="t-accent">distilled</span>.
@@ -351,7 +423,7 @@ pre.snippet {
       Five named primitives plus supporting components for platform artifacts. Every value from <code class="inline">tokens.css</code>. The <span class="t-smallcaps">primary</span> comment at the top of each section tells platform skills which variant to default to.
     </p>
     <span class="folio" style="position:absolute;bottom:0;right:0;">
-      <span>component library</span><span class="pos">v2 · 2026.05.02</span>
+      <span>component library</span><span class="pos">v3 · 2026.07.28</span>
     </span>
   </header>
 
@@ -607,29 +679,30 @@ pre.snippet {
 
   <!-- ── viii. Callouts ──────────────────────────────────────────── -->
   <!-- PRIMARY: left rule only — no filled background -->
-  <section class="lib-section" id="callouts">
+  <section class="lib-section" id="note-blocks">
     <div class="lib-section-head">
-      <span class="lib-section-label">viii. callouts</span>
+      <span class="lib-section-label">viii. note blocks</span>
       <h2 class="lib-section-title">Left rule, not filled background.</h2>
     </div>
-    <p class="lib-note">PRIMARY: left rule carries the semantic weight; no color fill behind the text</p>
+    <p class="lib-note">PRIMARY: the left rule carries the semantic weight. No color fill behind the text</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">Not the callout bubble in section xix. This one is a prose aside and never carries annotation red.</p>
 
     <div class="preview preview-box">
       <span class="preview-label">note (neutral)</span>
-      <div class="callout">
-        <div class="callout-rule"></div>
-        <div class="callout-body">
-          <span class="callout-label">note</span>
+      <div class="note-block">
+        <div class="note-block__rule"></div>
+        <div class="note-block__body">
+          <span class="note-block__label">note</span>
           <p class="t-body-md">This pattern applies every month across Jefferson, Oldham, Bullitt, Spencer, and Shelby counties.</p>
         </div>
       </div>
 
       <div style="margin-top:var(--s-6);">
         <span class="preview-label">important (accent)</span>
-        <div class="callout callout--accent">
-          <div class="callout-rule"></div>
-          <div class="callout-body">
-            <span class="callout-label">important</span>
+        <div class="note-block note-block--accent">
+          <div class="note-block__rule"></div>
+          <div class="note-block__body">
+            <span class="note-block__label">important</span>
             <p class="t-body-md">Fixing a buried listing after six months takes significantly more effort than getting it right from day one.</p>
           </div>
         </div>
@@ -637,10 +710,10 @@ pre.snippet {
 
       <div style="margin-top:var(--s-6);">
         <span class="preview-label">done / success</span>
-        <div class="callout callout--ok">
-          <div class="callout-rule"></div>
-          <div class="callout-body">
-            <span class="callout-label">done</span>
+        <div class="note-block note-block--ok">
+          <div class="note-block__rule"></div>
+          <div class="note-block__body">
+            <span class="note-block__label">done</span>
             <p class="t-body-md">Listing claimed, verified, and populated with hours, services, and photos.</p>
           </div>
         </div>
@@ -649,10 +722,10 @@ pre.snippet {
 
     <details>
       <summary>HTML</summary>
-      <pre class="snippet">&lt;div class="callout callout--accent"&gt;
-  &lt;div class="callout-rule"&gt;&lt;/div&gt;
-  &lt;div class="callout-body"&gt;
-    &lt;span class="callout-label"&gt;important&lt;/span&gt;
+      <pre class="snippet">&lt;div class="note-block note-block--accent"&gt;
+  &lt;div class="note-block__rule"&gt;&lt;/div&gt;
+  &lt;div class="note-block__body"&gt;
+    &lt;span class="note-block__label"&gt;important&lt;/span&gt;
     &lt;p class="t-body-md"&gt;…&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
@@ -1012,6 +1085,272 @@ pre.snippet {
 
     <div class="preview preview-box">
       <p class="dropcap t-body" style="max-width:var(--measure);">Eleven months ago we shipped a settlement pipeline that has handled 47M transactions without a single retry. The shape of a payments primitive is determined by the failure modes you want to expose — and most platforms hide the wrong ones.</p>
+    </div>
+  </section>
+
+
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- v3 — DRAFTING APPARATUS                                        -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+
+  <!-- ── xix. Callout bubble ─────────────────────────────────────── -->
+  <!-- PRIMARY: numbered reference tying prose to a drawing -->
+  <section class="lib-section" id="callout-bubble">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xix. callout bubble</span>
+      <h2 class="lib-section-title">The only other full radius.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: inline in prose AND on the drawing — the same number in both places</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">Never decorative. A callout that points at nothing is a bug.</p>
+
+    <div class="preview">
+      <span class="preview-label">in prose</span>
+      <p class="t-body" style="max-width:var(--measure);">Most of what I write about lives at one line: where a specification stops <span class="callout">1</span> and an implementation starts owning the decision <span class="callout">2</span>.</p>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;span class="callout"&gt;1&lt;/span&gt;
+
+&lt;!-- on the drawing, same number --&gt;
+&lt;circle cx="446" cy="12" r="9" class="s-mark f-paper"/&gt;
+&lt;text x="446" y="16" text-anchor="middle" class="t-mono-svg f-mark"&gt;1&lt;/text&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xx. Figure — dimensioned diagram ────────────────────────── -->
+  <!-- PRIMARY: drawing classes so inline SVG inherits the palette -->
+  <section class="lib-section" id="figure">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xx. figure</span>
+      <h2 class="lib-section-title">Drawn at 1px, same as the rules.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: dimensioned diagram — one of five figure types (see DESIGN.md §Figures)</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">Every figure carries a caption naming its source and the date it was read.</p>
+
+    <div class="preview">
+      <span class="preview-label">dimensioned diagram + hatch + callout</span>
+      <figure style="max-width:620px;margin:0;">
+        <div class="figure-plate">
+        <svg width="600" height="152" viewBox="0 0 600 152" role="img" aria-label="Specified versus assumed, 75 to 25">
+          <defs><pattern id="lib-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="7" class="hatch"/></pattern></defs>
+          <rect x="8" y="12" width="584" height="90" class="s-ink"/>
+          <rect x="8" y="12" width="438" height="90" class="s-ink"/>
+          <rect x="446" y="12" width="146" height="90" fill="url(#lib-hatch)" class="s-edge"/>
+          <text x="26" y="46" class="t-serif-svg f-ink">Specified</text>
+          <text x="26" y="68" class="t-sans-svg f-soft">Contract, failure modes, what turns red.</text>
+          <text x="462" y="46" class="t-serif-svg f-ink" font-size="15">Assumed</text>
+          <line x1="8" y1="108" x2="8" y2="134" class="s-mark"/>
+          <line x1="446" y1="108" x2="446" y2="134" class="s-mark"/>
+          <line x1="592" y1="108" x2="592" y2="134" class="s-mark"/>
+          <line x1="8" y1="126" x2="446" y2="126" class="s-mark"/>
+          <line x1="446" y1="126" x2="592" y2="126" class="s-mark"/>
+          <path d="M8 126 l6 -3 v6 z M446 126 l-6 -3 v6 z" class="f-mark"/>
+          <path d="M446 126 l6 -3 v6 z M592 126 l-6 -3 v6 z" class="f-mark"/>
+          <rect x="204" y="119" width="46" height="14" class="f-paper"/>
+          <text x="227" y="130" text-anchor="middle" class="t-mono-svg f-mark">75%</text>
+          <rect x="498" y="119" width="42" height="14" class="f-paper"/>
+          <text x="519" y="130" text-anchor="middle" class="t-mono-svg f-mark">25%</text>
+          <circle cx="446" cy="12" r="9" class="s-mark f-paper"/>
+          <text x="446" y="16" text-anchor="middle" class="t-mono-svg f-mark">1</text>
+        </svg>
+        </div>
+        <figcaption class="figcaption"><b>Fig.</b> — The specification boundary. Source: articles-list.json, read 2026.07.28.</figcaption>
+      </figure>
+    </div>
+
+    <details>
+      <summary>HTML — note the .s-edge trap</summary>
+      <pre class="snippet">&lt;!-- A hatched rect MUST use .s-edge, not .s-ink.
+     .s-ink declares fill:none, and CSS beats the presentation
+     attribute — which silently erases the hatch fill. --&gt;
+&lt;rect fill="url(#hatch)" class="s-edge"/&gt;
+
+&lt;!-- pattern contents can't inherit currentColor,
+     so the hatch line is styled by class --&gt;
+&lt;pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse"
+         patternTransform="rotate(45)"&gt;
+  &lt;line x1="0" y1="0" x2="0" y2="7" class="hatch"/&gt;
+&lt;/pattern&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xxi. Title block + sheet ────────────────────────────────── -->
+  <!-- PRIMARY: replaces the footer on any C · Sheet page -->
+  <section class="lib-section" id="title-block">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xxi. title block</span>
+      <h2 class="lib-section-title">Revision and date are content.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: the C · Sheet footer. No zone references or edge rulers — they addressed nothing.</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">A stale sheet that admits it beats a fresh-looking one that doesn't.</p>
+
+    <div class="preview">
+      <span class="preview-label">sheet = border + field + title block</span>
+      <div class="sheet">
+        <div class="sheet__field" style="padding-bottom:var(--s-6);">
+          <h3 class="t-headline-sm" style="margin:0;">Sheet field</h3>
+          <p class="t-body-md" style="margin:var(--s-3) 0 0;max-width:52ch;">Content sits in the field. The block below is the only footer the page gets.</p>
+        </div>
+        <div class="title-block">
+          <div class="title-block__id">
+            <span class="t-smallcaps">shane logsdon · payments &amp; developer platforms</span>
+          </div>
+          <dl class="title-block__cells">
+            <div><dt>Sheet</dt><dd>A-01</dd></div>
+            <div><dt>Rev</dt><dd>C</dd></div>
+            <div><dt>Date</dt><dd>2026.07.28</dd></div>
+            <div><dt>Drawn</dt><dd>SL</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>HTML</summary>
+      <pre class="snippet">&lt;div class="sheet"&gt;
+  &lt;div class="sheet__field"&gt;…&lt;/div&gt;
+  &lt;div class="title-block"&gt;
+    &lt;div class="title-block__id"&gt;…&lt;/div&gt;
+    &lt;dl class="title-block__cells"&gt;
+      &lt;div&gt;&lt;dt&gt;Sheet&lt;/dt&gt;&lt;dd&gt;A-01&lt;/dd&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;dt&gt;Rev&lt;/dt&gt;&lt;dd&gt;C&lt;/dd&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;dt&gt;Date&lt;/dt&gt;&lt;dd&gt;2026.07.28&lt;/dd&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;dt&gt;Drawn&lt;/dt&gt;&lt;dd&gt;SL&lt;/dd&gt;&lt;/div&gt;
+    &lt;/dl&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </details>
+  </section>
+
+
+  <!-- ── xxii. Index strip ───────────────────────────────────────── -->
+  <!-- PRIMARY: count folio + category FILTERS. Never groupings. -->
+  <section class="lib-section" id="index-strip">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xxii. index strip</span>
+      <h2 class="lib-section-title">Filters, never groupings.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: sits above every list. Lists are date descending, 001 = newest.</p>
+    <p class="t-smallcaps" style="margin-bottom:var(--s-5);">Grouping by category breaks the only ordering a reader can predict.</p>
+
+    <div class="preview">
+      <span class="preview-label">articles — count + filters</span>
+      <div class="list-strip">
+        <p class="folio" style="margin:0;"><span class="pos">009</span><span>entries</span></p>
+        <div class="filters">
+          <button type="button" aria-selected="true">all</button>
+          <button type="button" aria-selected="false">technical</button>
+          <button type="button" aria-selected="false">strategic</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview">
+      <span class="preview-label">speaking — count only</span>
+      <div class="list-strip">
+        <p class="folio" style="margin:0;"><span class="pos">006</span><span>talks</span></p>
+        <span class="t-smallcaps">archive</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── xxiii. Newsletter ───────────────────────────────────────── -->
+  <!-- PRIMARY: site-wide, above the footer, every page -->
+  <section class="lib-section" id="newsletter">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xxiii. newsletter</span>
+      <h2 class="lib-section-title">Underline field. One arrow.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: Kit form, no JavaScript. Renders nothing until KIT_FORM_ID is set — no broken form ever ships.</p>
+
+    <div class="preview">
+      <span class="preview-label">4 / 8 split</span>
+      <div class="newsletter">
+        <div>
+          <p class="t-smallcaps">the newsletter</p>
+          <h3 class="t-headline-sm" style="margin:var(--s-2) 0 0;">New posts by email</h3>
+        </div>
+        <div>
+          <p class="t-body-md" style="margin:0;max-width:60ch;">Occasional writing on developer platforms, payments, and AI-assisted engineering. No spam, and you can unsubscribe anytime.</p>
+          <div class="field-row">
+            <input type="email" placeholder="you@example.com" aria-label="Email address">
+            <a class="btn-arrow btn-arrow--accent" href="#">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── xxiv. Author bio ────────────────────────────────────────── -->
+  <!-- PRIMARY: article + field-guide layouts, after body, before CTA -->
+  <section class="lib-section" id="author-bio">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xxiv. author bio</span>
+      <h2 class="lib-section-title">Headshot, then the claim to speak.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: 72×96 portrait crop, top-aligned</p>
+
+    <div class="preview">
+      <span class="preview-label">article tail</span>
+      <div class="author-bio">
+        <div class="shot">headshot<br>72×96</div>
+        <div>
+          <p class="t-smallcaps">about the author</p>
+          <h3 class="wordmark wordmark--sm" style="display:block;margin:var(--s-2) 0 var(--s-3);">Shane Logsdon</h3>
+          <p class="t-body-md" style="margin:0;max-width:66ch;">Shane Logsdon is a technical product leader with 15+ years at the intersection of payments and developer platforms. He writes about developer experience, system architecture, and the realities of working in regulated payments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── xxv. Form fields ────────────────────────────────────────── -->
+  <!-- PRIMARY: audit request — practice pages only, never /contact/ -->
+  <section class="lib-section" id="form-fields">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xxv. form fields</span>
+      <h2 class="lib-section-title">Underlines, same weight as the rules.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: small-caps labels, underline inputs, one arrow submit. No filled buttons anywhere.</p>
+
+    <div class="preview">
+      <span class="preview-label">audit request</span>
+      <form class="form-stack" onsubmit="return false;">
+        <div class="f"><label for="lib-name">name</label><input id="lib-name" type="text"></div>
+        <div class="f"><label for="lib-url">your website url</label><input id="lib-url" type="url" placeholder="https://yourbusiness.com"></div>
+        <div class="f"><label for="lib-msg">anything specific you'd like me to look at?</label><textarea id="lib-msg" rows="3"></textarea></div>
+        <a class="btn-arrow btn-arrow--accent" href="#">Request the audit</a>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ── xxvi. Footer link row ───────────────────────────────────── -->
+  <!-- PRIMARY: folio left, small-caps links right. Services lives HERE, not in the nav. -->
+  <section class="lib-section" id="footer-links">
+    <div class="lib-section-head">
+      <span class="lib-section-label">xxvi. footer link row</span>
+      <h2 class="lib-section-title">Where the practice lives.</h2>
+    </div>
+    <p class="lib-note">PRIMARY: the local-business practice is footer-linked only — never in the primary nav</p>
+
+    <div class="preview">
+      <span class="preview-label">site-wide footer</span>
+      <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:baseline;border-top:1px solid var(--color-ink);padding-top:var(--s-4);">
+        <span class="folio"><span class="pos">2026.07.28</span><span>/ 2026</span></span>
+        <ul class="foot-links">
+          <li><a href="#">linkedin</a></li><li><a href="#">bluesky</a></li><li><a href="#">github</a></li>
+          <li><a href="#">work</a></li><li><a href="#">services</a></li>
+          <li><a href="#">contact</a></li><li><a href="#">archive</a></li>
+        </ul>
+      </div>
     </div>
   </section>
 

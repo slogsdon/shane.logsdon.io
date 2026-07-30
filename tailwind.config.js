@@ -2,8 +2,14 @@
 module.exports = {
   content: [
     "./pages/**/*.php",
+    "./pages/**/*.md",          // articles are markdown; a figure authored in a
+                                // post would otherwise have its drawing classes
+                                // purged and render as an invisible SVG
     "./resources/partials/**/*.php",
   ],
+  // No `mark` color utility on purpose. Annotation red has one job and reaches
+  // markup through .s-mark, .f-mark, .hatch, and .callout. A `text-mark`
+  // utility would make the one rule in the system easiest to break.
   theme: {
     extend: {
       fontFamily: {

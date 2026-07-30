@@ -7,6 +7,16 @@ $this->layout('partials::layouts/main', [
     'imageAlt' => 'The loop does the work. You work the gates. Set in Fraunces on a cream field.',
 ]);
 
+// D · Assembly Order, by Q2: reordering the install breaks it. The Foundation
+// has to exist before a kit can read your memory, and nothing works without the
+// paid plan at step one.
+//
+// The axis goes on "from scratch" and nowhere else on this page. "The pieces"
+// is a catalog, numbered for reference rather than for sequence, and "a
+// suggested order" opens by saying you do not have to follow it. Neither is an
+// assembly, so neither gets the axis. An axis over an order that does not
+// matter teaches a reader to ignore the one that does.
+
 $repos = [
     'foundation'     => 'https://github.com/slogsdon/loop-and-gate-foundation',
     'build'          => 'https://github.com/slogsdon/loop-and-gate-build-kit',
@@ -190,19 +200,19 @@ $order = [
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
                 If you have never used Claude Code, this is the whole path from nothing to a working setup. Budget about 20 minutes, most of it one-time.
             </p>
-            <ol class="mt-8 grid grid-cols-1">
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">01</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+            <ol class="assembly mt-8">
+                <li class="assembly__step" id="step-01">
+                    <span class="assembly__num" aria-hidden="true">01</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Get a paid Claude plan</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             Go to <a class="link-quiet" href="https://claude.ai" target="_blank" rel="noreferrer noopener">claude.ai</a> and make sure you are on Pro or Max, not the free plan. This is the step people miss, and nothing here works without it.
                         </p>
                     </div>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">02</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+                <li class="assembly__step" id="step-02">
+                    <span class="assembly__num" aria-hidden="true">02</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Install the Claude desktop app</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             A normal app you double-click, no terminal required. Installers are on <a class="link-quiet" href="https://code.claude.com/docs" target="_blank" rel="noreferrer noopener">Anthropic's download page</a>. On Windows, if it asks you to install Git first, say yes and reopen the app. Sign in, then click the Code tab.
@@ -212,9 +222,9 @@ $order = [
                         </p>
                     </div>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">03</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+                <li class="assembly__step" id="step-03">
+                    <span class="assembly__num" aria-hidden="true">03</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Set up the Foundation first</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             The Foundation installs the same way as the kits: one command in the chat, no download:
@@ -243,9 +253,9 @@ $order = [
                         </p>
                     </div>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">04</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+                <li class="assembly__step" id="step-04">
+                    <span class="assembly__num" aria-hidden="true">04</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Install Obsidian and open your vault</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             Your memory is a folder of plain markdown files, and <a class="link-quiet" href="https://obsidian.md/download" target="_blank" rel="noreferrer noopener">Obsidian</a> is the free app for reading and editing them, with links between notes and a graph you can watch grow. Install it on your desktop, choose <span class="smallcaps">Open folder as vault</span>, and point it at the vault the setup script just created.
@@ -255,9 +265,9 @@ $order = [
                         </p>
                     </div>
                 </li>
-                <li class="grid grid-cols-12 gap-6 border-t border-rule py-8">
-                    <p class="folio col-span-12 sm:col-span-2"><span class="pos">05</span></p>
-                    <div class="col-span-12 sm:col-span-10">
+                <li class="assembly__step" id="step-05">
+                    <span class="assembly__num" aria-hidden="true">05</span>
+                    <div>
                         <h3 class="font-display text-xl font-medium text-foreground">Add your first kit</h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
                             Kits install differently from the Foundation. They are plugins, added with one command in the chat, no download. The simplest to start with is the Accountability Kit, because it needs nothing else.

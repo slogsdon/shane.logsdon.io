@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane Logsdon — v3 Directions (5 iterations on v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   SHARED SPINE — inherited unchanged from v2 by all five directions.
+   If a direction changes one of these it says so in its spec block.
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+  --surface:        #fbfaf9;
+  --surface-muted:  #f1eee8;
+  --ink:            #0e1116;
+  --ink-soft:       #404550;
+  --ink-3:          #62686f;
+  --rule:           #d6d8de;
+  --accent:         #556b2f;
+  --accent-hover:   #3e5020;
+
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans:    'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  font-feature-settings: 'ss01','cv11','kern';
+}
+a { color: inherit; }
+
+/* ─── Comparison chrome (not part of any direction) ─── */
+.doc-head {
+  border-bottom: 1px solid var(--rule);
+  padding: 40px 32px 28px;
+  max-width: 1400px; margin: 0 auto;
+}
+.doc-head h1 {
+  font-family: var(--display); font-weight: 400; font-size: 40px;
+  letter-spacing: -0.018em; line-height: 1.1; margin: 0 0 14px;
+}
+.doc-head p { max-width: 74ch; color: var(--ink-soft); margin: 0 0 22px; font-size: 16px; }
+.doc-nav { display: flex; flex-wrap: wrap; gap: 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; }
+.doc-nav a { padding: 7px 16px 7px 0; margin-right: 16px; border-right: 1px solid var(--rule); text-decoration: none; color: var(--ink-3); }
+.doc-nav a:last-child { border-right: 0; }
+.doc-nav a:hover { color: var(--accent); }
+
+.spec {
+  max-width: 1400px; margin: 0 auto; padding: 72px 32px 26px;
+  display: grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr); gap: 48px;
+  align-items: start;
+}
+.spec-id {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em;
+  color: var(--accent); margin: 0 0 12px; text-transform: uppercase;
+}
+.spec h2 {
+  font-family: var(--display); font-weight: 500; font-size: 34px;
+  letter-spacing: -0.014em; line-height: 1.12; margin: 0 0 14px;
+}
+.spec .thesis { font-size: 16px; color: var(--ink-soft); margin: 0 0 18px; max-width: 60ch; }
+.spec dl { margin: 0; font-size: 14px; line-height: 1.55; border-top: 1px solid var(--rule); }
+.spec dt {
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.09em;
+  font-size: 13px; color: var(--ink); padding-top: 12px;
+}
+.spec dd { margin: 2px 0 12px; color: var(--ink-soft); border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+.spec dd code { font-family: var(--mono); font-size: 12.5px; background: var(--surface-muted); padding: 1px 5px; }
+.frame-note {
+  max-width: 1400px; margin: 0 auto; padding: 0 32px 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+.frame {
+  max-width: 1400px; margin: 0 auto 96px; padding: 0 32px;
+}
+.frame > .inner { border: 1px solid var(--rule); overflow: hidden; }
+@media (max-width: 900px) {
+  .spec { grid-template-columns: 1fr; gap: 24px; padding: 56px 20px 20px; }
+  .frame, .frame-note, .doc-head { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   A — LEDGER
+   The index IS the homepage. No hero. Catalog discipline.
+   ══════════════════════════════════════════════════════════════════════ */
+.led { background: var(--surface); padding: 0; font-family: var(--sans); }
+.led-top {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: baseline; gap: 24px;
+  padding: 26px 40px; border-bottom: 2px solid var(--ink);
+}
+.led-mark { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: -0.005em; }
+.led-top .loc {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+.led-standing {
+  display: grid; grid-template-columns: 13ch 1fr; gap: 0 32px;
+  padding: 28px 40px 34px; border-bottom: 1px solid var(--rule);
+}
+.led-standing dt {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--ink-3); text-transform: uppercase; padding: 7px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.led-standing dd {
+  margin: 0; padding: 7px 0; font-size: 15.5px; line-height: 1.5;
+  border-bottom: 1px solid var(--rule); max-width: 68ch;
+}
+.led-standing dd:last-of-type, .led-standing dt:last-of-type { border-bottom: 0; }
+.led-tablehead {
+  display: grid; grid-template-columns: 11ch 1fr 9ch 7ch;
+  gap: 0 24px; padding: 10px 40px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+  border-bottom: 1px solid var(--ink);
+}
+.led-row {
+  display: grid; grid-template-columns: 11ch 1fr 9ch 7ch;
+  gap: 0 24px; padding: 13px 40px; align-items: baseline;
+  border-bottom: 1px solid var(--rule); text-decoration: none;
+}
+.led-row:hover { background: var(--surface-muted); }
+.led-row:hover .led-title { color: var(--accent); }
+.led-date, .led-len, .led-no {
+  font-family: var(--mono); font-size: 12px; color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.led-no, .led-len { text-align: right; }
+.led-tablehead span:nth-child(3), .led-tablehead span:nth-child(4) { text-align: right; }
+.led-title { font-family: var(--display); font-weight: 500; font-size: 19px; letter-spacing: -0.008em; line-height: 1.25; }
+.led-title .sub { display: block; font-family: var(--sans); font-weight: 400; font-size: 14px; color: var(--ink-3); margin-top: 3px; letter-spacing: 0; }
+.led-row--now { background: var(--ink); color: var(--surface); }
+.led-row--now .led-date, .led-row--now .led-len, .led-row--now .led-no { color: rgba(251,250,249,0.6); }
+.led-row--now:hover { background: var(--ink); }
+.led-row--now:hover .led-title { color: #a8c06a; }
+.led-foot {
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+  padding: 22px 40px 30px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.07em; color: var(--ink-3);
+}
+.led-foot a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   B — MARGINALIA
+   Scholarly apparatus. The margin column carries navigation + apparatus.
+   ══════════════════════════════════════════════════════════════════════ */
+.mar { padding: 0 0 8px; }
+.mar-runhead {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 18px 48px 10px; border-bottom: 1px solid var(--ink);
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase;
+  font-size: 13px; letter-spacing: 0.11em;
+}
+.mar-body {
+  display: grid; grid-template-columns: 20ch 1px minmax(0, 62ch);
+  gap: 0 36px; padding: 48px 48px 8px;
+}
+.mar-rail { position: relative; }
+.mar-spine { background: var(--rule); }
+.mar-note {
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-3);
+  margin-bottom: 26px; text-align: right;
+}
+.mar-note b {
+  display: block; font-family: var(--display); font-weight: 600;
+  font-variant-caps: small-caps; font-feature-settings: 'smcp';
+  text-transform: lowercase; letter-spacing: 0.09em; font-size: 12.5px;
+  color: var(--ink); margin-bottom: 3px;
+}
+.mar-note a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); display: inline-block; }
+.mar-note a:hover { color: var(--accent); border-color: var(--accent); }
+.mar-note .num { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+.mar-main h1 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(38px, 4.6vw, 62px); line-height: 1.04;
+  letter-spacing: -0.02em; margin: 0 0 8px; text-indent: -0.06em;
+}
+.mar-main h1 .drop {
+  font-size: 1.5em; line-height: 0.8; font-weight: 500;
+}
+.mar-main .stand {
+  font-size: 19px; line-height: 1.6; color: var(--ink-soft);
+  margin: 28px 0 0; max-width: 58ch;
+}
+.mar-main p { margin: 20px 0 0; }
+.mar-main sup {
+  font-family: var(--mono); font-size: 10px; color: var(--accent);
+  vertical-align: super; line-height: 0; padding-left: 2px;
+}
+.mar-main .rule-break { border: 0; border-top: 1px solid var(--rule); margin: 40px 0 0; width: 100%; }
+.mar-list { margin: 34px 0 0; padding: 0; list-style: none; }
+.mar-list li { padding: 15px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 4ch 1fr; gap: 16px; align-items: baseline; }
+.mar-list .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.mar-list a { font-family: var(--display); font-weight: 500; font-size: 18px; letter-spacing: -0.008em; text-decoration: none; line-height: 1.3; display: block; }
+.mar-list a:hover { color: var(--accent); }
+.mar-list .when { font-family: var(--mono); font-size: 11px; color: var(--ink-3); display: block; margin-top: 4px; }
+.mar-colophon {
+  padding: 30px 48px 34px; margin-top: 42px;
+  border-top: 1px solid var(--ink);
+  font-size: 13.5px; color: var(--ink-3);
+}
+.mar-colophon p { margin: 0; max-width: 92ch; }
+.mar-colophon a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   C — BROADSHEET
+   Newspaper density. Multiple stories compete on one screen.
+   ══════════════════════════════════════════════════════════════════════ */
+.bro { padding: 0; }
+.bro-mast {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: end;
+  gap: 20px; padding: 24px 34px 14px; border-bottom: 1px solid var(--ink);
+}
+.bro-mast .side {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-3); line-height: 1.7;
+}
+.bro-mast .side.r { text-align: right; }
+.bro-mast .name {
+  font-family: var(--display); font-weight: 700; font-size: 46px;
+  letter-spacing: -0.03em; line-height: 0.9; text-align: center; white-space: nowrap;
+}
+.bro-strap {
+  padding: 7px 34px; border-bottom: 2px solid var(--ink);
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase;
+  font-size: 13px; letter-spacing: 0.12em;
+  display: flex; justify-content: space-between; gap: 20px;
+}
+.bro-grid {
+  display: grid; grid-template-columns: minmax(0,1.55fr) 1px minmax(0,1fr) 1px minmax(0,0.82fr);
+  gap: 0 26px; padding: 26px 34px 30px;
+}
+.bro-col { min-width: 0; }
+.bro-vr { background: var(--rule); }
+.bro-kicker {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 8px;
+}
+.bro-lede {
+  font-family: var(--display); font-weight: 500; font-size: 44px;
+  line-height: 1.02; letter-spacing: -0.022em; margin: 0 0 14px;
+}
+.bro-lede em { font-style: normal; font-weight: 300; display: block; font-size: 0.62em; letter-spacing: -0.012em; color: var(--ink-soft); margin-top: 8px; }
+.bro-byline {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.07em;
+  color: var(--ink-3); padding: 8px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 14px;
+}
+.bro-text { font-size: 15.5px; line-height: 1.62; color: var(--ink-soft); margin: 0 0 12px; }
+.bro-text:first-letter { }
+.bro-text.drop::first-letter {
+  font-family: var(--display); font-weight: 500; font-size: 3.1em;
+  float: left; line-height: 0.82; padding: 3px 8px 0 0; color: var(--ink);
+}
+.bro-sub {
+  font-family: var(--display); font-weight: 600; font-size: 20px;
+  letter-spacing: -0.01em; line-height: 1.2; margin: 20px 0 8px;
+  padding-top: 14px; border-top: 1px solid var(--rule);
+}
+.bro-hair { border: 0; border-top: 1px solid var(--rule); margin: 16px 0; }
+.bro-item { padding: 11px 0; border-bottom: 1px solid var(--rule); }
+.bro-item a { font-family: var(--display); font-weight: 500; font-size: 16.5px; line-height: 1.25; text-decoration: none; display: block; letter-spacing: -0.006em; }
+.bro-item a:hover { color: var(--accent); }
+.bro-item .m { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.07em; color: var(--ink-3); display: block; margin-top: 4px; }
+.bro-boxed {
+  background: var(--ink); color: var(--surface); padding: 18px 20px 20px; margin-top: 6px;
+}
+.bro-boxed h4 {
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.11em;
+  font-size: 13px; margin: 0 0 10px; color: #a8c06a;
+}
+.bro-boxed p { font-size: 14.5px; line-height: 1.55; color: rgba(251,250,249,0.82); margin: 0 0 12px; }
+.bro-boxed a { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.07em; color: var(--surface); text-decoration: none; border-bottom: 1px solid rgba(251,250,249,0.45); }
+.bro-foot {
+  border-top: 2px solid var(--ink); padding: 12px 34px 18px;
+  display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.07em; color: var(--ink-3);
+}
+@media (max-width: 860px) {
+  .bro-grid { grid-template-columns: 1fr; gap: 0; }
+  .bro-vr { display: none; }
+  .bro-mast { grid-template-columns: 1fr; }
+  .bro-mast .side.r, .bro-mast .name { text-align: left; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   D — PLATE
+   The page commits to ink. Cream is the type. Olive becomes load-bearing.
+   ══════════════════════════════════════════════════════════════════════ */
+.plt {
+  background: var(--ink); color: var(--surface);
+  padding: 26px; font-family: var(--sans);
+}
+.plt-frame { border: 1px solid rgba(251,250,249,0.22); padding: 0; }
+.plt-top {
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 20px;
+  padding: 18px 30px; border-bottom: 1px solid rgba(251,250,249,0.22);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.11em;
+  text-transform: uppercase; color: rgba(251,250,249,0.6);
+}
+.plt-hero { padding: 62px 30px 44px; }
+.plt-hero h1 {
+  font-family: var(--display); font-weight: 300;
+  font-size: clamp(46px, 8.4vw, 118px); line-height: 0.94;
+  letter-spacing: -0.028em; margin: 0; color: var(--surface);
+}
+.plt-hero h1 .weight { font-weight: 600; }
+.plt-hero h1 .ol { color: #a8c06a; }
+.plt-hero .lede {
+  margin: 40px 0 0; max-width: 54ch; font-size: 18px; line-height: 1.62;
+  color: rgba(251,250,249,0.74);
+}
+.plt-meta {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  border-top: 1px solid rgba(251,250,249,0.22);
+}
+.plt-meta > div {
+  padding: 20px 30px 24px; border-right: 1px solid rgba(251,250,249,0.22);
+}
+.plt-meta > div:last-child { border-right: 0; }
+.plt-meta dt {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #a8c06a; margin-bottom: 10px;
+}
+.plt-meta dd { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(251,250,249,0.8); }
+.plt-meta dd a { text-decoration: none; border-bottom: 1px solid rgba(251,250,249,0.3); }
+.plt-meta dd a:hover { border-color: #a8c06a; color: #a8c06a; }
+.plt-index { border-top: 1px solid rgba(251,250,249,0.22); }
+.plt-index a {
+  display: grid; grid-template-columns: 10ch 1fr auto; gap: 24px; align-items: baseline;
+  padding: 16px 30px; border-bottom: 1px solid rgba(251,250,249,0.14);
+  text-decoration: none;
+}
+.plt-index a:last-child { border-bottom: 0; }
+.plt-index a:hover { background: rgba(251,250,249,0.05); }
+.plt-index .d { font-family: var(--mono); font-size: 11.5px; color: rgba(251,250,249,0.5); font-variant-numeric: tabular-nums; }
+.plt-index .t { font-family: var(--display); font-weight: 400; font-size: 20px; letter-spacing: -0.01em; line-height: 1.25; }
+.plt-index a:hover .t { color: #a8c06a; }
+.plt-index .a { font-family: var(--mono); font-size: 11px; color: rgba(251,250,249,0.4); }
+.plt-sig {
+  padding: 16px 30px; border-top: 1px solid rgba(251,250,249,0.22);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.09em;
+  color: rgba(251,250,249,0.5); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+@media (max-width: 760px) { .plt-meta { grid-template-columns: 1fr; } .plt-meta > div { border-right: 0; border-bottom: 1px solid rgba(251,250,249,0.22); } }
+
+/* ══════════════════════════════════════════════════════════════════════
+   E — EXPOSED GRID
+   The 12-column grid is drawn. Content hard-aligns; empty cells stay empty.
+   ══════════════════════════════════════════════════════════════════════ */
+.exg {
+  position: relative; background: var(--surface);
+  padding: 0 0 0; overflow: hidden;
+}
+.exg-rules {
+  position: absolute; inset: 0; pointer-events: none;
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  padding: 0 40px;
+}
+.exg-rules span { border-left: 1px solid var(--rule); }
+.exg-rules span:first-child { border-left: 0; }
+.exg-inner {
+  position: relative;
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  padding: 0 40px; column-gap: 0;
+}
+.exg-cell { padding: 0 18px; min-width: 0; }
+.exg-cell.flush-l { padding-left: 0; }
+.exg-band { border-bottom: 1px solid var(--ink); }
+.exg-top {
+  grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline;
+  gap: 20px; padding: 16px 0 14px; border-bottom: 1px solid var(--ink);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.exg-top b { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -0.005em; text-transform: none; color: var(--ink); }
+.exg h1 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(40px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.026em;
+  margin: 0; padding: 54px 0 0;
+}
+.exg .sub {
+  font-size: 17px; line-height: 1.6; color: var(--ink-soft);
+  margin: 0; padding: 22px 0 54px;
+}
+.exg-mark {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  padding: 58px 0 0; writing-mode: vertical-rl; text-orientation: mixed;
+}
+.exg-sect {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr);
+  border-top: 1px solid var(--ink); padding: 0;
+}
+.exg-lbl {
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.11em;
+  font-size: 13px; padding: 20px 18px 20px 0; color: var(--ink);
+}
+.exg-entry {
+  display: block; text-decoration: none; padding: 20px 18px 22px;
+  border-left: 1px solid var(--rule); min-width: 0;
+}
+.exg-entry:hover { background: var(--surface-muted); }
+.exg-entry .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--ink-3); text-transform: uppercase; }
+.exg-entry .h { font-family: var(--display); font-weight: 500; font-size: 21px; line-height: 1.18; letter-spacing: -0.012em; margin: 10px 0 8px; }
+.exg-entry:hover .h { color: var(--accent); }
+.exg-entry .p { font-size: 14.5px; line-height: 1.55; color: var(--ink-3); margin: 0; }
+.exg-fill { background: var(--ink); }
+.exg-fill .k { color: #a8c06a; }
+.exg-fill .h, .exg-fill .p { color: var(--surface); }
+.exg-fill .p { color: rgba(251,250,249,0.72); }
+.exg-fill:hover { background: var(--ink); }
+.exg-fill:hover .h { color: #a8c06a; }
+.exg-foot {
+  grid-column: 1 / -1; border-top: 1px solid var(--ink); padding: 14px 0 20px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-3);
+  display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  .exg-rules { display: none; }
+  .exg-inner, .exg-sect { grid-template-columns: 1fr; padding-left: 20px; padding-right: 20px; }
+  .exg-sect { padding: 0; }
+  .exg-cell { grid-column: 1 !important; padding: 0; }
+  .exg-mark { writing-mode: horizontal-tb; padding: 24px 0 0; }
+  .exg-entry { grid-column: 1 !important; border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-right: 0; }
+  .exg-lbl { grid-column: 1 !important; padding-left: 0; }
+  .exg-fill { padding: 20px !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <h1>Five directions on the v2 system</h1>
+  <p>
+    Every direction below keeps the v2 spine unchanged — cream <code>#fbfaf9</code>, ink <code>#0e1116</code>,
+    olive <code>#556b2f</code>, Fraunces + IBM&nbsp;Plex + JetBrains&nbsp;Mono, zero radius, 1px rules, no filled
+    buttons. What changes in each is one <em>structural</em> commitment, not a skin. The shared content is real:
+    the same headline, the same five pieces, the same practice line, rendered five ways so the difference is
+    attributable to the system and not the copy.
+  </p>
+  <nav class="doc-nav">
+    <a href="#a">A / Ledger</a>
+    <a href="#b">B / Marginalia</a>
+    <a href="#c">C / Broadsheet</a>
+    <a href="#d">D / Plate</a>
+    <a href="#e">E / Exposed Grid</a>
+  </nav>
+</header>
+
+<!-- ══════════════ A — LEDGER ══════════════ -->
+<section class="spec" id="a">
+  <div>
+    <p class="spec-id">Direction A</p>
+    <h2>Ledger</h2>
+    <p class="thesis">
+      The index <em>is</em> the homepage. There is no hero, no lede block, no "welcome" — you land inside the
+      catalog of the work, with the standing facts stated above it as a header record. The bet: for someone whose
+      product is written output, a marketing hero is a delay between the visitor and the thing they came for.
+    </p>
+    <p class="thesis">
+      Trend it refuses: the oversized centered display headline as the mandatory first screen. Nearly every
+      personal site in 2026 opens the same way. This one opens with rows.
+    </p>
+  </div>
+  <dl>
+    <dt>Structural commitment</dt>
+    <dd>Catalog-first. Every page is a table with tabular figures and hairline rows; the current piece is a single ink-inverted row inside the run.</dd>
+    <dt>Type reassignment</dt>
+    <dd>Mono is promoted from <code>dateline + code</code> to the entire structural layer — column heads, dates, counts. Fraunces drops to row-title scale (19px) and never exceeds it.</dd>
+    <dt>Palette delta</dt>
+    <dd>None to the tokens. Inversion changes role: from feature block to <em>row state</em> (the live entry).</dd>
+    <dt>Kills</dt>
+    <dd>display-xxl, display-xl, the lede paragraph, the hero, the whole "featured" concept.</dd>
+    <dt>Risk</dt>
+    <dd>Cold on first contact. A first-time visitor gets no narrative framing — the standing-record header has to carry all of it in four lines.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen A — home</p>
+<div class="frame"><div class="inner">
+  <div class="led">
+    <div class="led-top">
+      <span class="led-mark">Shane Logsdon</span>
+      <span class="loc">Louisville · GMT−5 · updated 2026.07.28</span>
+    </div>
+
+    <dl class="led-standing">
+      <dt>Practice</dt>
+      <dd>Developer advocacy at Global Payments — payment APIs, SDKs, and the documentation engineers actually reach for.</dd>
+      <dt>Writing</dt>
+      <dd>Developer platforms, payments infrastructure, and AI-assisted engineering. 41 pieces, oldest 2024.</dd>
+      <dt>Also</dt>
+      <dd>A small web-presence practice for local business owners — build, AEO, ongoing management.</dd>
+      <dt>Reachable</dt>
+      <dd>shane@shanelogsdon.com — I answer.</dd>
+    </dl>
+
+    <div class="led-tablehead">
+      <span>Date</span><span>Piece</span><span>Read</span><span>No.</span>
+    </div>
+
+    <a class="led-row led-row--now" href="#">
+      <span class="led-date">2026.07.28</span>
+      <span class="led-title">The split audience
+        <span class="sub">Writing for the human and the retrieval system at the same time</span>
+      </span>
+      <span class="led-len">9 min</span>
+      <span class="led-no">041</span>
+    </a>
+    <a class="led-row" href="#">
+      <span class="led-date">2026.07.17</span>
+      <span class="led-title">Loop &amp; Gate — the build field guide
+        <span class="sub">Eleven gates, each carrying a decision I actually made</span>
+      </span>
+      <span class="led-len">22 min</span>
+      <span class="led-no">040</span>
+    </a>
+    <a class="led-row" href="#">
+      <span class="led-date">2026.07.13</span>
+      <span class="led-title">Building on the margins
+        <span class="sub">What a full-time job leaves you, and what it doesn't</span>
+      </span>
+      <span class="led-len">7 min</span>
+      <span class="led-no">039</span>
+    </a>
+    <a class="led-row" href="#">
+      <span class="led-date">2026.06.18</span>
+      <span class="led-title">Evaluating agentic workflows
+        <span class="sub">If this breaks next month, what turns red?</span>
+      </span>
+      <span class="led-len">14 min</span>
+      <span class="led-no">038</span>
+    </a>
+    <a class="led-row" href="#">
+      <span class="led-date">2026.05.18</span>
+      <span class="led-title">The specification boundary
+        <span class="sub">Where the spec stops and the implementation starts owning the decision</span>
+      </span>
+      <span class="led-len">11 min</span>
+      <span class="led-no">037</span>
+    </a>
+
+    <div class="led-foot">
+      <span>Showing 5 of 41 · <a href="#">full index</a> · <a href="#">RSS</a></span>
+      <span>shanelogsdon.com / 001</span>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ B — MARGINALIA ══════════════ -->
+<section class="spec" id="b">
+  <div>
+    <p class="spec-id">Direction B</p>
+    <h2>Marginalia</h2>
+    <p class="thesis">
+      Navigation, dates, cross-references and asides all live in a fixed left margin rail set against the text
+      column by a single vertical hairline. The body column is never interrupted — no inline chrome, no
+      breadcrumb, no top nav bar. It reads like an annotated edition: the apparatus is beside the text, not
+      wrapped around it.
+    </p>
+    <p class="thesis">
+      Trend it refuses: the persistent top navigation bar, and the "sticky header that shrinks on scroll."
+      Wayfinding is a margin note, which is where scholarly publishing has kept it for four hundred years.
+    </p>
+  </div>
+  <dl>
+    <dt>Structural commitment</dt>
+    <dd>Two-track asymmetric page — <code>20ch</code> rail + 1px spine + <code>62ch</code> measure. The rail is right-aligned against the spine so both columns share one hard edge.</dd>
+    <dt>Type reassignment</dt>
+    <dd>A real drop initial on the H1 (Fraunces 500 at 1.5em, sunk into the line) replaces the olive type-accent as the emphasis device. Superscript mono markers key body text to rail notes.</dd>
+    <dt>Palette delta</dt>
+    <dd>Olive demoted to reference markers only — the superscripts and rail-note numbers. It never touches display type.</dd>
+    <dt>Kills</dt>
+    <dd>Top nav, the running-head/folio pair as separate primitives (running head absorbs both), inversion blocks entirely.</dd>
+    <dt>Risk</dt>
+    <dd>The rail is dead weight below ~900px and has to collapse to a stacked block — mobile loses the idea. Needs a real answer, not a media-query shrug.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen B — home</p>
+<div class="frame"><div class="inner">
+  <div class="mar">
+    <div class="mar-runhead">
+      <span>shane logsdon · payments &amp; developer platforms</span>
+      <span>louisville, kentucky</span>
+    </div>
+
+    <div class="mar-body">
+      <div class="mar-rail">
+        <div class="mar-note">
+          <b>elsewhere</b>
+          <a href="#">writing (41)</a><br>
+          <a href="#">speaking</a><br>
+          <a href="#">local business practice</a><br>
+          <a href="#">about</a>
+        </div>
+        <div class="mar-note">
+          <span class="num">1.</span> Global Payments — developer advocacy. Payment APIs, SDKs, reference docs.
+        </div>
+        <div class="mar-note">
+          <span class="num">2.</span> Build, AEO, and ongoing management for owners who'd rather not think about it.
+          <a href="#">the practice →</a>
+        </div>
+        <div class="mar-note">
+          <b>reachable</b>
+          shane@shanelogsdon.com
+        </div>
+      </div>
+
+      <div class="mar-spine"></div>
+
+      <div class="mar-main">
+        <h1><span class="drop">S</span>ystems that get found.</h1>
+        <p class="stand">
+          I build developer-experience infrastructure at enterprise scale<sup>1</sup> — the APIs, SDKs, and
+          documentation engineers actually reach for. I write here about developer platforms, payments, and
+          AI-assisted engineering.
+        </p>
+        <p>
+          I also run a small web-presence practice for local business owners<sup>2</sup>, which is where most of
+          what I know about being found — by people and by retrieval systems — gets tested against someone
+          else's revenue.
+        </p>
+
+        <hr class="rule-break">
+
+        <ol class="mar-list">
+          <li><span class="n">041</span><span><a href="#">The split audience</a><span class="when">2026.07.28 · 9 min</span></span></li>
+          <li><span class="n">040</span><span><a href="#">Loop &amp; Gate — the build field guide</a><span class="when">2026.07.17 · 22 min</span></span></li>
+          <li><span class="n">039</span><span><a href="#">Building on the margins</a><span class="when">2026.07.13 · 7 min</span></span></li>
+          <li><span class="n">038</span><span><a href="#">Evaluating agentic workflows</a><span class="when">2026.06.18 · 14 min</span></span></li>
+          <li><span class="n">037</span><span><a href="#">The specification boundary</a><span class="when">2026.05.18 · 11 min</span></span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mar-colophon">
+      <p>
+        Set in Fraunces and IBM Plex Sans. Written in Louisville, Kentucky. Source and corrections:
+        <a href="#">github.com/slogsdon</a>. If something here is wrong, tell me and I'll fix it with a dated note.
+      </p>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ C — BROADSHEET ══════════════ -->
+<section class="spec" id="c">
+  <div>
+    <p class="spec-id">Direction C</p>
+    <h2>Broadsheet</h2>
+    <p class="thesis">
+      Density as the position. Five pieces of content compete for attention on a single screen across three
+      unequal columns divided by hairlines, the way a front page works. Nothing is centered, nothing is
+      spaced out to breathe. The reader is trusted to scan.
+    </p>
+    <p class="thesis">
+      Trend it refuses: whitespace-as-luxury. The dominant 2026 register signals seriousness by giving one idea
+      the whole viewport. This one signals it by having enough to say that one idea can't have the whole viewport.
+    </p>
+  </div>
+  <dl>
+    <dt>Structural commitment</dt>
+    <dd>Asymmetric three-column grid (<code>1.55 / 1 / 0.82</code>) with 1px column rules, a centered masthead, and a 2px strap rule. Stories are ranked by column width, not by card size.</dd>
+    <dt>Type reassignment</dt>
+    <dd>Fraunces 700 appears for the first time — masthead only. Display scale <em>drops</em> to 44px; the lede headline earns rank from column width instead of point size. Drop cap on the lead story.</dd>
+    <dt>Palette delta</dt>
+    <dd>Olive becomes the kicker color (the category line above a story) — a real recurring semantic role rather than one accented word.</dd>
+    <dt>Kills</dt>
+    <dd>display-xxl and display-xl outright. Generous spacing tokens (<code>--s-9</code>, <code>--s-10</code>) unused. Any section that occupies a full screen alone.</dd>
+    <dt>Risk</dt>
+    <dd>Density is one bad line-length away from noise, and it's the hardest of the five to hold as new content types arrive. Mobile is a full re-think, not a stack.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen C — home</p>
+<div class="frame"><div class="inner">
+  <div class="bro">
+    <div class="bro-mast">
+      <div class="side">
+        Vol. 3<br>
+        Louisville, Kentucky<br>
+        GMT−5
+      </div>
+      <div class="name">Shane Logsdon</div>
+      <div class="side r">
+        Tuesday, 28 July 2026<br>
+        41 pieces in the index<br>
+        shanelogsdon.com
+      </div>
+    </div>
+
+    <div class="bro-strap">
+      <span>payments · developer platforms · ai-assisted engineering</span>
+      <span>writing · speaking · practice · about</span>
+    </div>
+
+    <div class="bro-grid">
+      <!-- lead column -->
+      <div class="bro-col">
+        <p class="bro-kicker">Lead · retrieval</p>
+        <h2 class="bro-lede">
+          The split audience
+          <em>Writing for the human and the retrieval system at the same time</em>
+        </h2>
+        <div class="bro-byline">By Shane Logsdon · 2026.07.28 · 9 min</div>
+        <p class="bro-text drop">
+          Every page you publish now has two readers, and they want opposite things. The human wants the argument
+          to unfold. The retrieval system wants the answer stated flat, early, and attributably — and it will
+          reward you for it whether or not the human ever sees the paragraph it lifted.
+        </p>
+        <p class="bro-text">
+          The reflex is to pick one and lose the other: write for the model and you produce answer-shaped mush no
+          person finishes; write purely for the person and you're invisible to the thing that now decides what
+          gets surfaced. The way through is structural, not stylistic.
+        </p>
+        <h3 class="bro-sub">What actually changed</h3>
+        <p class="bro-text">
+          Not the writing. The unit of retrieval. A model doesn't index your essay — it indexes the paragraph
+          that answered the question, stripped of everything that made it yours.
+        </p>
+      </div>
+
+      <div class="bro-vr"></div>
+
+      <!-- second column -->
+      <div class="bro-col">
+        <p class="bro-kicker">Also this month</p>
+        <h3 class="bro-lede" style="font-size:26px; line-height:1.08;">Loop &amp; Gate — the build field guide</h3>
+        <div class="bro-byline">2026.07.17 · 22 min</div>
+        <p class="bro-text">
+          Eleven gates, each one carrying a decision I actually made and one I got wrong. The kill gate is the
+          hardest: I ran my own product through it and killed the framing, not the tech.
+        </p>
+        <hr class="bro-hair">
+        <p class="bro-kicker">From the practice</p>
+        <h3 class="bro-lede" style="font-size:22px; line-height:1.12;">Building on the margins</h3>
+        <div class="bro-byline">2026.07.13 · 7 min</div>
+        <p class="bro-text">
+          What a full-time job leaves you, and what it doesn't. Written after a week where the answer was
+          "not much," which is the week worth writing about.
+        </p>
+      </div>
+
+      <div class="bro-vr"></div>
+
+      <!-- rail column -->
+      <div class="bro-col">
+        <p class="bro-kicker">The index</p>
+        <div class="bro-item"><a href="#">Evaluating agentic workflows</a><span class="m">2026.06.18 · 14 min</span></div>
+        <div class="bro-item"><a href="#">The specification boundary</a><span class="m">2026.05.18 · 11 min</span></div>
+        <div class="bro-item"><a href="#">The spec is the work</a><span class="m">2026.05.11 · 8 min</span></div>
+        <div class="bro-item"><a href="#">LLM context files are deliverables</a><span class="m">2026.05.04 · 10 min</span></div>
+        <div class="bro-item" style="border-bottom:0;"><a href="#">The payments primitive</a><span class="m">2026.05.02 · 12 min</span></div>
+
+        <div class="bro-boxed">
+          <h4>for local business owners</h4>
+          <p>
+            Website build, AEO, and ongoing management — a small practice, taken one owner at a time. Pricing is
+            on the page; you can reach me directly.
+          </p>
+          <a href="#">See what it costs →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bro-foot">
+      <span>shane@shanelogsdon.com · I answer</span>
+      <span>Set in Fraunces &amp; IBM Plex Sans</span>
+      <span>RSS · GitHub · LinkedIn</span>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ D — PLATE ══════════════ -->
+<section class="spec" id="d">
+  <div>
+    <p class="spec-id">Direction D</p>
+    <h2>Plate</h2>
+    <p class="thesis">
+      The v2 inversion becomes the page. Ink is the surface, cream is the type, and everything sits inside a
+      single hairline frame with a hard margin around it — a printed plate rather than a screen. Olive is
+      promoted to the only other color and does real work: labels, live states, the one word that matters.
+    </p>
+    <p class="thesis">
+      Trend it refuses: dark mode as a toggle and as a dev-tool signifier. This isn't a theme — there's no light
+      version of it. It also refuses the near-black-with-blue-glow register that every AI product ships; the
+      surface is the same ink already in the system, and nothing glows.
+    </p>
+  </div>
+  <dl>
+    <dt>Structural commitment</dt>
+    <dd>Full-bleed ink with a 26px margin and a 1px cream frame; every division inside is a frame line, not a gap. The page is a plate you look at, not a document you scroll through.</dd>
+    <dt>Type reassignment</dt>
+    <dd>Fraunces 300 at cover scale — the light optical cut reads correctly on dark where 400 blooms. Weight contrast inside a single headline (300 against 600) replaces the accent-word device.</dd>
+    <dt>Palette delta</dt>
+    <dd>The only real token change in the set: olive lifts to <code>#a8c06a</code> on ink. The v2 olive measures <strong>3.2:1</strong> against <code>#0e1116</code> — large-text-only, and it fails AA for the 10–13px labels this direction puts it on; the lifted value measures <strong>9.4:1</strong>. Cream/ink swap roles wholesale.</dd>
+    <dt>Kills</dt>
+    <dd>The cream page. <code>--surface-muted</code> and <code>--surface-feature</code> both become dead tokens. Hover-fill states (nothing to fill toward).</dd>
+    <dt>Risk</dt>
+    <dd>Long-form reading on dark is genuinely worse, and reading is the site's whole job. Honest version of this direction is dark shell + cream article pages, which is a compromise worth naming out loud.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen D — home</p>
+<div class="frame"><div class="inner">
+  <div class="plt">
+    <div class="plt-frame">
+      <div class="plt-top">
+        <span>Shane Logsdon · Payments &amp; Developer Platforms</span>
+        <span>Louisville · 2026.07.28</span>
+      </div>
+
+      <div class="plt-hero">
+        <h1>Systems<br>that get <span class="weight ol">found</span>.</h1>
+        <p class="lede">
+          I lead developer advocacy at Global Payments, building developer-experience infrastructure at
+          enterprise scale — the payment APIs, SDKs, and documentation engineers actually reach for.
+        </p>
+      </div>
+
+      <div class="plt-meta">
+        <div>
+          <dt>Writing</dt>
+          <dd>Developer platforms, payments, and AI-assisted engineering. <a href="#">41 pieces →</a></dd>
+        </div>
+        <div>
+          <dt>Practice</dt>
+          <dd>Web presence for local business owners — build, AEO, management. <a href="#">What it costs →</a></dd>
+        </div>
+        <div>
+          <dt>Reachable</dt>
+          <dd><a href="#">shane@shanelogsdon.com</a> — I answer, and there's no form in between.</dd>
+        </div>
+      </div>
+
+      <div class="plt-index">
+        <a href="#"><span class="d">2026.07.28</span><span class="t">The split audience</span><span class="a">9 min</span></a>
+        <a href="#"><span class="d">2026.07.17</span><span class="t">Loop &amp; Gate — the build field guide</span><span class="a">22 min</span></a>
+        <a href="#"><span class="d">2026.07.13</span><span class="t">Building on the margins</span><span class="a">7 min</span></a>
+        <a href="#"><span class="d">2026.06.18</span><span class="t">Evaluating agentic workflows</span><span class="a">14 min</span></a>
+        <a href="#"><span class="d">2026.05.18</span><span class="t">The specification boundary</span><span class="a">11 min</span></a>
+      </div>
+
+      <div class="plt-sig">
+        <span>Set in Fraunces &amp; IBM Plex Sans</span>
+        <span>RSS · GitHub · LinkedIn</span>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ E — EXPOSED GRID ══════════════ -->
+<section class="spec" id="e">
+  <div>
+    <p class="spec-id">Direction E</p>
+    <h2>Exposed Grid</h2>
+    <p class="thesis">
+      The 12-column grid stops being invisible scaffolding and becomes the visible surface. Column rules run
+      the full height of the page; every element hard-aligns to a line; empty cells are left empty on purpose
+      rather than filled with something. The structure is the ornament — there is no other ornament.
+    </p>
+    <p class="thesis">
+      Trend it refuses: the soft-container look — a max-width column floating in undifferentiated space with
+      rounded panels, where nothing tells you why anything is that wide. Here the width of every block is
+      legible as a count of columns.
+    </p>
+  </div>
+  <dl>
+    <dt>Structural commitment</dt>
+    <dd>Drawn 12-column field. Content spans stated column counts (<code>1–7</code>, <code>8–12</code>) and never floats between rules. Deliberate voids: the hero occupies 7 of 12 and the remaining 5 stay blank.</dd>
+    <dt>Type reassignment</dt>
+    <dd>Everything flush-left to a grid line, no optical adjustment. Mono set vertically in a margin column as the running mark — the only rotated type in the system.</dd>
+    <dt>Palette delta</dt>
+    <dd>Ink fills <em>cells</em>, not bands: one entry per section is an ink-filled cell in the grid, so inversion becomes a positional device you can point at on the grid.</dd>
+    <dt>Kills</dt>
+    <dd>The centered container. Any element whose width isn't a column count. Soft section breaks — all divisions are grid lines.</dd>
+    <dt>Risk</dt>
+    <dd>Closest of the five to Swiss-revival, which has its own convergence problem. It stays distinct only if the voids stay genuinely empty; the first time a cell gets filled "because it looked bare," the direction is gone.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen E — home</p>
+<div class="frame"><div class="inner">
+  <div class="exg">
+    <div class="exg-rules" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="exg-inner">
+      <div class="exg-top">
+        <b>Shane Logsdon</b>
+        <span>writing · speaking · practice · about</span>
+        <span>Louisville · GMT−5 · 2026.07.28</span>
+      </div>
+
+      <div class="exg-cell flush-l" style="grid-column: 1 / 8;">
+        <h1>Systems that get found.</h1>
+        <p class="sub">
+          Developer advocacy at Global Payments — payment APIs, SDKs, and the documentation engineers actually
+          reach for. I write here about developer platforms, payments, and AI-assisted engineering.
+        </p>
+      </div>
+      <div class="exg-cell" style="grid-column: 12 / 13;">
+        <div class="exg-mark">Payments · Dev platforms</div>
+      </div>
+
+      <div class="exg-sect">
+        <div class="exg-lbl" style="grid-column: 1 / 3;">selected writing</div>
+        <a class="exg-entry exg-fill" style="grid-column: 3 / 7;" href="#">
+          <span class="k">2026.07.28 · 9 min</span>
+          <h3 class="h">The split audience</h3>
+          <p class="p">Writing for the human and the retrieval system at the same time — and why picking one loses both.</p>
+        </a>
+        <a class="exg-entry" style="grid-column: 7 / 10;" href="#">
+          <span class="k">2026.07.17 · 22 min</span>
+          <h3 class="h">The build field guide</h3>
+          <p class="p">Eleven gates, each carrying a real decision. Including the one where I killed my own framing.</p>
+        </a>
+        <a class="exg-entry" style="grid-column: 10 / 13;" href="#">
+          <span class="k">2026.07.13 · 7 min</span>
+          <h3 class="h">Building on the margins</h3>
+          <p class="p">What a full-time job leaves you, and what it doesn't.</p>
+        </a>
+      </div>
+
+      <div class="exg-sect">
+        <div class="exg-lbl" style="grid-column: 1 / 3;">the practice</div>
+        <a class="exg-entry" style="grid-column: 3 / 8;" href="#">
+          <span class="k">local business owners</span>
+          <h3 class="h">Website build, AEO, ongoing management</h3>
+          <p class="p">A small practice, one owner at a time. Pricing is on the page and you can reach me directly — shane@shanelogsdon.com.</p>
+        </a>
+      </div>
+
+      <div class="exg-foot">
+        <span>Set in Fraunces &amp; IBM Plex Sans</span>
+        <span>RSS · GitHub · LinkedIn</span>
+        <span>shanelogsdon.com</span>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+</body>
+</html>

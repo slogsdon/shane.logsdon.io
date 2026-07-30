@@ -1,11 +1,12 @@
 ---
-version: alpha
-name: Shane Logsdon (v2)
-description: Editorial system for a technical product leader at the intersection of payments and developer platforms. Fraunces display + small-caps + Inter sans + JetBrains Mono (technical-only). Single olive green accent used as both status signal AND deliberate type accent. Real publication conventions — folios, running heads, varied dividers — replace AI-default editorial cosplay.
+version: v3
+name: Shane Logsdon (v3)
+description: Drafting system for a technical product leader at the intersection of payments and developer platforms. Fraunces display + small-caps, IBM Plex Sans body, JetBrains Mono technical-only. Cream/ink/olive from v2, plus a single annotation red with one strict role. The defining move of v3 is that page architecture is a function of content type — six named architectures, five chosen by an ordered test and one by position in the set — and that figures are content-bearing apparatus with entry requirements, never decoration.
 colors:
   primary: "#0e1116"
   secondary: "#62686f"
   accent: "#556b2f"
+  mark: "#c0392b"
   surface: "#fbfaf9"
   surface-feature: "#ede4d2"
   surface-muted: "#f1eee8"
@@ -68,22 +69,22 @@ typography:
     letterSpacing: 0.1em
     fontFeature: "smcp"
   lead:
-    fontFamily: Inter
+    fontFamily: IBM Plex Sans
     fontSize: 19px
     fontWeight: 400
     lineHeight: 1.6
   body-lg:
-    fontFamily: Inter
+    fontFamily: IBM Plex Sans
     fontSize: 17px
     fontWeight: 400
     lineHeight: 1.65
   body-md:
-    fontFamily: Inter
+    fontFamily: IBM Plex Sans
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.65
   meta:
-    fontFamily: Inter
+    fontFamily: IBM Plex Sans
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
@@ -133,86 +134,231 @@ components:
     fontWeight: 600
     letterSpacing: 0.1em
     fontFeature: "smcp"
+  title-block:
+    fontFamily: JetBrains Mono
+    fontSize: 12px
+    labelSize: 9px
+    labelLetterSpacing: 0.12em
+  callout:
+    size: 17px
+    borderColor: "{colors.mark}"
+    rounded: "{rounded.full}"
 ---
 
 <!--
-Variation choices (v2):
-  surface:        warm cream (#fbfaf9) — page is COMMITTED to cream; the canonical "feature" treatment is a dark-inversion block (--color-ink bg + cream text), not a tonal warm-on-warm shift
-  accent:         single-color olive green, used in TWO roles — semantic status AND deliberate type accent (one word per surface)
-  type-pairing:   serif-display + serif-smallcaps + sans-body + mono-technical (Fraunces does double duty for display AND editorial labels; mono restricted to genuinely technical contexts)
-  radius:         hairline (1–2px on rare occasions; otherwise zero — more architectural)
-  spacing:        8px-base, with display-scale jumps (96px / 144px) for editorial cover treatments
+Directory note: the folder slug stays `shane-personal-v2` even though the system
+inside it is v3. The `publish-post` workflow hardcodes that slug in ~15 places;
+renaming the folder would strand the publish pipeline on a stale system. Rename
+only alongside an update to `skills-workflows/skills/publish-post/SKILL.md`.
 
-Diff from v1 (key changes):
-  + display-xxl (144px) and display-xl (96px) added for true editorial cover scale
-  + Fraunces small-caps tokens replace JetBrains Mono as default editorial label
-  + JetBrains Mono restricted to "dateline" + "code" tokens only — actually-technical use
-  + paper-feature (#ede4d2) added as a deliberate tonal register for hero treatments
-  + ink darkened (#0e1116 from #181b21) for more architectural register
-  + body sizes shifted up (17/19px) to match real publication body settings
-  + measure tightened (64ch from 68ch) for denser editorial column
-  - signal palette (--ok/--warn/--info) removed — they don't belong to this brand
-  - § sigil dropped from default eyebrow chrome (kept only on long-form article index)
-  - folio + running-head + wordmark added as named component primitives
+Diff from v2 (key changes):
+  + --color-mark (#c0392b) added — annotation red, one strict role (see Colors)
+  + SIX NAMED ARCHITECTURES + an ORDERED TEST that derives one from the
+    content — the defining change of v3. The mapping table is worked examples.
+    (F · Frontispiece added last: Home fell through all five ordered questions
+    because it is defined by position in the set rather than by content, and a
+    front door with no named architecture is a front door that gets improvised.)
+  + Figure taxonomy — six figure types, each with a stated entry requirement
+    (Sourced chart added after auditing the DevRel series, which is research-
+    backed where the 2026 posts were prose-argument; nothing covered a
+    verified third-party statistic)
+  + Title block promoted to a named primitive; carries revision state on Sheet
+    pages (it does not replace the site footer)
+  + Drawing classes (.s-ink / .s-edge / .s-mark / .s-rule / .f-* / .hatch) so
+    inline SVG inherits the palette instead of hard-coding hex
+  + Site-wide components documented: newsletter, contact CTA, author bio,
+    post-list row, index strip, audit form, footer
+  + List ordering is normative: date descending, 001 = newest, category is a
+    FILTER not a grouping
+  ! FIXED: v2 documented Inter as the body family in both frontmatter and prose.
+    The site has always shipped IBM Plex Sans (tailwind.config.js). Inter is on
+    the anti-pattern list; the docs were wrong, not the site.
+  - Zone references / rulers removed from the Sheet architecture. They looked
+    like a system but addressed nothing — no content ever cited a zone.
 -->
 
-# Shane Logsdon — Design System (v2)
+# Shane Logsdon — Design System (v3)
 
 ## Overview
 
-A design language for a technical product leader at the intersection of payments and developer platforms. Editorial register — the typographic moves come from publication tradition (display set at cover scale, Fraunces small caps for labels, folios in corners, running heads at top edges) rather than UI tradition. Type does the work; the single olive accent serves two roles — interaction signal AND deliberate type accent on the subject word of a page. The system has fewer components than v1 but each is more idiosyncratic; the page's typographic personality replaces inventory completeness.
+A drafting language for a technical product leader at the intersection of payments and developer platforms. v2 established the editorial register — Fraunces at publication scale, small-caps labels, hairline rules, a committed cream page. v3 keeps all of it and adds the thing v2 lacked: **a rule for choosing a page's shape.**
+
+The defining idea is that **architecture is a function of content type.** There are six named architectures: five derived from the content by an ordered test, and **F · Frontispiece**, which is decided by a page's position in the set rather than by what it contains. A reader who lands on a sequence gets a sequence; a reader who lands on a reference page gets a title block telling them when it was last true. The second idea is that **figures are apparatus, not ornament** — dimensioned drawings, hatched regions, and numbered callouts that carry information the prose would otherwise have to carry badly, each with a stated requirement it must meet before it may be used.
 
 ## Colors
 
-Paper, ink, one accent — held strictly. **Surface (#fbfaf9)** is the primary warm cream — the page is committed to it. The canonical "feature" treatment is a **dark inversion block** (background `--color-ink`, text `--color-surface`) used as a punctuation device — a register flip within the committed cream system. The earlier `--color-surface-feature` (aged-clay) is reserved as a token but no longer used as a background; warm-on-warm read as a temperature mismatch, and the dark inversion does the feature job more decisively. **Ink (#0e1116)** is darker than v1 (#181b21 was too gentle); this is near-true-black with a slight blue cast, set against cream for an architectural register. When ink becomes the surface (inversion blocks), the page-level cream becomes the text. **Accent (#556B2F)** does double duty — its semantic role (active states, hover, status) AND a deliberate type-accent role (one word per surface, set in olive Fraunces, used to mark the subject of the page). The signal palette (ok-green, warn-amber, info-blue) is removed; this brand doesn't have a use for it.
+Paper, ink, one accent, one mark. **Surface (#fbfaf9)** is the committed warm cream, unchanged. **Ink (#0e1116)** is the near-black with a slight blue cast. **Accent (#556B2F)** — olive — keeps both of its v2 roles: interaction states, and a deliberate type accent on the subject word of a page.
+
+**Mark (#c0392b)** is the one addition in v3: annotation red. It has exactly one job — marking what a drawing calls out. Dimension lines and their witness marks, callout bubbles, hatch fill, a correction, the one value that turned red. It never styles a heading, never marks a link, and never appears on a page that has no drawing on it. If you can't point at what it is annotating, it doesn't belong.
+
+The dark **inversion block** remains the canonical feature treatment (background `--color-ink`, text `--color-surface`) and is what the contact CTA is built from. `--color-surface-feature` (aged clay) stays a reserved token and is still not used as a background.
+
+Contrast note: olive on ink measures 3.2:1 — large-text only. Do not put `--color-accent` on `--color-ink` at label sizes. Inside an inversion block, links use the cream text color, not olive.
 
 ## Typography
 
-Two families do the typographic work; mono is reserved for technical contexts. **Fraunces** carries the entire display range (24 → 144px) AND replaces mono as the editorial label face — small-caps cuts at 12 / 14px set with 0.08–0.1em tracking. The small-caps treatment is the signature swap from v1: it replaces the AI-default "mono caps for techy editorial labels" pattern with the publication-tradition Fraunces small caps that magazines have used for centuries. **Inter** carries body, lead, and meta with feature settings `ss01` and `cv11` on. **JetBrains Mono** is restricted to TWO tokens: `dateline` (timestamps in folio strips) and `code` (actual code samples). Anywhere else mono appears is a misuse.
+Two families do the work; mono is technical-only. **Fraunces** carries the whole display range (24 → 144px) and the small-caps editorial labels at 12/14px with 0.08–0.1em tracking. **IBM Plex Sans** carries lead, body, and meta. **JetBrains Mono** is restricted to `dateline`, `code`, folios, title-block values, and text set inside drawings — anywhere else is a misuse.
+
+IBM Plex Sans is the body family, matching `tailwind.config.js`. v2's docs said Inter; that was a documentation error and Inter remains forbidden by the anti-pattern list.
 
 ## Layout
 
-Container 1180px; gutter 24px; measure 64ch (tightened from v1's 68ch — denser column rhythm). 12-column grid for editorial layouts. Spacing scale stays the same (4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 144px) but the upper end (144px) is now used as section breaks in long-form layouts — bigger jumps create real visual rhythm. NEW: column rules. A 1px vertical line in `--rule` between text columns and between margin/body in marginalia treatments.
+Container 1180px; gutter 24px; measure 64ch. Spacing scale unchanged (4 → 144px), with the upper end used for section breaks. Every architecture sets its own internal grid — see below — but all of them sit inside the same container and share the same rule weight.
 
 ## Elevation & Depth
 
-Strictly flat (unchanged from v1). Hierarchy comes from: type weight + scale, the single olive accent, and **whitespace as the primary divider**. Rules are **1px max, always** — heavier rules read as visible lines rather than surface divisions, which is the wrong register for editorial work. Where a stronger division is needed, increase the spatial gap (96–144px) rather than the rule weight. Column rules (vertical 1px in gutters) are the one place hairlines are doing structural work. No shadows, no card lifts, no z-axis treatment.
+Strictly flat. Hierarchy comes from type weight and scale, the accent, and whitespace. **Rules are 1px, always** — and drawings are drawn at 1px too, so a diagram and the page share a single line weight. That shared weight is what makes the figures read as part of the page rather than as pasted-in images. Major divisions are communicated by spatial gap (96–144px), never by a heavier rule. No shadows, no card lifts.
 
 ## Shapes
 
-Zero radius across the board. The 2px brand-default of v1 is dropped — sharper corners read more architectural and remove the "considered slight softness" tell. The only exception is `rounded.full` for circular avatars, which still appear sparingly. Pills and status indicators that used `rounded.full` in v1 are replaced with rectangular shapes at zero radius.
+Zero radius across the board. The two exceptions are `rounded.full` for avatars and for the **callout bubble** — a 17px circle in annotation red carrying a figure reference number. Filled buttons remain absent from the system; `.btn-arrow` is the only button.
+
+## Architectures
+
+Six. Five are earned by a kind of content and one by position in the set. **The ordered test below is what's normative**; the mapping table after it is worked examples, not the extent of the system. A page type that isn't in the table is answered by running the test, then added as a row citing the question that decided it.
+
+1. **A · Drawing First** — the figure opens the page at full width and the prose beneath it is the *key*, numbered to the callouts. The headline is demoted below the drawing. Requires a piece that genuinely reduces to one drawing; has no honest fallback without one.
+2. **B · Facing Spread** — two equal columns divided by a hairline gutter, argument left and apparatus right, locked to horizontal registration lines that cross both so a figure always sits level with the paragraph citing it. The right column is content, not chrome.
+3. **C · Sheet** — a hairline-bordered field with a **title block** in the lower right carrying sheet number, revision, date, and author. The border is `--color-rule` at 1px like every other division on the page; it shipped once as 2px ink and read as a slab. Weight belongs to the title block's top rule, which is the only ink line on the sheet. The title block sits inside the field and carries the sheet's own metadata. It does **not** replace the site footer, which carries navigation the title block has no business carrying. Newsletter and footer follow it as on every other page. No zone references or edge rulers: they looked systematic but addressed nothing.
+4. **D · Assembly Order** — a numbered sequence down a central axis, text and detail drawing alternating sides. Steps are addressable, so a reader can enter at step 4. The strongest architecture on mobile: the axis slides left and everything stacks.
+5. **E · Set** — a permanent list column beside the open item. Navigation never leaves the page and the size of the body of work stays legible.
+6. **F · Frontispiece** — the title sheet of the set. It names the work, states position, and indexes what follows. It carries no argument, so it carries no figure. A site has exactly one. The recent-work list on it is the **sheet index**, not a nested Set, and that is the one place the no-nesting rule takes an explicit exception.
+
+   F is reached when a page is the single entry point to the whole set. That is a question about position rather than content, which is why the five ordered questions below do not find it. Home fell through all five and was briefly headed for a "None" row, which would have left the next person to touch the front door improvising. Improvised layout is the failure this system exists to prevent, so the architecture is named instead.
+
+### Choosing an architecture
+
+**First, one question that is not about content:** is this page the single entry point to the whole set? If yes, it is **F · Frontispiece** and the five below do not apply. Exactly one page in a site can answer yes. Ask it first because position outranks content: the front door is the front door whatever it happens to say this month.
+
+Then ask these five questions **in this order** and stop at the first yes. The order is the rule — several will often be true at once, and the earlier question wins because it describes the reader's job rather than the author's intent.
+
+1. **Does the page's job stop at browsing a body of work?** → **E · Set**
+   The reader came to scan and pick, not to read this page. If the page would still work with every item replaced, it's a Set.
+2. **Is the content genuinely sequential — does step 3 depend on step 2?** → **D · Assembly Order**
+   Test it by reordering: if shuffling the items breaks the meaning, it's an assembly. If it doesn't, you have a list and the numbering would be a lie.
+3. **Will the page be *revised over time*, so that which version you're reading matters?** → **C · Sheet**
+   Revision, not citation — an article gets cited constantly but is never revised, so it is not a Sheet. The test is whether the page has a *current state* that can go stale: About, Work, Resume, Contact all do. If a reader could act on an out-of-date version, it needs a title block.
+4. **Does it make several claims that each need their own evidence?** → **B · Facing Spread**
+   Count the claims. Two or more, each with a figure or a number behind it, wants registration bands.
+5. **Does the whole thing reduce to one drawing?** → **A · Drawing First**
+   The strictest test in the system: if you can't draw it, you can't use this architecture — and if you can, the prose is demoted to the drawing's key.
+
+**None fit** → the answer is a new architecture with a stated reason, added as a row below. Never blend two: a page that is half Assembly and half Set is a page whose content type hasn't been decided yet.
+
+**One page, one architecture.** Architectures don't nest. If a section of a page genuinely wants a different architecture, that section is a different page.
+
+**The one exception is F.** A Frontispiece indexes what follows, so it carries a list of recent work. That list is the **sheet index**, not a nested Set: it exists to point at the set, not to be browsed as one, which is why it is short and why it is not the page's job. No other architecture gets an exception.
+
+### The mapping
+
+The rows below are **worked examples of the questions above**, not the extent of the system. Each cites the question that decided it.
+
+| Page / content type | Architecture | Why (Q) | Figure it may carry |
+|---|---|---|---|
+| Home | F · Frontispiece | The single entry point; position decides it, not content | None |
+| Articles index | E · Set | Q1 — the job stops at browsing | None — the list is the object |
+| Article — one central idea | A · Drawing First | Q5 — reduces to one drawing | Dimensioned diagram, required |
+| Article — multi-claim argument | B · Facing Spread | Q4 — each claim faces its evidence | One figure per band |
+| Field guide / process | D · Assembly Order | Q2 — reordering the gates breaks them | One detail per step |
+| Practice / services | D · Assembly Order | Q2 — build → AEO → management is ordered | Footed price blocks |
+| About | C · Sheet | Q3 — changes, so it must say when it last did | Category share chart |
+| Work | C · Sheet | Q3 — each project carries its own revision | None — no project carries dated figures |
+| Resume | C · Sheet | Q3 — staleness is the whole risk | Career timeline |
+| Speaking | E · Set | Q1 — a catalog browses like a catalog | Talk structure timeline |
+| Archive | E · Set | Q1 — same browsing job, different subset | None |
+| Loop & Gate (product) | D · Assembly Order | Q2 — Foundation then kits is an install order | Detail per kit |
+| Local businesses (landing) | A · Drawing First | Q5 — one claim, one chart | Dimensioned diagram, required |
+| Hermes Dispatch (product) | D · Assembly Order | Q2 — route, expand, run is a pipeline | Detail per step |
+| Contact | C · Sheet | Q3 — metadata-led; title block is most of the page | None |
+| Confirmation / thanks | None. A notice, not a document | Fails all five: nothing to browse, no sequence, no state that can go stale, one statement with no evidence behind it, nothing to draw | None |
+
+## Figures
+
+Six types. A figure is additive or it doesn't ship. Each states what it requires before it may be used.
+
+| Figure | Use it for | Requires |
+|---|---|---|
+| Dimensioned diagram | A claim about proportion, or where a line sits | Two regions and a measured split you can defend |
+| Cycle | A process with a genuine return edge | Three or more stages and a real loop back |
+| Record chart | A claim about your own history or data | A file it reconciles to, named in the caption |
+| Sourced chart | A claim about data you did not produce but verified | A citable source named in the caption, **and every plotted value stated in the text** |
+| Detail | Clarifying one step of an assembly | A step that is actually unclear without it |
+| Footed table | Anything with numbers, including pricing | Figures that add up, shown adding up |
+
+**Record chart and Sourced chart stay separate on purpose.** The distinction is provenance, and provenance is exactly what a reader should be able to check. A Record chart reconciles to a file in this repo. A Sourced chart cites someone else's published figures, and its caption names them so the claim stays clickable.
+
+The Sourced chart's second requirement does the real work: **no interpolation.** Every point drawn must be a value the prose states. If an argument turns on an inflection the source never quantified, that inflection cannot be drawn, and the figure is either redrawn around what is stated or dropped. A trend line through values you inferred is invention wearing a citation.
+
+**A figure does not reflow, and it does not scale its own type.** A drawing scaled to fit a phone renders `.t-mono` at around 6px, which is a label nobody reads. Cap the SVG at its natural width and let the figure scroll horizontally inside its own container when the viewport is narrower. This is the drafting answer as well as the legible one: a drawing is the same drawing on a smaller sheet, not a smaller drawing.
+
+### Density
+
+The ceiling is **one figure per structural unit**, and the architecture defines the unit — so the page-level limit falls out of the architecture instead of being a separate number to remember.
+
+| Architecture | Unit | Figures |
+|---|---|---|
+| A · Drawing First | the page | Exactly one. A second figure means it didn't reduce to one drawing, so it was the wrong architecture. |
+| B · Facing Spread | the registration band | At most one per band. A band with two figures is two bands. |
+| C · Sheet | the field | At most one. The title block is not a figure. |
+| D · Assembly Order | the step, plus the intro | At most one detail per step; steps may have none. The intro may carry **one** summary figure — a footed total, a cycle — standing for the assembly as a whole. |
+| E · Set | the open pane | At most one. The list is not a figure. |
+| F · Frontispiece | the page | **None.** It carries no argument, so there is nothing for a figure to be evidence for. A figure here is decoration by definition. |
+
+Three further limits:
+
+- **Three callouts per figure, maximum.** A drawing needing a fourth is two drawings, and splitting it is always the better fix than shrinking the numbers.
+- **No figure repeats another figure on the same page.** Restating the same data twice is the clearest sign one of them is decoration.
+- **A page may have zero figures.** Nothing in the system requires one — Articles index, Archive, and Contact all ship without. Reaching for a figure to fill space is the failure this taxonomy exists to prevent.
+
+Drawings are authored as inline SVG using the drawing classes in `tokens.css` (`.s-ink`, `.s-edge`, `.s-mark`, `.s-rule`, `.f-*`, `.hatch`) so they inherit the palette. Never hard-code hex inside a figure.
+
+**Trap worth knowing:** a rect that carries `fill="url(#hatch)"` must use `.s-edge`, not `.s-ink`. `.s-ink` declares `fill: none`, and CSS beats the presentation attribute, which silently erases the hatch.
 
 ## Components
 
-Five named primitives replace v1's full inventory:
+Named primitives, plus the site-wide components that must survive under all six architectures.
 
-1. **Wordmark** (`Shane Logsdon` set in Fraunces 600 at 22px) — replaces v1's `SL · | · Shane Logsdon` three-element brand mark. The wordmark IS the mark, no decoration.
-2. **Folio** (mono dateline + page-position in lower corners — e.g. `2026.05.02 / 003`) — a publication convention that replaces the v1 footer-row pattern.
-3. **Running head** (Fraunces small caps, 12px, 0.1em tracking) — appears at the TOP edge of artifacts and spreads, holding the article/section title. Replaces the AI-default "eyebrow above headline" pattern.
-4. **Editorial label** (Fraunces small caps, 14px, 0.08em tracking) — replaces v1's mono eyebrow. Used inline (e.g. `LEAD —`, `SECTION —`) NOT as a chrome strip.
-5. **Article row** (kept from v1, but with column rules and a tightened measure)
+**Primitives:** Wordmark · Folio (mono dateline + position) · Running head (Fraunces small caps at the top edge) · Editorial label (Fraunces small caps, inline) · **Title block** (new in v3) · **Callout bubble** (new in v3) · Article row.
 
-Buttons: only `.btn-arrow` (text link with trailing arrow); the filled `.btn` is removed entirely from the system. Filled buttons read as SaaS chrome regardless of how they're styled — a senior editorial AD wouldn't have one.
+| Site-wide component | Where it appears | Shape |
+|---|---|---|
+| Newsletter | Above the footer, every page | 4/8 split, underline input + `.btn-arrow`. Renders nothing until `KIT_FORM_ID` is set, so no broken form ever ships |
+| Contact CTA | Home, About, articles, archive, guides | The inversion block. 3/9 split, parameterized eyebrow/title/body, exactly one action |
+| Author bio | Article and field-guide layouts | 72×96 headshot + bio, after the body, before the CTA |
+| Post-list row | Articles, Speaking, Archive | Folio (number + date) · title + description · category + read time |
+| Index strip | Above every list | Count folio (`009 entries`) + category filter tabs, or `archive` on Speaking |
+| Audit form | Practice pages only | Underline fields, small-caps labels, one arrow submit. Deliberately not on `/contact/` |
+| Footer | Site-wide | Folio date + small-caps link row |
+
+### Lists
+
+Normative: **ordered by date descending, always.** Numbering runs `001` = newest. Category is metadata on the row and a **filter** above the list — never a grouping, because grouping breaks the only ordering a reader can predict.
+
+### Weighting
+
+The local web-presence practice is **deliberately downplayed**: footer link only, never in the primary nav, and one muted line on the home page with no heading and no figure. The primary nav is About · Articles · Speaking · Work · Resume. The audit funnel lives on the practice pages, not on `/contact/`, which stays general-purpose.
 
 ## Do's and Don'ts
 
-- **Do** push display headlines to publication scale (96–144px for hero contexts)
-- **Do** use Fraunces small caps as the default editorial label; reserve JetBrains Mono for dateline + code only
-- **Do** use the olive accent as a deliberate TYPE accent — one word per surface, set in olive Fraunces, marking the subject of the page
-- **Do** keep all rules at 1px max. Major divisions communicated through whitespace (96–144px gaps) — never thicker rules.
-- **Do** drop a rule entirely when whitespace alone can carry the division. A gap is usually stronger than a heavy rule anyway.
-- **Do** add folios (dateline + position) in lower corners as the default footer pattern
-- **Do** use running heads (Fraunces small caps at top edge) to identify long-form pieces
-- **Do** maintain WCAG AA contrast (`#0e1116` on `#fbfaf9` passes at 17:1; the inverted pair `#fbfaf9` on `#0e1116` passes the same)
+- **Do** choose the architecture from the mapping table before writing any markup, and state which one and why.
+- **Do** keep drawings at 1px so the figure and the page share one line weight.
+- **Do** caption every figure with its source and the date it was read.
+- **Do** cut a figure if the page is no worse without it. Additive means additive.
+- **Do** put revision and date on any page carrying a title block. A stale sheet that admits it beats a fresh-looking one that doesn't.
+- **Do** keep all rules at 1px; communicate major divisions with whitespace.
+- **Do** maintain WCAG AA (`#0e1116` on `#fbfaf9` passes at 17:1; the inverted pair passes the same).
 
-- **Don't** add eyebrows above every headline. The eyebrow is reserved for: numbered article indexes, dateline-anchored field notes. Other artifacts use a running head OR no chrome at all.
-- **Don't** use the § sigil except on the actual numbered article index page
-- **Don't** use mono caps as editorial labels (use Fraunces small caps instead)
-- **Don't** use italics for emphasis more than once per artifact (replace with: oversized opening word, scale shift mid-sentence, or a true typographic event)
-- **Don't** use the 3-column footer pattern (`mark · spacer · url`). Replace with folio in lower corner OR wordmark embedded in running head.
-- **Don't** use any radius beyond `rounded.hairline` (1px) and `rounded.full` (avatars only)
-- **Don't** wrap content in a cream-on-cream box when the page is already committed cream. Either drop the box (use whitespace + a single hairline above), apply the `.inversion` class (dark ink with cream text — the canonical feature treatment), or use `--color-surface-muted` (a half-step deeper cream) only for genuine card affordance.
-- **Don't** use `--color-surface-feature` (aged-clay) as a background. It's a reserved token but warm-on-warm reads as a temperature mismatch on the committed cream page. Use the dark inversion instead.
-- **Don't** include filled buttons (`.btn`); only `.btn-arrow` exists in this system
+- **Don't** use annotation red for anything a drawing isn't calling out. No red headings, no red links, no red on a page with no figure.
+- **Don't** put `--color-accent` on `--color-ink` at label sizes — 3.2:1 is large-text only.
+- **Don't** group a list by category or tag. Date descending, with category as a filter.
+- **Don't** give the local-business practice a nav slot or a feature band.
+- **Don't** add zone references, edge rulers, or any other apparatus that looks structural but addresses nothing.
+- **Don't** hard-code hex inside a figure; use the drawing classes.
+- **Don't** use `.s-ink` on a hatched rect — it declares `fill: none` and will erase the fill.
+- **Don't** use Inter, Roboto, or a system stack as the body family. The body family is IBM Plex Sans.
+- **Don't** use mono caps as editorial labels (Fraunces small caps instead), or mono anywhere outside dateline, code, folio, title-block values, and text inside drawings.
+- **Don't** use italics for emphasis more than once per artifact.
+- **Don't** include filled buttons; only `.btn-arrow` exists.
+- **Don't** use any radius beyond `rounded.hairline`, `rounded.full` (avatars and callout bubbles only).
 
 See `../../plugins/shane-config/skills/design-anti-patterns.md` for universal rules. Brand-specific rules above are additive and supersede where they conflict.

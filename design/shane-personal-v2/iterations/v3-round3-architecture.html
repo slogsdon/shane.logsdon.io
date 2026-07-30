@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane Logsdon — v3 Round 3: five architectures, one visual system</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   ROUND 3 — the variable is ARCHITECTURE again.
+
+   Round 1: architecture varied, color fixed  → you picked B on livability.
+   Round 2: architecture fixed, color varied  → you picked 1/2/3, with 2
+            (Drafting) winning on what its apparatus actually conveys.
+   Round 3: the Drafting apparatus is now the CONSTANT — dimensioned
+            figures, 45° hatch, numbered callouts keyed to margin notes —
+            and five NEW page architectures compete underneath it. None
+            of these five appeared in Round 1.
+
+   Palette is an independent knob. The switcher in the header retints all
+   five specimens between Drafting, Riso, and Plotted. It is doc chrome,
+   not part of any direction.
+
+   Figures use real articles-list.json data: 32 posts, 23 across 2013–2017
+   (12/3/3/2/3), nine empty years, 9 in 2026. Categories: 21 technical
+   deep-dives, 7 strategic, 4 industry analysis.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --doc-paper: #fbfaf9; --doc-ink: #0e1116; --doc-soft: #404550;
+  --doc-3: #62686f; --doc-rule: #d6d8de; --doc-accent: #556b2f;
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0; background: var(--doc-paper); color: var(--doc-ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65;
+  font-feature-settings: 'ss01','cv11','kern';
+}
+a { color: inherit; }
+
+/* ─── Doc chrome ─── */
+.doc-head { border-bottom: 1px solid var(--doc-rule); padding: 40px 32px 26px; max-width: 1400px; margin: 0 auto; }
+.doc-head h1 { font-family: var(--display); font-weight: 400; font-size: 40px; letter-spacing: -0.018em; line-height: 1.1; margin: 0 0 14px; }
+.doc-head p { max-width: 76ch; color: var(--doc-soft); margin: 0 0 16px; font-size: 16px; }
+.doc-head code { font-family: var(--mono); font-size: 13px; }
+.doc-nav { display: flex; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; margin-top: 10px; }
+.doc-nav a { padding: 7px 16px 7px 0; margin-right: 16px; border-right: 1px solid var(--doc-rule); text-decoration: none; color: var(--doc-3); }
+.doc-nav a:last-child { border-right: 0; }
+.doc-nav a:hover { color: var(--doc-accent); }
+
+.palette-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--doc-rule);
+}
+.palette-bar .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--doc-3); }
+.palette-bar button {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em;
+  padding: 7px 14px; background: transparent; cursor: pointer;
+  border: 1px solid var(--doc-rule); border-radius: 0; color: var(--doc-soft);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.palette-bar button:hover { border-color: var(--doc-ink); color: var(--doc-ink); }
+.palette-bar button[aria-pressed="true"] { border-color: var(--doc-ink); color: var(--doc-ink); background: #f1eee8; }
+.palette-bar button .chip { width: 10px; height: 10px; display: inline-block; }
+.palette-bar .hint { font-size: 13px; color: var(--doc-3); }
+
+.spec { max-width: 1400px; margin: 0 auto; padding: 72px 32px 26px; display: grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr); gap: 48px; align-items: start; }
+.spec-id { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--doc-accent); margin: 0 0 12px; text-transform: uppercase; }
+.spec h2 { font-family: var(--display); font-weight: 500; font-size: 34px; letter-spacing: -0.014em; line-height: 1.12; margin: 0 0 14px; }
+.spec .thesis { font-size: 16px; color: var(--doc-soft); margin: 0 0 18px; max-width: 60ch; }
+.spec dl { margin: 0; font-size: 14px; line-height: 1.55; border-top: 1px solid var(--doc-rule); }
+.spec dt { font-family: var(--display); font-weight: 600; font-variant-caps: small-caps; font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.09em; font-size: 13px; padding-top: 12px; }
+.spec dd { margin: 2px 0 12px; color: var(--doc-soft); border-bottom: 1px solid var(--doc-rule); padding-bottom: 12px; }
+.spec dd code { font-family: var(--mono); font-size: 12.5px; background: #f1eee8; padding: 1px 5px; }
+.frame-note { max-width: 1400px; margin: 0 auto; padding: 0 32px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--doc-3); text-transform: uppercase; }
+.frame { max-width: 1400px; margin: 0 auto 96px; padding: 0 32px; }
+.frame > .inner { border: 1px solid var(--doc-rule); overflow: hidden; }
+@media (max-width: 900px) { .spec { grid-template-columns: 1fr; gap: 24px; padding: 56px 20px 20px; } }
+
+/* ══════════════════════════════════════════════════════════════════════
+   THE CONSTANT — the Drafting visual system, themed.
+   Three palettes, all carrying the same apparatus.
+   ══════════════════════════════════════════════════════════════════════ */
+.t-draft {
+  --paper: #fbfaf9; --ink: #0e1116; --ink-soft: #404550; --ink-3: #62686f;
+  --rule: #d6d8de; --accent: #556b2f; --mark: #c0392b; --fill: #f1eee8;
+}
+.t-riso {
+  --paper: #f2efe4; --ink: #17181a; --ink-soft: #46484c; --ink-3: #6c6e6f;
+  --rule: #cdc8b8; --accent: #556b2f; --mark: #e04e2f; --fill: #e8e3d3;
+}
+.t-plot {
+  --paper: #f7f7f4; --ink: #14171c; --ink-soft: #3d434b; --ink-3: #676d76;
+  --rule: #d8dad6; --accent: #3e5020; --mark: #b06f16; --fill: #eceee7;
+}
+
+.pg { background: var(--paper); color: var(--ink); font-family: var(--sans); position: relative; }
+/* Drawing ink follows the theme — every SVG below styles by class, never hard-coded hex */
+.pg svg { display: block; width: 100%; height: auto; }
+.pg .s-ink   { stroke: var(--ink); fill: none; stroke-width: 1; }
+/* Stroke-only: declares no fill, so a fill="url(#hatch)" attribute survives.
+   `.s-ink` would erase it — CSS fill:none beats the presentation attribute. */
+.pg .s-edge  { stroke: var(--ink); stroke-width: 1; }
+.pg .s-mark  { stroke: var(--mark); fill: none; stroke-width: 1; }
+.pg .s-rule  { stroke: var(--rule); fill: none; stroke-width: 1; }
+.pg .f-ink   { fill: var(--ink); }
+.pg .f-mark  { fill: var(--mark); }
+.pg .f-soft  { fill: var(--ink-soft); }
+.pg .f-3     { fill: var(--ink-3); }
+.pg .f-paper { fill: var(--paper); }
+/* Pattern contents can't inherit currentColor from the referencing element —
+   they resolve against the pattern's own context — so hatch is styled by class. */
+.pg svg .hatch { stroke: var(--mark); stroke-width: 0.6; opacity: 0.5; }
+.pg .t-mono  { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+.pg .t-serif { font-family: 'Fraunces', serif; font-size: 16px; }
+.pg .t-sans  { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; }
+
+/* callout bubble — inline, in prose */
+.pg .callout {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 17px; height: 17px; border: 1px solid var(--mark); color: var(--mark);
+  border-radius: 999px; font-family: var(--mono); font-size: 10px; line-height: 1;
+  vertical-align: 1px; margin: 0 1px; flex: none;
+}
+.pg h1, .pg h2, .pg h3 { font-family: var(--display); font-weight: 400; letter-spacing: -0.018em; }
+.pg .smallcaps {
+  font-family: var(--display); font-weight: 600; font-variant-caps: small-caps;
+  font-feature-settings: 'smcp'; text-transform: lowercase; letter-spacing: 0.1em; font-size: 13px;
+}
+.pg .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.07em; color: var(--ink-3); }
+.pg figcaption {
+  font-family: var(--mono); font-size: 11px; line-height: 1.6; letter-spacing: 0.04em;
+  color: var(--ink-3); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule);
+}
+.pg figcaption b { color: var(--ink); font-weight: 500; }
+.pg .idx { margin: 0; padding: 0; list-style: none; }
+.pg .idx li { padding: 12px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 4ch 1fr; gap: 14px; align-items: baseline; }
+.pg .idx .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.pg .idx a { font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: -0.008em; text-decoration: none; line-height: 1.3; display: block; }
+.pg .idx a:hover { color: var(--accent); }
+.pg .idx .when { font-family: var(--mono); font-size: 11px; color: var(--ink-3); display: block; margin-top: 3px; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   ARCHITECTURE A — DRAWING FIRST
+   The figure leads at full width; the prose is its key.
+   ══════════════════════════════════════════════════════════════════════ */
+.arch-a { padding: 0 0 8px; }
+.arch-a .top {
+  display: flex; justify-content: space-between; gap: 20px;
+  padding: 16px 44px 12px; border-bottom: 1px solid var(--ink);
+}
+.arch-a .plate { padding: 34px 44px 0; }
+.arch-a .key {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 0 32px; padding: 34px 44px 0; border-top: 1px solid var(--rule); margin-top: 26px;
+}
+.arch-a .key-item { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+.arch-a .key-item h3 { font-size: 19px; font-weight: 500; margin: 0 0 6px; line-height: 1.2; }
+.arch-a .key-item p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+.arch-a .tail { display: grid; grid-template-columns: minmax(0,1fr) 26ch; gap: 44px; padding: 40px 44px 0; }
+.arch-a .tail h2 { font-size: 22px; font-weight: 500; margin: 0 0 10px; }
+.arch-a .foot { margin-top: 36px; padding: 14px 44px 20px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .arch-a .key { grid-template-columns: 1fr; gap: 20px 0; }
+  .arch-a .tail { grid-template-columns: 1fr; gap: 28px; }
+  .arch-a .top, .arch-a .plate, .arch-a .key, .arch-a .tail, .arch-a .foot { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ARCHITECTURE B — FACING SPREAD
+   Two equal columns. Argument left, apparatus right, locked to shared
+   registration lines that cross the gutter.
+   ══════════════════════════════════════════════════════════════════════ */
+.arch-b { padding: 0 0 8px; }
+.arch-b .top { display: flex; justify-content: space-between; gap: 20px; padding: 16px 40px 12px; border-bottom: 1px solid var(--ink); }
+.arch-b .spread { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 34px; padding: 0 40px; }
+.arch-b .gutter { background: var(--rule); }
+.arch-b .reg { grid-column: 1 / -1; border-top: 1px solid var(--rule); margin: 0; height: 0; }
+.arch-b .reg:first-of-type { border-top: 0; }
+.arch-b .band { display: contents; }
+.arch-b .l, .arch-b .r { padding: 26px 0 30px; min-width: 0; }
+.arch-b h1 { font-size: clamp(34px, 3.6vw, 46px); line-height: 1.05; margin: 0 0 16px; }
+.arch-b p { margin: 0 0 14px; font-size: 16px; line-height: 1.62; color: var(--ink-soft); }
+.arch-b p.lead { font-size: 17.5px; color: var(--ink); }
+.arch-b .r .smallcaps { display: block; margin-bottom: 14px; color: var(--ink-3); }
+.arch-b .foot { padding: 14px 40px 20px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .arch-b .spread { grid-template-columns: 1fr; }
+  .arch-b .gutter { display: none; }
+  .arch-b .l, .arch-b .r { padding: 20px 0; }
+  .arch-b .top, .arch-b .spread, .arch-b .foot { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ARCHITECTURE C — SHEET
+   The page is a drawing sheet: border, zone references on the edges,
+   title block in the lower right. Content sits in the field.
+   ══════════════════════════════════════════════════════════════════════ */
+.arch-c { padding: 18px; }
+.arch-c .sheet { border: 2px solid var(--ink); position: relative; }
+.arch-c .zones-x, .arch-c .zones-y { position: absolute; display: grid; }
+.arch-c .zones-x { top: 0; left: 0; right: 0; height: 20px; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--rule); }
+.arch-c .zones-y { top: 20px; bottom: 0; left: 0; width: 20px; grid-template-rows: repeat(4, 1fr); border-right: 1px solid var(--rule); }
+.arch-c .zones-x span, .arch-c .zones-y span {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 9.5px; color: var(--ink-3);
+  border-right: 1px solid var(--rule);
+}
+.arch-c .zones-y span { border-right: 0; border-bottom: 1px solid var(--rule); }
+.arch-c .zones-x span:last-child, .arch-c .zones-y span:last-child { border: 0; }
+.arch-c .field { margin: 20px 0 0 20px; padding: 30px 30px 0; }
+.arch-c h1 { font-size: clamp(32px, 3.8vw, 48px); line-height: 1.05; margin: 0 0 14px; max-width: 20ch; }
+.arch-c .stand { font-size: 17px; line-height: 1.6; color: var(--ink-soft); max-width: 62ch; margin: 0 0 30px; }
+.arch-c .field-grid { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: 34px; align-items: start; }
+.arch-c .titleblock {
+  margin: 30px 0 0 20px; border-top: 1px solid var(--ink);
+  display: grid; grid-template-columns: 1fr auto;
+}
+.arch-c .tb-left { padding: 14px 30px 16px; }
+.arch-c .tb-left .smallcaps { color: var(--ink-3); }
+.arch-c .tb-cells { display: grid; grid-template-columns: repeat(4, minmax(76px, auto)); border-left: 1px solid var(--ink); }
+.arch-c .tb-cells div { padding: 12px 14px; border-right: 1px solid var(--rule); }
+.arch-c .tb-cells div:last-child { border-right: 0; }
+.arch-c .tb-cells dt { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 5px; }
+.arch-c .tb-cells dd { margin: 0; font-family: var(--mono); font-size: 12px; color: var(--ink); }
+@media (max-width: 900px) {
+  .arch-c .zones-x, .arch-c .zones-y { display: none; }
+  .arch-c .field { margin: 0; padding: 22px 18px 0; }
+  .arch-c .field-grid { grid-template-columns: 1fr; }
+  .arch-c .titleblock { margin-left: 0; grid-template-columns: 1fr; }
+  .arch-c .tb-cells { grid-template-columns: repeat(2, 1fr); border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ARCHITECTURE D — ASSEMBLY ORDER
+   A numbered sequence down a central axis; each step carries its own
+   detail drawing. Long-form reads as an assembly, not an essay.
+   ══════════════════════════════════════════════════════════════════════ */
+.arch-d { padding: 0 0 8px; position: relative; }
+.arch-d .top { display: flex; justify-content: space-between; gap: 20px; padding: 16px 44px 12px; border-bottom: 1px solid var(--ink); }
+.arch-d .intro { padding: 32px 44px 8px; max-width: 68ch; }
+.arch-d .intro h1 { font-size: clamp(34px, 3.8vw, 50px); line-height: 1.05; margin: 0 0 14px; }
+.arch-d .intro p { font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+.arch-d .steps { padding: 22px 44px 0; position: relative; }
+.arch-d .axis { position: absolute; left: 50%; top: 0; bottom: 40px; width: 1px; background: var(--rule); }
+.arch-d .step {
+  display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center;
+  gap: 0 0; padding: 26px 0; position: relative;
+}
+.arch-d .node {
+  grid-column: 2; justify-self: center; width: 26px; height: 26px;
+  border: 1px solid var(--mark); color: var(--mark); background: var(--paper);
+  border-radius: 999px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; position: relative; z-index: 2;
+}
+.arch-d .step .txt { padding-right: 30px; }
+.arch-d .step .art { padding-left: 30px; }
+.arch-d .step.flip .txt { grid-column: 3; padding-right: 0; padding-left: 30px; }
+.arch-d .step.flip .art { grid-column: 1; padding-left: 0; padding-right: 30px; display: flex; justify-content: flex-end; }
+/* Detail drawings are details — cap them so they read beside the text, not over it */
+.arch-d .art svg { max-width: 340px; }
+.arch-d .step h3 { font-size: 20px; font-weight: 500; margin: 0 0 8px; line-height: 1.2; }
+.arch-d .step p { margin: 0; font-size: 15px; line-height: 1.58; color: var(--ink-soft); }
+.arch-d .step .lead-line { position: absolute; top: 50%; height: 1px; background: var(--rule); }
+.arch-d .foot { margin-top: 24px; padding: 14px 44px 20px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .arch-d .axis { left: 13px; }
+  .arch-d .step { grid-template-columns: 26px 1fr; gap: 0 16px; padding: 20px 0; }
+  .arch-d .node { grid-column: 1; justify-self: start; }
+  .arch-d .step .txt, .arch-d .step.flip .txt { grid-column: 2; padding: 0; }
+  .arch-d .step .art, .arch-d .step.flip .art { grid-column: 2; padding: 14px 0 0; }
+  .arch-d .top, .arch-d .intro, .arch-d .steps, .arch-d .foot { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ARCHITECTURE E — SET
+   A drawing set: the sheet list is permanent on the left, the open sheet
+   fills the rest. Navigation never leaves the page.
+   ══════════════════════════════════════════════════════════════════════ */
+.arch-e { display: grid; grid-template-columns: 27ch 1px minmax(0,1fr); }
+.arch-e .list { padding: 0 0 20px; }
+.arch-e .list-head {
+  padding: 16px 22px 12px; border-bottom: 1px solid var(--ink);
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+}
+.arch-e .divider { background: var(--rule); }
+.arch-e .sheetlist { margin: 0; padding: 0; list-style: none; }
+.arch-e .sheetlist a {
+  display: grid; grid-template-columns: 5ch 1fr; gap: 10px; align-items: baseline;
+  padding: 11px 22px; border-bottom: 1px solid var(--rule); text-decoration: none;
+}
+.arch-e .sheetlist a:hover { background: var(--fill); }
+.arch-e .sheetlist .no { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); }
+.arch-e .sheetlist .ti { font-size: 14.5px; line-height: 1.3; color: var(--ink-soft); }
+.arch-e .sheetlist .cur { background: var(--ink); }
+.arch-e .sheetlist .cur .no { color: var(--paper); opacity: 0.65; }
+.arch-e .sheetlist .cur .ti { color: var(--paper); }
+.arch-e .open { padding: 0 0 20px; min-width: 0; }
+.arch-e .open-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+  padding: 16px 34px 12px; border-bottom: 1px solid var(--ink);
+}
+.arch-e .open-body { padding: 30px 34px 0; }
+.arch-e .open-body h1 { font-size: clamp(30px, 3.2vw, 42px); line-height: 1.06; margin: 0 0 14px; max-width: 22ch; }
+.arch-e .open-body .stand { font-size: 16.5px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 0 0 28px; }
+.arch-e .open-grid { display: grid; grid-template-columns: minmax(0,1fr) 24ch; gap: 34px; align-items: start; }
+.arch-e .open-grid .notes { font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+.arch-e .open-grid .notes p { margin: 0 0 16px; }
+.arch-e .open-grid .notes .num { font-family: var(--mono); font-size: 11px; color: var(--mark); }
+@media (max-width: 900px) {
+  .arch-e { grid-template-columns: 1fr; }
+  .arch-e .divider { display: none; }
+  .arch-e .list { border-bottom: 1px solid var(--ink); }
+  .arch-e .open-grid { grid-template-columns: 1fr; }
+  .arch-e .open-head, .arch-e .open-body { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <h1>Round 3 — five architectures, one visual system</h1>
+  <p>
+    The variable is architecture again, but the visual system is settled: the <strong>Drafting apparatus</strong>
+    is now the constant across all five — dimensioned figures with witness marks, 45° hatch for the region under
+    discussion, and numbered callouts keyed to notes in the margin. None of these five architectures appeared in
+    Round 1; the rail-and-spine layout you'd been looking at is deliberately not among them, so this round is a
+    real test of whether it stays in the lead.
+  </p>
+  <p>
+    Palette is an independent knob, not part of any architecture. Switch it below and all five specimens retint —
+    every drawing inherits the theme, so you can judge the architecture and the color separately instead of
+    guessing at the combination. Figures use real <code>articles-list.json</code> data.
+  </p>
+  <div class="palette-bar">
+    <span class="lbl">Palette</span>
+    <button type="button" data-theme="t-draft" aria-pressed="true"><span class="chip" style="background:#c0392b"></span> Drafting</button>
+    <button type="button" data-theme="t-riso" aria-pressed="false"><span class="chip" style="background:#e04e2f"></span> Riso</button>
+    <button type="button" data-theme="t-plot" aria-pressed="false"><span class="chip" style="background:#b06f16"></span> Plotted</button>
+    <span class="hint">Retints all five specimens. Doc chrome — not part of any direction.</span>
+  </div>
+  <nav class="doc-nav">
+    <a href="#a">A / Drawing First</a>
+    <a href="#b">B / Facing Spread</a>
+    <a href="#c">C / Sheet</a>
+    <a href="#d">D / Assembly Order</a>
+    <a href="#e">E / Set</a>
+  </nav>
+</header>
+
+<!-- ══════════════════ A — DRAWING FIRST ══════════════════ -->
+<section class="spec" id="a">
+  <div>
+    <p class="spec-id">Architecture A</p>
+    <h2>Drawing First</h2>
+    <p class="thesis">
+      The drawing opens the page at full width and the prose below it is the <em>key</em> — three numbered blocks,
+      each one answering a callout on the drawing above. It inverts the usual order: you're shown the shape of the
+      idea before you're told about it, and the writing exists to explain a figure rather than the figure existing
+      to decorate the writing.
+    </p>
+    <p class="thesis">
+      This is the architecture that takes the Drafting apparatus most literally. It only works if a page can be
+      reduced to one drawing — which is a useful editorial constraint, and a real limitation.
+    </p>
+  </div>
+  <dl>
+    <dt>Reading order</dt>
+    <dd>Figure → key → supporting text → index. The headline is demoted below the drawing and set at section scale, not hero scale.</dd>
+    <dt>Where nav lives</dt>
+    <dd>A single top rule with the wordmark and four links. No rail — the key columns occupy the horizontal space a rail would take.</dd>
+    <dt>Holds up on</dt>
+    <dd>Article pages (one drawing, then the argument), the about page, any of the field guides.</dd>
+    <dt>Breaks on</dt>
+    <dd>Anything with no drawing. A post that's pure prose has nothing to lead with, and the architecture has no fallback that doesn't look broken.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen A</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-draft arch-a">
+    <div class="top">
+      <span class="smallcaps">shane logsdon</span>
+      <span class="mono">writing · speaking · practice · about</span>
+    </div>
+
+    <div class="plate">
+      <figure>
+        <svg viewBox="0 0 1180 250" role="img" aria-label="Dimensioned drawing of the specification boundary">
+          <defs>
+            <pattern id="a-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="7" class="hatch"/>
+            </pattern>
+          </defs>
+          <g style="color: var(--mark)">
+            <rect x="60" y="30" width="1060" height="150" class="s-ink"/>
+            <rect x="60" y="30" width="795" height="150" class="s-ink"/>
+            <rect x="855" y="30" width="265" height="150" fill="url(#a-hatch)" class="s-edge"/>
+          </g>
+          <text x="86" y="72" class="t-serif f-ink" font-size="21">Specified</text>
+          <text x="86" y="100" class="t-sans f-soft" font-size="13.5">Shape, contract, failure modes, and what turns red when it breaks.</text>
+          <text x="86" y="122" class="t-sans f-soft" font-size="13.5">Written down before the build starts, and revised when it's wrong.</text>
+          <text x="881" y="72" class="t-serif f-ink" font-size="21">Assumed</text>
+          <text x="881" y="100" class="t-sans f-soft" font-size="13.5">The quarter that stalls</text>
+          <text x="881" y="122" class="t-sans f-soft" font-size="13.5">the build.</text>
+          <!-- dimensions -->
+          <line x1="60"  y1="186" x2="60"  y2="216" class="s-mark"/>
+          <line x1="855" y1="186" x2="855" y2="216" class="s-mark"/>
+          <line x1="1120" y1="186" x2="1120" y2="216" class="s-mark"/>
+          <line x1="60"  y1="206" x2="855"  y2="206" class="s-mark"/>
+          <line x1="855" y1="206" x2="1120" y2="206" class="s-mark"/>
+          <path d="M60 206 l7 -3.5 v7 z M855 206 l-7 -3.5 v7 z" class="f-mark"/>
+          <path d="M855 206 l7 -3.5 v7 z M1120 206 l-7 -3.5 v7 z" class="f-mark"/>
+          <rect x="425" y="198" width="60" height="16" class="f-paper"/>
+          <text x="455" y="210" text-anchor="middle" class="t-mono f-mark">75%</text>
+          <rect x="960" y="198" width="52" height="16" class="f-paper"/>
+          <text x="986" y="210" text-anchor="middle" class="t-mono f-mark">25%</text>
+          <!-- callouts -->
+          <circle cx="855" cy="30" r="11" class="s-mark f-paper"/><text x="855" y="34.5" text-anchor="middle" class="t-mono f-mark">1</text>
+          <circle cx="988" cy="180" r="11" class="s-mark f-paper"/><text x="988" y="184.5" text-anchor="middle" class="t-mono f-mark">2</text>
+          <line x1="36" y1="105" x2="60" y2="105" class="s-mark"/>
+          <circle cx="24"  cy="105" r="11" class="s-mark f-paper"/><text x="24"  y="109.5" text-anchor="middle" class="t-mono f-mark">3</text>
+        </svg>
+        <figcaption>
+          <b>Fig. A</b> — The specification boundary. Drawn from <i>The Specification Boundary: Why AI-Assisted
+          Builds Stall at 75%</i> (2026.05.18).
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="key">
+      <div class="key-item">
+        <span class="callout">1</span>
+        <div>
+          <h3>The boundary moves</h3>
+          <p>It isn't fixed by the problem, it's fixed by the tooling. Every capable release redraws it, which is why a spec written for last quarter's model under-specifies this quarter's.</p>
+        </div>
+      </div>
+      <div class="key-item">
+        <span class="callout">2</span>
+        <div>
+          <h3>Below the line, nobody decided</h3>
+          <p>The hatched region isn't unbuilt — it's built on assumptions no one wrote down. That's what stalls at 75%: not missing work, missing decisions.</p>
+        </div>
+      </div>
+      <div class="key-item">
+        <span class="callout">3</span>
+        <div>
+          <h3>The left edge is the real test</h3>
+          <p>"If this breaks next month, what turns red?" A spec that can't answer that hasn't specified anything; it's described a demo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tail">
+      <div>
+        <h2>Systems that get found.</h2>
+        <p style="margin:0;color:var(--ink-soft);font-size:16px;line-height:1.6;">
+          I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+          engineers actually reach for. I write here about developer platforms, payments, and AI-assisted
+          engineering.
+        </p>
+      </div>
+      <ol class="idx">
+        <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22</span></span></li>
+        <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13</span></span></li>
+        <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09</span></span></li>
+      </ol>
+    </div>
+
+    <div class="foot">
+      <span class="mono">shane@shanelogsdon.com · I answer</span>
+      <span class="mono">Drawings at 1px · Fraunces &amp; IBM Plex Sans</span>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ B — FACING SPREAD ══════════════════ -->
+<section class="spec" id="b">
+  <div>
+    <p class="spec-id">Architecture B</p>
+    <h2>Facing Spread</h2>
+    <p class="thesis">
+      Two columns of equal weight with a hairline gutter between them: the argument runs down the left, the
+      apparatus runs down the right, and horizontal registration lines cross both so a figure always sits level
+      with the paragraph that references it. It reads like an open technical manual where the plate faces the text.
+    </p>
+    <p class="thesis">
+      Unlike a margin rail, the right column is not subordinate. It carries drawings at full size, code, and
+      callout keys — content, not chrome.
+    </p>
+  </div>
+  <dl>
+    <dt>Reading order</dt>
+    <dd>Band by band. Each registration band is a complete unit: claim on the left, evidence on the right, both terminated by the same rule.</dd>
+    <dt>Where nav lives</dt>
+    <dd>Top rule only. The right column is too valuable to spend on links.</dd>
+    <dt>Holds up on</dt>
+    <dd>Long-form technical writing, which is 21 of your 32 posts. The band structure is a genuine drafting tool — it forces every claim to face its evidence.</dd>
+    <dt>Breaks on</dt>
+    <dd>Uneven bands. If the left runs long and the right has nothing to say, you get a half-empty spread, and there's no honest way to pad it.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen B</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-draft arch-b">
+    <div class="top">
+      <span class="smallcaps">shane logsdon · payments &amp; developer platforms</span>
+      <span class="mono">writing · speaking · practice · about</span>
+    </div>
+
+    <div class="spread">
+      <div class="band">
+        <div class="l">
+          <h1>Systems that get found.</h1>
+          <p class="lead">
+            I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+            engineers actually reach for.
+          </p>
+          <p>
+            Most of what I write about lives at one line: where a specification stops
+            <span class="callout">1</span> and an implementation starts owning the decision.
+          </p>
+        </div>
+        <div class="gutter"></div>
+        <div class="r">
+          <span class="smallcaps">the shape of it</span>
+          <figure>
+            <svg viewBox="0 0 460 170" role="img" aria-label="The specification boundary, 75 percent specified">
+              <defs>
+                <pattern id="b-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <line x1="0" y1="0" x2="0" y2="7" class="hatch"/>
+                </pattern>
+              </defs>
+              <g style="color: var(--mark)">
+                <rect x="8" y="14" width="444" height="98" class="s-ink"/>
+                <rect x="8" y="14" width="333" height="98" class="s-ink"/>
+                <rect x="341" y="14" width="111" height="98" fill="url(#b-hatch)" class="s-edge"/>
+              </g>
+              <text x="24" y="48" class="t-serif f-ink">Specified</text>
+              <text x="24" y="70" class="t-sans f-soft">Contract, failure modes,</text>
+              <text x="24" y="86" class="t-sans f-soft">what turns red.</text>
+              <text x="352" y="48" class="t-serif f-ink" font-size="14">Assumed</text>
+              <line x1="8"   y1="118" x2="8"   y2="146" class="s-mark"/>
+              <line x1="341" y1="118" x2="341" y2="146" class="s-mark"/>
+              <line x1="452" y1="118" x2="452" y2="146" class="s-mark"/>
+              <line x1="8"   y1="136" x2="341" y2="136" class="s-mark"/>
+              <line x1="341" y1="136" x2="452" y2="136" class="s-mark"/>
+              <path d="M8 136 l6 -3 v6 z M341 136 l-6 -3 v6 z" class="f-mark"/>
+              <path d="M341 136 l6 -3 v6 z M452 136 l-6 -3 v6 z" class="f-mark"/>
+              <rect x="152" y="129" width="46" height="14" class="f-paper"/>
+              <text x="175" y="140" text-anchor="middle" class="t-mono f-mark">75%</text>
+              <rect x="378" y="129" width="40" height="14" class="f-paper"/>
+              <text x="398" y="140" text-anchor="middle" class="t-mono f-mark">25%</text>
+              <circle cx="341" cy="14" r="9" class="s-mark"/><text x="341" y="18" text-anchor="middle" class="t-mono f-mark">1</text>
+            </svg>
+            <figcaption><b>Fig. B1</b> — 75% specified, 25% assumed. From <i>The Specification Boundary</i>.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <hr class="reg">
+
+      <div class="band">
+        <div class="l">
+          <h2 style="font-size:22px;font-weight:500;margin:0 0 12px;">I stopped for nine years.</h2>
+          <p>
+            I wrote here from 2013 to 2017, then nothing until April 2026. That gap isn't a gap in the work — it's
+            a gap in writing the work down, which turns out to be a different failure and a more expensive one
+            <span class="callout">2</span>.
+          </p>
+          <p>
+            Everything since April has been an attempt to make the writing a byproduct of the building rather than
+            a separate task competing with it.
+          </p>
+        </div>
+        <div class="gutter"></div>
+        <div class="r">
+          <span class="smallcaps">the record</span>
+          <figure>
+            <svg viewBox="0 0 460 150" role="img" aria-label="Posts per year 2013 to 2026 with a nine year gap">
+              <line x1="8" y1="112" x2="452" y2="112" class="s-ink"/>
+              <rect x="14"  y="22"  width="34" height="90" class="f-ink"/>
+              <rect x="56"  y="90"  width="34" height="22" class="f-ink" opacity="0.55"/>
+              <rect x="98"  y="90"  width="34" height="22" class="f-ink" opacity="0.55"/>
+              <rect x="140" y="97"  width="34" height="15" class="f-ink" opacity="0.4"/>
+              <rect x="182" y="90"  width="34" height="22" class="f-ink" opacity="0.55"/>
+              <text x="31" y="16" text-anchor="middle" class="t-mono f-ink">12</text>
+              <text x="73" y="84" text-anchor="middle" class="t-mono f-3">3</text>
+              <text x="115" y="84" text-anchor="middle" class="t-mono f-3">3</text>
+              <text x="157" y="91" text-anchor="middle" class="t-mono f-3">2</text>
+              <text x="199" y="84" text-anchor="middle" class="t-mono f-3">3</text>
+              <line x1="228" y1="112" x2="382" y2="112" class="s-mark" stroke-dasharray="4 4" stroke-width="1.5"/>
+              <line x1="228" y1="105" x2="228" y2="119" class="s-mark" stroke-width="1.5"/>
+              <line x1="382" y1="105" x2="382" y2="119" class="s-mark" stroke-width="1.5"/>
+              <text x="305" y="100" text-anchor="middle" class="t-mono f-mark">nine years, zero</text>
+              <circle cx="305" cy="112" r="9" class="s-mark"/><text x="305" y="116" text-anchor="middle" class="t-mono f-mark">2</text>
+              <rect x="392" y="45" width="34" height="67" class="f-ink"/>
+              <text x="409" y="39" text-anchor="middle" class="t-mono f-ink">9</text>
+              <text x="31"  y="130" text-anchor="middle" class="t-mono f-3">2013</text>
+              <text x="199" y="130" text-anchor="middle" class="t-mono f-3">2017</text>
+              <text x="409" y="130" text-anchor="middle" class="t-mono f-3">2026</text>
+            </svg>
+            <figcaption><b>Fig. B2</b> — Posts per year. Source: <code>articles-list.json</code>, 32 entries, read 2026.07.28.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <hr class="reg">
+
+      <div class="band">
+        <div class="l">
+          <h2 style="font-size:22px;font-weight:500;margin:0 0 12px;">Recent</h2>
+          <ol class="idx">
+            <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22 · technical deep-dive</span></span></li>
+            <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13 · strategic</span></span></li>
+            <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09 · technical deep-dive</span></span></li>
+          </ol>
+        </div>
+        <div class="gutter"></div>
+        <div class="r">
+          <span class="smallcaps">also</span>
+          <p style="font-size:15.5px;">
+            A small web-presence practice for local business owners — build, AEO, and ongoing management. Pricing
+            is on the page, and you can reach me directly at shane@shanelogsdon.com.
+          </p>
+          <p class="mono" style="margin-top:18px;">21 technical deep-dives · 7 strategic · 4 industry analysis</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span class="mono">shane@shanelogsdon.com</span>
+      <span class="mono">Fraunces &amp; IBM Plex Sans · RSS · GitHub</span>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ C — SHEET ══════════════════ -->
+<section class="spec" id="c">
+  <div>
+    <p class="spec-id">Architecture C</p>
+    <h2>Sheet</h2>
+    <p class="thesis">
+      The page stops being a document and becomes a drawing sheet: a hard border, zone references lettered down
+      the left edge and numbered across the top, content sitting in the field, and a title block in the lower
+      right carrying sheet number, revision, date, and author. Every page is a sheet in a set.
+    </p>
+    <p class="thesis">
+      The title block is the strongest idea here. It replaces the footer entirely and it's honest metadata —
+      revision and date on a piece of writing is more useful than a social row.
+    </p>
+  </div>
+  <dl>
+    <dt>Reading order</dt>
+    <dd>Field first, title block last — same as reading a real drawing. The sheet number is how you cite and link a page.</dd>
+    <dt>Where nav lives</dt>
+    <dd>Zone references double as an addressing scheme; the title block carries the sheet index link. There's no nav bar at all.</dd>
+    <dt>Holds up on</dt>
+    <dd>Everything, unusually. A sheet is content-agnostic — the field takes whatever you put in it, and the border and title block stay identical.</dd>
+    <dt>Breaks on</dt>
+    <dd>Scroll length. A real sheet has fixed proportions and a web page doesn't, so a long article leaves the title block stranded a very long way from the border it belongs to.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen C</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-draft arch-c">
+    <div class="sheet">
+      <div class="zones-x" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+      <div class="zones-y" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+
+      <div class="field">
+        <h1>Systems that get found.</h1>
+        <p class="stand">
+          I lead developer advocacy at Global Payments, building the payment APIs, SDKs, and documentation
+          engineers actually reach for. The drawing at right is the loop most of the recent writing is about:
+          a workflow isn't designed, it's found by running it until the same shape keeps surviving
+          <span class="callout">1</span>.
+        </p>
+
+        <div class="field-grid">
+          <figure>
+            <svg viewBox="0 0 560 260" role="img" aria-label="The framework emergence loop as a clockwise cycle of four stages">
+              <defs>
+                <marker id="c-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                        markerWidth="6" markerHeight="6" orient="auto">
+                  <path d="M0 0 L10 5 L0 10 Z" class="f-mark"/>
+                </marker>
+              </defs>
+              <!-- cycle: four clockwise 32° arcs on r=94 about (280,122), each
+                   terminating clear of the box it points at so the arrowhead shows -->
+              <g class="s-rule" marker-end="url(#c-arrow)">
+                <path d="M337.87 47.93  A 94 94 0 0 1 368.30 89.90"/>
+                <path d="M368.30 154.10 A 94 94 0 0 1 337.87 196.07"/>
+                <path d="M222.13 196.07 A 94 94 0 0 1 191.70 154.10"/>
+                <path d="M191.70 89.90  A 94 94 0 0 1 222.13 47.93"/>
+              </g>
+              <!-- nodes -->
+              <g>
+                <rect x="216" y="8"   width="128" height="38" class="s-ink f-paper"/>
+                <text x="280" y="32"  text-anchor="middle" class="t-serif f-ink" font-size="15">Run it by hand</text>
+
+                <rect x="382" y="103" width="128" height="38" class="s-ink f-paper"/>
+                <text x="446" y="127" text-anchor="middle" class="t-serif f-ink" font-size="15">Notice the shape</text>
+
+                <rect x="216" y="198" width="128" height="38" class="s-ink f-paper"/>
+                <text x="280" y="222" text-anchor="middle" class="t-serif f-ink" font-size="15">Write it down</text>
+
+                <rect x="50"  y="103" width="128" height="38" class="s-ink f-paper"/>
+                <text x="114" y="127" text-anchor="middle" class="t-serif f-ink" font-size="15">Break it again</text>
+              </g>
+              <!-- callout -->
+              <circle cx="280" cy="122" r="11" class="s-mark"/>
+              <text x="280" y="126" text-anchor="middle" class="t-mono f-mark">1</text>
+              <text x="280" y="152" text-anchor="middle" class="t-mono f-3">4 turns before it held</text>
+            </svg>
+            <figcaption>
+              <b>Fig. C</b> — The emergence loop. Drawn from <i>The Framework Emergence Loop: How Durable AI
+              Workflows Are Actually Found</i> (2026.07.09).
+            </figcaption>
+          </figure>
+
+          <div>
+            <span class="smallcaps" style="display:block;margin-bottom:12px;color:var(--ink-3);">on this sheet</span>
+            <ol class="idx">
+              <li><span class="n">032</span><span><a href="#">The Split Audience</a><span class="when">2026.07.22</span></span></li>
+              <li><span class="n">031</span><span><a href="#">Building on the Margins</a><span class="when">2026.07.13</span></span></li>
+              <li><span class="n">030</span><span><a href="#">The Framework Emergence Loop</a><span class="when">2026.07.09</span></span></li>
+              <li><span class="n">029</span><span><a href="#">How to Know If Your Agentic Workflow Is Actually Working</a><span class="when">2026.06.18</span></span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="titleblock">
+        <div class="tb-left">
+          <span class="smallcaps">shane logsdon · payments &amp; developer platforms</span>
+          <p style="margin:8px 0 0;font-size:14px;color:var(--ink-soft);">
+            Louisville, Kentucky · shane@shanelogsdon.com · <a href="#" style="color:var(--accent);">sheet index (32)</a>
+          </p>
+        </div>
+        <dl class="tb-cells">
+          <div><dt>Sheet</dt><dd>001</dd></div>
+          <div><dt>Rev</dt><dd>C</dd></div>
+          <div><dt>Date</dt><dd>2026.07.28</dd></div>
+          <div><dt>Drawn</dt><dd>SL</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ D — ASSEMBLY ORDER ══════════════════ -->
+<section class="spec" id="d">
+  <div>
+    <p class="spec-id">Architecture D</p>
+    <h2>Assembly Order</h2>
+    <p class="thesis">
+      The page is a numbered assembly running down a central axis: each step is a node on the axis with its text
+      on one side and its detail drawing on the other, alternating. Long-form stops being an essay and becomes a
+      sequence you can enter at step four.
+    </p>
+    <p class="thesis">
+      This is the architecture your field guides already want. Eleven gates is an assembly, not a narrative, and
+      forcing it into paragraphs is why it reads long.
+    </p>
+  </div>
+  <dl>
+    <dt>Reading order</dt>
+    <dd>Down the axis, one node at a time. Steps are addressable — step 4 is a link, and the reader can start there without losing the thread.</dd>
+    <dt>Where nav lives</dt>
+    <dd>Top rule, plus the axis itself acts as a progress indicator on long pages.</dd>
+    <dt>Holds up on</dt>
+    <dd>The field guides, any process writing, the practice page (build → AEO → management is an assembly). Also the strongest of the five on mobile: the axis just slides left and everything stacks.</dd>
+    <dt>Breaks on</dt>
+    <dd>Non-sequential content. A page with three unordered ideas gets numbered anyway, which asserts an order that isn't real.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen D</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-draft arch-d">
+    <div class="top">
+      <span class="smallcaps">shane logsdon · payments &amp; developer platforms</span>
+      <span class="mono">writing · speaking · practice · about</span>
+    </div>
+
+    <div class="intro">
+      <h1>Systems that get found.</h1>
+      <p>
+        I lead developer advocacy at Global Payments. Most of what I've learned about building with agents fits
+        into an order of operations, so that's how it's set down here — as an assembly, not an argument.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="axis" aria-hidden="true"></div>
+
+      <div class="step">
+        <div class="txt" style="text-align:right;">
+          <h3>Run it by hand first</h3>
+          <p>Concierge the whole workflow yourself before you automate a step of it. You're not testing whether it can be automated — you're finding out which part was actually the work.</p>
+        </div>
+        <span class="node">1</span>
+        <div class="art">
+          <svg viewBox="0 0 300 74" role="img" aria-label="Detail: manual pass before automation">
+            <rect x="6" y="14" width="82" height="42" class="s-ink"/>
+            <text x="47" y="40" text-anchor="middle" class="t-mono f-ink">BY HAND</text>
+            <line x1="88" y1="35" x2="130" y2="35" class="s-rule"/>
+            <path d="M130 35 l-8 -4 v8 z" class="f-3"/>
+            <rect x="130" y="14" width="82" height="42" class="s-rule" stroke-dasharray="3 3"/>
+            <text x="171" y="40" text-anchor="middle" class="t-mono f-3">AUTOMATED</text>
+            <text x="222" y="39" class="t-mono f-mark">not yet</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step flip">
+        <div class="txt">
+          <h3>Specify the failure, not the feature</h3>
+          <p>"If this breaks next month, what turns red?" A spec that can't name its own alarm hasn't specified anything — it's described a demo, and demos don't survive contact with next month.</p>
+        </div>
+        <span class="node">2</span>
+        <div class="art">
+          <svg viewBox="0 0 300 74" role="img" aria-label="Detail: the alarm a spec must name">
+            <rect x="6" y="14" width="200" height="42" class="s-ink"/>
+            <text x="20" y="40" class="t-sans f-soft">expected shape</text>
+            <line x1="206" y1="35" x2="244" y2="35" class="s-mark"/>
+            <circle cx="256" cy="35" r="11" class="s-mark"/>
+            <circle cx="256" cy="35" r="4" class="f-mark"/>
+            <text x="272" y="39" class="t-mono f-mark">red</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="txt" style="text-align:right;">
+          <h3>Let rigor scale to blast radius</h3>
+          <p>Two gates for a copy change, all ten for anything touching billing or customer data. Process weight is a function of what you can't take back, not of how important the work feels.</p>
+        </div>
+        <span class="node">3</span>
+        <div class="art">
+          <svg viewBox="0 0 300 74" role="img" aria-label="Detail: gates scaled to reversibility">
+            <line x1="6" y1="52" x2="294" y2="52" class="s-ink"/>
+            <rect x="14"  y="42" width="4" height="10" class="f-ink"/>
+            <rect x="34"  y="42" width="4" height="10" class="f-ink"/>
+            <text x="14"  y="34" class="t-mono f-3">reversible · 2</text>
+            <g class="f-mark">
+              <rect x="196" y="36" width="4" height="16"/><rect x="212" y="36" width="4" height="16"/>
+              <rect x="228" y="36" width="4" height="16"/><rect x="244" y="36" width="4" height="16"/>
+              <rect x="260" y="36" width="4" height="16"/><rect x="276" y="36" width="4" height="16"/>
+            </g>
+            <text x="196" y="28" class="t-mono f-mark">irreversible · 10</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step flip">
+        <div class="txt">
+          <h3>Kill the framing before the tech</h3>
+          <p>The tell is "you can only charge for it once." When a product only works as a one-time discovery, the engine is usually fine — it's pointed at the wrong job.</p>
+        </div>
+        <span class="node">4</span>
+        <div class="art">
+          <svg viewBox="0 0 300 74" role="img" aria-label="Detail: same engine, different job">
+            <rect x="6" y="18" width="96" height="36" class="s-ink"/>
+            <text x="54" y="41" text-anchor="middle" class="t-mono f-ink">ENGINE</text>
+            <line x1="102" y1="36" x2="150" y2="36" class="s-rule"/>
+            <rect x="150" y="4" width="122" height="28" class="s-mark" stroke-dasharray="3 3"/>
+            <text x="211" y="22" text-anchor="middle" class="t-mono f-mark">one-time · killed</text>
+            <rect x="150" y="40" width="122" height="28" class="s-ink"/>
+            <text x="211" y="58" text-anchor="middle" class="t-mono f-ink">durable job</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span class="mono">Four of eleven gates · <a href="#" style="color:var(--accent);">read the build field guide</a></span>
+      <span class="mono">shane@shanelogsdon.com</span>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════════ E — SET ══════════════════ -->
+<section class="spec" id="e">
+  <div>
+    <p class="spec-id">Architecture E</p>
+    <h2>Set</h2>
+    <p class="thesis">
+      The site is a drawing set and the sheet list never leaves the screen. A permanent left column lists every
+      piece by number and title with the open one inverted in place; the rest of the width is the open sheet.
+      Navigation is always visible and always shows where you are in the whole.
+    </p>
+    <p class="thesis">
+      It's the most application-like of the five, and the only one where the size of the body of work is legible
+      at all times — which for 32 pieces is an asset rather than a liability.
+    </p>
+  </div>
+  <dl>
+    <dt>Reading order</dt>
+    <dd>List → open sheet. The list is the index page; there is no separate archive route, because you're always looking at the archive.</dd>
+    <dt>Where nav lives</dt>
+    <dd>It <em>is</em> the layout. Sections are groups in the list rather than links in a bar.</dd>
+    <dt>Holds up on</dt>
+    <dd>Browsing. Reading one piece then another costs no navigation, which is the single most common thing a returning visitor does.</dd>
+    <dt>Breaks on</dt>
+    <dd>Focus and mobile. A permanent list is a permanent distraction from a long read, and below 900px it collapses to a stacked block — at which point it's a normal page with a long list on top.</dd>
+  </dl>
+</section>
+<p class="frame-note">Specimen E</p>
+<div class="frame"><div class="inner">
+  <div class="pg t-draft arch-e">
+    <div class="list">
+      <div class="list-head">
+        <span class="smallcaps">sheet list</span>
+        <span class="mono">32</span>
+      </div>
+      <ul class="sheetlist">
+        <li><a class="cur" href="#"><span class="no">032</span><span class="ti">The Split Audience</span></a></li>
+        <li><a href="#"><span class="no">031</span><span class="ti">Building on the Margins</span></a></li>
+        <li><a href="#"><span class="no">030</span><span class="ti">The Framework Emergence Loop</span></a></li>
+        <li><a href="#"><span class="no">029</span><span class="ti">How to Know If Your Agentic Workflow Is Actually Working</span></a></li>
+        <li><a href="#"><span class="no">028</span><span class="ti">The Specification Boundary</span></a></li>
+        <li><a href="#"><span class="no">027</span><span class="ti">What AEO Actually Means for a Local Business</span></a></li>
+        <li><a href="#"><span class="no">026</span><span class="ti">The Spec Is the Work</span></a></li>
+        <li><a href="#"><span class="no">025</span><span class="ti">LLM Context Files Are Deliverables, Not Config</span></a></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="open">
+      <div class="open-head">
+        <span class="mono">sheet 032 · rev a · 2026.07.22 · technical deep-dive</span>
+        <span class="mono">shane logsdon</span>
+      </div>
+      <div class="open-body">
+        <h1>The Split Audience</h1>
+        <p class="stand">
+          The first reader of your docs isn't a developer. Every page now has two readers who want opposite
+          things <span class="callout">1</span> — and the reflex, picking one, loses both
+          <span class="callout">2</span>.
+        </p>
+
+        <div class="open-grid">
+          <figure>
+            <svg viewBox="0 0 620 200" role="img" aria-label="Two readers of one page and what each retrieves">
+              <defs>
+                <pattern id="e-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <line x1="0" y1="0" x2="0" y2="7" class="hatch"/>
+                </pattern>
+              </defs>
+              <!-- the page -->
+              <rect x="228" y="20" width="164" height="150" class="s-ink"/>
+              <text x="310" y="46" text-anchor="middle" class="t-serif f-ink" font-size="15">one page</text>
+              <g style="color: var(--mark)">
+                <rect x="240" y="60" width="140" height="30" fill="url(#e-hatch)" class="s-edge"/>
+              </g>
+              <text x="310" y="80" text-anchor="middle" class="t-mono f-mark">the liftable answer</text>
+              <line x1="240" y1="106" x2="380" y2="106" class="s-rule"/>
+              <line x1="240" y1="120" x2="380" y2="120" class="s-rule"/>
+              <line x1="240" y1="134" x2="340" y2="134" class="s-rule"/>
+              <line x1="240" y1="148" x2="380" y2="148" class="s-rule"/>
+              <!-- human, left -->
+              <rect x="20" y="70" width="140" height="50" class="s-ink"/>
+              <text x="90" y="92"  text-anchor="middle" class="t-serif f-ink" font-size="15">The human</text>
+              <text x="90" y="110" text-anchor="middle" class="t-mono f-3">wants it to unfold</text>
+              <line x1="160" y1="95" x2="222" y2="95" class="s-ink"/>
+              <path d="M228 95 l-8 -4 v8 z" class="f-ink"/>
+              <circle cx="191" cy="95" r="9" class="s-mark f-paper"/>
+              <text x="191" y="99" text-anchor="middle" class="t-mono f-mark">1</text>
+              <!-- retrieval, right -->
+              <rect x="460" y="70" width="140" height="50" class="s-ink"/>
+              <text x="530" y="92"  text-anchor="middle" class="t-serif f-ink" font-size="15">The retriever</text>
+              <text x="530" y="110" text-anchor="middle" class="t-mono f-3">wants it stated flat</text>
+              <line x1="398" y1="95" x2="454" y2="95" class="s-mark"/>
+              <path d="M392 95 l8 -4 v8 z" class="f-mark"/>
+              <circle cx="426" cy="95" r="9" class="s-mark f-paper"/>
+              <text x="426" y="99" text-anchor="middle" class="t-mono f-mark">2</text>
+              <text x="310" y="190" text-anchor="middle" class="t-mono f-3">the hatched block is the only part one of them ever sees</text>
+            </svg>
+            <figcaption>
+              <b>Fig. E</b> — What each reader takes from the same page. From <i>The Split Audience</i> (2026.07.22).
+            </figcaption>
+          </figure>
+
+          <div class="notes">
+            <p><span class="num">1.</span> Write for the model alone and you get answer-shaped mush no person finishes.</p>
+            <p><span class="num">2.</span> Write purely for the person and you're invisible to the thing that now decides what gets surfaced.</p>
+            <p style="color:var(--ink-soft);">The way through is structural: state the answer flat, then earn it back. Both readers get served by the same paragraph in a different order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<script>
+// Doc chrome only — retints every specimen so architecture and palette can be
+// judged independently. Not part of any direction.
+(function () {
+  var THEMES = ['t-draft', 't-riso', 't-plot'];
+  var buttons = document.querySelectorAll('.palette-bar button');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var next = btn.dataset.theme;
+      document.querySelectorAll('.pg').forEach(function (pg) {
+        THEMES.forEach(function (t) { pg.classList.remove(t); });
+        pg.classList.add(next);
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
