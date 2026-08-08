@@ -5,7 +5,11 @@
     "date": "2026-08-05",
     "category": "leadership-and-management",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
   },
   "aeo-is-devrel-infrastructure": {
     "title": "AEO Is DevRel Infrastructure (And Nobody Owns It)",
