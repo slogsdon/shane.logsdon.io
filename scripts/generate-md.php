@@ -38,7 +38,13 @@ foreach ($posts as $slug => $post) {
     $body = $stripFrontmatter((string) file_get_contents($src));
     $url = "$site/articles/$category/$slug/";
     $header = "# {$post['title']}\n\n<$url>\n\n"
-        . (isset($post['date']) ? "_Published {$post['date']}_\n\n" : '');
+        . (isset($post['date'])
+            ? '_Published ' . $post['date']
+                . (isset($post['modified']) && $post['modified'] !== $post['date']
+                    ? ', updated ' . $post['modified']
+                    : '')
+                . "_\n\n"
+            : '');
     $markdown = $header . $body . "\n";
 
     $destDir = "$dist/articles/$category";
