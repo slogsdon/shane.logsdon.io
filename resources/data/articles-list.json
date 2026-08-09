@@ -13,8 +13,9 @@
   },
   "aeo-is-devrel-infrastructure": {
     "title": "AEO Is DevRel Infrastructure (And Nobody Owns It)",
-    "description": "I audited Stripe, Clerk, and Neon's docs for whether AI assistants can find and cite them, and found the best sites in developer tools are only two layers into a six-layer AEO stack. Nobody owns that work yet, which makes it DevRel's to claim.",
+    "description": "I audited Stripe, Clerk, and Neon's docs in May 2026 for whether AI assistants can find and cite them, and found the best sites in developer tools were only two layers into a six-layer AEO stack. A re-audit in August 2026 found them at roughly five of six. Updated with what changed, and what it says about who owns the work.",
     "date": "2026-07-29",
+    "modified": "2026-08-09",
     "category": "technical-deep-dives",
     "archived": false,
     "tags": [
