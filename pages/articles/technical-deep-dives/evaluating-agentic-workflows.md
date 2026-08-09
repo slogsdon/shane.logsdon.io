@@ -5,7 +5,6 @@ layout: 'partials::layouts/writing-post'
 image: evaluating-agentic-workflows-og.png
 heroImage: evaluating-agentic-workflows-hero.png
 slug: evaluating-agentic-workflows
-description: "A broken agentic workflow fails loudly. The wrong one runs cleanly and quietly drifts. How to define correctness and evaluate against it before you ship."
 ---
 
 You ship the workflow. It runs. The output lands in the right place, formatted correctly, and there are no errors in the log. You move on. Two weeks later, someone mentions that the summaries have been missing caveats, that the code review has been passing style issues, or that the documentation looks right but is citing an API that changed a month ago. The workflow never broke. It has been wrong the whole time, and you did not catch it because there was nothing to catch—only clean runs and accumulating drift.

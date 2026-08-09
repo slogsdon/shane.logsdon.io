@@ -3,9 +3,6 @@ title: The 25% That AI Can't Do Is the Whole Job Now
 date: 2026-08-05
 layout: partials::layouts/writing-post
 slug: the-25-percent-that-ai-cant-do
-description: AI already handles the first 75% of developer education. What's left
-  for DevRel is judgment, the architecture calls, tradeoffs, and product edges a model
-  can't reliably infer from the docs.
 faqs:
 - q: If AI already handles most developer education, what's actually left for DevRel
     to do?

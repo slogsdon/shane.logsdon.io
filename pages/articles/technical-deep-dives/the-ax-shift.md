@@ -5,7 +5,6 @@ layout: 'partials::layouts/writing-post'
 image: the-ax-shift-og.png
 heroImage: the-ax-shift-hero.png
 slug: the-ax-shift
-description: "The AX Shift is the move from designing software interfaces, documentation, and project context for humans to designing them for the agents now reading them. UX redesigned interfaces around users; DX redesigned APIs around the engineers consuming them; AX redesigns docs, context files, and specs around the autonomous agent that's now the primary reader."
 faqs:
   - q: "What is AX (Agent Experience)?"
     a: "Agent Experience is the practice of designing artifacts — specs, context files, documentation, API responses — for AI agents operating autonomously between sessions, not just for human readers. It's the next iteration after UX (designed around users) and DX (designed around developer-consumers)."

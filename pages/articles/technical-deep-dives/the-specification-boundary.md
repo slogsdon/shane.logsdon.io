@@ -6,7 +6,6 @@ slug: the-specification-boundary
 image: the-specification-boundary-og.png
 heroImage: the-specification-boundary-hero.png
 draft: false
-description: "AI gets you to 75% fast, then stalls. The wall isn't the model's capability, it's the specification boundary: the territory your spec left undefined. Here's how to plan for it."
 faqs:
   - q: "What is the 75% problem in AI-assisted development?"
     a: "The pattern where AI-assisted builds stall at the 75% mark — the scaffold is done, the demo works, the tests pass — but the domain-specific finishing work (edge cases, integration nuance, operational constraints) takes as long as the first 75% and requires expertise the model doesn't have access to."

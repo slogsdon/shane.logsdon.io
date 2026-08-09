@@ -5,7 +5,6 @@ layout: 'partials::layouts/writing-post'
 slug: the-spec-is-the-work
 image: the-spec-is-the-work-og.png
 heroImage: the-spec-is-the-work-hero.png
-description: "The reason AI-assisted builds stall isn't the model: design decisions were never made. Here's why writing the spec first changes everything."
 faqs:
   - q: "What does 'spec-first' AI development actually mean?"
     a: "Writing a design document — covering goals, non-goals, external interfaces, data schemas, error states, and module boundaries — before opening an AI tool. The spec is where design decisions happen; without it, the agent makes those decisions for you, using statistical probability rather than your specific intent."

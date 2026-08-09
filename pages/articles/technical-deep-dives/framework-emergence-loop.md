@@ -5,10 +5,6 @@ date: 2026-07-09
 slug: framework-emergence-loop
 image: framework-emergence-loop-og.png
 heroImage: framework-emergence-loop-hero.png
-description: >-
-  Durable AI workflows are found through iterative rebuilding, not upfront
-  design. The framework emergence loop turns each failure into the next
-  version's lesson.
 draft: false
 enriched: true
 ---

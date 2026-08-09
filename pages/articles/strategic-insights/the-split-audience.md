@@ -3,9 +3,6 @@ title: 'The Split Audience: The First Reader of Your Docs Isn''t a Developer'
 date: 2026-07-22
 layout: partials::layouts/writing-post
 slug: the-split-audience
-description: AI coding agents read your documentation before any developer does, and
-  no analytics metric you're reporting captures it. Here's what changes when you write
-  docs for the reader that shows up first.
 faqs:
 - q: Why does it matter that an AI coding agent reads your docs before a developer
     does?

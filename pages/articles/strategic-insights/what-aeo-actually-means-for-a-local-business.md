@@ -6,7 +6,6 @@ slug: what-aeo-actually-means-for-a-local-business
 image: what-aeo-actually-means-for-a-local-business-og.png
 heroImage: what-aeo-actually-means-for-a-local-business-hero.png
 draft: false
-description: "Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires."
 faqs:
   - q: "What's the difference between SEO and AEO?"
     a: "SEO optimizes for ranking on a search results page — the ten blue links. AEO optimizes for being cited in AI-generated answers, where there are no links, just a synthesized recommendation. The underlying technical signals overlap (clean structure, good content), but AEO adds FAQ schema, Quick Answer blocks, llms.txt, and explicit AI crawler access that traditional SEO ignores."

@@ -5,10 +5,6 @@ date: 2026-07-13
 slug: building-on-the-margins
 image: building-on-the-margins-og.png
 heroImage: building-on-the-margins-hero.png
-description: >-
-  A founder with a day job and family builds LeadSurface via a Loop & Gate
-  workflow, keeping product strategy human, handing disciplined execution to a
-  pipeline.
 draft: false
 enriched: true
 ---

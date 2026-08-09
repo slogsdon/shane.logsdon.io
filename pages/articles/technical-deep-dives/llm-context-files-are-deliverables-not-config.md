@@ -5,7 +5,6 @@ layout: 'partials::layouts/writing-post'
 image: llm-context-files-are-deliverables-not-config-og.png
 heroImage: llm-context-files-are-deliverables-not-config-hero.png
 slug: llm-context-files-are-deliverables-not-config
-description: "An LLM context file like CLAUDE.md is a deliverable, not a config toggle. Configuration tells tools how to behave; a context file tells the agent what the project is, what's been decided, and what it needs to navigate the work. The first kind sets and forgets. The second has to be maintained."
 faqs:
   - q: "What's the difference between a global and a project CLAUDE.md?"
     a: "A global CLAUDE.md (typically at ~/.claude/CLAUDE.md) is the behavioral layer — it shapes how the agent works regardless of project, like answer first, flag speculation, ask before large changes. A project CLAUDE.md (at the repo root) is the contextual layer — it shapes what the agent knows about this codebase: stack, folder structure, conventions, and explicit boundaries. Both matter and do different jobs."

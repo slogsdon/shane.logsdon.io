@@ -4,10 +4,6 @@ date: 2026-07-29
 modified: 2026-08-09
 layout: partials::layouts/writing-post
 slug: aeo-is-devrel-infrastructure
-description: I audited Stripe, Clerk, and Neon's docs in May 2026 for whether AI assistants
-  can find and cite them, and found the best sites in developer tools were only two
-  layers into a six-layer AEO stack. A re-audit in August 2026 found them at roughly
-  five of six. Updated with what changed, and what it says about who owns the work.
 faqs:
 - q: What is AEO, and how is it different for developer tools than for local businesses?
   a: 'The five structural signals I''ve written about for local businesses (FAQ schema,

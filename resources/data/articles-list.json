@@ -51,7 +51,7 @@
   },
   "framework-emergence-loop": {
     "title": "The Framework Emergence Loop: How Durable AI Workflows Are Actually Found",
-    "description": "You don't design a durable AI agent framework. You find one through a series of intentional failures. Here's what six iterations taught me.",
+    "description": "Durable AI workflows are found through iterative rebuilding, not upfront design. The framework emergence loop turns each failure into the next version's lesson.",
     "date": "2026-07-09",
     "category": "technical-deep-dives",
     "archived": false,
@@ -110,7 +110,7 @@
   },
   "llm-context-files-are-deliverables-not-config": {
     "title": "LLM Context Files Are Deliverables, Not Config",
-    "description": "Most CLAUDE.md files decay because they're written as config and forgotten. Here's how to treat them as living artifacts that improve over time.",
+    "description": "An LLM context file like CLAUDE.md is a deliverable, not a config toggle. Configuration tells tools how to behave; a context file tells the agent what the project is, what's been decided, and what it needs to navigate the work. The first kind sets and forgets. The second has to be maintained.",
     "date": "2026-05-04",
     "category": "technical-deep-dives",
     "archived": false,
@@ -122,7 +122,7 @@
   },
   "the-ax-shift": {
     "title": "The AX Shift: You're Still Designing for Yourself",
-    "description": "AI coding tools don't fail on prompts. They fail on ambiguous artifacts. Here's what Agent Experience means in practice and why it starts with your spec, not your model.",
+    "description": "The AX Shift is the move from designing software interfaces, documentation, and project context for humans to designing them for the agents now reading them. UX redesigned interfaces around users; DX redesigned APIs around the engineers consuming them; AX redesigns docs, context files, and specs around the autonomous agent that's now the primary reader.",
     "date": "2026-04-27",
     "category": "technical-deep-dives",
     "archived": false,
