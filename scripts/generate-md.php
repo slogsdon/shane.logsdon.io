@@ -7,6 +7,9 @@ $root = getcwd();
 $dist = "$root/dist";
 $site = 'https://shane.logsdon.io';
 
+$settings = require "$root/resources/settings.php";
+$wpm = $settings->avgWordsPerMinute;
+
 $posts = json_decode((string) file_get_contents("$root/resources/data/articles-list.json"), true);
 if (!is_array($posts)) {
     fwrite(STDERR, "generate-md: could not read articles-list.json\n");
@@ -37,6 +40,7 @@ foreach ($posts as $slug => $post) {
 
     $body = $stripFrontmatter((string) file_get_contents($src));
     $url = "$site/articles/$category/$slug/";
+    $wordCount = str_word_count(strip_tags($body));
     $header = "# {$post['title']}\n\n<$url>\n\n"
         . (isset($post['date'])
             ? '_Published ' . $post['date']
@@ -44,7 +48,8 @@ foreach ($posts as $slug => $post) {
                     ? ', updated ' . $post['modified']
                     : '')
                 . "_\n\n"
-            : '');
+            : '')
+        . sprintf("_%s words, about %d min read._\n\n", number_format($wordCount), (int) ceil($wordCount / $wpm));
     $markdown = $header . $body . "\n";
 
     $destDir = "$dist/articles/$category";

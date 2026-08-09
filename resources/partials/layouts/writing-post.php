@@ -42,7 +42,8 @@ $this->layout('partials::layouts/main', [
 $formattedDate = DateTime::createFromFormat('U', $originalDate)->format('F j, Y');
 $folioDate = DateTime::createFromFormat('U', $originalDate)->format('Y.m.d');
 $isoDate = DateTime::createFromFormat('U', $originalDate)->format('Y-m-d');
-$readTime = ceil(str_word_count(strip_tags($content)) / $settings->avgWordsPerMinute);
+$wordCount = str_word_count(strip_tags($content));
+$readTime = ceil($wordCount / $settings->avgWordsPerMinute);
 $typeLabel = $meta->type === 'speaking' ? 'speaking' : 'articles';
 $categoryLabel = isset($meta->category) && isset($allCategories[$meta->category])
     ? $allCategories[$meta->category]
@@ -200,6 +201,8 @@ $mainLd = [
     'author' => ['@id' => 'https://shane.logsdon.io/#Person'],
     'publisher' => ['@id' => 'https://shane.logsdon.io/#Person'],
     'description' => $meta->description,
+    'wordCount' => $wordCount,
+    'timeRequired' => 'PT' . $readTime . 'M',
     'isPartOf' => [
         '@type' => $isSpeaking ? 'CollectionPage' : 'Blog',
         '@id' => 'https://shane.logsdon.io/' . $meta->type . '/',
