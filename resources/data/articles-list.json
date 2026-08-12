@@ -5,7 +5,11 @@
     "date": "2026-08-12",
     "category": "strategic-insights",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
   },
   "the-25-percent-that-ai-cant-do": {
     "title": "The 25% That AI Can't Do Is the Whole Job Now",
