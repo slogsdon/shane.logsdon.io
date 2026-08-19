@@ -1,4 +1,12 @@
 {
+  "devrel-is-distribution-work": {
+    "title": "DevRel Is Distribution Work. Neon Just Proved What It's Worth.",
+    "description": "Neon hit 80% AI-agent-provisioned databases, and Databricks paid about a billion dollars for it. Here's what that acquisition proves about DevRel, the new AI-citation node in the old flywheel, and why agent skills are becoming the new SDK.",
+    "date": "2026-08-19",
+    "category": "industry-analysis",
+    "archived": false,
+    "tags": []
+  },
   "witnessed-practice-is-the-new-tutorial": {
     "title": "Witnessed Practice Is the New Tutorial",
     "description": "AI can write a flawless tutorial, but it can't fake a dead end. That's why witnessed practice (watching a competent person work through real uncertainty) is the DevRel format AI can't replicate, and corporate DevRel is barely making any of it.",
