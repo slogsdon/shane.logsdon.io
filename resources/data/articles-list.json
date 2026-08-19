@@ -5,7 +5,11 @@
     "date": "2026-08-19",
     "category": "industry-analysis",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
   },
   "witnessed-practice-is-the-new-tutorial": {
     "title": "Witnessed Practice Is the New Tutorial",
