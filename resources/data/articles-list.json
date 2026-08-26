@@ -1,13 +1,480 @@
 {
-  "what-do-we-measure": {
-    "title": "What Do We Measure When AI Answers the Questions?",
-    "description": "Docs views, GitHub stars, and event attendance are measuring a channel that's shrinking. The dashboard that actually answers whether developers are finding you tracks AI citation rate and agent-mediated activation, and asks whether your community still trusts what it's being told.",
-    "date": "2026-08-26",
+  "devrel-is-distribution-work": {
+    "title": "DevRel Is Distribution Work. Neon Just Proved What It's Worth.",
+    "description": "Neon hit 80% AI-agent-provisioned databases, and Databricks paid about a billion dollars for it. Here's what that acquisition proves about DevRel, the new AI-citation node in the old flywheel, and why agent skills are becoming the new SDK.",
+    "date": "2026-08-19",
+    "category": "industry-analysis",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
+  },
+  "witnessed-practice-is-the-new-tutorial": {
+    "title": "Witnessed Practice Is the New Tutorial",
+    "description": "AI can write a flawless tutorial, but it can't fake a dead end. That's why witnessed practice (watching a competent person work through real uncertainty) is the DevRel format AI can't replicate, and corporate DevRel is barely making any of it.",
+    "date": "2026-08-12",
     "category": "strategic-insights",
     "archived": false,
     "tags": [
       "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "the-25-percent-that-ai-cant-do": {
+    "title": "The 25% That AI Can't Do Is the Whole Job Now",
+    "description": "AI already handles the first 75% of developer education. What's left for DevRel is judgment, the architecture calls, tradeoffs, and product edges a model can't reliably infer from the docs.",
+    "date": "2026-08-05",
+    "category": "leadership-and-management",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "aeo-is-devrel-infrastructure": {
+    "title": "AEO Is DevRel Infrastructure (And Nobody Owns It)",
+    "description": "I audited Stripe, Clerk, and Neon's docs in May 2026 for whether AI assistants can find and cite them, and found the best sites in developer tools were only two layers into a six-layer AEO stack. A re-audit in August 2026 found them at roughly five of six. Updated with what changed, and what it says about who owns the work.",
+    "date": "2026-07-29",
+    "modified": "2026-08-09",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "the-split-audience": {
+    "title": "The Split Audience: The First Reader of Your Docs Isn't a Developer",
+    "description": "AI coding agents read your documentation before any developer does, and no analytics metric you're reporting captures it. Here's what changes when you write docs for the reader that shows up first.",
+    "date": "2026-07-22",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
+  },
+  "building-on-the-margins": {
+    "title": "Building on the Margins",
+    "description": "A founder with a day job and family builds LeadSurface via a Loop & Gate workflow, keeping product strategy human, handing disciplined execution to a pipeline.",
+    "date": "2026-07-13",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": [
+      "product-strategy",
+      "developer-tooling",
+      "tech-strategy",
       "system-architecture"
+    ]
+  },
+  "framework-emergence-loop": {
+    "title": "The Framework Emergence Loop: How Durable AI Workflows Are Actually Found",
+    "description": "Durable AI workflows are found through iterative rebuilding, not upfront design. The framework emergence loop turns each failure into the next version's lesson.",
+    "date": "2026-07-09",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "system-architecture",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "evaluating-agentic-workflows": {
+    "title": "How to Know If Your Agentic Workflow Is Actually Working",
+    "description": "A broken agentic workflow fails loudly. The wrong one runs cleanly and quietly drifts. How to define correctness and evaluate against it before you ship.",
+    "date": "2026-06-18",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "system-architecture"
+    ]
+  },
+  "what-aeo-actually-means-for-a-local-business": {
+    "title": "What AEO Actually Means for a Local Business",
+    "description": "Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires.",
+    "date": "2026-05-12",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": [
+      "tech-strategy"
+    ]
+  },
+  "the-specification-boundary": {
+    "title": "The Specification Boundary: Why AI-Assisted Builds Stall at 75%",
+    "description": "AI gets you to 75% fast, then stalls. The wall isn't the model's capability, it's the specification boundary: the territory your spec left undefined. Here's how to plan for it.",
+    "date": "2026-05-18",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "the-spec-is-the-work": {
+    "title": "The Spec Is the Work: PRD-First AI Development",
+    "description": "The reason AI-assisted builds stall isn't the model: design decisions were never made. Here's why writing the spec first changes everything.",
+    "date": "2026-05-11",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "llm-context-files-are-deliverables-not-config": {
+    "title": "LLM Context Files Are Deliverables, Not Config",
+    "description": "An LLM context file like CLAUDE.md is a deliverable, not a config toggle. Configuration tells tools how to behave; a context file tells the agent what the project is, what's been decided, and what it needs to navigate the work. The first kind sets and forgets. The second has to be maintained.",
+    "date": "2026-05-04",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "the-ax-shift": {
+    "title": "The AX Shift: You're Still Designing for Yourself",
+    "description": "The AX Shift is the move from designing software interfaces, documentation, and project context for humans to designing them for the agents now reading them. UX redesigned interfaces around users; DX redesigned APIs around the engineers consuming them; AX redesigns docs, context files, and specs around the autonomous agent that's now the primary reader.",
+    "date": "2026-04-27",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
+  },
+  "fiddling-with-asp-dotnet-core-and-fsharp-with-suave": {
+    "title": "Fiddling with ASP.NET Core and F# with Suave",
+    "description": "Suave is a possible replacement for the ASP.NET stack, but with some help, the two can be used together to build composable F# web applications.",
+    "date": "2017-01-22",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "tags": [
+      "backend-engineering",
+      "functional-programming",
+      "system-architecture"
+    ],
+    "related": [
+      "asp-dotnet-core-webapi-in-azure-app-service",
+      "exploring-fsharp-with-dotnet-core-and-kestrel",
+      "writing-api-wrappers-with-elixir",
+      "functors-applicatives-and-monads-in-elixir"
+    ]
+  },
+  "asp-dotnet-core-webapi-in-azure-app-service": {
+    "title": "ASP.NET Core WebAPI in Azure App Service",
+    "description": "In my opinion, Azure App Services are an easy and direct way to launch your ASP.NET Core application for the outside world to access.",
+    "date": "2017-01-21",
+    "category": "strategic-insights",
+    "archived": true,
+    "tags": [
+      "backend-engineering",
+      "cloud-infrastructure",
+      "tech-strategy"
+    ],
+    "related": [
+      "fiddling-with-asp-dotnet-core-and-fsharp-with-suave",
+      "application-deployment",
+      "writing-api-wrappers-with-elixir",
+      "linux-and-net-should-be-friends"
+    ]
+  },
+  "cross-compiling-rust-applications-for-the-onion-omega2-from-macos": {
+    "title": "Cross-Compiling Rust Applications for the Onion Omega2 from MacOS",
+    "description": "Onion's Omega2 SoC computers are a prime target for cross-compiling Rust applications, taking care to set up your environment just right for the Omega2's MIPS architecture.",
+    "date": "2017-01-11",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Hardware-specific content not aligned with current focus",
+    "tags": [
+      "backend-engineering",
+      "system-architecture"
+    ]
+  },
+  "exploring-fsharp-with-dotnet-core-and-kestrel": {
+    "title": "Exploring F# with .NET Core and Kestrel",
+    "description": "While not the primary focus of Microsoft's efforts, F# makes for an excellent language choice for applications targeting .NET Core.",
+    "date": "2016-12-23",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "tags": [
+      "backend-engineering",
+      "functional-programming",
+      "system-architecture"
+    ],
+    "related": [
+      "fiddling-with-asp-dotnet-core-and-fsharp-with-suave",
+      "asp-dotnet-core-webapi-in-azure-app-service",
+      "writing-api-wrappers-with-elixir",
+      "im-learning-haskell-for-real-this-time"
+    ]
+  },
+  "simple-php-socket-programming": {
+    "title": "Simple PHP Socket Programming",
+    "description": "PHP isn't just for templates for Apache's mod_php. Let's have fun with socket programming in PHP.",
+    "date": "2016-10-29",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Basic tutorial not aligned with current expertise level",
+    "tags": [
+      "backend-engineering",
+      "system-architecture"
+    ]
+  },
+  "functors-applicatives-and-monads-in-elixir": {
+    "title": "Functors, Applicatives, and Monads in Elixir",
+    "description": "Elixir doesn't have native modules for functors, applicatives, and monads. Is it possible to create them? Is it worth it?",
+    "date": "2015-10-04",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Theoretical content not directly aligned with current focus",
+    "tags": [
+      "backend-engineering",
+      "functional-programming"
+    ]
+  },
+  "pitstop-with-the-elixir-genevent-module": {
+    "title": "Pitstop with the Elixir GenEvent Module",
+    "description": "Take a break with me as I make a pitstop the Elixir GenEvent module, seeing what it can offer in a real life project.",
+    "date": "2015-08-16",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Framework-specific content not aligned with current focus",
+    "tags": [
+      "backend-engineering",
+      "system-architecture"
+    ]
+  },
+  "wordpress-docker-and-you": {
+    "title": "WordPress, Docker, and You",
+    "description": "Wordpress, Docker, and your site can work together in harmony with the right configuration.",
+    "date": "2015-04-25",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Basic tutorial not aligned with current expertise level",
+    "tags": [
+      "cloud-infrastructure",
+      "tech-strategy"
+    ]
+  },
+  "im-learning-haskell-for-real-this-time": {
+    "title": "I'm Learning Haskell For Real This Time",
+    "description": "About a couple of years ago, I was looking for something to add to my programming toolbox.",
+    "date": "2014-12-08",
+    "category": "industry-analysis",
+    "archived": true,
+    "archiveReason": "Personal learning journey post",
+    "tags": [
+      "functional-programming",
+      "tech-strategy"
+    ]
+  },
+  "application-deployment": {
+    "title": "Application Deployment",
+    "description": "You may have experience in deploying your Ruby or .NET applications, but when it comes to Elixir, do you have what it takes to deploy your app?",
+    "date": "2014-08-25",
+    "category": "strategic-insights",
+    "archived": true,
+    "tags": [
+      "cloud-infrastructure",
+      "system-architecture",
+      "tech-strategy"
+    ],
+    "related": [
+      "asp-dotnet-core-webapi-in-azure-app-service",
+      "migrating-from-mysql-server-to-percona-server",
+      "writing-api-wrappers-with-elixir",
+      "installing-nginx-percona-php-fpm-with-homebrew-on-mountain-lion"
+    ]
+  },
+  "review-getting-started-with-phalcon": {
+    "title": "Review: Getting Started with Phalcon",
+    "description": "Stephan A. Miller brings the self-proclaimed \"fastest PHP framework\" to the masses in his new book.",
+    "date": "2014-02-22",
+    "category": "industry-analysis",
+    "archived": true,
+    "archiveReason": "Outdated framework review",
+    "tags": [
+      "backend-engineering",
+      "tech-strategy"
+    ]
+  },
+  "migrate-your-site-without-killing-your-search-engine-presence": {
+    "title": "Migrate Your Site Without Killing Your Search Engine Presence",
+    "description": "SEO is a hard beast to tame. Once you have everything just right, moving to a new platform, a new URL structure, or even a new domain can be stressful.",
+    "date": "2013-12-20",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "tags": [
+      "tech-strategy",
+      "backend-engineering"
+    ],
+    "related": [
+      "application-deployment",
+      "writing-api-wrappers-with-elixir",
+      "migrating-from-mysql-server-to-percona-server",
+      "migrating-to-acvte"
+    ]
+  },
+  "writing-api-wrappers-with-elixir": {
+    "title": "Writing API Wrappers with Elixir",
+    "description": "Recently, I built an API wrapper for Mandrill. Let's walk through the steps I used to create it.",
+    "date": "2013-12-08",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "tags": [
+      "backend-engineering",
+      "system-architecture",
+      "developer-tooling"
+    ],
+    "related": [
+      "asp-dotnet-core-webapi-in-azure-app-service",
+      "implementing-user-authentication-with-bcrypt-in-chicagoboss",
+      "application-deployment",
+      "pitstop-with-the-elixir-genevent-module"
+    ]
+  },
+  "implementing-user-authentication-with-bcrypt-in-chicagoboss": {
+    "title": "Implementing User Authentication with bcrypt in ChicagoBoss",
+    "description": "Don't rely on MD5/SHA1/SHA256/etc. hashes for storing passwords. Join me in learning how to bcrypt in Erlang applications.",
+    "date": "2013-10-03",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "tags": [
+      "backend-engineering",
+      "system-architecture"
+    ],
+    "related": [
+      "writing-api-wrappers-with-elixir",
+      "application-deployment",
+      "migrating-from-mysql-server-to-percona-server",
+      "chicagoboss"
+    ]
+  },
+  "acvte": {
+    "title": "Acvte",
+    "description": "What it is A markdown blog based off of @natew's obtvse2.",
+    "date": "2013-09-02",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Personal project not aligned with current focus",
+    "tags": [
+      "backend-engineering"
+    ]
+  },
+  "migrating-to-acvte": {
+    "title": "Migrating to Acvte",
+    "description": "Remember this? I do. I finally got acvte to a point where I was comfortable using it in production.",
+    "date": "2013-08-31",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Personal project migration not aligned with current focus",
+    "tags": [
+      "backend-engineering",
+      "cloud-infrastructure"
+    ]
+  },
+  "chicagoboss": {
+    "title": "ChicagoBoss",
+    "description": "I need to stop finding awesome projects to try out. Erlang and ChicagoBoss look pretty freakin' sweet.",
+    "date": "2013-08-27",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Personal exploration post not aligned with current focus",
+    "tags": [
+      "backend-engineering",
+      "functional-programming"
+    ]
+  },
+  "im-already-tired-of-rails-already": {
+    "title": "I'm already tired of Railsâ¦already",
+    "description": "Neckbeards of the Internet. Prepare yourselves for the following comment: I don't think Rails is for me.",
+    "date": "2013-08-15",
+    "category": "industry-analysis",
+    "archived": true,
+    "archiveReason": "Personal opinion piece not aligned with current focus",
+    "tags": [
+      "backend-engineering",
+      "tech-strategy"
+    ]
+  },
+  "vagrant-is-awesome": {
+    "title": "Vagrant is Awesome",
+    "description": "I've been working on PHP web apps for years, and over time, my development workflow has remained fairly constant.",
+    "date": "2013-08-07",
+    "category": "strategic-insights",
+    "archived": true,
+    "archiveReason": "Basic tool introduction not aligned with current expertise level",
+    "tags": [
+      "cloud-infrastructure",
+      "developer-tooling"
+    ]
+  },
+  "migrating-from-mysql-server-to-percona-server": {
+    "title": "Migrating from MySQL Server to Percona Server",
+    "description": "What is Percona Server, and why should I care?",
+    "date": "2013-08-06",
+    "category": "strategic-insights",
+    "archived": true,
+    "tags": [
+      "backend-engineering",
+      "system-architecture",
+      "tech-strategy"
+    ],
+    "related": [
+      "application-deployment",
+      "writing-api-wrappers-with-elixir",
+      "implementing-user-authentication-with-bcrypt-in-chicagoboss",
+      "installing-nginx-percona-php-fpm-with-homebrew-on-mountain-lion"
+    ]
+  },
+  "using-obtvse2": {
+    "title": "Using obtvse2",
+    "description": "I will be using obtvse2 for the forseeable future.",
+    "date": "2013-08-06",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Personal tooling post not aligned with current focus",
+    "tags": [
+      "backend-engineering"
+    ]
+  },
+  "linux-and-net-should-be-friends": {
+    "title": "Linux and .NET should be friends",
+    "description": "Linux and Microsoft's .NET framework haven't always seen eye to eye.",
+    "date": "2013-04-19",
+    "category": "industry-analysis",
+    "archived": true,
+    "archiveReason": "Outdated platform discussion",
+    "tags": [
+      "backend-engineering",
+      "tech-strategy"
+    ]
+  },
+  "installing-nginx-percona-php-fpm-with-homebrew-on-mountain-lion": {
+    "title": "Installing nginx/percona/php-fpm with homebrew on Mountain Lion",
+    "description": "If it helps anyone else, that's an added bonus, but this is mainly just a reference point for me.",
+    "date": "2013-04-14",
+    "category": "technical-deep-dives",
+    "archived": true,
+    "archiveReason": "Setup guide not aligned with current expertise level",
+    "tags": [
+      "backend-engineering",
+      "system-architecture",
+      "cloud-infrastructure"
     ]
   }
 }
