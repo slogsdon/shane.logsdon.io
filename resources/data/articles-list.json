@@ -1,4 +1,15 @@
 {
+  "what-do-we-measure": {
+    "title": "What Do We Measure When AI Answers the Questions?",
+    "description": "Docs views, GitHub stars, and event attendance are measuring a channel that's shrinking. The dashboard that actually answers whether developers are finding you tracks AI citation rate and agent-mediated activation, and asks whether your community still trusts what it's being told.",
+    "date": "2026-08-26",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "system-architecture"
+    ]
+  },
   "devrel-is-distribution-work": {
     "title": "DevRel Is Distribution Work. Neon Just Proved What It's Worth.",
     "description": "Neon hit 80% AI-agent-provisioned databases, and Databricks paid about a billion dollars for it. Here's what that acquisition proves about DevRel, the new AI-citation node in the old flywheel, and why agent skills are becoming the new SDK.",
