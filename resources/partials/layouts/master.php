@@ -9,6 +9,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#fbfaf9">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/images/icons/icon-512x512.png">

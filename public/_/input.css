@@ -41,6 +41,21 @@
 
     /* Radius. Zero everywhere except avatars and the callout bubble. */
     --r-full:                999px;
+
+    /* Motion. The policy is in DESIGN.md; these are the values it resolves to.
+       Ceiling is 200ms — nothing on this site is rare enough to earn more.
+       `--ease` was referenced by .row-title-link and never defined, so every
+       transition using it silently fell back to `ease`. */
+    --dur-fast:              120ms;   /* hover, focus, colour */
+    --dur-base:              180ms;   /* enter/exit, disclosure */
+    --ease-out:              cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out:           cubic-bezier(0.65, 0, 0.35, 1);
+    --ease:                  var(--ease-out);
+
+    /* One scheme, declared. The palette is a committed warm cream and this
+       site has no dark theme; saying so stops the browser rendering form
+       controls and scrollbars dark for dark-mode visitors. */
+    color-scheme: light;
   }
 
   html {
@@ -74,6 +89,7 @@
   h1, h2, h3, h4 {
     @apply font-display;
     letter-spacing: -0.015em;
+    text-wrap: balance;
   }
 
   /* ── Figures. DESIGN.md §Figures: a figure does not reflow and does not
@@ -123,6 +139,24 @@
     border-left: 1px solid var(--color-rule);
     color: var(--color-ink-soft);
     font-style: italic;
+  }
+
+  /* Body copy sets its own last line. Captions benefit most: they are short
+     and orphan badly at narrow measures. */
+  .prose p,
+  .prose li,
+  .figcaption { text-wrap: pretty; }
+
+  /* 1ms rather than 0 so transitionend still fires. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -180,6 +214,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.06em;
     color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
   }
   .folio .pos { color: hsl(var(--foreground)); }
 
@@ -212,7 +247,8 @@
     text-decoration-color: var(--color-rule);
     text-decoration-thickness: 1px;
     text-underline-offset: 5px;
-    transition: color 200ms ease, text-decoration-color 200ms ease;
+    transition: color var(--dur-fast) var(--ease-out),
+                text-decoration-color var(--dur-fast) var(--ease-out);
   }
   .btn-arrow::after {
     content: ' →';
@@ -239,23 +275,23 @@
   }
   .inversion .eyebrow,
   .inversion .smallcaps {
-    color: rgba(251, 250, 249, 0.55);
+    color: color-mix(in oklab, var(--color-surface) 55%, transparent);
   }
   .inversion .smallcaps-lg,
   .inversion .wordmark,
   .inversion .running-head {
     color: var(--color-surface);
   }
-  .inversion .folio { color: rgba(251, 250, 249, 0.55); }
+  .inversion .folio { color: color-mix(in oklab, var(--color-surface) 55%, transparent); }
   .inversion .folio .pos { color: var(--color-surface); }
   .inversion .btn-arrow {
     color: var(--color-surface);
-    text-decoration-color: rgba(251, 250, 249, 0.3);
+    text-decoration-color: color-mix(in oklab, var(--color-surface) 30%, transparent);
   }
   .inversion .btn-arrow:hover {
     text-decoration-color: var(--color-surface);
   }
-  .inversion .running-head { border-bottom-color: rgba(251, 250, 249, 0.18); }
+  .inversion .running-head { border-bottom-color: color-mix(in oklab, var(--color-surface) 18%, transparent); }
   .inversion a { color: var(--color-surface); }
 
   /* ── Hairline rules — 1px max, always. Major divisions communicated
@@ -312,7 +348,9 @@
     letter-spacing: 0;
   }
   .link-arrow:hover { text-decoration: none; }
-  .link-arrow:hover .arrow { transform: translateX(3px); }
+  @media (hover: hover) and (pointer: fine) {
+    .link-arrow:hover .arrow { transform: translateX(3px); }
+  }
 
   /* Visually hidden — accessible hide for honeypot fields and screen-reader-only content */
   .visually-hidden {
@@ -334,7 +372,7 @@
 
   /* Header transition */
   #site-header {
-    transition: border-color 200ms ease;
+    transition: border-color var(--dur-fast) var(--ease-out);
   }
 
   /* ══════════════════════════════════════════════════════════════════
@@ -401,17 +439,25 @@
 
   /* ── Title block. The C · Sheet footer. Revision and date are content. */
   .title-block {
+    container-type: inline-size;
     border-top: 1px solid var(--color-ink);
-    display: grid; grid-template-columns: 1fr auto;
+    display: grid; grid-template-columns: 1fr;
   }
   .title-block__id { padding: 14px 30px 16px; }
   .title-block__cells {
-    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(76px, auto);
-    border-left: 1px solid var(--color-ink);
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--color-ink);
     margin: 0;
   }
-  .title-block__cells > div { padding: 12px 14px; border-right: 1px solid var(--color-rule); }
-  .title-block__cells > div:last-child { border-right: 0; }
+  .title-block__cells > div {
+    padding: 12px 14px;
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .title-block__cells > div:nth-child(2n) { border-right: 0; }
+  .title-block__cells > div:nth-last-child(-n+2) { border-bottom: 0; }
   .title-block__cells dt {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
@@ -420,19 +466,22 @@
   .title-block__cells dd {
     margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 12px; color: var(--color-ink);
+    font-variant-numeric: tabular-nums;
   }
-  /* Four cells at minmax(76px, auto) do not fit a phone. */
-  @media (max-width: 640px) {
-    .title-block { grid-template-columns: 1fr; }
+  @container (min-width: 40rem) {
+    .title-block { grid-template-columns: 1fr auto; }
     .title-block__cells {
-      grid-auto-flow: row;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      border-left: 0;
-      border-top: 1px solid var(--color-ink);
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(76px, auto);
+      grid-template-columns: none;
+      border-left: 1px solid var(--color-ink);
+      border-top: 0;
     }
-    .title-block__cells > div { border-bottom: 1px solid var(--color-rule); }
-    .title-block__cells > div:nth-child(2n) { border-right: 0; }
-    .title-block__cells > div:nth-last-child(-n+2) { border-bottom: 0; }
+    .title-block__cells > div {
+      border-right: 1px solid var(--color-rule);
+      border-bottom: 0;
+    }
+    .title-block__cells > div:last-child { border-right: 0; }
   }
 
   /* ── Index strip. Count folio plus category filter tabs, above every list.
@@ -451,8 +500,16 @@
     border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     cursor: pointer;
+    /* These are the primary list navigation on a phone. inline-flex plus
+       min-height grows the hit area to 44px without moving the underline. */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    transition: color var(--dur-fast) var(--ease-out);
   }
-  .filter-tab:hover { color: hsl(var(--foreground)); }
+  @media (hover: hover) and (pointer: fine) {
+    .filter-tab:hover { color: hsl(var(--foreground)); }
+  }
   /* aria-current is the selected state now that a tab is a link to a real
      route rather than a button toggling rows in place. aria-selected is kept
      for the component library, which still shows the tablist form. */
@@ -470,9 +527,11 @@
     background-size: 0% 1px;
     background-position: left bottom;
     background-repeat: no-repeat;
-    transition: background-size 300ms var(--ease, ease);
+    transition: background-size 150ms var(--ease-out);
   }
-  .row-title-link:hover { background-size: 100% 1px; }
+  @media (hover: hover) and (pointer: fine) {
+    .row-title-link:hover { background-size: 100% 1px; }
+  }
 
   /* ── Figure inside an article body. Breaks the prose measure so a drawing or
      a table can use the column it needs.
@@ -491,14 +550,17 @@
      pricing, where the figures add up and are shown adding up. The foot IS the
      figure, so it carries the ink rule and the sum. */
   .footed-table {
+    container-type: inline-size;
     width: 100%;
     border-collapse: collapse;
     font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     line-height: 1.5;
   }
   .footed-table th,
-  .footed-table td { text-align: left; padding: 0.625rem 1rem 0.625rem 0; vertical-align: baseline; }
+  .footed-table td { text-align: left; padding: 0.625rem 0.5rem 0.625rem 0; vertical-align: baseline; }
+  .footed-table td,
+  .footed-table tbody th { font-variant-numeric: tabular-nums; }
   .footed-table thead th {
     @apply font-display;
     font-weight: 600;
@@ -532,10 +594,10 @@
     color: hsl(var(--foreground));
     font-weight: 400;
   }
-  @media (max-width: 600px) {
-    .footed-table { font-size: 0.875rem; }
+  @container (min-width: 38rem) {
+    .footed-table { font-size: 0.9375rem; }
     .footed-table th,
-    .footed-table td { padding-right: 0.5rem; }
+    .footed-table td { padding-right: 1rem; }
   }
 
   /* ── Table written as markdown in a post body. CommonMark emits a bare
@@ -548,11 +610,12 @@
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     line-height: 1.5;
   }
   .prose th,
-  .prose td { text-align: left; padding: 0.625rem 1rem 0.625rem 0; vertical-align: baseline; }
+  .prose td { text-align: left; padding: 0.625rem 0.5rem 0.625rem 0; vertical-align: baseline; }
+  .prose td { font-variant-numeric: tabular-nums; }
   .prose th:last-child,
   .prose td:last-child { padding-right: 0; }
   .prose thead th {
@@ -571,18 +634,20 @@
   .prose tbody td { color: var(--color-ink-soft); }
   /* CommonMark's table extension writes alignment as an inline style, which
      already wins over these. Nothing to do but let it. */
-  @media (max-width: 600px) {
-    .prose table { font-size: 0.875rem; }
+  @media (min-width: 37.5rem) {
+    .prose table { font-size: 0.9375rem; }
     .prose th,
-    .prose td { padding-right: 0.5rem; }
+    .prose td { padding-right: 1rem; }
+    .prose th:last-child,
+    .prose td:last-child { padding-right: 0; }
   }
 
   /* ── Sheet. Border plus field plus title block. No zone references or edge
      rulers: they looked systematic and addressed nothing. */
   .sheet { border: 1px solid hsl(var(--rule)); position: relative; }
-  .sheet__field { padding: 34px 34px 0; }
-  @media (max-width: 900px) {
-    .sheet__field { padding: 22px 18px 0; }
+  .sheet__field { padding: 22px 18px 0; }
+  @media (min-width: 56.25rem) {
+    .sheet__field { padding: 34px 34px 0; }
   }
 
   /* ── Assembly. The D architecture's spine: a numbered sequence down an axis.
