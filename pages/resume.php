@@ -385,7 +385,7 @@ foreach ($byEmployer as $company => $group) {
         <div class="mt-10 border-t border-rule">
           <?php foreach ($roles as $role): ?>
           <div class="rp-role grid grid-cols-1 gap-x-6 gap-y-3 border-b border-rule py-8 sm:grid-cols-[2.5rem_1fr] lg:grid-cols-[2.5rem_1fr_9rem]">
-            <div class="t-accent pt-1 font-display text-xl leading-none" aria-hidden="true"><?= $role['num'] ?></div>
+            <div class="pt-1 font-display text-xl leading-none text-muted-foreground" aria-hidden="true"><?= $role['num'] ?></div>
             <div>
               <h3 class="font-display text-[1.25rem] font-normal leading-snug tracking-tight text-foreground"><?= htmlspecialchars($role['title']) ?></h3>
               <p class="mt-2 text-[0.875rem] text-muted-foreground">

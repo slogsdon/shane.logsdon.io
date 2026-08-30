@@ -26,7 +26,7 @@ $articleCount = count($activeArticles);
 <section class="relative overflow-hidden">
     <div class="grid-paper absolute inset-0" style="opacity:0.55;" aria-hidden="true"></div>
 
-    <div class="relative mx-auto max-w-editorial px-6 pb-32 pt-20 sm:pt-28">
+    <div class="relative mx-auto max-w-editorial field-edge pb-32 pt-20 sm:pt-28">
         <div class="running-head" aria-hidden="true">
             <span>shane logsdon &middot; field notes</span>
             <span data-locale-tz="America/Kentucky/Louisville">louisville &middot; <span data-locale-offset>gmt&minus;5</span></span>

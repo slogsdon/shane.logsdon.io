@@ -642,6 +642,13 @@
     .prose td:last-child { padding-right: 0; }
   }
 
+  /* ── Field edge. Non-sheet hero fields use the same readable edge as a
+     sheet's inner field: outer gutter plus its rule and field padding. */
+  .field-edge { padding-inline: calc(1.5rem + 1.1875rem); }
+  @media (min-width: 56.25rem) {
+    .field-edge { padding-inline: calc(1.5rem + 2.1875rem); }
+  }
+
   /* ── Sheet. Border plus field plus title block. No zone references or edge
      rulers: they looked systematic and addressed nothing. */
   .sheet { border: 1px solid hsl(var(--rule)); position: relative; }
