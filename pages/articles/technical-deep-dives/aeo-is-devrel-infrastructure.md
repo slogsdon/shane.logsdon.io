@@ -74,6 +74,8 @@ I've [written elsewhere about answer engine optimization (AEO) for local busines
 
 What changes for developer tools is everything else. The query is "what should I use for serverless Postgres?" instead of "best plumber near me." The stakes are a competitor getting embedded in agent defaults. The part with no local-business equivalent at all is the second surface, where the consumer of your content isn't a human asking an AI but a coding agent working autonomously. That second surface is where the infrastructure framing earns its name.
 
+The underlying migration lesson is older than the current AEO vocabulary: a site only keeps its authority when its structure survives change. I documented that pattern in [Migrate Your Site Without Killing Your Search Engine Presence](/archive/2013/migrate-your-site-without-killing-your-search-engine-presence/).
+
 ---
 
 ## The stack, and how much of it is missing

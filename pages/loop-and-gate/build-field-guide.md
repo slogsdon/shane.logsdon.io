@@ -6,9 +6,8 @@ slug: build-field-guide
 image: build-field-guide-og.png
 heroImage: build-field-guide-hero.png
 description: >-
-  The eleven human-judgment gates of an agentic build loop: what you decide at
-  each, how to work the ones outside your lens, and how to tell when the pipeline
-  is confidently wrong. One real product, gate by gate.
+  Eleven human-judgment gates for an agentic build loop: decide well, work outside
+  your lens, and catch confident errors.
 draft: false
 ---
 

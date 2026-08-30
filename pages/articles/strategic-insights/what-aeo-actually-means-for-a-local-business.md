@@ -63,6 +63,8 @@ That's a 12–18 month opening. The businesses that get structured for AI citati
 
 The technical bar isn't high. For most local sites, full AEO implementation takes a few hours of structured work. What it requires is knowing which signals matter and building them correctly, not uncritically following a plugin setup and hoping.
 
+The technical bar is low enough to handle as a focused web-presence system rather than a plugin checklist. I describe that implementation work on the [services page](/services/).
+
 ---
 
 ## What this looks like in practice

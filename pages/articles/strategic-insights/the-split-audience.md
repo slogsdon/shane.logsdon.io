@@ -1,5 +1,6 @@
 ---
 title: 'The Split Audience: The First Reader of Your Docs Isn''t a Developer'
+seoTitle: 'The Split Audience: Docs'' First Reader Isn''t a Developer'
 date: 2026-07-22
 layout: partials::layouts/writing-post
 slug: the-split-audience

@@ -19,6 +19,8 @@ What I've learned is that interruption kills the discipline, not the code. When 
 
 So I stopped trying to fix my attention and started externalizing the discipline. That's my dev workflow. Not a stack of clever AI tools, but a delivery team that never forgets context, so my attention goes to the parts only I can do.
 
+The same split works for a local business owner: keep the judgment about the business and hand the repeatable web-presence work to a system. That is the model behind my work with [local businesses](/local-businesses/).
+
 ## What I keep, what I hand off
 
 This is the distinction that makes the whole thing work. There's work on LeadSurface that's genuinely mine and can't be delegated, and it comes from two careers I've already had. As a product manager I know the market, I know the customer, and I can tell a real problem from a loud one. As a developer I know when an architecture is sane, when a test actually proves something, and where a dollar of infra is worth spending. That judgment took years on both sides of the table, and no model has it. It's why the product is worth building, and why I can tell when the pipeline is quietly wrong.

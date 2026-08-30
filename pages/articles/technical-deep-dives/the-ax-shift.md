@@ -66,6 +66,8 @@ In practice, this is harder to shift than it sounds. The instinct, especially wi
 
 For teams evaluating whether to focus and invest more in AI-assisted development, this is where they should put their effort. Not into model selection or prompt engineering, but the artifacts that give their agents reliable context across sessions. A CLAUDE.md that's updated after every session. Design specs that are authoritative enough that gap analyses can be written against them. Implementation tasks derived from the spec rather than improvised from the conversation. The next two posts dig into both: what makes a context file actually work, and what a spec needs to do that prompting cannot.
 
+The same artifact mindset applies to API documentation. An older example is [Writing API Wrappers with Elixir](/archive/2013/writing-api-wrappers-with-elixir/), where the interface contract has to be made explicit before the code can be useful.
+
 The shift from DX to AX isn't a new tool or a new model. It's a new relationship to the artifacts you already produce, treating them as the primary communication layer with the agent rather than the documentation you write afterward. The answer to "why does the agent keep getting this wrong?" has rarely been "better prompts." It's been "better decisions, made earlier, written down somewhere the agent can find them."
 
 ---

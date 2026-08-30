@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'About',
-    'description' => 'Technical product leader with 15+ years at the intersection of fintech and developer tooling. Leads developer advocacy at Global Payments. Also builds web presence systems for local businesses.',
+    'description' => 'Technical product leader in fintech and developer tooling. Leads developer advocacy at Global Payments and builds web presence systems for local businesses.',
     'url' => '/about/',
 ]);
 $settings = require('resources/settings.php');

@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'Agentic Product Development Workflows',
-    'description' => 'A six-part series on moving past prompt engineering toward reliable AI-assisted development by designing specs, context files, and documentation for the agent reading them, not just the humans.',
+    'description' => 'A six-part series on reliable AI-assisted development through specs, context files, and documentation designed for the agent reading them.',
     'url' => '/articles/agentic-workflows/',
 ]);
 

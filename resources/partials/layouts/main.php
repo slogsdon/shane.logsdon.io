@@ -1,5 +1,6 @@
 <?php $this->layout('partials::layouts/master', [
     'title' => !empty($title) ? $title : null,
+    'seoTitle' => !empty($seoTitle) ? $seoTitle : null,
     'description' => !empty($description) ? $description : null,
     'url' => !empty($url) ? $url : null,
     'image' => !empty($image) ? $image : null,
