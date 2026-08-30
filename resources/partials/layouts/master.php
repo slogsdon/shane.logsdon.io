@@ -60,10 +60,7 @@
 <meta name="twitter:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
 <?php endif; ?>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+<link rel="preload" href="/_/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 
 <style id="site"><?= file_get_contents('public/_/site.css') ?></style>
 <style id="hljs-atom-one"><?= file_get_contents('public/_/hljs-atom-one.css') ?></style>

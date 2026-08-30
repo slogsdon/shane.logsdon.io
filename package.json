@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build:css": "tailwindcss -i public/_/input.css -o public/_/site.css --minify",
+    "build:tokens": "php scripts/build-tokens.php",
+    "build:css": "npm run build:tokens && tailwindcss -i public/_/input.css -o public/_/site.css --minify",
     "dev:css": "tailwindcss -i public/_/input.css -o public/_/site.css --watch"
   },
   "devDependencies": {

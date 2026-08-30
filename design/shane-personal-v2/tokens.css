@@ -16,6 +16,8 @@
   --color-ink-soft:        #404550;        /* secondary ink */
   --color-ink-3:           #62686f;        /* metadata ink */
   --color-rule:            #d6d8de;        /* the only rule color — 1px hairline; major divisions communicated via whitespace, not weight */
+  --color-border:            #d9dade;        /* HSL bridge: 228 7% 86% */
+  --color-rule-strong:       #aeb1ba;        /* HSL bridge: 225 8% 71% */
   --color-grid:            #e0e2e6;        /* technical grid */
   --color-accent:          #556b2f;        /* olive green — used semantically AND as deliberate type accent */
   --color-accent-hover:    #3e5020;

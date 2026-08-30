@@ -12,7 +12,7 @@ $ctaBody    = isset($ctaBody)    ? $ctaBody     : 'I write and connect with oper
             <h2 class="max-w-prose font-display text-3xl font-medium leading-tight sm:text-4xl">
                 <?= htmlspecialchars($ctaTitle) ?>
             </h2>
-            <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed" style="color: rgba(251, 250, 249, 0.72);">
+            <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed" style="color: color-mix(in oklab, var(--color-surface) 72%, transparent);">
                 <?= htmlspecialchars($ctaBody) ?>
             </p>
             <div class="mt-8 flex flex-wrap items-baseline gap-x-10 gap-y-4">

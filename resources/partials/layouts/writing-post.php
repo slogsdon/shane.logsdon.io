@@ -98,7 +98,7 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     <?php if (isset($meta->archived) && $meta->archived === true): ?>
     <aside class="inversion mt-10 px-6 py-6">
         <p class="smallcaps-lg">historical content</p>
-        <p class="mt-3 max-w-prose text-[0.95rem] leading-relaxed" style="color: rgba(251, 250, 249, 0.72);">
+        <p class="mt-3 max-w-prose text-[0.95rem] leading-relaxed" style="color: color-mix(in oklab, var(--color-surface) 72%, transparent);">
             Published on <strong class="font-medium" style="color: var(--color-surface);"><?= $formattedDate ?></strong> and maintained for historical reference. The core ideas may still apply, but specific technical details may be outdated.
         </p>
     </aside>
