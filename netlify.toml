@@ -4,7 +4,7 @@
 # fail those queries, it answers them wrong: the boundary commit looks like it
 # introduced every file, so every Sheet page reports rev 1 and the deploy date.
 # `|| true` because the command errors on a repository that is already complete.
-command = "git fetch --unshallow 2>/dev/null || true; npm install && npm run build:css && composer clean && composer build && php scripts/generate-md.php && php scripts/indexnow.php"
+command = "git fetch --unshallow 2>/dev/null || true; php scripts/check-tokens.php && npm install && npm run build:css && composer clean && composer build && php scripts/generate-md.php && php scripts/indexnow.php"
 publish = "dist"
 
 [[plugins]]
@@ -12,6 +12,7 @@ package = "@netlify/plugin-sitemap"
   [plugins.inputs]
   exclude = [
     './dist/thanks/**/*',
+    './dist/components/**/*',
     '404.html',
     'google*.html'
   ]

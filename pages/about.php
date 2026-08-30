@@ -97,7 +97,7 @@ $barMax    = 276; // px at the chart's own scale
             <text x="<?= $barW + 8 ?>" y="<?= $rowY + 18 ?>" class="t-mono f-3"><?= $count ?></text>
             <?php $rowY += 48; endforeach; ?>
             <line x1="0" y1="184" x2="420" y2="184" class="s-rule"/>
-            <text x="0" y="197" class="t-mono f-mark"><?= $postTotal ?> total on file</text>
+            <text x="0" y="197" class="t-mono f-3"><?= $postTotal ?> total on file</text>
           </svg>
           </div>
           <figcaption class="figcaption">

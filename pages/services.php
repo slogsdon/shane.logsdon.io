@@ -46,7 +46,7 @@ $faqs = [
 ?>
 
 <!-- Hero -->
-<section class="mx-auto max-w-editorial px-6 pt-20 pb-20">
+<section class="mx-auto max-w-editorial field-edge pt-20 pb-20">
     <div class="running-head" aria-hidden="true">
         <span>shane logsdon &middot; services</span>
         <span><?= date('Y.m.d') ?></span>
