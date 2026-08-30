@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title><?= $this->e(!empty($title) ? $title . ' · ' . $settings->title : $settings->title . ' · ' . $settings->subtitle); ?></title>
+<title><?= $this->e(!empty($seoTitle) ? $seoTitle : (!empty($title) ? $title . ' · ' . $settings->title : $settings->title . ' · ' . $settings->subtitle)); ?></title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -33,14 +33,17 @@
 <?php if (!empty($url)): ?>
 <meta property="og:url" content="https://shane.logsdon.io<?= $this->e($url) ?>">
 <?php endif; ?>
-<?php if (!empty($image)): ?>
+<?php
+$image = !empty($image) ? $image : 'og-default.png';
+$imageAlt = !empty($imageAlt) ? $imageAlt : 'Shane Logsdon';
+?>
 <meta property="og:image" content="https://shane.logsdon.io/images/<?= $this->e($image) ?>">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <?php if (!empty($imageAlt)): ?>
 <meta property="og:image:alt" content="<?= $this->e($imageAlt) ?>">
 <?php endif; ?>
-<?php endif; ?>
+
 <meta name="author" content="Shane Logsdon">
 <?php if (!empty($noindex)): ?>
 <meta name="robots" content="noindex">
@@ -89,6 +92,7 @@
   "jobTitle": "Senior Director, Product Management – Developer Advocacy",
   "worksFor": { "@type": "Organization", "name": "Global Payments Inc." },
   "image": "https://shane.logsdon.io/images/headshot.jpeg",
+  "email": "shane@logsdon.io",
   "description": <?= json_encode($settings->author->shane->description) ?>,
   "knowsAbout": ["Developer Advocacy", "Payment APIs", "SDK Design", "AEO", "Web Presence Management", "Fintech"],
   "sameAs": [

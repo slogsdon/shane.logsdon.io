@@ -20,6 +20,7 @@ Every article under `pages/articles/` requires a YAML frontmatter block delimite
 | `heroImage` | string | Hero image filename (looked up under `public/images/`). |
 | `draft` | boolean | When `true`, excluded from production builds. Defaults to `false`. |
 | `faqs` | array of `{q, a}` | Optional FAQ pairs rendered as FAQ schema markup. |
+| `seoTitle` | string | Optional search title. Used in the `<title>` element while the article H1 and social title keep the full editorial title. |
 
 ## Category Values
 
@@ -31,6 +32,15 @@ The `category` field in `articles-list.json` must be one of:
 - `technical-deep-dives`
 
 The article file lives at `pages/articles/<category>/<slug>.md`.
+
+## Editorial AEO Checklist
+
+Before publishing a new or substantially revised article:
+
+- [ ] Open with a 40–60-word direct answer before the narrative.
+- [ ] Add `faqs` frontmatter with the questions readers are likely to ask.
+- [ ] Include at least one authoritative outbound citation for claims based on external work.
+- [ ] Present comparison content as a table rather than leaving the tradeoffs implicit.
 
 ## Example
 

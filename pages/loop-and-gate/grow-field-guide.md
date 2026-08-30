@@ -6,9 +6,8 @@ slug: grow-field-guide
 image: grow-field-guide-og.png
 heroImage: grow-field-guide-hero.png
 description: >-
-  The grow-side gates of the loop: taste, the one true claim, the right audience,
-  and reading whether it actually worked, grouped into strategy, per-piece, and
-  feedback rhythms. One real product, gate by gate.
+  The grow-side gates cover taste, the one true claim, the right audience, and
+  reading whether a piece worked.
 draft: false
 ---
 

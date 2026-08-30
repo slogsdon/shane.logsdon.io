@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'The Loop & Gate System',
-    'description' => 'A Foundation layer plus three kits for building, marketing, and following through on your own projects with an AI agent. The loop does the work between the gates. You work the gates.',
+    'description' => 'A Foundation layer plus three kits for building, marketing, and following through with an AI agent. The loop works between gates; you work the gates.',
     'url' => '/loop-and-gate/',
     'image' => 'loop-and-gate-og.png',
     'imageAlt' => 'The loop does the work. You work the gates. Set in Fraunces on a cream field.',

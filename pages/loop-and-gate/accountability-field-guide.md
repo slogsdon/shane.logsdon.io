@@ -6,9 +6,8 @@ slug: accountability-field-guide
 image: accountability-field-guide-og.png
 heroImage: accountability-field-guide-hero.png
 description: >-
-  Eight gates for the loop on your own follow-through: what to commit to, facing
-  what you actually did, and the deferral engine that catches the task you keep
-  avoiding. One honest story, gate by gate.
+  Eight gates for following through with an AI agent: commit, face what happened,
+  and catch the task you keep avoiding.
 draft: false
 ---
 

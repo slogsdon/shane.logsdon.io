@@ -1,5 +1,6 @@
 ---
 title: 'The Framework Emergence Loop: How Durable AI Workflows Are Actually Found'
+seoTitle: 'Framework Emergence Loop: Finding Durable AI Workflows'
 layout: 'partials::layouts/writing-post'
 date: 2026-07-09
 slug: framework-emergence-loop
@@ -9,7 +10,7 @@ draft: false
 enriched: true
 ---
 
-# The framework emergence loop: How durable AI workflows actually get found
+## The framework emergence loop: How durable AI workflows actually get found
 
 I rebuilt it for the fifth time and thought, "Something is wrong with me."
 
@@ -58,6 +59,8 @@ What makes it durable is that it outlives the failure it was built to address. W
 The pattern got refined across iterations. The schema changed, the update protocol changed, what's worth persisting changed, and the core idea survived all of it. That's usually the test of whether something is a real structural idea or the most convenient fix for last week's problem.
 
 The production form isn't a JSON file anymore. It's an Obsidian vault: connected notes are the nodes, agents update them across sessions to capture decisions and concepts, and the graph persists not just across context windows but across tooling changes. The JSON file was the prototype that proved the structure. The vault is what it became when it had to survive real use.
+
+The move from prototype to production has a long history in software work. My earlier piece on [Application Deployment](/archive/2014/application-deployment/) makes the same case from a different generation of tools.
 
 Look at what the `knowledge-graph.json` pattern actually encodes and you see the loop doing something more specific than generic software refinement. The schema isn't for a human to read later. It's for an agent to load at session start and act on immediately. Every field exists because the agent's next decision depends on it, not because the info is nice to have written down. That's AX thinking in its most concrete form: the artifact is built for the agent's navigation, not the developer's convenience. What the loop teaches, version by version, is what an agent needs to move through your system without guessing. Harder than it sounds, and only answerable by watching the previous version fail.
 

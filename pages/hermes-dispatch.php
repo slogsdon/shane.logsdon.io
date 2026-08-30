@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'Hermes Dispatch',
-    'description' => 'An open source, local-first dispatch layer for the Hermes agent by Nous Research. Type a request into a mobile chat, a router sends it to the right specialized agent, and it runs on your own models via Ollama and LiteLLM.',
+    'description' => 'An open-source, local-first dispatch layer for the Hermes agent. Route mobile requests to specialized agents running on your own models through Ollama and LiteLLM.',
     'url' => '/hermes-dispatch/',
 ]);
 

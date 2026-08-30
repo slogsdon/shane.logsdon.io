@@ -28,6 +28,7 @@ if ($meta->archived) {
 }
 $this->layout('partials::layouts/main', [
     'title' => !empty($title) ? $title : null,
+    'seoTitle' => !empty($seoTitle) ? $seoTitle : null,
     'description' => $meta->description,
     'url' => !empty($url) ? $url : null,
     'image' => !empty($image) ? $image : null,
@@ -48,6 +49,18 @@ $typeLabel = $meta->type === 'speaking' ? 'speaking' : 'articles';
 $categoryLabel = isset($meta->category) && isset($allCategories[$meta->category])
     ? $allCategories[$meta->category]
     : null;
+$relatedCount = 0;
+foreach ($allPosts as $relatedSlug => $relatedPost) {
+    if (
+        $relatedSlug !== $slug
+        && $relatedPost['type'] === $meta->type
+        && $relatedPost['category'] === $meta->category
+        && empty($relatedPost['archived'])
+    ) {
+        $relatedCount++;
+    }
+}
+$relatedUsesFallback = $relatedCount < 3;
 $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetadata) && !empty($meta->presentationMetadata['venue'])
     ? $meta->presentationMetadata['venue']
     : null;
@@ -149,6 +162,21 @@ $venue = isset($meta->presentationMetadata) && is_array($meta->presentationMetad
     <div class="prose mt-12 max-w-prose text-[1.0625rem] leading-[1.65] text-foreground">
         <?= $content ?: $this->section('content'); ?>
     </div>
+    <?php if ($categoryLabel): ?>
+    <section class="mt-16 border-t border-rule pt-10">
+        <h2 class="font-display text-3xl font-medium leading-tight text-foreground sm:text-4xl">
+            <?= $relatedUsesFallback ? 'More to read' : 'More in ' . htmlspecialchars($categoryLabel) ?>
+        </h2>
+        <?php $this->insert('partials::components/post-list', [
+            'slug' => $meta->type,
+            'filterByTopic' => $meta->category,
+            'filterType' => 'category',
+            'excludeSlug' => $slug,
+            'limit' => 3,
+            'fallbackToAll' => $relatedUsesFallback,
+        ]); ?>
+    </section>
+    <?php endif; ?>
 
     <?php $this->insert('partials::components/author-bio'); ?>
 

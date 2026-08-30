@@ -1,5 +1,6 @@
 ---
 title: Cross-Compiling Rust Applications for the Onion Omega2 from MacOS
+seoTitle: 'Cross-Compiling Rust for the Onion Omega2'
 date: 2017-01-11
 layout: 'partials::layouts/writing-post'
 slug: cross-compiling-rust-applications-for-the-onion-omega2-from-macos

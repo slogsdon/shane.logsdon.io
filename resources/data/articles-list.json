@@ -1,7 +1,7 @@
 {
   "what-do-we-measure": {
     "title": "What Do We Measure When AI Answers the Questions?",
-    "description": "Docs views, GitHub stars, and event attendance are measuring a channel that's shrinking. The dashboard that actually answers whether developers are finding you tracks AI citation rate and agent-mediated activation, and asks whether your community still trusts what it's being told.",
+    "description": "AI is shrinking docs views, GitHub stars, and event attendance. Measure AI citation rate, agent activation, and whether your community trusts what it is told.",
     "date": "2026-08-26",
     "category": "strategic-insights",
     "archived": false,
@@ -12,7 +12,7 @@
   },
   "devrel-is-distribution-work": {
     "title": "DevRel Is Distribution Work. Neon Just Proved What It's Worth.",
-    "description": "Neon hit 80% AI-agent-provisioned databases, and Databricks paid about a billion dollars for it. Here's what that acquisition proves about DevRel, the new AI-citation node in the old flywheel, and why agent skills are becoming the new SDK.",
+    "description": "Neon reached 80% AI-agent-provisioned databases, and Databricks paid a billion dollars for it. The deal shows why DevRel and agent skills shape distribution.",
     "date": "2026-08-19",
     "category": "industry-analysis",
     "archived": false,
@@ -24,7 +24,7 @@
   },
   "witnessed-practice-is-the-new-tutorial": {
     "title": "Witnessed Practice Is the New Tutorial",
-    "description": "AI can write a flawless tutorial, but it can't fake a dead end. That's why witnessed practice (watching a competent person work through real uncertainty) is the DevRel format AI can't replicate, and corporate DevRel is barely making any of it.",
+    "description": "AI can write a flawless tutorial, but it cannot fake a dead end. Witnessed practice—real work through uncertainty—is the DevRel format models cannot replicate.",
     "date": "2026-08-12",
     "category": "strategic-insights",
     "archived": false,
@@ -36,7 +36,7 @@
   },
   "the-25-percent-that-ai-cant-do": {
     "title": "The 25% That AI Can't Do Is the Whole Job Now",
-    "description": "AI already handles the first 75% of developer education. What's left for DevRel is judgment, the architecture calls, tradeoffs, and product edges a model can't reliably infer from the docs.",
+    "description": "AI handles much of developer education. The remaining work—judgment, architecture calls, tradeoffs, and product edges—is what DevRel must own.",
     "date": "2026-08-05",
     "category": "leadership-and-management",
     "archived": false,
@@ -48,7 +48,7 @@
   },
   "aeo-is-devrel-infrastructure": {
     "title": "AEO Is DevRel Infrastructure (And Nobody Owns It)",
-    "description": "I audited Stripe, Clerk, and Neon's docs in May 2026 for whether AI assistants can find and cite them, and found the best sites in developer tools were only two layers into a six-layer AEO stack. A re-audit in August 2026 found them at roughly five of six. Updated with what changed, and what it says about who owns the work.",
+    "description": "A re-audit of Stripe, Clerk, and Neon shows the best developer-tool docs now reach five of six AEO layers. That clarifies who owns AI-readable infrastructure.",
     "date": "2026-07-29",
     "modified": "2026-08-09",
     "category": "technical-deep-dives",
@@ -61,7 +61,7 @@
   },
   "the-split-audience": {
     "title": "The Split Audience: The First Reader of Your Docs Isn't a Developer",
-    "description": "AI coding agents read your documentation before any developer does, and no analytics metric you're reporting captures it. Here's what changes when you write docs for the reader that shows up first.",
+    "description": "AI coding agents read documentation before developers do. Writing for that first reader changes what you explain, structure, and measure.",
     "date": "2026-07-22",
     "category": "strategic-insights",
     "archived": false,
@@ -111,7 +111,7 @@
   },
   "what-aeo-actually-means-for-a-local-business": {
     "title": "What AEO Actually Means for a Local Business",
-    "description": "Answer engine optimization structures your web site so AI assistants can extract and cite your business when someone asks for a local recommendation. Here's what it actually requires.",
+    "description": "AEO structures a local business website so AI assistants can extract, cite, and recommend it. Here is what that requires.",
     "date": "2026-05-12",
     "category": "strategic-insights",
     "archived": false,
@@ -121,7 +121,7 @@
   },
   "the-specification-boundary": {
     "title": "The Specification Boundary: Why AI-Assisted Builds Stall at 75%",
-    "description": "AI gets you to 75% fast, then stalls. The wall isn't the model's capability, it's the specification boundary: the territory your spec left undefined. Here's how to plan for it.",
+    "description": "AI-assisted builds stall when the specification leaves decisions undefined. The specification boundary is the missing territory you must plan before the model can finish.",
     "date": "2026-05-18",
     "category": "technical-deep-dives",
     "archived": false,
@@ -145,7 +145,7 @@
   },
   "llm-context-files-are-deliverables-not-config": {
     "title": "LLM Context Files Are Deliverables, Not Config",
-    "description": "An LLM context file like CLAUDE.md is a deliverable, not a config toggle. Configuration tells tools how to behave; a context file tells the agent what the project is, what's been decided, and what it needs to navigate the work. The first kind sets and forgets. The second has to be maintained.",
+    "description": "An LLM context file is a maintained deliverable, not a config toggle. It tells an agent what the project is, what decisions stand, and how to navigate it.",
     "date": "2026-05-04",
     "category": "technical-deep-dives",
     "archived": false,
@@ -157,7 +157,7 @@
   },
   "the-ax-shift": {
     "title": "The AX Shift: You're Still Designing for Yourself",
-    "description": "The AX Shift is the move from designing software interfaces, documentation, and project context for humans to designing them for the agents now reading them. UX redesigned interfaces around users; DX redesigned APIs around the engineers consuming them; AX redesigns docs, context files, and specs around the autonomous agent that's now the primary reader.",
+    "description": "The AX shift means designing docs, context files, and specs for agents. UX serves users; DX serves engineers; AX serves the agent as primary reader.",
     "date": "2026-04-27",
     "category": "technical-deep-dives",
     "archived": false,
@@ -205,7 +205,7 @@
   },
   "cross-compiling-rust-applications-for-the-onion-omega2-from-macos": {
     "title": "Cross-Compiling Rust Applications for the Onion Omega2 from MacOS",
-    "description": "Onion's Omega2 SoC computers are a prime target for cross-compiling Rust applications, taking care to set up your environment just right for the Omega2's MIPS architecture.",
+    "description": "A practical guide to cross-compiling Rust for the Onion Omega2's MIPS architecture from macOS.",
     "date": "2017-01-11",
     "category": "technical-deep-dives",
     "archived": true,
@@ -465,7 +465,7 @@
   },
   "linux-and-net-should-be-friends": {
     "title": "Linux and .NET should be friends",
-    "description": "Linux and Microsoft's .NET framework haven't always seen eye to eye.",
+    "description": "A brief look at the long-running tension between Linux and Microsoft's .NET framework, and why the two should be friends.",
     "date": "2013-04-19",
     "category": "industry-analysis",
     "archived": true,

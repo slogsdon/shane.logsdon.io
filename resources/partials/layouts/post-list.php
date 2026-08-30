@@ -53,6 +53,11 @@ $isSpeaking = $slug === 'speaking';
         'stripCount'   => $postCount,
         'stripCurrent' => 'all',
     ]); ?>
+    <?php if ($isArticles): ?>
+        <p class="mt-4 text-right">
+            <a class="filter-tab" href="/articles/tags/">Browse by tag &rarr;</a>
+        </p>
+    <?php endif; ?>
 
     <?php $this->insert('partials::components/post-list', [
         'slug' => $slug,

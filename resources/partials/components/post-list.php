@@ -1,6 +1,7 @@
 <?php
 $settings = require('resources/settings.php');
 $posts = (array)json_decode(file_get_contents(sprintf('resources/data/%s-list.json', $slug)));
+$allPosts = $posts;
 $shouldLimitPosts = isset($limit) && $limit > 0;
 if ($shouldLimitPosts === true) {
     $count = 0;
@@ -17,6 +18,17 @@ if (isset($filterByTopic)) {
 $posts = array_filter($posts, function ($post) {
     return !$post->archived;
 });
+if (!empty($excludeSlug)) {
+    unset($posts[$excludeSlug]);
+}
+if (!empty($fallbackToAll) && $shouldLimitPosts && count($posts) < $limit) {
+    $posts = array_filter($allPosts, function ($post) {
+        return !$post->archived;
+    });
+    if (!empty($excludeSlug)) {
+        unset($posts[$excludeSlug]);
+    }
+}
 // DESIGN.md §Lists: ordered by date descending, always, with 001 = newest.
 // Until now this partial rendered whatever order the JSON file happened to be
 // in, which put 2026-05-12 ahead of 2026-05-18 on the live /articles/ index and

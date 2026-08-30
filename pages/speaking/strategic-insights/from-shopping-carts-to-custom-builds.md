@@ -1,5 +1,6 @@
 ---
 title: 'From Shopping Carts to Custom Builds: How to Set Up Online Payments with AI'
+seoTitle: 'AI Payments: From Shopping Carts to Custom Builds'
 date: 2025-10-15
 layout: 'partials::layouts/writing-post'
 slug: from-shopping-carts-to-custom-builds

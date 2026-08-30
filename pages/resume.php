@@ -475,12 +475,3 @@ foreach ($byEmployer as $company => $group) {
     } catch (e) {}
 })();
 </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://shane.logsdon.io/#Person",
-  "email": "shane@logsdon.io"
-}
-</script>

@@ -32,6 +32,7 @@ $this->layout('partials::layouts/main', [
     'slug' => $slug,
     'description' => $topicDescription,
     'url' => !empty($url) ? $url : null,
+    'noindex' => $topicCount === 0,
 ]);
 ?>
 
