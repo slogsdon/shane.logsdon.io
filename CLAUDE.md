@@ -33,7 +33,7 @@ Also normative, and each already violated once during design:
 
 Components: `design/shane-personal-v2/components/components.html` (browsable library) and `tokens.css` (source of truth for values). Site-wide partials live in `resources/partials/components/` — `newsletter`, `contact-cta`, `author-bio`, `post-list`, `audit-form`, `footer`, `site-menu`.
 
-> `public/_/input.css` keeps a **parallel copy** of the raw hex tokens. If you change a color token, change it in both places or they drift.
+> `public/_/input.css` contains a generated token region sourced from `design/shane-personal-v2/tokens.css`. Run `npm run build:tokens`; do not edit between the `GENERATED:TOKENS` sentinels.
 
 ## Conventions
 

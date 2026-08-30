@@ -3,49 +3,77 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'Fraunces';
+    src: url('/_/fonts/fraunces-var.woff2') format('woff2-variations');
+    font-weight: 400 600;
+    font-display: block;
+    font-optical-sizing: auto;
+  }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('/_/fonts/ibm-plex-sans.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('/_/fonts/ibm-plex-sans-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/_/fonts/jetbrains-mono.woff2') format('woff2');
+    font-weight: 400 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IBM Plex Sans Fallback';
+    src: local('-apple-system'), local('Segoe UI'), local('Arial');
+    /* Measured against IBM Plex Sans at 17px:
+       443.09px / 441.89px = 100.27%; ascent 17px = 100%; descent 5px = 29.41%. */
+    size-adjust: 100.27%;
+    ascent-override: 100%;
+    descent-override: 29.41%;
+    line-gap-override: 0%;
+  }
   :root {
-    /* HSL bridge tokens — the older Tailwind utilities (`bg-background`,
-       `text-foreground`, `border-rule`, etc.) keep working; values now come
-       from the shane-personal v2 palette. */
-    --background: 40 22% 98%;        /* #fbfaf9 — committed warm cream */
-    --foreground: 220 14% 7%;        /* #0e1116 — architectural near-black */
-    --muted: 36 15% 92%;             /* #ede4d2-ish */
-    --muted-foreground: 220 6% 41%;  /* #62686f */
-    --accent: 82 39% 30%;            /* #556b2f — olive green */
-    --accent-foreground: 220 14% 7%;
-    --border: 220 7% 86%;
-    --rule: 224 9% 86%;              /* #d6d8de */
-    --rule-strong: 224 9% 70%;
-    --grid: 222 9% 89%;              /* #e0e2e6 */
-    --ink-soft: 222 12% 28%;         /* #404550 */
-    --radius: 0;
-
-    /* v2 raw hex tokens — paired with the HSL bridge above. New work should
-       prefer these so the palette can move without re-deriving HSL.
-       This block is a PARALLEL COPY of design/shane-personal-v2/tokens.css.
-       Change a color here and you must change it there, or they drift. */
+    /* GENERATED:TOKENS:BEGIN — scripts/build-tokens.php. Do not edit.
+       Source: design/shane-personal-v2/tokens.css. Run: npm run build:tokens */
     --color-surface:         #fbfaf9;
+    --color-surface-feature: #ede4d2;
     --color-surface-muted:   #f1eee8;
-    --color-surface-feature: #ede4d2; /* RESERVED — never used as a background */
     --color-ink:             #0e1116;
     --color-ink-soft:        #404550;
     --color-ink-3:           #62686f;
     --color-rule:            #d6d8de;
+    --color-border:            #d9dade;
+    --color-rule-strong:       #aeb1ba;
     --color-grid:            #e0e2e6;
     --color-accent:          #556b2f;
     --color-accent-hover:    #3e5020;
-    /* v3: annotation red. One job, marking what a drawing calls out. Dimension
-       lines and their witness marks, callout bubbles, hatch fill, a correction.
-       Never a heading, never a link, and never on a page with no drawing on it. */
     --color-mark:            #c0392b;
-
-    /* Radius. Zero everywhere except avatars and the callout bubble. */
-    --r-full:                999px;
+    --r-full:     999px;
+    --background: 30 20% 98%;
+    --foreground: 218 22% 7%;
+    --muted: 40 43% 88%;
+    --muted-foreground: 212 6% 41%;
+    --accent: 82 39% 30%;
+    --accent-foreground: 218 22% 7%;
+    --border: 228 7% 86%;
+    --rule: 225 11% 85%;
+    --rule-strong: 225 8% 71%;
+    --grid: 220 11% 89%;
+    --ink-soft: 221 11% 28%;
+    /* GENERATED:TOKENS:END */
+    --radius: 0;
 
     /* Motion. The policy is in DESIGN.md; these are the values it resolves to.
        Ceiling is 200ms — nothing on this site is rare enough to earn more.
-       `--ease` was referenced by .row-title-link and never defined, so every
-       transition using it silently fell back to `ease`. */
+       `--ease` remains an alias for components that need the shared exit curve. */
     --dur-fast:              120ms;   /* hover, focus, colour */
     --dur-base:              180ms;   /* enter/exit, disclosure */
     --ease-out:              cubic-bezier(0.22, 1, 0.36, 1);
@@ -66,7 +94,7 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-    font-feature-settings: "ss01", "cv11", "kern";
+    font-feature-settings: "kern";
     font-size: 17px;             /* v2 body — real publication scale */
     line-height: 1.65;
   }
@@ -519,18 +547,15 @@
     border-bottom-color: hsl(var(--foreground));
   }
 
-  /* ── List row title. The underline grows from the left on hover. This used to
-     be two inline onmouseenter/onmouseleave handlers repeated on every row of
-     every list page. */
+  /* ── List row title. Text decoration follows every wrapped line. */
   .row-title-link {
-    background-image: linear-gradient(hsl(var(--foreground)), hsl(var(--foreground)));
-    background-size: 0% 1px;
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    transition: background-size 150ms var(--ease-out);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
   }
   @media (hover: hover) and (pointer: fine) {
-    .row-title-link:hover { background-size: 100% 1px; }
+    .row-title-link:hover { text-decoration-color: currentColor; }
   }
 
   /* ── Figure inside an article body. Breaks the prose measure so a drawing or

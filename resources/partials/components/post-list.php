@@ -66,7 +66,7 @@ $index = 0;
 
     <div class="col-span-12 sm:col-span-7">
         <h3 class="font-display text-xl font-medium leading-snug text-foreground sm:text-2xl">
-            <a href="<?= $postUrl ?>" class="row-title-link hover:no-underline">
+            <a href="<?= $postUrl ?>" class="row-title-link">
                 <?= htmlspecialchars($post->title) ?>
             </a>
         </h3>
