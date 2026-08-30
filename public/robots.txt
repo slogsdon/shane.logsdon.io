@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /thanks/
+Disallow: /components/
 
 # AI crawlers and answer-engine bots are explicitly welcome.
 # A matched specific group REPLACES the generic one (robots spec), so the
@@ -7,49 +8,61 @@ Disallow: /thanks/
 User-agent: GPTBot
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: CCBot
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: cohere-ai
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 User-agent: Bytespider
 Allow: /
 Disallow: /thanks/
+Disallow: /components/
 
 Sitemap: https://shane.logsdon.io/sitemap.xml

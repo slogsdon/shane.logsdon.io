@@ -5,7 +5,7 @@
 // nothing until set, so no broken form ever ships. Kit's free tier handles up
 // to 10k subscribers and double opt-in / confirmation on its own pages.
 // NOTE: app.kit.com is already allowed in form-action in the netlify.toml CSP.
-$kitFormId = getenv('KIT_FORM_ID') ?: '';
+$kitFormId = $kitFormId ?? (getenv('KIT_FORM_ID') ?: '');
 if ($kitFormId === '') {
     return;
 }

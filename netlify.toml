@@ -12,6 +12,7 @@ package = "@netlify/plugin-sitemap"
   [plugins.inputs]
   exclude = [
     './dist/thanks/**/*',
+    './dist/components/**/*',
     '404.html',
     'google*.html'
   ]
