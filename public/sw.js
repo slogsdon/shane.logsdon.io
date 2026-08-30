@@ -1,4 +1,4 @@
-const CACHE = 'shane-logsdon-io-static-v24';
+const CACHE = 'shane-logsdon-io-static-v25';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
