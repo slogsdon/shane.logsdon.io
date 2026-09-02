@@ -1,4 +1,12 @@
 {
+  "evaluate-devrel-like-an-agentic-workflow": {
+    "title": "Evaluate Your DevRel Program Like an Agentic Workflow",
+    "description": "AI recommendation is a distribution channel that never reports back. I evaluate my DevRel program the same way I evaluate an agentic workflow, checking presence first, then accuracy, and auditing both on a cadence.",
+    "date": "2026-09-02",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": []
+  },
   "what-do-we-measure": {
     "title": "What Do We Measure When AI Answers the Questions?",
     "description": "AI is shrinking docs views, GitHub stars, and event attendance. Measure AI citation rate, agent activation, and whether your community trusts what it is told.",
