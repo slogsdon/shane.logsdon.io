@@ -5,7 +5,11 @@
     "date": "2026-09-02",
     "category": "technical-deep-dives",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
   },
   "what-do-we-measure": {
     "title": "What Do We Measure When AI Answers the Questions?",
