@@ -4,7 +4,7 @@ date: 2026-08-26
 layout: partials::layouts/writing-post
 slug: what-do-we-measure
 description: Docs views, GitHub stars, and event attendance are measuring a channel
-  that's shrinking. The dashboard that actually answers whether developers are finding
+  that's shrinking. The dashboard that answers whether developers are finding
   you tracks AI citation rate and agent-mediated activation, and asks whether your
   community still trusts what it's being told.
 faqs:
@@ -30,7 +30,7 @@ faqs:
   a: No. Keep reporting stars if leadership wants them, and keep the metrics that
     are still genuinely behavior, like time to first API call and production deployment
     rate. The mistake is measuring only the old survivors while ignoring where developer
-    experience actually starts now.
+    experience starts now.
 image: what-do-we-measure-og.png
 heroImage: what-do-we-measure-hero.png
 ---
@@ -43,7 +43,7 @@ That's the trap most DevRel dashboards are sitting in right now. If AI handles t
 
 The old metrics were already weak before AI. [Jono Bacon's line](https://blog.stateshift.com/beyond-github-stars/) about the most-reported one is blunt: "GitHub stars are the participation trophies of the developer world." Stars are bookmarks with delusions of grandeur. You can't accidentally download a package the way you can accidentally star a repo. His prescription, that sentiment is noise and behavior is signal, was right then. AI raised the price of ignoring it, because AI broke the sentiment metrics' channel and created a new adoption path the old dashboard can't see, both at the same time.
 
-Walk the board. Docs views measure a shrinking channel. Community Q&A volume drops as AI answers questions faster, which looks like community decline and may actually be community function shifting from Q&A to identity and trust. Event attendance measures a consumption mode that AI summarization is eroding. Social impressions were always distribution rather than impact. Every one of these can decline while your actual adoption accelerates through channels the dashboard doesn't instrument.
+Walk the board. Docs views measure a shrinking channel. Community Q&A volume drops as AI answers questions faster, which looks like community decline and may be community function shifting from Q&A to identity and trust. Event attendance measures a consumption mode that AI summarization is eroding. Social impressions were always distribution rather than impact. Every one of these can decline while your actual adoption accelerates through channels the dashboard doesn't instrument.
 
 ---
 

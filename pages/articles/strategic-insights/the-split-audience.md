@@ -18,12 +18,12 @@ faqs:
     chose you and is now reading your reference material to build the integration.
     That''s a correctness problem, and bad structure there gets you a bad integration
     or an agent that quietly suggests a competitor it can parse instead.'
-- q: What should I actually do about this?
+- q: What should I do about this?
   a: 'Structure your docs the way a tired human at 2am would want them: clear heading
     hierarchy, direct answers near the top, parameter tables instead of parameters
     buried in prose, and an llms.txt index at your site root. None of that makes the
     docs worse for people. It''s the same fix for both readers.'
-- q: How do I know if my documentation is actually agent-legible?
+- q: How do I know if my documentation is agent-legible?
   a: Run the test yourself before spending money on tooling. Open a coding agent,
     point it at your quickstart, and ask it to build the hello-world integration.
     Watch what it fetches and where it starts guessing. Every guess is a place where
@@ -52,7 +52,7 @@ Your documentation got read, evaluated, and acted on, and no metric you report c
 
 ## Two audiences, one set of artifacts
 
-Software has walked this road before. Each wave re-centered design on whoever actually consumes the thing. UX redesigned interfaces around users rather than the engineers who built them, and DX did the same for APIs and the developers consuming them. AX (Agent Experience), designing your product's surfaces so an autonomous agent can consume them, is the third turn of that wheel, the term [Netlify's Mathias Biilmann](https://biilmann.blog/articles/introducing-ax/) put a flag in. It asks the question again, now that the consumer is a machine: is this system designed for the thing actually using it?
+Software has walked this road before. Each wave re-centered design on whoever consumes the thing. UX redesigned interfaces around users rather than the engineers who built them, and DX did the same for APIs and the developers consuming them. AX (Agent Experience), designing your product's surfaces so an autonomous agent can consume them, is the third turn of that wheel, the term [Netlify's Mathias Biilmann](https://biilmann.blog/articles/introducing-ax/) put a flag in. It asks the question again, now that the consumer is a machine: is this system designed for the thing actually using it?
 
 I've [written about AX from the engineering side](https://shane.logsdon.io/articles/technical-deep-dives/the-ax-shift/), where specs and context files become the communication layer between you and your coding agent. This post is about the other side: what AX means when the thing that changed is your distribution channel, not your development workflow.
 
@@ -70,7 +70,7 @@ The split shows up on two distinct surfaces, and most DevRel programs I've seen 
 
 The first surface is a human asking an AI what to use. "What's the best way to handle auth in a Next.js app?" The assistant synthesizes a recommendation from content it can extract and cite. If your docs are prose written for top-to-bottom human reading, you may not appear in the answer at all, regardless of product quality or community size.
 
-The second surface is an agent consuming your docs autonomously. The developer already chose you, or their agent did, and now the agent is reading your reference material to build the integration. Structure quality here determines whether the integration comes out correct, and whether the agent quietly recommends switching to a competitor whose docs it can actually parse.
+The second surface is an agent consuming your docs autonomously. The developer already chose you, or their agent did, and now the agent is reading your reference material to build the integration. Structure quality here determines whether the integration comes out correct, and whether the agent quietly recommends switching to a competitor whose docs it can parse.
 
 The first is a discovery problem and the second is a correctness problem. Both are documentation problems, and both land on DevRel's desk whether or not anyone assigned them there.
 

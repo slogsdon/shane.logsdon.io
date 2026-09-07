@@ -34,7 +34,7 @@ But the handoff is never total, and that's the part people miss. The pipeline ru
 - Should this exist at all? Kill or build, before a line of code gets written.
 - Who's it for, and what would make it a win? The context everything downstream inherits.
 - Of the directions on the table, which fits the strategy?
-- Is the plan actually right, and what did it miss?
+- Is the plan right, and what did it miss?
 - Is the architecture sane, or clever in a way that'll hurt in six months?
 - Is the change going off the rails, or making a call the plan left open?
 - Does the test actually prove it, or did the agent run it once and call it done?
@@ -73,7 +73,7 @@ The customer feedback loop tightens because the mechanical cost of acting on fee
 
 No single plugin covers idea-to-ship, so I compose three, and where the seams fall is deliberate.
 
-The core loop of brainstorm, plan, build, test, and review comes from one plugin. It's the spine. But it leaves gaps: no dedicated security pass, no live browser driving, no launch prep. So a second toolkit fills exactly those three holes and nothing more. A third layer, my own custom skills, provides the parts no general toolkit could: the business-context step up front, and domain-specific build skills for the stacks I actually work in.
+The core loop of brainstorm, plan, build, test, and review comes from one plugin. It's the spine. But it leaves gaps: no dedicated security pass, no live browser driving, no launch prep. So a second toolkit fills exactly those three holes and nothing more. A third layer, my own custom skills, provides the parts no general toolkit could: the business-context step up front, and domain-specific build skills for the stacks I work in.
 
 I didn't design that split top-down. I reached for whatever filled the next hole, and this is where it settled. The lesson isn't the specific tools, those will churn. It's that the workflow is composed from what's missing, not adopted wholesale from one vendor.
 

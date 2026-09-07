@@ -22,9 +22,9 @@ faqs:
     update.
 - q: Should citation monitoring get automated the moment a tool for it exists?
   a: No. Run it manually first, long enough to learn what normal looks like for your
-    category and which queries actually matter. Automate the detection once you have
+    category and which queries matter. Automate the detection once you have
     that instinct, and keep the decision about what to do next a human one.
-- q: What did the self-audit actually turn up?
+- q: What did the self-audit turn up?
   a: 0% citation on service queries, 100% on branded ones. Every assistant knew who
     I was, but none of them recommended me for what I actually do.
 image: evaluate-devrel-like-an-agentic-workflow-og.png
@@ -33,7 +33,7 @@ heroImage: evaluate-devrel-like-an-agentic-workflow-hero.png
 
 *AI recommendation is a distribution channel that emits no telemetry. Evaluate your DevRel program the way you'd evaluate an agentic workflow: a presence gate (are you cited?), then a quality gate (is the citation accurate?), baselined and audited on a cadence.*
 
-My team maintains an internal guide for evaluating agentic workflows: the automated pipelines where an LLM analyzes developer feedback, generates READMEs, or produces artifacts downstream systems depend on. We wrote it to answer a boring operational question, which is how you know an automated workflow is actually working when no human watches every run.
+My team maintains an internal guide for evaluating agentic workflows: the automated pipelines where an LLM analyzes developer feedback, generates READMEs, or produces artifacts downstream systems depend on. We wrote it to answer a boring operational question, which is how you know an automated workflow is working when no human watches every run.
 
 Somewhere in the third or fourth revision I noticed the framework was answering a second question I'd been circling for months: how do you evaluate a DevRel program when your primary distribution channel is an AI that doesn't report back?
 
@@ -68,7 +68,7 @@ Two gates, run in that order. Presence first, because quality of a citation that
 | 60-day written evaluation | Quarterly citation audit and retrospective |
 | Graduation by deliberate sign-off | Deciding when monitoring moves from manual to automated |
 
-Three of these deserve expansion, because they're where DevRel programs actually fail.
+Three of these deserve expansion, because they're where DevRel programs fail.
 
 **The self-audit.** In our workflows, the system checks its own output before a human ever sees it. The DevRel version is running the citation test on yourself before a developer encounters the gap in the wild. When I ran mine, I got 0% citation on service queries and 100% on branded ones. Every assistant knew who I was; none recommended me for what I do. That's a self-audit result. It stung, and it was worth ten dashboards, because it was the output of the actual channel rather than a proxy for it.
 

@@ -7,7 +7,7 @@ heroImage: the-ax-shift-hero.png
 slug: the-ax-shift
 faqs:
   - q: "What is AX (Agent Experience)?"
-    a: "Agent Experience is the practice of designing artifacts — specs, context files, documentation, API responses — for AI agents operating autonomously between sessions, not just for human readers. It's the next iteration after UX (designed around users) and DX (designed around developer-consumers)."
+    a: "Agent Experience is the practice of designing artifacts (specs, context files, documentation, API responses) for AI agents operating autonomously between sessions, not just for human readers. It's the next iteration after UX (designed around users) and DX (designed around developer-consumers)."
   - q: "Why doesn't writing better prompts fix AI coding drift?"
     a: "Prompts are interaction-level adjustments, but drift is artifact-level. Excellent prompts running against an underdeveloped CLAUDE.md and a vague spec will still produce drift, because the agent is making design decisions you haven't recorded. Every ambiguous line in your spec or context file is a decision the agent will make for you, in the direction of statistical probability."
   - q: "Where should teams invest for reliable AI-assisted development?"
@@ -52,11 +52,11 @@ The alignment pass is the honest part of the story. Finding gaps here isn't a fa
 
 ## Why prompts don't fix structural drift
 
-Here's the misconception about AX that most descriptions get backward. It's usually framed as "make your system work well for agents," and that's true in practice. This names the effect rather than the discipline, though. The more productive shift is making the important planning decisions before you build, rather than during or after.
+Most descriptions of AX have this backward. It's usually framed as "make your system work well for agents," and that's true in practice. This names the effect rather than the discipline, though. The more productive shift is making the important planning decisions before you build, rather than during or after.
 
 When you design for a human reader, ambiguity is recoverable. A developer reading unclear documentation can infer intent, check the GitHub issues, or ask a colleague. An agent operating across sessions cannot do any of those things with any certainty. Every ambiguous line in your spec or context file is a decision you haven't made. The agent will make it for you, in the direction of statistical probability.
 
-The spec is not primarily about guiding the agent. It's about forcing you to make design decisions before the pressure of a running system makes them implicit. The agent's reliable behavior is a byproduct. What you actually get first is clarity about what you're building, which turns out to be the same thing that makes the agent reliable.
+The spec is not primarily about guiding the agent. It's about forcing you to make design decisions before the pressure of a running system makes them implicit. The agent's reliable behavior is a byproduct. What you get first is clarity about what you're building, which turns out to be the same thing that makes the agent reliable.
 
 This is why improving prompts doesn't fix structural drift. Prompts are interaction-level adjustments. Drift is artifact-level. You can have excellent prompts running against an underdeveloped CLAUDE.md and a vague spec, and the agent will still be making design decisions on your behalf, albeit with slightly better manners.
 
@@ -64,7 +64,7 @@ This is why improving prompts doesn't fix structural drift. Prompts are interact
 
 In practice, this is harder to shift than it sounds. The instinct, especially with a capable AI tool available, is to start building and let the shape emerge. Scaffolding is fast. It's tempting to interpret that speed as permission to defer thinking, but there's one thing you lose when you defer: your ability to audit the work. Without a spec, there's no standard to close a task against. You review the output, decide it feels approximately right, and move on. When you hit a wall three sessions later, you can't tell whether the spec changed, the implementation drifted, or you never decided what needed to happen. Developers working this way inevitably realize the codebase is approximately correct, but not definitively right.
 
-For teams evaluating whether to focus and invest more in AI-assisted development, this is where they should put their effort. Not into model selection or prompt engineering, but the artifacts that give their agents reliable context across sessions. A CLAUDE.md that's updated after every session. Design specs that are authoritative enough that gap analyses can be written against them. Implementation tasks derived from the spec rather than improvised from the conversation. The next two posts dig into both: what makes a context file actually work, and what a spec needs to do that prompting cannot.
+For teams evaluating whether to focus and invest more in AI-assisted development, this is where they should put their effort. Not into model selection or prompt engineering, but the artifacts that give their agents reliable context across sessions. A CLAUDE.md that's updated after every session. Design specs that are authoritative enough that gap analyses can be written against them. Implementation tasks derived from the spec rather than improvised from the conversation. The next two posts dig into both: what makes a context file work, and what a spec needs to do that prompting cannot.
 
 The same artifact mindset applies to API documentation. An older example is [Writing API Wrappers with Elixir](/archive/2013/writing-api-wrappers-with-elixir/), where the interface contract has to be made explicit before the code can be useful.
 

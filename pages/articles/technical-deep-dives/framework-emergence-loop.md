@@ -44,7 +44,7 @@ Each version taught one lesson the previous one couldn't have seen coming. That'
 
 ## The myth of getting it right the first time
 
-Here's the misconception about this kind of iteration: that a team with enough experience could design the right framework upfront and skip the cycle. That's the wrong takeaway from the right observation, that each version's failure looks obvious in hindsight. You need persistent state. Role drift needs detection. The spec should be authoritative. These are obvious after you've built a system without them and watched it break exactly where the absence said it would. They are not obvious before.
+The tempting read is that a team with enough experience could design the right framework upfront and skip the cycle entirely. That's the wrong takeaway from the right observation, that each version's failure looks obvious in hindsight. You need persistent state. Role drift needs detection. The spec should be authoritative. These are obvious after you've built a system without them and watched it break exactly where the absence said it would. They are not obvious before.
 
 The failure mode isn't rebuilding. It's refusing to rebuild once the lesson is clear, instead polishing version four past the point where a new architecture would do better, because the sunk cost makes starting over feel like admitting defeat. That instinct is expensive. The framework that survives is built by people who can see when they've hit the structural ceiling of the current version and choose to build the next one.
 
@@ -62,7 +62,7 @@ The production form isn't a JSON file anymore. It's an Obsidian vault: connected
 
 The move from prototype to production has a long history in software work. My earlier piece on [Application Deployment](/archive/2014/application-deployment/) makes the same case from a different generation of tools.
 
-Look at what the `knowledge-graph.json` pattern actually encodes and you see the loop doing something more specific than generic software refinement. The schema isn't for a human to read later. It's for an agent to load at session start and act on immediately. Every field exists because the agent's next decision depends on it, not because the info is nice to have written down. That's AX thinking in its most concrete form: the artifact is built for the agent's navigation, not the developer's convenience. What the loop teaches, version by version, is what an agent needs to move through your system without guessing. Harder than it sounds, and only answerable by watching the previous version fail.
+Look at what the `knowledge-graph.json` pattern encodes and you see the loop doing something more specific than generic software refinement. The schema isn't for a human to read later. It's for an agent to load at session start and act on immediately. Every field exists because the agent's next decision depends on it, not because the info is nice to have written down. That's AX thinking in its most concrete form: the artifact is built for the agent's navigation, not the developer's convenience. What the loop teaches, version by version, is what an agent needs to move through your system without guessing. Harder than it sounds, and only answerable by watching the previous version fail.
 
 ---
 

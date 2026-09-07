@@ -7,7 +7,7 @@ heroImage: evaluating-agentic-workflows-hero.png
 slug: evaluating-agentic-workflows
 ---
 
-You ship the workflow. It runs. The output lands in the right place, formatted correctly, and there are no errors in the log. You move on. Two weeks later, someone mentions that the summaries have been missing caveats, that the code review has been passing style issues, or that the documentation looks right but is citing an API that changed a month ago. The workflow never broke. It has been wrong the whole time, and you did not catch it because there was nothing to catch—only clean runs and accumulating drift.
+You ship the workflow. It runs. The output lands in the right place, formatted correctly, and there are no errors in the log. You move on. Two weeks later, someone mentions that the summaries have been missing caveats, that the code review has been passing style issues, or that the documentation looks right but is citing an API that changed a month ago. The workflow never broke. It has been wrong the whole time, and you did not catch it because there was nothing to catch. Only clean runs and accumulating drift.
 
 The wrong workflow is harder to find than the broken one. A broken workflow is loud: the JSON parse fails, the output file is empty, or the downstream step throws an exception. There is a notification, a log entry, or something else to chase. The wrong workflow runs cleanly and produces output that is approximately what you intended but not quite, and the gap accumulates. For example, a summarization workflow might consistently omit caveats because the prompt did not specify that they were required. A code review workflow might pass style issues because the style guide was written for human reviewers rather than model evaluators. Or a documentation generator might produce accurate-looking content with outdated API references because no session context told it what had changed.
 
@@ -23,7 +23,7 @@ There is one principle worth establishing: you can only evaluate output against 
 
 What "authoritative" means in practice depends on the workflow type. For schema-critical workflows, where downstream steps depend on a specific output format, authoritative means a JSON schema or a structural contract.
 
-At Global Payments, the developer advocacy team runs a monthly Power Automate pipeline that reads inbound developer emails, categorizes them by theme and urgency, and delivers structured insights to the product teams responsible for APIs and SDKs. This process takes a month of developer feedback—such as questions, integration friction, feature requests, and complaints—and turns it into something product teams can act on.
+At Global Payments, the developer advocacy team runs a monthly Power Automate pipeline that reads inbound developer emails, categorizes them by theme and urgency, and delivers structured insights to the product teams responsible for APIs and SDKs. This process takes a month of developer feedback (questions, integration friction, feature requests, complaints) and turns it into something product teams can act on.
 
 The flow started as one prompt handling the analysis and producing three artifact outputs. The results were inconsistent. Category labels drifted between runs, insights varied in structure depending on the volume and mix of that month's emails, and output could not be reliably parsed by downstream consumers. Splitting it into four single-responsibility prompts (one owning the categorization pass and one owning each artifact type) made the output stable enough to be useful. That is a schema-critical workflow where the gate is structural. Either the output matches the schema or it does not. Structural validation at the parse step catches failures before they propagate.
 
@@ -33,7 +33,7 @@ For quality-first workflows, where semantic accuracy matters more than rigid str
 
 ## Evaluation is downstream of speccing
 
-There is a misconception in how teams typically think about evaluation: that it is a QA step added after the workflow is built, such as a quality gate at the end or human review before delivery. This framing treats evaluation as downstream of production, implying it catches problems after they occur.
+Evaluation usually gets treated as a QA step bolted on after the workflow is built: a quality gate at the end, or human review before delivery. This framing treats evaluation as downstream of production, implying it catches problems after they occur.
 
 A more useful frame is that evaluation is downstream of speccing. You can only build an automated gate if you have something to evaluate against. The schema that enables structural validation exists because a design document named the required fields and their types. The rubric that enables semantic evaluation exists because a prompt author defined what "correct" output looks like before building the prompt. The 60-day retrospective that measures time saved against a manual baseline works because someone documented the manual baseline before automating. Evaluation without a spec is spot-checking, which is what the AX thesis has been arguing against since Post 1. You can only measure against something authoritative, and that authoritative thing only exists if you designed for the agent rather than yourself.
 
@@ -65,7 +65,7 @@ In practice, this often surfaces gaps in the original design. "The output should
 
 After 60 days of production use, run a minimal retrospective covering these areas: what the workflow does, how much time it saves against the documented manual baseline, the error rate at the automated gate, the escalation rate, what held up that was not expected to, what failed in ways the design did not anticipate, and a recommendation. You can then choose to continue as-is, adjust the prompt, adjust the gate, retire the workflow, or expand scope.
 
-The manual baseline matters more than teams usually invest in it. To measure time saved credibly, you need the baseline before automating. Take three manual runs, measure the wall-clock time from trigger to delivered artifact, and average them. Without that, the time-saved metric is an estimate that feels more authoritative than it actually is. While that is fine for an internal conversation, it is unreliable as a signal for deciding whether to expand the workflow.
+The manual baseline matters more than teams usually invest in it. To measure time saved credibly, you need the baseline before automating. Take three manual runs, measure the wall-clock time from trigger to delivered artifact, and average them. Without that, the time-saved metric is an estimate that feels more authoritative than it is. While that is fine for an internal conversation, it is unreliable as a signal for deciding whether to expand the workflow.
 
 Graduation from active human review to automated-gate-only requires a deliberate sign-off rather than a timer. Time-based and error-rate signals can inform the decision, but they do not make it. The stakes differ enough across workflows that a policy threshold would either be too conservative for simple ones or too permissive for high-consequence ones. The sign-off is the mechanism.
 
@@ -77,7 +77,7 @@ The practical starting point for a workflow you are building now is to write the
 
 ---
 
-Running without errors is not a success criterion. The true criterion is output that matches a defined standard consistently across the conditions your workflow actually encounters. The gap between those two things is where the wrong workflows live—running cleanly and degrading quietly until someone asks why.
+Running without errors is not a success criterion. The true criterion is output that matches a defined standard consistently across the conditions your workflow encounters. The gap between those two things is where the wrong workflows live, running cleanly and degrading quietly until someone asks why.
 
 ---
 

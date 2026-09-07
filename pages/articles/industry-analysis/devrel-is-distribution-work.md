@@ -8,7 +8,7 @@ description: Neon hit 80% AI-agent-provisioned databases, and Databricks paid ab
   new AI-citation node in the old flywheel, and why agent skills are becoming the
   new SDK.
 faqs:
-- q: What did Neon's 80% AI-agent-provisioned number actually prove?
+- q: What did Neon's 80% AI-agent-provisioned number prove?
   a: That being the default database an AI coding agent reaches for is now valuable
     enough to build an acquisition premium on. Databricks said so directly in its
     own announcement.
@@ -64,7 +64,7 @@ Skills are also a viral discovery channel that didn't exist before. A developer 
 
 DevRel has fought a losing battle for years over proving its pipeline contribution. [Mary Thengvall](https://www.marythengvall.com/devrelbook) built the "DevRel Qualified Leads" framework largely because the function's real influence on adoption was structurally invisible to attribution systems. Awareness compounded through talks and community into adoption nobody could trace.
 
-Agent-mediated distribution flips that. Citation rates can be tested. Skill installs can be counted. Agent-provisioned signups can be instrumented, and Neon literally reported the percentage. The distribution work DevRel always did on faith is becoming distribution work you can put on a dashboard. That's an enormous political gift to every DevRel leader who's ever defended a headcount, and it comes with an obligation: if the impact is now measurable, you have to actually build the things that get measured.
+Agent-mediated distribution flips that. Citation rates can be tested. Skill installs can be counted. Agent-provisioned signups can be instrumented, and Neon literally reported the percentage. The distribution work DevRel always did on faith is becoming distribution work you can put on a dashboard. That's an enormous political gift to every DevRel leader who's ever defended a headcount, and it comes with an obligation: if the impact is now measurable, you have to build the things that get measured.
 
 That means the DevRel roadmap grows some unfamiliar line items: an agent skills library maintained with the same seriousness as an SDK, LLM context files treated as first-class deliverables, and citation monitoring as a standing program. I've made LLM context files an explicit OKR deliverable in my own advocacy work this year, not because it's fashionable but because that's the artifact the actual distribution channel consumes.
 

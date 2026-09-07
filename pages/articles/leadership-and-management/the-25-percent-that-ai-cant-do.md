@@ -4,7 +4,7 @@ date: 2026-08-05
 layout: partials::layouts/writing-post
 slug: the-25-percent-that-ai-cant-do
 faqs:
-- q: If AI already handles most developer education, what's actually left for DevRel
+- q: If AI already handles most developer education, what's left for DevRel
     to do?
   a: What's left is the judgment work, and it shows up as architecture reasoning,
     tradeoff decisions, spec quality, and the edges only you know about your own product.
@@ -16,7 +16,7 @@ faqs:
     hit a wall the tools couldn't carry them past. The exact number isn't the point.
     The point is that teams treat the fast part as the finish line, then act surprised
     when the last stretch turns out to be the hard part.
-- q: What should a DevRel team actually change because of this?
+- q: What should a DevRel team change because of this?
   a: Sort a quarter of your output into two piles. One restates the docs. The other
     transmits real judgment, the tradeoff calls and the why-answers you only have
     because you got bitten first. Put your best advocate hours on the second pile.

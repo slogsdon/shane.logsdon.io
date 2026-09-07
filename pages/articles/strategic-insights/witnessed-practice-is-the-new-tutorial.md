@@ -36,7 +36,7 @@ Technical educators keep reporting the same thing: engagement is softer, course 
 
 [Sunil Pai's answer](https://sunilpai.dev/posts/developer-relations/), in an essay ("developer relations after the cheat code machine") I've reread more than anything else written about DevRel this year, is that people were never really buying courses to learn APIs. They were buying a way of working: how to structure things, debug, choose between options, ship, and notice when something is wrong even when it technically works. AI crashed into the layer below that. Every time you pull the lever on what he calls the cheat code machine, plausible code comes out. The API-knowledge layer collapsed in value, and the learning demand moved up to the layer AI can't produce: judgment in motion.
 
-He gave the format that serves this demand a name. Witnessed practice means watching someone competent actually work: what they delegate, what they check by hand, where they trust the model and where they absolutely don't, and how they recover when the agent has confidently wandered off in the wrong direction.
+He gave the format that serves this demand a name. Witnessed practice means watching someone competent work: what they delegate, what they check by hand, where they trust the model and where they absolutely don't, and how they recover when the agent has confidently wandered off in the wrong direction.
 
 I think this is the DevRel content format most likely to survive AI saturation, and I think corporate DevRel is producing approximately none of it.
 
@@ -82,7 +82,7 @@ The mechanics that separate witnessed practice from a sloppy stream:
 
 **Make the recovery visible.** The moment the agent went wrong and you caught it, or didn't catch it immediately, is the highest-value moment in the format. It's more informative than any best-practices section you will ever write.
 
-My own sample-project workflow is a small version of this. I write the first language implementation by hand, use an LLM to translate to the other languages, then validate with code spot-checks, compile-and-run tests, browser testing of the user flow, and a cross-language consistency pass. LLM passes for comments and README come last. Written down as a numbered list, it's a process doc. Narrated while it happens, with why the first implementation is by hand, what the spot-checks are actually looking for, and which language the translation mangles and how I notice, it's witnessed practice. It's the same workflow. The judgment narration is the difference.
+My own sample-project workflow is a small version of this. I write the first language implementation by hand, use an LLM to translate to the other languages, then validate with code spot-checks, compile-and-run tests, browser testing of the user flow, and a cross-language consistency pass. LLM passes for comments and README come last. Written down as a numbered list, it's a process doc. Narrated while it happens, with why the first implementation is by hand, what the spot-checks are looking for, and which language the translation mangles and how I notice, it's witnessed practice. It's the same workflow. The judgment narration is the difference.
 
 "Here is how a thoughtful person uses this SDK in a real workflow, including the dead ends" is closer to apprenticeship than marketing. Which, as Pai points out, is maybe what good DevRel was always closer to anyway.
 

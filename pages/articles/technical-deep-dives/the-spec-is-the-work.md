@@ -6,12 +6,12 @@ slug: the-spec-is-the-work
 image: the-spec-is-the-work-og.png
 heroImage: the-spec-is-the-work-hero.png
 faqs:
-  - q: "What does 'spec-first' AI development actually mean?"
-    a: "Writing a design document — covering goals, non-goals, external interfaces, data schemas, error states, and module boundaries — before opening an AI tool. The spec is where design decisions happen; without it, the agent makes those decisions for you, using statistical probability rather than your specific intent."
+  - q: "What does 'spec-first' AI development mean?"
+    a: "Writing a design document covering goals, non-goals, external interfaces, data schemas, error states, and module boundaries, before opening an AI tool. The spec is where design decisions happen; without it, the agent makes those decisions for you, using statistical probability rather than your specific intent."
   - q: "Why don't better prompts fix AI output quality?"
-    a: "Prompts are interaction-level adjustments. Drift is artifact-level. When the spec hasn't been written, the agent fills in undefined territory with plausible guesses. Better prompts running against vague requirements will still produce drift — not because the model is failing, but because it's making design decisions you haven't made."
+    a: "Prompts are interaction-level adjustments. Drift is artifact-level. When the spec hasn't been written, the agent fills in undefined territory with plausible guesses. Better prompts running against vague requirements will still produce drift, not because the model is failing, but because it's making design decisions you haven't made."
   - q: "What should a design spec include?"
-    a: "Goals and non-goals; the external interface (CLI surface, API endpoints, or UI flows); data schemas with every field typed; error states and which failure modes are distinct; module boundaries; and a testing strategy. Each field is a design decision. Every omitted field is also one — the agent will fill it in."
+    a: "Goals and non-goals; the external interface (CLI surface, API endpoints, or UI flows); data schemas with every field typed; error states and which failure modes are distinct; module boundaries; and a testing strategy. Each field is a design decision. Every omitted field is also one. The agent will fill it in."
 ---
 
 I thought I was watching the model fail. The output was close, functionally close and in some cases working, but off in specific ways I kept having to patch. The error handling didn't distinguish between failures that should halt the program and ones that should retry. The schema had fields that made sense in isolation but didn't align across the three scripts consuming the output. The CLI surface was intuitive in a generic sense but wrong for the specific automation I was building it for.
@@ -46,9 +46,9 @@ Third, and most underappreciated: the spec makes deviation detectable. When the 
 
 ---
 
-## The misconception about who the spec is for
+## Who the spec is for
 
-Here's the misconception that's common in descriptions of AI-assisted development: the spec is primarily about guiding the agent. It isn't. The agent guidance is a side effect. The spec is primarily about forcing you to make design decisions before the pressure of a running system makes them for you. By the time the code exists, all the trade-offs are already embedded, whether in the module structure, the schema, or what got elided for simplicity. Writing after the fact doesn't change those decisions. It only documents them. The spec written before the code is where the decisions actually happen, which is why it produces better code, not because the agent follows directions well, but because the directions forced the author to think.
+Read enough about AI-assisted development and you land on the same claim: the spec is primarily about guiding the agent. It isn't. The agent guidance is a side effect. The spec is primarily about forcing you to make design decisions before the pressure of a running system makes them for you. By the time the code exists, all the trade-offs are already embedded, whether in the module structure, the schema, or what got elided for simplicity. Writing after the fact doesn't change those decisions. It only documents them. The spec written before the code is where the decisions actually happen, which is why it produces better code, not because the agent follows directions well, but because the directions forced the author to think.
 
 ---
 
@@ -100,7 +100,7 @@ For teams evaluating whether to invest in this practice: the spec is not additio
 
 ---
 
-## The difference that actually matters
+## The difference that matters
 
 The spec is not documentation of what you built. It is the record of what you decided before implementation pressure made the decisions for you. The difference between those two things is the difference between a codebase you can audit and one you can only approximately trust.
 

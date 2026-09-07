@@ -40,7 +40,7 @@ heroImage: aeo-is-devrel-infrastructure-hero.png
 
 *Answer engine optimization (FAQ schema, llms.txt, structured content, agent-facing signals) is DevRel infrastructure, not a content chore, and at most developer-tool companies nobody owns it yet. DevRel is the function best positioned to claim it.*
 
-> **Update — 9 August 2026.** I re-ran this audit against the same six-layer stack. The headline finding below is no longer true: Stripe, Clerk, and Neon have each closed three more layers since May. The original text is preserved throughout for the record, with inline update notes marking what changed.
+> **Update, 9 August 2026.** I re-ran this audit against the same six-layer stack. The headline finding below is no longer true: Stripe, Clerk, and Neon have each closed three more layers since May. The original text is preserved throughout for the record, with inline update notes marking what changed.
 >
 > | Layer | May 2026 | August 2026 |
 > |---|---|---|
@@ -52,7 +52,7 @@ heroImage: aeo-is-devrel-infrastructure-hero.png
 > | 6. Copy-for-AI | absent | all three |
 > | **Total** | **2 of 6** | **~5 of 6** |
 >
-> One caveat worth naming, since it cuts against me: this piece published on 29 July but reported a May audit, so it was already two months behind its subject on the day it shipped. That lag is itself part of the argument — this layer is moving faster than the writing about it.
+> One caveat worth naming, since it cuts against me: this piece published on 29 July but reported a May audit, so it was already two months behind its subject on the day it shipped. That lag is itself part of the argument. This layer is moving faster than the writing about it.
 
 In May I audited three developer-tool documentation sites (Stripe, Clerk, and Neon), looking for the structural signals that determine whether AI assistants can find, extract, and cite their content. I picked those three because they're the sites everyone in DevRel points at when they mean documentation done right.
 
@@ -62,9 +62,9 @@ All three have an llms.txt. None of them have an explicit AI crawler policy in r
 
 Stripe's llms.txt reads like a product catalog. It's comprehensive and organized by product line, with use cases relegated to a secondary Solutions section, so a developer asking an AI "how do I handle subscriptions?" mostly needs the model to infer the mapping from catalog to use case. Clerk's is indexed by use case and framed educationally, with framework-specific content that lets an AI answer "how do I add auth to my Next.js app?" with Clerk specifically. Neon's is the most sophisticated of the three. It explicitly names AI builders as an audience and covers MCP integrations, pgvector, and agent tooling. It's written for the machine that reads it.
 
-> **Update, August 2026:** the Neon assessment holds and has widened — its llms.txt now leads with a "Common Queries" section ahead of the product tree, and tells agents outright to append `.md` to any doc URL or send `Accept: text/markdown`. The Stripe characterisation is now incomplete rather than wrong: `stripe.com/llms.txt` is still a product catalog, but there is a second, larger file at `docs.stripe.com/llms.txt` that opens with a section headed "Instructions for Large Language Model Agents."
+> **Update, August 2026:** the Neon assessment holds and has widened. Its llms.txt now leads with a "Common Queries" section ahead of the product tree, and tells agents outright to append `.md` to any doc URL or send `Accept: text/markdown`. The Stripe characterisation is now incomplete rather than wrong: `stripe.com/llms.txt` is still a product catalog, but there is a second, larger file at `docs.stripe.com/llms.txt` that opens with a section headed "Instructions for Large Language Model Agents."
 
-Here's the context that reframes the whole audit. Across nearly 300,000 domains SE Ranking analyzed, only about one in ten has *any* llms.txt. Set a stricter bar and the number drops further: among the top 10,000 sites, [barely 6% have a *valid, well-formed* one](https://caseyrb.com/blog/state-of-llms-txt-adoption/) as of mid-2026 (a different study, counting a different thing). Almost nobody has started. But the companies you actually benchmark against have: all three sites I audited shipped one. If you've been waiting to see whether this matters, they've already answered.
+Here's the context that reframes the whole audit. Across nearly 300,000 domains SE Ranking analyzed, only about one in ten has *any* llms.txt. Set a stricter bar and the number drops further: among the top 10,000 sites, [barely 6% have a *valid, well-formed* one](https://caseyrb.com/blog/state-of-llms-txt-adoption/) as of mid-2026 (a different study, counting a different thing). Almost nobody has started. But the companies you benchmark against have: all three sites I audited shipped one. If you've been waiting to see whether this matters, they've already answered.
 
 ---
 
@@ -93,7 +93,7 @@ Here's what my audit found: layers 3 through 6 were absent from all three sites.
 
 > **Update, August 2026:** this is the paragraph the re-audit overturned. Layers 3, 4, and 6 are now present on all three sites. Stripe ships a `.well-known/skills/index.json` declaring seven agent skills, plus first-party plugins for Claude Code, Codex, and Cursor. Clerk ships a `SKILL.md` with a full CLI runbook. Neon ships a hierarchical `skill.md` that loads a parent skill, alongside a 6.2 MB `llms-full.txt`. Every one of the three now serves a `.md` twin for every docs page, and all three have a copy or ask-AI affordance in the docs chrome.
 >
-> Layer 5 is the exception, and it has not moved at all: not one of the five sites I re-audited publishes a token count, and Stripe and Neon publish no dates whatsoever — no `article:modified_time`, no sitemap `lastmod` across thousands of URLs. A model cannot tell whether any of it is current.
+> Layer 5 is the exception, and it has not moved at all: not one of the five sites I re-audited publishes a token count, and Stripe and Neon publish no dates whatsoever, no `article:modified_time`, no sitemap `lastmod` across thousands of URLs. A model cannot tell whether any of it is current.
 >
 > "Two layers into six" became roughly five of six in about three months. That is a shorter window than "months, not years" implied, and if you were using this piece as a gap estimate, revise it down.
 
@@ -103,11 +103,11 @@ Here's what my audit found: layers 3 through 6 were absent from all three sites.
 
 I went looking for DevRel teams writing about this work and found something strange: nobody is. Stripe, Clerk, and Neon built their llms.txt files silently, with no posts about who owns the work or why. Trade press has started discussing "AI DevRel manager" roles, but I couldn't find a single published example of a DevRel team claiming AEO as theirs.
 
-> **Update, August 2026:** the silence broke, partly. Clerk has since published *Clerk for the AI era*, *Introducing Clerk CLI*, and a Series C announcement centred on agent identity; Stripe ships a public skills install page documenting how to add its skills to three different agent harnesses. These companies are talking about agent-facing work openly now. What I still could not find is a DevRel team framing it as their mandate — the narrower claim stands.
+> **Update, August 2026:** the silence broke, partly. Clerk has since published *Clerk for the AI era*, *Introducing Clerk CLI*, and a Series C announcement centred on agent identity; Stripe ships a public skills install page documenting how to add its skills to three different agent harnesses. These companies are talking about agent-facing work openly now. What I still could not find is a DevRel team framing it as their mandate. The narrower claim stands.
 
 The organizational reality explains the silence. Look at who owns each signal in a typical dev-tool company:
 
-| Signal | Typical owner | What actually happens |
+| Signal | Typical owner | What happens |
 |--------|---------------|----------------------|
 | FAQ schema / JSON-LD | SEO team, if one exists | Not in DevRel purview; doesn't get done |
 | llms.txt | Nobody | New artifact, no owner |
@@ -118,7 +118,7 @@ The organizational reality explains the silence. Look at who owns each signal in
 
 The work falls between teams, so it mostly doesn't happen. DevRel is better positioned to own it than any other function, because every input to the work is something DevRel already knows. What developers actually ask becomes the FAQ schema. What context an agent needs to use the tool correctly becomes the skills library. How products actually spread through developer communities becomes the trust signals AI assistants weight.
 
-> **Update, August 2026:** the table still describes the gaps correctly, but the re-audit changed my view of the mechanism, and this is the part I'd write differently now. The layers that closed did not close because DevRel claimed them. Layer 1 closed because Cloudflare made `Content-Signal` a managed default. Layers 2, 4, and 6 closed because docs platforms shipped them as platform features — no docs team decided this. Layer 3 closed because all three companies ship a CLI or an MCP server, so the skill manifest attached itself to a product team that already had a mandate.
+> **Update, August 2026:** the table still describes the gaps correctly, but the re-audit changed my view of the mechanism, and this is the part I'd write differently now. The layers that closed did not close because DevRel claimed them. Layer 1 closed because Cloudflare made `Content-Signal` a managed default. Layers 2, 4, and 6 closed because docs platforms shipped them as platform features. No docs team decided this. Layer 3 closed because all three companies ship a CLI or an MCP server, so the skill manifest attached itself to a product team that already had a mandate.
 >
 > The layers still open are exactly the ones with no vendor default and no adjacent owner: token metadata, JSON-LD at dev-tool companies (Stripe's docs pages emit none at all, while a one-person site out-schemas all three), and citation monitoring. "Nobody owns it" was right, but the useful version is sharper. The question is not who *should* own the work. It is whether the work can attach to an owner who already exists, or has to wait for a vendor to default it. DevRel's real opening is the second category, and it is smaller and more urgent than this piece originally implied.
 

@@ -8,9 +8,9 @@ heroImage: the-specification-boundary-hero.png
 draft: false
 faqs:
   - q: "What is the 75% problem in AI-assisted development?"
-    a: "The pattern where AI-assisted builds stall at the 75% mark — the scaffold is done, the demo works, the tests pass — but the domain-specific finishing work (edge cases, integration nuance, operational constraints) takes as long as the first 75% and requires expertise the model doesn't have access to."
+    a: "The pattern where AI-assisted builds stall at the 75% mark (the scaffold is done, the demo works, the tests pass) but the domain-specific finishing work (edge cases, integration nuance, operational constraints) takes as long as the first 75% and requires expertise the model doesn't have access to."
   - q: "Is the 75% problem a model capability limitation?"
-    a: "No. The model can generate code for edge cases, error handling, and integration nuance. The issue is that plausible and correct diverge as you approach the specification boundary — the territory the spec left undefined. That's not a capability ceiling. It's a spec gap."
+    a: "No. The model can generate code for edge cases, error handling, and integration nuance. The issue is that plausible and correct diverge as you approach the specification boundary, the territory the spec left undefined. That's not a capability ceiling. It's a spec gap."
   - q: "How does spec quality change the shape of the last 25%?"
     a: "A complete spec that names failure modes, edge cases, and integration constraints extends the specified territory into the finishing work. When the spec covers that territory explicitly, the model can operate in it reliably. When the spec leaves it open, you're debugging guesses rather than implementations."
 ---
@@ -47,7 +47,7 @@ These are not questions a language model answers well from general training data
 
 ## The actual problem isn't capability
 
-There's a common misconception embedded in how teams talk about this stall: that the issue is the AI stopping, as if the model runs out of capability at some threshold and the human has to take over. That's not what's happening. The model can generate code for authentication edge cases, error handling, performance optimization, and integration nuance. What it generates will be plausible, it will compile, and it will address the obvious version of each problem.
+Teams talk about this stall as the AI stopping, as if the model runs out of capability at some threshold and the human has to take over. That's not what's happening. The model can generate code for authentication edge cases, error handling, performance optimization, and integration nuance. What it generates will be plausible, it will compile, and it will address the obvious version of each problem.
 
 The actual issue is that plausible and correct diverge as you approach the boundary of what's specified. In the scaffold phase, the specified territory is large: "build a component that fetches user data and renders a list" has enough signal for a capable model to produce something useful. In the finishing phase, the territory is narrow and domain-specific: handle the case where the API returns a 206 Partial Content for this endpoint in particular, because the consuming client has a race condition in its retry logic that our retry policy needs to account for. That's not a prompt the model can answer from training data. It's a prompt that requires information the model doesn't have.
 

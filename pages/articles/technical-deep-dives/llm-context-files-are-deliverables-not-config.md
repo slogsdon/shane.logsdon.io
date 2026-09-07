@@ -7,8 +7,8 @@ heroImage: llm-context-files-are-deliverables-not-config-hero.png
 slug: llm-context-files-are-deliverables-not-config
 faqs:
   - q: "What's the difference between a global and a project CLAUDE.md?"
-    a: "A global CLAUDE.md (typically at ~/.claude/CLAUDE.md) is the behavioral layer — it shapes how the agent works regardless of project, like answer first, flag speculation, ask before large changes. A project CLAUDE.md (at the repo root) is the contextual layer — it shapes what the agent knows about this codebase: stack, folder structure, conventions, and explicit boundaries. Both matter and do different jobs."
-  - q: "What should a CLAUDE.md actually contain?"
+    a: "A global CLAUDE.md (typically at ~/.claude/CLAUDE.md) is the behavioral layer. It shapes how the agent works regardless of project, like answer first, flag speculation, ask before large changes. A project CLAUDE.md (at the repo root) is the contextual layer. It shapes what the agent knows about this codebase: stack, folder structure, conventions, and explicit boundaries. Both matter and do different jobs."
+  - q: "What should a CLAUDE.md contain?"
     a: "Three categories. Invocation details: exact commands with full flags (npm test -- --coverage --watch=false, not 'run the tests'), explicit file paths, and at least one canonical code snippet for any pattern that matters. Process conventions: where tests live, coverage thresholds, branch naming, and commit message format. The boundary tier: what the agent can do autonomously (always), what requires a check-in (ask-first), and what's off the table regardless of context (never)."
   - q: "Why do most CLAUDE.md files decay?"
     a: "Teams write them as a snapshot of what the project is right now, rather than as a record of decisions that have been made. State descriptions go stale on their own; decision records compound. The fix is the self-improving pattern: when you catch yourself re-explaining something to the agent a second time, update the file in-session so future sessions inherit the correction. Prune stale lines aggressively, since the agent reads the whole file every time."
@@ -30,13 +30,13 @@ Before getting into structure, there's a distinction worth making explicit. A gl
 
 Most people think about only one of them. The teams who treat AI-assisted development as a serious workflow maintain both and keep both current.
 
-## What a useful context file actually contains
+## What a useful context file contains
 
 Within the project layer, what separates useful context files from vague ones comes down to two categories before you get to the boundary tier. The first is invocation details. The second is process conventions.
 
-Invocation details means commands with full flags, not tool names. "Run the tests" is a description. `npm test -- --coverage --watch=false` is an instruction. The agent needs the exact invocation, and the same applies to build, lint, type-check, and any CI-relevant commands. If the command requires environment setup, note that too. It also means explicit file paths: not "the API layer" but `src/lib/api/`, with a note that all external calls go through `src/lib/api/client.ts`. Not "the components folder" but `src/components/` with whatever structural rules apply. Agents pattern-match from concrete anchors. One canonical code snippet beats three paragraphs describing a pattern: if your error handling follows a specific shape, paste a real example. If your components use a particular structure, paste the shell. Description and demonstration both work at first, but demonstration is what the agent will actually match against.
+Invocation details means commands with full flags, not tool names. "Run the tests" is a description. `npm test -- --coverage --watch=false` is an instruction. The agent needs the exact invocation, and the same applies to build, lint, type-check, and any CI-relevant commands. If the command requires environment setup, note that too. It also means explicit file paths: not "the API layer" but `src/lib/api/`, with a note that all external calls go through `src/lib/api/client.ts`. Not "the components folder" but `src/components/` with whatever structural rules apply. Agents pattern-match from concrete anchors. One canonical code snippet beats three paragraphs describing a pattern: if your error handling follows a specific shape, paste a real example. If your components use a particular structure, paste the shell. Description and demonstration both work at first, but demonstration is what the agent will match against.
 
-Process conventions covers testing and git. For testing: not "we use Jest" but where tests live (`__tests__/`, or `*.test.ts` colocated, or `tests/integration/` for integration tests), what coverage threshold is enforced, and whether there's a separate command for watch mode versus CI. "We use Jest" leaves the agent guessing at all of this. For git, note the branch naming prefixes, commit message format, PR requirements, and any review expectations. Without this, the agent will invent a convention. It will be internally consistent and wrong — and that wrongness compounds, because each session starts from the invented baseline rather than the actual one.
+Process conventions covers testing and git. For testing: not "we use Jest" but where tests live (`__tests__/`, or `*.test.ts` colocated, or `tests/integration/` for integration tests), what coverage threshold is enforced, and whether there's a separate command for watch mode versus CI. "We use Jest" leaves the agent guessing at all of this. For git, note the branch naming prefixes, commit message format, PR requirements, and any review expectations. Without this, the agent will invent a convention. It will be internally consistent and wrong, and that wrongness compounds, because each session starts from the invented baseline rather than the actual one.
 
 The area most consistently absent from real-world context files is the third category.
 
@@ -54,7 +54,7 @@ That third tier is the one most teams forget. "Never commit secrets" is the most
 
 ## Decisions versus state descriptions
 
-Here's the misconception that makes most context files decay: teams write them as a reflection of what the project is right now, rather than as a record of decisions that have been made. The distinction sounds subtle, but it determines whether the file compounds or decays.
+Most context files decay for one reason. Teams write them as a reflection of what the project is right now, rather than as a record of decisions that have been made. The distinction sounds subtle, but it determines whether the file compounds or decays.
 
 A project description captures state. A decision record captures commitments. "We use React 18" is a state description. It'll stay true until you upgrade. "We use function components only; no class components" is a commitment. It was a decision made at a specific point for a specific reason, and it tells the agent something that reading the code might not. State can be inferred. Decisions need to be explicit.
 
@@ -68,11 +68,11 @@ This requires treating the context file as something you actively maintain rathe
 
 The opposite failure mode is context bloat. A 400-line CLAUDE.md with outdated migration notes, deprecated API paths, and decisions from a tech stack you replaced six months ago is worse than a 100-line one that's current. The agent reads the whole file on every session. Every stale line is a small injection of noise into every interaction. Prune regularly. Archive rather than accumulate.
 
-## The diagnostic the file actually runs on you
+## The diagnostic the file runs on you
 
 The genuinely non-obvious part, the part that isn't visible until you've maintained one of these files through a real project, is that writing a useful context file requires having made the decisions it's supposed to record. You can't write "all external calls go through `src/lib/api/client.ts`" unless you've established and enforced that as a real convention. CLAUDE.md surfaces where project conventions are implicit rather than explicit. Every vague line is a decision still open. The file is, in a strange way, a diagnostic: if it's hard to write precisely, the project architecture may be harder to describe precisely than you thought.
 
-For teams evaluating AI-assisted development at scale, this is the discipline worth investing in ahead of model selection or prompt engineering. The context file shapes every session, and its quality determines the quality of the work that comes out of it. The model you're running, the prompt you've written, the workflow you've built around it — all secondary. Treat the context file with the same rigor as a spec. Review it the way you'd review a significant PR. It sets behavioral constraints: how the agent works. The spec that Post 3 introduces sets scope and decisions: what it builds. Both need to exist before the first prompt.
+For teams evaluating AI-assisted development at scale, this is the discipline worth investing in ahead of model selection or prompt engineering. The context file shapes every session, and its quality determines the quality of the work that comes out of it. The model you're running, the prompt you've written, the workflow you've built around it: all secondary. Treat the context file with the same rigor as a spec. Review it the way you'd review a significant PR. It sets behavioral constraints: how the agent works. The spec that Post 3 introduces sets scope and decisions: what it builds. Both need to exist before the first prompt.
 
 A CLAUDE.md that hasn't been updated since you wrote it isn't config that's working quietly. It's a gap between how you think the project is and how the agent is navigating it. That gap compounds. The sessions that feel inexplicably off, where the agent makes choices that don't quite fit and where you correct the same thing again, are often the file speaking.
 
