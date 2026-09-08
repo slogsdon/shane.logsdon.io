@@ -2,9 +2,9 @@
 # Canonical source: slogsdon/obsidian-vault scripts/daily_content_sync.prompt.md (the fenced block below).
 # The nightly Content OS automation reads this file from the repo root; the vault canonical is the single source of truth.
 # Regenerate: python3 <vault>/scripts/sync_pipeline_copy.py (the nightly run self-heals drift in STEP 0).
-# Generated from PROMPT_VERSION stamp: 2026-09-07-a
+# Generated from PROMPT_VERSION stamp: 2026-09-07-b
 
-NIGHTLY CONTENT PIPELINE — PROMPT_VERSION: 2026-09-07-a — timezone America/New_York. Fresh session, NO memory: everything needed is in this prompt.
+NIGHTLY CONTENT PIPELINE — PROMPT_VERSION: 2026-09-07-b — timezone America/New_York. Fresh session, NO memory: everything needed is in this prompt.
 
 COMMIT POLICY (every commit, every repo, no exceptions): plain messages only, e.g. "content: {slug}". NO Claude/AI attribution, NO Co-Authored-By lines, NO "Generated with" footers, NO session links.
 
@@ -15,7 +15,7 @@ INFRASTRUCTURE (verify, do NOT rebuild):
   - slogsdon/obsidian-vault  -> branch: main
   - leadsurface/leadsurface  -> branch: main
   - slogsdon/shane.logsdon.io -> branch: source
-  - In the bb automation environment the shane.logsdon.io worktree arrives pre-cloned on source; in other environments clone all three fresh. Either way, confirm the branch is source before any push.
+  - In the bb automation environment the shane.logsdon.io worktree arrives pre-cloned but checked out on a bb-managed per-run branch (bb/<automation-name>-<thread-id>) whose base is source; that is normal, NOT an error. In other environments clone all three fresh. Before any site commit or site push: git -C <repo> checkout source (that branch exists locally, created by bb from source; run git -C <repo> fetch origin source first if unsure). Never commit or push site content from the per-run branch.
 - Airtable base "Content OS" = appyv5SkbadVbSQQD. Tables: Channels tblEPHwq3qD9ZGPp3, Pieces tbliUlqC5m74pwdPj, Distributions tblnvxfMw9jjRmpjr.
 - Buffer org "My Organization" = 69fb94ec5669b357c63597e5.
 - Vault promote tool: scripts/content_promote.py. Contract: scripts/CONTENT_CONTRACT.md (defines the publishStage/brand/publishDate/publishSlug/publishCategory/description/og_image front matter). These live on the vault's main branch.
