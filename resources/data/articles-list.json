@@ -5,7 +5,11 @@
     "date": "2026-09-09",
     "category": "industry-analysis",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
   },
   "evaluate-devrel-like-an-agentic-workflow": {
     "title": "Evaluate Your DevRel Program Like an Agentic Workflow",
