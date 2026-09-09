@@ -1,4 +1,12 @@
 {
+  "community-when-ai-answers-the-questions": {
+    "title": "Community When AI Answers the Questions",
+    "description": "Stack Overflow is back to 2009 question volume, and that's not proof developer community is dying. It's proof Q&A was only ever a function of community, and what's left once AI answers the questions is exactly what DevRel should build for.",
+    "date": "2026-09-09",
+    "category": "industry-analysis",
+    "archived": false,
+    "tags": []
+  },
   "evaluate-devrel-like-an-agentic-workflow": {
     "title": "Evaluate Your DevRel Program Like an Agentic Workflow",
     "description": "AI recommendation is a distribution channel that never reports back. I evaluate my DevRel program the same way I evaluate an agentic workflow, checking presence first, then accuracy, and auditing both on a cadence.",
