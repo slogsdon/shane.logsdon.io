@@ -5,7 +5,11 @@
     "date": "2026-09-16",
     "category": "strategic-insights",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "product-strategy",
+      "tech-strategy"
+    ]
   },
   "community-when-ai-answers-the-questions": {
     "title": "Community When AI Answers the Questions",
