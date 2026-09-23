@@ -1,4 +1,17 @@
 {
+  "the-ai-implementation-playbook-annotated": {
+    "title": "The AI Implementation Playbook, Annotated",
+    "description": "Luke Pierce's 'perfect AI implementation' process gets the order of operations right: data, then workflows, then intelligence. The parts that decide whether the system survives month eight are the parts the playbook waves at.",
+    "date": "2026-09-23",
+    "category": "strategic-insights",
+    "archived": false,
+    "tags": [
+      "ai-implementation",
+      "agentic-ai",
+      "process",
+      "loop-and-gate"
+    ]
+  },
   "value-creation-as-distribution": {
     "title": "Value Creation Just Became the Distribution Strategy",
     "description": "Answer engines only cite what they can read, and a signup form is a wall they can't get past. That's turned Austin Kodra's value-creation principle from a long-term bet into the only way your content gets in front of a developer at all.",
