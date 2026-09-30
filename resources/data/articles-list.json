@@ -1,4 +1,12 @@
 {
+  "prompts-i-actually-reuse": {
+    "title": "I Mined My Session History for the Prompts I Actually Reuse",
+    "description": "My vault had a 55-note prompt library. An audit of my own session transcripts found 5 prompts I'd re-typed enough to prove, 4 patterns worth promoting to skills, 2 skills worth demoting back to prompts, and about 40 imported templates I had never used once.",
+    "date": "2026-09-30",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": []
+  },
   "the-ai-implementation-playbook-annotated": {
     "title": "The AI Implementation Playbook, Annotated",
     "description": "Luke Pierce's 'perfect AI implementation' process gets the order of operations right: data, then workflows, then intelligence. The parts that decide whether the system survives month eight are the parts the playbook waves at.",
