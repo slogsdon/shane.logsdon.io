@@ -5,7 +5,11 @@
     "date": "2026-09-30",
     "category": "technical-deep-dives",
     "archived": false,
-    "tags": []
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership"
+    ]
   },
   "the-ai-implementation-playbook-annotated": {
     "title": "The AI Implementation Playbook, Annotated",
