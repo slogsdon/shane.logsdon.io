@@ -1,4 +1,17 @@
 {
+  "your-agents-made-you-faster": {
+    "title": "Your Agents Made You Faster. Your Customers Didn't Notice.",
+    "description": "Agentic workflows made producing artifacts close to free, but the bottleneck moved to conversations with people who might pay. Inventory reads as progress while the constrained side of the system never sped up.",
+    "date": "2026-10-14",
+    "category": "technical-deep-dives",
+    "archived": false,
+    "tags": [
+      "developer-tooling",
+      "tech-strategy",
+      "engineering-leadership",
+      "system-architecture"
+    ]
+  },
   "prompts-i-actually-reuse": {
     "title": "I Mined My Session History for the Prompts I Actually Reuse",
     "description": "My vault had a 55-note prompt library. An audit of my own session transcripts found 5 prompts I'd re-typed enough to prove, 4 patterns worth promoting to skills, 2 skills worth demoting back to prompts, and about 40 imported templates I had never used once.",
