@@ -31,7 +31,9 @@ $pieces = [
         'repo' => $repos['foundation'],
         'body' => 'An AI agent that remembers you and gets a little sharper every session. Its memory is plain, readable notes in an Obsidian vault, with no vector database, no cloud service, and nothing to sign up for. It captures what you tell it, files it, and writes down one lesson at the end of each session.',
         'gives' => 'Cross-session memory, so your projects and decisions survive the window closing. Your voice and taste profiles come from a short interview that turns "how you write" and "what good looks like to you" into notes the kits can read.',
-        'needs' => 'Not a plugin. It is a folder you open and work inside. The skills live in the folder, and a memory-loader turns on automatically every time you open it.',
+        'needs' => 'A folder you open and work inside. The skills live in the folder, and a memory-loader turns on automatically every time you open it. You can also install it as a plugin now, which is faster, but edits the agent makes to its own skills won\'t survive plugin updates, so the folder is the full version.',
+        'guide' => '/loop-and-gate/your-first-gate/',
+        'guideLabel' => 'Start here: your first gate',
     ],
     [
         'name' => 'The Build Kit',
@@ -63,7 +65,7 @@ $pieces = [
 ];
 
 $order = [
-    ['label' => 'Foundation', 'body' => 'Set up memory and run the profile interview. Everything else is sharper once this exists.'],
+    ['label' => 'Foundation', 'body' => 'Set up memory and run the profile interview. Everything else is sharper once this exists.', 'guide' => '/loop-and-gate/your-first-gate/', 'guideLabel' => 'Start here: your first gate'],
     ['label' => 'Accountability Kit', 'body' => 'The lightest kit, and the one that makes the habit of using the system stick. Start running your days through it.'],
     ['label' => 'Build Kit', 'body' => 'The first time you have something real to build.'],
     ['label' => 'Grow Kit', 'body' => 'The first time you have something built and need to take it to people.'],
@@ -159,7 +161,7 @@ $order = [
                         <p class="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2">
                             <a href="<?= htmlspecialchars($p['repo']) ?>" target="_blank" rel="noreferrer noopener" class="btn-arrow">View on GitHub</a>
                             <?php if (!empty($p['guide'])): ?>
-                            <a href="<?= htmlspecialchars($p['guide']) ?>" class="btn-arrow">Read the field guide</a>
+                            <a href="<?= htmlspecialchars($p['guide']) ?>" class="btn-arrow"><?= htmlspecialchars($p['guideLabel'] ?? 'Read the field guide') ?></a>
                             <?php endif; ?>
                         </p>
                     </div>
@@ -249,7 +251,7 @@ $order = [
                             Run the profile interview so you know how I write and what good looks like to me.
                         </p>
                         <p class="mt-3 max-w-prose text-[1rem] leading-relaxed text-muted-foreground">
-                            One caveat: installed as a plugin, the Foundation's skills sit in a read-only cache, so on some platforms the agent can improve its memory but not rewrite its own skill files. If you want the full self-improving loop, download the repo instead. Use the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quickest start. The download is the complete one.
+                            One caveat: installed as a plugin, the skills live in a versioned cache that's replaced on update, so the agent still improves its memory, but edits it makes to its own skills don't survive the next plugin update. If you want the full loop, download the repo instead. Use the green Code button on the <a class="link-quiet" href="<?= htmlspecialchars($repos['foundation']) ?>" target="_blank" rel="noreferrer noopener">Foundation repo</a> &rarr; Download ZIP, open the folder with File &rarr; Open folder, and run the setup the same way. The plugin is the quicker start. The folder is the full version.
                         </p>
                     </div>
                 </li>
@@ -364,6 +366,11 @@ $order = [
                     <div class="col-span-12 sm:col-span-10">
                         <h3 class="font-display text-xl font-medium text-foreground"><?= htmlspecialchars($o['label']) ?></h3>
                         <p class="mt-2 max-w-prose text-[1rem] leading-relaxed text-muted-foreground"><?= htmlspecialchars($o['body']) ?></p>
+                        <?php if (!empty($o['guide'])): ?>
+                        <p class="mt-3">
+                            <a href="<?= htmlspecialchars($o['guide']) ?>" class="btn-arrow"><?= htmlspecialchars($o['guideLabel'] ?? 'Read the field guide') ?></a>
+                        </p>
+                        <?php endif; ?>
                     </div>
                 </li>
                 <?php endforeach; ?>
