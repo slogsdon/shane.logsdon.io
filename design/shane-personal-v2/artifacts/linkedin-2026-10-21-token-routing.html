@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shane Logsdon — LinkedIn — Token routing is least-cost routing</title>
+<link rel="stylesheet" href="../fonts-embed.css">
+<link rel="stylesheet" href="../tokens.css">
+<!--
+Variation choices:
+  archetype:    object-of-content, read as A · Drawing First (DESIGN.md Q5: the article reduces to one
+                drawing). The canvas IS the comparison drawing: four routing stages, each a two-cell
+                column (tokens above the hairline, card payments below), ending in an invoice node.
+                Headline is demoted beneath the drawing; the key is numbered to three red callouts.
+                Prior LinkedIn: marginalia/off-grid (building-on-the-margins). Prior blog-hero:
+                type-only (your-first-gate). Differs from both.
+  layout:       full-bleed drawing over a 7/5 split (headline left, key right)
+  type-pressure: mixed-weight — Fraunces stage titles + headline, Plex body in cells, mono caption only
+  color:        monochrome cream + ink; annotation red ONLY on the three callouts and their leaders
+  composition:  data-led (the mapping is the content)
+  footer:       absent. Wordmark is embedded in the figure caption, lower-left.
+  callouts:     3 (the system maximum), each matching a "where it breaks" claim in the article body.
+-->
+<style>
+html, body { margin: 0; padding: 0; background: var(--color-ink-3); }
+@page { size: 1200px 627px; margin: 0; }
+.canvas {
+  width: 1200px; height: 627px; box-sizing: border-box;
+  background: var(--color-surface); color: var(--color-ink);
+  padding: var(--space-7, 48px) var(--space-7, 48px) var(--space-6, 32px);
+  position: relative; overflow: hidden;
+  display: grid; grid-template-rows: 1fr auto auto; row-gap: 32px;
+  font-family: var(--type-sans-family);
+}
+/* ── The drawing ─────────────────────────────────────────────── */
+.drawing { position: relative; display: grid; grid-template-columns: 112px repeat(4, 1fr) 132px; column-gap: 26px; }
+.rowlabels { display: grid; grid-template-rows: 54px 1fr 1fr; }
+.rowlabels span { align-self: center; font-family: var(--type-display-family); font-feature-settings: "smcp"; font-weight: 600; font-size: var(--fs-smallcaps-lg); letter-spacing: var(--tracking-smallcaps); color: var(--color-ink-3); text-transform: lowercase; }
+.stage { display: grid; grid-template-rows: 54px 1fr 1fr; border: 1px solid var(--color-ink); position: relative; }
+.stage h3 { margin: 0; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-ink); font-family: var(--type-display-family); font-weight: 500; font-size: 26px; letter-spacing: var(--tracking-tight); }
+.stage h3 i { font-style: normal; font-family: var(--type-mono-family); font-size: 11px; letter-spacing: var(--tracking-mono); color: var(--color-ink-3); }
+.cell { padding: 14px 16px; font-size: 17px; line-height: 1.38; color: var(--color-ink); }
+.cell + .cell { border-top: 1px solid var(--color-rule); color: var(--color-ink-soft); }
+.arrow { position: absolute; top: 50%; right: -27px; width: 26px; height: 12px; transform: translateY(-50%); }
+.invoice { border: 1px dashed var(--color-ink); display: grid; place-items: center; text-align: center; padding: 12px; font-family: var(--type-display-family); font-size: 26px; font-weight: 500; line-height: 1.15; position: relative; }
+.invoice small { display: block; margin-top: 8px; font-family: var(--type-sans-family); font-size: 15px; font-weight: 400; color: var(--color-ink-3); line-height: 1.35; }
+.bubble { position: absolute; width: 22px; height: 22px; border-radius: 999px; background: var(--color-mark); color: var(--color-surface); font-family: var(--type-mono-family); font-size: 12px; display: grid; place-items: center; z-index: 2; }
+/* ── Below the drawing ───────────────────────────────────────── */
+.lower { display: grid; grid-template-columns: 7fr 5fr; column-gap: 48px; align-items: end; }
+.headline { margin: 0; font-family: var(--type-display-family); font-weight: 400; font-size: 54px; line-height: 1.02; letter-spacing: var(--tracking-display); }
+.key { margin: 0; padding: 0; list-style: none; display: grid; row-gap: 12px; }
+.key li { display: grid; grid-template-columns: 22px 1fr; column-gap: 12px; align-items: start; font-size: 15px; line-height: 1.4; color: var(--color-ink-soft); }
+.key .bubble { position: static; }
+.caption { display: flex; justify-content: space-between; border-top: 1px solid var(--color-rule); padding-top: 12px; font-family: var(--type-mono-family); font-size: 12px; letter-spacing: var(--tracking-mono); color: var(--color-ink-3); }
+.caption b { font-family: var(--type-display-family); font-weight: 600; font-size: 17px; letter-spacing: 0; color: var(--color-ink); }
+</style>
+</head>
+<body>
+<article class="canvas">
+  <section class="drawing" aria-label="OpenRouter default routing compared with card payment routing">
+    <div class="rowlabels"><span></span><span>Tokens</span><span>Card payments</span></div>
+
+    <div class="stage">
+      <h3>Eligible <i>01</i></h3>
+      <div class="cell">Only providers that support the request (tools, long output)</div>
+      <div class="cell">Only networks the issuer enabled on the card</div>
+      <span class="bubble" style="top:-11px;left:-11px">1</span>
+      <svg class="arrow" viewBox="0 0 26 12"><line class="s-ink" x1="0" y1="6" x2="24" y2="6"/><polyline class="s-ink" points="19,1 25,6 19,11"/></svg>
+    </div>
+
+    <div class="stage">
+      <h3>Healthy <i>02</i></h3>
+      <div class="cell">Favor providers with no outage in the last 30 seconds</div>
+      <div class="cell">Steer around a provider that is down or slow</div>
+      <svg class="arrow" viewBox="0 0 26 12"><line class="s-ink" x1="0" y1="6" x2="24" y2="6"/><polyline class="s-ink" points="19,1 25,6 19,11"/></svg>
+    </div>
+
+    <div class="stage">
+      <h3>Cheapest <i>03</i></h3>
+      <div class="cell">Lowest-cost providers, weighted by <span style="white-space:nowrap">1&#8202;/&#8202;price²</span></div>
+      <div class="cell">Least-cost routing over the cheapest eligible network</div>
+      <span class="bubble" style="top:-11px;left:-11px">2</span>
+      <svg class="arrow" viewBox="0 0 26 12"><line class="s-ink" x1="0" y1="6" x2="24" y2="6"/><polyline class="s-ink" points="19,1 25,6 19,11"/></svg>
+    </div>
+
+    <div class="stage">
+      <h3>Fallback <i>04</i></h3>
+      <div class="cell">Next provider on the list</div>
+      <div class="cell">Retry the failed attempt on another provider</div>
+      <svg class="arrow" viewBox="0 0 26 12"><line class="s-ink" x1="0" y1="6" x2="24" y2="6"/><polyline class="s-ink" points="19,1 25,6 19,11"/></svg>
+    </div>
+
+    <div class="invoice">
+      <div>Invoice<small>Billed by the router</small></div>
+      <span class="bubble" style="top:-11px;left:-11px">3</span>
+    </div>
+  </section>
+
+  <section class="lower">
+    <h1 class="headline">Token routing is least&#8209;cost routing.</h1>
+    <ol class="key">
+      <li><span class="bubble">1</span><span>Debit routing is a legal right under Regulation&nbsp;II. Model routing is a product feature you get by contract.</span></li>
+      <li><span class="bubble">2</span><span>Dollars are identical on every network. Two providers serving one model differ in quality, uptime and latency.</span></li>
+      <li><span class="bubble">3</span><span>The router also sends the invoice.</span></li>
+    </ol>
+  </section>
+
+  <footer class="caption">
+    <span><b>Shane Logsdon</b>&nbsp;&nbsp;Fig. 1 &nbsp;Sources: OpenRouter provider routing docs, Regulation II</span>
+    <span>2026.10.21</span>
+  </footer>
+</article>
+</body>
+</html>
