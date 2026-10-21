@@ -1,4 +1,17 @@
 {
+  "token-routing-is-least-cost-routing": {
+    "title": "Token Routing Is Least-Cost Routing",
+    "description": "Routing AI requests across model providers is the same problem payments solved with least-cost routing. Why Stripe's pending OpenRouter deal reads like a payments company buying a router, and where the analogy breaks.",
+    "date": "2026-10-21",
+    "category": "industry-analysis",
+    "archived": false,
+    "tags": [
+      "payments",
+      "agentic-ai",
+      "tech-strategy",
+      "system-architecture"
+    ]
+  },
   "your-agents-made-you-faster": {
     "title": "Your Agents Made You Faster. Your Customers Didn't Notice.",
     "description": "Agentic workflows made producing artifacts close to free, but the bottleneck moved to conversations with people who might pay. Inventory reads as progress while the constrained side of the system never sped up.",
