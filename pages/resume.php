@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title'       => 'Resume',
-    'description' => 'Shane Logsdon: 15+ years shipping payment platforms and developer experiences. Senior Director, Product Management – Developer Advocacy at Global Payments.',
+    'description' => 'Shane Logsdon: 15+ years shipping payment platforms and developer experiences, most recently Senior Director, Product Management – Developer Advocacy at Global Payments.',
     'url'         => '/resume/',
 ]);
 
@@ -15,10 +15,10 @@ $this->layout('partials::layouts/main', [
 // from the entries below it. Reverse-chronological, newest first.
 $roles = [
     [
-        'num' => 'i', 'start' => '2023-07', 'end' => null,
+        'num' => 'i', 'start' => '2023-07', 'end' => '2026-10',
         'title' => 'Senior Director, Product Management – Developer Advocacy',
         'company' => 'Global Payments Inc.', 'location' => 'Louisville, KY',
-        'dates' => 'Jul 2023 &ndash; Present', 'rank' => 'Current role', 'dur' => '~2.8 yrs',
+        'dates' => 'Jul 2023 &ndash; Oct 2026', 'rank' => 'Senior Director', 'dur' => '3.3 yrs',
         'bullets' => [
             'Rebuilt the developer platform post-merger, consolidating two legacy GP+Worldpay API platforms into a single experience with multi-language sample projects, browser sandbox environments, and community infrastructure, growing developer engagement 55%+ from a standing start with no dedicated program budget.',
             'Overhauled developer support from ad-hoc escalation to structured triage, introducing diagnostic frameworks, standardized playbooks, and cross-language reference implementations that cut repeat issues and enterprise integration resolution times.',
@@ -283,7 +283,7 @@ foreach ($byEmployer as $company => $group) {
           <div>
             <p class="smallcaps">at global payments</p>
             <p class="mt-2 font-display text-[2rem] font-normal leading-none tracking-tight text-foreground">11<sup class="text-[0.6em] text-muted-foreground">yrs</sup></p>
-            <p class="mt-2 text-[0.8125rem] leading-relaxed text-muted-foreground">Six roles. Dec 2014 &rarr; present.</p>
+            <p class="mt-2 text-[0.8125rem] leading-relaxed text-muted-foreground">Six roles. Dec 2014 &rarr; Oct 2026.</p>
           </div>
           <div>
             <p class="smallcaps">merchant installs</p>
@@ -300,7 +300,7 @@ foreach ($byEmployer as $company => $group) {
         <figure class="mt-10">
           <div class="figure-plate">
           <svg width="520" height="212" viewBox="0 0 520 212" role="img"
-               aria-label="Career timeline, February 2012 to present. <?= htmlspecialchars(implode(' ', $timelineAria)) ?>">
+               aria-label="Career timeline, February 2012 to October 2026. <?= htmlspecialchars(implode(' ', $timelineAria)) ?>">
             <text x="0" y="12" class="t-mono f-3">NINE ROLES, THREE EMPLOYERS</text>
             <line x1="0" y1="26" x2="520" y2="26" class="s-ink"/>
 
@@ -370,7 +370,7 @@ foreach ($byEmployer as $company => $group) {
         <p class="smallcaps-lg">experience</p>
         <!-- .folio is inline-flex, so each one needs a block wrapper or the
              two lines sit side by side. -->
-        <p class="mt-3"><span class="folio">2012 &ndash; Present</span></p>
+        <p class="mt-3"><span class="folio">2012 &ndash; 2026</span></p>
         <p class="mt-1"><span class="folio">09 roles &middot; 03 employers</span></p>
       </div>
       <div>
@@ -457,7 +457,7 @@ foreach ($byEmployer as $company => $group) {
 <?php $this->insert('partials::components/contact-cta', [
     'ctaEyebrow' => 'Correspondence',
     'ctaTitle'   => 'Open to conversations about payments, platforms, and developer-facing work.',
-    'ctaBody'    => 'Currently at Global Payments and not actively looking, but always interested in talking to operators building developer-first products, whether that\'s about a role, an advisory conversation, or comparing notes.',
+    'ctaBody'    => 'I\'m building LeadSurface and open to advisory work with operators building developer-first products. Comparing notes is welcome too.',
 ]); ?>
 
 <script>

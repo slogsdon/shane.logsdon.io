@@ -2,7 +2,7 @@
 $settings = require('resources/settings.php');
 $this->layout('partials::layouts/main', [
     'title' => 'Payments & Developer Platforms',
-    'description' => 'Shane Logsdon leads developer advocacy at Global Payments, building developer experience at enterprise scale. Writing on fintech, developer tooling, payment APIs, and AI.',
+    'description' => 'Shane Logsdon is a technical product leader building LeadSurface, after eleven years building developer experience at Global Payments. Writing on fintech, developer tooling, payment APIs, and AI.',
     'url' => '/',
     'image' => 'og-default.png',
     'imageAlt' => 'Shane Logsdon, systems that get found',
@@ -39,7 +39,7 @@ $articleCount = count($activeArticles);
 
         <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-12 sm:gap-8">
             <p class="col-span-1 max-w-prose text-[1.1875rem] leading-[1.6] text-ink-soft sm:col-span-7">
-                I lead developer advocacy at Global Payments, where I build developer-experience infrastructure at enterprise scale. That work is the payment APIs, SDKs, and documentation engineers actually reach for. I write here about developer platforms, payments, and AI-assisted engineering.
+                I spent eleven years at Global Payments building developer-experience infrastructure at enterprise scale. That work was the payment APIs, SDKs, and documentation engineers actually reach for. Now I&rsquo;m building <a class="link-quiet" href="https://www.leadsurface.com">LeadSurface</a>. I write here about developer platforms, payments, and AI-assisted engineering.
             </p>
         </div>
 

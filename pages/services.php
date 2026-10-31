@@ -75,7 +75,7 @@ $faqs = [
                 Most web services build once and disappear. The site goes live, the designer moves on, and the owner is left hoping search traffic materializes on its own. It usually doesn't. The gap between a site that exists and a site that actively brings in clients is active management, updated content, and the technical groundwork that search and AI systems look for.
             </p>
             <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-                This is both of those things, together, from one person who does this at enterprise scale at a global payments company.
+                This is both of those things, together, from one person who spent eleven years doing this at enterprise scale at a global payments company.
             </p>
         </div>
     </div>

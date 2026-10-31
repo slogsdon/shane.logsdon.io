@@ -1,6 +1,6 @@
 # Shane Logsdon
 
-> Shane Logsdon is a technical product leader and developer advocate at Global Payments (Senior Director, Product Management – Developer Advocacy), with 15+ years across payment platforms and developer experience. Secondarily, he runs a small practice building and managing web presence systems for local business owners in the Louisville, KY metro.
+> Shane Logsdon is a technical product leader with 15+ years across payment platforms and developer experience, most recently Senior Director, Product Management – Developer Advocacy at Global Payments (2014–2026). He is now building LeadSurface (https://www.leadsurface.com). Secondarily, he runs a small practice building and managing web presence systems for local business owners in the Louisville, KY metro.
 
 ## Content
 - /about: Background, focus areas, professional identity

@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
     'title' => 'About',
-    'description' => 'Technical product leader in fintech and developer tooling. Leads developer advocacy at Global Payments and builds web presence systems for local businesses.',
+    'description' => 'Technical product leader in fintech and developer tooling. Formerly at Global Payments, now building LeadSurface and web presence systems for local businesses.',
     'url' => '/about/',
 ]);
 $settings = require('resources/settings.php');
@@ -121,12 +121,15 @@ $barMax    = 276; // px at the chart's own scale
       </div>
       <div class="space-y-4">
         <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-            Building, advising, and writing about developer-first payment products. Most days
-            that means thinking about API ergonomics, integration journeys, and what it takes to
-            make complex financial primitives feel inevitable to the engineers using them.
+            I&rsquo;m building <a class="link-quiet" href="https://www.leadsurface.com">LeadSurface</a>,
+            which turns forum noise into qualified pipeline. Before that I spent eleven years building
+            developer platforms at Global Payments. I also advise and write about developer-first
+            payment products. Most days that means thinking about API ergonomics, integration
+            journeys, and what it takes to make complex financial primitives feel inevitable to the
+            engineers using them.
         </p>
         <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
-            On the side I build tools in the open. Two recent ones are
+            I build tools in the open, too. Two recent ones are
             <a class="link-quiet" href="/loop-and-gate/">Loop &amp; Gate</a>,
             an agentic build system, and
             <a class="link-quiet" href="/hermes-dispatch/">Hermes Dispatch</a>,
