@@ -1,7 +1,7 @@
 <?php
 $this->layout('partials::layouts/main', [
   'title' => 'Work',
-  'description' => 'Selected work by Shane Logsdon: LeadSurface, Loop & Gate, Hermes Dispatch, Global Payments developer platforms, and a payments patent.',
+  'description' => 'Selected work by Shane Logsdon: LeadSurface, Loop & Gate, Hermes Dispatch, open-source developer tools, Global Payments developer platforms, and a payments patent.',
     'url' => '/work/',
 ]);
 
@@ -42,6 +42,52 @@ $projects = [
         'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/hermes-dispatch']],
     ],
     [
+        'href' => 'https://projects.logsdon.io/detent/',
+        'title' => 'Detent',
+        'body' => 'A library of native web components with no framework underneath. Every component page has live examples and an API reference, and shows its accessibility verification status. No component is marked verified until a person has checked it.',
+        'meta' => [],
+    ],
+    [
+        'href' => 'https://projects.logsdon.io/herdbot/',
+        'title' => 'Herdbot',
+        'body' => 'Runs a team of persistent AI bots on your own Mac through herdr. Each task goes to a harness and model from the coding-agent subscriptions you already pay for.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/herdbot']],
+    ],
+    [
+        'href' => 'https://projects.logsdon.io/writing-skills/',
+        'title' => 'Writing Skills',
+        'body' => 'Six editing skills for Claude Code. They cover a voice edit, Microsoft style, plain language, simplified technical English, a read-only review and a pre-draft interview.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/skills-writing']],
+    ],
+    [
+        'href' => 'https://projects.logsdon.io/deferred-skill-catalog/',
+        'title' => 'Deferred Skill Catalog',
+        'body' => 'Keeps skill descriptions out of the prompt for Pi and Claude Code and makes them searchable when a task needs one.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/deferred-skill-catalog']],
+    ],
+    [
+        'href' => 'https://projects.logsdon.io/gliner-browser/',
+        'title' => 'GLiNER Browser',
+        'body' => 'A local browser CLI with persistent sessions and semantic element targeting. It is still in early development.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/gliner-browser']],
+    ],
+    [
+        'href' => 'https://projects.logsdon.io/flat-file/',
+        'title' => 'flat-file',
+        'body' => 'A small PHP static-site generator and flat-file CMS. Pages are files and routes are file paths. One command exports the whole site as plain HTML. This site is built with it.',
+        'meta' => [['label' => 'open source', 'href' => 'https://github.com/slogsdon/php-flat-file']],
+    ],
+    [
+        'href' => 'https://projects.logsdon.io/web-component-tools/',
+        'title' => 'Web Component Tools',
+        'body' => 'A PHP server-side renderer and a client-side hydration library for native web components, plus a JSX factory that is still a work in progress.',
+        'meta' => [
+            ['label' => 'ssr', 'href' => 'https://github.com/slogsdon/php-web-component-ssr'],
+            ['label' => 'hydration', 'href' => 'https://github.com/slogsdon/javascript-web-component-hydration'],
+            ['label' => 'jsx', 'href' => 'https://github.com/slogsdon/jsx-for-web-components'],
+        ],
+    ],
+    [
         'href' => 'https://github.com/hps/heartland-tokenization',
         'title' => 'Secure Submit',
         'body' => 'Heartland Payment Systems\' JavaScript library for single-use tokenization across card-present and card-not-present merchants.',
@@ -68,7 +114,8 @@ $projectTotal = count($projects);
 
     <p class="mt-6 max-w-prose text-[1.0625rem] leading-[1.6] text-ink-soft">
         Each row links out to the thing itself, to its source, or to the piece I wrote about
-        building it. <?= $projectTotal ?> on file.
+        building it. <?= $projectTotal ?> on file. The open-source tools also have their own
+        pages in the <a class="link-quiet" href="https://projects.logsdon.io/">project collection</a>.
     </p>
 
     <!-- The field is the list. Two-track rows: folio, then the project. -->
