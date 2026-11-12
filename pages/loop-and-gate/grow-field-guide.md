@@ -271,7 +271,7 @@ Experience is the cross-cutting lens that gates both sides. On the build side it
 What fills the space between the grow gates today, offered as a snapshot and nothing more. This layer reprices and renames, and it is not the method.
 
 - **Design (Gate 3)** — `skills-design`, driven by your taste profile.
-- **Copy (Gate 4)** — `skills-writing` (humanize, style-pass), driven by your voice profile.
+- **Copy (Gate 4)** — [`skills-writing`](https://projects.logsdon.io/writing-skills/) (humanize, style-pass), driven by your voice profile.
 - **Scheduling (Gate 5)** — a free-tier posting account, optional. You can place a post by hand. The gate is the decision, not the tool.
 - **Metrics (Gate 6)** — the platform's own free analytics. No paid tool required to work the gate.
 
