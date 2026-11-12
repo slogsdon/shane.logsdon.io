@@ -316,11 +316,11 @@ item: T12's worked editing example. No site is blocked.
 
 ## T15 — Cut over legacy URLs and connect the personal site
 
-- [ ] After destination proof, add one-hop permanent redirects for old product
+- [x] After destination proof, add one-hop permanent redirects for old product
   URLs/Markdown/assets as mapped; remove duplicate product output from the old sitemap.
-- [ ] Update `/work/`, relevant internal references, and selected GitHub website /
+- [x] Update `/work/`, relevant internal references, and selected GitHub website /
   README links to canonical destinations; retain personal editorial articles.
-- [ ] Document rollback for old redirects and retain source content history.
+- [x] Document rollback for old redirects and retain source content history.
 
 Verify: complete migration response matrix; personal `composer build`, CSS build if
 changed, sitemap generation and artifact inspection; old/new canonical agreement.
@@ -331,6 +331,17 @@ Scope: personal repo `netlify.toml`, `pages/work.php`, selected product pages an
 known references, sitemap output logic only if needed. Split each product migration
 and every other repo's README/website-field update into its own reviewed unit.
 Suggested commit: `feat: connect the personal site to project microsites`.
+Done 2026-11-11. `7b19b5f` 301s `/loop-and-gate/` and `/loop-and-gate/your-first-gate/`
+(with or without the slash, query kept) to the collection's root and getting-started
+pages, deletes the two source pages and drops them from the sitemap (86 → 84 URLs).
+The three field guides stay, with unchanged canonicals, and every internal link
+points straight at the new site. `d096638` adds the collection and seven project
+rows to `/work/`; the grow field guide links Writing Skills. Rollback is the comment
+above the redirects in `netlify.toml`: delete the two blocks and restore the two
+pages from git history. GitHub: the four Loop & Gate READMEs link the new site, and
+all ten project repo homepages point at their collection pages (detent-ui included).
+No other personal-site article mentions a collection project. The four orphaned
+images (`loop-and-gate-og/linkedin`, `your-first-gate-hero/og`) are kept for rollback.
 
 ## T16 — Verify the collection and establish search measurement
 
