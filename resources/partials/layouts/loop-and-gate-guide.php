@@ -67,7 +67,7 @@ $readTime = ceil(str_word_count(strip_tags($body)) / $settings->avgWordsPerMinut
     <?php $this->insert('partials::components/author-bio'); ?>
 
     <footer class="mt-12 flex items-baseline justify-between gap-6 border-t border-rule pt-8">
-        <a href="/loop-and-gate/" class="btn-arrow btn-arrow--muted" style="text-decoration: none;">
+        <a href="https://projects.logsdon.io/loop-and-gate/" class="btn-arrow btn-arrow--muted" style="text-decoration: none;">
             &larr; Loop &amp; Gate
         </a>
         <span class="folio">

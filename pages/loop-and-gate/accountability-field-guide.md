@@ -237,7 +237,7 @@ That's it. Plain markdown, versioned in git if you want a free audit trail, edit
 
 ## Related
 
-- [Loop &amp; Gate](/loop-and-gate/) — the framework and the whole stack this guide belongs to.
+- [Loop &amp; Gate](https://projects.logsdon.io/loop-and-gate/) — the framework and the whole stack this guide belongs to.
 - [The Build Field Guide](/loop-and-gate/build-field-guide/) — the loop on your code.
 - [The Grow Field Guide](/loop-and-gate/grow-field-guide/) — the loop on your market.
 - [Building on the Margins](/articles/strategic-insights/building-on-the-margins/) — the manifesto this all sits under.

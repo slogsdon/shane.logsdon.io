@@ -944,6 +944,25 @@ status = 301
 force = true
 
 # ---------------------------------------------------------------------------
+# Project pages moved to the project collection (T15). Single 301 hop to the
+# canonical destination. The three Loop & Gate field guides stay on this site.
+# Rollback: delete these blocks and restore pages/loop-and-gate.php and
+# pages/loop-and-gate/your-first-gate.md from git history.
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+from = "/loop-and-gate/"
+to = "https://projects.logsdon.io/loop-and-gate/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/loop-and-gate/your-first-gate/"
+to = "https://projects.logsdon.io/loop-and-gate/getting-started/"
+status = 301
+force = true
+
+# ---------------------------------------------------------------------------
 # Wildcard catch-alls. Keep LAST: only hit for slugs not enumerated above.
 # ---------------------------------------------------------------------------
 

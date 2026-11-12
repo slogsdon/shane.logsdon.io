@@ -130,7 +130,7 @@ $barMax    = 276; // px at the chart's own scale
         </p>
         <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
             I build tools in the open, too. Two recent ones are
-            <a class="link-quiet" href="/loop-and-gate/">Loop &amp; Gate</a>,
+            <a class="link-quiet" href="https://projects.logsdon.io/loop-and-gate/">Loop &amp; Gate</a>,
             an agentic build system, and
             <a class="link-quiet" href="/hermes-dispatch/">Hermes Dispatch</a>,
             a local-first agent dispatcher. I&rsquo;m using that same Loop &amp; Gate workflow to build

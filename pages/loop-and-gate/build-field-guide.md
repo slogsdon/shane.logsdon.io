@@ -322,6 +322,6 @@ The lesson isn't the specific tools. It's that the stack is composed from what's
 
 ## Related
 
-- [Loop &amp; Gate](/loop-and-gate/) — the framework and the whole stack this guide belongs to.
+- [Loop &amp; Gate](https://projects.logsdon.io/loop-and-gate/) — the framework and the whole stack this guide belongs to.
 - [Building on the Margins](/articles/strategic-insights/building-on-the-margins/) — the manifesto behind the method.
 - The Grow Field Guide covers the other half of the loop, taking shipped software to market. (Publishing alongside this one.)

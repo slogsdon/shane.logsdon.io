@@ -89,4 +89,4 @@ That commentary (where it ran, what makes it work, what the generic version gets
 
 If you've been collecting prompts, and if you use AI seriously you have, the audit is cheap. Don't evaluate the library. Search your own history for what you've typed more than once. Whatever you find there has already passed the only test that matters, and whatever you don't find was never really yours.
 
-The four patterns that graduated to skills live in [Loop & Gate](https://shane.logsdon.io/loop-and-gate/), the open version of the workflow system this all sits inside. The 40 templates are still in my vault. They're very well organized.
+The four patterns that graduated to skills live in [Loop & Gate](https://projects.logsdon.io/loop-and-gate/), the open version of the workflow system this all sits inside. The 40 templates are still in my vault. They're very well organized.
