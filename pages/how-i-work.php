@@ -226,7 +226,7 @@ $this->layout('partials::layouts/main', [
         </div>
       </section>
 
-      <section id="supporting-work" aria-labelledby="supporting-work-heading" class="mt-16 scroll-mt-24 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-rule pt-10 sm:grid-cols-[3fr_9fr]">
+      <section id="supporting-work" aria-labelledby="supporting-work-heading" class="mt-16 scroll-mt-24 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-rule pt-10 pb-12 sm:grid-cols-[3fr_9fr]">
         <h2 id="supporting-work-heading" class="smallcaps-lg leading-relaxed">See the work behind it</h2>
         <div class="max-w-prose space-y-8">
           <ul class="space-y-3 text-base leading-relaxed">

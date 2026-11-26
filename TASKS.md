@@ -382,4 +382,15 @@ leaders. Review artifact:
 
 Validation and review evidence:
 [implementation record](docs/superpowers/plans/2026-11-26-how-i-work.md).
-No deployment, commit, push, or external indexing notice has been performed.
+Initial section committed as `5c50c02` and deployed through `52061eb`; live content,
+links, canonical, stylesheet, and sitemap verified.
+
+### Mobile Sheet correction
+
+- [x] Add the missing 48px gap between supporting links and title block.
+- [x] Use the exact shared rule token for the Sheet edge and internal title-block
+  dividers; retain only the title block's top edge in ink, per DESIGN.md.
+- [x] Keep canonical tokens, production CSS, and component specimens synchronized.
+- [x] Verify at 390px and 1280px: outline/internal rules both `#d6d8de`, 48px
+  bottom gap, no horizontal overflow; PHP lint, CSS/site builds, and token check pass.
+- [ ] Deploy and verify the live correction.

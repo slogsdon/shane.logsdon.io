@@ -476,7 +476,7 @@
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 1px solid var(--color-ink);
+    border-top: 1px solid var(--color-rule);
     margin: 0;
   }
   .title-block__cells > div {
@@ -502,7 +502,7 @@
       grid-auto-flow: column;
       grid-auto-columns: minmax(76px, auto);
       grid-template-columns: none;
-      border-left: 1px solid var(--color-ink);
+      border-left: 1px solid var(--color-rule);
       border-top: 0;
     }
     .title-block__cells > div {
@@ -676,7 +676,7 @@
 
   /* ── Sheet. Border plus field plus title block. No zone references or edge
      rulers: they looked systematic and addressed nothing. */
-  .sheet { border: 1px solid hsl(var(--rule)); position: relative; }
+  .sheet { border: 1px solid var(--color-rule); position: relative; }
   .sheet__field { padding: 22px 18px 0; }
   @media (min-width: 56.25rem) {
     .sheet__field { padding: 34px 34px 0; }

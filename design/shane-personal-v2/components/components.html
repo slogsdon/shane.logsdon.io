@@ -356,7 +356,7 @@ pre.snippet {
 .figcaption b { color:var(--color-ink);font-weight:500; }
 .title-block { border-top:1px solid var(--color-ink);display:grid;grid-template-columns:1fr auto; }
 .title-block__id { padding:14px 24px 16px; }
-.title-block__cells { display:grid;grid-auto-flow:column;grid-auto-columns:minmax(76px,auto);border-left:1px solid var(--color-ink);margin:0; }
+.title-block__cells { display:grid;grid-auto-flow:column;grid-auto-columns:minmax(76px,auto);border-left:1px solid var(--color-rule);margin:0; }
 .title-block__cells > div { padding:12px 14px;border-right:1px solid var(--color-rule); }
 .title-block__cells > div:last-child { border-right:0; }
 .title-block__cells dt { font-family:var(--type-mono-family);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-ink-3);margin:0 0 5px; }
@@ -400,7 +400,7 @@ pre.snippet {
    linking them, so anything added there has to be added here by hand. */
 @media (max-width: 640px) {
   .title-block { grid-template-columns:1fr; }
-  .title-block__cells { grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));border-left:0;border-top:1px solid var(--color-ink); }
+  .title-block__cells { grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));border-left:0;border-top:1px solid var(--color-rule); }
   .title-block__cells > div { border-bottom:1px solid var(--color-rule); }
   .title-block__cells > div:nth-child(2n) { border-right:0; }
   .title-block__cells > div:nth-last-child(-n+2) { border-bottom:0; }

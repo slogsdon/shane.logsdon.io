@@ -298,7 +298,7 @@
 .title-block__id { padding: 14px 30px 16px; }
 .title-block__cells {
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(76px, auto);
-  border-left: 1px solid var(--color-ink);
+  border-left: 1px solid var(--color-rule);
   margin: 0;
 }
 .title-block__cells > div { padding: 12px 14px; border-right: 1px solid var(--color-rule); }
@@ -322,7 +322,7 @@
     grid-auto-flow: row;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     border-left: 0;
-    border-top: 1px solid var(--color-ink);
+    border-top: 1px solid var(--color-rule);
   }
   .title-block__cells > div { border-bottom: 1px solid var(--color-rule); }
   .title-block__cells > div:nth-child(2n) { border-right: 0; }
