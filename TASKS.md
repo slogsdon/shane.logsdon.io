@@ -393,4 +393,5 @@ links, canonical, stylesheet, and sitemap verified.
 - [x] Keep canonical tokens, production CSS, and component specimens synchronized.
 - [x] Verify at 390px and 1280px: outline/internal rules both `#d6d8de`, 48px
   bottom gap, no horizontal overflow; PHP lint, CSS/site builds, and token check pass.
-- [ ] Deploy and verify the live correction.
+- [x] Deploy correction `f3e9108`; live mobile browser confirms matching
+  `rgb(214, 216, 222)` rules, 48px gap, and no overflow. Live HTML/CSS checks pass.
