@@ -18,6 +18,7 @@ $folioDate = date('Y.m.d');
                 <li><a class="smallcaps hover:!text-foreground" href="https://bsky.app/profile/shane.logsdon.io" target="_blank" rel="noreferrer noopener">bluesky</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="https://github.com/slogsdon" target="_blank" rel="noreferrer noopener">github</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="/work/">work</a></li>
+                <li><a class="smallcaps hover:!text-foreground" href="/how-i-work/">how I work</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="/services/">services</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="/contact/">contact</a></li>
                 <li><a class="smallcaps hover:!text-foreground" href="/archive/">archive</a></li>

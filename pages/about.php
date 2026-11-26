@@ -114,6 +114,18 @@ $barMax    = 276; // px at the chart's own scale
       </div>
     </div>
 
+    <section aria-labelledby="how-i-work-heading" class="mt-16 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-rule pt-10 sm:grid-cols-[3fr_9fr]">
+      <h2 id="how-i-work-heading" class="smallcaps-lg leading-relaxed">how I work</h2>
+      <div>
+        <p class="max-w-prose text-[1.0625rem] leading-relaxed text-muted-foreground">
+            My approach connects product decisions to the engineering work and evidence behind
+            them. Read the principles, practices, and working habits I&rsquo;ve developed across
+            payments, developer platforms, and building my own products.
+        </p>
+        <p class="mt-5"><a class="btn-arrow" href="/how-i-work/">Read how I work</a></p>
+      </div>
+    </section>
+
     <!-- Currently -->
     <div class="mt-16 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-rule pt-10 pb-12 sm:grid-cols-[3fr_9fr]">
       <div>

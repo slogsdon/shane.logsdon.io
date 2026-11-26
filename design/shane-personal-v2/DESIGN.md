@@ -262,6 +262,7 @@ The rows below are **worked examples of the questions above**, not the extent of
 | Field guide / process | D · Assembly Order | Q2 — reordering the gates breaks them | One detail per step |
 | Practice / services | D · Assembly Order | Q2 — build → AEO → management is ordered | Footed price blocks |
 | About | C · Sheet | Q3 — changes, so it must say when it last did | Category share chart |
+| How I work / professional principles | C · Sheet | Q3 — current working practices evolve; a reader evaluating fit needs a revision and date | None — the practices are explained in prose |
 | Work | C · Sheet | Q3 — each project carries its own revision | None — no project carries dated figures |
 | Resume | C · Sheet | Q3 — staleness is the whole risk | Career timeline |
 | Speaking | E · Set | Q1 — a catalog browses like a catalog | Talk structure timeline |

@@ -363,3 +363,23 @@ Suggested commit: `docs: record microsite launch and operations evidence`.
 - [ ] All tasks complete, or overall status explicitly incomplete with named blockers.
 - [ ] Exact touched repos/paths, checks, deployment versions, URLs, manual gates,
   and rollback procedures reported. Commit approval remains per reviewed unit.
+
+## Professional principles and practices — 2026-11-26
+
+Separate from the microsite work above. Audience: hiring managers and engineering
+leaders. Review artifact:
+[How I work — proposed copy and design](docs/superpowers/specs/2026-11-26-how-i-work-design.md).
+
+- [x] Review the reference site, existing professional content, working preferences,
+  and authoritative design system.
+- [x] Prepare tailored first-person copy, source boundaries, architecture decision,
+  and implementation scope.
+- [x] Obtain review of the proposed copy and page design before implementation.
+- [x] Implement `/how-i-work/`, About introduction, footer link, and design/docs updates.
+- [x] Verify PHP, generated CSS/HTML, canonical, anchors, internal links, sitemap,
+  and desktop/mobile/keyboard behavior; distinguish automated and browser evidence.
+- [x] Present exact-path staged diff and proposed conventional commit for approval.
+
+Validation and review evidence:
+[implementation record](docs/superpowers/plans/2026-11-26-how-i-work.md).
+No deployment, commit, push, or external indexing notice has been performed.
