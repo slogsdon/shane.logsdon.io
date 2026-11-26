@@ -292,7 +292,7 @@
 
 /* ─── Title block — the Sheet architecture's footer. Revision and date are content. ─── */
 .title-block {
-  border-top: 1px solid var(--color-ink);
+  border-top: 1px solid var(--color-rule);
   display: grid; grid-template-columns: 1fr auto;
 }
 .title-block__id { padding: 14px 30px 16px; }
@@ -334,9 +334,8 @@
    2px read as a slab dropped on the page, and it contradicted the doctrine
    --color-rule states at the top of this file: one rule color, 1px hairline,
    major divisions carried by whitespace rather than weight. The sheet's edge is
-   a division like any other. The title block's ink top rule stays the heaviest
-   line on the sheet, which is correct, since that is where content ends and
-   metadata begins. ─── */
+   a division like any other. The title block's top edge and internal dividers
+   use that same rule color; type and spacing distinguish metadata. ─── */
 .sheet { border: 1px solid var(--color-rule); position: relative; }
 .sheet__field { padding: 34px 34px 0; }
 

@@ -468,7 +468,7 @@
   /* ── Title block. The C · Sheet footer. Revision and date are content. */
   .title-block {
     container-type: inline-size;
-    border-top: 1px solid var(--color-ink);
+    border-top: 1px solid var(--color-rule);
     display: grid; grid-template-columns: 1fr;
   }
   .title-block__id { padding: 14px 30px 16px; }

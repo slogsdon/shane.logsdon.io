@@ -389,9 +389,18 @@ links, canonical, stylesheet, and sitemap verified.
 
 - [x] Add the missing 48px gap between supporting links and title block.
 - [x] Use the exact shared rule token for the Sheet edge and internal title-block
-  dividers; retain only the title block's top edge in ink, per DESIGN.md.
+  dividers. Subsequent design-system update removes the top-edge ink exception too.
 - [x] Keep canonical tokens, production CSS, and component specimens synchronized.
 - [x] Verify at 390px and 1280px: outline/internal rules both `#d6d8de`, 48px
   bottom gap, no horizontal overflow; PHP lint, CSS/site builds, and token check pass.
 - [x] Deploy correction `f3e9108`; live mobile browser confirms matching
   `rgb(214, 216, 222)` rules, 48px gap, and no overflow. Live HTML/CSS checks pass.
+
+### Uniform Sheet hairlines — design-system decision
+
+- [x] Remove the title-block ink exception from DESIGN.md, canonical tokens,
+  component specimens, and production styles: every Sheet/title-block rule uses
+  `--color-rule` at 1px. Hierarchy comes from typography and spacing.
+- [x] CSS/site builds and token check pass; browser checks at 390px and 1280px
+  confirm outline, top divider, and internal dividers resolve to `#d6d8de`.
+- [ ] Sync Penpot's visual file: connector unavailable; browser editor requires sign-in.
