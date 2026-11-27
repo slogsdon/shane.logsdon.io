@@ -262,7 +262,7 @@ The rows below are **worked examples of the questions above**, not the extent of
 | Field guide / process | D · Assembly Order | Q2 — reordering the gates breaks them | One detail per step |
 | Practice / services | D · Assembly Order | Q2 — build → AEO → management is ordered | Footed price blocks |
 | About | C · Sheet | Q3 — changes, so it must say when it last did | Category share chart |
-| How I work / professional principles | C · Sheet | Q3 — current working practices evolve; a reader evaluating fit needs a revision and date | None — the practices are explained in prose |
+| How I work / professional principles | C · Sheet | Q3 — current working practices evolve; a reader evaluating fit needs a revision and date | None — the practices are explained in prose. Credibility comes from an “on file” line per principle linking the public work behind it, not from a figure |
 | Work | C · Sheet | Q3 — each project carries its own revision | None — no project carries dated figures |
 | Resume | C · Sheet | Q3 — staleness is the whole risk | Career timeline |
 | Speaking | E · Set | Q1 — a catalog browses like a catalog | Talk structure timeline |
@@ -324,7 +324,7 @@ Named primitives, plus the site-wide components that must survive under all six 
 | Site-wide component | Where it appears | Shape |
 |---|---|---|
 | Newsletter | Above the footer, every page | 4/8 split, underline input + `.btn-arrow`. Renders nothing until `KIT_FORM_ID` is set, so no broken form ever ships |
-| Contact CTA | Home, About, articles, archive, guides | The inversion block. 3/9 split, parameterized eyebrow/title/body, exactly one action |
+| Contact CTA | Home, About, How I work, articles, archive, guides | The inversion block. 3/9 split, parameterized eyebrow/title/body, exactly one action |
 | Author bio | Article and field-guide layouts | 72×96 headshot + bio, after the body, before the CTA |
 | Post-list row | Articles, Speaking, Archive | Folio (number + date) · title + description · category + read time |
 | Index strip | Above every list | Count folio (`009 entries`) + category filter tabs, or `archive` on Speaking |
